@@ -1,5 +1,5 @@
 {{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
-<section id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp sn-pdp-faq sn-pdp__section">
+<section id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp sn-pdp-faq sn-pdp__section" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}">
   <div class="sn-pdp__shell">
     <p class="sn-pdp__eyebrow">{{ section.settings.eyebrow }}</p>
     <h2 class="sn-pdp__heading">{{ section.settings.heading }}</h2>
@@ -32,4 +32,3 @@
   "presets":[{"name":"SuntNeew PDP FAQ","blocks":[{"type":"question"},{"type":"question"},{"type":"question"}]}]
 }
 {% endschema %}
-

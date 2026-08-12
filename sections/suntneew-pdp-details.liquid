@@ -1,55 +1,82 @@
 {{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'suntneew-pdp.js' | asset_url }}" defer></script>
-<section id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp sn-pdp-details sn-pdp__section">
-  <div class="sn-pdp__shell sn-pdp-details__layout">
-    <div class="sn-pdp-details__aside">
+
+<section class="sn-pdp sn-pdp-details sn-pdp__section" data-pdp-panel-host>
+  <div class="sn-pdp__shell">
+    <div id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp-details__panel" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}">
       {%- if section.settings.eyebrow != blank -%}<p class="sn-pdp__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
       <h2 class="sn-pdp__heading">{{ section.settings.heading }}</h2>
       {%- if section.settings.lede != blank -%}<div class="sn-pdp__lede">{{ section.settings.lede }}</div>{%- endif -%}
-    </div>
 
-    <div class="sn-pdp-details__groups">
-      <div class="sn-pdp-details__group">
-        <h3>{{ section.settings.spec_heading }}</h3>
-        <dl class="sn-pdp-specs">
+      <div class="sn-pdp-spec-groups">
+        {%- assign group_keys = 'primary,system,installation' | split: ',' -%}
+        {%- for group_key in group_keys -%}
+          {%- assign group_count = 0 -%}
           {%- for block in section.blocks -%}
-            {%- if block.type == 'spec' -%}
-              <div class="sn-pdp-specs__row" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
-                <dt>{{ block.settings.label }}</dt><dd>{{ block.settings.value }}</dd>
-              </div>
+            {%- if block.type == 'spec' and block.settings.group == group_key -%}
+              {%- assign group_count = group_count | plus: 1 -%}
             {%- endif -%}
           {%- endfor -%}
-        </dl>
+
+          {%- if group_count > 0 -%}
+            {%- case group_key -%}
+              {%- when 'system' -%}{%- assign group_heading = section.settings.system_group_heading -%}
+              {%- when 'installation' -%}{%- assign group_heading = section.settings.installation_group_heading -%}
+              {%- else -%}{%- assign group_heading = section.settings.primary_group_heading -%}
+            {%- endcase -%}
+
+            <details class="sn-pdp-spec-group"{% if forloop.first %} open{% endif %}>
+              <summary>
+                <span>{{ group_heading }}</span>
+                <span class="sn-pdp-spec-group__count">View details</span>
+              </summary>
+              <dl class="sn-pdp-specs">
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'spec' and block.settings.group == group_key -%}
+                    <div class="sn-pdp-specs__row" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
+                      <dt>{{ block.settings.label }}</dt>
+                      <dd>{{ block.settings.value }}</dd>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </dl>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
       </div>
-
-      {%- assign included_blocks = section.blocks | where: 'type', 'included' -%}
-      {%- if included_blocks.size > 0 -%}
-        <div id="in-the-box" class="sn-pdp-details__group">
-          <h3>{{ section.settings.included_heading }}</h3>
-          <ul class="sn-pdp-list">
-            {%- for block in included_blocks -%}
-              <li {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.item }}</li>
-            {%- endfor -%}
-          </ul>
-        </div>
-      {%- endif -%}
-
-      {%- assign download_blocks = section.blocks | where: 'type', 'download' -%}
-      {%- if download_blocks.size > 0 -%}
-        <div id="manuals" class="sn-pdp-details__group">
-          <h3>{{ section.settings.download_heading }}</h3>
-          <div class="sn-pdp-downloads">
-            {%- for block in download_blocks -%}
-              {%- if block.settings.link != blank -%}
-                <a class="sn-pdp-download" href="{{ block.settings.link }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
-              {%- else -%}
-                <span class="sn-pdp-download" aria-disabled="true" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</span>
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
-        </div>
-      {%- endif -%}
     </div>
+
+    {%- assign included_blocks = section.blocks | where: 'type', 'included' -%}
+    {%- if included_blocks.size > 0 -%}
+      <div id="in-the-box" class="sn-pdp-details__panel" role="tabpanel" data-pdp-panel="in-the-box">
+        <p class="sn-pdp__eyebrow">{{ section.settings.included_eyebrow }}</p>
+        <h2 class="sn-pdp__heading">{{ section.settings.included_heading }}</h2>
+        <ul class="sn-pdp-list sn-pdp-list--cards">
+          {%- for block in included_blocks -%}
+            <li {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.item }}</li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+
+    {%- assign download_blocks = section.blocks | where: 'type', 'download' -%}
+    {%- if download_blocks.size > 0 -%}
+      <div id="manuals" class="sn-pdp-details__panel" role="tabpanel" data-pdp-panel="manuals">
+        <p class="sn-pdp__eyebrow">{{ section.settings.download_eyebrow }}</p>
+        <h2 class="sn-pdp__heading">{{ section.settings.download_heading }}</h2>
+        <div class="sn-pdp-downloads">
+          {%- for block in download_blocks -%}
+            {%- if block.settings.link != blank -%}
+              <a class="sn-pdp-download" href="{{ block.settings.link }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+            {%- elsif block.settings.asset_name != blank -%}
+              <a class="sn-pdp-download" href="{{ block.settings.asset_name | asset_url }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+            {%- else -%}
+              <span class="sn-pdp-download" aria-disabled="true" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</span>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -60,24 +87,30 @@
     {"type":"text","id":"anchor_id","label":"Anchor ID","default":"specifications"},
     {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Product details"},
     {"type":"text","id":"heading","label":"Heading","default":"Specifications at a glance"},
-    {"type":"richtext","id":"lede","label":"Introduction","default":"<p>Values follow the current internal product evidence. Confirm regional compatibility before installation.</p>"},
-    {"type":"text","id":"spec_heading","label":"Specifications heading","default":"Technical specifications"},
+    {"type":"richtext","id":"lede","label":"Introduction","default":"<p>Choose a category to inspect the technical details.</p>"},
+    {"type":"text","id":"primary_group_heading","label":"Primary specs group","default":"Energy & performance"},
+    {"type":"text","id":"system_group_heading","label":"System specs group","default":"Electrical & system"},
+    {"type":"text","id":"installation_group_heading","label":"Installation specs group","default":"Installation & environment"},
+    {"type":"text","id":"included_eyebrow","label":"Included eyebrow","default":"What is included"},
     {"type":"text","id":"included_heading","label":"Included heading","default":"In the box"},
+    {"type":"text","id":"download_eyebrow","label":"Downloads eyebrow","default":"Reference material"},
     {"type":"text","id":"download_heading","label":"Downloads heading","default":"Manuals & downloads"}
   ],
   "blocks":[
-    {"type":"spec","name":"Specification row","settings":[
+    {"type":"spec","name":"Specification","settings":[
       {"type":"text","id":"label","label":"Label","default":"Capacity"},
       {"type":"text","id":"value","label":"Value","default":"8,000mAh"},
+      {"type":"select","id":"group","label":"Specification group","default":"primary","options":[{"value":"primary","label":"Energy & performance"},{"value":"system","label":"Electrical & system"},{"value":"installation","label":"Installation & environment"}]},
       {"type":"text","id":"variant_match","label":"Only show for variant","info":"Optional capacity, color, title or SKU match."}
     ]},
-    {"type":"included","name":"In-the-box item","settings":[
+    {"type":"included","name":"Included item","settings":[
       {"type":"text","id":"item","label":"Item","default":"Product unit"},
       {"type":"text","id":"variant_match","label":"Only show for variant"}
     ]},
     {"type":"download","name":"Download","settings":[
-      {"type":"text","id":"label","label":"Label","default":"User manual 鈥?pending upload"},
+      {"type":"text","id":"label","label":"Label","default":"User manual — pending upload"},
       {"type":"url","id":"link","label":"File or page link"},
+      {"type":"text","id":"asset_name","label":"Bundled asset filename","info":"Optional theme asset, for example energy-star-wl5a-spec-v1.jpg."},
       {"type":"text","id":"variant_match","label":"Only show for variant"}
     ]}
   ],
@@ -85,4 +118,3 @@
   "presets":[{"name":"SuntNeew PDP details","blocks":[{"type":"spec"},{"type":"spec"},{"type":"included"},{"type":"download"}]}]
 }
 {% endschema %}
-

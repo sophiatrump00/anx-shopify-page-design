@@ -1,6 +1,6 @@
 {{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'suntneew-pdp.js' | asset_url }}" defer></script>
-<section id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp sn-pdp-story sn-pdp__section">
+<section id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp sn-pdp-story sn-pdp__section" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}">
   <div class="sn-pdp__shell">
     {%- if section.settings.eyebrow != blank -%}<p class="sn-pdp__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
     <h2 class="sn-pdp__heading">{{ section.settings.heading }}</h2>
@@ -8,14 +8,14 @@
 
     <div class="sn-pdp-story__stack">
       {%- for block in section.blocks -%}
-        <article class="sn-pdp-story__row" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
-          <div class="sn-pdp-story__media">
+        <article class="sn-pdp-story__row{% if block.settings.image == blank and block.settings.image_asset == blank %} sn-pdp-story__row--copy-only{% endif %}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank or block.settings.image_asset != blank -%}<div class="sn-pdp-story__media">
             {%- if block.settings.image != blank -%}
               {{- block.settings.image | image_url: width: 1800 | image_tag: widths: '600,900,1200,1500,1800', sizes: '(max-width: 899px) 100vw, 60vw', loading: 'lazy', alt: block.settings.image_alt, style: block.settings.image_fit | prepend: 'object-fit: ' -}}
             {%- elsif block.settings.image_asset != blank -%}
               <img src="{{ block.settings.image_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="1600" height="1200" loading="lazy" style="object-fit: {{ block.settings.image_fit }}">
             {%- endif -%}
-          </div>
+          </div>{%- endif -%}
           <div class="sn-pdp-story__copy">
             {%- if block.settings.eyebrow != blank -%}<p class="sn-pdp__eyebrow">{{ block.settings.eyebrow }}</p>{%- endif -%}
             <h3>{{ block.settings.heading }}</h3>
@@ -52,4 +52,3 @@
   "presets":[{"name":"SuntNeew PDP story","blocks":[{"type":"feature"},{"type":"feature"}]}]
 }
 {% endschema %}
-

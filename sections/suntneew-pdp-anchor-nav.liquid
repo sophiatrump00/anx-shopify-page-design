@@ -1,8 +1,19 @@
 {{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
-<nav class="sn-pdp sn-pdp-nav" aria-label="On this product page">
-  <div class="sn-pdp-nav__inner">
+<nav class="sn-pdp sn-pdp-nav" aria-label="Product information">
+  <div class="sn-pdp-nav__inner" role="tablist" aria-label="Product sections">
     {%- for block in section.blocks -%}
-      <a href="#{{ block.settings.target_id | handleize }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+      {%- assign target_id = block.settings.target_id | handleize -%}
+      <a
+        id="sn-pdp-tab-{{ section.id }}-{{ block.id }}"
+        class="sn-pdp-nav__tab{% if forloop.first %} is-active{% endif %}"
+        href="#{{ target_id }}"
+        role="tab"
+        aria-controls="{{ target_id }}"
+        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+        tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+        data-pdp-tab="{{ target_id }}"
+        {{ block.shopify_attributes }}
+      >{{ block.settings.label }}</a>
     {%- endfor -%}
   </div>
 </nav>
@@ -20,4 +31,3 @@
   "presets":[{"name":"SuntNeew PDP anchor nav","blocks":[{"type":"link"},{"type":"link"},{"type":"link"},{"type":"link"}]}]
 }
 {% endschema %}
-
