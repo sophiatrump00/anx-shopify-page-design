@@ -7,14 +7,14 @@
           "type": "image",
           "settings": {
             "image_asset": "suntneew-hero-rv-desktop.jpg",
-            "mobile_image_asset": "suntneew-hero-rv-mobile.jpg",
+            "mobile_image_asset": "suntneew-hero-rv-desktop.jpg",
             "content_max_width": 560,
             "mobile_text_position": "place-self-end-start text-start",
             "desktop_text_position": "sm:place-self-center-start sm:text-start",
             "subheading": "RV BATTERIES",
             "title": "RV power that fits the trip.",
             "heading_tag": "h1",
-            "button_text": "Explore RV batteries",
+            "button_text": "Find your RV battery",
             "button_link": "shopify://collections/rv-batteries",
             "text_color": "#FFFFFF",
             "button_background": "#FFFFFF",
@@ -33,9 +33,9 @@
             "mobile_text_position": "place-self-end-start text-start",
             "desktop_text_position": "sm:place-self-center-start sm:text-start",
             "subheading": "JUMP STARTERS",
-            "title": "Start ready. Keep moving.",
+            "title": "Roadside power, matched to the vehicle.",
             "heading_tag": "h2",
-            "button_text": "Explore jump starters",
+            "button_text": "Find a jump starter",
             "button_link": "shopify://collections/jump-starters",
             "text_color": "#FFFFFF",
             "button_background": "#FFFFFF",
@@ -54,9 +54,9 @@
             "mobile_text_position": "place-self-end-start text-start",
             "desktop_text_position": "sm:place-self-center-start sm:text-start",
             "subheading": "HOME ENERGY STORAGE",
-            "title": "Power at home, built around your system.",
+            "title": "Home energy, planned around your system.",
             "heading_tag": "h2",
-            "button_text": "Explore home energy",
+            "button_text": "Check system availability",
             "button_link": "shopify://pages/request-for-quote",
             "text_color": "#1B2433",
             "button_background": "#263D63",
@@ -80,71 +80,17 @@
         "background": "#F7FAFF"
       }
     },
-    "trust_strip": {
-      "type": "suntneew-trust-strip",
-      "blocks": {
-        "fit": {"type":"item","settings":{"icon":"battery","title":"Built around fit","text":"Start with the space and system you actually have."}},
-        "power": {"type":"item","settings":{"icon":"check","title":"Power that is clear","text":"Compare capacity and output for the job, not just a bigger number."}},
-        "support": {"type":"item","settings":{"icon":"headset","title":"Help before you choose","text":"Ask for model-specific product guidance when you need it."}},
-        "delivery": {"type":"item","settings":{"icon":"truck","title":"Home energy, planned clearly","text":"System compatibility is confirmed before an order is placed."}}
-      },
-      "block_order": ["fit", "power", "support", "delivery"],
-      "settings": {"accessibility_label":"SuntNeew selection and support highlights"}
-    },
-    "ways_to_power": {
-      "type": "suntneew-path-grid",
-      "blocks": {
-        "rv": {
-          "type": "path",
-          "settings": {
-            "fallback_asset": "suntneew-use-rv.jpg",
-            "image_alt": "RV campsite powered by a SuntNeew battery",
-            "eyebrow": "RV BATTERIES",
-            "product_label": "G24 · G31 · 230Ah · 314Ah",
-            "title": "Power the RV beyond the hookup.",
-            "text": "Start with the battery bay, then match output and runtime to the loads you plan to run.",
-            "link_label": "Explore RV batteries",
-            "link": "shopify://collections/rv-batteries"
-          }
-        },
-        "jump": {
-          "type": "path",
-          "settings": {
-            "fallback_asset": "suntneew-use-jump.jpg",
-            "image_alt": "SuntNeew jump starter connected to a vehicle battery",
-            "eyebrow": "JUMP STARTERS",
-            "product_label": "A20 · A3",
-            "title": "Start the vehicle and get back on the road.",
-            "text": "Starting power, charging and emergency support that stays close to the vehicle.",
-            "link_label": "Explore jump starters",
-            "link": "shopify://collections/jump-starters"
-          }
-        },
-        "home": {
-          "type": "path",
-          "settings": {
-            "fallback_asset": "suntneew-use-home-energy.jpg",
-            "image_alt": "SuntNeew home energy storage system installed beside a solar-powered home",
-            "eyebrow": "HOME ENERGY STORAGE",
-            "product_label": "5.12 kWh · 10.24 kWh · High-voltage",
-            "title": "Keep essential home power within reach.",
-            "text": "Begin with the energy you need, then plan a compatible system around your home.",
-            "link_label": "Explore home energy",
-            "link": "shopify://pages/request-for-quote"
-          }
-        }
-      },
-      "block_order": ["rv", "jump", "home"],
+    "power_chooser": {
+      "type": "suntneew-chooser",
       "settings": {
-        "anchor_id": "ways-to-power",
-        "eyebrow": "POWER FOR REAL LIFE",
-        "heading": "Three ways to stay powered.",
-        "body": "RV travel, roadside recovery or power at home—start with the system you use every day.",
-        "columns": 3,
-        "card_height": 480,
-        "dark_background": false,
-        "link_label": "",
-        "link_url": ""
+        "anchor_id": "help-me-choose",
+        "eyebrow": "START WITH THE JOB",
+        "heading": "Choose the job. Then the constraint.",
+        "body": "Three real power needs, followed by the few details that make the next step clearer. You will be sent to a collection or a planning path, not a generic product wall.",
+        "line_question": "1. WHAT ARE YOU POWERING?",
+        "battery_question": "2. WHAT MATTERS MOST FOR THE RV SYSTEM?",
+        "jump_question": "2. WHAT MATTERS MOST FOR ROADSIDE USE?",
+        "home_question": "2. WHAT IS THE STARTING POINT FOR THE SYSTEM?"
       }
     },
     "rv_proof": {
@@ -159,11 +105,11 @@
         "after_mobile_asset": "suntneew-proof-battery-after-mobile.jpg",
         "before_alt": "SuntNeew RV battery in changing weather conditions",
         "after_alt": "SuntNeew Group 31 RV battery product visual",
-        "eyebrow": "RV POWER THAT FITS THE SYSTEM",
-        "heading": "A good RV power choice starts before checkout.",
-        "body": "A battery only works as well as the fit and installation around it. Review dimensions, terminal orientation, system voltage and intended loads before choosing a model.",
-        "point_1": "Use the product page to confirm the battery case and terminal layout",
-        "point_2": "Check usable energy and continuous output separately",
+        "eyebrow": "RV POWER, BUILT AROUND FIT",
+        "heading": "A good RV battery choice starts before checkout.",
+        "body": "A battery only works as well as the fit and installation around it. Review case dimensions, terminal orientation, system voltage and intended loads before choosing a model.",
+        "point_1": "Confirm the battery case and terminal layout on the product page",
+        "point_2": "Compare usable energy and continuous output separately",
         "point_3": "Use model-specific installation and cable guidance",
         "primary_label": "Explore RV batteries",
         "primary_link": "shopify://collections/rv-batteries",
@@ -171,59 +117,165 @@
         "secondary_link": ""
       }
     },
-    "jump_proof": {
-      "type": "suntneew-proof",
-      "settings": {
-        "anchor_id": "roadside-readiness",
-        "white_background": true,
-        "reverse_layout": true,
-        "before_desktop_asset": "suntneew-proof-jump-before-desktop.jpg",
-        "after_desktop_asset": "suntneew-proof-jump-after-desktop.jpg",
-        "before_mobile_asset": "suntneew-proof-jump-before-mobile.jpg",
-        "after_mobile_asset": "suntneew-proof-jump-after-mobile.jpg",
-        "before_alt": "SuntNeew jump starter connected in an engine bay",
-        "after_alt": "SuntNeew jump starter product visual",
-        "eyebrow": "ROADSIDE POWER THAT IS EASY TO REACH",
-        "heading": "Start with the vehicle you drive.",
-        "body": "Use the supported vehicle and engine information on the product page, then choose the carrying size and emergency functions you will actually use.",
-        "point_1": "Match the stated vehicle and engine coverage before purchase",
-        "point_2": "Follow the model-specific connection and status guidance",
-        "point_3": "Compare charging ports and emergency-light functions by model",
-        "primary_label": "Explore jump starters",
-        "primary_link": "shopify://collections/jump-starters",
-        "secondary_label": "",
-        "secondary_link": ""
-      }
-    },
     "home_energy": {
       "type": "suntneew-home-energy",
       "blocks": {
-        "essential": {"type":"path","settings":{"capacity":"5.12 kWh","title":"Essential backup","text":"A compact starting point for selected household backup needs."}},
-        "coverage": {"type":"path","settings":{"capacity":"10.24 kWh","title":"More stored energy","text":"A larger usable-energy option for extended home coverage."}},
-        "system": {"type":"path","settings":{"capacity":"HIGH-VOLTAGE","title":"System-led design","text":"Choose compatible components around capacity and inverter requirements."}}
+        "essential": {
+          "type": "path",
+          "settings": {
+            "capacity": "5.12 kWh",
+            "title": "Start with capacity",
+            "text": "A compact starting point for selected household backup needs."
+          }
+        },
+        "coverage": {
+          "type": "path",
+          "settings": {
+            "capacity": "10.24 kWh",
+            "title": "Extend stored energy",
+            "text": "A larger usable-energy option for broader home coverage."
+          }
+        },
+        "system": {
+          "type": "path",
+          "settings": {
+            "capacity": "HIGH-VOLTAGE",
+            "title": "Plan the system first",
+            "text": "Choose compatible components around capacity and inverter requirements."
+          }
+        }
       },
       "block_order": ["essential", "coverage", "system"],
       "settings": {
         "eyebrow": "HOME ENERGY STORAGE",
-        "heading": "Power at home, built around real needs.",
-        "body": "Choose a usable starting capacity first, then match the system architecture and inverter requirements to the way your home uses power.",
+        "heading": "Home energy, planned around your system.",
+        "body": "Choose the starting capacity first. Then confirm inverter compatibility and installation requirements around the way your home uses power.",
         "image_asset": "suntneew-hero-home-light-desktop.png",
         "image_alt": "SuntNeew home energy storage system beside a modern home",
-        "button_label": "Plan your home energy system",
+        "button_label": "Check system availability",
         "button_link": "shopify://pages/request-for-quote",
-        "note": "Individual and business customers can request a configuration. Delivery and compatibility are confirmed before ordering."
+        "note": "For Germany, delivery and compatibility are confirmed with you before ordering."
+      }
+    },
+    "jump_spotlight": {
+      "type": "suntneew-scene-spotlight",
+      "blocks": {
+        "coverage": {
+          "type": "check",
+          "settings": {
+            "title": "Vehicle coverage",
+            "text": "Confirm the stated vehicle and engine coverage before purchase."
+          }
+        },
+        "carry": {
+          "type": "check",
+          "settings": {
+            "title": "Carry size",
+            "text": "Choose a model that can stay with the vehicle when it is needed."
+          }
+        },
+        "utility": {
+          "type": "check",
+          "settings": {
+            "title": "Roadside utility",
+            "text": "Compare charging ports and emergency functions by model."
+          }
+        }
+      },
+      "block_order": ["coverage", "carry", "utility"],
+      "settings": {
+        "anchor_id": "roadside-readiness",
+        "eyebrow": "JUMP STARTERS",
+        "heading": "Roadside readiness should match the vehicle.",
+        "body": "Choose by vehicle coverage, carrying size and the backup functions you will actually use—not by a number in isolation.",
+        "desktop_image_asset": "suntneew-hero-a20-desktop.jpg",
+        "mobile_image_asset": "suntneew-hero-a20-mobile.jpg",
+        "image_alt": "SuntNeew jump starter connected in a vehicle engine bay",
+        "button_label": "Explore jump starters",
+        "button_link": "shopify://collections/jump-starters"
+      }
+    },
+    "decision_evidence": {
+      "type": "suntneew-evidence",
+      "blocks": {
+        "specs": {
+          "type": "evidence",
+          "settings": {
+            "title": "Specs tied to a model",
+            "text": "Review dimensions, capacity and electrical details on the model or collection page.",
+            "link_label": "Explore RV batteries",
+            "link": "shopify://collections/rv-batteries"
+          }
+        },
+        "documents": {
+          "type": "evidence",
+          "settings": {
+            "title": "Documentation by product",
+            "text": "Request the test, safety or transport information relevant to the model you are considering.",
+            "link_label": "Request support",
+            "link": "shopify://pages/request-for-quote"
+          }
+        },
+        "delivery": {
+          "type": "evidence",
+          "settings": {
+            "title": "Availability checked before order",
+            "text": "For home energy, delivery and configuration are confirmed for your destination before you commit.",
+            "link_label": "Plan home energy",
+            "link": "shopify://pages/request-for-quote"
+          }
+        },
+        "support": {
+          "type": "evidence",
+          "settings": {
+            "title": "Selection support before purchase",
+            "text": "Get help comparing fit, electrical demand or vehicle coverage before you choose a model.",
+            "link_label": "Ask a product question",
+            "link": "shopify://pages/request-for-quote"
+          }
+        }
+      },
+      "block_order": ["specs", "documents", "delivery", "support"],
+      "settings": {
+        "anchor_id": "before-you-buy",
+        "eyebrow": "BEFORE YOU COMMIT",
+        "heading": "What you can check before you buy.",
+        "body": "The homepage defines the job. Model information and the support path make the purchase decision specific."
       }
     },
     "faq": {
       "type": "faq",
       "blocks": {
-        "faq_rv": {"type":"item","settings":{"title":"How do I choose between G24 and G31?","content":"<p>Start with the physical battery compartment and terminal layout. Both are 100Ah choices, but they use different case sizes. Confirm measurements before ordering.</p>"}},
-        "faq_output": {"type":"item","settings":{"title":"Does more Ah always mean more output?","content":"<p>No. Stored energy and continuous output are different constraints. Compare both values, alongside system voltage, cables, fuse requirements and intended load.</p>"}},
-        "faq_jump": {"type":"item","settings":{"title":"Which jump starter should I choose?","content":"<p>Start with the supported vehicle and engine range listed on the product page, then compare portability, capacity, ports and emergency-light features.</p>"}},
-        "faq_home": {"type":"item","settings":{"title":"Can I buy home energy storage as an individual?","content":"<p>Yes. Share your target capacity, inverter information and delivery location. We will help confirm a suitable configuration before an order is placed.</p>"}},
-        "faq_docs": {"type":"item","settings":{"title":"Where can I find certification and test information?","content":"<p>Relevant model-specific safety, transport and compliance information can be requested when you need it for a specific product.</p>"}}
+        "faq_rv": {
+          "type": "item",
+          "settings": {
+            "title": "How do I choose an RV battery?",
+            "content": "<p>Start with the battery compartment, terminal layout and system voltage. Then compare usable energy and continuous output for the loads you plan to run.</p>"
+          }
+        },
+        "faq_jump": {
+          "type": "item",
+          "settings": {
+            "title": "Which jump starter should I choose?",
+            "content": "<p>Start with the supported vehicle and engine information on the product page, then compare portability, charging ports and emergency functions by model.</p>"
+          }
+        },
+        "faq_home": {
+          "type": "item",
+          "settings": {
+            "title": "Can I plan a home-energy system as an individual?",
+            "content": "<p>Yes. Individual customers can request a configuration. We confirm system fit, delivery area and installation requirements before an order is placed.</p>"
+          }
+        },
+        "faq_docs": {
+          "type": "item",
+          "settings": {
+            "title": "Where can I find certification and test information?",
+            "content": "<p>Relevant model-specific safety, transport and compliance information can be requested when you need it for a specific model.</p>"
+          }
+        }
       },
-      "block_order": ["faq_rv", "faq_output", "faq_jump", "faq_home", "faq_docs"],
+      "block_order": ["faq_rv", "faq_jump", "faq_home", "faq_docs"],
       "settings": {
         "full_width": false,
         "subheading": "SUPPORT",
@@ -252,12 +304,12 @@
         "anchor_id": "power-on",
         "image_alt": "SuntNeew power for RV travel, roadside readiness and home energy",
         "impact_text": "POWER ON",
-        "heading": "Power that earns its place in real life.",
-        "body": "RV power for the miles ahead. Roadside power when a vehicle needs a start. Home energy built around the way you use electricity.",
-        "button_label": "Explore power paths",
-        "button_link": "#ways-to-power"
+        "heading": "Power for the jobs that keep moving.",
+        "body": "Start with the power need in front of you. We will help you check the details that make the next choice practical.",
+        "button_label": "Choose your power path",
+        "button_link": "#help-me-choose"
       }
     }
   },
-  "order": ["main_slideshow", "trust_strip", "ways_to_power", "rv_proof", "jump_proof", "home_energy", "faq", "brand_close"]
+  "order": ["main_slideshow", "power_chooser", "rv_proof", "home_energy", "jump_spotlight", "decision_evidence", "faq", "brand_close"]
 }

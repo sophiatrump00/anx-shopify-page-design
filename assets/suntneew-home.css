@@ -146,7 +146,6 @@
 .sn-path:hover img { transform: scale(1.035); }
 .sn-path__shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,9,10,.02) 28%, rgba(7,9,10,.84) 100%); }
 .sn-path__content { position: absolute; inset: auto 0 0; padding: 28px; }
-.sn-path__product-label { display: inline-flex; width: fit-content; margin: 0 0 12px !important; padding: 6px 9px; border: 1px solid rgba(255,255,255,.38); border-radius: 999px; background: rgba(8,12,18,.34); color: #fff !important; font-size: 10px !important; font-weight: 800; letter-spacing: .08em; line-height: 1.1 !important; text-transform: uppercase; }
 .sn-path__content h3 { margin: 0 0 8px; font-size: clamp(24px, 2.5vw, 36px); line-height: 1; letter-spacing: -.03em; }
 .sn-path__content p { margin: 0 0 16px; color: rgba(255,255,255,.76); font-size: 14px; }
 .sn-link { color: inherit; font-size: 13px; font-weight: 800; text-decoration: none; }
@@ -440,7 +439,7 @@
 .sn-evidence__item h3 { margin: 26px 0 9px; color: #1b2433; font-size: 20px; line-height: 1.08; }
 .sn-evidence__item p { margin: 0 0 20px; color: #657289; font-size: 13px; line-height: 1.55; }
 .sn-evidence__item .sn-light-link { margin-top: auto; text-decoration: none; }
-.sn-evidence__item .sn-light-link::after { content: "→"; }
+.sn-evidence__item .sn-light-link::after { content: "\\2192"; }
 
 @media (max-width: 1099px) {
   .sn-chooser__choices--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -13,13 +13,7 @@
             <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="1200" height="1400" loading="lazy">
           {%- endif -%}
           <span class="sn-path__shade"></span>
-          <div class="sn-path__content">
-            <p class="sn-kicker">{{ block.settings.eyebrow }}</p>
-            {%- if block.settings.product_label != blank -%}<p class="sn-path__product-label">{{ block.settings.product_label }}</p>{%- endif -%}
-            <h3>{{ block.settings.title }}</h3>
-            <p>{{ block.settings.text }}</p>
-            <a class="sn-link" href="{{ block.settings.link | default: '#' }}">{{ block.settings.link_label }}</a>
-          </div>
+          <div class="sn-path__content"><p class="sn-kicker">{{ block.settings.eyebrow }}</p><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p><a class="sn-link" href="{{ block.settings.link | default: '#' }}">{{ block.settings.link_label }}</a></div>
         </article>
       {%- endfor -%}
     </div>
@@ -42,9 +36,9 @@
   ],
   "blocks":[{"type":"path","name":"Image path","settings":[
     {"type":"image_picker","id":"image","label":"Image override"},
-    {"type":"select","id":"fallback_asset","label":"Bundled fallback","default":"suntneew-use-rv.jpg","options":[{"value":"suntneew-use-home-energy.jpg","label":"Home energy"},{"value":"suntneew-use-home.jpg","label":"Home"},{"value":"suntneew-use-rv.jpg","label":"RV"},{"value":"suntneew-use-marine.jpg","label":"Marine"},{"value":"suntneew-use-camping.jpg","label":"Camping"},{"value":"suntneew-use-jump.jpg","label":"Jump start"},{"value":"suntneew-use-light.jpg","label":"Emergency light"},{"value":"suntneew-hero-rv-desktop.jpg","label":"RV hero"},{"value":"suntneew-hero-a20-desktop.jpg","label":"A20 hero"},{"value":"suntneew-hero-home-light-desktop.png","label":"Home energy hero"}]},
+    {"type":"select","id":"fallback_asset","label":"Bundled fallback","default":"suntneew-use-rv.jpg","options":[{"value":"suntneew-use-home.jpg","label":"Home"},{"value":"suntneew-use-rv.jpg","label":"RV"},{"value":"suntneew-use-marine.jpg","label":"Marine"},{"value":"suntneew-use-camping.jpg","label":"Camping"},{"value":"suntneew-use-jump.jpg","label":"Jump start"},{"value":"suntneew-use-light.jpg","label":"Emergency light"},{"value":"suntneew-hero-rv-desktop.jpg","label":"RV hero"},{"value":"suntneew-hero-a20-desktop.jpg","label":"A20 hero"}]},
     {"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew power solution in use"},
-    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"RV power"},{"type":"text","id":"product_label","label":"Product line label","default":"Product line"},{"type":"text","id":"title","label":"Title","default":"Stay off-grid longer"},{"type":"textarea","id":"text","label":"Text","default":"Match capacity, fit and output to the way your RV is used."},{"type":"text","id":"link_label","label":"Link label","default":"Explore solution"},{"type":"url","id":"link","label":"Link"}
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"RV power"},{"type":"text","id":"title","label":"Title","default":"Stay off-grid longer"},{"type":"textarea","id":"text","label":"Text","default":"Match capacity, fit and output to the way your RV is used."},{"type":"text","id":"link_label","label":"Link label","default":"Explore solution"},{"type":"url","id":"link","label":"Link"}
   ]}],
   "presets":[{"name":"SuntNeew image paths","blocks":[{"type":"path"},{"type":"path"},{"type":"path"}]}]
 }
