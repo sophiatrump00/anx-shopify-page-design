@@ -1,54 +1,12 @@
-<section class="sn-section sn-section--chooser" id="{{ section.settings.anchor_id | escape }}">
+<section class="sn-section" id="{{ section.settings.anchor_id | escape }}">
   <div class="sn-shell">
     <div class="sn-chooser" data-sn-chooser>
-      <div class="sn-chooser__intro">
-        <p class="sn-kicker">{{ section.settings.eyebrow }}</p>
-        <h2>{{ section.settings.heading }}</h2>
-        <p class="sn-copy">{{ section.settings.body }}</p>
-      </div>
-
+      <div class="sn-chooser__intro"><p class="sn-kicker">{{ section.settings.eyebrow }}</p><h2>{{ section.settings.heading }}</h2><p class="sn-copy">{{ section.settings.body }}</p></div>
       <div class="sn-chooser__panel">
-        <div class="sn-chooser__step">
-          <span class="sn-chooser__label">{{ section.settings.line_question }}</span>
-          <div class="sn-chooser__choices sn-chooser__choices--3">
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="line" data-value="battery" aria-pressed="false">An RV or off-grid system</button>
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="line" data-value="jump" aria-pressed="false">A vehicle that needs a start</button>
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="line" data-value="home" aria-pressed="false">A home energy system</button>
-          </div>
-        </div>
-
-        <div class="sn-chooser__step" data-sn-need-group="battery" hidden>
-          <span class="sn-chooser__label">{{ section.settings.battery_question }}</span>
-          <div class="sn-chooser__choices sn-chooser__choices--3">
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="fit" aria-pressed="false">Physical fit first</button>
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="runtime" aria-pressed="false">Longer runtime</button>
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="power" aria-pressed="false">Higher continuous output</button>
-          </div>
-        </div>
-
-        <div class="sn-chooser__step" data-sn-need-group="jump" hidden>
-          <span class="sn-chooser__label">{{ section.settings.jump_question }}</span>
-          <div class="sn-chooser__choices sn-chooser__choices--3">
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="coverage" aria-pressed="false">Vehicle coverage</button>
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="carry" aria-pressed="false">Carry size first</button>
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="utility" aria-pressed="false">More roadside utility</button>
-          </div>
-        </div>
-
-        <div class="sn-chooser__step" data-sn-need-group="home" hidden>
-          <span class="sn-chooser__label">{{ section.settings.home_question }}</span>
-          <div class="sn-chooser__choices sn-chooser__choices--3">
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="entry" aria-pressed="false">A 5 kWh starting point</button>
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="capacity" aria-pressed="false">More stored energy</button>
-            <button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="system" aria-pressed="false">System architecture first</button>
-          </div>
-        </div>
-
-        <div class="sn-chooser__result" aria-live="polite">
-          <strong data-sn-result-title>Choose a job to begin</strong>
-          <p data-sn-result-text>We will narrow the next step around fit, runtime, vehicle coverage or system planning.</p>
-          <a class="sn-button" data-sn-result-link href="#" hidden>Open the next step</a>
-        </div>
+        <div class="sn-chooser__step"><span class="sn-chooser__label">1. What are you powering?</span><div class="sn-chooser__choices"><button type="button" class="sn-chooser__choice" data-sn-choice data-group="line" data-value="battery" aria-pressed="false">An RV or off-grid system</button><button type="button" class="sn-chooser__choice" data-sn-choice data-group="line" data-value="jump" aria-pressed="false">A vehicle in an emergency</button></div></div>
+        <div class="sn-chooser__step" data-sn-need-group="battery" hidden><span class="sn-chooser__label">2. What matters most?</span><div class="sn-chooser__choices"><button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="fit" aria-pressed="false">Physical fit first</button><button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="runtime" aria-pressed="false">Longer runtime</button><button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="power" aria-pressed="false">Higher output</button></div></div>
+        <div class="sn-chooser__step" data-sn-need-group="jump" hidden><span class="sn-chooser__label">2. What matters most?</span><div class="sn-chooser__choices"><button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="compact" aria-pressed="false">Compact everyday backup</button><button type="button" class="sn-chooser__choice" data-sn-choice data-group="need" data-value="capacity" aria-pressed="false">More capacity and utility</button></div></div>
+        <div class="sn-chooser__result"><strong data-sn-result-title>Choose a path to begin</strong><p data-sn-result-text>We will narrow the range using fit, runtime, output or roadside needs.</p><a class="sn-button" data-sn-result-link href="#" hidden>View recommendation</a></div>
       </div>
     </div>
   </div>
@@ -56,17 +14,8 @@
 
 {% schema %}
 {
-  "name": "SuntNeew power chooser",
-  "settings": [
-    {"type":"text","id":"anchor_id","label":"Anchor ID","default":"help-me-choose"},
-    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"START WITH THE JOB"},
-    {"type":"text","id":"heading","label":"Heading","default":"Choose the job. Then the constraint."},
-    {"type":"textarea","id":"body","label":"Body","default":"Three real power needs, followed by the few details that make the next step clearer. You will be sent to a collection or a planning path, not a generic product wall."},
-    {"type":"text","id":"line_question","label":"First question","default":"1. WHAT ARE YOU POWERING?"},
-    {"type":"text","id":"battery_question","label":"RV battery question","default":"2. WHAT MATTERS MOST FOR THE RV SYSTEM?"},
-    {"type":"text","id":"jump_question","label":"Jump starter question","default":"2. WHAT MATTERS MOST FOR ROADSIDE USE?"},
-    {"type":"text","id":"home_question","label":"Home energy question","default":"2. WHAT IS THE STARTING POINT FOR THE SYSTEM?"}
-  ],
-  "presets": [{"name":"SuntNeew power chooser"}]
+  "name":"SuntNeew help me choose",
+  "settings":[{"type":"text","id":"anchor_id","label":"Anchor ID","default":"help-me-choose"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Help me choose"},{"type":"text","id":"heading","label":"Heading","default":"Start with the job. End with the right product."},{"type":"textarea","id":"body","label":"Body","default":"A short decision path for customers who know what they need to do, but not which model gets them there."}],
+  "presets":[{"name":"SuntNeew help me choose"}]
 }
 {% endschema %}
