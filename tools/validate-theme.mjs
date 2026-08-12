@@ -4,16 +4,27 @@ import path from 'node:path';
 const theme = path.resolve(process.argv[2] || '.');
 const errors = [];
 const warnings = [];
-const indexPath = path.join(theme, 'templates', 'index.json');
-const index = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
-
-for (const id of index.order) {
-  if (!index.sections[id]) errors.push(`index.order references missing section: ${id}`);
-}
-for (const [id, section] of Object.entries(index.sections)) {
-  if (!index.order.includes(id)) warnings.push(`section is not in order: ${id}`);
-  const sectionPath = path.join(theme, 'sections', `${section.type}.liquid`);
-  if (!fs.existsSync(sectionPath)) errors.push(`missing section file: ${section.type}.liquid`);
+const templateFiles = fs.readdirSync(path.join(theme, 'templates')).filter((file) => file.endsWith('.json'));
+const templates = [];
+const parseTemplateJson = (raw) => JSON.parse(raw.replace(/^\s*\/\*[\s\S]*?\*\/\s*/, ''));
+for (const file of templateFiles) {
+  const templatePath = path.join(theme, 'templates', file);
+  let template;
+  try {
+    template = parseTemplateJson(fs.readFileSync(templatePath, 'utf8'));
+  } catch (error) {
+    errors.push(`${file}: invalid template JSON: ${error.message}`);
+    continue;
+  }
+  templates.push({ file, template });
+  for (const id of template.order || []) {
+    if (!template.sections?.[id]) errors.push(`${file}: order references missing section: ${id}`);
+  }
+  for (const [id, section] of Object.entries(template.sections || {})) {
+    if (!(template.order || []).includes(id)) warnings.push(`${file}: section is not in order: ${id}`);
+    const sectionPath = path.join(theme, 'sections', `${section.type}.liquid`);
+    if (!fs.existsSync(sectionPath)) errors.push(`${file}: missing section file: ${section.type}.liquid`);
+  }
 }
 
 for (const file of fs.readdirSync(path.join(theme, 'sections')).filter((file) => file.startsWith('suntneew-') && file.endsWith('.liquid'))) {
@@ -52,16 +63,16 @@ const assetReferences = new Set();
 const collect = (value) => {
   if (Array.isArray(value)) value.forEach(collect);
   else if (value && typeof value === 'object') Object.values(value).forEach(collect);
-  else if (typeof value === 'string' && /^suntneew-.*\.(jpg|png|webp|js|css)$/.test(value)) assetReferences.add(value);
+  else if (typeof value === 'string' && /^(suntneew|energy-star)-.*\.(jpg|png|webp|js|css)$/.test(value)) assetReferences.add(value);
 };
-collect(index);
+for (const { template } of templates) collect(template);
 for (const asset of assetReferences) {
   if (!fs.existsSync(path.join(theme, 'assets', asset))) errors.push(`missing referenced asset: ${asset}`);
 }
 
 console.log(JSON.stringify({
   theme,
-  sections: index.order.length,
+  templates: templates.length,
   customSections: fs.readdirSync(path.join(theme, 'sections')).filter((file) => file.startsWith('suntneew-')).length,
   referencedAssets: assetReferences.size,
   warnings,

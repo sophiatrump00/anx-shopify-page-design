@@ -1,408 +1,92 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type":"main-product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h1"
-          }
-        },
-        "sku": {
-          "type": "sku",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "separator": {
-          "type": "separator",
-          "settings": {}
-        },
-        "intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p>16,000mAh jump starter with 2500A peak current and 60W USB-C Power Delivery.</p>"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false
-          }
-        }
+        "vendor":{"type":"vendor","settings":{}},
+        "title":{"type":"title","settings":{"heading_tag":"h1"}},
+        "sku":{"type":"sku","settings":{}},
+        "price":{"type":"price","settings":{"show_taxes_notice":false}},
+        "separator":{"type":"separator","settings":{}},
+        "intro":{"type":"text","settings":{"text":"<p>16,000mAh jump starter with 2500A peak current and 60W USB-C Power Delivery.</p>"}},
+        "quantity_selector":{"type":"quantity_selector","settings":{}},
+        "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":false,"show_gift_card_recipient":false}}
       },
-      "block_order": [
-        "vendor",
-        "title",
-        "sku",
-        "price",
-        "separator",
-        "intro",
-        "quantity_selector",
-        "buy_buttons"
-      ],
-      "settings": {
-        "show_fixed_add_to_cart": false,
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots"
-      }
+      "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","buy_buttons"],
+      "settings":{"show_fixed_add_to_cart":false,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
-      "type": "suntneew-pdp-proof",
+      "type":"suntneew-pdp-proof",
       "blocks": {
-        "peak": {
-          "type": "metric",
-          "settings": {
-            "value": "2500A",
-            "label": "Peak current",
-            "variant_match": ""
-          }
-        },
-        "capacity": {
-          "type": "metric",
-          "settings": {
-            "value": "16,000mAh",
-            "label": "Rated capacity",
-            "variant_match": ""
-          }
-        },
-        "energy": {
-          "type": "metric",
-          "settings": {
-            "value": "59.2Wh",
-            "label": "Rated energy",
-            "variant_match": ""
-          }
-        },
-        "pd": {
-          "type": "metric",
-          "settings": {
-            "value": "PD 60W",
-            "label": "USB-C input and output",
-            "variant_match": ""
-          }
-        }
+        "peak":{"type":"metric","settings":{"value":"2500A","label":"Peak current","variant_match":""}},
+        "capacity":{"type":"metric","settings":{"value":"16,000mAh","label":"Rated capacity","variant_match":""}},
+        "energy":{"type":"metric","settings":{"value":"59.2Wh","label":"Rated energy","variant_match":""}},
+        "pd":{"type":"metric","settings":{"value":"PD 60W","label":"USB-C input and output","variant_match":""}}
       },
-      "block_order": [
-        "peak",
-        "capacity",
-        "energy",
-        "pd"
-      ],
-      "settings": {
-        "accessibility_label": "A3 product highlights"
-      }
+      "block_order":["peak","capacity","energy","pd"],
+      "settings":{"accessibility_label":"A3 product highlights"}
     },
     "anchor_nav": {
-      "type": "suntneew-pdp-anchor-nav",
+      "type":"suntneew-pdp-anchor-nav",
       "blocks": {
-        "features": {
-          "type": "link",
-          "settings": {
-            "label": "Features",
-            "target_id": "features"
-          }
-        },
-        "specs": {
-          "type": "link",
-          "settings": {
-            "label": "Specifications",
-            "target_id": "specifications"
-          }
-        },
-        "box": {
-          "type": "link",
-          "settings": {
-            "label": "In the Box",
-            "target_id": "in-the-box"
-          }
-        },
-        "manuals": {
-          "type": "link",
-          "settings": {
-            "label": "Manuals",
-            "target_id": "manuals"
-          }
-        },
-        "faq": {
-          "type": "link",
-          "settings": {
-            "label": "FAQ",
-            "target_id": "faq"
-          }
-        }
+        "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
+        "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
+        "box":{"type":"link","settings":{"label":"In the Box","target_id":"in-the-box"}},
+        "manuals":{"type":"link","settings":{"label":"Manuals","target_id":"manuals"}},
+        "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
-      "block_order": [
-        "features",
-        "specs",
-        "box",
-        "manuals",
-        "faq"
-      ],
-      "settings": {}
+      "block_order":["features","specs","box","manuals","faq"],
+      "settings":{}
     },
     "features": {
-      "type": "suntneew-pdp-story",
+      "type":"suntneew-pdp-story",
       "blocks": {
-        "safety": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "suntneew-a3-ultra-safe-v1.png",
-            "image_alt": "A3 intelligent clamps with spark and polarity protection",
-            "eyebrow": "Intelligent clamps",
-            "heading": "Clear protection cues before current flows",
-            "body": "<p>The corrected product graphic communicates spark, reverse-polarity, low-voltage, high-temperature, short-circuit and over-current protection without changing the documented hardware.</p>",
-            "variant_match": ""
-          }
-        },
-        "power": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "suntneew-product-a3.jpg",
-            "image_alt": "SuntNeew A3 16000mAh jump starter",
-            "eyebrow": "Power delivery",
-            "heading": "2500A peak current meets 60W USB-C utility",
-            "body": "<p>A3 combines 800A starting current, 2500A peak current and bidirectional 60W USB-C Power Delivery in one gun-gray unit.</p>",
-            "variant_match": ""
-          }
-        }
+        "peak":{"type":"feature","settings":{"image_asset":"suntneew-a3-gallery-01.jpg","image_alt":"A3 jump starter, cable and clamp set","eyebrow":"Starting performance","heading":"2500A peak current in the A3 configuration","body":"<p>A3 is offered in one configuration: 16,000mAh / 59.2Wh with 800A starting current and 2500A peak current. Confirm vehicle voltage and engine requirements in the manual before use.</p>","variant_match":""}},
+        "safety":{"type":"feature","settings":{"image_asset":"suntneew-a3-ultra-safe-v1.png","image_alt":"A3 intelligent clamps with connection protection","eyebrow":"Intelligent clamps","heading":"Clear connection cues before current flows","body":"<p>The clamp visual communicates the protection-oriented connection routine. Follow polarity, clamp and vehicle-manufacturer guidance every time you use a jump starter.</p>","variant_match":""}},
+        "pd":{"type":"feature","settings":{"image_asset":"suntneew-a3-gallery-08.jpg","image_alt":"A3 display and USB-C PD60W power information","eyebrow":"PD60W USB-C","heading":"One USB-C port for fast input and everyday output","body":"<p>USB-C Power Delivery supports input and output up to 60W. Open the technical profile only when you need the detailed voltage and current information.</p>","variant_match":""}},
+        "display":{"type":"feature","settings":{"image_asset":"suntneew-a3-gallery-08.jpg","image_alt":"A3 intelligent display showing battery and power information","eyebrow":"At-a-glance status","heading":"Read battery, input and output status on the unit","body":"<p>The display shows battery percentage and active power information, so the status is visible before a roadside start or when charging a device.</p>","variant_match":""}},
+        "light":{"type":"feature","settings":{"image_asset":"suntneew-a3-gallery-05.jpg","image_alt":"A3 integrated emergency light modes","eyebrow":"Roadside visibility","heading":"Integrated lighting is part of the emergency kit","body":"<p>Choose steady, strobe or SOS light modes when extra visibility is needed. Refer to the product manual for operating guidance and use the light only where it is safe to do so.</p>","variant_match":""}},
+        "vehicle":{"type":"feature","settings":{"image_asset":"suntneew-a3-gallery-06.jpg","image_alt":"A3 jump starter shown for 12V vehicle use","eyebrow":"Choose by fit","heading":"Match the jump starter to the vehicle before purchase","body":"<p>Start with the 12V application and confirm the vehicle and engine requirements before use. That check matters more than a generic compatibility promise.</p>","variant_match":""}},
+        "kit":{"type":"feature","settings":{"image_asset":"suntneew-a3-gallery-07.jpg","image_alt":"A3 jump starter package contents including case and clamps","eyebrow":"What arrives","heading":"A carry case, cable and clamps stay together","body":"<p>The A3 pack includes the unit, smart clamp, USB-C cable, EVA case, manual and color box, shown here so the included items are easy to see.</p>","variant_match":""}},
+        "profile":{"type":"feature","settings":{"image_asset":"suntneew-a3-roadtrip-v1.png","image_alt":"A3 jump starter and carry case packed in a vehicle for a road trip","image_fit":"cover","eyebrow":"One A3 configuration","heading":"A road-ready carry kit for the CY-A3-GY","body":"<p>This product page is built around the CY-A3-GY: 16,000mAh, a protective case, smart clamp and USB-C cable kept together for travel.</p>","variant_match":""}}
       },
-      "block_order": [
-        "safety",
-        "power"
-      ],
-      "settings": {
-        "anchor_id": "features",
-        "eyebrow": "A3 performance",
-        "heading": "Faster device power with a stronger emergency core",
-        "lede": "<p>A3 is one confirmed 16,000mAh configuration—there is no unsupported color or capacity selector on this page.</p>"
-      }
+      "block_order":["peak","safety","pd","display","light","vehicle","kit","profile"],
+      "settings":{"anchor_id":"features","eyebrow":"A3 performance","heading":"Faster device power with a stronger emergency core","lede":"<p>A3 is offered in one 16,000mAh configuration, with the product, kit and technical details all kept on one page.</p>"}
     },
     "details": {
-      "type": "suntneew-pdp-details",
+      "type":"suntneew-pdp-details",
       "blocks": {
-        "capacity": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated capacity",
-            "value": "16,000mAh",
-            "variant_match": ""
-          }
-        },
-        "energy": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated energy",
-            "value": "59.2Wh",
-            "variant_match": ""
-          }
-        },
-        "start": {
-          "type": "spec",
-          "settings": {
-            "label": "Starting current",
-            "value": "800A",
-            "variant_match": ""
-          }
-        },
-        "peak": {
-          "type": "spec",
-          "settings": {
-            "label": "Peak current",
-            "value": "2500A",
-            "variant_match": ""
-          }
-        },
-        "input": {
-          "type": "spec",
-          "settings": {
-            "label": "USB-C input",
-            "value": "PD 60W: 5V/9V/12V/15V/20V, up to 3A",
-            "variant_match": ""
-          }
-        },
-        "output": {
-          "type": "spec",
-          "settings": {
-            "label": "Outputs",
-            "value": "USB-C PD60W; USB-A PD18W; USB-A 5V/2.4A",
-            "variant_match": ""
-          }
-        },
-        "temperature": {
-          "type": "spec",
-          "settings": {
-            "label": "Discharge temperature",
-            "value": "−20°C to 60°C",
-            "variant_match": ""
-          }
-        },
-        "weight": {
-          "type": "spec",
-          "settings": {
-            "label": "Shipping weight",
-            "value": "1.3kg",
-            "variant_match": ""
-          }
-        },
-        "box1": {
-          "type": "included",
-          "settings": {
-            "item": "A3 main unit ×1",
-            "variant_match": ""
-          }
-        },
-        "box2": {
-          "type": "included",
-          "settings": {
-            "item": "Smart clamp ×1",
-            "variant_match": ""
-          }
-        },
-        "box3": {
-          "type": "included",
-          "settings": {
-            "item": "USB-C cable ×1",
-            "variant_match": ""
-          }
-        },
-        "box4": {
-          "type": "included",
-          "settings": {
-            "item": "EVA case ×1",
-            "variant_match": ""
-          }
-        },
-        "box5": {
-          "type": "included",
-          "settings": {
-            "item": "Manual ×1",
-            "variant_match": ""
-          }
-        },
-        "box6": {
-          "type": "included",
-          "settings": {
-            "item": "Color box ×1",
-            "variant_match": ""
-          }
-        },
-        "manual": {
-          "type": "download",
-          "settings": {
-            "label": "A3 product pack (PDF)",
-            "link": "https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A3_English_Product_Pack.pdf?v=1786349789",
-            "variant_match": ""
-          }
-        }
+        "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"16,000mAh","group":"primary","variant_match":""}},
+        "energy":{"type":"spec","settings":{"label":"Rated energy","value":"59.2Wh","group":"primary","variant_match":""}},
+        "start":{"type":"spec","settings":{"label":"Starting current","value":"800A","group":"primary","variant_match":""}},
+        "peak":{"type":"spec","settings":{"label":"Peak current","value":"2500A","group":"primary","variant_match":""}},
+        "input":{"type":"spec","settings":{"label":"USB-C input","value":"PD 60W: 5V/9V/12V/15V/20V, up to 3A","group":"system","variant_match":""}},
+        "output":{"type":"spec","settings":{"label":"Outputs","value":"USB-C PD60W; USB-A PD18W; USB-A 5V/2.4A","group":"system","variant_match":""}},
+        "temperature":{"type":"spec","settings":{"label":"Discharge temperature","value":"−20°C to 60°C","group":"installation","variant_match":""}},
+        "weight":{"type":"spec","settings":{"label":"Shipping weight","value":"1.3kg","group":"installation","variant_match":""}},
+        "box1":{"type":"included","settings":{"item":"A3 main unit ×1","variant_match":""}},
+        "box2":{"type":"included","settings":{"item":"Smart clamp ×1","variant_match":""}},
+        "box3":{"type":"included","settings":{"item":"USB-C cable ×1","variant_match":""}},
+        "box4":{"type":"included","settings":{"item":"EVA case ×1","variant_match":""}},
+        "box5":{"type":"included","settings":{"item":"Manual ×1","variant_match":""}},
+        "box6":{"type":"included","settings":{"item":"Color box ×1","variant_match":""}},
+        "manual":{"type":"download","settings":{"label":"A3 product pack (PDF)","link":"https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A3_English_Product_Pack.pdf?v=1786349789","variant_match":""}}
       },
-      "block_order": [
-        "capacity",
-        "energy",
-        "start",
-        "peak",
-        "input",
-        "output",
-        "temperature",
-        "weight",
-        "box1",
-        "box2",
-        "box3",
-        "box4",
-        "box5",
-        "box6",
-        "manual"
-      ],
-      "settings": {
-        "anchor_id": "specifications",
-        "eyebrow": "Verified product data",
-        "heading": "A3 technical specifications",
-        "lede": "<p>Open a category only when you need the detail. A3 currently has one source-backed 16,000mAh variant.</p>",
-        "included_heading": "In the box",
-        "download_heading": "Manuals & downloads"
-      }
+      "block_order":["capacity","energy","start","peak","input","output","temperature","weight","box1","box2","box3","box4","box5","box6","manual"],
+      "settings":{"anchor_id":"specifications","eyebrow":"Product details","heading":"A3 technical specifications","lede":"<p>Open a category only when you need the detail. A3 is offered here in one 16,000mAh configuration.</p>","primary_group_heading":"Starting performance","system_group_heading":"Fast charging & outputs","installation_group_heading":"Physical & operating limits","included_heading":"In the box","download_heading":"Manuals & downloads"}
     },
     "faq": {
-      "type": "suntneew-pdp-faq",
+      "type":"suntneew-pdp-faq",
       "blocks": {
-        "q1": {
-          "type": "question",
-          "settings": {
-            "question": "How many A3 variants are confirmed?",
-            "answer": "<p>One: 16,000mAh in the documented gun-gray / black-silver appearance, SKU CY-A3-GY.</p>"
-          }
-        },
-        "q2": {
-          "type": "question",
-          "settings": {
-            "question": "What does PD60W mean here?",
-            "answer": "<p>The source documents USB-C Power Delivery input and output at up to 60W, covering 5V, 9V, 12V, 15V and 20V profiles up to 3A.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "What is included?",
-            "answer": "<p>The documented pack contains the unit, smart clamp, USB-C cable, EVA case, manual and color box.</p>"
-          }
-        },
-        "q4": {
-          "type": "question",
-          "settings": {
-            "question": "Can I use A3 on any vehicle?",
-            "answer": "<p>No single jump starter is suitable for every vehicle or battery condition. Confirm voltage and engine requirements, then follow both manuals before use.</p>"
-          }
-        }
+        "q1":{"type":"question","settings":{"question":"How many A3 variants are confirmed?","answer":"<p>One: 16,000mAh in the documented gun-gray / black-silver appearance, SKU CY-A3-GY.</p>"}},
+        "q2":{"type":"question","settings":{"question":"What does PD60W mean here?","answer":"<p>The USB-C port supports Power Delivery input and output up to 60W, with 5V, 9V, 12V, 15V and 20V profiles up to 3A.</p>"}},
+        "q3":{"type":"question","settings":{"question":"What is included?","answer":"<p>The documented pack contains the unit, smart clamp, USB-C cable, EVA case, manual and color box.</p>"}},
+        "q4":{"type":"question","settings":{"question":"Can I use A3 on any vehicle?","answer":"<p>No single jump starter is suitable for every vehicle or battery condition. Confirm voltage and engine requirements, then follow both manuals before use.</p>"}}
       },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4"
-      ],
-      "settings": {
-        "anchor_id": "faq",
-        "eyebrow": "A3 support",
-        "heading": "Frequently asked questions"
-      }
+      "block_order":["q1","q2","q3","q4"],
+      "settings":{"anchor_id":"faq","eyebrow":"A3 support","heading":"Frequently asked questions"}
     },
-    "related-products": {
-      "type": "related-products",
-      "settings": {}
-    }
+    "related-products":{"type":"related-products","settings":{}}
   },
-  "order": [
-    "main",
-    "proof",
-    "anchor_nav",
-    "features",
-    "details",
-    "faq",
-    "related-products"
-  ]
+  "order":["main","proof","anchor_nav","features","details","faq","related-products"]
 }

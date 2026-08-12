@@ -1,442 +1,92 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type":"main-product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h1"
-          }
-        },
-        "sku": {
-          "type": "sku",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "separator": {
-          "type": "separator",
-          "settings": {}
-        },
-        "intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p>51.2V, 200Ah low-voltage LFP home battery with 10.24kWh rated capacity. Compatibility and freight are confirmed before order.</p>"
-          }
-        },
-        "quote": {
-          "type": "button",
-          "settings": {
-            "link": "shopify://pages/request-for-quote",
-            "text": "Request a system quote",
-            "size": "xl",
-            "style": "fill",
-            "stretch": true
-          }
-        }
+        "vendor":{"type":"vendor","settings":{}},
+        "title":{"type":"title","settings":{"heading_tag":"h1"}},
+        "sku":{"type":"sku","settings":{}},
+        "price":{"type":"price","settings":{"show_taxes_notice":false}},
+        "separator":{"type":"separator","settings":{}},
+        "intro":{"type":"text","settings":{"text":"<p>51.2V, 200Ah low-voltage LFP home battery with 10.24kWh rated capacity. Build a system quote around the inverter, installation space and delivery plan.</p>"}},
+        "quote":{"type":"button","settings":{"link":"shopify://pages/request-for-quote","text":"Request a system quote","size":"xl","style":"fill","stretch":true}}
       },
-      "block_order": [
-        "vendor",
-        "title",
-        "sku",
-        "price",
-        "separator",
-        "intro",
-        "quote"
-      ],
-      "settings": {
-        "show_fixed_add_to_cart": false,
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots"
-      }
+      "block_order":["vendor","title","sku","price","separator","intro","quote"],
+      "settings":{"show_fixed_add_to_cart":false,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
-      "type": "suntneew-pdp-proof",
+      "type":"suntneew-pdp-proof",
       "blocks": {
-        "energy": {
-          "type": "metric",
-          "settings": {
-            "value": "10.24kWh",
-            "label": "Rated energy",
-            "variant_match": ""
-          }
-        },
-        "voltage": {
-          "type": "metric",
-          "settings": {
-            "value": "51.2V / 200Ah",
-            "label": "Low-voltage LFP system",
-            "variant_match": ""
-          }
-        },
-        "parallel": {
-          "type": "metric",
-          "settings": {
-            "value": "Up to 9 sets",
-            "label": "Source-listed maximum connection",
-            "variant_match": ""
-          }
-        },
-        "connect": {
-          "type": "metric",
-          "settings": {
-            "value": "CAN / RS485",
-            "label": "Wi‑Fi and Bluetooth listed",
-            "variant_match": ""
-          }
-        }
+        "energy":{"type":"metric","settings":{"value":"10.24kWh","label":"Rated energy","variant_match":""}},
+        "voltage":{"type":"metric","settings":{"value":"51.2V / 200Ah","label":"Low-voltage LFP system","variant_match":""}},
+        "parallel":{"type":"metric","settings":{"value":"Up to 9 sets","label":"Maximum connection","variant_match":""}},
+        "connect":{"type":"metric","settings":{"value":"CAN / RS485","label":"Wi‑Fi and Bluetooth listed","variant_match":""}}
       },
-      "block_order": [
-        "energy",
-        "voltage",
-        "parallel",
-        "connect"
-      ],
-      "settings": {
-        "accessibility_label": "WL10B highlights"
-      }
+      "block_order":["energy","voltage","parallel","connect"],
+      "settings":{"accessibility_label":"WL10B highlights"}
     },
     "anchor_nav": {
-      "type": "suntneew-pdp-anchor-nav",
+      "type":"suntneew-pdp-anchor-nav",
       "blocks": {
-        "features": {
-          "type": "link",
-          "settings": {
-            "label": "Features",
-            "target_id": "features"
-          }
-        },
-        "specs": {
-          "type": "link",
-          "settings": {
-            "label": "Specifications",
-            "target_id": "specifications"
-          }
-        },
-        "box": {
-          "type": "link",
-          "settings": {
-            "label": "Project Scope",
-            "target_id": "in-the-box"
-          }
-        },
-        "manuals": {
-          "type": "link",
-          "settings": {
-            "label": "Documents",
-            "target_id": "manuals"
-          }
-        },
-        "faq": {
-          "type": "link",
-          "settings": {
-            "label": "FAQ",
-            "target_id": "faq"
-          }
-        }
+        "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
+        "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
+        "box":{"type":"link","settings":{"label":"Project Scope","target_id":"in-the-box"}},
+        "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
+        "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
-      "block_order": [
-        "features",
-        "specs",
-        "box",
-        "manuals",
-        "faq"
-      ],
-      "settings": {}
+      "block_order":["features","specs","box","manuals","faq"],
+      "settings":{}
     },
     "features": {
-      "type": "suntneew-pdp-story",
+      "type":"suntneew-pdp-story",
       "blocks": {
-        "product": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "energy-star-wl10b-main-v1.jpg",
-            "image_alt": "Authorized Energy Star WL10B 10.24kWh home battery",
-            "eyebrow": "Higher-capacity low voltage",
-            "heading": "10.24kWh in one 51.2V enclosure",
-            "body": "<p>WL10B doubles the rated capacity of WL5A to 200Ah while retaining an LCD touch screen and source-listed CAN, RS485, Wi‑Fi and Bluetooth communication.</p>",
-            "variant_match": ""
-          }
-        },
-        "specsheet": {
-          "type": "feature",
-          "settings": {
-            "eyebrow": "System fit",
-            "heading": "High current capability still needs a reviewed system design",
-            "body": "<p>The source sheet lists 200A maximum discharge and 220A peak discharge. Wiring, protection, inverter limits, freight and installation responsibility remain part of the project review.</p>",
-            "variant_match": ""
-          }
-        }
+        "installation":{"type":"feature","settings":{"image_asset":"energy-star-wl10b-install-v1.png","image_alt":"ENERGY STAR WL10B battery installed in a modern home energy room","image_fit":"cover","eyebrow":"More stored energy, shown at home","heading":"A larger low-voltage unit with a clear place in the system","body":"<p>WL10B brings 10.24kWh of low-voltage storage into a single unit. Use the product dimensions and electrical details below to plan the installation.</p>","variant_match":""}},
+        "product":{"type":"feature","settings":{"image_asset":"energy-star-wl10b-main-v1.jpg","image_alt":"ENERGY STAR WL10B 10.24kWh home battery","eyebrow":"Higher-capacity low voltage","heading":"10.24kWh in one 51.2V enclosure","body":"<p>WL10B doubles the rated capacity of WL5A to 200Ah while retaining an LCD touch screen plus CAN, RS485, Wi-Fi and Bluetooth communication.</p>","variant_match":""}},
+        "front":{"type":"feature","settings":{"image_asset":"energy-star-wl10b-gallery-01.jpg","image_alt":"ENERGY STAR WL10B home battery product view","eyebrow":"Product at a glance","heading":"A taller enclosure for the higher-capacity configuration","body":"<p>The product visual gives the system a physical scale. Use the dimensions, weight and electrical limits in the expandable fields when planning the final configuration.</p>","variant_match":""}},
+        "rear":{"type":"feature","settings":{"image_asset":"energy-star-wl10b-gallery-07.jpg","image_alt":"ENERGY STAR WL10B rear connection detail","eyebrow":"Connection detail","heading":"Review the system interfaces before installation","body":"<p>Use the connection hardware and enclosure detail to plan around inverter limits, protection devices, cable routing and installer requirements.</p>","variant_match":""}},
+        "specsheet":{"type":"feature","settings":{"eyebrow":"System fit","heading":"Plan high-current storage around the complete system","body":"<p>WL10B provides 200A maximum discharge and 220A peak discharge. A system quote aligns wiring, protection, inverter limits, freight and the installation plan.</p>","variant_match":""}}
       },
-      "block_order": [
-        "product",
-        "specsheet"
-      ],
-      "settings": {
-        "anchor_id": "features",
-        "eyebrow": "Home energy storage",
-        "heading": "More low-voltage storage without moving to a high-voltage stack",
-        "lede": "<p>ENERGY STAR low-voltage storage with 10.24kWh rated energy. Inverter protocols, site conditions and regional compliance are confirmed before sale.</p>"
-      }
+      "block_order":["installation","product","front","rear","specsheet"],
+      "settings":{"anchor_id":"features","eyebrow":"Home energy storage","heading":"More low-voltage storage without moving to a high-voltage stack","lede":"<p>ENERGY STAR low-voltage storage with 10.24kWh rated energy. Match the inverter protocol, site conditions and installation plan to the product.</p>"}
     },
     "details": {
-      "type": "suntneew-pdp-details",
+      "type":"suntneew-pdp-details",
       "blocks": {
-        "chem": {
-          "type": "spec",
-          "settings": {
-            "label": "Cell chemistry",
-            "value": "LFP",
-            "variant_match": ""
-          }
-        },
-        "voltage": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated voltage",
-            "value": "51.2V",
-            "variant_match": ""
-          }
-        },
-        "capacity": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated capacity",
-            "value": "200Ah / 10.24kWh",
-            "variant_match": ""
-          }
-        },
-        "connection": {
-          "type": "spec",
-          "settings": {
-            "label": "Max connection",
-            "value": "9 sets",
-            "variant_match": ""
-          }
-        },
-        "chargev": {
-          "type": "spec",
-          "settings": {
-            "label": "Max charging voltage",
-            "value": "57.6V",
-            "variant_match": ""
-          }
-        },
-        "overdischarge": {
-          "type": "spec",
-          "settings": {
-            "label": "Overdischarge voltage",
-            "value": "44.8V",
-            "variant_match": ""
-          }
-        },
-        "charge": {
-          "type": "spec",
-          "settings": {
-            "label": "Max / peak charging current",
-            "value": "150A / 190A",
-            "variant_match": ""
-          }
-        },
-        "discharge": {
-          "type": "spec",
-          "settings": {
-            "label": "Max / peak discharging current",
-            "value": "200A / 220A",
-            "variant_match": ""
-          }
-        },
-        "cycles": {
-          "type": "spec",
-          "settings": {
-            "label": "Source-listed cycle reference",
-            "value": "5,000 cycles",
-            "variant_match": ""
-          }
-        },
-        "weight": {
-          "type": "spec",
-          "settings": {
-            "label": "Weight",
-            "value": "88kg",
-            "variant_match": ""
-          }
-        },
-        "size": {
-          "type": "spec",
-          "settings": {
-            "label": "Dimensions (H×W×D)",
-            "value": "1165×525×170mm",
-            "variant_match": ""
-          }
-        },
-        "comm": {
-          "type": "spec",
-          "settings": {
-            "label": "Communication",
-            "value": "CAN / RS485 / Wi‑Fi / Bluetooth",
-            "variant_match": ""
-          }
-        },
-        "installation": {
-          "type": "spec",
-          "settings": {
-            "label": "Installation",
-            "value": "Wall mounting / floor standing",
-            "variant_match": ""
-          }
-        },
-        "ip": {
-          "type": "spec",
-          "settings": {
-            "label": "Source-listed enclosure rating",
-            "value": "IP54",
-            "variant_match": ""
-          }
-        },
-        "scope1": {
-          "type": "included",
-          "settings": {
-            "item": "WL10B battery configuration",
-            "variant_match": ""
-          }
-        },
-        "scope2": {
-          "type": "included",
-          "settings": {
-            "item": "Inverter and protocol compatibility review",
-            "variant_match": ""
-          }
-        },
-        "scope3": {
-          "type": "included",
-          "settings": {
-            "item": "Freight and unloading scope confirmed by postcode",
-            "variant_match": ""
-          }
-        },
-        "scope4": {
-          "type": "included",
-          "settings": {
-            "item": "Installer and regional electrical requirements confirmed",
-            "variant_match": ""
-          }
-        },
-        "docs": {
-          "type": "download",
-          "settings": {
-            "label": "View ENERGY STAR source specification sheet",
-            "link": "",
-            "variant_match": ""
-          }
-        }
+        "chem":{"type":"spec","settings":{"label":"Cell chemistry","value":"LFP","group":"primary","variant_match":""}},
+        "voltage":{"type":"spec","settings":{"label":"Rated voltage","value":"51.2V","group":"primary","variant_match":""}},
+        "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"200Ah / 10.24kWh","group":"primary","variant_match":""}},
+        "connection":{"type":"spec","settings":{"label":"Max connection","value":"9 sets","group":"system","variant_match":""}},
+        "chargev":{"type":"spec","settings":{"label":"Max charging voltage","value":"57.6V","group":"primary","variant_match":""}},
+        "overdischarge":{"type":"spec","settings":{"label":"Overdischarge voltage","value":"44.8V","group":"primary","variant_match":""}},
+        "charge":{"type":"spec","settings":{"label":"Max / peak charging current","value":"150A / 190A","group":"primary","variant_match":""}},
+        "discharge":{"type":"spec","settings":{"label":"Max / peak discharging current","value":"200A / 220A","group":"primary","variant_match":""}},
+        "cycles":{"type":"spec","settings":{"label":"Cycle life","value":"5,000 cycles","group":"primary","variant_match":""}},
+        "weight":{"type":"spec","settings":{"label":"Weight","value":"88kg","group":"installation","variant_match":""}},
+        "size":{"type":"spec","settings":{"label":"Dimensions (H×W×D)","value":"1165×525×170mm","group":"installation","variant_match":""}},
+        "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485 / Wi‑Fi / Bluetooth","group":"system","variant_match":""}},
+        "installation":{"type":"spec","settings":{"label":"Installation","value":"Wall mounting / floor standing","group":"installation","variant_match":""}},
+        "ip":{"type":"spec","settings":{"label":"Enclosure rating","value":"IP54","group":"installation","variant_match":""}},
+        "scope1":{"type":"included","settings":{"item":"WL10B battery configuration","variant_match":""}},
+        "scope2":{"type":"included","settings":{"item":"Inverter and protocol compatibility review","variant_match":""}},
+        "scope3":{"type":"included","settings":{"item":"Freight and unloading scope confirmed by postcode","variant_match":""}},
+        "scope4":{"type":"included","settings":{"item":"Installer and regional electrical requirements confirmed","variant_match":""}},
+        "docs":{"type":"download","settings":{"label":"View ENERGY STAR specification sheet","link":"","asset_name":"energy-star-wl10b-spec-v1.jpg","variant_match":""}}
       },
-      "block_order": [
-        "chem",
-        "voltage",
-        "capacity",
-        "connection",
-        "chargev",
-        "overdischarge",
-        "charge",
-        "discharge",
-        "cycles",
-        "weight",
-        "size",
-        "comm",
-        "installation",
-        "ip",
-        "scope1",
-        "scope2",
-        "scope3",
-        "scope4",
-        "docs"
-      ],
-      "settings": {
-        "anchor_id": "specifications",
-        "eyebrow": "Configuration data",
-        "heading": "WL10B technical specifications",
-        "lede": "<p>The four decision-making numbers stay visible above. Open a category here only when you need installation-level detail.</p>",
-        "included_heading": "Quote & project scope",
-        "download_heading": "Documents"
-      }
+      "block_order":["chem","voltage","capacity","connection","chargev","overdischarge","charge","discharge","cycles","weight","size","comm","installation","ip","scope1","scope2","scope3","scope4","docs"],
+      "settings":{"anchor_id":"specifications","eyebrow":"Configuration data","heading":"WL10B technical specifications","lede":"<p>The four decision-making numbers stay visible above. Open a category only when you need deeper electrical or installation detail.</p>","primary_group_heading":"Capacity & electrical limits","system_group_heading":"Connectivity & expansion","installation_group_heading":"Installation & enclosure","included_eyebrow":"Plan your system","included_heading":"Quote & project scope","download_eyebrow":"ENERGY STAR documentation","download_heading":"Documents"}
     },
     "faq": {
-      "type": "suntneew-pdp-faq",
+      "type":"suntneew-pdp-faq",
       "blocks": {
-        "q1": {
-          "type": "question",
-          "settings": {
-            "question": "What is the practical difference between WL5A and WL10B?",
-            "answer": "<p>WL10B provides 10.24kWh at 200Ah versus WL5A’s 5.12kWh at 100Ah. It is larger and heavier, and the source lists higher charging and discharging current limits.</p>"
-          }
-        },
-        "q2": {
-          "type": "question",
-          "settings": {
-            "question": "Can I buy directly online?",
-            "answer": "<p>Not yet. Compatibility, freight, unloading and installation responsibility are confirmed before an order is accepted.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "Can multiple WL10B batteries be connected?",
-            "answer": "<p>The source sheet lists a maximum connection of nine sets. The actual design depends on inverter, busbar, cable, protection and installer requirements.</p>"
-          }
-        },
-        "q4": {
-          "type": "question",
-          "settings": {
-            "question": "Which certificates are listed?",
-            "answer": "<p>The source lists UN38.3, MSDS, IEC 62619 and CE-EMC. Request the exact model documents before relying on them for shipping or project approval.</p>"
-          }
-        }
+        "q1":{"type":"question","settings":{"question":"What is the practical difference between WL5A and WL10B?","answer":"<p>WL10B provides 10.24kWh at 200Ah versus WL5A’s 5.12kWh at 100Ah. It is larger and heavier, with higher charging and discharging current limits.</p>"}},
+        "q2":{"type":"question","settings":{"question":"How do I order a WL10B system?","answer":"<p>Start with a system quote. The inverter protocol, delivery address, unloading and installation plan are aligned before the order is finalized.</p>"}},
+        "q3":{"type":"question","settings":{"question":"Can multiple WL10B batteries be connected?","answer":"<p>WL10B supports up to nine connected sets. The final design depends on inverter, busbar, cable, protection and installer requirements.</p>"}},
+        "q4":{"type":"question","settings":{"question":"Which documents are available?","answer":"<p>Model documentation includes UN38.3, MSDS, IEC 62619 and CE-EMC references. Request documents for the exact selected model and destination when planning a project.</p>"}}
       },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4"
-      ],
-      "settings": {
-        "anchor_id": "faq",
-        "eyebrow": "WL10B planning",
-        "heading": "Frequently asked questions"
-      }
+      "block_order":["q1","q2","q3","q4"],
+      "settings":{"anchor_id":"faq","eyebrow":"WL10B planning","heading":"Frequently asked questions"}
     },
-    "related-products": {
-      "type": "related-products",
-      "settings": {}
-    }
+    "related-products":{"type":"related-products","settings":{}}
   },
-  "order": [
-    "main",
-    "proof",
-    "anchor_nav",
-    "features",
-    "details",
-    "faq",
-    "related-products"
-  ]
+  "order":["main","proof","anchor_nav","features","details","faq","related-products"]
 }
