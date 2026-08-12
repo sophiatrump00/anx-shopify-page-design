@@ -526,6 +526,8 @@
 .sn-confidence__index { margin: 0 0 22px !important; color: #f05d14 !important; font-size: 10px !important; font-weight: 850; letter-spacing: .15em; }
 .sn-confidence__card h3 { margin: 0 0 10px; color: #182231; font-size: clamp(23px, 2.1vw, 34px); line-height: 1; letter-spacing: -.035em; }
 .sn-confidence__card p:not(.sn-confidence__index) { margin: 0 0 20px; color: #667387; font-size: 13px; line-height: 1.55; }
+.sn-confidence__badges { display: flex; flex-wrap: wrap; gap: 7px; margin: 2px 0 22px; }
+.sn-confidence__badges span { padding: 6px 9px; border: 1px solid rgba(240,93,20,.28); border-radius: 999px; background: rgba(240,93,20,.06); color: #c94a0c; font-size: 9px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
 .sn-confidence__card--product img { position: absolute; right: -18%; bottom: -4%; width: 125%; height: auto; mix-blend-mode: multiply; }
 .sn-confidence__small-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
 .sn-confidence__card--small { min-height: 272px; padding: 24px; }

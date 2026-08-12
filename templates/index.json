@@ -232,25 +232,25 @@
     "confidence_grid": {
       "type": "suntneew-confidence-grid",
       "blocks": {
-        "fit": {"type":"item","settings":{"icon":"fit","title":"Fit first","text":"Match the battery case, terminal layout and system voltage."}},
-        "compare": {"type":"item","settings":{"icon":"compare","title":"Clear power comparisons","text":"Compare usable energy and continuous output separately."}},
-        "documents": {"type":"item","settings":{"icon":"document","title":"Model-specific documents","text":"Use the specifications and manuals for the exact model you are considering."}},
-        "support": {"type":"item","settings":{"icon":"support","title":"Selection support","text":"Get practical guidance for product selection and system setup."}}
+        "warranty": {"type":"item","settings":{"icon":"warranty","title":"5-Year Limited Warranty","text":"Long-term warranty protection backed by dedicated product support."}},
+        "delivery": {"type":"item","settings":{"icon":"delivery","title":"Fast U.S. Local Delivery","text":"Products stocked in U.S. warehouses ship domestically for faster delivery."}},
+        "shipping": {"type":"item","settings":{"icon":"shipping","title":"Free U.S. Shipping","text":"Free standard shipping on eligible orders within the contiguous United States."}},
+        "returns": {"type":"item","settings":{"icon":"returns","title":"30-Day Hassle-Free Returns","text":"Return eligible products within 30 days under our return policy."}}
       },
-      "block_order": ["fit", "compare", "documents", "support"],
+      "block_order": ["warranty", "delivery", "shipping", "returns"],
       "settings": {
-        "eyebrow": "CLEAR BEFORE YOU CHOOSE",
-        "heading": "Choose with confidence.",
-        "body": "Clear specifications, model-specific documents and practical selection guidance—without making promises that depend on an unconfirmed order.",
+        "eyebrow": "BUY WITH CONFIDENCE",
+        "heading": "Buy with confidence. Power with confidence.",
+        "body": "Certified products, five-year limited warranty coverage, fast U.S. delivery, free shipping, 30-day returns and technical support beyond the purchase.",
         "product_asset": "suntneew-product-g31.jpg",
         "product_alt": "SuntNeew Group 31 RV battery",
-        "product_title": "Find the right RV battery",
-        "product_text": "Compare case size, usable energy, continuous output and system voltage in one place.",
-        "product_link_label": "Compare RV batteries",
-        "product_link": "shopify://collections/rv-batteries",
-        "guidance_title": "Plan before you order",
-        "guidance_text": "Confirm the application, system compatibility and available delivery options before an order is placed.",
-        "guidance_link_label": "Request guidance",
+        "product_title": "All Products Certified",
+        "product_text": "Every SuntNeew product is supported by applicable safety, transport and compliance documentation.",
+        "product_link_label": "Explore our technology",
+        "product_link": "shopify://pages/technology",
+        "guidance_title": "Lifetime Technical Support",
+        "guidance_text": "Get product selection, setup guidance and troubleshooting support throughout product ownership.",
+        "guidance_link_label": "Get expert support",
         "guidance_link": "shopify://pages/request-for-quote"
       }
     },
