@@ -62,10 +62,16 @@
 
   document.addEventListener('variant:change', (event) => applyVariant(event.detail?.variant));
 
-  document.addEventListener('DOMContentLoaded', () => {
+  const initialize = () => {
     document.querySelectorAll('.sn-pdp-nav').forEach(setupTabs);
     const variantScript = document.querySelector('variant-picker script[data-variant]');
     if (!variantScript?.textContent) return;
     try { applyVariant(JSON.parse(variantScript.textContent)); } catch (_) {}
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
 })();
