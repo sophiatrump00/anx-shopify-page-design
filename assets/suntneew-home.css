@@ -3,11 +3,11 @@
   --sn-orange-dark: #d94b00;
   --sn-ink: #121416;
   --sn-graphite: #202428;
-  --sn-paper: #f5f3ee;
+  --sn-paper: #f6f8fa;
   --sn-muted: #686d72;
-  --sn-line: rgba(18, 20, 22, 0.12);
+  --sn-line: rgba(31, 47, 70, 0.14);
   --sn-radius: 18px;
-  --sn-shadow: 0 18px 54px rgba(18, 20, 22, 0.12);
+  --sn-shadow: 0 14px 40px rgba(31, 47, 70, 0.10);
 }
 
 .sn-section {
@@ -17,7 +17,7 @@
   overflow: clip;
 }
 
-.sn-section--white { background: #fff; }
+.sn-section--white { background: var(--sn-paper); }
 .sn-section--dark { background: var(--sn-ink); color: #fff; }
 
 .sn-shell {
@@ -25,6 +25,10 @@
   margin-inline: auto;
   padding-block: clamp(56px, 7vw, 112px);
 }
+
+/* Keep the two consecutive proof panels connected without flattening the page-wide rhythm. */
+#rv-power-fit .sn-shell { padding-block-end: clamp(32px, 3vw, 48px); }
+#roadside-readiness .sn-shell { padding-block-start: clamp(32px, 3vw, 48px); }
 
 .sn-heading {
   display: grid;
@@ -325,7 +329,7 @@
 
 /* Light product-line direction. Old dark component styles are retained for older theme versions. */
 .sn-light-lines,
-.sn-home-energy { background: #f5f7fa; color: #182231; }
+.sn-home-energy { background: #f6f8fa; color: #182231; }
 .sn-light-shell { width: min(1440px, calc(100% - 64px)); margin-inline: auto; padding-block: clamp(64px, 8vw, 124px); }
 .sn-light-heading { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(260px, .65fr); gap: clamp(30px, 7vw, 110px); align-items: end; margin-bottom: 34px; }
 .sn-light-eyebrow { margin: 0 0 13px; color: #506c9e; font-size: 11px; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
@@ -345,7 +349,7 @@
 .sn-light-link::after { content: '→'; color: #5a7bd8; font-size: 18px; transition: transform 180ms ease; }
 .sn-light-line-card:hover .sn-light-link::after { transform: translateX(4px); }
 
-.sn-home-energy { background: linear-gradient(180deg, #f5f7fa 0%, #edf0f4 100%); }
+.sn-home-energy { background: linear-gradient(180deg, #f6f8fa 0%, #eef2f7 100%); }
 .sn-home-energy__panel { position: relative; display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); min-height: 670px; overflow: hidden; border: 1px solid #d4dae4; border-radius: 30px; background: linear-gradient(135deg, #ffffff 0%, #f3f6fa 68%, #e7edf5 100%); box-shadow: 0 24px 72px rgba(31, 47, 70, .11); }
 .sn-home-energy__content { position: relative; z-index: 1; display: grid; align-content: center; padding: clamp(34px, 5.2vw, 78px); }
 .sn-home-energy__body { max-width: 610px; margin: 22px 0 30px; color: #4f5e73; font-size: 16px; line-height: 1.65; }
