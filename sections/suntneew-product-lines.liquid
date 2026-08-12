@@ -1,0 +1,57 @@
+<section class="sn-light-lines" id="choose-your-power" aria-labelledby="sn-light-lines-heading-{{ section.id }}">
+  <div class="sn-light-shell">
+    <header class="sn-light-heading">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}<p class="sn-light-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 id="sn-light-lines-heading-{{ section.id }}">{{ section.settings.heading }}</h2>
+      </div>
+      {%- if section.settings.body != blank -%}<p class="sn-light-heading__body">{{ section.settings.body }}</p>{%- endif -%}
+    </header>
+
+    <div class="sn-light-lines__grid">
+      {%- for block in section.blocks -%}
+        <article class="sn-light-line-card" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.link | default: '#' }}" class="sn-light-line-card__link">
+            <div class="sn-light-line-card__media">
+              <img src="{{ block.settings.image_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="1600" height="900" loading="lazy">
+            </div>
+            <div class="sn-light-line-card__content">
+              {%- if block.settings.eyebrow != blank -%}<p class="sn-light-eyebrow">{{ block.settings.eyebrow }}</p>{%- endif -%}
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.text }}</p>
+              <span class="sn-light-link">{{ block.settings.link_label }}</span>
+            </div>
+          </a>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SuntNeew product lines",
+  "max_blocks": 3,
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"SHOP BY POWER PATH"},
+    {"type":"text","id":"heading","label":"Heading","default":"Three ways to keep life moving."},
+    {"type":"textarea","id":"body","label":"Body","default":"Choose the product line first, then use the product page to match the model to your vehicle, trip or home."}
+  ],
+  "blocks": [
+    {
+      "type":"line",
+      "name":"Product line",
+      "settings":[
+        {"type":"text","id":"image_asset","label":"Theme image asset filename","default":"suntneew-hero-rv-desktop.jpg"},
+        {"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew power product in use"},
+        {"type":"text","id":"eyebrow","label":"Eyebrow","default":"RV BATTERIES"},
+        {"type":"text","id":"title","label":"Title","default":"Stay out longer."},
+        {"type":"textarea","id":"text","label":"Text","default":"Power for longer off-grid stays and the RV systems behind them."},
+        {"type":"text","id":"link_label","label":"Link label","default":"Explore RV batteries"},
+        {"type":"url","id":"link","label":"Link"}
+      ]
+    }
+  ],
+  "presets":[{"name":"SuntNeew product lines","blocks":[{"type":"line"},{"type":"line"},{"type":"line"}]}]
+}
+{% endschema %}

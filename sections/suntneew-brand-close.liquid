@@ -1,0 +1,13 @@
+<section class="sn-brand" id="{{ section.settings.anchor_id | escape }}">
+  <picture><source media="(max-width: 699px)" srcset="{{ 'suntneew-brand-mobile.jpg' | asset_url }}"><img src="{{ 'suntneew-brand-desktop.jpg' | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="3200" height="1600" loading="lazy"></picture>
+  <span class="sn-brand__shade"></span>
+  <div class="sn-brand__content"><p class="sn-brand__impact">{{ section.settings.impact_text }}</p><h2>{{ section.settings.heading }}</h2><p>{{ section.settings.body }}</p><div class="sn-button-row" style="justify-content:center"><a class="sn-button" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label }}</a></div></div>
+</section>
+
+{% schema %}
+{
+  "name":"SuntNeew brand close",
+  "settings":[{"type":"text","id":"anchor_id","label":"Anchor ID","default":"power-on"},{"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew power for RV travel and the road ahead"},{"type":"text","id":"impact_text","label":"Impact text","default":"POWER ON"},{"type":"text","id":"heading","label":"Heading","default":"Power for Wherever Life Takes You"},{"type":"textarea","id":"body","label":"Body","default":"From RV travel and outdoor adventures to roadside emergencies, explore practical power built to keep essentials running wherever you go."},{"type":"text","id":"button_label","label":"Button label","default":"Explore all products"},{"type":"url","id":"button_link","label":"Button link"}],
+  "presets":[{"name":"SuntNeew brand close"}]
+}
+{% endschema %}

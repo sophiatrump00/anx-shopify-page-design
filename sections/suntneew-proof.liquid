@@ -1,0 +1,31 @@
+<section class="sn-section {% if section.settings.white_background %}sn-section--white{% endif %}" id="{{ section.settings.anchor_id | escape }}">
+  <div class="sn-shell">
+    <div class="sn-proof {% if section.settings.white_background %}sn-proof--light{% endif %} {% if section.settings.reverse_layout %}sn-proof--reverse{% endif %}">
+      <div class="sn-proof__visual" data-sn-proof>
+        <picture>
+          <source media="(max-width: 699px)" srcset="{{ section.settings.before_mobile_asset | asset_url }}">
+          <img src="{{ section.settings.before_desktop_asset | asset_url }}" alt="{{ section.settings.before_alt | escape }}" width="2000" height="1200" loading="lazy">
+        </picture>
+        <picture class="sn-proof__after">
+          <source media="(max-width: 699px)" srcset="{{ section.settings.after_mobile_asset | asset_url }}">
+          <img src="{{ section.settings.after_desktop_asset | asset_url }}" alt="{{ section.settings.after_alt | escape }}" width="2000" height="1200" loading="lazy">
+        </picture>
+        <span class="sn-proof__line"></span><span class="sn-proof__handle" aria-hidden="true">↔</span>
+        <input class="sn-proof__range" type="range" min="8" max="92" value="50" aria-label="Compare two product visuals">
+      </div>
+      <div class="sn-proof__content"><p class="sn-kicker">{{ section.settings.eyebrow }}</p><h2>{{ section.settings.heading }}</h2><p class="sn-copy">{{ section.settings.body }}</p><div class="sn-proof__points">{% if section.settings.point_1 != blank %}<span class="sn-proof__point">{{ section.settings.point_1 }}</span>{% endif %}{% if section.settings.point_2 != blank %}<span class="sn-proof__point">{{ section.settings.point_2 }}</span>{% endif %}{% if section.settings.point_3 != blank %}<span class="sn-proof__point">{{ section.settings.point_3 }}</span>{% endif %}</div><div class="sn-button-row"><a class="sn-button" href="{{ section.settings.primary_link | default: '#' }}">{{ section.settings.primary_label }}</a>{% if section.settings.secondary_label != blank %}<a class="sn-button sn-button--ghost" href="{{ section.settings.secondary_link | default: '#' }}">{{ section.settings.secondary_label }}</a>{% endif %}</div></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name":"SuntNeew proof slider",
+  "settings":[
+    {"type":"text","id":"anchor_id","label":"Anchor ID","default":"engineered-proof"},{"type":"checkbox","id":"white_background","label":"White outer background","default":false},{"type":"checkbox","id":"reverse_layout","label":"Reverse layout","default":false},
+    {"type":"select","id":"before_desktop_asset","label":"Before desktop asset","default":"suntneew-proof-battery-before-desktop.jpg","options":[{"value":"suntneew-proof-battery-before-desktop.jpg","label":"Battery before"},{"value":"suntneew-proof-jump-before-desktop.jpg","label":"Jump starter before"}]},{"type":"select","id":"after_desktop_asset","label":"After desktop asset","default":"suntneew-proof-battery-after-desktop.jpg","options":[{"value":"suntneew-proof-battery-after-desktop.jpg","label":"Battery after"},{"value":"suntneew-proof-jump-after-desktop.jpg","label":"Jump starter after"}]},{"type":"select","id":"before_mobile_asset","label":"Before mobile asset","default":"suntneew-proof-battery-before-mobile.jpg","options":[{"value":"suntneew-proof-battery-before-mobile.jpg","label":"Battery before"},{"value":"suntneew-proof-jump-before-mobile.jpg","label":"Jump starter before"}]},{"type":"select","id":"after_mobile_asset","label":"After mobile asset","default":"suntneew-proof-battery-after-mobile.jpg","options":[{"value":"suntneew-proof-battery-after-mobile.jpg","label":"Battery after"},{"value":"suntneew-proof-jump-after-mobile.jpg","label":"Jump starter after"}]},
+    {"type":"text","id":"before_alt","label":"Before image alt","default":"SuntNeew product capability visual"},{"type":"text","id":"after_alt","label":"After image alt","default":"SuntNeew product capability visual"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Built for changing conditions"},{"type":"text","id":"heading","label":"Heading","default":"Confidence beyond the campsite."},{"type":"textarea","id":"body","label":"Body","default":"Translate tested specifications into clear, useful product benefits without turning the homepage into a certificate archive."},{"type":"text","id":"point_1","label":"Point 1","default":"Documented operating and storage conditions"},{"type":"text","id":"point_2","label":"Point 2","default":"Battery management and electrical protection"},{"type":"text","id":"point_3","label":"Application guidance before installation"},{"type":"text","id":"primary_label","label":"Primary button label","default":"Explore the technology"},{"type":"url","id":"primary_link","label":"Primary button link"},{"type":"text","id":"secondary_label","label":"Secondary button label"},{"type":"url","id":"secondary_link","label":"Secondary button link"}
+  ],
+  "presets":[{"name":"SuntNeew proof slider"}]
+}
+{% endschema %}

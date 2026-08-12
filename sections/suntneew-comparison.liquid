@@ -1,0 +1,25 @@
+<section class="sn-section sn-section--white" id="{{ section.settings.anchor_id | escape }}">
+  <div class="sn-shell">
+    <header class="sn-heading"><div><p class="sn-heading__eyebrow">{{ section.settings.eyebrow }}</p><h2>{{ section.settings.heading }}</h2></div><p class="sn-heading__text">{{ section.settings.body }}</p></header>
+    <div class="sn-compare-wrap">
+      <div class="sn-compare" style="--sn-columns: {{ section.blocks.size }}">
+        <div class="sn-compare__cell sn-compare__label">Model</div>
+        {%- for block in section.blocks -%}<div class="sn-compare__cell sn-compare__head">{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 360 | image_tag: loading: 'lazy', alt: block.settings.title }}{% else %}<img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.title | escape }}" width="2048" height="2048" loading="lazy">{% endif %}<strong>{{ block.settings.title }}</strong><a class="sn-link" href="{{ block.settings.link | default: '#' }}">View</a></div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">Best for</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.best_for }}</div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">Energy</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.energy }}</div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">Continuous output</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.output }}</div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">Dimensions</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.dimensions }}</div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">Weight</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.weight }}</div>{%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name":"SuntNeew RV comparison","max_blocks":4,
+  "settings":[{"type":"text","id":"anchor_id","label":"Anchor ID","default":"compare-rv-batteries"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Compare RV batteries"},{"type":"text","id":"heading","label":"Heading","default":"The right battery starts with the right constraint."},{"type":"textarea","id":"body","label":"Body","default":"Use fit, usable energy and continuous output together. More capacity does not automatically mean more power."}],
+  "blocks":[{"type":"model","name":"Battery model","settings":[{"type":"image_picker","id":"image","label":"Image override"},{"type":"select","id":"fallback_asset","label":"Bundled fallback","default":"suntneew-product-g31.jpg","options":[{"value":"suntneew-product-g24.jpg","label":"G24"},{"value":"suntneew-product-g31.jpg","label":"G31"},{"value":"suntneew-product-230ah.jpg","label":"230Ah"},{"value":"suntneew-product-314ah.jpg","label":"314Ah"}]},{"type":"text","id":"title","label":"Title","default":"G31 100Ah"},{"type":"text","id":"best_for","label":"Best for","default":"Standard RV battery compartments"},{"type":"text","id":"energy","label":"Energy","default":"1280Wh"},{"type":"text","id":"output","label":"Continuous output","default":"1280W / 100A"},{"type":"text","id":"dimensions","label":"Dimensions","default":"339 × 185 × 218mm"},{"type":"text","id":"weight","label":"Weight","default":"9.6kg"},{"type":"url","id":"link","label":"Product link"}]}],
+  "presets":[{"name":"SuntNeew RV comparison","blocks":[{"type":"model"},{"type":"model"},{"type":"model"},{"type":"model"}]}]
+}
+{% endschema %}

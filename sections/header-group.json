@@ -1,0 +1,59 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "message": {
+          "type": "message",
+          "settings": {
+            "text": "Power for the road, the journey and home.",
+            "url": ""
+          }
+        }
+      },
+      "block_order": ["message"],
+      "settings": {
+        "enable_sticky": false,
+        "show_on_homepage_only": false,
+        "navigation_mode": "scrolling",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "scrolling_speed": 10,
+        "text_size": "text-xs",
+        "background": "#F7F8FA",
+        "background_gradient": "",
+        "text_color": "#1B2433"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "enable_sticky": true,
+        "hide_on_scroll": false,
+        "logo": "{{shop.brand.logo}}",
+        "logo_asset": "suntneew-logo-light-cropped.png",
+        "logo_max_width": 180,
+        "logo_mobile_max_width": 130,
+        "menu": "suntneew-main-menu-0811",
+        "sidebar_menu": "",
+        "secondary_menu": "",
+        "customer_account_menu": "customer-account-main-menu",
+        "menu_open_trigger": "click",
+        "opening_from": "bottom",
+        "layout": "logo_left_navigation_center",
+        "show_social_media": false,
+        "show_locale_selector": false,
+        "show_country_selector": false,
+        "show_country_flag": true,
+        "show_country_name": false,
+        "transparent_header_text_color": "#1B2433",
+        "reduce_padding": false,
+        "background_opacity": 100,
+        "background_blur_radius": 8
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

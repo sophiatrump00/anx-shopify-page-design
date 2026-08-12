@@ -1,0 +1,9 @@
+# Local and platform metadata
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.log
+
+# Theme local development output
+.theme-check.yml.cache

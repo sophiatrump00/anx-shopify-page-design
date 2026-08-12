@@ -1,0 +1,49 @@
+<section class="sn-clearance" id="{{ section.settings.anchor_id | escape }}" aria-labelledby="sn-clearance-heading-{{ section.id }}">
+  <div class="sn-shell">
+    <div class="sn-clearance__panel">
+      <div class="sn-clearance__visual">
+        {%- if section.settings.image_url != blank -%}
+          <img src="{{ section.settings.image_url }}" alt="{{ section.settings.image_alt | escape }}" width="1600" height="1000" loading="lazy">
+        {%- else -%}
+          <img src="{{ section.settings.image_asset | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="1600" height="1000" loading="lazy">
+        {%- endif -%}
+      </div>
+      <div class="sn-clearance__content">
+        <p class="sn-kicker">{{ section.settings.kicker }}</p>
+        <h2 id="sn-clearance-heading-{{ section.id }}">{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.body }}</p>
+        <div class="sn-clearance__facts" aria-label="Home energy storage clearance details">
+          {%- if section.settings.fact_1 != blank -%}<span>{{ section.settings.fact_1 }}</span>{%- endif -%}
+          {%- if section.settings.fact_2 != blank -%}<span>{{ section.settings.fact_2 }}</span>{%- endif -%}
+          {%- if section.settings.fact_3 != blank -%}<span>{{ section.settings.fact_3 }}</span>{%- endif -%}
+        </div>
+        <div class="sn-button-row">
+          <a class="sn-button sn-button--ink" href="{{ section.settings.primary_link | default: '/pages/contact' }}">{{ section.settings.primary_label }}</a>
+        </div>
+        <p class="sn-clearance__note">{{ section.settings.note }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name":"Germany B2B clearance",
+  "settings":[
+    {"type":"text","id":"anchor_id","label":"Anchor ID","default":"germany-home-storage"},
+    {"type":"text","id":"image_asset","label":"Image asset filename","default":"suntneew-home-storage-clearance-v1.png"},
+    {"type":"text","id":"image_url","label":"Hosted image URL"},
+    {"type":"text","id":"image_alt","label":"Image alt text","default":"Illustrative SuntNeew high-voltage battery system beside a home"},
+    {"type":"text","id":"kicker","label":"Kicker","default":"GERMANY WAREHOUSE CLEARANCE · B2B ONLY"},
+    {"type":"text","id":"heading","label":"Heading","default":"Home energy storage for installers and project buyers."},
+    {"type":"textarea","id":"body","label":"Body","default":"Limited German warehouse stock across high-voltage stack systems and 51.2V low-voltage systems. Share the inverter model, target capacity and postcode; we will confirm a compatible configuration and freight quote."},
+    {"type":"text","id":"fact_1","label":"Fact 1","default":"5.12–15.36 kWh configurations"},
+    {"type":"text","id":"fact_2","label":"Fact 2","default":"German warehouse stock"},
+    {"type":"text","id":"fact_3","label":"Fact 3","default":"Compatibility checked before quote"},
+    {"type":"text","id":"primary_label","label":"Primary label","default":"Request stock & freight quote"},
+    {"type":"url","id":"primary_link","label":"Primary link"},
+    {"type":"textarea","id":"note","label":"Note","default":"B2B pricing is quoted ex VAT after compatibility, delivery postcode and unloading requirements are confirmed."}
+  ],
+  "presets":[{"name":"SuntNeew Germany clearance"}]
+}
+{% endschema %}

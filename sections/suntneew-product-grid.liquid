@@ -1,0 +1,55 @@
+<section class="sn-section {% if section.settings.white_background %}sn-section--white{% endif %}" id="{{ section.settings.anchor_id | escape }}">
+  <div class="sn-shell">
+    <header class="sn-heading">
+      <div><p class="sn-heading__eyebrow">{{ section.settings.eyebrow }}</p><h2>{{ section.settings.heading }}</h2></div>
+      <div><p class="sn-heading__text">{{ section.settings.body }}</p>{% if section.settings.view_all_label != blank %}<p><a class="sn-link" href="{{ section.settings.view_all_link | default: '#' }}">{{ section.settings.view_all_label }}</a></p>{% endif %}</div>
+    </header>
+    <div class="sn-products" style="--sn-columns: {{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign chosen_product = block.settings.product
+          assign card_link = block.settings.link
+          assign card_title = block.settings.title
+          assign card_price = block.settings.price_text
+          if chosen_product != blank
+            assign card_link = chosen_product.url
+            assign card_title = chosen_product.title
+            assign card_price = chosen_product.price | money
+          endif
+        -%}
+        <article class="sn-product" {{ block.shopify_attributes }}>
+          <a class="sn-product__media" href="{{ card_link | default: '#' }}" aria-label="{{ card_title | escape }}">
+            {%- if chosen_product != blank and chosen_product.featured_image != blank -%}
+              {{- chosen_product.featured_image | image_url: width: 1200 | image_tag: widths: '400,700,900,1200', sizes: '(max-width: 699px) 82vw, 25vw', loading: 'lazy', alt: chosen_product.title -}}
+            {%- elsif block.settings.image != blank -%}
+              {{- block.settings.image | image_url: width: 1200 | image_tag: widths: '400,700,900,1200', sizes: '(max-width: 699px) 82vw, 25vw', loading: 'lazy', alt: block.settings.image_alt -}}
+            {%- else -%}
+              <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="2048" height="2048" loading="lazy">
+            {%- endif -%}
+            {%- if block.settings.badge != blank -%}<span class="sn-product__badge">{{ block.settings.badge }}</span>{%- endif -%}
+          </a>
+          <div class="sn-product__body">
+            <h3><a href="{{ card_link | default: '#' }}">{{ card_title }}</a></h3>
+            <p class="sn-product__best">{{ block.settings.best_for }}</p>
+            <div class="sn-product__specs">{% if block.settings.spec_1 != blank %}<span>{{ block.settings.spec_1 }}</span>{% endif %}{% if block.settings.spec_2 != blank %}<span>{{ block.settings.spec_2 }}</span>{% endif %}{% if block.settings.spec_3 != blank %}<span>{{ block.settings.spec_3 }}</span>{% endif %}</div>
+            <div class="sn-product__footer"><span class="sn-product__price">{{ card_price }}</span><a class="sn-link" href="{{ card_link | default: '#' }}">{{ block.settings.link_label }}</a></div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name":"SuntNeew product grid",
+  "max_blocks":6,
+  "settings":[
+    {"type":"text","id":"anchor_id","label":"Anchor ID","default":"featured-products"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Hot picks"},{"type":"text","id":"heading","label":"Heading","default":"Built around the job."},{"type":"textarea","id":"body","label":"Body","default":"Compare the products that matter without turning the homepage into a catalogue."},{"type":"range","id":"columns","label":"Desktop columns","min":2,"max":4,"step":1,"default":4},{"type":"checkbox","id":"white_background","label":"White background","default":false},{"type":"text","id":"view_all_label","label":"View all label","default":"View all products"},{"type":"url","id":"view_all_link","label":"View all link"}
+  ],
+  "blocks":[{"type":"product_card","name":"Product card","settings":[
+    {"type":"product","id":"product","label":"Shopify product (optional)"},{"type":"image_picker","id":"image","label":"Image override"},{"type":"select","id":"fallback_asset","label":"Bundled fallback","default":"suntneew-product-g31.jpg","options":[{"value":"suntneew-product-g24.jpg","label":"G24"},{"value":"suntneew-product-g31.jpg","label":"G31"},{"value":"suntneew-product-230ah.jpg","label":"230Ah"},{"value":"suntneew-product-314ah.jpg","label":"314Ah"},{"value":"suntneew-product-a20.jpg","label":"A20"},{"value":"suntneew-product-a3.jpg","label":"A3"}]},{"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew product"},{"type":"text","id":"badge","label":"Badge"},{"type":"text","id":"title","label":"Fallback title","default":"G31 100Ah LiFePO4 Battery"},{"type":"text","id":"best_for","label":"Best for","default":"A full-size 100Ah starting point for RV house power."},{"type":"text","id":"spec_1","label":"Spec 1","default":"12.8V 100Ah"},{"type":"text","id":"spec_2","label":"Spec 2","default":"1280Wh"},{"type":"text","id":"spec_3","label":"Spec 3","default":"IP65"},{"type":"text","id":"price_text","label":"Fallback price text","default":"View price"},{"type":"text","id":"link_label","label":"Link label","default":"Shop now"},{"type":"url","id":"link","label":"Fallback link"}
+  ]}],
+  "presets":[{"name":"SuntNeew product grid","blocks":[{"type":"product_card"},{"type":"product_card"},{"type":"product_card"},{"type":"product_card"}]}]
+}
+{% endschema %}

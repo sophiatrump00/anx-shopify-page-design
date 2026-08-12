@@ -1,0 +1,33 @@
+<section class="sn-section sn-section--dark" id="{{ section.settings.anchor_id | escape }}">
+  <div class="sn-shell">
+    <header class="sn-heading">
+      <div><p class="sn-heading__eyebrow">{{ section.settings.eyebrow }}</p><h2>{{ section.settings.heading }}</h2></div>
+      <p class="sn-heading__text">{{ section.settings.body }}</p>
+    </header>
+    <div class="sn-solutions">
+      {%- for block in section.blocks -%}
+        <article class="sn-solution" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            {{- block.settings.image | image_url: width: 1600 | image_tag: widths: '600,900,1200,1600', sizes: '(max-width: 999px) 100vw, 33vw', loading: 'lazy', alt: block.settings.image_alt -}}
+          {%- else -%}
+            <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="2048" height="2048" loading="lazy">
+          {%- endif -%}
+          <span class="sn-solution__shade"></span>
+          <div class="sn-solution__content"><span class="sn-solution__number">0{{ forloop.index }}</span><p class="sn-kicker">{{ block.settings.kicker }}</p><h3>{{ block.settings.title }}</h3><p>{{ block.settings.text }}</p><a class="sn-link" href="{{ block.settings.link | default: '#' }}">{{ block.settings.link_label }}</a></div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name":"SuntNeew RV solutions",
+  "max_blocks":3,
+  "settings":[{"type":"text","id":"anchor_id","label":"Anchor ID","default":"rv-solutions"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"RV battery solutions"},{"type":"text","id":"heading","label":"Heading","default":"Fit. Power. Range."},{"type":"textarea","id":"body","label":"Body","default":"Three clear starting points turn battery specifications into a practical RV decision."}],
+  "blocks":[{"type":"solution","name":"Solution","settings":[
+    {"type":"image_picker","id":"image","label":"Image override"},{"type":"select","id":"fallback_asset","label":"Bundled fallback","default":"suntneew-product-g31.jpg","options":[{"value":"suntneew-product-g24.jpg","label":"G24"},{"value":"suntneew-product-g31.jpg","label":"G31"},{"value":"suntneew-product-230ah.jpg","label":"230Ah"},{"value":"suntneew-product-314ah.jpg","label":"314Ah"}]},{"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew RV battery"},{"type":"text","id":"kicker","label":"Kicker","default":"Start with fit"},{"type":"text","id":"title","label":"Title","default":"Fit 100"},{"type":"textarea","id":"text","label":"Text","default":"Choose G24 or G31 by physical case size before comparing anything else."},{"type":"text","id":"link_label","label":"Link label","default":"Compare fit"},{"type":"url","id":"link","label":"Link"}
+  ]}],
+  "presets":[{"name":"SuntNeew RV solutions","blocks":[{"type":"solution"},{"type":"solution"},{"type":"solution"}]}]
+}
+{% endschema %}

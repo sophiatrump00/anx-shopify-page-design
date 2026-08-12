@@ -1,0 +1,67 @@
+<section class="sn-scene-spotlight" id="{{ section.settings.anchor_id | escape }}" aria-labelledby="sn-scene-spotlight-heading-{{ section.id }}">
+  <div class="sn-scene-spotlight__shell">
+    <div class="sn-scene-spotlight__panel">
+      <div class="sn-scene-spotlight__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="sn-kicker">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2 id="sn-scene-spotlight-heading-{{ section.id }}">{{ section.settings.heading }}</h2>
+        <p class="sn-copy">{{ section.settings.body }}</p>
+
+        <div class="sn-scene-spotlight__checks">
+          {%- for block in section.blocks -%}
+            <article class="sn-scene-spotlight__check" {{ block.shopify_attributes }}>
+              <span>0{{ forloop.index }}</span>
+              <div>
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.text }}</p>
+              </div>
+            </article>
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.button_label != blank -%}
+          <div class="sn-button-row">
+            <a class="sn-button" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="sn-scene-spotlight__visual">
+        <picture>
+          <source media="(max-width: 699px)" srcset="{{ section.settings.mobile_image_asset | asset_url }}">
+          <img src="{{ section.settings.desktop_image_asset | asset_url }}" alt="{{ section.settings.image_alt | escape }}" width="2400" height="1400" loading="lazy">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SuntNeew scene spotlight",
+  "max_blocks": 3,
+  "settings": [
+    {"type":"text","id":"anchor_id","label":"Anchor ID","default":"roadside-readiness"},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"JUMP STARTERS"},
+    {"type":"text","id":"heading","label":"Heading","default":"Roadside readiness should match the vehicle."},
+    {"type":"textarea","id":"body","label":"Body","default":"Choose by vehicle coverage, carrying size and the backup functions you will actually use—not by a number in isolation."},
+    {"type":"text","id":"desktop_image_asset","label":"Desktop image asset filename","default":"suntneew-hero-a20-desktop.jpg"},
+    {"type":"text","id":"mobile_image_asset","label":"Mobile image asset filename","default":"suntneew-hero-a20-mobile.jpg"},
+    {"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew jump starter connected in a vehicle engine bay"},
+    {"type":"text","id":"button_label","label":"Button label","default":"Explore jump starters"},
+    {"type":"url","id":"button_link","label":"Button link"}
+  ],
+  "blocks": [
+    {
+      "type": "check",
+      "name": "Decision check",
+      "settings": [
+        {"type":"text","id":"title","label":"Title","default":"Vehicle coverage"},
+        {"type":"textarea","id":"text","label":"Text","default":"Confirm the stated engine and vehicle coverage before purchase."}
+      ]
+    }
+  ],
+  "presets": [{"name":"SuntNeew scene spotlight","blocks":[{"type":"check"},{"type":"check"},{"type":"check"}]}]
+}
+{% endschema %}

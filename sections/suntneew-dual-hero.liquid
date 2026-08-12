@@ -1,0 +1,68 @@
+<section class="sn-dual-hero" aria-labelledby="sn-dual-hero-heading-{{ section.id }}">
+  <div class="sn-dual-hero__shell">
+    <div class="sn-dual-hero__intro">
+      {%- if section.settings.kicker != blank -%}
+        <p class="sn-kicker">{{ section.settings.kicker }}</p>
+      {%- endif -%}
+      <h1 id="sn-dual-hero-heading-{{ section.id }}">{{ section.settings.heading }}</h1>
+      {%- if section.settings.body != blank -%}
+        <p>{{ section.settings.body }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="sn-dual-hero__paths">
+      {%- for block in section.blocks -%}
+        <article class="sn-dual-hero__path" {{ block.shopify_attributes }}>
+          <picture>
+            {%- if block.settings.mobile_asset != blank -%}
+              <source media="(max-width: 699px)" srcset="{{ block.settings.mobile_asset | asset_url }}">
+            {%- endif -%}
+            <img
+              src="{{ block.settings.desktop_asset | asset_url }}"
+              alt="{{ block.settings.image_alt | escape }}"
+              width="2200"
+              height="1400"
+              {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="eager"{% endif %}
+            >
+          </picture>
+          <span class="sn-dual-hero__shade"></span>
+          <div class="sn-dual-hero__path-content">
+            {%- if block.settings.kicker != blank -%}<p>{{ block.settings.kicker }}</p>{%- endif -%}
+            <h2>{{ block.settings.heading }}</h2>
+            <p>{{ block.settings.body }}</p>
+            <a class="sn-button" href="{{ block.settings.link | default: '/collections/all' }}">{{ block.settings.link_label }}</a>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SuntNeew dual-path hero",
+  "settings": [
+    {"type":"text","id":"kicker","label":"Kicker","default":"RV POWER + ROADSIDE READINESS"},
+    {"type":"text","id":"heading","label":"Heading","default":"Power that keeps you moving."},
+    {"type":"textarea","id":"body","label":"Body","default":"Choose the power path that fits the miles ahead: longer off-grid stays or a prepared response when your vehicle needs a start."}
+  ],
+  "blocks": [
+    {
+      "type":"path",
+      "name":"Power path",
+      "settings":[
+        {"type":"text","id":"desktop_asset","label":"Desktop asset filename","default":"suntneew-hero-rv-desktop.jpg"},
+        {"type":"text","id":"mobile_asset","label":"Mobile asset filename","default":"suntneew-hero-rv-mobile.jpg"},
+        {"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew product in use"},
+        {"type":"text","id":"kicker","label":"Kicker","default":"RV HOUSE POWER"},
+        {"type":"text","id":"heading","label":"Heading","default":"Stay out longer."},
+        {"type":"textarea","id":"body","label":"Body","default":"Choose RV power around physical fit, usable energy and the loads you plan to run."},
+        {"type":"text","id":"link_label","label":"Link label","default":"Shop RV batteries"},
+        {"type":"url","id":"link","label":"Link"}
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets":[{"name":"SuntNeew dual-path hero","blocks":[{"type":"path"},{"type":"path"}]}]
+}
+{% endschema %}

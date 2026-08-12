@@ -1,0 +1,28 @@
+<section class="sn-trust" aria-label="{{ section.settings.accessibility_label | escape }}">
+  <div class="sn-trust__grid" style="--sn-columns: {{ section.blocks.size }}">
+    {%- for block in section.blocks -%}
+      <div class="sn-trust__item" {{ block.shopify_attributes }}>
+        <svg class="sn-trust__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          {%- case block.settings.icon -%}
+            {%- when 'shield' -%}<path d="M12 3 4.8 6v5.3c0 4.5 2.8 7.7 7.2 9.7 4.4-2 7.2-5.2 7.2-9.7V6L12 3Z"/><path d="m8.8 12 2 2 4.5-5"/>
+            {%- when 'truck' -%}<path d="M3 6h11v10H3zM14 9h3l4 4v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
+            {%- when 'headset' -%}<path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v5H5a1 1 0 0 1-1-1v-4ZM20 14h-3v5h2a1 1 0 0 0 1-1v-4ZM17 19c0 1.1-.9 2-2 2h-3"/>
+            {%- when 'battery' -%}<rect x="3" y="6" width="17" height="12" rx="2"/><path d="M20 10h2v4h-2M7 12h9M11.5 8v8"/>
+            {%- else -%}<circle cx="12" cy="12" r="9"/><path d="m8 12 2.6 2.6L16.5 9"/>
+          {%- endcase -%}
+        </svg>
+        <span><strong class="sn-trust__title">{{ block.settings.title }}</strong><span class="sn-trust__text">{{ block.settings.text }}</span></span>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name":"SuntNeew trust strip",
+  "max_blocks":5,
+  "settings":[{"type":"text","id":"accessibility_label","label":"Accessibility label","default":"SuntNeew service highlights"}],
+  "blocks":[{"type":"item","name":"Trust item","settings":[{"type":"select","id":"icon","label":"Icon","default":"shield","options":[{"value":"shield","label":"Shield"},{"value":"truck","label":"Truck"},{"value":"headset","label":"Support"},{"value":"battery","label":"Battery"},{"value":"check","label":"Check"}]},{"type":"text","id":"title","label":"Title","default":"Safety-led engineering"},{"type":"text","id":"text","label":"Supporting text","default":"Tested product platforms and documented specifications"}]}],
+  "presets":[{"name":"SuntNeew trust strip","blocks":[{"type":"item"},{"type":"item"},{"type":"item"},{"type":"item"}]}]
+}
+{% endschema %}
