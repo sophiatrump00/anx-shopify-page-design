@@ -13,11 +13,6 @@
   {%- assign will_show_locale_selector = true -%}
 {%- endif -%}
 
-{%- assign use_asset_logo = false -%}
-{%- if section.settings.logo_asset != blank -%}
-  {%- assign use_asset_logo = true -%}
-{%- endif -%}
-
 <style>
   :root {
     --sticky-header-enabled: {%- if section.settings.enable_sticky -%}1{% else %}0{% endif %};
@@ -30,10 +25,7 @@
     --header-background-blur-radius: {{ section.settings.background_blur_radius }}px;
     --header-transparent-text-color: {{ section.settings.transparent_header_text_color.rgb }};
 
-    {%- if use_asset_logo -%}
-      --header-logo-width: {{ section.settings.logo_mobile_max_width }}px;
-      --header-logo-height: {{ section.settings.logo_mobile_max_width | divided_by: 2.5 | round }}px;
-    {%- elsif section.settings.logo != blank -%}
+    {%- if section.settings.logo != blank -%}
       --header-logo-width: {{ section.settings.logo_mobile_max_width }}px;
       --header-logo-height: {{ section.settings.logo_mobile_max_width | divided_by: section.settings.logo.aspect_ratio | round }}px;
     {%- endif -%}
@@ -59,10 +51,7 @@
 
   @media screen and (min-width: 700px) {
     #shopify-section-{{ section.id }} {
-      {%- if use_asset_logo -%}
-        --header-logo-width: {{ section.settings.logo_max_width }}px;
-        --header-logo-height: {{ section.settings.logo_max_width | divided_by: 2.5 | round }}px;
-      {%- elsif section.settings.logo != blank -%}
+      {%- if section.settings.logo != blank -%}
         --header-logo-width: {{ section.settings.logo_max_width }}px;
         --header-logo-height: {{ section.settings.logo_max_width | divided_by: section.settings.logo.aspect_ratio | round }}px;
       {%- endif -%}
@@ -261,17 +250,7 @@
       {%- endcomment -%}
 
       {%- capture logo_content -%}
-        {%- if use_asset_logo -%}
-          <span class="sr-only">{{ shop.name }}</span>
-          <img
-            src="{{ section.settings.logo_asset | asset_url }}"
-            alt="{{ shop.name | escape }}"
-            class="header__logo-image header__logo-image--asset"
-            width="{{ section.settings.logo_max_width }}"
-            height="{{ section.settings.logo_max_width | divided_by: 2.5 | round }}"
-            loading="eager"
-          >
-        {%- elsif section.settings.logo -%}
+        {%- if section.settings.logo -%}
           {%- capture sizes -%}{{ section.settings.logo_max_width }}px{%- endcapture -%}
           {%- capture widths -%}{{ section.settings.logo_max_width | times: 2 | at_most: section.settings.logo.width }}, {{ section.settings.logo_max_width | times: 3 | at_most: section.settings.logo.width }}{%- endcapture -%}
           <span class="sr-only">{{ shop.name }}</span>
@@ -450,13 +429,6 @@
       "id": "logo",
       "label": "Image",
       "info": "280 x 80px .png recommended"
-    },
-    {
-      "type": "text",
-      "id": "logo_asset",
-      "label": "Theme logo asset filename",
-      "info": "Optional. Uses a file from the theme assets folder and overrides the image picker.",
-      "default": "suntneew-logo-light.png"
     },
     {
       "type": "range",

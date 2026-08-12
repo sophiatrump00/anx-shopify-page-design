@@ -1,102 +1,28 @@
 {
-  "type": "footer",
-  "name": "Footer group",
-  "sections": {
-    "text-with-icons": {
-      "type": "text-with-icons",
-      "blocks": {
-        "testing": {
-          "type": "item",
-          "settings": {
-            "icon": "picto-validation",
-            "mobile_icon_width": 24,
-            "icon_width": 24,
-            "icon_background_type": "none",
-            "title": "Product information",
-            "content": "<p>Specifications and model-specific documents.</p>"
-          }
-        },
-        "support": {
-          "type": "item",
-          "settings": {
-            "icon": "picto-customer-support",
-            "mobile_icon_width": 24,
-            "icon_width": 24,
-            "icon_background_type": "none",
-            "title": "Selection support",
-            "content": "<p>Guidance for product selection and setup.</p>"
-          }
-        },
-        "shipping": {
-          "type": "item",
-          "settings": {
-            "icon": "picto-box",
-            "mobile_icon_width": 24,
-            "icon_width": 24,
-            "icon_background_type": "none",
-            "title": "Delivery information",
-            "content": "<p>Availability and delivery details before purchase.</p>"
-          }
-        },
-        "payment": {
-          "type": "item",
-          "settings": {
-            "icon": "picto-lock",
-            "mobile_icon_width": 24,
-            "icon_width": 24,
-            "icon_background_type": "none",
-            "title": "Secure checkout",
-            "content": "<p>Protected payment through the store checkout.</p>"
-          }
-        }
+  "type":"footer",
+  "name":"Footer group",
+  "sections":{
+    "text-with-icons":{
+      "type":"text-with-icons",
+      "blocks":{
+        "testing":{"type":"item","settings":{"icon":"picto-validation","mobile_icon_width":24,"icon_width":24,"icon_background_type":"none","title":"Documented testing","content":"<p>Model-specific reports and product specifications.</p>"}},
+        "support":{"type":"item","settings":{"icon":"picto-customer-support","mobile_icon_width":24,"icon_width":24,"icon_background_type":"none","title":"Technical support","content":"<p>Guidance for product selection, setup and use.</p>"}},
+        "shipping":{"type":"item","settings":{"icon":"picto-box","mobile_icon_width":24,"icon_width":24,"icon_background_type":"none","title":"Shipping information","content":"<p>Availability and delivery details before purchase.</p>"}},
+        "payment":{"type":"item","settings":{"icon":"picto-lock","mobile_icon_width":24,"icon_width":24,"icon_background_type":"none","title":"Secure checkout","content":"<p>Protected payment through the store checkout.</p>"}}
       },
-      "block_order": ["testing", "support", "shipping", "payment"],
-      "settings": {
-        "full_width": true,
-        "heading_tag": "h6",
-        "text_alignment": "center",
-        "icon_spacing": "small",
-        "background": "#F7FAFF",
-        "background_gradient": "",
-        "text_color": "#1B2433"
-      }
+      "block_order":["testing","support","shipping","payment"],
+      "settings":{"full_width":true,"heading_tag":"h6","text_alignment":"center","icon_spacing":"small","background":"#f5f3ee","background_gradient":"","text_color":"#121416"}
     },
-    "footer": {
-      "type": "footer",
-      "blocks": {
-        "newsletter": {
-          "type": "newsletter",
-          "settings": {
-            "image_width": 150,
-            "heading_size": "h3",
-            "title": "Field notes, product updates and practical power guides"
-          }
-        },
-        "links": {
-          "type": "links",
-          "settings": {
-            "menu": "suntneew-footer-menu-0811",
-            "show_menu_title": true
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "title": "SuntNeew",
-            "content": "<p>Power systems for the road, the journey and home.</p>"
-          }
-        }
+    "footer":{
+      "type":"footer",
+      "blocks":{
+        "newsletter":{"type":"newsletter","settings":{"image_width":150,"heading_size":"h3","title":"Field notes, product updates and practical power guides"}},
+        "links":{"type":"links","settings":{"menu":"footer","show_menu_title":true}},
+        "text":{"type":"text","settings":{"title":"SuntNeew","content":"<p>Practical power for RV travel, off-grid living and the moments when the road does not go to plan.</p>"}}
       },
-      "block_order": ["newsletter", "links", "text"],
-      "settings": {
-        "show_social_media": true,
-        "show_payment_icons": true,
-        "show_country_selector": false,
-        "show_country_flag": true,
-        "show_country_name": true,
-        "show_locale_selector": false
-      }
+      "block_order":["newsletter","links","text"],
+      "settings":{"show_social_media":true,"show_payment_icons":true,"show_country_selector":true,"show_country_flag":true,"show_country_name":true,"show_locale_selector":true}
     }
   },
-  "order": ["text-with-icons", "footer"]
+  "order":["text-with-icons","footer"]
 }

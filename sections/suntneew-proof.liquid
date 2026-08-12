@@ -1,6 +1,6 @@
 <section class="sn-section {% if section.settings.white_background %}sn-section--white{% endif %}" id="{{ section.settings.anchor_id | escape }}">
   <div class="sn-shell">
-    <div class="sn-proof {% if section.settings.white_background %}sn-proof--light{% endif %} {% if section.settings.reverse_layout %}sn-proof--reverse{% endif %}">
+    <div class="sn-proof {% if section.settings.reverse_layout %}sn-proof--reverse{% endif %}">
       <div class="sn-proof__visual" data-sn-proof>
         <picture>
           <source media="(max-width: 699px)" srcset="{{ section.settings.before_mobile_asset | asset_url }}">

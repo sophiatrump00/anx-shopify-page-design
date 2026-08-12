@@ -155,17 +155,17 @@
     {%- assign product_sold_out_badge_brightness = settings.product_sold_out_badge_background | color_brightness -%}
     {%- assign product_primary_badge_brightness = settings.product_primary_badge_background | color_brightness -%}
 
-    --accent: 38 61 99;
-    --text-primary: 27 36 51;
-    --background-primary: 245 247 250;
-    --dialog-background: 255 255 255;
+    --accent: {{ settings.primary_button_background.rgb }};
+    --text-primary: {{ settings.text_color.rgb }};
+    --background-primary: {{ settings.background.rgb }};
+    --dialog-background: {{ settings.dialog_background.rgb }};
     --border-color: var(--text-color, var(--text-primary)) / 0.12;
 
     /* Button colors */
-    --button-background-primary: 38 61 99;
-    --button-text-primary: 255 255 255;
-    --button-background-secondary: 234 244 255;
-    --button-text-secondary: 27 36 51;
+    --button-background-primary: {{ settings.primary_button_background.rgb }};
+    --button-text-primary: {{ settings.primary_button_text_color.rgb }};
+    --button-background-secondary: {{ settings.secondary_button_background.rgb }};
+    --button-text-secondary: {{ settings.secondary_button_text_color.rgb }};
 
     /* Status colors */
     --success-background: {{ success_background.rgb }};
@@ -176,24 +176,24 @@
     --error-text: {{ settings.error_color.rgb }};
 
     /* Product colors */
-    --on-sale-text: 90 120 213;
-    --on-sale-badge-background: 90 120 213;
+    --on-sale-text: {{ settings.product_on_sale_accent.rgb }};
+    --on-sale-badge-background: {{ settings.product_on_sale_accent.rgb }};
     --on-sale-badge-text: {% if product_on_sale_accent_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
     --sold-out-badge-background: {{ settings.product_sold_out_badge_background.rgb }};
     --sold-out-badge-text: {% if product_sold_out_badge_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
-    --primary-badge-background: 221 235 255;
+    --primary-badge-background: {{ settings.product_primary_badge_background.rgb }};
     --primary-badge-text: {% if product_primary_badge_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
-    --star-color: 93 121 168;
-    --product-card-background: 255 255 255;
-    --product-card-text: 27 36 51;
+    --star-color: {{ settings.product_rating_color.rgb }};
+    --product-card-background: {{ settings.product_card_background.rgb }};
+    --product-card-text: {{ settings.product_card_text_color.rgb }};
 
     /* Header colors */
-    --header-background: 255 255 255;
-    --header-text: 27 36 51;
+    --header-background: {{ settings.header_background.rgb }};
+    --header-text: {{ settings.header_text_color.rgb }};
 
     /* Footer colors */
-    --footer-background: 232 236 242;
-    --footer-text: 27 36 51;
+    --footer-background: {{ settings.footer_background.rgb }};
+    --footer-text: {{ settings.footer_text_color.rgb }};
 
     /* Rounded variables (used for border radius) */
     --rounded-xs: {{ settings.block_border_radius | at_most: 4 | divided_by: 16.0 }}rem;

@@ -51,32 +51,20 @@
     const selections = {};
 
     const recommendations = {
-      'battery-fit': ['Compare the 100Ah RV battery options', 'Start with the battery bay dimensions and terminal orientation, then review the 100Ah case options.', '/collections/rv-batteries', 'View RV battery options'],
-      'battery-runtime': ['Explore longer-runtime RV options', 'Choose usable energy around the time you want to spend off-grid, while confirming the available installation space.', '/collections/rv-batteries', 'Explore RV batteries'],
-      'battery-power': ['Explore higher-output RV options', 'Compare continuous output with the loads you plan to run. Capacity alone does not answer that question.', '/collections/rv-batteries', 'Explore RV batteries'],
-      'jump-coverage': ['Find a jump starter for your vehicle', 'Start with the supported vehicle and engine information before comparing convenience features.', '/collections/jump-starters', 'Explore jump starters'],
-      'jump-carry': ['Choose a practical roadside backup', 'Pick a carrying size that will stay with the vehicle, then compare the supported coverage by model.', '/collections/jump-starters', 'Explore jump starters'],
-      'jump-utility': ['Compare roadside functions by model', 'Review charging ports and emergency functions after the vehicle coverage is confirmed.', '/collections/jump-starters', 'Explore jump starters'],
-      'home-entry': ['Plan a 5 kWh starting point', 'We will confirm suitable equipment, delivery availability and installation requirements before an order is placed.', '/pages/request-for-quote', 'Check system availability'],
-      'home-capacity': ['Plan more stored energy', 'Start with the household demand, then confirm the installation and inverter requirements for the proposed system.', '/pages/request-for-quote', 'Plan your home system'],
-      'home-system': ['Plan the system around compatibility', 'For a system-led setup, confirm the inverter, installation approach and delivery availability before ordering.', '/pages/request-for-quote', 'Plan your home system']
-    };
-
-    const resetResult = () => {
-      resultTitle.textContent = 'Choose the priority that matters most';
-      resultText.textContent = 'The next step will point to the right collection or a home-energy planning path.';
-      resultLink.hidden = true;
-      resultLink.removeAttribute('href');
+      'battery-fit': ['G24 / G31 100Ah', 'Start with physical fit. Compare the G24 and G31 case sizes before choosing.', '/collections/rv-batteries'],
+      'battery-runtime': ['314Ah LiFePO4 Battery', 'Built for longer off-grid runtime where installation space and system limits allow.', '/products/suntneew-12-8v-314ah-lifepo4-rv-battery'],
+      'battery-power': ['230Ah LiFePO4 Battery', 'A strong balance of usable energy and higher continuous output for demanding RV systems.', '/products/suntneew-12-8v-230ah-lifepo4-rv-battery'],
+      'jump-compact': ['A20 Jump Starter', 'Compact everyday roadside backup with jump-starting, charging and emergency lighting.', '/products/suntneew-a20-jump-starter-8000mah'],
+      'jump-capacity': ['A3 Jump Starter', 'Choose A3 when you want a larger-format emergency power option and broader utility.', '/products/suntneew-a3-jump-starter-16000mah']
     };
 
     const render = () => {
       const key = `${selections.line || ''}-${selections.need || ''}`;
-      const recommendation = recommendations[key];
-      if (!recommendation) return;
-      resultTitle.textContent = recommendation[0];
-      resultText.textContent = recommendation[1];
-      resultLink.href = recommendation[2];
-      resultLink.textContent = recommendation[3];
+      const rec = recommendations[key];
+      if (!rec) return;
+      resultTitle.textContent = rec[0];
+      resultText.textContent = rec[1];
+      resultLink.href = rec[2];
       resultLink.hidden = false;
     };
 
@@ -85,17 +73,10 @@
         const group = button.dataset.group;
         selections[group] = button.dataset.value;
         chooser.querySelectorAll(`[data-group="${group}"]`).forEach((item) => item.setAttribute('aria-pressed', item === button ? 'true' : 'false'));
-
         if (group === 'line') {
-          chooser.querySelectorAll('[data-sn-need-group]').forEach((panel) => {
-            panel.hidden = panel.dataset.snNeedGroup !== selections.line;
-          });
+          chooser.querySelectorAll('[data-sn-need-group]').forEach((panel) => panel.hidden = panel.dataset.snNeedGroup !== selections.line);
           delete selections.need;
-          chooser.querySelectorAll('[data-group="need"]').forEach((item) => item.setAttribute('aria-pressed', 'false'));
-          resetResult();
-          return;
         }
-
         render();
       });
     });
