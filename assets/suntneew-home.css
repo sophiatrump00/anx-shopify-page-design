@@ -28,7 +28,8 @@
 
 /* Keep the two consecutive proof panels connected without flattening the page-wide rhythm. */
 #rv-power-fit .sn-shell { padding-block-start: clamp(48px, 4vw, 64px); padding-block-end: clamp(32px, 3vw, 48px); }
-#roadside-readiness .sn-shell { padding-block-start: clamp(32px, 3vw, 48px); }
+#roadside-readiness .sn-shell { padding-block-start: clamp(32px, 3vw, 48px); padding-block-end: clamp(32px, 3vw, 48px); }
+.sn-home-energy .sn-light-shell { padding-block-start: clamp(32px, 3vw, 48px); }
 
 .sn-heading {
   display: grid;
