@@ -806,3 +806,27 @@
   }
   .sn-home-energy__choice:first-child { border-top: 0; }
 }
+
+/* Product choices on the home-energy panel now lead to the actual PDPs, not only to an enquiry page. */
+.sn-home-energy__choice--link {
+  color: inherit;
+  text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+.sn-home-energy__choice--link > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  color: #263d63;
+  font-size: 11px;
+  font-weight: 800;
+}
+.sn-home-energy__choice--link > span::after { content: '\2192'; color: #5a7bd8; font-size: 15px; }
+.sn-home-energy__choice--link:hover,
+.sn-home-energy__choice--link:focus-visible { background: rgba(255,255,255,.68); }
+.sn-home-energy__choice--link:hover > span::after { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) {
+  .sn-home-energy__choice--link { transition: none; }
+  .sn-home-energy__choice--link:hover > span::after { transform: none; }
+}
