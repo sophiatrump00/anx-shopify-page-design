@@ -1,55 +1,57 @@
-<section class="sn-rv-tech" id="{{ section.settings.anchor_id | escape }}" data-sn-rv-hotspots>
-  <picture class="sn-rv-tech__background" aria-hidden="true">
-    <source media="(max-width: 699px)" srcset="{{ section.settings.mobile_background_asset | asset_url }}">
-    <img src="{{ section.settings.desktop_background_asset | asset_url }}" alt="" width="2500" height="1200" loading="lazy">
-  </picture>
-  <div class="sn-rv-tech__veil" aria-hidden="true"></div>
+<section class="sn-rv-tech-section">
+  <div class="sn-rv-tech" id="{{ section.settings.anchor_id | escape }}" data-sn-rv-hotspots>
+    <picture class="sn-rv-tech__background" aria-hidden="true">
+      <source media="(max-width: 699px)" srcset="{{ section.settings.mobile_background_asset | asset_url }}">
+      <img src="{{ section.settings.desktop_background_asset | asset_url }}" alt="" width="2500" height="1200" loading="lazy">
+    </picture>
+    <div class="sn-rv-tech__veil" aria-hidden="true"></div>
 
-  <div class="sn-rv-tech__shell">
-    <div class="sn-rv-tech__intro">
-      <p class="sn-kicker">{{ section.settings.eyebrow }}</p>
-      <h2>{{ section.settings.heading }}</h2>
-      <p class="sn-rv-tech__body">{{ section.settings.body }}</p>
+    <div class="sn-rv-tech__shell">
+      <div class="sn-rv-tech__intro">
+        <p class="sn-kicker">{{ section.settings.eyebrow }}</p>
+        <h2>{{ section.settings.heading }}</h2>
+        <p class="sn-rv-tech__body">{{ section.settings.body }}</p>
 
-      <div class="sn-rv-tech__stats" aria-label="RV battery range highlights">
-        <span><strong>{{ section.settings.stat_1 }}</strong></span>
-        <span><strong>{{ section.settings.stat_2 }}</strong></span>
-        <span><strong>{{ section.settings.stat_3 }}</strong></span>
-        <span><strong>{{ section.settings.stat_4 }}</strong></span>
+        <div class="sn-rv-tech__stats" aria-label="RV battery range highlights">
+          <span><strong>{{ section.settings.stat_1 }}</strong></span>
+          <span><strong>{{ section.settings.stat_2 }}</strong></span>
+          <span><strong>{{ section.settings.stat_3 }}</strong></span>
+          <span><strong>{{ section.settings.stat_4 }}</strong></span>
+        </div>
+
+        <p class="sn-rv-tech__footnote">{{ section.settings.footnote }}</p>
+        <a class="sn-button" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label }}</a>
       </div>
 
-      <p class="sn-rv-tech__footnote">{{ section.settings.footnote }}</p>
-      <a class="sn-button" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label }}</a>
-    </div>
+      <div class="sn-rv-tech__visual">
+        <img class="sn-rv-tech__product" src="{{ section.settings.product_asset | asset_url }}" alt="{{ section.settings.product_alt | escape }}" width="1800" height="1220" loading="lazy">
 
-    <div class="sn-rv-tech__visual">
-      <img class="sn-rv-tech__product" src="{{ section.settings.product_asset | asset_url }}" alt="{{ section.settings.product_alt | escape }}" width="1800" height="1220" loading="lazy">
+        <div class="sn-rv-tech__hotspots" aria-label="Explore RV battery features">
+          {%- for block in section.blocks -%}
+            <button
+              class="sn-rv-tech__hotspot"
+              type="button"
+              style="--sn-hotspot-x: {{ block.settings.x_position }}%; --sn-hotspot-y: {{ block.settings.y_position }}%;"
+              aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+              aria-controls="sn-rv-detail-{{ block.id }}"
+              data-sn-rv-trigger
+              {{ block.shopify_attributes }}
+            >
+              <span aria-hidden="true">{{ forloop.index }}</span>
+              <span class="sr-only">{{ block.settings.title }}</span>
+            </button>
+          {%- endfor -%}
+        </div>
 
-      <div class="sn-rv-tech__hotspots" aria-label="Explore RV battery features">
-        {%- for block in section.blocks -%}
-          <button
-            class="sn-rv-tech__hotspot"
-            type="button"
-            style="--sn-hotspot-x: {{ block.settings.x_position }}%; --sn-hotspot-y: {{ block.settings.y_position }}%;"
-            aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
-            aria-controls="sn-rv-detail-{{ block.id }}"
-            data-sn-rv-trigger
-            {{ block.shopify_attributes }}
-          >
-            <span aria-hidden="true">{{ forloop.index }}</span>
-            <span class="sr-only">{{ block.settings.title }}</span>
-          </button>
-        {%- endfor -%}
-      </div>
-
-      <div class="sn-rv-tech__details" aria-live="polite">
-        {%- for block in section.blocks -%}
-          <article class="sn-rv-tech__detail" id="sn-rv-detail-{{ block.id }}" data-sn-rv-detail {% unless forloop.first %}hidden{% endunless %}>
-            <p>{{ forloop.index | prepend: '0' }} / {{ section.blocks.size | prepend: '0' }}</p>
-            <h3>{{ block.settings.title }}</h3>
-            <div>{{ block.settings.text }}</div>
-          </article>
-        {%- endfor -%}
+        <div class="sn-rv-tech__details" aria-live="polite">
+          {%- for block in section.blocks -%}
+            <article class="sn-rv-tech__detail" id="sn-rv-detail-{{ block.id }}" data-sn-rv-detail {% unless forloop.first %}hidden{% endunless %}>
+              <p>{{ forloop.index | prepend: '0' }} / {{ section.blocks.size | prepend: '0' }}</p>
+              <h3>{{ block.settings.title }}</h3>
+              <div>{{ block.settings.text }}</div>
+            </article>
+          {%- endfor -%}
+        </div>
       </div>
     </div>
   </div>

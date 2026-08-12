@@ -331,7 +331,7 @@
 /* Light product-line direction. Old dark component styles are retained for older theme versions. */
 .sn-light-lines,
 .sn-home-energy { background: #f6f8fa; color: #182231; }
-.sn-light-shell { width: min(1440px, calc(100% - 64px)); margin-inline: auto; padding-block: clamp(64px, 8vw, 124px); }
+.sn-light-shell { width: min(1440px, calc(100% - 48px)); margin-inline: auto; padding-block: clamp(64px, 8vw, 124px); }
 .sn-light-heading { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(260px, .65fr); gap: clamp(30px, 7vw, 110px); align-items: end; margin-bottom: 34px; }
 .sn-light-eyebrow { margin: 0 0 13px; color: #506c9e; font-size: 11px; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
 .sn-light-heading h2,
@@ -481,7 +481,8 @@
 }
 
 /* 0812: interactive RV proof system. Real product art is layered over a non-factual technical background. */
-.sn-rv-tech { position: relative; min-height: 760px; overflow: hidden; background: #0c1118; color: #fff; }
+.sn-rv-tech-section { overflow: clip; background: #f6f8fa; }
+.sn-rv-tech { position: relative; width: min(1440px, calc(100% - 48px)); min-height: 760px; margin-inline: auto; overflow: hidden; border-radius: var(--sn-radius); background: #0c1118; color: #fff; }
 .sn-rv-tech__background,
 .sn-rv-tech__background img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .sn-rv-tech__background img { object-fit: cover; }
@@ -559,6 +560,9 @@
 }
 
 @media (max-width: 699px) {
+  #roadside-readiness .sn-shell,
+  .sn-rv-tech { width: min(100% - 32px, 580px); }
+  .sn-rv-tech { border-radius: 22px; }
   .sn-rv-tech__shell,
   .sn-confidence__shell { width: min(100% - 32px, 580px); padding-block: 58px; }
   .sn-rv-tech__intro h2 { font-size: clamp(40px,12vw,58px); }
