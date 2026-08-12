@@ -83,7 +83,11 @@
   border-bottom: 1px solid var(--sn-pdp-line);
   background: rgba(255, 255, 255, .96);
   backdrop-filter: blur(14px);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
+.sn-pdp-nav::-webkit-scrollbar { display: none; }
 
 .sn-pdp-nav__inner {
   display: flex;
