@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type":"main-product",
+      "blocks": {
+        "vendor":{"type":"vendor","settings":{}},
+        "title":{"type":"title","settings":{"heading_tag":"h1"}},
+        "sku":{"type":"sku","settings":{}},
+        "price":{"type":"price","settings":{"show_taxes_notice":false}},
+        "separator":{"type":"separator","settings":{}},
+        "intro":{"type":"text","settings":{"text":"<p>High-voltage LFP home energy storage in 10.24kWh and 15.36kWh configurations. Inverter compatibility, delivery and installation scope are confirmed before order.</p>"}},
+        "variant_picker":{"type":"variant_picker","settings":{"hide_sold_out_variants":false,"stack_blocks":true,"selector_style":"block","swatch_selector_style":"none","variant_image_options":""}},
+        "quote":{"type":"button","settings":{"link":"shopify://pages/request-for-quote","text":"Request a system quote","size":"xl","style":"fill","stretch":true}}
+      },
+      "block_order":["vendor","title","sku","price","separator","intro","variant_picker","quote"],
+      "settings":{"show_fixed_add_to_cart":false,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+    },
+    "proof": {
+      "type":"suntneew-pdp-proof",
+      "blocks": {
+        "vh10energy":{"type":"metric","settings":{"value":"10.24kWh","label":"Usable capacity","variant_match":"10.24 kWh"}},
+        "vh10voltage":{"type":"metric","settings":{"value":"102.4V","label":"Rated voltage","variant_match":"10.24 kWh"}},
+        "vh10modules":{"type":"metric","settings":{"value":"2 modules","label":"5.12kWh per module","variant_match":"10.24 kWh"}},
+        "vh15energy":{"type":"metric","settings":{"value":"15.36kWh","label":"Usable capacity","variant_match":"15.36 kWh"}},
+        "vh15voltage":{"type":"metric","settings":{"value":"153.6V","label":"Rated voltage","variant_match":"15.36 kWh"}},
+        "vh15modules":{"type":"metric","settings":{"value":"3 modules","label":"5.12kWh per module","variant_match":"15.36 kWh"}},
+        "bms":{"type":"metric","settings":{"value":"Smart BMS","label":"CAN / RS485 communication","variant_match":""}},
+        "ip":{"type":"metric","settings":{"value":"IP65","label":"Source-listed enclosure rating","variant_match":""}}
+      },
+      "block_order":["vh10energy","vh10voltage","vh10modules","vh15energy","vh15voltage","vh15modules","bms","ip"],
+      "settings":{"accessibility_label":"VH system highlights"}
+    },
+    "anchor_nav": {
+      "type":"suntneew-pdp-anchor-nav",
+      "blocks": {
+        "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
+        "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
+        "box":{"type":"link","settings":{"label":"Project Scope","target_id":"in-the-box"}},
+        "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
+        "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
+      },
+      "block_order":["features","specs","box","manuals","faq"],
+      "settings":{}
+    },
+    "features": {
+      "type":"suntneew-pdp-story",
+      "blocks": {
+        "platform":{"type":"feature","settings":{"image_asset":"energy-star-vh10-vh15-main-v1.jpg","image_alt":"Authorized Energy Star VH10A and VH15A high-voltage storage systems","eyebrow":"Modular high voltage","heading":"Choose two or three 5.12kWh battery modules","body":"<p>VH10A provides 10.24kWh usable capacity; VH15A provides 15.36kWh. Both use LFP cells, a smart BMS and vertical natural-convection architecture.</p>","variant_match":""}},
+        "evidence":{"type":"feature","settings":{"image_asset":"energy-star-vh10-vh15-spec-v1.jpg","image_alt":"Authorized Energy Star VH10A and VH15A specification sheet","eyebrow":"Source documentation","heading":"The configuration is reviewed before a quote becomes an order","body":"<p>Rated voltage, voltage range, system dimensions and weight change with capacity. We confirm inverter protocol, delivery postcode, unloading and installation responsibility first.</p>","variant_match":""}}
+      },
+      "block_order":["platform","evidence"],
+      "settings":{"anchor_id":"features","eyebrow":"Home energy storage","heading":"A modular high-voltage system sized around the project","lede":"<p>Authorized source branding is preserved. This page presents the product and configuration evidence without implying universal inverter compatibility.</p>"}
+    },
+    "details": {
+      "type":"suntneew-pdp-details",
+      "blocks": {
+        "chem":{"type":"spec","settings":{"label":"Cell chemistry","value":"LFP","variant_match":""}},
+        "module":{"type":"spec","settings":{"label":"Battery module","value":"5.12kWh, 51.2V","variant_match":""}},
+        "cap10":{"type":"spec","settings":{"label":"Usable capacity","value":"10.24kWh","variant_match":"10.24 kWh"}},
+        "modules10":{"type":"spec","settings":{"label":"Battery modules","value":"2","variant_match":"10.24 kWh"}},
+        "voltage10":{"type":"spec","settings":{"label":"Rated voltage","value":"102.4V","variant_match":"10.24 kWh"}},
+        "range10":{"type":"spec","settings":{"label":"Voltage range","value":"86.4鈥?15.2V","variant_match":"10.24 kWh"}},
+        "size10":{"type":"spec","settings":{"label":"Dimensions (H脳W脳D)","value":"1060脳650脳225mm","variant_match":"10.24 kWh"}},
+        "weight10":{"type":"spec","settings":{"label":"Weight","value":"115卤1kg","variant_match":"10.24 kWh"}},
+        "cap15":{"type":"spec","settings":{"label":"Usable capacity","value":"15.36kWh","variant_match":"15.36 kWh"}},
+        "modules15":{"type":"spec","settings":{"label":"Battery modules","value":"3","variant_match":"15.36 kWh"}},
+        "voltage15":{"type":"spec","settings":{"label":"Rated voltage","value":"153.6V","variant_match":"15.36 kWh"}},
+        "range15":{"type":"spec","settings":{"label":"Voltage range","value":"129.6鈥?72.8V","variant_match":"15.36 kWh"}},
+        "size15":{"type":"spec","settings":{"label":"Dimensions (H脳W脳D)","value":"1470脳650脳225mm","variant_match":"15.36 kWh"}},
+        "weight15":{"type":"spec","settings":{"label":"Weight","value":"166卤1kg","variant_match":"15.36 kWh"}},
+        "current":{"type":"spec","settings":{"label":"Max / peak output current","value":"50A / 70A for 5s","variant_match":""}},
+        "dod":{"type":"spec","settings":{"label":"Source-listed discharge depth","value":"90%","variant_match":""}},
+        "cycles":{"type":"spec","settings":{"label":"Source-listed cycle reference","value":"5,000 cycles","variant_match":""}},
+        "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485","variant_match":""}},
+        "display":{"type":"spec","settings":{"label":"Display","value":"LCD touch screen, LED power indicator","variant_match":""}},
+        "cooling":{"type":"spec","settings":{"label":"Cooling / installation","value":"Natural convection / vertical","variant_match":""}},
+        "environment":{"type":"spec","settings":{"label":"Source-listed environment","value":"Indoor / outdoor, IP65","variant_match":""}},
+        "scope1":{"type":"included","settings":{"item":"Selected VH battery system configuration","variant_match":""}},
+        "scope2":{"type":"included","settings":{"item":"Compatibility review against the supplied inverter model","variant_match":""}},
+        "scope3":{"type":"included","settings":{"item":"Freight and unloading scope confirmed by postcode","variant_match":""}},
+        "scope4":{"type":"included","settings":{"item":"Installation responsibility confirmed before order","variant_match":""}},
+        "docs":{"type":"download","settings":{"label":"Installation and compliance documents 鈥?request for selected model","link":"","variant_match":""}}
+      },
+      "block_order":["chem","module","cap10","modules10","voltage10","range10","size10","weight10","cap15","modules15","voltage15","range15","size15","weight15","current","dod","cycles","comm","display","cooling","environment","scope1","scope2","scope3","scope4","docs"],
+      "settings":{"anchor_id":"specifications","eyebrow":"Configuration data","heading":"VH10A and VH15A specifications","lede":"<p>Specifications follow the authorized English product sheet. Final system compatibility and document applicability are confirmed for the selected project.</p>","spec_heading":"Technical specifications","included_heading":"Quote & project scope","download_heading":"Documents"}
+    },
+    "faq": {
+      "type":"suntneew-pdp-faq",
+      "blocks": {
+        "q1":{"type":"question","settings":{"question":"Which size should I choose?","answer":"<p>VH10A provides 10.24kWh; VH15A provides 15.36kWh. Selection also depends on inverter voltage window, protocol, daily consumption, backup load and installation constraints.</p>"}},
+        "q2":{"type":"question","settings":{"question":"Can I buy directly online?","answer":"<p>Not yet. We confirm compatibility, freight, unloading and installation responsibility before converting a quote into an order.</p>"}},
+        "q3":{"type":"question","settings":{"question":"Is the product suitable outdoors?","answer":"<p>The source sheet lists IP65 and indoor/outdoor operation. Site exposure, mounting, local electrical rules and installer assessment still need project-level confirmation.</p>"}},
+        "q4":{"type":"question","settings":{"question":"Which documents are available?","answer":"<p>The source lists UN38.3, MSDS, IEC 62619 and CE-EMC. Request the documents for the exact selected model and destination before relying on them for a project.</p>"}}
+      },
+      "block_order":["q1","q2","q3","q4"],
+      "settings":{"anchor_id":"faq","eyebrow":"System planning","heading":"Frequently asked questions"}
+    },
+    "related-products":{"type":"related-products","settings":{}}
+  },
+  "order":["main","proof","anchor_nav","features","details","faq","related-products"]
+}
+

@@ -1,0 +1,36 @@
+{{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'suntneew-pdp.js' | asset_url }}" defer></script>
+
+<section class="sn-pdp sn-pdp-proof" aria-label="{{ section.settings.accessibility_label | escape }}">
+  <div class="sn-pdp__shell sn-pdp-proof__grid">
+    {%- for block in section.blocks -%}
+      <div class="sn-pdp-proof__item" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
+        <strong class="sn-pdp-proof__value">{{ block.settings.value }}</strong>
+        <span class="sn-pdp-proof__label">{{ block.settings.label }}</span>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SuntNeew PDP proof bar",
+  "settings": [
+    {"type":"text","id":"accessibility_label","label":"Accessibility label","default":"Product highlights"}
+  ],
+  "blocks": [
+    {
+      "type":"metric",
+      "name":"Metric",
+      "settings":[
+        {"type":"text","id":"value","label":"Value","default":"1500A"},
+        {"type":"text","id":"label","label":"Label","default":"Peak current"},
+        {"type":"text","id":"variant_match","label":"Only show for variant","info":"Optional. Match capacity, color, title or SKU, for example 8000mAh."}
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets":[{"name":"SuntNeew PDP proof bar","blocks":[{"type":"metric"},{"type":"metric"},{"type":"metric"},{"type":"metric"}]}]
+}
+{% endschema %}
+

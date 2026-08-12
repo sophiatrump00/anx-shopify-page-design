@@ -1,0 +1,23 @@
+{{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
+<nav class="sn-pdp sn-pdp-nav" aria-label="On this product page">
+  <div class="sn-pdp-nav__inner">
+    {%- for block in section.blocks -%}
+      <a href="#{{ block.settings.target_id | handleize }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+    {%- endfor -%}
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name":"SuntNeew PDP anchor nav",
+  "blocks":[
+    {"type":"link","name":"Anchor link","settings":[
+      {"type":"text","id":"label","label":"Label","default":"Features"},
+      {"type":"text","id":"target_id","label":"Section ID","default":"features"}
+    ]}
+  ],
+  "max_blocks": 6,
+  "presets":[{"name":"SuntNeew PDP anchor nav","blocks":[{"type":"link"},{"type":"link"},{"type":"link"},{"type":"link"}]}]
+}
+{% endschema %}
+

@@ -1,0 +1,35 @@
+{{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
+<section id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp sn-pdp-faq sn-pdp__section">
+  <div class="sn-pdp__shell">
+    <p class="sn-pdp__eyebrow">{{ section.settings.eyebrow }}</p>
+    <h2 class="sn-pdp__heading">{{ section.settings.heading }}</h2>
+    <div class="sn-pdp-faq__list">
+      {%- for block in section.blocks -%}
+        <details {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question }}</summary>
+          <div>{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name":"SuntNeew PDP FAQ",
+  "settings":[
+    {"type":"text","id":"anchor_id","label":"Anchor ID","default":"faq"},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Need to know"},
+    {"type":"text","id":"heading","label":"Heading","default":"Frequently asked questions"}
+  ],
+  "blocks":[
+    {"type":"question","name":"Question","settings":[
+      {"type":"text","id":"question","label":"Question","default":"How do I choose the right model?"},
+      {"type":"richtext","id":"answer","label":"Answer","default":"<p>Use the verified specifications above and contact us if your use case falls outside the listed conditions.</p>"}
+    ]}
+  ],
+  "max_blocks": 12,
+  "presets":[{"name":"SuntNeew PDP FAQ","blocks":[{"type":"question"},{"type":"question"},{"type":"question"}]}]
+}
+{% endschema %}
+
