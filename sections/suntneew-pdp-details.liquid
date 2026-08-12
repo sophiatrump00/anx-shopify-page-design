@@ -13,7 +13,7 @@
         {%- for group_key in group_keys -%}
           {%- assign group_count = 0 -%}
           {%- for block in section.blocks -%}
-            {%- if block.type == 'spec' and block.settings.group == group_key -%}
+            {%- if block.type == 'spec' and block.settings['group'] == group_key -%}
               {%- assign group_count = group_count | plus: 1 -%}
             {%- endif -%}
           {%- endfor -%}
@@ -32,7 +32,7 @@
               </summary>
               <dl class="sn-pdp-specs">
                 {%- for block in section.blocks -%}
-                  {%- if block.type == 'spec' and block.settings.group == group_key -%}
+                  {%- if block.type == 'spec' and block.settings['group'] == group_key -%}
                     <div class="sn-pdp-specs__row" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
                       <dt>{{ block.settings.label }}</dt>
                       <dd>{{ block.settings.value }}</dd>
