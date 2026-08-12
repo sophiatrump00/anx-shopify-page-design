@@ -8,11 +8,20 @@
 
         <div class="sn-home-energy__choices" aria-label="Home energy storage paths">
           {%- for block in section.blocks -%}
-            <div class="sn-home-energy__choice" {{ block.shopify_attributes }}>
-              <p class="sn-home-energy__capacity">{{ block.settings.capacity }}</p>
-              <h3>{{ block.settings.title }}</h3>
-              <p>{{ block.settings.text }}</p>
-            </div>
+            {%- if block.settings.link != blank -%}
+              <a class="sn-home-energy__choice sn-home-energy__choice--link" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+                <p class="sn-home-energy__capacity">{{ block.settings.capacity }}</p>
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.text }}</p>
+                <span>{{ block.settings.link_label | default: 'Explore product' }}</span>
+              </a>
+            {%- else -%}
+              <div class="sn-home-energy__choice" {{ block.shopify_attributes }}>
+                <p class="sn-home-energy__capacity">{{ block.settings.capacity }}</p>
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.text }}</p>
+              </div>
+            {%- endif -%}
           {%- endfor -%}
         </div>
 
@@ -37,8 +46,8 @@
     {"type":"text","id":"eyebrow","label":"Eyebrow","default":"HOME ENERGY STORAGE"},
     {"type":"text","id":"heading","label":"Heading","default":"Power at home, built around real needs."},
     {"type":"textarea","id":"body","label":"Body","default":"Choose a usable starting capacity first, then match the system architecture and inverter requirements to the way your home uses power."},
-    {"type":"text","id":"image_asset","label":"Theme image asset filename","default":"suntneew-hero-home-light-desktop.png"},
-    {"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew home energy storage system beside a modern home"},
+    {"type":"text","id":"image_asset","label":"Theme image asset filename","default":"energy-star-home-hero-v1.png"},
+    {"type":"text","id":"image_alt","label":"Image alt text","default":"ENERGY STAR home energy storage system beside a modern home"},
     {"type":"text","id":"button_label","label":"Button label","default":"Explore home energy storage"},
     {"type":"url","id":"button_link","label":"Button link"},
     {"type":"textarea","id":"note","label":"Note","default":"Currently available for delivery in Germany. Confirm compatibility and installation requirements before ordering."}
@@ -47,7 +56,9 @@
     {"type":"path","name":"Capacity path","settings":[
       {"type":"text","id":"capacity","label":"Capacity","default":"5.12 kWh"},
       {"type":"text","id":"title","label":"Title","default":"Essential backup"},
-      {"type":"textarea","id":"text","label":"Text","default":"A compact starting point for selected household backup needs."}
+      {"type":"textarea","id":"text","label":"Text","default":"A compact starting point for selected household backup needs."},
+      {"type":"text","id":"link_label","label":"Product link label","default":"Explore product"},
+      {"type":"url","id":"link","label":"Product link"}
     ]}
   ],
   "presets":[{"name":"SuntNeew home energy","blocks":[{"type":"path"},{"type":"path"},{"type":"path"}]}]
