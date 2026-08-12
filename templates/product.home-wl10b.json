@@ -29,7 +29,7 @@
         "energy":{"type":"metric","settings":{"value":"10.24kWh","label":"Rated energy","variant_match":""}},
         "voltage":{"type":"metric","settings":{"value":"51.2V / 200Ah","label":"Low-voltage LFP system","variant_match":""}},
         "parallel":{"type":"metric","settings":{"value":"Up to 9 sets","label":"Source-listed maximum connection","variant_match":""}},
-        "connect":{"type":"metric","settings":{"value":"CAN / RS485","label":"Wi鈥慒i and Bluetooth listed","variant_match":""}}
+        "connect":{"type":"metric","settings":{"value":"CAN / RS485","label":"Wi‑Fi and Bluetooth listed","variant_match":""}}
       },
       "block_order":["energy","voltage","parallel","connect"],
       "settings":{"accessibility_label":"WL10B highlights"}
@@ -49,11 +49,11 @@
     "features": {
       "type":"suntneew-pdp-story",
       "blocks": {
-        "product":{"type":"feature","settings":{"image_asset":"energy-star-wl10b-main-v1.jpg","image_alt":"Authorized Energy Star WL10B 10.24kWh home battery","eyebrow":"Higher-capacity low voltage","heading":"10.24kWh in one 51.2V enclosure","body":"<p>WL10B doubles the rated capacity of WL5A to 200Ah while retaining an LCD touch screen and source-listed CAN, RS485, Wi鈥慒i and Bluetooth communication.</p>","variant_match":""}},
+        "product":{"type":"feature","settings":{"image_asset":"energy-star-wl10b-main-v1.jpg","image_alt":"Authorized Energy Star WL10B 10.24kWh home battery","eyebrow":"Higher-capacity low voltage","heading":"10.24kWh in one 51.2V enclosure","body":"<p>WL10B doubles the rated capacity of WL5A to 200Ah while retaining an LCD touch screen and source-listed CAN, RS485, Wi‑Fi and Bluetooth communication.</p>","variant_match":""}},
         "specsheet":{"type":"feature","settings":{"image_asset":"energy-star-wl10b-spec-v1.jpg","image_alt":"Authorized Energy Star WL10B specification sheet","eyebrow":"Project evidence","heading":"200A continuous discharge for larger low-voltage systems","body":"<p>The source sheet lists 200A maximum discharge and 220A peak discharge. Wiring, protection and inverter current limits remain part of the project review.</p>","variant_match":""}}
       },
       "block_order":["product","specsheet"],
-      "settings":{"anchor_id":"features","eyebrow":"Home energy storage","heading":"More low-voltage storage without moving to a high-voltage stack","lede":"<p>Authorized source branding is preserved. Inverter protocols, site conditions and regional compliance are confirmed before sale.</p>"}
+      "settings":{"anchor_id":"features","eyebrow":"Home energy storage","heading":"More low-voltage storage without moving to a high-voltage stack","lede":"<p>ENERGY STAR low-voltage storage with 10.24kWh rated energy. Inverter protocols, site conditions and regional compliance are confirmed before sale.</p>"}
     },
     "details": {
       "type":"suntneew-pdp-details",
@@ -68,15 +68,15 @@
         "discharge":{"type":"spec","settings":{"label":"Max / peak discharging current","value":"200A / 220A","variant_match":""}},
         "cycles":{"type":"spec","settings":{"label":"Source-listed cycle reference","value":"5,000 cycles","variant_match":""}},
         "weight":{"type":"spec","settings":{"label":"Weight","value":"88kg","variant_match":""}},
-        "size":{"type":"spec","settings":{"label":"Dimensions (H脳W脳D)","value":"1165脳525脳170mm","variant_match":""}},
-        "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485 / Wi鈥慒i / Bluetooth","variant_match":""}},
+        "size":{"type":"spec","settings":{"label":"Dimensions (H×W×D)","value":"1165×525×170mm","variant_match":""}},
+        "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485 / Wi‑Fi / Bluetooth","variant_match":""}},
         "installation":{"type":"spec","settings":{"label":"Installation","value":"Wall mounting / floor standing","variant_match":""}},
         "ip":{"type":"spec","settings":{"label":"Source-listed enclosure rating","value":"IP54","variant_match":""}},
         "scope1":{"type":"included","settings":{"item":"WL10B battery configuration","variant_match":""}},
         "scope2":{"type":"included","settings":{"item":"Inverter and protocol compatibility review","variant_match":""}},
         "scope3":{"type":"included","settings":{"item":"Freight and unloading scope confirmed by postcode","variant_match":""}},
         "scope4":{"type":"included","settings":{"item":"Installer and regional electrical requirements confirmed","variant_match":""}},
-        "docs":{"type":"download","settings":{"label":"Installation and compliance documents 鈥?request for WL10B","link":"","variant_match":""}}
+        "docs":{"type":"download","settings":{"label":"Installation and compliance documents — request for WL10B","link":"","variant_match":""}}
       },
       "block_order":["chem","voltage","capacity","connection","chargev","overdischarge","charge","discharge","cycles","weight","size","comm","installation","ip","scope1","scope2","scope3","scope4","docs"],
       "settings":{"anchor_id":"specifications","eyebrow":"Configuration data","heading":"WL10B technical specifications","lede":"<p>Specifications follow the authorized English product sheet. Confirm compatibility and applicable documentation for the selected inverter and destination.</p>","spec_heading":"Technical specifications","included_heading":"Quote & project scope","download_heading":"Documents"}
@@ -84,7 +84,7 @@
     "faq": {
       "type":"suntneew-pdp-faq",
       "blocks": {
-        "q1":{"type":"question","settings":{"question":"What is the practical difference between WL5A and WL10B?","answer":"<p>WL10B provides 10.24kWh at 200Ah versus WL5A鈥檚 5.12kWh at 100Ah. It is larger and heavier, and the source lists higher charging and discharging current limits.</p>"}},
+        "q1":{"type":"question","settings":{"question":"What is the practical difference between WL5A and WL10B?","answer":"<p>WL10B provides 10.24kWh at 200Ah versus WL5A’s 5.12kWh at 100Ah. It is larger and heavier, and the source lists higher charging and discharging current limits.</p>"}},
         "q2":{"type":"question","settings":{"question":"Can I buy directly online?","answer":"<p>Not yet. Compatibility, freight, unloading and installation responsibility are confirmed before an order is accepted.</p>"}},
         "q3":{"type":"question","settings":{"question":"Can multiple WL10B batteries be connected?","answer":"<p>The source sheet lists a maximum connection of nine sets. The actual design depends on inverter, busbar, cable, protection and installer requirements.</p>"}},
         "q4":{"type":"question","settings":{"question":"Which certificates are listed?","answer":"<p>The source lists UN38.3, MSDS, IEC 62619 and CE-EMC. Request the exact model documents before relying on them for shipping or project approval.</p>"}}
@@ -96,4 +96,3 @@
   },
   "order":["main","proof","anchor_nav","features","details","faq","related-products"]
 }
-
