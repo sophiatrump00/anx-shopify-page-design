@@ -590,3 +590,127 @@
   .sn-rv-tech__hotspot:hover,
   .sn-rv-tech__hotspot[aria-expanded="true"] { transform: translate(-50%,-50%); }
 }
+
+/* Full-bleed product stories experiment.
+   Backgrounds reach the viewport edge while copy and controls stay on the shared content grid. */
+.sn-rv-tech-section {
+  position: relative;
+  background: #080d14;
+}
+.sn-rv-tech {
+  width: 100%;
+  border-radius: 0;
+}
+.sn-rv-tech__shell {
+  width: min(1440px, calc(100% - 48px));
+}
+.sn-rv-tech-section::after {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: clamp(38px, 5vw, 78px);
+  background: linear-gradient(180deg, rgba(8,13,20,0), rgba(15,22,31,.72));
+  content: '';
+  pointer-events: none;
+}
+
+#roadside-readiness {
+  background:
+    radial-gradient(circle at 77% 42%, rgba(255,255,255,.96) 0, rgba(255,255,255,0) 34%),
+    linear-gradient(180deg, #111923 0%, #dce3eb 12%, #f7f9fb 52%, #edf2f6 100%);
+}
+#roadside-readiness .sn-shell {
+  width: 100%;
+  padding-block: 0;
+}
+#roadside-readiness .sn-proof {
+  min-height: clamp(650px, 48vw, 760px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#roadside-readiness .sn-proof__visual {
+  min-height: clamp(650px, 48vw, 760px);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 13%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 13%, #000 100%);
+}
+#roadside-readiness .sn-proof__content {
+  padding-block: clamp(72px, 8vw, 118px);
+  padding-right: clamp(32px, 5vw, 72px);
+  padding-left: max(24px, calc((100vw - 1440px) / 2 + 24px));
+}
+
+.sn-home-energy {
+  background:
+    radial-gradient(circle at 18% 40%, rgba(255,255,255,.9) 0, rgba(255,255,255,0) 37%),
+    linear-gradient(180deg, #edf2f6 0%, #f7f8f6 45%, #e9eee8 100%);
+}
+.sn-home-energy .sn-light-shell {
+  width: 100%;
+  padding-block: 0;
+}
+.sn-home-energy__panel {
+  min-height: clamp(690px, 50vw, 790px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.sn-home-energy__content {
+  padding-block: clamp(72px, 8vw, 118px);
+  padding-right: clamp(32px, 5vw, 76px);
+  padding-left: max(24px, calc((100vw - 1440px) / 2 + 24px));
+}
+.sn-home-energy__visual img {
+  min-height: clamp(690px, 50vw, 790px);
+}
+
+@media (max-width: 1099px) {
+  #roadside-readiness {
+    background: linear-gradient(180deg, #111923 0%, #dce3eb 7%, #f7f9fb 47%, #edf2f6 100%);
+  }
+  #roadside-readiness .sn-proof__visual {
+    min-height: 470px;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 84%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 84%, transparent 100%);
+  }
+  #roadside-readiness .sn-proof__content,
+  .sn-home-energy__content {
+    width: min(760px, calc(100% - 48px));
+    margin-inline: auto;
+    padding: 54px 0 76px;
+  }
+  .sn-home-energy__visual img {
+    min-height: 470px;
+  }
+}
+
+@media (max-width: 699px) {
+  .sn-rv-tech {
+    width: 100%;
+    border-radius: 0;
+  }
+  .sn-rv-tech__shell {
+    width: min(100% - 32px, 580px);
+  }
+  #roadside-readiness .sn-shell {
+    width: 100%;
+  }
+  #roadside-readiness .sn-proof__visual {
+    min-height: 420px;
+  }
+  #roadside-readiness .sn-proof__content,
+  .sn-home-energy__content {
+    width: min(100% - 32px, 580px);
+    padding: 42px 0 64px;
+  }
+  .sn-home-energy__panel {
+    border-radius: 0;
+  }
+  .sn-home-energy__visual img {
+    min-height: 340px;
+  }
+}
