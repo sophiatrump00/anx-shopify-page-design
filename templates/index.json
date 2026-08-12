@@ -57,8 +57,8 @@
         "home_slide": {
           "type": "image",
           "settings": {
-            "image_asset": "suntneew-hero-home-light-desktop.png",
-            "mobile_image_asset": "suntneew-hero-home-light-desktop.png",
+            "image_asset": "energy-star-home-hero-v1.png",
+            "mobile_image_asset": "energy-star-home-hero-v1.png",
             "content_max_width": 620,
             "mobile_text_position": "place-self-end-start text-start",
             "desktop_text_position": "sm:place-self-center-start sm:text-start",
@@ -66,7 +66,7 @@
             "title": "Power at home, built around your system.",
             "heading_tag": "h2",
             "button_text": "Explore home energy",
-            "button_link": "shopify://pages/request-for-quote",
+            "button_link": "shopify://collections/home-energy-storage",
             "text_color": "#FFFFFF",
             "button_background": "#FFFFFF",
             "button_text_color": "#1B2433",
@@ -122,13 +122,13 @@
           "type": "path",
           "settings": {
             "fallback_asset": "suntneew-use-home-energy.jpg",
-            "image_alt": "SuntNeew home energy storage system installed beside a solar-powered home",
+            "image_alt": "ENERGY STAR home energy storage system beside a solar-powered home",
             "eyebrow": "HOME ENERGY STORAGE",
             "product_label": "5.12 kWh · 10.24 kWh · High-voltage",
             "title": "Keep essential home power within reach.",
             "text": "Begin with the energy you need, then plan a compatible system around your home.",
             "link_label": "Explore home energy",
-            "link": "shopify://pages/request-for-quote"
+            "link": "shopify://collections/home-energy-storage"
           }
         }
       },
@@ -143,6 +143,107 @@
         "dark_background": false,
         "link_label": "",
         "link_url": ""
+      }
+    },
+    "product_pages": {
+      "type": "suntneew-product-grid",
+      "blocks": {
+        "a20": {
+          "type": "product_card",
+          "settings": {
+            "product": "suntneew-a20-jump-starter-8000mah",
+            "fallback_asset": "suntneew-product-a20.jpg",
+            "image_alt": "SUNTNEEW A20 jump starter",
+            "badge": "JUMP STARTER",
+            "title": "A20 Jump Starter",
+            "best_for": "Four selectable capacity and color combinations in one A20 product family.",
+            "spec_1": "8,000–16,000mAh",
+            "spec_2": "1,500–4,000A peak",
+            "spec_3": "USB-C + 2 × USB-A",
+            "price_text": "From $42.99",
+            "link_label": "View A20",
+            "link": "shopify://products/suntneew-a20-jump-starter-8000mah"
+          }
+        },
+        "a3": {
+          "type": "product_card",
+          "settings": {
+            "product": "suntneew-a3-jump-starter-16000mah",
+            "fallback_asset": "suntneew-product-a3.jpg",
+            "image_alt": "SUNTNEEW A3 16000mAh jump starter",
+            "badge": "JUMP STARTER",
+            "title": "A3 Jump Starter",
+            "best_for": "The CY-A3-GY configuration for road-ready power and device charging.",
+            "spec_1": "16,000mAh",
+            "spec_2": "2,500A peak",
+            "spec_3": "PD60W USB-C",
+            "price_text": "$79.99",
+            "link_label": "View A3",
+            "link": "shopify://products/suntneew-a3-jump-starter-16000mah"
+          }
+        },
+        "wl5a": {
+          "type": "product_card",
+          "settings": {
+            "product": "suntneew-wl5a-5-12-kwh-low-voltage-home-battery",
+            "fallback_asset": "energy-star-wl5a-main-v1.jpg",
+            "image_alt": "ENERGY STAR WL5A home battery",
+            "badge": "HOME ENERGY",
+            "title": "ENERGY STAR WL5A",
+            "best_for": "A 5.12kWh low-voltage starting point for compact home-energy systems.",
+            "spec_1": "51.2V / 100Ah",
+            "spec_2": "5.12kWh",
+            "spec_3": "Project review",
+            "price_text": "From $849",
+            "link_label": "View WL5A",
+            "link": "shopify://products/suntneew-wl5a-5-12-kwh-low-voltage-home-battery"
+          }
+        },
+        "wl10b": {
+          "type": "product_card",
+          "settings": {
+            "product": "suntneew-wl10b-10-24-kwh-low-voltage-home-battery",
+            "fallback_asset": "energy-star-wl10b-main-v1.jpg",
+            "image_alt": "ENERGY STAR WL10B home battery",
+            "badge": "HOME ENERGY",
+            "title": "ENERGY STAR WL10B",
+            "best_for": "A 10.24kWh low-voltage option for households that need more stored energy.",
+            "spec_1": "51.2V / 200Ah",
+            "spec_2": "10.24kWh",
+            "spec_3": "Project review",
+            "price_text": "From $1,488",
+            "link_label": "View WL10B",
+            "link": "shopify://products/suntneew-wl10b-10-24-kwh-low-voltage-home-battery"
+          }
+        },
+        "vh": {
+          "type": "product_card",
+          "settings": {
+            "product": "suntneew-vh-high-voltage-home-energy-storage-system",
+            "fallback_asset": "energy-star-vh10-vh15-main-v1.jpg",
+            "image_alt": "ENERGY STAR VH high-voltage home energy storage system",
+            "badge": "HIGH VOLTAGE",
+            "title": "ENERGY STAR VH System",
+            "best_for": "A modular high-voltage project path in 10.24kWh and 15.36kWh configurations.",
+            "spec_1": "2 or 3 modules",
+            "spec_2": "Smart BMS",
+            "spec_3": "System configuration",
+            "price_text": "From $1,599",
+            "link_label": "View VH system",
+            "link": "shopify://products/suntneew-vh-high-voltage-home-energy-storage-system"
+          }
+        }
+      },
+      "block_order": ["a20", "a3", "wl5a", "wl10b", "vh"],
+      "settings": {
+        "anchor_id": "shop-product-pages",
+        "eyebrow": "SHOP PRODUCT PAGES",
+        "heading": "Go straight to the product you need.",
+        "body": "Choose a jump starter or home-energy product first. Each card now goes to its specific product page, where you can select the available variant and open the detail that matters.",
+        "columns": 3,
+        "white_background": true,
+        "view_all_label": "View all home energy",
+        "view_all_link": "shopify://collections/home-energy-storage"
       }
     },
     "rv_proof": {
@@ -222,19 +323,19 @@
     "home_energy": {
       "type": "suntneew-home-energy",
       "blocks": {
-        "essential": {"type":"path","settings":{"capacity":"5.12 kWh","title":"Essential backup","text":"A compact starting point for selected household backup needs."}},
-        "coverage": {"type":"path","settings":{"capacity":"10.24 kWh","title":"More stored energy","text":"A larger usable-energy option for extended home coverage."}},
-        "system": {"type":"path","settings":{"capacity":"HIGH-VOLTAGE","title":"System-led design","text":"Choose compatible components around capacity and inverter requirements."}}
+        "essential": {"type":"path","settings":{"capacity":"5.12 kWh","title":"ENERGY STAR WL5A","text":"A compact low-voltage starting point for household backup and home-energy systems.","link_label":"View WL5A","link":"shopify://products/suntneew-wl5a-5-12-kwh-low-voltage-home-battery"}},
+        "coverage": {"type":"path","settings":{"capacity":"10.24 kWh","title":"ENERGY STAR WL10B","text":"A larger low-voltage option for extended home energy storage.","link_label":"View WL10B","link":"shopify://products/suntneew-wl10b-10-24-kwh-low-voltage-home-battery"}},
+        "system": {"type":"path","settings":{"capacity":"HIGH-VOLTAGE","title":"ENERGY STAR VH","text":"Choose the modular system configuration around inverter and project requirements.","link_label":"View VH system","link":"shopify://products/suntneew-vh-high-voltage-home-energy-storage-system"}}
       },
       "block_order": ["essential", "coverage", "system"],
       "settings": {
         "eyebrow": "HOME ENERGY STORAGE",
         "heading": "Power at home, built around real needs.",
         "body": "Choose a usable starting capacity first, then match the system architecture and inverter requirements to the way your home uses power.",
-        "image_asset": "suntneew-hero-home-light-desktop.png",
-        "image_alt": "SuntNeew home energy storage system beside a modern home",
-        "button_label": "Plan your home energy system",
-        "button_link": "shopify://pages/request-for-quote",
+        "image_asset": "energy-star-home-hero-v1.png",
+        "image_alt": "ENERGY STAR home energy storage system beside a modern solar home",
+        "button_label": "Explore home energy products",
+        "button_link": "shopify://collections/home-energy-storage",
         "note": "Individual and business customers can request a configuration. Delivery and compatibility are confirmed before ordering."
       }
     },
@@ -308,5 +409,5 @@
       }
     }
   },
-  "order": ["main_slideshow", "ways_to_power", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
+  "order": ["main_slideshow", "ways_to_power", "product_pages", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
 }
