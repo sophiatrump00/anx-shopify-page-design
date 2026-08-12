@@ -43,6 +43,19 @@
     update();
   });
 
+  document.querySelectorAll('[data-sn-rv-hotspots]').forEach((section) => {
+    const triggers = Array.from(section.querySelectorAll('[data-sn-rv-trigger]'));
+    const details = Array.from(section.querySelectorAll('[data-sn-rv-detail]'));
+
+    const show = (trigger) => {
+      const targetId = trigger.getAttribute('aria-controls');
+      triggers.forEach((item) => item.setAttribute('aria-expanded', item === trigger ? 'true' : 'false'));
+      details.forEach((detail) => { detail.hidden = detail.id !== targetId; });
+    };
+
+    triggers.forEach((trigger) => trigger.addEventListener('click', () => show(trigger)));
+  });
+
   document.querySelectorAll('[data-sn-chooser]').forEach((chooser) => {
     const buttons = Array.from(chooser.querySelectorAll('[data-sn-choice]'));
     const resultTitle = chooser.querySelector('[data-sn-result-title]');

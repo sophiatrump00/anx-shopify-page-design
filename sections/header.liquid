@@ -32,7 +32,7 @@
 
     {%- if use_asset_logo -%}
       --header-logo-width: {{ section.settings.logo_mobile_max_width }}px;
-      --header-logo-height: {{ section.settings.logo_mobile_max_width | divided_by: 2.5 | round }}px;
+      --header-logo-height: {{ section.settings.logo_mobile_max_width | divided_by: section.settings.logo_asset_aspect_ratio | round }}px;
     {%- elsif section.settings.logo != blank -%}
       --header-logo-width: {{ section.settings.logo_mobile_max_width }}px;
       --header-logo-height: {{ section.settings.logo_mobile_max_width | divided_by: section.settings.logo.aspect_ratio | round }}px;
@@ -61,7 +61,7 @@
     #shopify-section-{{ section.id }} {
       {%- if use_asset_logo -%}
         --header-logo-width: {{ section.settings.logo_max_width }}px;
-        --header-logo-height: {{ section.settings.logo_max_width | divided_by: 2.5 | round }}px;
+        --header-logo-height: {{ section.settings.logo_max_width | divided_by: section.settings.logo_asset_aspect_ratio | round }}px;
       {%- elsif section.settings.logo != blank -%}
         --header-logo-width: {{ section.settings.logo_max_width }}px;
         --header-logo-height: {{ section.settings.logo_max_width | divided_by: section.settings.logo.aspect_ratio | round }}px;
@@ -268,9 +268,20 @@
             alt="{{ shop.name | escape }}"
             class="header__logo-image header__logo-image--asset"
             width="{{ section.settings.logo_max_width }}"
-            height="{{ section.settings.logo_max_width | divided_by: 2.5 | round }}"
+            height="{{ section.settings.logo_max_width | divided_by: section.settings.logo_asset_aspect_ratio | round }}"
             loading="eager"
           >
+          {%- if section.settings.transparent_logo_asset != blank -%}
+            <img
+              src="{{ section.settings.transparent_logo_asset | asset_url }}"
+              alt=""
+              class="header__logo-image header__logo-image--asset header__logo-image--transparent"
+              width="{{ section.settings.logo_max_width }}"
+              height="{{ section.settings.logo_max_width | divided_by: section.settings.logo_asset_aspect_ratio | round }}"
+              loading="eager"
+              aria-hidden="true"
+            >
+          {%- endif -%}
         {%- elsif section.settings.logo -%}
           {%- capture sizes -%}{{ section.settings.logo_max_width }}px{%- endcapture -%}
           {%- capture widths -%}{{ section.settings.logo_max_width | times: 2 | at_most: section.settings.logo.width }}, {{ section.settings.logo_max_width | times: 3 | at_most: section.settings.logo.width }}{%- endcapture -%}
@@ -457,6 +468,22 @@
       "label": "Theme logo asset filename",
       "info": "Optional. Uses a file from the theme assets folder and overrides the image picker.",
       "default": "suntneew-logo-light.png"
+    },
+    {
+      "type": "text",
+      "id": "transparent_logo_asset",
+      "label": "Transparent header logo asset filename",
+      "info": "Optional. Uses a second theme asset while the header overlays the first section.",
+      "default": "suntneew-logo-orange-white-clean.png"
+    },
+    {
+      "type": "range",
+      "id": "logo_asset_aspect_ratio",
+      "min": 1,
+      "max": 8,
+      "step": 0.1,
+      "label": "Theme asset logo aspect ratio",
+      "default": 6.2
     },
     {
       "type": "range",

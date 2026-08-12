@@ -58,11 +58,11 @@
             "heading_tag": "h2",
             "button_text": "Explore home energy",
             "button_link": "shopify://pages/request-for-quote",
-            "text_color": "#1B2433",
-            "button_background": "#263D63",
-            "button_text_color": "#FFFFFF",
-            "overlay_color": "#FFFFFF",
-            "overlay_opacity": 0,
+            "text_color": "#FFFFFF",
+            "button_background": "#FFFFFF",
+            "button_text_color": "#1B2433",
+            "overlay_color": "#172033",
+            "overlay_opacity": 35,
             "background": "#EEF5FF"
           }
         }
@@ -70,7 +70,7 @@
       "block_order": ["rv_slide", "jump_slide", "home_slide"],
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
+        "allow_transparent_header": true,
         "show_initial_transition": true,
         "image_size": "lg",
         "controls_type": "numbers",
@@ -79,17 +79,6 @@
         "cycle_speed": 7,
         "background": "#F7FAFF"
       }
-    },
-    "trust_strip": {
-      "type": "suntneew-trust-strip",
-      "blocks": {
-        "fit": {"type":"item","settings":{"icon":"battery","title":"Fit first","text":"Match the battery case, terminal layout and system voltage."}},
-        "power": {"type":"item","settings":{"icon":"check","title":"Clear power comparisons","text":"Compare usable energy and continuous output separately."}},
-        "support": {"type":"item","settings":{"icon":"headset","title":"Guidance before you buy","text":"Get model-specific guidance when you need it."}},
-        "delivery": {"type":"item","settings":{"icon":"truck","title":"Plan before you order","text":"Confirm system compatibility before an order is placed."}}
-      },
-      "block_order": ["fit", "power", "support", "delivery"],
-      "settings": {"accessibility_label":"SuntNeew selection and support highlights"}
     },
     "ways_to_power": {
       "type": "suntneew-path-grid",
@@ -148,27 +137,53 @@
       }
     },
     "rv_proof": {
-      "type": "suntneew-proof",
+      "type": "suntneew-rv-hotspots",
+      "blocks": {
+        "cycle_life": {
+          "type": "feature",
+          "settings": {
+            "x_position": 34,
+            "y_position": 54,
+            "title": "Long-life LiFePO4 power",
+            "text": "<p>Up to 15,000 cycles* under laboratory conditions, with actual life varying by model and use.</p>"
+          }
+        },
+        "bluetooth": {
+          "type": "feature",
+          "settings": {
+            "x_position": 54,
+            "y_position": 25,
+            "title": "See your power live",
+            "text": "<p>Monitor SOC, voltage, temperature and cell-voltage difference from your phone with Bluetooth 5.0.</p>"
+          }
+        },
+        "temperature": {
+          "type": "feature",
+          "settings": {
+            "x_position": 73,
+            "y_position": 58,
+            "title": "Built for changing temperatures",
+            "text": "<p>Charge from 32°F to 131°F and discharge from -4°F to 140°F. Charging pauses below 32°F and resumes when the battery returns to a safe charging range.</p>"
+          }
+        }
+      },
+      "block_order": ["cycle_life", "bluetooth", "temperature"],
       "settings": {
-        "anchor_id": "rv-power-fit",
-        "white_background": false,
-        "reverse_layout": false,
-        "before_desktop_asset": "suntneew-proof-battery-before-desktop.jpg",
-        "after_desktop_asset": "suntneew-proof-battery-after-desktop.jpg",
-        "before_mobile_asset": "suntneew-proof-battery-before-mobile.jpg",
-        "after_mobile_asset": "suntneew-proof-battery-after-mobile.jpg",
-        "before_alt": "SuntNeew Group 31 RV battery in freezing conditions",
-        "after_alt": "SuntNeew Group 31 RV battery in hot, dry conditions",
-        "eyebrow": "WIDE-TEMPERATURE PERFORMANCE",
-        "heading": "Wide‑temperature discharge. Protected charging.",
-        "body": "The RV battery range is rated for wide-temperature operation. Charging automatically pauses below 32°F and resumes when the battery returns to a safe charging range.",
-        "point_1": "Charge: 32°F to 131°F",
-        "point_2": "Discharge: -4°F to 140°F",
-        "point_3": "Storage: 14°F to 122°F",
-        "primary_label": "Explore RV batteries",
-        "primary_link": "shopify://collections/rv-batteries",
-        "secondary_label": "",
-        "secondary_link": ""
+        "anchor_id": "rv-long-life-power",
+        "desktop_background_asset": "suntneew-rv-tech-bg-desktop.jpg",
+        "mobile_background_asset": "suntneew-rv-tech-bg-mobile.jpg",
+        "product_asset": "suntneew-rv-g31-cutout.png",
+        "product_alt": "SuntNeew Group 31 100Ah LiFePO4 RV battery",
+        "eyebrow": "LONG-LIFE SMART RV POWER",
+        "heading": "Power you can see. Protection you can trust.",
+        "body": "Built for RV living with long cycle life, Bluetooth 5.0 monitoring, built-in BMS protection and low-temperature charge protection.",
+        "stat_1": "Up to 15,000 Cycles*",
+        "stat_2": "Bluetooth 5.0 Monitoring",
+        "stat_3": "Low-Temperature Charge Protection",
+        "stat_4": "-4°F to 140°F Discharge",
+        "footnote": "*Up to 15,000 cycles under laboratory conditions. Actual cycle life varies by model, depth of discharge, charge/discharge rate, temperature and usage.",
+        "button_label": "Explore RV batteries",
+        "button_link": "shopify://collections/rv-batteries"
       }
     },
     "jump_proof": {
@@ -212,6 +227,31 @@
         "button_label": "Plan your home energy system",
         "button_link": "shopify://pages/request-for-quote",
         "note": "Individual and business customers can request a configuration. Delivery and compatibility are confirmed before ordering."
+      }
+    },
+    "confidence_grid": {
+      "type": "suntneew-confidence-grid",
+      "blocks": {
+        "fit": {"type":"item","settings":{"icon":"fit","title":"Fit first","text":"Match the battery case, terminal layout and system voltage."}},
+        "compare": {"type":"item","settings":{"icon":"compare","title":"Clear power comparisons","text":"Compare usable energy and continuous output separately."}},
+        "documents": {"type":"item","settings":{"icon":"document","title":"Model-specific documents","text":"Use the specifications and manuals for the exact model you are considering."}},
+        "support": {"type":"item","settings":{"icon":"support","title":"Selection support","text":"Get practical guidance for product selection and system setup."}}
+      },
+      "block_order": ["fit", "compare", "documents", "support"],
+      "settings": {
+        "eyebrow": "CLEAR BEFORE YOU CHOOSE",
+        "heading": "Choose with confidence.",
+        "body": "Clear specifications, model-specific documents and practical selection guidance—without making promises that depend on an unconfirmed order.",
+        "product_asset": "suntneew-product-g31.jpg",
+        "product_alt": "SuntNeew Group 31 RV battery",
+        "product_title": "Find the right RV battery",
+        "product_text": "Compare case size, usable energy, continuous output and system voltage in one place.",
+        "product_link_label": "Compare RV batteries",
+        "product_link": "shopify://collections/rv-batteries",
+        "guidance_title": "Plan before you order",
+        "guidance_text": "Confirm the application, system compatibility and available delivery options before an order is placed.",
+        "guidance_link_label": "Request guidance",
+        "guidance_link": "shopify://pages/request-for-quote"
       }
     },
     "faq": {
@@ -259,5 +299,5 @@
       }
     }
   },
-  "order": ["main_slideshow", "trust_strip", "ways_to_power", "rv_proof", "jump_proof", "home_energy", "faq", "brand_close"]
+  "order": ["main_slideshow", "ways_to_power", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
 }
