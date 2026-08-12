@@ -591,8 +591,8 @@
   .sn-rv-tech__hotspot[aria-expanded="true"] { transform: translate(-50%,-50%); }
 }
 
-/* Full-bleed product stories experiment.
-   Backgrounds reach the viewport edge while copy and controls stay on the shared content grid. */
+/* Full-bleed product stories experiment, iteration 2.
+   The stories keep their own visual language and use deliberate transition space between them. */
 .sn-rv-tech-section {
   position: relative;
   background: #080d14;
@@ -611,15 +611,21 @@
   bottom: 0;
   left: 0;
   height: clamp(38px, 5vw, 78px);
-  background: linear-gradient(180deg, rgba(8,13,20,0), rgba(15,22,31,.72));
+  background: linear-gradient(180deg, rgba(8,13,20,0), rgba(8,13,20,.82));
   content: '';
   pointer-events: none;
 }
 
+/* A cool neutral transition separates RV power from the darker roadside product studio. */
 #roadside-readiness {
-  background:
-    radial-gradient(circle at 77% 42%, rgba(255,255,255,.96) 0, rgba(255,255,255,0) 34%),
-    linear-gradient(180deg, #111923 0%, #dce3eb 12%, #f7f9fb 52%, #edf2f6 100%);
+  padding-block: clamp(88px, 7.5vw, 124px) clamp(72px, 6vw, 104px);
+  background: linear-gradient(
+    180deg,
+    #080d14 0,
+    #151a21 clamp(88px, 7.5vw, 124px),
+    #151a21 calc(100% - clamp(72px, 6vw, 104px)),
+    #ece9e2 100%
+  );
 }
 #roadside-readiness .sn-shell {
   width: 100%;
@@ -629,62 +635,133 @@
   min-height: clamp(650px, 48vw, 760px);
   border: 0;
   border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  background: #151a21;
+  color: #fff;
+  box-shadow: 0 30px 80px rgba(25,31,39,.16);
 }
 #roadside-readiness .sn-proof__visual {
   min-height: clamp(650px, 48vw, 760px);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 13%, #000 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 13%, #000 100%);
+  background: #171b22;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 100%);
 }
 #roadside-readiness .sn-proof__content {
   padding-block: clamp(72px, 8vw, 118px);
   padding-right: clamp(32px, 5vw, 72px);
   padding-left: max(24px, calc((100vw - 1440px) / 2 + 24px));
 }
+#roadside-readiness .sn-proof--light .sn-kicker { color: #ff8a45; }
+#roadside-readiness .sn-proof--light .sn-copy { color: rgba(255,255,255,.66); }
+#roadside-readiness .sn-proof--light .sn-proof__point { color: rgba(255,255,255,.78); }
+#roadside-readiness .sn-proof--light .sn-proof__point::before { background: #ff6a1a; }
+#roadside-readiness .sn-proof--light .sn-button { background: #ff6a1a; color: #fff; }
+#roadside-readiness .sn-proof--light .sn-button:hover { background: #e9560a; }
 
+/* Home energy becomes a scene-led editorial spread instead of another split card. */
 .sn-home-energy {
-  background:
-    radial-gradient(circle at 18% 40%, rgba(255,255,255,.9) 0, rgba(255,255,255,0) 37%),
-    linear-gradient(180deg, #edf2f6 0%, #f7f8f6 45%, #e9eee8 100%);
+  padding-block: clamp(72px, 6vw, 104px) clamp(92px, 8vw, 132px);
+  background: linear-gradient(180deg, #ece9e2 0%, #f2f0eb 38%, #f6f5f1 100%);
 }
 .sn-home-energy .sn-light-shell {
   width: 100%;
   padding-block: 0;
 }
 .sn-home-energy__panel {
-  min-height: clamp(690px, 50vw, 790px);
+  position: relative;
+  display: block;
+  min-height: clamp(720px, 55vw, 860px);
   border: 0;
   border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  background: #edf1ef;
+  box-shadow: 0 30px 88px rgba(49,56,58,.12);
 }
 .sn-home-energy__content {
-  padding-block: clamp(72px, 8vw, 118px);
-  padding-right: clamp(32px, 5vw, 76px);
+  position: relative;
+  z-index: 2;
+  width: min(720px, 50vw);
+  min-height: clamp(720px, 55vw, 860px);
+  padding-block: clamp(76px, 8vw, 124px);
+  padding-right: clamp(44px, 6vw, 96px);
   padding-left: max(24px, calc((100vw - 1440px) / 2 + 24px));
 }
+.sn-home-energy__body { max-width: 560px; }
+.sn-home-energy__choices {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  max-width: 650px;
+  border-block: 1px solid rgba(50,68,82,.19);
+}
+.sn-home-energy__choice {
+  min-height: 126px;
+  padding: 18px 18px 17px;
+  border: 0;
+  border-left: 1px solid rgba(50,68,82,.19);
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+}
+.sn-home-energy__choice:first-child { border-left: 0; padding-left: 0; }
+.sn-home-energy__visual {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  min-height: 100%;
+}
+.sn-home-energy__visual::after {
+  background: linear-gradient(
+    90deg,
+    rgba(241,244,241,.99) 0%,
+    rgba(241,244,241,.95) 29%,
+    rgba(241,244,241,.68) 43%,
+    rgba(241,244,241,.08) 61%,
+    rgba(241,244,241,0) 72%
+  );
+}
 .sn-home-energy__visual img {
-  min-height: clamp(690px, 50vw, 790px);
+  height: 100%;
+  min-height: clamp(720px, 55vw, 860px);
+  object-position: 61% center;
 }
 
 @media (max-width: 1099px) {
   #roadside-readiness {
-    background: linear-gradient(180deg, #111923 0%, #dce3eb 7%, #f7f9fb 47%, #edf2f6 100%);
+    padding-block: 82px 66px;
+    background: linear-gradient(180deg, #080d14 0, #151a21 82px, #151a21 calc(100% - 66px), #ece9e2 100%);
   }
   #roadside-readiness .sn-proof__visual {
-    min-height: 470px;
-    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 84%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 0%, #000 84%, transparent 100%);
+    min-height: 480px;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 90%, transparent 100%);
   }
-  #roadside-readiness .sn-proof__content,
-  .sn-home-energy__content {
+  #roadside-readiness .sn-proof__content {
     width: min(760px, calc(100% - 48px));
     margin-inline: auto;
-    padding: 54px 0 76px;
+    padding: 44px 0 72px;
+  }
+  .sn-home-energy {
+    padding-block: 66px 96px;
+  }
+  .sn-home-energy__panel {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+  }
+  .sn-home-energy__visual {
+    position: relative;
+    min-height: 480px;
+  }
+  .sn-home-energy__visual::after {
+    background: linear-gradient(180deg, rgba(241,244,241,0) 64%, rgba(241,244,241,.95) 100%);
   }
   .sn-home-energy__visual img {
-    min-height: 470px;
+    min-height: 480px;
+    object-position: 61% center;
+  }
+  .sn-home-energy__content {
+    width: min(760px, calc(100% - 48px));
+    min-height: 0;
+    margin-inline: auto;
+    padding: 42px 0 76px;
   }
 }
 
@@ -696,21 +773,36 @@
   .sn-rv-tech__shell {
     width: min(100% - 32px, 580px);
   }
-  #roadside-readiness .sn-shell {
-    width: 100%;
+  #roadside-readiness {
+    padding-block: 56px 48px;
+    background: linear-gradient(180deg, #080d14 0, #151a21 56px, #151a21 calc(100% - 48px), #ece9e2 100%);
   }
-  #roadside-readiness .sn-proof__visual {
-    min-height: 420px;
-  }
-  #roadside-readiness .sn-proof__content,
-  .sn-home-energy__content {
+  #roadside-readiness .sn-shell { width: 100%; }
+  #roadside-readiness .sn-proof__visual { min-height: 400px; }
+  #roadside-readiness .sn-proof__content {
     width: min(100% - 32px, 580px);
-    padding: 42px 0 64px;
+    padding: 34px 0 58px;
   }
-  .sn-home-energy__panel {
-    border-radius: 0;
-  }
+  .sn-home-energy { padding-block: 48px 72px; }
+  .sn-home-energy__visual { min-height: 340px; }
   .sn-home-energy__visual img {
     min-height: 340px;
+    object-position: 66% center;
   }
+  .sn-home-energy__content {
+    width: min(100% - 32px, 580px);
+    padding: 34px 0 58px;
+  }
+  .sn-home-energy__choices {
+    grid-template-columns: 1fr;
+    border-block: 1px solid rgba(50,68,82,.19);
+  }
+  .sn-home-energy__choice,
+  .sn-home-energy__choice:first-child {
+    min-height: auto;
+    padding: 14px 0;
+    border-top: 1px solid rgba(50,68,82,.19);
+    border-left: 0;
+  }
+  .sn-home-energy__choice:first-child { border-top: 0; }
 }
