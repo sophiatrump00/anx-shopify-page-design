@@ -21,14 +21,19 @@
 
 @media screen and (min-width: 1150px) {
   .header__wrapper {
-    width: min(100% - 56px, 1540px);
-    margin-inline: auto;
+    /* Keep the header on the same content rails as the hero instead of adding a second inset. */
+    width: 100%;
+    margin-inline: 0;
+    grid-template:
+      "logo main-nav secondary-nav"
+      / max-content max-content minmax(0, 1fr);
+    column-gap: clamp(28px, 2.6vw, 44px);
   }
 
   .header__main-nav {
     justify-self: start;
     min-width: 0;
-    margin-inline-start: clamp(42px, 4.5vw, 88px);
+    margin-inline-start: 0;
   }
 
   .header__main-nav .header__link-list {
