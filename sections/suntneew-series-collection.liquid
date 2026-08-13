@@ -1,17 +1,15 @@
 <section class="sn-series-page sn-series-page--{{ section.settings.catalog_state }}" id="{{ section.settings.anchor_id | escape }}">
   <div class="sn-series-page__hero">
-    <div class="sn-series-shell sn-series-page__hero-grid">
-      <div class="sn-series-page__hero-copy">
-        <p class="sn-kicker">{{ section.settings.eyebrow }}</p>
-        <h1>{{ section.settings.heading }}</h1>
-        <p>{{ section.settings.body }}</p>
-        {%- if section.settings.back_link != blank -%}
-          <a class="sn-series-button" href="{{ section.settings.back_link }}">{{ section.settings.back_label }}</a>
-        {%- endif -%}
-      </div>
-      <div class="sn-series-page__hero-media">
-        <img src="{{ section.settings.hero_asset | asset_url }}" alt="{{ section.settings.hero_alt | escape }}" width="1800" height="1200" loading="eager">
-      </div>
+    <div class="sn-series-page__hero-media" aria-hidden="true">
+      <img src="{{ section.settings.hero_asset | asset_url }}" alt="" width="2098" height="749" loading="eager">
+    </div>
+    <div class="sn-series-shell sn-series-page__hero-copy">
+      <p class="sn-kicker">{{ section.settings.eyebrow }}</p>
+      <h1>{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.body }}</p>
+      {%- if section.settings.back_link != blank -%}
+        <a class="sn-series-button" href="{{ section.settings.back_link }}">{{ section.settings.back_label }}</a>
+      {%- endif -%}
     </div>
   </div>
 

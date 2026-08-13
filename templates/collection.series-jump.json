@@ -9,58 +9,40 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "suntneew-series-collection",
-      "block_order": ["a20", "a3"],
-      "blocks": {
-        "a20": {
-          "type": "product_card",
-          "settings": {
-            "fallback_asset": "suntneew-product-a20.jpg",
-            "image_alt": "SUNTNEEW A20 jump starter",
-            "badge": "4 VARIANTS",
-            "eyebrow": "JUMP STARTER",
-            "title": "A20 Jump Starter",
-            "text": "One A20 family with selectable 8,000mAh colors plus 12,000mAh and 16,000mAh capacity options.",
-            "fact_one": "8,000–16,000mAh",
-            "fact_two": "Up to 4,000A peak",
-            "fact_three": "USB-C + 2 × USB-A",
-            "link_label": "View A20 details",
-            "link": "shopify://products/suntneew-a20-jump-starter-8000mah"
-          }
-        },
-        "a3": {
-          "type": "product_card",
-          "settings": {
-            "fallback_asset": "suntneew-product-a3.jpg",
-            "image_alt": "SUNTNEEW A3 16000mAh jump starter",
-            "badge": "CY-A3-GY",
-            "eyebrow": "JUMP STARTER",
-            "title": "A3 Jump Starter",
-            "text": "A 16,000mAh road-ready configuration combining 2,500A peak starting power with PD60W device charging.",
-            "fact_one": "16,000mAh / 59.2Wh",
-            "fact_two": "2,500A peak",
-            "fact_three": "PD60W USB-C",
-            "link_label": "View A3 details",
-            "link": "shopify://products/suntneew-a3-jump-starter-16000mah"
-          }
-        }
-      },
+    "banner": {
+      "type": "collection-banner",
       "settings": {
-        "anchor_id": "jump-starters",
-        "eyebrow": "JUMP STARTERS",
-        "heading": "Start ready. Keep moving.",
-        "body": "Choose the portable power format that fits the vehicle, starting requirement and device-charging needs you actually carry.",
-        "hero_asset": "suntneew-hero-a20-desktop.jpg",
-        "hero_alt": "SUNTNEEW A20 jump starter beside a vehicle",
-        "back_label": "All product series",
-        "back_link": "shopify://collections",
-        "catalog_state": "available",
-        "catalog_eyebrow": "CHOOSE A PRODUCT",
-        "catalog_heading": "Jump starters built around the road.",
-        "catalog_body": "Open a product page to select a variant and review the capability of the model you are considering."
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h0",
+        "image_size": "md",
+        "asset_image": "suntneew-hero-jump-light-desktop.png",
+        "asset_image_alt": "SUNTNEEW jump starter connected in a vehicle engine bay",
+        "mobile_text_position": "place-self-center-start text-start",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#FFFFFF",
+        "overlay_color": "#102030",
+        "overlay_opacity": 62
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 12,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "filter_layout": "drawer",
+        "show_sort_by": false,
+        "show_filters": false,
+        "show_filter_group_name": false,
+        "show_filter_values_count": false,
+        "open_first_filter_group": false
       }
     }
   },
-  "order": ["main"]
+  "order": ["banner", "main"]
 }

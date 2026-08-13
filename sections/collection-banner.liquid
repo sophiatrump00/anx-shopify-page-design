@@ -1,6 +1,6 @@
 {%- assign show_image = false -%}
 
-{%- if section.settings.show_collection_image and collection.image or section.settings.image -%}
+{%- if section.settings.show_collection_image and collection.image or section.settings.image or section.settings.asset_image != blank -%}
   {%- assign show_image = true -%}
 {%- endif -%}
 
@@ -70,11 +70,21 @@
           >
         {%- endif -%}
 
-        {{-
-          desktop_image
-          | image_url: width: desktop_image.width
-          | image_tag: fetchpriority: 'high', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200'
-        -}}
+        {%- if section.settings.asset_image != blank -%}
+          <img
+            src="{{ section.settings.asset_image | asset_url }}"
+            alt="{{ section.settings.asset_image_alt | default: collection.title | escape }}"
+            width="2800"
+            height="1000"
+            loading="eager"
+          >
+        {%- else -%}
+          {{-
+            desktop_image
+            | image_url: width: desktop_image.width
+            | image_tag: fetchpriority: 'high', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200'
+          -}}
+        {%- endif -%}
       </picture>
 
       {%- if collection_header != blank -%}
@@ -229,6 +239,17 @@
       "id": "image",
       "label": "Image",
       "info": "3200 x 1600px .jpg recommended. Default to collection image."
+    },
+    {
+      "type": "text",
+      "id": "asset_image",
+      "label": "Theme image asset filename",
+      "info": "Optional. Uses an image from the theme assets folder and overrides the image picker."
+    },
+    {
+      "type": "text",
+      "id": "asset_image_alt",
+      "label": "Theme image alt text"
     },
     {
       "type": "image_picker",

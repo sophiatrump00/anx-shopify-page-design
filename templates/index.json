@@ -145,107 +145,6 @@
         "link_url": ""
       }
     },
-    "product_pages": {
-      "type": "suntneew-product-grid",
-      "blocks": {
-        "a20": {
-          "type": "product_card",
-          "settings": {
-            "product": "suntneew-a20-jump-starter-8000mah",
-            "fallback_asset": "suntneew-product-a20.jpg",
-            "image_alt": "SUNTNEEW A20 jump starter",
-            "badge": "JUMP STARTER",
-            "title": "A20 Jump Starter",
-            "best_for": "Four selectable capacity and color combinations in one A20 product family.",
-            "spec_1": "8,000–16,000mAh",
-            "spec_2": "1,500–4,000A peak",
-            "spec_3": "USB-C + 2 × USB-A",
-            "price_text": "From $42.99",
-            "link_label": "View A20",
-            "link": "shopify://products/suntneew-a20-jump-starter-8000mah"
-          }
-        },
-        "a3": {
-          "type": "product_card",
-          "settings": {
-            "product": "suntneew-a3-jump-starter-16000mah",
-            "fallback_asset": "suntneew-product-a3.jpg",
-            "image_alt": "SUNTNEEW A3 16000mAh jump starter",
-            "badge": "JUMP STARTER",
-            "title": "A3 Jump Starter",
-            "best_for": "The CY-A3-GY configuration for road-ready power and device charging.",
-            "spec_1": "16,000mAh",
-            "spec_2": "2,500A peak",
-            "spec_3": "PD60W USB-C",
-            "price_text": "$79.99",
-            "link_label": "View A3",
-            "link": "shopify://products/suntneew-a3-jump-starter-16000mah"
-          }
-        },
-        "wl5a": {
-          "type": "product_card",
-          "settings": {
-            "product": "suntneew-wl5a-5-12-kwh-low-voltage-home-battery",
-            "fallback_asset": "energy-star-wl5a-main-v1.jpg",
-            "image_alt": "ENERGY STAR WL5A home battery",
-            "badge": "HOME ENERGY",
-            "title": "ENERGY STAR WL5A",
-            "best_for": "A 5.12kWh low-voltage starting point for compact home-energy systems.",
-            "spec_1": "51.2V / 100Ah",
-            "spec_2": "5.12kWh",
-            "spec_3": "Project review",
-            "price_text": "From $849",
-            "link_label": "View WL5A",
-            "link": "shopify://products/suntneew-wl5a-5-12-kwh-low-voltage-home-battery"
-          }
-        },
-        "wl10b": {
-          "type": "product_card",
-          "settings": {
-            "product": "suntneew-wl10b-10-24-kwh-low-voltage-home-battery",
-            "fallback_asset": "energy-star-wl10b-main-v1.jpg",
-            "image_alt": "ENERGY STAR WL10B home battery",
-            "badge": "HOME ENERGY",
-            "title": "ENERGY STAR WL10B",
-            "best_for": "A 10.24kWh low-voltage option for households that need more stored energy.",
-            "spec_1": "51.2V / 200Ah",
-            "spec_2": "10.24kWh",
-            "spec_3": "Project review",
-            "price_text": "From $1,488",
-            "link_label": "View WL10B",
-            "link": "shopify://products/suntneew-wl10b-10-24-kwh-low-voltage-home-battery"
-          }
-        },
-        "vh": {
-          "type": "product_card",
-          "settings": {
-            "product": "suntneew-vh-high-voltage-home-energy-storage-system",
-            "fallback_asset": "energy-star-vh10-vh15-main-v1.jpg",
-            "image_alt": "ENERGY STAR VH high-voltage home energy storage system",
-            "badge": "HIGH VOLTAGE",
-            "title": "ENERGY STAR VH System",
-            "best_for": "A modular high-voltage project path in 10.24kWh and 15.36kWh configurations.",
-            "spec_1": "2 or 3 modules",
-            "spec_2": "Smart BMS",
-            "spec_3": "System configuration",
-            "price_text": "From $1,599",
-            "link_label": "View VH system",
-            "link": "shopify://products/suntneew-vh-high-voltage-home-energy-storage-system"
-          }
-        }
-      },
-      "block_order": ["a20", "a3", "wl5a", "wl10b", "vh"],
-      "settings": {
-        "anchor_id": "shop-product-pages",
-        "eyebrow": "SHOP PRODUCT PAGES",
-        "heading": "Featured products, after you choose a series.",
-        "body": "Start with a product series above. These cards then take you to the corresponding product detail page, where you can select the available variant and review the information that matters.",
-        "columns": 3,
-        "white_background": true,
-        "view_all_label": "View all home energy",
-        "view_all_link": "shopify://collections/home-energy-storage"
-      }
-    },
     "jump_proof": {
       "type": "suntneew-proof",
       "settings": {
@@ -359,5 +258,5 @@
       }
     }
   },
-  "order": ["main_slideshow", "ways_to_power", "product_pages", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
+  "order": ["main_slideshow", "ways_to_power", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
 }

@@ -54,9 +54,9 @@
       },
       "block_order": ["rv", "jump", "home"],
       "settings": {
-        "eyebrow": "SUNTNEEW PRODUCT SERIES",
-        "heading": "Choose the power system first.",
-        "body": "Begin with the place power is used. Then move into the relevant series and, where available, its individual product pages."
+        "eyebrow": "ALL PRODUCTS",
+        "heading": "Power systems for the road, home and what comes next.",
+        "body": "Browse the three SuntNeew product series. Each series has its own product collection, with available models leading straight to the relevant product detail page."
       }
     }
   },

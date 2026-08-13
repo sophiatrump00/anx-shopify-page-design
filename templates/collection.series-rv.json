@@ -14,17 +14,17 @@
       "settings": {
         "anchor_id": "rv-batteries",
         "eyebrow": "RV BATTERIES",
-        "heading": "The RV power series is being prepared.",
-        "body": "RV Batteries remains one of SuntNeew's three product series. We are keeping this category ready while its product listings and individual detail pages are completed.",
+        "heading": "RV power, coming into view.",
+        "body": "RV Batteries remains one of SuntNeew's three product series. We are keeping this collection ready while its product listings and individual detail pages are completed.",
         "hero_asset": "suntneew-hero-rv-desktop.jpg",
         "hero_alt": "RV campsite at dusk",
         "back_label": "All product series",
         "back_link": "shopify://collections",
         "catalog_state": "preparing",
         "empty_eyebrow": "CATALOG IN PREPARATION",
-        "empty_heading": "No RV battery products are shown here yet.",
-        "empty_body": "This is intentional: the RV series stays visible in the site's structure, while product cards and RV product pages remain temporarily blank.",
-        "empty_label": "Explore other product series",
+        "empty_heading": "This collection is getting ready for the road.",
+        "empty_body": "The RV series stays visible in the site structure. Product cards and RV product pages will appear here when the range is ready to launch.",
+        "empty_label": "Browse all products",
         "empty_link": "shopify://collections"
       }
     }

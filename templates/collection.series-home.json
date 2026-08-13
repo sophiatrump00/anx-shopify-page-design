@@ -9,74 +9,40 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "suntneew-series-collection",
-      "block_order": ["wl5a", "wl10b", "vh"],
-      "blocks": {
-        "wl5a": {
-          "type": "product_card",
-          "settings": {
-            "fallback_asset": "energy-star-wl5a-main-v1.jpg",
-            "image_alt": "ENERGY STAR WL5A home battery",
-            "badge": "LOW VOLTAGE",
-            "eyebrow": "ENERGY STAR",
-            "title": "WL5A 5.12kWh",
-            "text": "A compact low-voltage starting point for home backup and home-energy system planning.",
-            "fact_one": "51.2V / 100Ah",
-            "fact_two": "5.12kWh",
-            "fact_three": "Low-voltage system",
-            "link_label": "View WL5A details",
-            "link": "shopify://products/suntneew-wl5a-5-12-kwh-low-voltage-home-battery"
-          }
-        },
-        "wl10b": {
-          "type": "product_card",
-          "settings": {
-            "fallback_asset": "energy-star-wl10b-main-v1.jpg",
-            "image_alt": "ENERGY STAR WL10B home battery",
-            "badge": "LOW VOLTAGE",
-            "eyebrow": "ENERGY STAR",
-            "title": "WL10B 10.24kWh",
-            "text": "A larger low-voltage storage option for households that need more usable stored energy.",
-            "fact_one": "51.2V / 200Ah",
-            "fact_two": "10.24kWh",
-            "fact_three": "Low-voltage system",
-            "link_label": "View WL10B details",
-            "link": "shopify://products/suntneew-wl10b-10-24-kwh-low-voltage-home-battery"
-          }
-        },
-        "vh": {
-          "type": "product_card",
-          "settings": {
-            "fallback_asset": "energy-star-vh10-vh15-main-v1.jpg",
-            "image_alt": "ENERGY STAR VH high-voltage home energy system",
-            "badge": "HIGH VOLTAGE",
-            "eyebrow": "ENERGY STAR",
-            "title": "VH 10.24 / 15.36kWh",
-            "text": "A modular high-voltage system path for configurations that need to be planned around inverter and project requirements.",
-            "fact_one": "2 or 3 modules",
-            "fact_two": "10.24 / 15.36kWh",
-            "fact_three": "Smart BMS",
-            "link_label": "View VH details",
-            "link": "shopify://products/suntneew-vh-high-voltage-home-energy-storage-system"
-          }
-        }
-      },
+    "banner": {
+      "type": "collection-banner",
       "settings": {
-        "anchor_id": "home-energy-storage",
-        "eyebrow": "HOME ENERGY STORAGE",
-        "heading": "Stored energy, planned around home.",
-        "body": "Start with capacity, then compare the low-voltage and high-voltage system paths that match your home's configuration needs.",
-        "hero_asset": "energy-star-home-hero-v1.png",
-        "hero_alt": "ENERGY STAR home energy storage system beside a solar home",
-        "back_label": "All product series",
-        "back_link": "shopify://collections",
-        "catalog_state": "available",
-        "catalog_eyebrow": "CHOOSE A PRODUCT",
-        "catalog_heading": "Home energy storage configurations.",
-        "catalog_body": "Every card keeps the ENERGY STAR product branding and leads to the matching product detail page."
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h0",
+        "image_size": "md",
+        "asset_image": "suntneew-hero-home-light-desktop.png",
+        "asset_image_alt": "ENERGY STAR home energy storage beside a solar-powered home",
+        "mobile_text_position": "place-self-center-start text-start",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#132330",
+        "overlay_color": "#F6FBFD",
+        "overlay_opacity": 20
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 12,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "filter_layout": "drawer",
+        "show_sort_by": false,
+        "show_filters": false,
+        "show_filter_group_name": false,
+        "show_filter_values_count": false,
+        "open_first_filter_group": false
       }
     }
   },
-  "order": ["main"]
+  "order": ["banner", "main"]
 }

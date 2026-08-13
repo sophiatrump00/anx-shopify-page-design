@@ -4,7 +4,8 @@
 }
 
 .header__link-list .contents {
-  gap: clamp(14px, 2vw, 34px);
+  align-items: center;
+  gap: clamp(15px, 1.7vw, 28px);
 }
 
 .header__link-list .link-faded-reverse,
@@ -20,8 +21,21 @@
 
 @media screen and (min-width: 1150px) {
   .header__wrapper {
-    width: min(100% - 48px, 1540px);
+    width: min(100% - 56px, 1540px);
     margin-inline: auto;
+  }
+
+  .header__main-nav {
+    justify-self: center;
+    min-width: 0;
+  }
+
+  .header__main-nav .header__link-list {
+    justify-content: center;
+  }
+
+  .header__secondary-nav {
+    justify-self: end;
   }
 }
 
