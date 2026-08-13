@@ -70,8 +70,11 @@
     {{ content_for_header }}
 
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
-    {%- if request.page_type == 'index' -%}
+    {{- 'suntneew-site.css' | asset_url | stylesheet_tag: preload: true -}}
+    {%- if request.page_type == 'index' or request.page_type == 'collection' or request.page_type == 'page' -%}
       {{- 'suntneew-home.css' | asset_url | stylesheet_tag: preload: true -}}
+    {%- endif -%}
+    {%- if request.page_type == 'index' -%}
       <script src="{{ 'suntneew-home.js' | asset_url }}" defer></script>
     {%- endif -%}
   </head>

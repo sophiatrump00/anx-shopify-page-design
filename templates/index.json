@@ -21,9 +21,9 @@
             "mobile_text_position": "place-self-end-start text-start",
             "desktop_text_position": "sm:place-self-center-start sm:text-start",
             "subheading": "RV BATTERIES",
-            "title": "RV power that fits the trip.",
+            "title": "RV power series, preparing for the road ahead.",
             "heading_tag": "h1",
-            "button_text": "Explore RV batteries",
+            "button_text": "Explore RV series",
             "button_link": "shopify://collections/rv-batteries",
             "text_color": "#FFFFFF",
             "button_background": "#FFFFFF",
@@ -44,7 +44,7 @@
             "subheading": "JUMP STARTERS",
             "title": "Start ready. Keep moving.",
             "heading_tag": "h2",
-            "button_text": "Explore jump starters",
+            "button_text": "Explore jump starter series",
             "button_link": "shopify://collections/jump-starters",
             "text_color": "#FFFFFF",
             "button_background": "#FFFFFF",
@@ -65,7 +65,7 @@
             "subheading": "HOME ENERGY STORAGE",
             "title": "Power at home, built around your system.",
             "heading_tag": "h2",
-            "button_text": "Explore home energy",
+            "button_text": "Explore home energy series",
             "button_link": "shopify://collections/home-energy-storage",
             "text_color": "#FFFFFF",
             "button_background": "#FFFFFF",
@@ -98,10 +98,10 @@
             "fallback_asset": "suntneew-use-rv.jpg",
             "image_alt": "RV campsite powered by a SuntNeew battery",
             "eyebrow": "RV BATTERIES",
-            "product_label": "G24 · G31 · 230Ah · 314Ah",
-            "title": "Power the RV beyond the hookup.",
-            "text": "Start with the battery bay, then match output and runtime to the loads you plan to run.",
-            "link_label": "Explore RV batteries",
+            "product_label": "SERIES PREPARING",
+            "title": "RV power, ready for its next chapter.",
+            "text": "The RV series stays available as a category. Its product listings and individual product pages are temporarily blank.",
+            "link_label": "Explore RV series",
             "link": "shopify://collections/rv-batteries"
           }
         },
@@ -114,7 +114,7 @@
             "product_label": "A20 · A3",
             "title": "Start the vehicle and get back on the road.",
             "text": "Starting power, charging and emergency support that stays close to the vehicle.",
-            "link_label": "Explore jump starters",
+            "link_label": "Explore jump starter series",
             "link": "shopify://collections/jump-starters"
           }
         },
@@ -127,7 +127,7 @@
             "product_label": "5.12 kWh · 10.24 kWh · High-voltage",
             "title": "Keep essential home power within reach.",
             "text": "Begin with the energy you need, then plan a compatible system around your home.",
-            "link_label": "Explore home energy",
+            "link_label": "Explore home energy series",
             "link": "shopify://collections/home-energy-storage"
           }
         }
@@ -238,62 +238,12 @@
       "settings": {
         "anchor_id": "shop-product-pages",
         "eyebrow": "SHOP PRODUCT PAGES",
-        "heading": "Go straight to the product you need.",
-        "body": "Choose a jump starter or home-energy product first. Each card now goes to its specific product page, where you can select the available variant and open the detail that matters.",
+        "heading": "Featured products, after you choose a series.",
+        "body": "Start with a product series above. These cards then take you to the corresponding product detail page, where you can select the available variant and review the information that matters.",
         "columns": 3,
         "white_background": true,
         "view_all_label": "View all home energy",
         "view_all_link": "shopify://collections/home-energy-storage"
-      }
-    },
-    "rv_proof": {
-      "type": "suntneew-rv-hotspots",
-      "blocks": {
-        "cycle_life": {
-          "type": "feature",
-          "settings": {
-            "x_position": 34,
-            "y_position": 54,
-            "title": "Long-life LiFePO4 power",
-            "text": "<p>Up to 15,000 cycles* under laboratory conditions, with actual life varying by model and use.</p>"
-          }
-        },
-        "bluetooth": {
-          "type": "feature",
-          "settings": {
-            "x_position": 54,
-            "y_position": 25,
-            "title": "See your power live",
-            "text": "<p>Monitor SOC, voltage, temperature and cell-voltage difference from your phone with Bluetooth 5.0.</p>"
-          }
-        },
-        "temperature": {
-          "type": "feature",
-          "settings": {
-            "x_position": 73,
-            "y_position": 58,
-            "title": "Built for changing temperatures",
-            "text": "<p>Charge from 32°F to 131°F and discharge from -4°F to 140°F. Charging pauses below 32°F and resumes when the battery returns to a safe charging range.</p>"
-          }
-        }
-      },
-      "block_order": ["cycle_life", "bluetooth", "temperature"],
-      "settings": {
-        "anchor_id": "rv-long-life-power",
-        "desktop_background_asset": "suntneew-rv-tech-bg-desktop.jpg",
-        "mobile_background_asset": "suntneew-rv-tech-bg-mobile.jpg",
-        "product_asset": "suntneew-rv-g31-cutout.png",
-        "product_alt": "SuntNeew Group 31 100Ah LiFePO4 RV battery",
-        "eyebrow": "LONG-LIFE SMART RV POWER",
-        "heading": "Power you can see. Protection you can trust.",
-        "body": "Built for RV living with long cycle life, Bluetooth 5.0 monitoring, built-in BMS protection and low-temperature charge protection.",
-        "stat_1": "Up to 15,000 Cycles*",
-        "stat_2": "Bluetooth 5.0 Monitoring",
-        "stat_3": "Low-Temperature Charge Protection",
-        "stat_4": "-4°F to 140°F Discharge",
-        "footnote": "*Up to 15,000 cycles under laboratory conditions. Actual cycle life varies by model, depth of discharge, charge/discharge rate, temperature and usage.",
-        "button_label": "Explore RV batteries",
-        "button_link": "shopify://collections/rv-batteries"
       }
     },
     "jump_proof": {
@@ -352,10 +302,10 @@
         "eyebrow": "BUY WITH CONFIDENCE",
         "heading": "Buy with confidence. Power with confidence.",
         "body": "Certified products, five-year limited warranty coverage, fast U.S. delivery, free shipping, 30-day returns and technical support beyond the purchase.",
-        "product_asset": "suntneew-product-g31.jpg",
-        "product_alt": "SuntNeew Group 31 RV battery",
-        "product_title": "All Products Certified",
-        "product_text": "Every SuntNeew product is supported by applicable safety, transport and compliance documentation.",
+        "product_asset": "suntneew-product-a20.jpg",
+        "product_alt": "SUNTNEEW A20 jump starter",
+        "product_title": "Product information, where it matters",
+        "product_text": "Each active product page brings variants, key capabilities and supporting information into one clear buying path.",
         "product_link_label": "Explore our technology",
         "product_link": "shopify://pages/technology",
         "guidance_title": "Lifetime Technical Support",
@@ -367,7 +317,7 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "faq_rv": {"type":"item","settings":{"title":"How do I choose between G24 and G31?","content":"<p>Start with the physical battery compartment and terminal layout. Both are 100Ah choices, but they use different case sizes. Confirm measurements before ordering.</p>"}},
+        "faq_rv": {"type":"item","settings":{"title":"Where are the RV battery products?","content":"<p>RV Batteries remains a visible SuntNeew series. Its product listings and individual product pages are being prepared and are intentionally not shown yet.</p>"}},
         "faq_output": {"type":"item","settings":{"title":"Does more Ah always mean more output?","content":"<p>No. Stored energy and continuous output are different constraints. Compare both values, alongside system voltage, cables, fuse requirements and intended load.</p>"}},
         "faq_jump": {"type":"item","settings":{"title":"Which jump starter should I choose?","content":"<p>Start with the supported vehicle and engine range listed on the product page, then compare portability, capacity, ports and emergency-light features.</p>"}},
         "faq_home": {"type":"item","settings":{"title":"Can I buy home energy storage as an individual?","content":"<p>Yes. Share your target capacity, inverter information and delivery location. We will help confirm a suitable configuration before an order is placed.</p>"}},
@@ -400,14 +350,14 @@
       "type": "suntneew-brand-close",
       "settings": {
         "anchor_id": "power-on",
-        "image_alt": "SuntNeew power for RV travel, roadside readiness and home energy",
+        "image_alt": "SuntNeew power for roadside readiness and home energy",
         "impact_text": "POWER ON",
         "heading": "Power that earns its place in real life.",
-        "body": "RV power for the miles ahead. Roadside power when a vehicle needs a start. Home energy built around the way you use electricity.",
+        "body": "A visible path for RV power, roadside power when a vehicle needs a start, and home energy built around the way you use electricity.",
         "button_label": "Explore power paths",
         "button_link": "#ways-to-power"
       }
     }
   },
-  "order": ["main_slideshow", "ways_to_power", "product_pages", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
+  "order": ["main_slideshow", "ways_to_power", "product_pages", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
 }

@@ -1,1 +1,64 @@
-{"sections":{"main":{"type":"main-list-collections","settings":{}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-series-hub",
+      "blocks": {
+        "rv": {
+          "type": "series",
+          "settings": {
+            "fallback_asset": "suntneew-hero-rv-desktop.jpg",
+            "image_alt": "RV campsite at dusk",
+            "eyebrow": "RV BATTERIES",
+            "status": "SERIES PREPARING",
+            "title": "RV Batteries",
+            "text": "The RV product series remains in the site structure. Product listings and product pages will be added later.",
+            "link_label": "View RV series",
+            "link": "shopify://collections/rv-batteries"
+          }
+        },
+        "jump": {
+          "type": "series",
+          "settings": {
+            "fallback_asset": "suntneew-hero-a20-desktop.jpg",
+            "image_alt": "SUNTNEEW jump starter beside a vehicle",
+            "eyebrow": "JUMP STARTERS",
+            "status": "A20 · A3",
+            "title": "Jump Starters",
+            "text": "Portable starting power, emergency lighting and device charging for life on the road.",
+            "link_label": "View jump starter series",
+            "link": "shopify://collections/jump-starters"
+          }
+        },
+        "home": {
+          "type": "series",
+          "settings": {
+            "fallback_asset": "energy-star-home-hero-v1.png",
+            "image_alt": "ENERGY STAR home energy storage system beside a solar home",
+            "eyebrow": "HOME ENERGY STORAGE",
+            "status": "ENERGY STAR",
+            "title": "Home Energy Storage",
+            "text": "Low-voltage and high-voltage configurations to plan stored energy around a home system.",
+            "link_label": "View home energy series",
+            "link": "shopify://collections/home-energy-storage"
+          }
+        }
+      },
+      "block_order": ["rv", "jump", "home"],
+      "settings": {
+        "eyebrow": "SUNTNEEW PRODUCT SERIES",
+        "heading": "Choose the power system first.",
+        "body": "Begin with the place power is used. Then move into the relevant series and, where available, its individual product pages."
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -7,6 +7,11 @@
     <div class="sn-paths" style="--sn-columns: {{ section.settings.columns }}; --sn-card-height: {{ section.settings.card_height }}px">
       {%- for block in section.blocks -%}
         <article class="sn-path" {{ block.shopify_attributes }}>
+          {%- if block.settings.link != blank -%}
+            <a class="sn-path__card-link" href="{{ block.settings.link }}" aria-label="{{ block.settings.title | escape }}">
+          {%- else -%}
+            <div class="sn-path__card-link">
+          {%- endif -%}
           {%- if block.settings.image != blank -%}
             {{- block.settings.image | image_url: width: 1400 | image_tag: widths: '500,800,1100,1400', sizes: '(max-width: 699px) 100vw, 33vw', loading: 'lazy', alt: block.settings.image_alt -}}
           {%- else -%}
@@ -18,8 +23,13 @@
             {%- if block.settings.product_label != blank -%}<p class="sn-path__product-label">{{ block.settings.product_label }}</p>{%- endif -%}
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.text }}</p>
-            <a class="sn-link" href="{{ block.settings.link | default: '#' }}">{{ block.settings.link_label }}</a>
+            <span class="sn-link">{{ block.settings.link_label }}</span>
           </div>
+          {%- if block.settings.link != blank -%}
+            </a>
+          {%- else -%}
+            </div>
+          {%- endif -%}
         </article>
       {%- endfor -%}
     </div>

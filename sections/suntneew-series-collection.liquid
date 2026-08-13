@@ -1,0 +1,110 @@
+<section class="sn-series-page sn-series-page--{{ section.settings.catalog_state }}" id="{{ section.settings.anchor_id | escape }}">
+  <div class="sn-series-page__hero">
+    <div class="sn-series-shell sn-series-page__hero-grid">
+      <div class="sn-series-page__hero-copy">
+        <p class="sn-kicker">{{ section.settings.eyebrow }}</p>
+        <h1>{{ section.settings.heading }}</h1>
+        <p>{{ section.settings.body }}</p>
+        {%- if section.settings.back_link != blank -%}
+          <a class="sn-series-button" href="{{ section.settings.back_link }}">{{ section.settings.back_label }}</a>
+        {%- endif -%}
+      </div>
+      <div class="sn-series-page__hero-media">
+        <img src="{{ section.settings.hero_asset | asset_url }}" alt="{{ section.settings.hero_alt | escape }}" width="1800" height="1200" loading="eager">
+      </div>
+    </div>
+  </div>
+
+  <div class="sn-series-shell sn-series-page__content">
+    {%- if section.settings.catalog_state == 'available' -%}
+      <header class="sn-series-page__catalog-heading">
+        <p class="sn-kicker">{{ section.settings.catalog_eyebrow }}</p>
+        <h2>{{ section.settings.catalog_heading }}</h2>
+        {%- if section.settings.catalog_body != blank -%}<p>{{ section.settings.catalog_body }}</p>{%- endif -%}
+      </header>
+      <div class="sn-series-product-grid">
+        {%- for block in section.blocks -%}
+          <article class="sn-series-product-card" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link | default: routes.collections_url }}" class="sn-series-product-card__link" aria-label="{{ block.settings.title | escape }}">
+              <span class="sn-series-product-card__image">
+                {%- if block.settings.image != blank -%}
+                  {{- block.settings.image | image_url: width: 1200 | image_tag: widths: '420,600,900,1200', sizes: '(max-width: 699px) 100vw, (max-width: 999px) 50vw, 33vw', loading: 'lazy', alt: block.settings.image_alt -}}
+                {%- else -%}
+                  <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="1200" height="1200" loading="lazy">
+                {%- endif -%}
+                {%- if block.settings.badge != blank -%}<span class="sn-series-product-card__badge">{{ block.settings.badge }}</span>{%- endif -%}
+              </span>
+              <span class="sn-series-product-card__content">
+                <span class="sn-series-product-card__eyebrow">{{ block.settings.eyebrow }}</span>
+                <strong>{{ block.settings.title }}</strong>
+                <span class="sn-series-product-card__copy">{{ block.settings.text }}</span>
+                <span class="sn-series-product-card__facts">
+                  {%- if block.settings.fact_one != blank -%}<span>{{ block.settings.fact_one }}</span>{%- endif -%}
+                  {%- if block.settings.fact_two != blank -%}<span>{{ block.settings.fact_two }}</span>{%- endif -%}
+                  {%- if block.settings.fact_three != blank -%}<span>{{ block.settings.fact_three }}</span>{%- endif -%}
+                </span>
+                <span class="sn-series-arrow">{{ block.settings.link_label }}</span>
+              </span>
+            </a>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="sn-series-empty" role="status">
+        <p class="sn-kicker">{{ section.settings.empty_eyebrow }}</p>
+        <h2>{{ section.settings.empty_heading }}</h2>
+        <p>{{ section.settings.empty_body }}</p>
+        {%- if section.settings.empty_link != blank -%}
+          <a class="sn-series-button sn-series-button--light" href="{{ section.settings.empty_link }}">{{ section.settings.empty_label }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SuntNeew series page",
+  "settings": [
+    {"type":"text","id":"anchor_id","label":"Anchor ID","default":"series"},
+    {"type":"text","id":"eyebrow","label":"Hero eyebrow","default":"PRODUCT SERIES"},
+    {"type":"text","id":"heading","label":"Hero heading","default":"A SuntNeew power series."},
+    {"type":"textarea","id":"body","label":"Hero body","default":"Explore the products and configurations in this series."},
+    {"type":"select","id":"hero_asset","label":"Hero asset","default":"suntneew-hero-a20-desktop.jpg","options":[{"value":"suntneew-hero-rv-desktop.jpg","label":"RV hero"},{"value":"suntneew-hero-a20-desktop.jpg","label":"Jump starter hero"},{"value":"energy-star-home-hero-v1.png","label":"Home energy hero"}]},
+    {"type":"text","id":"hero_alt","label":"Hero alt text","default":"SuntNeew product series"},
+    {"type":"text","id":"back_label","label":"Back link label","default":"All product series"},
+    {"type":"url","id":"back_link","label":"Back link"},
+    {"type":"select","id":"catalog_state","label":"Catalog state","default":"available","options":[{"value":"available","label":"Show product cards"},{"value":"preparing","label":"Show coming-soon panel"}]},
+    {"type":"text","id":"catalog_eyebrow","label":"Catalog eyebrow","default":"CHOOSE A PRODUCT"},
+    {"type":"text","id":"catalog_heading","label":"Catalog heading","default":"Products in this series."},
+    {"type":"textarea","id":"catalog_body","label":"Catalog body","default":"Open a product page to compare variants, capacity and the details that matter."},
+    {"type":"text","id":"empty_eyebrow","label":"Empty-state eyebrow","default":"SERIES IN PREPARATION"},
+    {"type":"text","id":"empty_heading","label":"Empty-state heading","default":"This product series is being prepared."},
+    {"type":"textarea","id":"empty_body","label":"Empty-state body","default":"The RV Batteries series remains part of SuntNeew. Product listings and individual product pages will be added when they are ready."},
+    {"type":"text","id":"empty_label","label":"Empty-state link label","default":"Explore other product series"},
+    {"type":"url","id":"empty_link","label":"Empty-state link"}
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product card",
+      "settings": [
+        {"type":"image_picker","id":"image","label":"Image override"},
+        {"type":"select","id":"fallback_asset","label":"Bundled fallback","default":"suntneew-product-a20.jpg","options":[{"value":"suntneew-product-a20.jpg","label":"A20"},{"value":"suntneew-product-a3.jpg","label":"A3"},{"value":"energy-star-wl5a-main-v1.jpg","label":"ENERGY STAR WL5A"},{"value":"energy-star-wl10b-main-v1.jpg","label":"ENERGY STAR WL10B"},{"value":"energy-star-vh10-vh15-main-v1.jpg","label":"ENERGY STAR VH"}]},
+        {"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew product"},
+        {"type":"text","id":"badge","label":"Badge"},
+        {"type":"text","id":"eyebrow","label":"Eyebrow","default":"PRODUCT"},
+        {"type":"text","id":"title","label":"Title","default":"SuntNeew product"},
+        {"type":"textarea","id":"text","label":"Description","default":"Explore product specifications, variants and use cases."},
+        {"type":"text","id":"fact_one","label":"Fact one"},
+        {"type":"text","id":"fact_two","label":"Fact two"},
+        {"type":"text","id":"fact_three","label":"Fact three"},
+        {"type":"text","id":"link_label","label":"Link label","default":"View product details"},
+        {"type":"url","id":"link","label":"Product link"}
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{"name":"SuntNeew series collection","blocks":[{"type":"product_card"},{"type":"product_card"}]}]
+}
+{% endschema %}
