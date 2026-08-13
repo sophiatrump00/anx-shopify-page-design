@@ -1,0 +1,198 @@
+{%- comment -%}
+  Product Series uses the navigation as the source of truth for each link URL.
+  The card imagery and copy are deliberately mapped by collection handle so this
+  menu stays consistent when Shopify Markets translates navigation titles.
+{%- endcomment -%}
+
+<style>
+  #suntneew-series-mega-menu {
+    --mega-menu-justify-content: center;
+    --mega-menu-gap: 0;
+    padding-block: 0 var(--spacing-8);
+    mix-blend-mode: normal;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__grid {
+    width: min(100%, 1800px);
+    gap: clamp(14px, 1.2vw, 24px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: grid;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__card {
+    min-height: clamp(210px, 16vw, 286px);
+    isolation: isolate;
+    color: #fff;
+    border-radius: 0 0 20px 20px;
+    align-items: flex-end;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__card::after {
+    content: '';
+    z-index: -1;
+    background: linear-gradient(180deg, rgb(7 13 22 / .14) 5%, rgb(7 13 22 / .86) 100%);
+    position: absolute;
+    inset: 0;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__image {
+    z-index: -2;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform .45s ease;
+    position: absolute;
+    inset: 0;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__card:hover .suntneew-series-mega-menu__image {
+    transform: scale(1.04);
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__content {
+    max-width: min(100%, 35rem);
+    padding: clamp(20px, 2vw, 34px);
+    align-items: flex-start;
+    gap: var(--spacing-3);
+    display: flex;
+    flex-direction: column;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__eyebrow {
+    font-size: .6875rem;
+    letter-spacing: .12em;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__title {
+    font-size: clamp(1.45rem, 2vw, 2.25rem);
+    letter-spacing: -.035em;
+    font-weight: 500;
+    line-height: 1.05;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__description {
+    max-width: 34rem;
+    font-size: .875rem;
+    line-height: 1.45;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__cta {
+    font-size: .8125rem;
+    font-weight: 700;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__cta::after {
+    content: ' →';
+    color: #ff6a1a;
+  }
+
+  @media screen and (max-width: 1149px) {
+    #suntneew-series-mega-menu {
+      display: none;
+    }
+  }
+</style>
+
+<div id="suntneew-series-mega-menu" class="mega-menu suntneew-series-mega-menu">
+  <div class="suntneew-series-mega-menu__grid">
+    {%- for sub_link in link.links -%}
+      {%- assign collection_handle = sub_link.object.handle | default: '' -%}
+      {%- assign image_asset = '' -%}
+      {%- assign card_title = sub_link.title -%}
+      {%- assign card_description = '' -%}
+
+      {%- case collection_handle -%}
+        {%- when 'rv-batteries' -%}
+          {%- assign image_asset = 'suntneew-use-rv.jpg' -%}
+          {%- assign card_title = 'RV power, ready for its next chapter.' -%}
+          {%- assign card_description = 'The RV series stays available as a category. Its product listings and individual product pages are temporarily blank.' -%}
+        {%- when 'jump-starters' -%}
+          {%- assign image_asset = 'suntneew-use-jump.jpg' -%}
+          {%- assign card_title = 'Start the vehicle and get back on the road.' -%}
+          {%- assign card_description = 'Starting power, charging and emergency support that stays close to the vehicle.' -%}
+        {%- when 'home-energy-storage' -%}
+          {%- assign image_asset = 'suntneew-use-home-energy.jpg' -%}
+          {%- assign card_title = 'Keep essential home power within reach.' -%}
+          {%- assign card_description = 'Begin with the energy you need, then plan a compatible system around your home.' -%}
+      {%- endcase -%}
+
+      {%- if image_asset != blank -%}
+        <a href="{{ sub_link.url }}" class="suntneew-series-mega-menu__card">
+          <img
+            src="{{ image_asset | asset_url }}"
+            alt="{{ sub_link.title | escape }}"
+            class="suntneew-series-mega-menu__image"
+            width="1200"
+            height="1400"
+            loading="lazy"
+          >
+          <span class="suntneew-series-mega-menu__content">
+            <span class="suntneew-series-mega-menu__eyebrow">{{ sub_link.title }}</span>
+            <span class="suntneew-series-mega-menu__title">
+              {%- case request.locale.iso_code -%}
+                {%- when 'de' -%}
+                  {%- case collection_handle -%}
+                    {%- when 'rv-batteries' -%}RV-Energie, bereit für ihr nächstes Kapitel.
+                    {%- when 'jump-starters' -%}Das Fahrzeug starten und weiterfahren.
+                    {%- when 'home-energy-storage' -%}Wichtige Energie für Zuhause immer in Reichweite.
+                  {%- endcase -%}
+                {%- when 'es' -%}
+                  {%- case collection_handle -%}
+                    {%- when 'rv-batteries' -%}Energía para RV, lista para su próximo capítulo.
+                    {%- when 'jump-starters' -%}Arranca el vehículo y vuelve a la carretera.
+                    {%- when 'home-energy-storage' -%}La energía esencial del hogar, siempre a tu alcance.
+                  {%- endcase -%}
+                {%- when 'zh-CN' -%}
+                  {%- case collection_handle -%}
+                    {%- when 'rv-batteries' -%}房车供电，准备开启下一段旅程。
+                    {%- when 'jump-starters' -%}启动车辆，继续前行。
+                    {%- when 'home-energy-storage' -%}家庭关键用电，始终触手可及。
+                  {%- endcase -%}
+                {%- else -%}{{ card_title }}
+              {%- endcase -%}
+            </span>
+            {%- if card_description != blank -%}
+              <span class="suntneew-series-mega-menu__description">
+                {%- case request.locale.iso_code -%}
+                  {%- when 'de' -%}
+                    {%- case collection_handle -%}
+                      {%- when 'rv-batteries' -%}Die RV-Serie bleibt als Kategorie sichtbar. Produktlisten und einzelne Produktseiten sind vorübergehend leer.
+                      {%- when 'jump-starters' -%}Starthilfe, Laden und Nothilfe bleiben nah am Fahrzeug.
+                      {%- when 'home-energy-storage' -%}Beginnen Sie mit dem Energiebedarf und planen Sie ein kompatibles System für Ihr Zuhause.
+                    {%- endcase -%}
+                  {%- when 'es' -%}
+                    {%- case collection_handle -%}
+                      {%- when 'rv-batteries' -%}La serie RV sigue disponible como categoría. Sus listados y páginas de producto están temporalmente vacíos.
+                      {%- when 'jump-starters' -%}Arranque, carga y asistencia de emergencia al alcance del vehículo.
+                      {%- when 'home-energy-storage' -%}Empieza con la energía que necesitas y planifica un sistema compatible para tu hogar.
+                    {%- endcase -%}
+                  {%- when 'zh-CN' -%}
+                    {%- case collection_handle -%}
+                      {%- when 'rv-batteries' -%}房车系列作为产品类别保留展示；产品列表与详情页暂时留空。
+                      {%- when 'jump-starters' -%}搭电、充电和应急支持，始终靠近车辆。
+                      {%- when 'home-energy-storage' -%}从实际用电需求出发，为家规划兼容的储能系统。
+                    {%- endcase -%}
+                  {%- else -%}{{ card_description }}
+                {%- endcase -%}
+              </span>
+            {%- endif -%}
+            <span class="suntneew-series-mega-menu__cta">
+              {%- case request.locale.iso_code -%}
+                {%- when 'de' -%}Serie entdecken
+                {%- when 'es' -%}Explorar la serie
+                {%- when 'zh-CN' -%}探索系列
+                {%- else -%}Explore series
+              {%- endcase -%}
+            </span>
+          </span>
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>

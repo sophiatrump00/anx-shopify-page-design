@@ -122,6 +122,7 @@
                   {% liquid
                     assign link_title_downcase = link.title | strip | downcase
                     assign mega_menu_block = ''
+                    assign series_card_count = 0
 
                     for block in section.blocks
                       assign menu_item_downcase = block.settings.menu_item | strip | downcase
@@ -131,10 +132,25 @@
                         break
                       endif
                     endfor
+
+                    # The Product Series item is a fixed three-collection path. Detect it from
+                    # its destinations (not from its translated title), so the visual menu works
+                    # in every storefront language.
+                    for sub_link in link.links
+                      if sub_link.url contains '/collections/rv-batteries' or sub_link.url contains '/collections/jump-starters' or sub_link.url contains '/collections/home-energy-storage'
+                        assign series_card_count = series_card_count | plus: 1
+                      endif
+                    endfor
+
+                    assign is_series_card_menu = false
+
+                    if series_card_count == 3
+                      assign is_series_card_menu = true
+                    endif
                   %}
 
                   <li>
-                    {%- if link.levels == 0 and mega_menu_block == '' -%}
+                    {%- if link.levels == 0 and mega_menu_block == '' and is_series_card_menu == false -%}
                       <a
                         href="{{ link.url }}"
                         class="bold link-faded-reverse"
@@ -145,7 +161,21 @@
                         {{- link.title -}}
                       </a>
                     {%- else -%}
-                      {%- if mega_menu_block != '' -%}
+                      {%- if is_series_card_menu -%}
+                        <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
+                          <summary
+                            class="text-with-icon gap-2.5 bold link-faded-reverse"
+                            {% if link.url != '#' %}
+                              data-url="{{ link.url | escape }}"
+                            {% endif %}
+                          >
+                            {{- link.title -}}
+                            {%- render 'icon' with 'chevron-bottom' -%}
+                          </summary>
+
+                          {%- render 'suntneew-series-mega-menu', link: link -%}
+                        </details>
+                      {%- elsif mega_menu_block != '' -%}
                         {%- comment -%}
                           Implementation note: the designers had the desire to show a lot of different kind of menus in Impact: one standard
                           mega menu but also a kind of "sidebar" mode when the mega-menu appears in a drawer. Unfortunately, this comes with
