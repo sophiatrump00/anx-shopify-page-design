@@ -26,12 +26,13 @@
   }
 
   .header__main-nav {
-    justify-self: center;
+    justify-self: start;
     min-width: 0;
+    margin-inline-start: clamp(42px, 4.5vw, 88px);
   }
 
   .header__main-nav .header__link-list {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .header__secondary-nav {
