@@ -1,0 +1,32 @@
+/* Global navigation for the product-series information architecture. */
+.header {
+  border-bottom: 1px solid rgba(27, 36, 51, .09);
+}
+
+.header__link-list .contents {
+  gap: clamp(14px, 2vw, 34px);
+}
+
+.header__link-list .link-faded-reverse,
+.header__link-list summary {
+  font-size: 11px;
+  letter-spacing: .085em;
+  text-transform: uppercase;
+}
+
+.header__link-list [aria-current='page'] {
+  color: #e9653b;
+}
+
+@media screen and (min-width: 1150px) {
+  .header__wrapper {
+    width: min(100% - 48px, 1540px);
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header * {
+    scroll-behavior: auto;
+  }
+}
