@@ -70,14 +70,14 @@
       'jump-coverage': ['Find a jump starter for your vehicle', 'Start with the supported vehicle and engine information before comparing convenience features.', '/collections/jump-starters', 'Explore jump starters'],
       'jump-carry': ['Choose a practical roadside backup', 'Pick a carrying size that will stay with the vehicle, then compare the supported coverage by model.', '/collections/jump-starters', 'Explore jump starters'],
       'jump-utility': ['Compare roadside functions by model', 'Review charging ports and emergency functions after the vehicle coverage is confirmed.', '/collections/jump-starters', 'Explore jump starters'],
-      'home-entry': ['Plan a 5 kWh starting point', 'We will confirm suitable equipment, delivery availability and installation requirements before an order is placed.', '/pages/request-for-quote', 'Check system availability'],
-      'home-capacity': ['Plan more stored energy', 'Start with the household demand, then confirm the installation and inverter requirements for the proposed system.', '/pages/request-for-quote', 'Plan your home system'],
-      'home-system': ['Plan the system around compatibility', 'For a system-led setup, confirm the inverter, installation approach and delivery availability before ordering.', '/pages/request-for-quote', 'Plan your home system']
+      'home-entry': ['Start with 5.12 kWh', 'Explore the WL5A product details, choose a quantity and purchase online. Review installation requirements before installation.', '/products/suntneew-wl5a-5-12-kwh-low-voltage-home-battery', 'Shop WL5A'],
+      'home-capacity': ['Move up to 10.24 kWh', 'Explore the WL10B product details, choose a quantity and purchase online. Review installation requirements before installation.', '/products/suntneew-wl10b-10-24-kwh-low-voltage-home-battery', 'Shop WL10B'],
+      'home-system': ['Choose a high-voltage configuration', 'Select the VH capacity that fits your home, then review the product details and purchase online.', '/products/suntneew-vh-high-voltage-home-energy-storage-system', 'Shop VH system']
     };
 
     const resetResult = () => {
       resultTitle.textContent = 'Choose the priority that matters most';
-      resultText.textContent = 'The next step will point to the right collection or a home-energy planning path.';
+      resultText.textContent = 'The next step will point to the right collection or product page.';
       resultLink.hidden = true;
       resultLink.removeAttribute('href');
     };

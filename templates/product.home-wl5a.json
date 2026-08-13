@@ -8,11 +8,12 @@
         "sku":{"type":"sku","settings":{}},
         "price":{"type":"price","settings":{"show_taxes_notice":false}},
         "separator":{"type":"separator","settings":{}},
-        "intro":{"type":"text","settings":{"text":"<p>51.2V, 100Ah low-voltage LFP home battery with 5.12kWh rated capacity. Build a system quote around the inverter, installation space and delivery plan.</p>"}},
-        "quote":{"type":"button","settings":{"link":"shopify://pages/request-for-quote","text":"Request a system quote","size":"xl","style":"fill","stretch":true}}
+        "intro":{"type":"text","settings":{"text":"<p>51.2V, 100Ah low-voltage LFP home battery with 5.12kWh rated capacity. Choose your quantity and purchase online; review inverter compatibility and installation requirements before installation.</p>"}},
+        "quantity_selector":{"type":"quantity_selector","settings":{}},
+        "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
       },
-      "block_order":["vendor","title","sku","price","separator","intro","quote"],
-      "settings":{"show_fixed_add_to_cart":false,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","buy_buttons"],
+      "settings":{"show_fixed_add_to_cart":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type":"suntneew-pdp-proof",
@@ -30,7 +31,7 @@
       "blocks": {
         "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
         "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
-        "box":{"type":"link","settings":{"label":"Project Scope","target_id":"in-the-box"}},
+        "box":{"type":"link","settings":{"label":"Before installation","target_id":"in-the-box"}},
         "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
         "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
@@ -44,7 +45,7 @@
         "product":{"type":"feature","settings":{"image_asset":"energy-star-wl5a-main-v1.jpg","image_alt":"ENERGY STAR WL5A 5.12kWh home battery","eyebrow":"Compact low voltage","heading":"5.12kWh in a wall or floor-mounted enclosure","body":"<p>WL5A combines a 51.2V, 100Ah LFP battery with an LCD touch screen plus CAN, RS485, Wi-Fi and Bluetooth communication.</p>","variant_match":""}},
         "front":{"type":"feature","settings":{"image_asset":"energy-star-wl5a-gallery-01.jpg","image_alt":"ENERGY STAR WL5A home battery front product view","eyebrow":"Product at a glance","heading":"A clean enclosure designed around a compact energy footprint","body":"<p>Use the dimensions and weight in Specifications to confirm the physical fit. This view makes the product scale and front layout easy to understand at a glance.</p>","variant_match":""}},
         "rear":{"type":"feature","settings":{"image_asset":"energy-star-wl5a-gallery-04.jpg","image_alt":"ENERGY STAR WL5A rear mounting and connection detail","eyebrow":"Installation-aware design","heading":"Review mounting and connection details before the install","body":"<p>Use the rear hardware and connection layout to plan around the inverter, protection design, cable route and installer requirements.</p>","variant_match":""}},
-        "specsheet":{"type":"feature","settings":{"eyebrow":"System fit","heading":"Plan the battery around the complete system","body":"<p>WL5A supports CAN, RS485, Wi-Fi and Bluetooth communication and up to nine connected sets. A system quote aligns the inverter protocol, protection design and installation plan.</p>","variant_match":""}}
+        "specsheet":{"type":"feature","settings":{"eyebrow":"System fit","heading":"Plan the battery around the complete system","body":"<p>WL5A supports CAN, RS485, Wi-Fi and Bluetooth communication and up to nine connected sets. Review the inverter protocol, protection design and installation plan before installation.</p>","variant_match":""}}
       },
       "block_order":["installation","product","front","rear","specsheet"],
       "settings":{"anchor_id":"features","eyebrow":"Home energy storage","heading":"A compact 51.2V battery for home-energy systems","lede":"<p>ENERGY STAR low-voltage storage for systems that need a compact 5.12kWh starting point. Match the inverter protocol, site conditions and installation plan to the product.</p>"}
@@ -66,22 +67,22 @@
         "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485 / Wi‑Fi / Bluetooth","group":"system","variant_match":""}},
         "installation":{"type":"spec","settings":{"label":"Installation","value":"Wall mounting / floor standing","group":"installation","variant_match":""}},
         "ip":{"type":"spec","settings":{"label":"Enclosure rating","value":"IP54","group":"installation","variant_match":""}},
-        "scope1":{"type":"included","settings":{"item":"WL5A battery configuration","variant_match":""}},
-        "scope2":{"type":"included","settings":{"item":"Inverter and protocol compatibility review","variant_match":""}},
-        "scope3":{"type":"included","settings":{"item":"Freight and unloading scope confirmed by postcode","variant_match":""}},
-        "scope4":{"type":"included","settings":{"item":"Installer and regional electrical requirements confirmed","variant_match":""}},
+        "scope1":{"type":"included","settings":{"item":"Selected WL5A battery","variant_match":""}},
+        "scope2":{"type":"included","settings":{"item":"Review the inverter communication and electrical specifications before installation","variant_match":""}},
+        "scope3":{"type":"included","settings":{"item":"Confirm the delivery destination and any local receiving requirements","variant_match":""}},
+        "scope4":{"type":"included","settings":{"item":"Use a qualified installer and follow local electrical requirements","variant_match":""}},
         "docs":{"type":"download","settings":{"label":"View ENERGY STAR specification sheet","link":"","asset_name":"energy-star-wl5a-spec-v1.jpg","variant_match":""}}
       },
       "block_order":["chem","voltage","capacity","connection","chargev","overdischarge","charge","discharge","cycles","weight","size","comm","installation","ip","scope1","scope2","scope3","scope4","docs"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Configuration data","heading":"WL5A technical specifications","lede":"<p>The four decision-making numbers stay visible above. Open a category only when you need deeper electrical or installation detail.</p>","primary_group_heading":"Capacity & electrical limits","system_group_heading":"Connectivity & expansion","installation_group_heading":"Installation & enclosure","included_eyebrow":"Plan your system","included_heading":"Quote & project scope","download_eyebrow":"ENERGY STAR documentation","download_heading":"Documents"}
+      "settings":{"anchor_id":"specifications","eyebrow":"Configuration data","heading":"WL5A technical specifications","lede":"<p>The four decision-making numbers stay visible above. Open a category only when you need deeper electrical or installation detail.</p>","primary_group_heading":"Capacity & electrical limits","system_group_heading":"Connectivity & expansion","installation_group_heading":"Installation & enclosure","included_eyebrow":"Purchase notes","included_heading":"Before installation","download_eyebrow":"ENERGY STAR documentation","download_heading":"Documents"}
     },
     "faq": {
       "type":"suntneew-pdp-faq",
       "blocks": {
         "q1":{"type":"question","settings":{"question":"Can multiple WL5A batteries be connected?","answer":"<p>WL5A supports up to nine connected sets. The final parallel configuration depends on inverter limits, wiring, protection devices and the installer’s design.</p>"}},
-        "q2":{"type":"question","settings":{"question":"How do I order a WL5A system?","answer":"<p>Start with a system quote. The inverter protocol, delivery address, unloading and installation plan are aligned before the order is finalized.</p>"}},
+        "q2":{"type":"question","settings":{"question":"Can I buy WL5A online?","answer":"<p>Yes. Choose the quantity, then use Add to cart or Buy it now. Review inverter compatibility and local installation requirements before installation.</p>"}},
         "q3":{"type":"question","settings":{"question":"Does WL5A support wireless monitoring?","answer":"<p>WL5A supports Wi-Fi and Bluetooth alongside CAN and RS485. Confirm app, firmware and inverter integration for the planned system.</p>"}},
-        "q4":{"type":"question","settings":{"question":"Which documents are available?","answer":"<p>Model documentation includes UN38.3, MSDS, IEC 62619 and CE-EMC references. Request documents for the exact selected model and destination when planning a project.</p>"}}
+        "q4":{"type":"question","settings":{"question":"Which documents are available?","answer":"<p>The current product specification sheet is available on this page. Contact support only if you need destination-specific technical documentation.</p>"}}
       },
       "block_order":["q1","q2","q3","q4"],
       "settings":{"anchor_id":"faq","eyebrow":"WL5A planning","heading":"Frequently asked questions"}

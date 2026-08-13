@@ -185,7 +185,7 @@
         "image_alt": "ENERGY STAR home energy storage system beside a modern solar home",
         "button_label": "Explore home energy products",
         "button_link": "shopify://collections/home-energy-storage",
-        "note": "Individual and business customers can request a configuration. Delivery and compatibility are confirmed before ordering."
+        "note": "Individual customers can choose a model, add it to cart and purchase online. Review compatibility and local installation requirements before installation."
       }
     },
     "confidence_grid": {
@@ -219,7 +219,7 @@
         "faq_rv": {"type":"item","settings":{"title":"Where are the RV battery products?","content":"<p>RV Batteries remains a visible SuntNeew series. Its product listings and individual product pages are being prepared and are intentionally not shown yet.</p>"}},
         "faq_output": {"type":"item","settings":{"title":"Does more Ah always mean more output?","content":"<p>No. Stored energy and continuous output are different constraints. Compare both values, alongside system voltage, cables, fuse requirements and intended load.</p>"}},
         "faq_jump": {"type":"item","settings":{"title":"Which jump starter should I choose?","content":"<p>Start with the supported vehicle and engine range listed on the product page, then compare portability, capacity, ports and emergency-light features.</p>"}},
-        "faq_home": {"type":"item","settings":{"title":"Can I buy home energy storage as an individual?","content":"<p>Yes. Share your target capacity, inverter information and delivery location. We will help confirm a suitable configuration before an order is placed.</p>"}},
+        "faq_home": {"type":"item","settings":{"title":"Can I buy home energy storage as an individual?","content":"<p>Yes. Choose the model and capacity that fit your needs, then add it to cart or use Buy it now. Review compatibility and local installation requirements before installation.</p>"}},
         "faq_docs": {"type":"item","settings":{"title":"Where can I find certification and test information?","content":"<p>Relevant model-specific safety, transport and compliance information can be requested when you need it for a specific product.</p>"}}
       },
       "block_order": ["faq_rv", "faq_output", "faq_jump", "faq_home", "faq_docs"],

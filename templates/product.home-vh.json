@@ -8,12 +8,13 @@
         "sku":{"type":"sku","settings":{}},
         "price":{"type":"price","settings":{"show_taxes_notice":false}},
         "separator":{"type":"separator","settings":{}},
-        "intro":{"type":"text","settings":{"text":"<p>High-voltage LFP home energy storage in 10.24kWh and 15.36kWh configurations. Select a capacity, then plan the system around your inverter, space and installation.</p>"}},
+        "intro":{"type":"text","settings":{"text":"<p>High-voltage LFP home energy storage in 10.24kWh and 15.36kWh configurations. Select a capacity, choose your quantity and purchase online; review inverter compatibility and installation requirements before installation.</p>"}},
         "variant_picker":{"type":"variant_picker","settings":{"hide_sold_out_variants":false,"stack_blocks":true,"selector_style":"block","swatch_selector_style":"none","variant_image_options":""}},
-        "quote":{"type":"button","settings":{"link":"shopify://pages/request-for-quote","text":"Request a system quote","size":"xl","style":"fill","stretch":true}}
+        "quantity_selector":{"type":"quantity_selector","settings":{}},
+        "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
       },
-      "block_order":["vendor","title","sku","price","separator","intro","variant_picker","quote"],
-      "settings":{"show_fixed_add_to_cart":false,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "block_order":["vendor","title","sku","price","separator","intro","variant_picker","quantity_selector","buy_buttons"],
+      "settings":{"show_fixed_add_to_cart":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type":"suntneew-pdp-proof",
@@ -35,7 +36,7 @@
       "blocks": {
         "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
         "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
-        "box":{"type":"link","settings":{"label":"Project Scope","target_id":"in-the-box"}},
+        "box":{"type":"link","settings":{"label":"Before installation","target_id":"in-the-box"}},
         "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
         "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
@@ -49,7 +50,7 @@
         "platform":{"type":"feature","settings":{"image_asset":"energy-star-vh10-vh15-main-v1.jpg","image_alt":"Authorized Energy Star VH10A and VH15A high-voltage storage systems","eyebrow":"Modular high voltage","heading":"Choose two or three 5.12kWh battery modules","body":"<p>VH10A provides 10.24kWh usable capacity; VH15A provides 15.36kWh. Both use LFP cells, a smart BMS and vertical natural-convection architecture.</p>","variant_match":""}},
         "modules":{"type":"feature","settings":{"image_asset":"energy-star-vh10-gallery-01.jpg","image_alt":"ENERGY STAR VH system showing two and three modular stack configurations","eyebrow":"Configuration visible","heading":"See the system scale before you open a specification","body":"<p>The selected VH configuration changes the module count, height, rated voltage and project fit. Choose the capacity above to reveal its matching proof figures and detailed fields.</p>","variant_match":""}},
         "detail":{"type":"feature","settings":{"image_asset":"energy-star-vh10-gallery-04.jpg","image_alt":"ENERGY STAR VH cabinet structure detail","eyebrow":"Hardware detail","heading":"A vertical cabinet architecture designed as a complete system","body":"<p>See the cabinet form, displays and module layout before you move into the electrical and installation details below.</p>","variant_match":""}},
-        "evidence":{"type":"feature","settings":{"eyebrow":"System fit","heading":"Choose the configuration before finalizing the system","body":"<p>Rated voltage, system size and installation scope change with the selected capacity. A system quote aligns the inverter protocol, delivery address, unloading and installation plan before order.</p>","variant_match":""}}
+        "evidence":{"type":"feature","settings":{"eyebrow":"System fit","heading":"Choose the configuration before finalizing the system","body":"<p>Rated voltage, system size and installation scope change with the selected capacity. Review the inverter protocol, delivery requirements and installation plan before purchase and installation.</p>","variant_match":""}}
       },
       "block_order":["installation","platform","modules","detail","evidence"],
       "settings":{"anchor_id":"features","eyebrow":"Home energy storage","heading":"A modular high-voltage system sized around the home","lede":"<p>ENERGY STAR modular storage in two configurations. Select the capacity first, then align the system with the inverter and installation plan.</p>"}
@@ -79,21 +80,21 @@
         "cooling":{"type":"spec","settings":{"label":"Cooling / installation","value":"Natural convection / vertical","group":"installation","variant_match":""}},
         "environment":{"type":"spec","settings":{"label":"Installation environment","value":"Indoor / outdoor, IP65","group":"installation","variant_match":""}},
         "scope1":{"type":"included","settings":{"item":"Selected VH battery system configuration","variant_match":""}},
-        "scope2":{"type":"included","settings":{"item":"Compatibility review against the supplied inverter model","variant_match":""}},
-        "scope3":{"type":"included","settings":{"item":"Freight and unloading scope confirmed by postcode","variant_match":""}},
-        "scope4":{"type":"included","settings":{"item":"Installation responsibility confirmed before order","variant_match":""}},
+        "scope2":{"type":"included","settings":{"item":"Review the inverter communication and electrical specifications before installation","variant_match":""}},
+        "scope3":{"type":"included","settings":{"item":"Confirm the delivery destination and any local receiving requirements","variant_match":""}},
+        "scope4":{"type":"included","settings":{"item":"Use a qualified installer and follow local electrical requirements","variant_match":""}},
         "docs":{"type":"download","settings":{"label":"View ENERGY STAR specification sheet","link":"","asset_name":"energy-star-vh10-vh15-spec-v1.jpg","variant_match":""}}
       },
       "block_order":["chem","module","cap10","modules10","voltage10","range10","size10","weight10","cap15","modules15","voltage15","range15","size15","weight15","current","dod","cycles","comm","display","cooling","environment","scope1","scope2","scope3","scope4","docs"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Configuration data","heading":"VH10A and VH15A specifications","lede":"<p>The four decision-making numbers stay visible above. Open a category only when you need deeper electrical or installation detail.</p>","primary_group_heading":"Capacity & output","system_group_heading":"System architecture","installation_group_heading":"Installation & environment","included_eyebrow":"Plan your system","included_heading":"Quote & project scope","download_eyebrow":"ENERGY STAR documentation","download_heading":"Documents"}
+      "settings":{"anchor_id":"specifications","eyebrow":"Configuration data","heading":"VH10A and VH15A specifications","lede":"<p>The four decision-making numbers stay visible above. Open a category only when you need deeper electrical or installation detail.</p>","primary_group_heading":"Capacity & output","system_group_heading":"System architecture","installation_group_heading":"Installation & environment","included_eyebrow":"Purchase notes","included_heading":"Before installation","download_eyebrow":"ENERGY STAR documentation","download_heading":"Documents"}
     },
     "faq": {
       "type":"suntneew-pdp-faq",
       "blocks": {
         "q1":{"type":"question","settings":{"question":"Which size should I choose?","answer":"<p>VH10A provides 10.24kWh; VH15A provides 15.36kWh. Selection also depends on inverter voltage window, protocol, daily consumption, backup load and installation constraints.</p>"}},
-        "q2":{"type":"question","settings":{"question":"How do I order a VH system?","answer":"<p>Start with a system quote. The selected capacity, inverter protocol, delivery address, unloading and installation plan are aligned before the order is finalized.</p>"}},
+        "q2":{"type":"question","settings":{"question":"Can I buy a VH system online?","answer":"<p>Yes. Select the capacity and quantity, then use Add to cart or Buy it now. Review inverter compatibility and local installation requirements before installation.</p>"}},
         "q3":{"type":"question","settings":{"question":"Is the product suitable outdoors?","answer":"<p>VH is specified with an IP65 enclosure and indoor/outdoor application. Confirm site exposure, mounting and local electrical requirements with the installer for the intended project.</p>"}},
-        "q4":{"type":"question","settings":{"question":"Which documents are available?","answer":"<p>Model documentation includes UN38.3, MSDS, IEC 62619 and CE-EMC references. Request documents for the exact selected model and destination when planning a project.</p>"}}
+        "q4":{"type":"question","settings":{"question":"Which documents are available?","answer":"<p>The current product specification sheet is available on this page. Contact support only if you need destination-specific technical documentation.</p>"}}
       },
       "block_order":["q1","q2","q3","q4"],
       "settings":{"anchor_id":"faq","eyebrow":"System planning","heading":"Frequently asked questions"}
