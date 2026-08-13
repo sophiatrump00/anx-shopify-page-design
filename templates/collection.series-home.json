@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "suntneew-series-collection",
+      "block_order": ["wl5a", "wl10b", "vh"],
       "blocks": {
         "wl5a": {
           "type": "product_card",

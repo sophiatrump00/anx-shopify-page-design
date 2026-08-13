@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "suntneew-series-collection",
+      "block_order": ["a20", "a3"],
       "blocks": {
         "a20": {
           "type": "product_card",
