@@ -145,6 +145,56 @@
         "link_url": ""
       }
     },
+    "rv_proof": {
+      "type": "suntneew-rv-hotspots",
+      "blocks": {
+        "cycle_life": {
+          "type": "feature",
+          "settings": {
+            "x_position": 34,
+            "y_position": 54,
+            "title": "Long-life LiFePO4 power",
+            "text": "<p>Up to 15,000 cycles* under laboratory conditions, with actual life varying by model and use.</p>"
+          }
+        },
+        "bluetooth": {
+          "type": "feature",
+          "settings": {
+            "x_position": 54,
+            "y_position": 25,
+            "title": "See your power live",
+            "text": "<p>Monitor SOC, voltage, temperature and cell-voltage difference from your phone with Bluetooth 5.0.</p>"
+          }
+        },
+        "temperature": {
+          "type": "feature",
+          "settings": {
+            "x_position": 73,
+            "y_position": 58,
+            "title": "Built for changing temperatures",
+            "text": "<p>Charge from 32°F to 131°F and discharge from -4°F to 140°F. Charging pauses below 32°F and resumes when the battery returns to a safe charging range.</p>"
+          }
+        }
+      },
+      "block_order": ["cycle_life", "bluetooth", "temperature"],
+      "settings": {
+        "anchor_id": "rv-long-life-power",
+        "desktop_background_asset": "suntneew-rv-tech-bg-desktop.jpg",
+        "mobile_background_asset": "suntneew-rv-tech-bg-mobile.jpg",
+        "product_asset": "suntneew-rv-g31-cutout.png",
+        "product_alt": "SuntNeew Group 31 100Ah LiFePO4 RV battery",
+        "eyebrow": "LONG-LIFE SMART RV POWER",
+        "heading": "Power you can see. Protection you can trust.",
+        "body": "Built for RV living with long cycle life, Bluetooth 5.0 monitoring, built-in BMS protection and low-temperature charge protection.",
+        "stat_1": "Up to 15,000 Cycles*",
+        "stat_2": "Bluetooth 5.0 Monitoring",
+        "stat_3": "Low-Temperature Charge Protection",
+        "stat_4": "-4°F to 140°F Discharge",
+        "footnote": "*Up to 15,000 cycles under laboratory conditions. Actual cycle life varies by model, depth of discharge, charge/discharge rate, temperature and usage.",
+        "button_label": "Explore RV series",
+        "button_link": "shopify://collections/rv-batteries"
+      }
+    },
     "jump_proof": {
       "type": "suntneew-proof",
       "settings": {
@@ -194,13 +244,13 @@
         "warranty": {"type":"item","settings":{"icon":"warranty","title":"5-Year Limited Warranty","text":"Long-term warranty protection backed by dedicated product support."}},
         "delivery": {"type":"item","settings":{"icon":"delivery","title":"Fast U.S. Local Delivery","text":"Products stocked in U.S. warehouses ship domestically for faster delivery."}},
         "shipping": {"type":"item","settings":{"icon":"shipping","title":"Free U.S. Shipping","text":"Free standard shipping on eligible orders within the contiguous United States."}},
-        "returns": {"type":"item","settings":{"icon":"returns","title":"30-Day Hassle-Free Returns","text":"Return eligible products within 30 days under our return policy."}}
+        "returns": {"type":"item","settings":{"icon":"returns","title":"14-Day Hassle-Free Returns","text":"Request eligible returns within 14 days after delivery under our return policy."}}
       },
       "block_order": ["warranty", "delivery", "shipping", "returns"],
       "settings": {
         "eyebrow": "BUY WITH CONFIDENCE",
         "heading": "Buy with confidence. Power with confidence.",
-        "body": "Certified products, five-year limited warranty coverage, fast U.S. delivery, free shipping, 30-day returns and technical support beyond the purchase.",
+        "body": "Certified products, five-year limited warranty coverage, fast U.S. delivery, free shipping, 14-day returns and technical support beyond the purchase.",
         "product_asset": "suntneew-product-a20.jpg",
         "product_alt": "SUNTNEEW A20 jump starter",
         "product_title": "Product information, where it matters",
@@ -258,5 +308,5 @@
       }
     }
   },
-  "order": ["main_slideshow", "ways_to_power", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
+  "order": ["main_slideshow", "ways_to_power", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
 }

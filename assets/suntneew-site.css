@@ -34,6 +34,8 @@
     justify-self: start;
     min-width: 0;
     margin-inline-start: 0;
+    /* The nav font has more lower-line-box space than the logo and icons. Lift only the desktop nav to align their visible centers. */
+    transform: translateY(-4px);
   }
 
   .header__main-nav .header__link-list {
