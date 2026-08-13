@@ -44,7 +44,7 @@
         "show_country_selector": false,
         "show_country_flag": true,
         "show_country_name": true,
-        "show_locale_selector": false
+        "show_locale_selector": true
       }
     }
   },
