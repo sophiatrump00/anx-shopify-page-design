@@ -24,6 +24,7 @@
       </header>
       <div class="sn-series-product-grid">
         {%- for block in section.blocks -%}
+          <!-- series-card {{ block.id }} -->
           <article class="sn-series-product-card" {{ block.shopify_attributes }}>
             <a href="{{ block.settings.link | default: routes.collections_url }}" class="sn-series-product-card__link" aria-label="{{ block.settings.title | escape }}">
               <span class="sn-series-product-card__image">
