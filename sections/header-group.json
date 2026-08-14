@@ -25,7 +25,7 @@
         "menu": "suntneew-main-menu-0811",
         "sidebar_menu": "",
         "secondary_menu": "",
-        "customer_account_menu": "customer-account-main-menu",
+        "customer_account_menu": "",
         "menu_open_trigger": "click",
         "opening_from": "bottom",
         "layout": "logo_left_navigation_center",
