@@ -119,10 +119,24 @@
                 {%- for link in section.settings.menu.links -%}
                   {% liquid
                     assign link_title_downcase = link.title | strip | downcase
+                    assign rendered_link_url = link.url
                     assign mega_menu_block = ''
                     assign series_card_count = 0
                     assign is_technology_menu = false
                     assign is_support_menu = false
+
+                    # Keep the storefront navigation deterministic even when the
+                    # saved Shopify menu still contains stale or duplicate URLs.
+                    # All Products is the product index; Product Series is the
+                    # series hub. Titles remain translated/displayed as configured.
+                    if link_title_downcase == 'all products'
+                      # The store's saved menu currently resolves both labels to
+                      # /collections. Keep All Products on Shopify's canonical
+                      # all-products route so it cannot collapse into Product Series.
+                      assign rendered_link_url = '/collections/all'
+                    elsif link_title_downcase == 'product series'
+                      assign rendered_link_url = routes.collections_url
+                    endif
 
                     if link_title_downcase == 'technology' or link.url contains '/pages/technology'
                       assign is_technology_menu = true
@@ -165,11 +179,11 @@
                           {{- link.title -}}
                         </summary>
 
-                        {%- render 'suntneew-support-mega-menu', support_url: link.url -%}
+                        {%- render 'suntneew-support-mega-menu', support_url: rendered_link_url -%}
                       </details>
                     {%- elsif is_series_card_menu -%}
                       <a
-                        href="{{ link.url }}"
+                        href="{{ rendered_link_url }}"
                         class="bold link-faded-reverse suntneew-product-series-link"
                         {% if link.current %}
                           aria-current="page"
@@ -179,7 +193,7 @@
                       </a>
                     {%- elsif link.levels == 0 and mega_menu_block == '' -%}
                       <a
-                        href="{{ link.url }}"
+                        href="{{ rendered_link_url }}"
                         class="bold link-faded-reverse"
                         {% if link.current %}
                           aria-current="page"
@@ -199,8 +213,8 @@
                           <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}" {{ mega_menu_block.shopify_attributes }}>
                             <summary
                               class="text-with-icon gap-2.5 bold link-faded-reverse"
-                              {% if link.url != '#' %}
-                                data-url="{{ link.url | escape }}"
+                              {% if rendered_link_url != '#' %}
+                                data-url="{{ rendered_link_url | escape }}"
                               {% endif %}
                             >
                               {{- link.title -}}
@@ -223,8 +237,8 @@
                         <details class="relative" is="dropdown-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
                           <summary
                             class="text-with-icon gap-2.5 bold link-faded-reverse"
-                            {% if link.url != '#' %}
-                              data-url="{{ link.url | escape }}"
+                            {% if rendered_link_url != '#' %}
+                              data-url="{{ rendered_link_url | escape }}"
                             {% endif %}
                           >
                             {{- link.title -}}
@@ -923,3 +937,4 @@
   ]
 }
 {% endschema %}
+

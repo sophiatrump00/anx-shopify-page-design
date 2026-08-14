@@ -1,0 +1,102 @@
+{{ 'suntneew-technology.css' | asset_url | stylesheet_tag }}
+
+<section class="sn-tech-center sn-tech-center--models" aria-labelledby="model-support-heading-{{ section.id }}">
+  <div class="sn-tech-center__shell sn-tech-center__content">
+    <header class="sn-tech-center__note">
+      <span class="sn-tech-center__note-mark" aria-hidden="true">+</span>
+      <div>
+        <p class="sn-tech-center__eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 id="model-support-heading-{{ section.id }}">{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.intro }}</p>
+      </div>
+    </header>
+
+    <div class="sn-tech-center__grid">
+      {%- for block in section.blocks -%}
+        {%- assign model_product = all_products[block.settings.product_handle] -%}
+        <article class="sn-tech-center__card" {{ block.shopify_attributes }}>
+          <header class="sn-tech-center__card-header">
+            <span class="sn-tech-center__icon" aria-hidden="true">
+              {%- render 'suntneew-series-icon', icon: block.settings.icon -%}
+            </span>
+            <div>
+              <p class="sn-tech-center__family">{{ block.settings.model }}</p>
+              <h2>{{ block.settings.title }}</h2>
+            </div>
+          </header>
+
+          <p class="sn-tech-center__description">{{ block.settings.description }}</p>
+          {%- if block.settings.specs != blank -%}
+            <p class="sn-tech-center__model-specs">{{ block.settings.specs }}</p>
+          {%- endif -%}
+
+          <ul class="sn-tech-center__resources" role="list">
+            <li class="sn-tech-center__resource">
+              <span class="sn-tech-center__resource-index">01</span>
+              <div>
+                <strong>Use the exact model guide</strong>
+                <p>Confirm the model label, vehicle voltage, clamp polarity and the starting procedure before use.</p>
+              </div>
+            </li>
+            {%- if block.settings.manual_asset != blank -%}
+              <li class="sn-tech-center__resource">
+                <span class="sn-tech-center__resource-index">02</span>
+                <div>
+                  <a href="{{ block.settings.manual_asset | asset_url }}" target="_blank" rel="noopener">
+                    <strong>{{ block.settings.manual_label }}</strong>
+                    <p>Open the source manual for the model-specific operating and safety instructions.</p>
+                  </a>
+                </div>
+              </li>
+            {%- endif -%}
+          </ul>
+
+          {%- if model_product != blank and model_product.available -%}
+            <a href="{{ model_product.url }}" class="sn-tech-center__link">{{ block.settings.product_link_label }}</a>
+          {%- else -%}
+            <span class="sn-tech-center__link" aria-disabled="true">Model page held for final checks</span>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SuntNeew model support",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"MODEL SUPPORT"},
+    {"type":"text","id":"heading","label":"Heading","default":"Support that starts with the model label."},
+    {"type":"textarea","id":"intro","label":"Intro","default":"U23 and U32 use the same roadside starting routine, but their verified capacity, current and physical details are different. Use the matching model guide."}
+  ],
+  "blocks": [
+    {
+      "type": "model",
+      "name": "Model support card",
+      "settings": [
+        {"type":"select","id":"icon","label":"Icon","default":"jump","options":[{"value":"jump","label":"Jump starter"},{"value":"rv","label":"RV battery"},{"value":"home","label":"Home energy"}]},
+        {"type":"text","id":"model","label":"Model label","default":"U23"},
+        {"type":"text","id":"title","label":"Title","default":"U23 roadside guide"},
+        {"type":"textarea","id":"description","label":"Description","default":"Compact 12V jump starter guidance for checking fit, connection and storage before an emergency start."},
+        {"type":"textarea","id":"specs","label":"Verified summary","default":"8,000mAh 路 29.6Wh 路 700A start 路 1,500A peak"},
+        {"type":"text","id":"manual_label","label":"Manual label","default":"Open U23 user manual"},
+        {"type":"text","id":"manual_asset","label":"Manual asset filename","default":"suntneew-u23-manual-cn.pdf"},
+        {"type":"text","id":"product_handle","label":"Product handle","default":"suntneew-u23-portable-car-jump-starter-8-000mah"},
+        {"type":"text","id":"product_link_label","label":"Product link label","default":"Open U23 product page"}
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "SuntNeew model support",
+      "blocks": [
+        {"type":"model"},
+        {"type":"model","settings":{"model":"U32","title":"U32 roadside guide","description":"Large-display 12V jump starter guidance for checking fit, connection and storage before an emergency start.","specs":"10,000mAh 路 37Wh 路 1,000A start 路 2,000A peak","manual_label":"Open U32 user manual","manual_asset":"suntneew-u32-manual-cn.pdf","product_handle":"suntneew-u32-portable-car-jump-starter-10-000mah","product_link_label":"Open U32 product page"}}
+      ]
+    }
+  ]
+}
+{% endschema %}
+

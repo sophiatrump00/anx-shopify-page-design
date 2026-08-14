@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -13,7 +22,7 @@
         "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
       },
       "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","buy_buttons"],
-      "settings":{"show_fixed_add_to_cart":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type":"suntneew-pdp-proof",
@@ -21,7 +30,7 @@
         "energy":{"type":"metric","settings":{"value":"5.12kWh","label":"Rated energy","variant_match":""}},
         "voltage":{"type":"metric","settings":{"value":"51.2V / 100Ah","label":"Low-voltage LFP system","variant_match":""}},
         "parallel":{"type":"metric","settings":{"value":"Up to 9 sets","label":"Maximum connection","variant_match":""}},
-        "connect":{"type":"metric","settings":{"value":"CAN / RS485","label":"Wi‑Fi and Bluetooth listed","variant_match":""}}
+        "connect":{"type":"metric","settings":{"value":"CAN / RS485","label":"Wi鈥慒i and Bluetooth listed","variant_match":""}}
       },
       "block_order":["energy","voltage","parallel","connect"],
       "settings":{"accessibility_label":"WL5A highlights"}
@@ -63,8 +72,8 @@
         "discharge":{"type":"spec","settings":{"label":"Max / peak discharging current","value":"100A / 110A","group":"primary","variant_match":""}},
         "cycles":{"type":"spec","settings":{"label":"Cycle life","value":"5,000 cycles","group":"primary","variant_match":""}},
         "weight":{"type":"spec","settings":{"label":"Weight","value":"52kg","group":"installation","variant_match":""}},
-        "size":{"type":"spec","settings":{"label":"Dimensions (H×W×D)","value":"645×525×170mm","group":"installation","variant_match":""}},
-        "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485 / Wi‑Fi / Bluetooth","group":"system","variant_match":""}},
+        "size":{"type":"spec","settings":{"label":"Dimensions (H脳W脳D)","value":"645脳525脳170mm","group":"installation","variant_match":""}},
+        "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485 / Wi鈥慒i / Bluetooth","group":"system","variant_match":""}},
         "installation":{"type":"spec","settings":{"label":"Installation","value":"Wall mounting / floor standing","group":"installation","variant_match":""}},
         "ip":{"type":"spec","settings":{"label":"Enclosure rating","value":"IP54","group":"installation","variant_match":""}},
         "scope1":{"type":"included","settings":{"item":"Selected WL5A battery","variant_match":""}},
@@ -79,7 +88,7 @@
     "faq": {
       "type":"suntneew-pdp-faq",
       "blocks": {
-        "q1":{"type":"question","settings":{"question":"Can multiple WL5A batteries be connected?","answer":"<p>WL5A supports up to nine connected sets. The final parallel configuration depends on inverter limits, wiring, protection devices and the installer’s design.</p>"}},
+        "q1":{"type":"question","settings":{"question":"Can multiple WL5A batteries be connected?","answer":"<p>WL5A supports up to nine connected sets. The final parallel configuration depends on inverter limits, wiring, protection devices and the installer鈥檚 design.</p>"}},
         "q2":{"type":"question","settings":{"question":"Can I buy WL5A online?","answer":"<p>Yes. Choose the quantity, then use Add to cart or Buy it now. Review inverter compatibility and local installation requirements before installation.</p>"}},
         "q3":{"type":"question","settings":{"question":"Does WL5A support wireless monitoring?","answer":"<p>WL5A supports Wi-Fi and Bluetooth alongside CAN and RS485. Confirm app, firmware and inverter integration for the planned system.</p>"}},
         "q4":{"type":"question","settings":{"question":"Which documents are available?","answer":"<p>The current product specification sheet is available on this page. Contact support only if you need destination-specific technical documentation.</p>"}}
@@ -91,3 +100,4 @@
   },
   "order":["main","proof","anchor_nav","features","details","faq","related-products"]
 }
+

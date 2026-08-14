@@ -1,0 +1,597 @@
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --jump-guide-ink: #182330;
+    --jump-guide-muted: #66727e;
+    --jump-guide-line: rgb(24 35 48 / .14);
+    --jump-guide-accent: #e9653b;
+    background: #f4f6f7;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide {
+    padding-block: clamp(34px, 5vw, 76px);
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__intro {
+    display: grid;
+    gap: 12px;
+    max-width: 760px;
+    margin-bottom: clamp(24px, 4vw, 48px);
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__eyebrow {
+    margin: 0;
+    color: var(--jump-guide-accent);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: .16em;
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__intro h2 {
+    max-width: 740px;
+    margin: 0;
+    color: var(--jump-guide-ink);
+    font-size: clamp(30px, 4vw, 56px);
+    letter-spacing: -.045em;
+    line-height: .98;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__intro p:last-child {
+    max-width: 660px;
+    margin: 0;
+    color: var(--jump-guide-muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__tool {
+    display: grid;
+    gap: clamp(24px, 3vw, 40px);
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--jump-guide-line);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 12px 32px rgb(24 35 48 / .06);
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    color: var(--jump-guide-ink);
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__table th,
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgb(24 35 48 / .09);
+    text-align: start;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__table th {
+    color: var(--jump-guide-muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .11em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__table tr[data-selected="true"] {
+    background: #fff6f1;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__table td:first-child {
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__fit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 7px 11px;
+    border: 1px solid rgb(233 101 59 / .42);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--jump-guide-accent);
+    font: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__fit-button:hover,
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__fit-button:focus-visible,
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__fit-button[aria-pressed="true"] {
+    border-color: var(--jump-guide-accent);
+    background: var(--jump-guide-accent);
+    color: #fff;
+    outline: none;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__table-note {
+    margin: 0;
+    padding: 12px 16px 14px;
+    border-top: 1px solid rgb(24 35 48 / .09);
+    color: var(--jump-guide-muted);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__catalog-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__catalog-head h3 {
+    margin: 0;
+    color: var(--jump-guide-ink);
+    font-size: clamp(24px, 3vw, 38px);
+    letter-spacing: -.04em;
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__catalog-head p {
+    max-width: 560px;
+    margin: 8px 0 0;
+    color: var(--jump-guide-muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__view-switcher {
+    display: inline-flex;
+    flex: none;
+    gap: 3px;
+    padding: 3px;
+    border: 1px solid var(--jump-guide-line);
+    border-radius: 999px;
+    background: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__view-button {
+    min-height: 32px;
+    padding: 6px 12px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--jump-guide-muted);
+    font: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__view-button[aria-pressed="true"] {
+    background: var(--jump-guide-ink);
+    color: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__cards.is-list {
+    grid-template-columns: 1fr;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card {
+    display: grid;
+    overflow: hidden;
+    border: 1px solid var(--jump-guide-line);
+    border-radius: 14px;
+    background: #fff;
+    color: var(--jump-guide-ink);
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card[hidden] {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__media {
+    display: grid;
+    min-height: 220px;
+    place-items: center;
+    overflow: hidden;
+    background: #eef1f3;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__body {
+    display: grid;
+    align-content: start;
+    gap: 12px;
+    padding: 18px;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__eyebrow {
+    margin: 0;
+    color: var(--jump-guide-accent);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: .12em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card h4 {
+    margin: 0;
+    font-size: 19px;
+    letter-spacing: -.025em;
+    line-height: 1.1;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__summary {
+    min-height: 42px;
+    margin: 0;
+    color: var(--jump-guide-muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__specs li {
+    display: grid;
+    gap: 2px;
+    padding: 9px;
+    border-radius: 8px;
+    background: #f4f6f7;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__specs strong {
+    font-size: 13px;
+    line-height: 1.1;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__specs span {
+    color: var(--jump-guide-muted);
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__variants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__variant {
+    padding: 5px 7px;
+    border: 1px solid var(--jump-guide-line);
+    border-radius: 5px;
+    color: var(--jump-guide-muted);
+    font-size: 10px;
+    line-height: 1.1;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 42px;
+    padding: 10px 13px;
+    border-radius: 7px;
+    background: var(--jump-guide-ink);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-card__link:hover,
+  #shopify-section-{{ section.id }} .suntneew-jump-card__link:focus-visible {
+    background: var(--jump-guide-accent);
+    outline: none;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__empty {
+    display: none;
+    margin: 14px 0 0;
+    color: var(--jump-guide-muted);
+    font-size: 13px;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-guide__empty.is-visible {
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-catalog--list .suntneew-jump-card {
+    grid-template-columns: 180px minmax(0, 1fr);
+  }
+
+  #shopify-section-{{ section.id }} .suntneew-jump-catalog--list .suntneew-jump-card__media {
+    min-height: 100%;
+  }
+
+  @media screen and (max-width: 999px) {
+    #shopify-section-{{ section.id }} .suntneew-jump-guide__cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 699px) {
+    #shopify-section-{{ section.id }} .suntneew-jump-guide__catalog-head {
+      align-items: start;
+      flex-direction: column;
+    }
+
+    #shopify-section-{{ section.id }} .suntneew-jump-guide__cards {
+      grid-template-columns: 1fr;
+    }
+
+    #shopify-section-{{ section.id }} .suntneew-jump-catalog--list .suntneew-jump-card {
+      grid-template-columns: 120px minmax(0, 1fr);
+    }
+
+    #shopify-section-{{ section.id }} .suntneew-jump-catalog--list .suntneew-jump-card__media {
+      min-height: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .suntneew-jump-card__body {
+      padding: 14px;
+    }
+  }
+</style>
+
+<section class="suntneew-jump-guide" data-jump-guide>
+  <div class="container">
+    <div class="suntneew-jump-guide__intro">
+      <p class="suntneew-jump-guide__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h2>{{ section.settings.heading | escape }}</h2>
+      <p>{{ section.settings.intro | escape }}</p>
+    </div>
+
+    <div class="suntneew-jump-guide__tool">
+      <div class="suntneew-jump-guide__table-wrap">
+        <table class="suntneew-jump-guide__table">
+          <thead>
+            <tr>
+              <th scope="col">Capacity</th>
+              <th scope="col">Starting current</th>
+              <th scope="col">Peak current</th>
+              <th scope="col">Gasoline reference</th>
+              <th scope="col">Diesel reference</th>
+              <th scope="col">Compare</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for block in section.blocks -%}
+              {%- if block.type != 'guide_row' -%}{% continue %}{%- endif -%}
+              <tr data-guide-row data-capacity="{{ block.settings.capacity | escape }}">
+                <td>{{ block.settings.capacity | escape }}mAh</td>
+                <td>{{ block.settings.start_current | escape }}A</td>
+                <td>{{ block.settings.peak_current | escape }}A</td>
+                <td>up to {{ block.settings.gasoline | escape }}L</td>
+                <td>up to {{ block.settings.diesel | escape }}L</td>
+                <td>
+                  <button type="button" class="suntneew-jump-guide__fit-button" data-capacity-filter="{{ block.settings.capacity | escape }}" aria-pressed="false">
+                    {{ section.settings.compare_label | escape }}
+                  </button>
+                </td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+        <p class="suntneew-jump-guide__table-note">{{ section.settings.table_note | escape }}</p>
+      </div>
+
+      <div class="suntneew-jump-catalog" data-jump-catalog>
+        <div class="suntneew-jump-guide__catalog-head">
+          <div>
+            <h3>{{ section.settings.catalog_heading | escape }}</h3>
+            <p>{{ section.settings.catalog_intro | escape }}</p>
+          </div>
+          <div class="suntneew-jump-guide__view-switcher" role="group" aria-label="Product display mode">
+            <button type="button" class="suntneew-jump-guide__view-button" data-view-switch="cards" aria-pressed="true">{{ section.settings.cards_label | escape }}</button>
+            <button type="button" class="suntneew-jump-guide__view-button" data-view-switch="list" aria-pressed="false">{{ section.settings.list_label | escape }}</button>
+          </div>
+        </div>
+
+        <div class="suntneew-jump-guide__cards" data-jump-cards>
+          {%- for block in section.blocks -%}
+            {%- if block.type != 'family' -%}{% continue %}{%- endif -%}
+            {%- assign family_product = all_products[block.settings.product_handle] -%}
+            {%- if block.settings.preview_only and family_product == blank and request.design_mode == false -%}{% continue %}{%- endif -%}
+            {%- assign family_url = block.settings.product_url | default: family_product.url -%}
+            {%- if family_url == blank and block.settings.product_handle != blank -%}
+              {%- assign family_url = routes.root_url | append: 'products/' | append: block.settings.product_handle -%}
+            {%- endif -%}
+            {%- assign family_image = block.settings.asset_name -%}
+            {%- if family_product.featured_media != blank -%}
+              {%- assign family_image = family_product.featured_media -%}
+            {%- endif -%}
+            <article class="suntneew-jump-card" data-jump-card data-capacities="{{ block.settings.capacities | escape }}" {{ block.shopify_attributes }}>
+              <a class="suntneew-jump-card__media" href="{{ family_url }}">
+                {%- if family_image != blank -%}
+                  {%- if family_product.featured_media != blank -%}
+                    {{- family_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360,540,720,900', sizes: '(min-width: 1000px) 24vw, (min-width: 700px) 42vw, 92vw', alt: block.settings.image_alt -}}
+                  {%- else -%}
+                    <img src="{{ family_image | asset_url }}" alt="{{ block.settings.image_alt | escape }}" loading="lazy" width="900" height="900">
+                  {%- endif -%}
+                {%- endif -%}
+              </a>
+              <div class="suntneew-jump-card__body">
+                <p class="suntneew-jump-card__eyebrow">{{ block.settings.eyebrow | escape }}</p>
+                <h4>{{ block.settings.title | default: family_product.title | escape }}</h4>
+                <p class="suntneew-jump-card__summary">{{ block.settings.summary | escape }}</p>
+                <ul class="suntneew-jump-card__specs" role="list">
+                  <li><strong>{{ block.settings.spec_capacity | escape }}</strong><span>Capacity</span></li>
+                  <li><strong>{{ block.settings.spec_start | escape }}</strong><span>Starting current</span></li>
+                  <li><strong>{{ block.settings.spec_peak | escape }}</strong><span>Peak current</span></li>
+                  <li><strong>{{ block.settings.spec_fit | escape }}</strong><span>Fit reference</span></li>
+                </ul>
+                {%- if family_product.options_with_values != blank -%}
+                  <div class="suntneew-jump-card__variants" aria-label="Available variants">
+                    {%- for option in family_product.options_with_values -%}
+                      <span class="suntneew-jump-card__variant">{{ option.name }}: {{ option.values | join: ' 路 ' }}</span>
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+                <a class="suntneew-jump-card__link" href="{{ family_url }}">
+                  <span>{{ block.settings.link_label | escape }}</span><span aria-hidden="true">鈫?/span>
+                </a>
+              </div>
+            </article>
+          {%- endfor -%}
+        </div>
+        <p class="suntneew-jump-guide__empty" data-jump-empty>{{ section.settings.empty_label | escape }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const root = document.querySelector('#shopify-section-{{ section.id }} [data-jump-guide]');
+    if (!root || root.dataset.ready === 'true') return;
+    root.dataset.ready = 'true';
+
+    const cards = [...root.querySelectorAll('[data-jump-card]')];
+    const rows = [...root.querySelectorAll('[data-guide-row]')];
+    const filters = [...root.querySelectorAll('[data-capacity-filter]')];
+    const empty = root.querySelector('[data-jump-empty]');
+    const catalog = root.querySelector('[data-jump-catalog]');
+    const cardGrid = root.querySelector('[data-jump-cards]');
+
+    const reset = () => {
+      cards.forEach((card) => { card.hidden = false; });
+      rows.forEach((row) => { row.dataset.selected = 'false'; });
+      filters.forEach((button) => { button.setAttribute('aria-pressed', 'false'); });
+      if (empty) empty.classList.remove('is-visible');
+    };
+
+    filters.forEach((button) => {
+      button.addEventListener('click', () => {
+        const capacity = button.dataset.capacityFilter;
+        const isSelected = button.getAttribute('aria-pressed') === 'true';
+        if (isSelected) {
+          reset();
+          return;
+        }
+
+        filters.forEach((item) => item.setAttribute('aria-pressed', item === button ? 'true' : 'false'));
+        rows.forEach((row) => { row.dataset.selected = row.dataset.capacity === capacity ? 'true' : 'false'; });
+        let visible = 0;
+        cards.forEach((card) => {
+          const matches = (card.dataset.capacities || '').split(',').map((value) => value.trim()).includes(capacity);
+          card.hidden = !matches;
+          if (matches) visible += 1;
+        });
+        if (empty) empty.classList.toggle('is-visible', visible === 0);
+      });
+    });
+
+    root.querySelectorAll('[data-view-switch]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const view = button.dataset.viewSwitch;
+        root.querySelectorAll('[data-view-switch]').forEach((item) => item.setAttribute('aria-pressed', item === button ? 'true' : 'false'));
+        if (cardGrid) cardGrid.classList.toggle('is-list', view === 'list');
+        if (catalog) catalog.classList.toggle('suntneew-jump-catalog--list', view === 'list');
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Jump starter guide",
+  "class": "shopify-section--suntneew-jump-guide",
+  "tag": "section",
+  "max_blocks": 16,
+  "blocks": [
+    {
+      "type": "guide_row",
+      "name": "Vehicle fit row",
+      "settings": [
+        {"type":"text","id":"capacity","label":"Capacity (mAh)","default":"8000"},
+        {"type":"text","id":"start_current","label":"Starting current (A)","default":"750"},
+        {"type":"text","id":"peak_current","label":"Peak current (A)","default":"1500"},
+        {"type":"text","id":"gasoline","label":"Gasoline reference (L)","default":"6"},
+        {"type":"text","id":"diesel","label":"Diesel reference (L)","default":"3"}
+      ]
+    },
+    {
+      "type": "family",
+      "name": "Product family",
+      "settings": [
+        {"type":"text","id":"product_handle","label":"Product handle","info":"One family product. A20 must remain one product with capacity/color variants."},
+        {"type":"url","id":"product_url","label":"Fallback product URL"},
+        {"type":"text","id":"asset_name","label":"Fallback image asset filename"},
+        {"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew jump starter"},
+        {"type":"text","id":"eyebrow","label":"Eyebrow","default":"JUMP STARTER"},
+        {"type":"text","id":"title","label":"Family title","default":"SuntNeew jump starter"},
+        {"type":"textarea","id":"summary","label":"Summary","default":"Compare the verified model details, then open the product page for variants and live availability."},
+        {"type":"text","id":"capacities","label":"Guide capacities (comma separated)","default":"8000"},
+        {"type":"text","id":"spec_capacity","label":"Capacity display","default":"8,000mAh"},
+        {"type":"text","id":"spec_start","label":"Starting current display","default":"700A"},
+        {"type":"text","id":"spec_peak","label":"Peak current display","default":"1,500A"},
+        {"type":"text","id":"spec_fit","label":"Fit reference display","default":"12V 路 6.0L gas"},
+        {"type":"text","id":"link_label","label":"Link label","default":"Open product details"},
+        {"type":"checkbox","id":"preview_only","label":"Preview only when product is not available","default":false}
+      ]
+    }
+  ],
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"CHOOSE BY FIT"},
+    {"type":"text","id":"heading","label":"Heading","default":"Find the jump starter that fits the vehicle."},
+    {"type":"textarea","id":"intro","label":"Intro","default":"Use the table as a first comparison, then open the matching product family to review variants, current specifications and the model manual."},
+    {"type":"text","id":"table_note","label":"Table note","default":"Reference matching only. Confirm the exact model label, manual and battery condition before use; the table does not replace model-specific instructions."},
+    {"type":"text","id":"compare_label","label":"Compare button label","default":"Show matches"},
+    {"type":"text","id":"catalog_heading","label":"Catalog heading","default":"Compare product families"},
+    {"type":"textarea","id":"catalog_intro","label":"Catalog intro","default":"A20 is one product family with capacity and color variants. U23, U32 and A3 each open their own detailed page."},
+    {"type":"text","id":"cards_label","label":"Cards view label","default":"Cards"},
+    {"type":"text","id":"list_label","label":"List view label","default":"List"},
+    {"type":"text","id":"empty_label","label":"No match label","default":"No family is mapped to this capacity yet. Review the full catalog or confirm the product data before publishing a new mapping."}
+  ],
+  "presets": [
+    {
+      "name": "Jump starter guide",
+      "blocks": [
+        {"type":"guide_row","settings":{"capacity":"8000","start_current":"750","peak_current":"1500","gasoline":"6","diesel":"3"}},
+        {"type":"guide_row","settings":{"capacity":"10000","start_current":"1000","peak_current":"2000","gasoline":"6.5","diesel":"3.5"}},
+        {"type":"guide_row","settings":{"capacity":"12000","start_current":"1500","peak_current":"3000","gasoline":"7","diesel":"4"}},
+        {"type":"guide_row","settings":{"capacity":"16000","start_current":"2000","peak_current":"4000","gasoline":"8","diesel":"5"}},
+        {"type":"guide_row","settings":{"capacity":"20000","start_current":"2500","peak_current":"5000","gasoline":"9","diesel":"6"}},
+        {"type":"guide_row","settings":{"capacity":"25000","start_current":"3000","peak_current":"6000","gasoline":"10","diesel":"7"}},
+        {"type":"family","settings":{"product_handle":"suntneew-a20-jump-starter-8000mah","asset_name":"suntneew-product-a20.jpg","image_alt":"SUNTNEEW A20 jump starter family","eyebrow":"A20 FAMILY","title":"SUNTNEEW A20 Jump Starter","summary":"One Shopify product with capacity and color variants. Select the exact capacity and color on the product page.","capacities":"8000,12000,16000","spec_capacity":"8,000 / 12,000 / 16,000mAh","spec_start":"Model-specific","spec_peak":"Model-specific","spec_fit":"12V roadside use","link_label":"Open A20 details"}},
+        {"type":"family","settings":{"product_handle":"suntneew-u23-portable-car-jump-starter-8-000mah","asset_name":"suntneew-u23-gallery-01.jpg","image_alt":"SUNTNEEW U23 jump starter","eyebrow":"U23 | 8,000mAh","title":"SUNTNEEW U23 Jump Starter","summary":"Compact 12V model with verified 700A starting current and 1,500A peak current.","capacities":"8000","spec_capacity":"8,000mAh","spec_start":"700A","spec_peak":"1,500A","spec_fit":"Up to 6.0L gas","link_label":"Open U23 details","preview_only":true}},
+        {"type":"family","settings":{"product_handle":"suntneew-u32-portable-car-jump-starter-10-000mah","asset_name":"suntneew-u32-gallery-01.jpg","image_alt":"SUNTNEEW U32 jump starter","eyebrow":"U32 | 10,000mAh","title":"SUNTNEEW U32 Jump Starter","summary":"Large-display 12V model with verified 1,000A starting current and 2,000A peak current.","capacities":"10000","spec_capacity":"10,000mAh","spec_start":"1,000A","spec_peak":"2,000A","spec_fit":"Up to 6.5L gas","link_label":"Open U32 details","preview_only":true}},
+        {"type":"family","settings":{"product_handle":"suntneew-a3-jump-starter-16000mah","asset_name":"suntneew-product-a3.jpg","image_alt":"SUNTNEEW A3 jump starter","eyebrow":"A3 路 16,000mAh","title":"SUNTNEEW A3 Jump Starter","summary":"A single 16,000mAh configuration with PD60W USB-C and 2,500A peak current.","capacities":"16000","spec_capacity":"16,000mAh","spec_start":"800A","spec_peak":"2,500A","spec_fit":"12V vehicle fit","link_label":"Open A3 details"}}
+      ]
+    }
+  ]
+}
+{% endschema %}
+

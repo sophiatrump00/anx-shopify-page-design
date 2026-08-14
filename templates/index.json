@@ -111,7 +111,7 @@
             "fallback_asset": "suntneew-use-jump.jpg",
             "image_alt": "SuntNeew jump starter connected to a vehicle battery",
             "eyebrow": "JUMP STARTERS",
-            "product_label": "A20 · A3",
+            "product_label": "A20 路 A3 路 U23 路 U32",
             "title": "Start the vehicle and get back on the road.",
             "text": "Starting power, charging and emergency support that stays close to the vehicle.",
             "link_label": "Explore jump starter series",
@@ -124,7 +124,7 @@
             "fallback_asset": "suntneew-use-home-energy.jpg",
             "image_alt": "ENERGY STAR home energy storage system beside a solar-powered home",
             "eyebrow": "HOME ENERGY STORAGE",
-            "product_label": "5.12 kWh · 10.24 kWh · High-voltage",
+            "product_label": "5.12 kWh 路 10.24 kWh 路 High-voltage",
             "title": "Keep essential home power within reach.",
             "text": "Begin with the energy you need, then plan a compatible system around your home.",
             "link_label": "Explore home energy series",
@@ -137,7 +137,7 @@
         "anchor_id": "ways-to-power",
         "eyebrow": "POWER FOR REAL LIFE",
         "heading": "Three ways to stay powered.",
-        "body": "RV travel, roadside recovery or power at home—start with the system you use every day.",
+        "body": "RV travel, roadside recovery or power at home鈥攕tart with the system you use every day.",
         "columns": 3,
         "card_height": 480,
         "dark_background": false,
@@ -172,7 +172,7 @@
             "x_position": 73,
             "y_position": 58,
             "title": "Built for changing temperatures",
-            "text": "<p>Charge from 32°F to 131°F and discharge from -4°F to 140°F. Charging pauses below 32°F and resumes when the battery returns to a safe charging range.</p>"
+            "text": "<p>Charge from 32掳F to 131掳F and discharge from -4掳F to 140掳F. Charging pauses below 32掳F and resumes when the battery returns to a safe charging range.</p>"
           }
         }
       },
@@ -189,7 +189,7 @@
         "stat_1": "Up to 15,000 Cycles*",
         "stat_2": "Bluetooth 5.0 Monitoring",
         "stat_3": "Low-Temperature Charge Protection",
-        "stat_4": "-4°F to 140°F Discharge",
+        "stat_4": "-4掳F to 140掳F Discharge",
         "footnote": "*Up to 15,000 cycles under laboratory conditions. Actual cycle life varies by model, depth of discharge, charge/discharge rate, temperature and usage.",
         "button_label": "Explore RV series",
         "button_link": "shopify://collections/rv-batteries"
@@ -310,3 +310,4 @@
   },
   "order": ["main_slideshow", "ways_to_power", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
 }
+

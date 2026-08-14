@@ -19,7 +19,7 @@
         "separator":{"type":"separator","settings":{}},
         "intro":{"type":"text","settings":{"text":"<p>16,000mAh jump starter with 2500A peak current and 60W USB-C Power Delivery.</p>"}},
         "quantity_selector":{"type":"quantity_selector","settings":{}},
-        "bundle":{"type":"suntneew_bundle_selector","settings":{"enabled":false,"heading":"Build an A3 multi-pack","body":"Save 3% per extra unit—up to 9% when you buy four.","discount_percent":3,"minimum_quantity":2,"maximum_quantity":4}},
+        "bundle":{"type":"suntneew_bundle_selector","settings":{"enabled":true,"heading":"Build an A3 multi-pack","body":"Save 3% per extra unit - up to 9% when you buy four.","discount_percent":3,"minimum_quantity":2,"maximum_quantity":4}},
         "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":false,"show_gift_card_recipient":false}}
       },
       "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","bundle","buy_buttons"],
@@ -72,14 +72,14 @@
         "peak":{"type":"spec","settings":{"label":"Peak current","value":"2500A","group":"primary","variant_match":""}},
         "input":{"type":"spec","settings":{"label":"USB-C input","value":"PD 60W: 5V/9V/12V/15V/20V, up to 3A","group":"system","variant_match":""}},
         "output":{"type":"spec","settings":{"label":"Outputs","value":"USB-C PD60W; USB-A PD18W; USB-A 5V/2.4A","group":"system","variant_match":""}},
-        "temperature":{"type":"spec","settings":{"label":"Discharge temperature","value":"−20°C to 60°C","group":"installation","variant_match":""}},
+        "temperature":{"type":"spec","settings":{"label":"Discharge temperature","value":"鈭?0掳C to 60掳C","group":"installation","variant_match":""}},
         "weight":{"type":"spec","settings":{"label":"Shipping weight","value":"1.3kg","group":"installation","variant_match":""}},
-        "box1":{"type":"included","settings":{"item":"A3 main unit ×1","variant_match":""}},
-        "box2":{"type":"included","settings":{"item":"Smart clamp ×1","variant_match":""}},
-        "box3":{"type":"included","settings":{"item":"USB-C cable ×1","variant_match":""}},
-        "box4":{"type":"included","settings":{"item":"EVA case ×1","variant_match":""}},
-        "box5":{"type":"included","settings":{"item":"Manual ×1","variant_match":""}},
-        "box6":{"type":"included","settings":{"item":"Color box ×1","variant_match":""}},
+        "box1":{"type":"included","settings":{"item":"A3 main unit 脳1","variant_match":""}},
+        "box2":{"type":"included","settings":{"item":"Smart clamp 脳1","variant_match":""}},
+        "box3":{"type":"included","settings":{"item":"USB-C cable 脳1","variant_match":""}},
+        "box4":{"type":"included","settings":{"item":"EVA case 脳1","variant_match":""}},
+        "box5":{"type":"included","settings":{"item":"Manual 脳1","variant_match":""}},
+        "box6":{"type":"included","settings":{"item":"Color box 脳1","variant_match":""}},
         "manual":{"type":"download","settings":{"label":"A3 product pack (PDF)","link":"https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A3_English_Product_Pack.pdf?v=1786349789","variant_match":""}}
       },
       "block_order":["capacity","energy","start","peak","input","output","temperature","weight","box1","box2","box3","box4","box5","box6","manual"],
@@ -100,3 +100,4 @@
   },
   "order":["main","proof","anchor_nav","features","details","faq","related-products"]
 }
+

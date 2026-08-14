@@ -53,7 +53,7 @@
   .shopify-section--header .header__link-list > ul > li summary {
     min-height: 24px;
     align-items: center;
-    font-size: .875rem;
+    font-size: .9375rem;
     letter-spacing: .025em;
     line-height: 1.2;
   }
@@ -64,6 +64,18 @@
 
   .shopify-section--header .header__link-list > ul > li summary {
     list-style: none;
+  }
+
+  /* The header is intentionally compact; sticky hide-on-scroll still lets it
+     return when the visitor scrolls upward. Keep the nav and logo on one visual
+     baseline so Product Series cannot sit a line taller than its siblings. */
+  .shopify-section--header .header__wrapper {
+    min-height: 58px;
+  }
+
+  .shopify-section--header .header__logo-image {
+    max-height: 34px;
+    object-fit: contain;
   }
 
   .shopify-section--header .header__link-list > ul > li summary::-webkit-details-marker {
@@ -181,3 +193,4 @@
     transition: none;
   }
 }
+

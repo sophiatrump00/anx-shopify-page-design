@@ -1,0 +1,81 @@
+{{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #shopify-section-{{ section.id }} .sn-pdp-fallback-gallery {
+    padding-block: clamp(42px, 6vw, 84px);
+    background: var(--sn-pdp-soft, #f5f7f9);
+  }
+
+  #shopify-section-{{ section.id }} .sn-pdp-fallback-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: clamp(24px, 4vw, 42px);
+  }
+
+  #shopify-section-{{ section.id }} .sn-pdp-fallback-gallery__item {
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid var(--sn-pdp-line, #dfe4ea);
+    border-radius: 16px;
+    background: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .sn-pdp-fallback-gallery__item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+
+  @media screen and (max-width: 799px) {
+    #shopify-section-{{ section.id }} .sn-pdp-fallback-gallery__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 499px) {
+    #shopify-section-{{ section.id }} .sn-pdp-fallback-gallery__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{%- if product.media.size == 0 -%}
+  <section class="sn-pdp sn-pdp-fallback-gallery" aria-labelledby="fallback-gallery-heading-{{ section.id }}">
+    <div class="sn-pdp__shell">
+      <p class="sn-pdp__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="sn-pdp__heading" id="fallback-gallery-heading-{{ section.id }}">{{ section.settings.heading }}</h2>
+      <div class="sn-pdp-fallback-gallery__grid">
+        {%- for block in section.blocks -%}
+          <figure class="sn-pdp-fallback-gallery__item" {{ block.shopify_attributes }}>
+            <img src="{{ block.settings.asset_name | asset_url }}" alt="{{ block.settings.alt | escape }}" width="1600" height="1600" loading="lazy">
+          </figure>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SuntNeew PDP fallback",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"PRODUCT GALLERY"},
+    {"type":"text","id":"heading","label":"Heading","default":"Product views, without the noise."}
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Bundled product image",
+      "settings": [
+        {"type":"text","id":"asset_name","label":"Theme asset filename","default":"suntneew-u23-gallery-01.jpg"},
+        {"type":"text","id":"alt","label":"Alt text","default":"SUNTNEEW jump starter product view"}
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{"name":"SuntNeew PDP fallback gallery","blocks":[{"type":"image"},{"type":"image"},{"type":"image"},{"type":"image"}]}]
+}
+{% endschema %}
+

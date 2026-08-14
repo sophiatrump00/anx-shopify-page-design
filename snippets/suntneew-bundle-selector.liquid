@@ -65,8 +65,9 @@
       {%- endfor -%}
     </div>
 
-    <p class="suntneew-bundle-selector__note">Save {{ bundle_discount_per_extra_unit }}% per extra unit: 2 units {{ bundle_discount_per_extra_unit }}% off, 3 units {{ bundle_discount_per_extra_unit | times: 2 }}% off, 4 units {{ bundle_maximum_discount }}% off. The matching automatic-discount ladder applies at checkout.</p>
+    <p class="suntneew-bundle-selector__note">Save {{ bundle_discount_per_extra_unit }}% per extra unit: 2 units {{ bundle_discount_per_extra_unit }}% off, 3 units {{ bundle_discount_per_extra_unit | times: 2 }}% off, 4 units {{ bundle_maximum_discount }}% off. The quantity selector previews the ladder; activate the matching Shopify discount ladder before publishing.</p>
 
     <script type="application/json" data-suntneew-bundle-variants>{{ product.variants | json }}</script>
   </div>
 {%- endif -%}
+

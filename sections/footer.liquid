@@ -64,9 +64,12 @@
 
                     <ul class="v-stack gap-3" role="list">
                       {%- for link in block.settings.menu.links -%}
-                        <li>
-                          <a href="{{ link.url }}" class="inline-block link-faded break-all">{{ link.title }}</a>
-                        </li>
+                        {%- assign footer_link_title = link.title | strip | downcase -%}
+                        {%- unless footer_link_title == 'technology' or link.url contains '/pages/technology' -%}
+                          <li>
+                            <a href="{{ link.url }}" class="inline-block link-faded break-all">{{ link.title }}</a>
+                          </li>
+                        {%- endunless -%}
                       {%- endfor -%}
                     </ul>
                   </div>
@@ -393,3 +396,4 @@
   ]
 }
 {% endschema %}
+
