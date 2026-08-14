@@ -89,14 +89,14 @@
         "peak16":{"type":"spec","settings":{"label":"Peak current","value":"4000A","group":"primary","variant_match":"16000mAh"}},
         "weight16":{"type":"spec","settings":{"label":"Shipping weight","value":"0.94kg","group":"installation","variant_match":"16000mAh"}},
         "input":{"type":"spec","settings":{"label":"Input","value":"USB-C: 5V/2A, 9V/2A","group":"system","variant_match":""}},
-        "output":{"type":"spec","settings":{"label":"Output","value":"2脳 USB-A: 5V/2A (3A max)","group":"system","variant_match":""}},
+        "output":{"type":"spec","settings":{"label":"Output","value":"2x USB-A: 5V/2A (3A max)","group":"system","variant_match":""}},
         "cycles":{"type":"spec","settings":{"label":"Cycle-life reference","value":"300 cycles","group":"primary","variant_match":""}},
-        "temperature":{"type":"spec","settings":{"label":"Discharge temperature","value":"鈭?0掳C to 60掳C","group":"installation","variant_match":""}},
-        "box1":{"type":"included","settings":{"item":"A20 main unit 脳1","variant_match":""}},
-        "box2":{"type":"included","settings":{"item":"Smart clamp 脳1","variant_match":""}},
-        "box3":{"type":"included","settings":{"item":"USB cable 脳1","variant_match":""}},
-        "box4":{"type":"included","settings":{"item":"Manual 脳1","variant_match":""}},
-        "box5":{"type":"included","settings":{"item":"Color box 脳1","variant_match":""}},
+        "temperature":{"type":"spec","settings":{"label":"Discharge temperature","value":"-20 C to 60 C","group":"installation","variant_match":""}},
+        "box1":{"type":"included","settings":{"item":"A20 main unit x1","variant_match":""}},
+        "box2":{"type":"included","settings":{"item":"Smart clamp x1","variant_match":""}},
+        "box3":{"type":"included","settings":{"item":"USB cable x1","variant_match":""}},
+        "box4":{"type":"included","settings":{"item":"Manual x1","variant_match":""}},
+        "box5":{"type":"included","settings":{"item":"Color box x1","variant_match":""}},
         "manual8":{"type":"download","settings":{"label":"8,000mAh product pack (PDF)","link":"https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A20-8000MAH_English_Product_Pack.pdf?v=1786349789","variant_match":"8000mAh"}},
         "manual12":{"type":"download","settings":{"label":"12,000mAh product pack (PDF)","link":"https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A20-12000MAH_English_Product_Pack.pdf?v=1786349789","variant_match":"12000mAh"}},
         "manual16":{"type":"download","settings":{"label":"16,000mAh product pack (PDF)","link":"https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A20-16000MAH_English_Product_Pack.pdf?v=1786349789","variant_match":"16000mAh"}}
@@ -110,7 +110,7 @@
         "q1":{"type":"question","settings":{"question":"How many A20 variants are there?","answer":"<p>The unified page has four sellable combinations: 8,000mAh Orange, 8,000mAh Red, 12,000mAh Orange and 16,000mAh Orange.</p>"}},
         "q2":{"type":"question","settings":{"question":"How should I choose an A20 capacity?","answer":"<p>Start with the selected capacity's rated energy and peak current, then confirm 12V vehicle fit in the product manual. Do not choose from a generic engine-size promise alone.</p>"}},
         "q3":{"type":"question","settings":{"question":"Can the A20 charge a phone?","answer":"<p>Yes. The A20 has two USB-A outputs for everyday device charging, in addition to its USB-C input.</p>"}},
-        "q4":{"type":"question","settings":{"question":"What should I do before jump-starting?","answer":"<p>Read the product manual, confirm correct clamp polarity, and follow the vehicle manufacturer鈥檚 instructions. Product condition and vehicle battery condition affect results.</p>"}}
+        "q4":{"type":"question","settings":{"question":"What should I do before jump-starting?","answer":"<p>Read the product manual, confirm correct clamp polarity, and follow the vehicle manufacturer's instructions. Product condition and vehicle battery condition affect results.</p>"}}
       },
       "block_order":["q1","q2","q3","q4"],
       "settings":{"anchor_id":"faq","eyebrow":"A20 support","heading":"Frequently asked questions"}
@@ -119,4 +119,3 @@
   },
   "order":["main","proof","anchor_nav","features","details","faq","related-products"]
 }
-

@@ -30,7 +30,7 @@
         "energy":{"type":"metric","settings":{"value":"10.24kWh","label":"Rated energy","variant_match":""}},
         "voltage":{"type":"metric","settings":{"value":"51.2V / 200Ah","label":"Low-voltage LFP system","variant_match":""}},
         "parallel":{"type":"metric","settings":{"value":"Up to 9 sets","label":"Maximum connection","variant_match":""}},
-        "connect":{"type":"metric","settings":{"value":"CAN / RS485","label":"Wi鈥慒i and Bluetooth listed","variant_match":""}}
+        "connect":{"type":"metric","settings":{"value":"CAN / RS485","label":"Wi-Fi and Bluetooth listed","variant_match":""}}
       },
       "block_order":["energy","voltage","parallel","connect"],
       "settings":{"accessibility_label":"WL10B highlights"}
@@ -72,8 +72,8 @@
         "discharge":{"type":"spec","settings":{"label":"Max / peak discharging current","value":"200A / 220A","group":"primary","variant_match":""}},
         "cycles":{"type":"spec","settings":{"label":"Cycle life","value":"5,000 cycles","group":"primary","variant_match":""}},
         "weight":{"type":"spec","settings":{"label":"Weight","value":"88kg","group":"installation","variant_match":""}},
-        "size":{"type":"spec","settings":{"label":"Dimensions (H脳W脳D)","value":"1165脳525脳170mm","group":"installation","variant_match":""}},
-        "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485 / Wi鈥慒i / Bluetooth","group":"system","variant_match":""}},
+        "size":{"type":"spec","settings":{"label":"Dimensions (H x W x D)","value":"1165 x 525 x 170mm","group":"installation","variant_match":""}},
+        "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485 / Wi-Fi / Bluetooth","group":"system","variant_match":""}},
         "installation":{"type":"spec","settings":{"label":"Installation","value":"Wall mounting / floor standing","group":"installation","variant_match":""}},
         "ip":{"type":"spec","settings":{"label":"Enclosure rating","value":"IP54","group":"installation","variant_match":""}},
         "scope1":{"type":"included","settings":{"item":"Selected WL10B battery","variant_match":""}},
@@ -88,7 +88,7 @@
     "faq": {
       "type":"suntneew-pdp-faq",
       "blocks": {
-        "q1":{"type":"question","settings":{"question":"What is the practical difference between WL5A and WL10B?","answer":"<p>WL10B provides 10.24kWh at 200Ah versus WL5A鈥檚 5.12kWh at 100Ah. It is larger and heavier, with higher charging and discharging current limits.</p>"}},
+        "q1":{"type":"question","settings":{"question":"What is the practical difference between WL5A and WL10B?","answer":"<p>WL10B provides 10.24kWh at 200Ah versus WL5A's 5.12kWh at 100Ah. It is larger and heavier, with higher charging and discharging current limits.</p>"}},
         "q2":{"type":"question","settings":{"question":"Can I buy WL10B online?","answer":"<p>Yes. Choose the quantity, then use Add to cart or Buy it now. Review inverter compatibility and local installation requirements before installation.</p>"}},
         "q3":{"type":"question","settings":{"question":"Can multiple WL10B batteries be connected?","answer":"<p>WL10B supports up to nine connected sets. The final design depends on inverter, busbar, cable, protection and installer requirements.</p>"}},
         "q4":{"type":"question","settings":{"question":"Which documents are available?","answer":"<p>The current product specification sheet is available on this page. Contact support only if you need destination-specific technical documentation.</p>"}}
@@ -100,4 +100,3 @@
   },
   "order":["main","proof","anchor_nav","features","details","faq","related-products"]
 }
-

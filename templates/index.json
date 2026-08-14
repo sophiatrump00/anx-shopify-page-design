@@ -172,7 +172,7 @@
             "x_position": 73,
             "y_position": 58,
             "title": "Built for changing temperatures",
-            "text": "<p>Charge from 32掳F to 131掳F and discharge from -4掳F to 140掳F. Charging pauses below 32掳F and resumes when the battery returns to a safe charging range.</p>"
+            "text": "<p>Charge from 32 degrees F to 131 degrees F and discharge from -4 degrees F to 140 degrees F. Charging pauses below 32 degrees F and resumes when the battery returns to a safe charging range.</p>"
           }
         }
       },
@@ -189,7 +189,7 @@
         "stat_1": "Up to 15,000 Cycles*",
         "stat_2": "Bluetooth 5.0 Monitoring",
         "stat_3": "Low-Temperature Charge Protection",
-        "stat_4": "-4掳F to 140掳F Discharge",
+        "stat_4": "-4 to 140 degrees F Discharge",
         "footnote": "*Up to 15,000 cycles under laboratory conditions. Actual cycle life varies by model, depth of discharge, charge/discharge rate, temperature and usage.",
         "button_label": "Explore RV series",
         "button_link": "shopify://collections/rv-batteries"

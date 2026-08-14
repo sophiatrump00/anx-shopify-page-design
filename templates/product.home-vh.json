@@ -72,15 +72,15 @@
         "cap10":{"type":"spec","settings":{"label":"Usable capacity","value":"10.24kWh","group":"primary","variant_match":"10.24 kWh"}},
         "modules10":{"type":"spec","settings":{"label":"Battery modules","value":"2","group":"system","variant_match":"10.24 kWh"}},
         "voltage10":{"type":"spec","settings":{"label":"Rated voltage","value":"102.4V","group":"primary","variant_match":"10.24 kWh"}},
-        "range10":{"type":"spec","settings":{"label":"Voltage range","value":"86.4鈥?15.2V","group":"system","variant_match":"10.24 kWh"}},
-        "size10":{"type":"spec","settings":{"label":"Dimensions (H脳W脳D)","value":"1060脳650脳225mm","group":"installation","variant_match":"10.24 kWh"}},
-        "weight10":{"type":"spec","settings":{"label":"Weight","value":"115卤1kg","group":"installation","variant_match":"10.24 kWh"}},
+        "range10":{"type":"spec","settings":{"label":"Voltage range","value":"86.4-115.2V","group":"system","variant_match":"10.24 kWh"}},
+        "size10":{"type":"spec","settings":{"label":"Dimensions (H x W x D)","value":"1060 x 650 x 225mm","group":"installation","variant_match":"10.24 kWh"}},
+        "weight10":{"type":"spec","settings":{"label":"Weight","value":"115 +/- 1kg","group":"installation","variant_match":"10.24 kWh"}},
         "cap15":{"type":"spec","settings":{"label":"Usable capacity","value":"15.36kWh","group":"primary","variant_match":"15.36 kWh"}},
         "modules15":{"type":"spec","settings":{"label":"Battery modules","value":"3","group":"system","variant_match":"15.36 kWh"}},
         "voltage15":{"type":"spec","settings":{"label":"Rated voltage","value":"153.6V","group":"primary","variant_match":"15.36 kWh"}},
-        "range15":{"type":"spec","settings":{"label":"Voltage range","value":"129.6鈥?72.8V","group":"system","variant_match":"15.36 kWh"}},
-        "size15":{"type":"spec","settings":{"label":"Dimensions (H脳W脳D)","value":"1470脳650脳225mm","group":"installation","variant_match":"15.36 kWh"}},
-        "weight15":{"type":"spec","settings":{"label":"Weight","value":"166卤1kg","group":"installation","variant_match":"15.36 kWh"}},
+        "range15":{"type":"spec","settings":{"label":"Voltage range","value":"129.6-172.8V","group":"system","variant_match":"15.36 kWh"}},
+        "size15":{"type":"spec","settings":{"label":"Dimensions (H x W x D)","value":"1470 x 650 x 225mm","group":"installation","variant_match":"15.36 kWh"}},
+        "weight15":{"type":"spec","settings":{"label":"Weight","value":"166 +/- 1kg","group":"installation","variant_match":"15.36 kWh"}},
         "current":{"type":"spec","settings":{"label":"Max / peak output current","value":"50A / 70A for 5s","group":"primary","variant_match":""}},
         "dod":{"type":"spec","settings":{"label":"Depth of discharge","value":"90%","group":"primary","variant_match":""}},
         "cycles":{"type":"spec","settings":{"label":"Cycle life","value":"5,000 cycles","group":"primary","variant_match":""}},
@@ -112,4 +112,3 @@
   },
   "order":["main","proof","anchor_nav","features","details","faq","related-products"]
 }
-
