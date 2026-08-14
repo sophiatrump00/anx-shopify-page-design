@@ -57,13 +57,19 @@
       {%- endif -%}
 
       {%- render 'product-info', product: product, update_url: true, product_form_id: product_form_id, context: 'main_product' -%}
-
-      {%- if section.settings.enable_suntneew_pdp_experience and section.settings.show_suntneew_pdp_promises -%}
-        <div class="suntneew-pdp-promise-wrap">
-          {%- render 'suntneew-product-promises' -%}
-        </div>
-      {%- endif -%}
     </div>
+
+    {%- comment -%}
+      Keep the promise rail outside the two-column product grid. The media rail is
+      sticky on the enhanced PDP; nesting promises inside that grid made the
+      fixed media controls overlap the following content while the details column
+      continued to scroll.
+    {%- endcomment -%}
+    {%- if section.settings.enable_suntneew_pdp_experience and section.settings.show_suntneew_pdp_promises -%}
+      <div class="suntneew-pdp-promise-wrap">
+        {%- render 'suntneew-product-promises' -%}
+      </div>
+    {%- endif -%}
   </product-rerender>
 </div>
 
