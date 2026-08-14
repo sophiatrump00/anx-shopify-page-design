@@ -18,6 +18,8 @@
   {%- assign use_asset_logo = true -%}
 {%- endif -%}
 
+{{ 'suntneew-header.css' | asset_url | stylesheet_tag }}
+
 <style>
   :root {
     --sticky-header-enabled: {%- if section.settings.enable_sticky -%}1{% else %}0{% endif %};
