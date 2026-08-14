@@ -1,7 +1,7 @@
 /* SuntNeew PDP media and buying experience. Enabled only on selected product templates. */
 .suntneew-pdp-media-column { min-width: 0; }
 
-.suntneew-product-page--experience .product-gallery { position: relative; grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: auto !important; grid-auto-columns: auto !important; }
+.suntneew-product-page--experience .product-gallery { position: relative; grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: auto !important; grid-auto-flow: row !important; grid-auto-columns: auto !important; }
 
 .suntneew-media-modes { display: flex; flex-wrap: wrap; grid-column: 1; gap: 8px; width: auto; margin-top: 10px; }
 .suntneew-media-modes__button { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 8px 16px; border: 1px solid rgb(24 35 48 / .12); border-radius: 999px; background: #f4f5f5; color: #3e4853; font: inherit; font-size: 13px; font-weight: 750; line-height: 1; cursor: pointer; transition: background 160ms ease, color 160ms ease, border-color 160ms ease; }
