@@ -3,7 +3,7 @@
 
 .suntneew-product-page--experience .product-gallery { position: relative; }
 
-.suntneew-media-modes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+.suntneew-media-modes { display: flex; flex-wrap: wrap; grid-column: 1 / -1; gap: 8px; width: 100%; margin-top: 10px; }
 .suntneew-media-modes__button { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 8px 16px; border: 1px solid rgb(24 35 48 / .12); border-radius: 999px; background: #f4f5f5; color: #3e4853; font: inherit; font-size: 13px; font-weight: 750; line-height: 1; cursor: pointer; transition: background 160ms ease, color 160ms ease, border-color 160ms ease; }
 .suntneew-media-modes__button[aria-selected="true"] { border-color: #182330; background: #182330; color: #fff; }
 .suntneew-media-modes__button:hover, .suntneew-media-modes__button:focus-visible { border-color: #e9653b; outline: none; }
@@ -81,4 +81,3 @@
   .suntneew-product-promises__grid strong,
   .suntneew-bundle-selector__option { transition: none; }
 }
-
