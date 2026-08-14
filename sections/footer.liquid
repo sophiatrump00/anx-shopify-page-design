@@ -66,8 +66,14 @@
                       {%- for link in block.settings.menu.links -%}
                         {%- assign footer_link_title = link.title | strip | downcase -%}
                         {%- unless footer_link_title == 'technology' or link.url contains '/pages/technology' -%}
+                          {%- assign footer_link_url = link.url -%}
+                          {%- if footer_link_title == 'all products' -%}
+                            {%- assign footer_link_url = '/collections/all' -%}
+                          {%- elsif footer_link_title == 'product series' -%}
+                            {%- assign footer_link_url = routes.collections_url -%}
+                          {%- endif -%}
                           <li>
-                            <a href="{{ link.url }}" class="inline-block link-faded break-all">{{ link.title }}</a>
+                            <a href="{{ footer_link_url }}" class="inline-block link-faded break-all">{{ link.title }}</a>
                           </li>
                         {%- endunless -%}
                       {%- endfor -%}
@@ -396,4 +402,3 @@
   ]
 }
 {% endschema %}
-
