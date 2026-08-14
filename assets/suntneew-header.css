@@ -160,11 +160,14 @@
 }
 
 .suntneew-language-selector__trigger {
+  display: inline-flex;
+  align-items: center;
   gap: 7px;
   color: inherit;
 }
 
 .suntneew-language-selector__trigger .country-flags {
+  display: block;
   flex: none;
 }
 
