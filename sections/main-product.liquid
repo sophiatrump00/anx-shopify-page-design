@@ -57,14 +57,14 @@
       {%- endif -%}
 
       {%- render 'product-info', product: product, update_url: true, product_form_id: product_form_id, context: 'main_product' -%}
+
+      {%- if section.settings.enable_suntneew_pdp_experience and section.settings.show_suntneew_pdp_promises -%}
+        <div class="suntneew-pdp-promise-wrap">
+          {%- render 'suntneew-product-promises' -%}
+        </div>
+      {%- endif -%}
     </div>
   </product-rerender>
-
-  {%- if section.settings.enable_suntneew_pdp_experience and section.settings.show_suntneew_pdp_promises -%}
-    <div class="suntneew-pdp-promise-wrap">
-      {%- render 'suntneew-product-promises' -%}
-    </div>
-  {%- endif -%}
 </div>
 
 {%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}

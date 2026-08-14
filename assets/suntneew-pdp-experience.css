@@ -12,6 +12,7 @@
 @media screen and (min-width: 1000px) {
   .suntneew-product-page--experience .suntneew-pdp-media-column { position: sticky; top: calc(var(--sticky-area-height) + 18px); align-self: start; }
   .suntneew-product-page--experience .product-info { position: static; top: auto; }
+  .suntneew-product-page--experience .suntneew-pdp-promise-wrap { grid-column: 1 / -1; }
 
   .suntneew-product-page--experience .product-gallery__thumbnail-list-wrapper { position: absolute; z-index: 4; right: 20px; bottom: 74px; left: 20px; width: auto; overflow: hidden; pointer-events: none; }
   .suntneew-product-page--experience .product-gallery__thumbnail-list { justify-content: center; gap: 8px; grid-auto-columns: auto; }
