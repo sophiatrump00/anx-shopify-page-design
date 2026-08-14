@@ -243,26 +243,18 @@
           {%- capture social_media -%}{%- render 'social-media' -%}{%- endcapture -%}
         {%- endif -%}
 
-        {%- if show_country_selector and localization.available_countries.size > 1 -%}
-          {%- assign country_selector = true -%}
-        {%- endif -%}
-
         {%- if show_locale_selector and localization.available_languages.size > 1 -%}
           {%- assign locale_selector = true -%}
         {%- endif -%}
 
-        {%- if social_media != blank or country_selector or locale_selector or shop.customer_accounts_enabled -%}
+        {%- if social_media != blank or locale_selector or shop.customer_accounts_enabled -%}
           <div class="panel-footer v-stack gap-5">
             {{- social_media -}}
 
-            {%- if country_selector or locale_selector or shop.customer_accounts_enabled -%}
+            {%- if locale_selector or shop.customer_accounts_enabled -%}
               <div class="panel-footer__localization-wrapper h-stack gap-6 border-t md:hidden">
-                {%- if country_selector -%}
-                  {%- render 'localization-selector', type: 'country', show_country_name: show_country_name, show_country_flag: show_country_flag -%}
-                {%- endif -%}
-
                 {%- if locale_selector -%}
-                  {%- render 'localization-selector', type: 'locale' -%}
+                  {%- render 'suntneew-language-selector' -%}
                 {%- endif -%}
 
                 {%- if shop.customer_accounts_enabled -%}

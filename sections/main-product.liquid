@@ -1,5 +1,11 @@
 {%- render 'section-spacing-collapsing' -%}
 
+{%- assign suntneew_bundle_block = section.blocks | where: 'type', 'suntneew_bundle_selector' | first -%}
+{%- if section.settings.enable_suntneew_pdp_experience or suntneew_bundle_block != blank -%}
+  {{ 'suntneew-pdp-experience.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'suntneew-pdp-experience.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 <style>
   #shopify-section-{{ section.id }} {
     --product-grid: auto / minmax(0, 1fr);
@@ -41,16 +47,24 @@
 
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
-<div {% render 'section-properties', tight: true %}>
+<div class="suntneew-product-page{% if section.settings.enable_suntneew_pdp_experience %} suntneew-product-page--experience{% endif %}" {% render 'section-properties', tight: true %}>
   <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
     <div class="product">
       {%- if product.media.size > 0 -%}
-        {%- render 'product-gallery', product: product, product_form_id: product_form_id -%}
+        <div class="suntneew-pdp-media-column">
+          {%- render 'product-gallery', product: product, product_form_id: product_form_id -%}
+        </div>
       {%- endif -%}
 
       {%- render 'product-info', product: product, update_url: true, product_form_id: product_form_id, context: 'main_product' -%}
     </div>
   </product-rerender>
+
+  {%- if section.settings.enable_suntneew_pdp_experience and section.settings.show_suntneew_pdp_promises -%}
+    <div class="suntneew-pdp-promise-wrap">
+      {%- render 'suntneew-product-promises' -%}
+    </div>
+  {%- endif -%}
 </div>
 
 {%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
@@ -1019,6 +1033,60 @@
       ]
     },
     {
+      "type": "suntneew_bundle_selector",
+      "name": "SuntNeew multi-pack savings",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enabled",
+          "label": "Show multi-pack selector",
+          "default": false,
+          "info": "Enable this only after the matching Shopify automatic-discount ladder is active."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Build a multi-pack"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Supporting text",
+          "default": "Choose more units for the same build. Your eligible saving is shown at checkout."
+        },
+        {
+          "type": "range",
+          "id": "discount_percent",
+          "label": "Saving added per extra unit",
+          "min": 1,
+          "max": 15,
+          "step": 1,
+          "unit": "%",
+          "default": 3
+        },
+        {
+          "type": "range",
+          "id": "minimum_quantity",
+          "label": "Minimum quantity for savings",
+          "min": 2,
+          "max": 4,
+          "step": 1,
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "maximum_quantity",
+          "label": "Maximum quantity shown",
+          "min": 2,
+          "max": 4,
+          "step": 1,
+          "default": 4
+        }
+      ]
+    },
+    {
       "type": "volume_pricing",
       "name": "Volume pricing table",
       "limit": 1,
@@ -1981,6 +2049,34 @@
       "id": "show_fixed_add_to_cart",
       "label": "Show add to cart on scroll",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "SuntNeew PDP experience"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_suntneew_pdp_experience",
+      "label": "Enable enhanced product media and buying layout",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "suntneew_media_autoplay_interval",
+      "label": "Feature image autoplay interval",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "default": 6,
+      "visible_if": "{{ section.settings.enable_suntneew_pdp_experience }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_suntneew_pdp_promises",
+      "label": "Show support and policy links below product media",
+      "default": true,
+      "visible_if": "{{ section.settings.enable_suntneew_pdp_experience }}"
     },
     {
       "type": "header",

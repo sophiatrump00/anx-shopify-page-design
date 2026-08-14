@@ -39,6 +39,10 @@
  * defaults otherwise use subtly different line boxes.
  */
 @media screen and (min-width: 1150px) {
+  .shopify-section--header .header__wrapper {
+    position: relative;
+  }
+
   .shopify-section--header .header__link-list > ul > li {
     display: flex;
     min-height: 24px;
@@ -68,6 +72,7 @@
 
   .shopify-section--header .suntneew-support-menu__trigger {
     display: inline-flex;
+    position: relative;
     cursor: pointer;
   }
 
@@ -85,8 +90,8 @@
     transition: opacity 160ms ease, transform 160ms ease;
   }
 
-  .shopify-section--header .header__support-menu details {
-    position: relative;
+  .shopify-section--header .header__support-menu > details {
+    position: static;
   }
 
   .shopify-section--header .header__support-menu [open] .suntneew-support-menu__trigger::after,
@@ -99,6 +104,8 @@
   #suntneew-support-mega-menu {
     --mega-menu-justify-content: stretch;
     --mega-menu-gap: 0;
+    width: 100%;
+    inset-inline: 0;
     padding-block: clamp(28px, 3vw, 46px);
     box-shadow: 0 18px 42px rgb(18 29 41 / .16), 0 9999px 0 9999px #0004;
   }
@@ -150,6 +157,20 @@
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
   }
+}
+
+.suntneew-language-selector__trigger {
+  gap: 7px;
+  color: inherit;
+}
+
+.suntneew-language-selector__trigger .country-flags {
+  flex: none;
+}
+
+.suntneew-language-selector__list .suntneew-language-selector__option {
+  align-items: center;
+  gap: 10px;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -16,6 +16,22 @@
 {%- assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
 {%- capture product_gallery_id -%}product-gallery-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
+{%- liquid
+  assign has_image_media = false
+  assign has_video_media = false
+  assign has_model_media = false
+
+  for media in product.media
+    if media.media_type == 'image'
+      assign has_image_media = true
+    elsif media.media_type contains 'video'
+      assign has_video_media = true
+    elsif media.media_type == 'model'
+      assign has_model_media = true
+    endif
+  endfor
+-%}
+
 {%- comment -%}
   IMPLEMENTATION NOTE: Shopify does not natively offer a way to create a set of images per variant. This is often
   pretty limited when you have a lot of colors and would like to only see the images specific to a given color. To
@@ -53,6 +69,10 @@
   {%- if section.settings.enable_image_zoom -%}
     allow-zoom="{{ section.settings.max_image_zoom_level }}"
   {% endif %}
+  {%- if section.settings.enable_suntneew_pdp_experience -%}
+    data-suntneew-media-gallery
+    data-autoplay-interval="{{ section.settings.suntneew_media_autoplay_interval | default: 6 }}"
+  {%- endif -%}
   class="product-gallery {% if section.settings.mobile_carousel_control contains 'dots' %}product-gallery--mobile-dots{% endif %} {% if section.settings.desktop_media_layout contains 'grid' %}product-gallery--desktop-grid{% else %}product-gallery--desktop-carousel{% endif %} {% if section.settings.desktop_media_layout == 'carousel_thumbnails_left' %}product-gallery--desktop-thumbnails-left{% endif %} {% if section.settings.mobile_media_size == 'expanded' %}product-gallery--mobile-expanded{% endif %}"
 >
   {%- capture page_dots -%}
@@ -191,6 +211,31 @@
     {%- endif -%}
   </div>
 
+  {%- if section.settings.enable_suntneew_pdp_experience and product.media.size > 0 -%}
+    <div class="suntneew-media-modes" role="tablist" aria-label="Product media">
+      {%- if has_image_media -%}
+        <button type="button" class="suntneew-media-modes__button" data-media-mode="image" role="tab" aria-selected="true">
+          <span class="suntneew-media-modes__icon" aria-hidden="true">▣</span>
+          Features
+        </button>
+      {%- endif -%}
+
+      {%- if has_video_media -%}
+        <button type="button" class="suntneew-media-modes__button" data-media-mode="video" role="tab" aria-selected="false">
+          <span class="suntneew-media-modes__icon" aria-hidden="true">▶</span>
+          Videos
+        </button>
+      {%- endif -%}
+
+      {%- if has_model_media -%}
+        <button type="button" class="suntneew-media-modes__button" data-media-mode="model" role="tab" aria-selected="false">
+          <span class="suntneew-media-modes__icon" aria-hidden="true">◈</span>
+          3D
+        </button>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
   {%- comment -%}
     --------------------------------------------------------------------------------------------------------------------
     CONTROLS
@@ -214,6 +259,8 @@
               {% endif %}
               aria-current="{% if media == default_media %}true{% else %}false{% endif %}"
               aria-label="{{ 'general.accessibility.go_to_item' | t: index: forloop.index | escape }}"
+              data-media-id="{{ media.id }}"
+              data-media-type="{{ media.media_type }}"
             >
               {{-
                 media

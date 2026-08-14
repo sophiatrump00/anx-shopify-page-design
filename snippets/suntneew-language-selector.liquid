@@ -1,0 +1,100 @@
+{%- comment -%}
+  One language selector that uses a country flag as the visual trigger.
+  It changes locale_code only: market, currency and delivery country remain
+  deliberately separate Shopify controls.
+{%- endcomment -%}
+
+{%- capture localization_form_id -%}suntneew-language-form-{{ popover_vertical_position }}-{{ section.id }}{%- endcapture -%}
+{%- capture localization_popover_id -%}suntneew-language-popover-{{ popover_vertical_position }}-{{ section.id }}{%- endcapture -%}
+{%- assign popover_vertical_position = popover_vertical_position | default: 'end' -%}
+
+{%- capture current_flag_code -%}
+  {%- case localization.language.iso_code -%}
+    {%- when 'en', 'en-US', 'en-GB', 'en-CA', 'en-AU' -%}US
+    {%- when 'zh', 'zh-CN', 'zh-Hans' -%}CN
+    {%- when 'zh-TW', 'zh-Hant' -%}TW
+    {%- when 'de', 'de-DE' -%}DE
+    {%- when 'es', 'es-ES' -%}ES
+    {%- when 'fr', 'fr-FR' -%}FR
+    {%- when 'it', 'it-IT' -%}IT
+    {%- when 'ja', 'ja-JP' -%}JP
+    {%- when 'ko', 'ko-KR' -%}KR
+    {%- when 'pt', 'pt-PT', 'pt-BR' -%}PT
+    {%- when 'nl', 'nl-NL' -%}NL
+    {%- when 'pl', 'pl-PL' -%}PL
+    {%- when 'sv', 'sv-SE' -%}SE
+    {%- when 'da', 'da-DK' -%}DK
+    {%- when 'fi', 'fi-FI' -%}FI
+    {%- when 'no', 'nb-NO', 'nn-NO' -%}NO
+    {%- when 'ar', 'ar-SA' -%}SA
+    {%- else -%}{{ localization.country.iso_code }}
+  {%- endcase -%}
+{%- endcapture -%}
+
+<link rel="stylesheet" href="{{ 'country-flags.css' | asset_url }}" media="print" onload="this.media='all'; this.onload = null">
+
+<div class="suntneew-language-selector relative">
+  <button
+    type="button"
+    class="suntneew-language-selector__trigger tap-area"
+    aria-label="{{ 'general.localization.change_language_accessibility_text' | t | escape }}"
+    aria-controls="{{ localization_popover_id }}"
+    aria-expanded="false"
+  >
+    <span class="country-flags country-flags--{{ current_flag_code | strip }}" aria-hidden="true"></span>
+    {%- render 'icon' with 'chevron-bottom' -%}
+  </button>
+
+  <x-popover
+    id="{{ localization_popover_id }}"
+    initial-focus="[aria-selected='true']"
+    anchor-horizontal="end"
+    anchor-vertical="{{ popover_vertical_position }}"
+    class="popover"
+  >
+    <p class="h5" slot="title">{{ 'general.localization.language' | t }}</p>
+
+    {%- form 'localization', id: localization_form_id -%}
+      <x-listbox class="popover-listbox popover-listbox--sm suntneew-language-selector__list" role="listbox">
+        {%- for language in localization.available_languages -%}
+          {%- capture language_flag_code -%}
+            {%- case language.iso_code -%}
+              {%- when 'en', 'en-US', 'en-GB', 'en-CA', 'en-AU' -%}US
+              {%- when 'zh', 'zh-CN', 'zh-Hans' -%}CN
+              {%- when 'zh-TW', 'zh-Hant' -%}TW
+              {%- when 'de', 'de-DE' -%}DE
+              {%- when 'es', 'es-ES' -%}ES
+              {%- when 'fr', 'fr-FR' -%}FR
+              {%- when 'it', 'it-IT' -%}IT
+              {%- when 'ja', 'ja-JP' -%}JP
+              {%- when 'ko', 'ko-KR' -%}KR
+              {%- when 'pt', 'pt-PT', 'pt-BR' -%}PT
+              {%- when 'nl', 'nl-NL' -%}NL
+              {%- when 'pl', 'pl-PL' -%}PL
+              {%- when 'sv', 'sv-SE' -%}SE
+              {%- when 'da', 'da-DK' -%}DK
+              {%- when 'fi', 'fi-FI' -%}FI
+              {%- when 'no', 'nb-NO', 'nn-NO' -%}NO
+              {%- when 'ar', 'ar-SA' -%}SA
+              {%- else -%}{{ localization.country.iso_code }}
+            {%- endcase -%}
+          {%- endcapture -%}
+
+          <button
+            type="submit"
+            class="popover-listbox__option suntneew-language-selector__option"
+            name="locale_code"
+            role="option"
+            value="{{ language.iso_code }}"
+            {% if language.iso_code == localization.language.iso_code %}
+              aria-selected="true"
+            {% endif %}
+          >
+            <span class="country-flags country-flags--{{ language_flag_code | strip }}" aria-hidden="true"></span>
+            <span>{{- language.endonym_name | capitalize -}}</span>
+          </button>
+        {%- endfor -%}
+      </x-listbox>
+    {%- endform -%}
+  </x-popover>
+</div>

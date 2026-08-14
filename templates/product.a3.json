@@ -10,10 +10,11 @@
         "separator":{"type":"separator","settings":{}},
         "intro":{"type":"text","settings":{"text":"<p>16,000mAh jump starter with 2500A peak current and 60W USB-C Power Delivery.</p>"}},
         "quantity_selector":{"type":"quantity_selector","settings":{}},
+        "bundle":{"type":"suntneew_bundle_selector","settings":{"enabled":false,"heading":"Build an A3 multi-pack","body":"Save 3% per extra unit—up to 9% when you buy four.","discount_percent":3,"minimum_quantity":2,"maximum_quantity":4}},
         "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":false,"show_gift_card_recipient":false}}
       },
-      "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","buy_buttons"],
-      "settings":{"show_fixed_add_to_cart":false,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","bundle","buy_buttons"],
+      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_bottom","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type":"suntneew-pdp-proof",

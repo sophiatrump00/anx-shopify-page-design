@@ -1,0 +1,72 @@
+{%- comment -%}
+  Same-variant multi-pack selector. It changes the quantity of the existing
+  product form. The displayed discount is intentionally shown only after the
+  merchant has enabled the matching Shopify automatic-discount ladder.
+{%- endcomment -%}
+
+{%- if block.settings.enabled and product.available -%}
+  {%- assign selected_variant = product.selected_or_first_available_variant -%}
+  {%- assign bundle_minimum = block.settings.minimum_quantity | default: 2 -%}
+  {%- assign bundle_maximum = block.settings.maximum_quantity | default: 4 -%}
+  {%- assign bundle_discount_per_extra_unit = block.settings.discount_percent | default: 3 -%}
+  {%- assign bundle_maximum_extra_units = bundle_maximum | minus: 1 -%}
+  {%- assign bundle_maximum_discount = bundle_discount_per_extra_unit | times: bundle_maximum_extra_units -%}
+
+  <div
+    class="suntneew-bundle-selector"
+    data-suntneew-bundle-selector
+    data-form-id="{{ product_form_id }}"
+    data-currency="{{ localization.country.currency.iso_code | escape }}"
+    data-minimum-quantity="{{ bundle_minimum }}"
+    data-discount-per-extra-unit="{{ bundle_discount_per_extra_unit }}"
+  >
+    <div class="suntneew-bundle-selector__heading">
+      <div>
+        <p class="suntneew-bundle-selector__eyebrow">MULTI-PACK SAVINGS</p>
+        <h3>{{ block.settings.heading }}</h3>
+      </div>
+      <span class="suntneew-bundle-selector__badge">SAVE UP TO {{ bundle_maximum_discount }}%</span>
+    </div>
+
+    {%- if block.settings.body != blank -%}
+      <p class="suntneew-bundle-selector__body">{{ block.settings.body }}</p>
+    {%- endif -%}
+
+    <div class="suntneew-bundle-selector__options" role="group" aria-label="Select a multi-pack quantity">
+      {%- for quantity in (1..bundle_maximum) -%}
+        {%- assign undiscounted_price = selected_variant.price | times: quantity -%}
+        {%- assign is_discounted_pack = false -%}
+        {%- assign pack_discount = 0 -%}
+        {%- assign pack_price = undiscounted_price -%}
+
+        {%- if quantity >= bundle_minimum -%}
+          {%- assign is_discounted_pack = true -%}
+          {%- assign extra_units = quantity | minus: 1 -%}
+          {%- assign pack_discount = bundle_discount_per_extra_unit | times: extra_units -%}
+          {%- assign bundle_multiplier = 100 | minus: pack_discount -%}
+          {%- assign pack_price = undiscounted_price | times: bundle_multiplier | divided_by: 100 -%}
+        {%- endif -%}
+
+        <button
+          type="button"
+          class="suntneew-bundle-selector__option{% if quantity == 1 %} is-selected{% endif %}"
+          data-bundle-quantity="{{ quantity }}"
+          aria-pressed="{% if quantity == 1 %}true{% else %}false{% endif %}"
+        >
+          <span class="suntneew-bundle-selector__option-copy">
+            <strong>{{ quantity }} {% if quantity == 1 %}unit{% else %}units{% endif %}</strong>
+            <small>{% if is_discounted_pack %}Save {{ pack_discount }}% on this pack{% else %}Standard unit price{% endif %}</small>
+          </span>
+          <span class="suntneew-bundle-selector__price-wrap">
+            <span class="suntneew-bundle-selector__price" data-bundle-price>{{ pack_price | money }}</span>
+            <s class="suntneew-bundle-selector__compare" data-bundle-compare{% unless is_discounted_pack %} hidden{% endunless %}>{{ undiscounted_price | money }}</s>
+          </span>
+        </button>
+      {%- endfor -%}
+    </div>
+
+    <p class="suntneew-bundle-selector__note">Save {{ bundle_discount_per_extra_unit }}% per extra unit: 2 units {{ bundle_discount_per_extra_unit }}% off, 3 units {{ bundle_discount_per_extra_unit | times: 2 }}% off, 4 units {{ bundle_maximum_discount }}% off. The matching automatic-discount ladder applies at checkout.</p>
+
+    <script type="application/json" data-suntneew-bundle-variants>{{ product.variants | json }}</script>
+  </div>
+{%- endif -%}

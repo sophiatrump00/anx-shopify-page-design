@@ -11,10 +11,11 @@
         "intro": {"type":"text","settings":{"text":"<p>One compact jump-starter platform with capacity and color choices. Select a variant to see its matching peak current, energy, price and availability.</p>"}},
         "variant_picker": {"type":"variant_picker","settings":{"hide_sold_out_variants":false,"stack_blocks":true,"selector_style":"block","swatch_selector_style":"block_swatch","variant_image_options":"Color"}},
         "quantity_selector": {"type":"quantity_selector","settings":{}},
+        "bundle": {"type":"suntneew_bundle_selector","settings":{"enabled":false,"heading":"Build an A20 multi-pack","body":"Save 3% per extra unit—up to 9% when you buy four.","discount_percent":3,"minimum_quantity":2,"maximum_quantity":4}},
         "buy_buttons": {"type":"buy_buttons","settings":{"show_payment_button":false,"show_gift_card_recipient":false}}
       },
-      "block_order": ["vendor","title","sku","price","separator","intro","variant_picker","quantity_selector","buy_buttons"],
-      "settings": {"show_fixed_add_to_cart":false,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "block_order": ["vendor","title","sku","price","separator","intro","variant_picker","quantity_selector","bundle","buy_buttons"],
+      "settings": {"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_bottom","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type":"suntneew-pdp-proof",

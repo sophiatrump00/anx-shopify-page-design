@@ -165,21 +165,28 @@
 .sn-series-hub__heading .sn-kicker { grid-column: 1; margin: 0 0 2px; }
 .sn-series-hub__heading h1 { grid-column: 1; max-width: 880px; margin: 0; font-size: clamp(48px, 5.4vw, 80px); line-height: .98; letter-spacing: -.056em; }
 .sn-series-hub__heading p:last-child { grid-column: 2; grid-row: 1 / span 2; max-width: 480px; margin: 0; color: var(--sn-muted); font-size: clamp(15px, 1.22vw, 18px); line-height: 1.62; }
-.sn-series-hub__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 1.8vw, 28px); }
-.sn-series-hub__card { min-width: 0; border-top: 1px solid rgba(31,47,70,.22); background: #fff; }
-.sn-series-hub__card-link { display: grid; height: 100%; color: inherit; text-decoration: none; }
-.sn-series-hub__media { display: block; aspect-ratio: 1 / .76; overflow: hidden; background: #e8ecea; }
-.sn-series-hub__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms cubic-bezier(.2,.7,.2,1); }
-.sn-series-hub__card-link:hover .sn-series-hub__media img { transform: scale(1.025); }
-.sn-series-hub__card-content { display: grid; align-content: start; gap: 14px; padding: 26px 0 0; }
-.sn-series-hub__meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; min-height: 18px; }
-.sn-series-hub__card-content .sn-kicker { margin: 0; color: #405064; font-size: 10px; font-weight: 800; letter-spacing: .12em; }
-.sn-series-status { display: inline-flex; width: fit-content; padding: 0; border: 0; color: #77818b; font-size: 10px; font-weight: 700; letter-spacing: .06em; line-height: 1.2; }
-.sn-series-status::before { margin-right: 8px; color: #a5adb5; content: '/'; }
-.sn-series-hub__card-content strong { font-size: clamp(25px, 2.2vw, 36px); letter-spacing: -.047em; line-height: 1.02; }
-.sn-series-hub__copy { max-width: 390px; color: var(--sn-muted); font-size: 14px; line-height: 1.56; }
-.sn-series-arrow { display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-top: 4px; color: #1e2731; font-size: 12px; font-weight: 800; }
-.sn-series-arrow::after { content: '→'; color: #e05c17; font-size: 17px; transition: transform 180ms ease; }
+.sn-series-hub__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 26px); }
+.sn-series-hub__card { min-width: 0; min-height: clamp(380px, 33vw, 520px); overflow: hidden; background: #1b2530; }
+.sn-series-hub__card:first-child { grid-column: span 6; }
+.sn-series-hub__card:nth-child(2), .sn-series-hub__card:nth-child(3) { grid-column: span 3; }
+.sn-series-hub__card-link { position: relative; display: grid; height: 100%; min-height: inherit; color: #fff; text-decoration: none; isolation: isolate; }
+.sn-series-hub__media, .sn-series-hub__shade { position: absolute; inset: 0; }
+.sn-series-hub__media { display: block; overflow: hidden; background: #e8ecea; }
+.sn-series-hub__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 650ms cubic-bezier(.2,.7,.2,1); }
+.sn-series-hub__shade { background: linear-gradient(180deg, rgba(9,15,23,.04) 22%, rgba(9,15,23,.88) 100%); transition: background 240ms ease; }
+.sn-series-hub__card-link:hover .sn-series-hub__media img { transform: scale(1.045); }
+.sn-series-hub__card-link:hover .sn-series-hub__shade { background: linear-gradient(180deg, rgba(9,15,23,.02) 18%, rgba(9,15,23,.78) 100%); }
+.sn-series-hub__card-content { position: relative; z-index: 1; display: grid; align-content: end; gap: 14px; min-height: 100%; padding: clamp(22px, 2.2vw, 34px); }
+.sn-series-hub__meta { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; min-height: 18px; }
+.sn-series-hub__index { color: #ff8a4d; font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.sn-series-hub__card-content .sn-kicker { margin: 0; color: rgba(255,255,255,.92); font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.sn-series-status { display: inline-flex; width: fit-content; padding: 0; border: 0; color: rgba(255,255,255,.66); font-size: 10px; font-weight: 700; letter-spacing: .06em; line-height: 1.2; }
+.sn-series-status::before { margin-right: 8px; color: rgba(255,255,255,.42); content: '/'; }
+.sn-series-hub__card-content strong { max-width: 580px; font-size: clamp(27px, 2.9vw, 48px); letter-spacing: -.052em; line-height: .98; }
+.sn-series-hub__card:not(:first-child) .sn-series-hub__card-content strong { font-size: clamp(25px, 2.2vw, 34px); }
+.sn-series-hub__copy { max-width: 450px; color: rgba(255,255,255,.76); font-size: 14px; line-height: 1.56; }
+.sn-series-arrow { display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-top: 4px; color: #fff; font-size: 12px; font-weight: 800; }
+.sn-series-arrow::after { content: '→'; color: #ff8a4d; font-size: 17px; transition: transform 180ms ease; }
 .sn-series-hub__card-link:hover .sn-series-arrow::after,
 .sn-series-product-card__link:hover .sn-series-arrow::after { transform: translateX(4px); }
 
@@ -801,7 +808,9 @@
   .sn-series-page__catalog-heading h2 { grid-column: auto; }
   .sn-series-page__catalog-heading .sn-kicker { margin-bottom: 0; }
   .sn-series-intro .sn-kicker { margin-top: 0; }
-  .sn-series-hub__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sn-series-hub__card:first-child,
+  .sn-series-hub__card:nth-child(2),
+  .sn-series-hub__card:nth-child(3) { grid-column: span 6; }
   .sn-series-page__hero { min-height: 450px; }
   .sn-series-page__hero-copy { min-height: 450px; max-width: 620px; }
   .sn-series-page__hero-media::after { background: linear-gradient(90deg, rgba(13,23,33,.91) 0%, rgba(13,23,33,.72) 46%, rgba(13,23,33,.12) 100%); }
@@ -851,10 +860,10 @@
   .sn-series-shell { width: min(100% - 32px, 580px); }
   .sn-series-hub { padding-block: 52px 76px; }
   .sn-series-hub__heading h1 { font-size: clamp(42px, 13vw, 62px); }
-  .sn-series-hub__grid,
+  .sn-series-hub__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .sn-series-hub__grid .sn-series-hub__card { grid-column: span 12; min-height: 410px; }
   .sn-series-product-grid { grid-template-columns: 1fr; }
-  .sn-series-hub__card-content { padding-top: 18px; }
-  .sn-series-hub__media { aspect-ratio: 1 / .68; }
+  .sn-series-hub__card-content { padding: 24px; }
   .sn-series-page__hero { min-height: 455px; }
   .sn-series-page__hero-copy { min-height: 455px; padding-block: 52px; }
   .sn-series-page__hero-copy h1 { font-size: clamp(42px, 12vw, 62px); }

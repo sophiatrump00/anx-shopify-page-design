@@ -6,9 +6,9 @@
       <p>{{ section.settings.body }}</p>
     </header>
 
-    <div class="sn-series-hub__grid">
+    <div class="sn-series-hub__grid" role="list">
       {%- for block in section.blocks -%}
-        <article class="sn-series-hub__card" {{ block.shopify_attributes }}>
+        <article class="sn-series-hub__card" role="listitem" {{ block.shopify_attributes }}>
           <a href="{{ block.settings.link | default: routes.collections_url }}" class="sn-series-hub__card-link" aria-label="{{ block.settings.title | escape }}">
             <span class="sn-series-hub__media">
               {%- if block.settings.image != blank -%}
@@ -16,9 +16,11 @@
               {%- else -%}
                 <img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="1600" height="1200" loading="lazy">
               {%- endif -%}
+              <span class="sn-series-hub__shade" aria-hidden="true"></span>
             </span>
             <span class="sn-series-hub__card-content">
               <span class="sn-series-hub__meta">
+                <span class="sn-series-hub__index" aria-hidden="true">0{{ forloop.index }}</span>
                 <span class="sn-kicker">{{ block.settings.eyebrow }}</span>
                 {%- if block.settings.status != blank -%}<span class="sn-series-status">{{ block.settings.status }}</span>{%- endif -%}
               </span>

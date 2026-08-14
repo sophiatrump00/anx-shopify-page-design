@@ -5,12 +5,8 @@
   the underlying logic of the menu.
 {%- endcomment -%}
 
-{%- if section.settings.show_country_selector and localization.available_countries.size > 1 -%}
-  {%- assign will_show_country_selector = true -%}
-{%- endif -%}
-
 {%- if section.settings.show_locale_selector and localization.available_languages.size > 1 -%}
-  {%- assign will_show_locale_selector = true -%}
+  {%- assign will_show_language_selector = true -%}
 {%- endif -%}
 
 {%- assign use_asset_logo = false -%}
@@ -75,7 +71,7 @@
 
   {%- if section.settings.layout contains 'logo_left' -%}
     @media screen and (min-width: 1150px) {
-      {%- if section.settings.secondary_menu != blank or will_show_country_selector or will_show_locale_selector -%}
+      {%- if section.settings.secondary_menu != blank or will_show_language_selector -%}
         {%- assign max_percent = '55%' -%}
       {%- else -%}
         {%- assign max_percent = '70%' -%}
@@ -171,7 +167,17 @@
 
                         {%- render 'suntneew-support-mega-menu', support_url: link.url -%}
                       </details>
-                    {%- elsif link.levels == 0 and mega_menu_block == '' and is_series_card_menu == false -%}
+                    {%- elsif is_series_card_menu -%}
+                      <a
+                        href="{{ link.url }}"
+                        class="bold link-faded-reverse suntneew-product-series-link"
+                        {% if link.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{- link.title -}}
+                      </a>
+                    {%- elsif link.levels == 0 and mega_menu_block == '' -%}
                       <a
                         href="{{ link.url }}"
                         class="bold link-faded-reverse"
@@ -182,20 +188,7 @@
                         {{- link.title -}}
                       </a>
                     {%- else -%}
-                      {%- if is_series_card_menu -%}
-                        <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
-                          <summary
-                            class="text-with-icon gap-2.5 bold link-faded-reverse"
-                            {% if link.url != '#' %}
-                              data-url="{{ link.url | escape }}"
-                            {% endif %}
-                          >
-                            {{- link.title -}}
-                          </summary>
-
-                          {%- render 'suntneew-series-mega-menu', link: link -%}
-                        </details>
-                      {%- elsif mega_menu_block != '' -%}
+                      {%- if mega_menu_block != '' -%}
                         {%- comment -%}
                           Implementation note: the designers had the desire to show a lot of different kind of menus in Impact: one standard
                           mega menu but also a kind of "sidebar" mode when the mega-menu appears in a drawer. Unfortunately, this comes with
@@ -376,21 +369,9 @@
         {%- endif -%}
 
         <ul class="header__icon-list">
-          {%- if section.settings.show_country_selector and localization.available_countries.size > 1 -%}
-            <li class="hidden md:block shrink-0">
-              {%- render 'localization-selector',
-                type: 'country',
-                show_country_name: section.settings.show_country_name,
-                show_country_flag: section.settings.show_country_flag,
-                compact: true,
-                popover_vertical_position: 'end'
-              -%}
-            </li>
-          {%- endif -%}
-
           {%- if section.settings.show_locale_selector and localization.available_languages.size > 1 -%}
             <li class="hidden md:block shrink-0">
-              {%- render 'localization-selector', type: 'locale', popover_vertical_position: 'end' -%}
+              {%- render 'suntneew-language-selector', popover_vertical_position: 'end' -%}
             </li>
           {%- endif -%}
 
