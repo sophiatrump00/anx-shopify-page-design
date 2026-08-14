@@ -14,37 +14,57 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "newsletter": {
-          "type": "newsletter",
-          "settings": {
-            "image_width": 150,
-            "heading_size": "h3",
-            "title": "Field notes, product updates and practical power guides"
-          }
-        },
-        "links": {
+        "products": {
           "type": "links",
           "settings": {
-            "menu": "suntneew-footer-menu-0811",
-            "show_menu_title": true
+            "menu": "suntneew-footer-products",
+            "show_menu_title": true,
+            "menu_title": "Products"
           }
         },
-        "text": {
+        "explore": {
+          "type": "links",
+          "settings": {
+            "menu": "suntneew-footer-explore",
+            "show_menu_title": true,
+            "menu_title": "Explore"
+          }
+        },
+        "support": {
+          "type": "links",
+          "settings": {
+            "menu": "suntneew-footer-support",
+            "show_menu_title": true,
+            "menu_title": "Support"
+          }
+        },
+        "company": {
+          "type": "links",
+          "settings": {
+            "menu": "suntneew-footer-company",
+            "show_menu_title": true,
+            "menu_title": "Company"
+          }
+        },
+        "brand": {
           "type": "text",
           "settings": {
             "title": "SuntNeew",
-            "content": "<p>Power systems for the road, the journey and home.</p>"
+            "content": "<p>Power for life,<br>on the road<br>&amp; beyond.</p>",
+            "enable_follow_on_shop": false
           }
         }
       },
-      "block_order": ["newsletter", "links", "text"],
+      "block_order": ["products", "explore", "support", "company", "brand"],
       "settings": {
-        "show_social_media": true,
+        "show_social_media": false,
         "show_payment_icons": true,
         "show_country_selector": false,
         "show_country_flag": true,
         "show_country_name": true,
-        "show_locale_selector": true
+        "show_locale_selector": false,
+        "show_policy_links": false,
+        "show_powered_by_shopify": false
       }
     }
   },
