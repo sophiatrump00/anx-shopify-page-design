@@ -1,0 +1,47 @@
+{%- comment -%}
+  A Support-only information architecture inspired by the useful, four-column
+  support navigation pattern. It intentionally absorbs Technology into product
+  resources, so document links never route customers to a product listing.
+{%- endcomment -%}
+
+{%- assign support_center_url = support_url | default: '/pages/request-for-quote' -%}
+
+<div id="suntneew-support-mega-menu" class="mega-menu suntneew-support-mega-menu">
+  <div class="suntneew-support-mega-menu__grid">
+    <section class="suntneew-support-mega-menu__column" aria-labelledby="support-menu-service">
+      <p class="suntneew-support-mega-menu__heading" id="support-menu-service">Support</p>
+      <ul class="suntneew-support-mega-menu__links" role="list">
+        <li><a href="{{ support_center_url }}">Support Center</a></li>
+        <li><a href="/pages/contact-us">Contact Us</a></li>
+        <li><a href="{{ support_center_url }}">Technical Request</a></li>
+      </ul>
+    </section>
+
+    <section class="suntneew-support-mega-menu__column" aria-labelledby="support-menu-resources">
+      <p class="suntneew-support-mega-menu__heading" id="support-menu-resources">Product Resources</p>
+      <ul class="suntneew-support-mega-menu__links" role="list">
+        <li><a href="/pages/technology">Certificates &amp; Compliance</a></li>
+        <li><a href="/pages/technology#u23-certificates">U23 Certificates</a></li>
+        <li><a href="/pages/technology#u32-certificates">U32 Certificates</a></li>
+      </ul>
+    </section>
+
+    <section class="suntneew-support-mega-menu__column" aria-labelledby="support-menu-journal">
+      <p class="suntneew-support-mega-menu__heading" id="support-menu-journal">Journal</p>
+      <ul class="suntneew-support-mega-menu__links" role="list">
+        <li><a href="/blogs/news">Power Notes &amp; Guides</a></li>
+        <li><a href="/pages/technology">Model Document Library</a></li>
+      </ul>
+    </section>
+
+    <section class="suntneew-support-mega-menu__column" aria-labelledby="support-menu-policy">
+      <p class="suntneew-support-mega-menu__heading" id="support-menu-policy">Policies</p>
+      <ul class="suntneew-support-mega-menu__links" role="list">
+        <li><a href="/pages/shipping-policy">Shipping Policy</a></li>
+        <li><a href="/pages/return-policy">Return Policy</a></li>
+        <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/pages/terms-conditions">Terms &amp; Conditions</a></li>
+      </ul>
+    </section>
+  </div>
+</div>

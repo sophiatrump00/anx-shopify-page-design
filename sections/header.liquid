@@ -69,7 +69,7 @@
         --header-logo-height: {{ section.settings.logo_max_width | divided_by: section.settings.logo.aspect_ratio | round }}px;
       {%- endif -%}
 
-      --header-padding-block: {% if section.settings.reduce_padding %}var(--spacing-6){% else %}var(--spacing-8-5){% endif %};
+      --header-padding-block: {% if section.settings.reduce_padding %}var(--spacing-4){% else %}var(--spacing-8-5){% endif %};
     }
   }
 
@@ -125,6 +125,16 @@
                     assign link_title_downcase = link.title | strip | downcase
                     assign mega_menu_block = ''
                     assign series_card_count = 0
+                    assign is_technology_menu = false
+                    assign is_support_menu = false
+
+                    if link_title_downcase == 'technology' or link.url contains '/pages/technology'
+                      assign is_technology_menu = true
+                    endif
+
+                    if link_title_downcase == 'support' or link.url contains '/pages/request-for-quote'
+                      assign is_support_menu = true
+                    endif
 
                     for block in section.blocks
                       assign menu_item_downcase = block.settings.menu_item | strip | downcase
@@ -151,8 +161,17 @@
                     endif
                   %}
 
-                  <li{% if is_series_card_menu %} class="header__product-series-menu"{% endif %}>
-                    {%- if link.levels == 0 and mega_menu_block == '' and is_series_card_menu == false -%}
+                  {%- unless is_technology_menu -%}
+                    <li{% if is_series_card_menu %} class="header__product-series-menu"{% elsif is_support_menu %} class="header__support-menu"{% endif %}>
+                    {%- if is_support_menu -%}
+                      <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
+                        <summary class="suntneew-support-menu__trigger bold link-faded-reverse">
+                          {{- link.title -}}
+                        </summary>
+
+                        {%- render 'suntneew-support-mega-menu', support_url: link.url -%}
+                      </details>
+                    {%- elsif link.levels == 0 and mega_menu_block == '' and is_series_card_menu == false -%}
                       <a
                         href="{{ link.url }}"
                         class="bold link-faded-reverse"
@@ -277,7 +296,8 @@
                         </details>
                       {%- endif -%}
                     {%- endif -%}
-                  </li>
+                    </li>
+                  {%- endunless -%}
                 {%- endfor -%}
               </ul>
             </nav>

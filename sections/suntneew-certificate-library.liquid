@@ -1,0 +1,166 @@
+{{ 'suntneew-certificates.css' | asset_url | stylesheet_tag }}
+
+<section class="sn-cert-library">
+  <header class="sn-cert-library__hero">
+    <div class="sn-cert-library__shell sn-cert-library__hero-content">
+      <p class="sn-cert-library__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1>{{ section.settings.heading }}</h1>
+      <p class="sn-cert-library__intro">{{ section.settings.intro }}</p>
+    </div>
+  </header>
+
+  <div class="sn-cert-library__shell sn-cert-library__content">
+    <aside class="sn-cert-library__note" aria-label="{{ section.settings.note_title | escape }}">
+      <span class="sn-cert-library__note-mark" aria-hidden="true">i</span>
+      <div>
+        <strong>{{ section.settings.note_title }}</strong>
+        <p>{{ section.settings.note }}</p>
+      </div>
+    </aside>
+
+    <div class="sn-cert-library__grid">
+      {%- for block in section.blocks -%}
+        {% liquid
+          assign resource_one_url = block.settings.resource_one_url
+          assign resource_two_url = block.settings.resource_two_url
+          assign resource_three_url = block.settings.resource_three_url
+
+          if block.settings.resource_one_asset != blank
+            assign resource_one_url = block.settings.resource_one_asset | asset_url
+          endif
+
+          if block.settings.resource_two_asset != blank
+            assign resource_two_url = block.settings.resource_two_asset | asset_url
+          endif
+
+          if block.settings.resource_three_asset != blank
+            assign resource_three_url = block.settings.resource_three_asset | asset_url
+          endif
+        %}
+
+        <article id="{{ block.settings.anchor_id | default: block.id | escape }}" class="sn-cert-library__card" {{ block.shopify_attributes }}>
+          <header class="sn-cert-library__card-header">
+            <span class="sn-cert-library__icon" aria-hidden="true">
+              {%- render 'suntneew-series-icon', icon: block.settings.icon -%}
+            </span>
+            <div>
+              <p class="sn-cert-library__family">{{ block.settings.family }}</p>
+              <h2>{{ block.settings.title }}</h2>
+            </div>
+          </header>
+
+          <p class="sn-cert-library__description">{{ block.settings.description }}</p>
+
+          <ul class="sn-cert-library__resources" role="list">
+            {%- if block.settings.resource_one_label != blank -%}
+              <li class="sn-cert-library__resource">
+                <span class="sn-cert-library__resource-index">01</span>
+                {%- if resource_one_url != blank -%}
+                  <a href="{{ resource_one_url }}" target="_blank" rel="noopener">
+                    <span>
+                      <strong>{{ block.settings.resource_one_label }}</strong>
+                      <span>{{ block.settings.resource_one_text }}</span>
+                    </span>
+                    <span class="sn-cert-library__resource-action">Open PDF</span>
+                  </a>
+                {%- else -%}
+                  <div>
+                    <strong>{{ block.settings.resource_one_label }}</strong>
+                    <p>{{ block.settings.resource_one_text }}</p>
+                  </div>
+                {%- endif -%}
+              </li>
+            {%- endif -%}
+
+            {%- if block.settings.resource_two_label != blank -%}
+              <li class="sn-cert-library__resource">
+                <span class="sn-cert-library__resource-index">02</span>
+                {%- if resource_two_url != blank -%}
+                  <a href="{{ resource_two_url }}" target="_blank" rel="noopener">
+                    <span>
+                      <strong>{{ block.settings.resource_two_label }}</strong>
+                      <span>{{ block.settings.resource_two_text }}</span>
+                    </span>
+                    <span class="sn-cert-library__resource-action">Open PDF</span>
+                  </a>
+                {%- else -%}
+                  <div>
+                    <strong>{{ block.settings.resource_two_label }}</strong>
+                    <p>{{ block.settings.resource_two_text }}</p>
+                  </div>
+                {%- endif -%}
+              </li>
+            {%- endif -%}
+
+            {%- if block.settings.resource_three_label != blank -%}
+              <li class="sn-cert-library__resource">
+                <span class="sn-cert-library__resource-index">03</span>
+                {%- if resource_three_url != blank -%}
+                  <a href="{{ resource_three_url }}" target="_blank" rel="noopener">
+                    <span>
+                      <strong>{{ block.settings.resource_three_label }}</strong>
+                      <span>{{ block.settings.resource_three_text }}</span>
+                    </span>
+                    <span class="sn-cert-library__resource-action">Open PDF</span>
+                  </a>
+                {%- else -%}
+                  <div>
+                    <strong>{{ block.settings.resource_three_label }}</strong>
+                    <p>{{ block.settings.resource_three_text }}</p>
+                  </div>
+                {%- endif -%}
+              </li>
+            {%- endif -%}
+          </ul>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SuntNeew Certificates",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"SUPPORT RESOURCES"},
+    {"type":"text","id":"heading","label":"Heading","default":"Certificates, matched to the model."},
+    {"type":"textarea","id":"intro","label":"Intro","default":"Open the certificate that matches the model code on your product label. Every document below links to the certificate itself, not to a product page."},
+    {"type":"text","id":"note_title","label":"Information title","default":"Check the model before relying on a document."},
+    {"type":"textarea","id":"note","label":"Information text","default":"A certificate applies only to the model named in that document. If your product label does not match, contact Support before using it for compliance, transport or installation decisions."}
+  ],
+  "blocks": [
+    {
+      "type": "certificate_group",
+      "name": "Certificate group",
+      "settings": [
+        {"type":"text","id":"anchor_id","label":"Anchor ID","default":"u23-certificates"},
+        {"type":"select","id":"icon","label":"Icon","default":"jump","options":[{"value":"rv","label":"RV battery"},{"value":"jump","label":"Jump starter"},{"value":"home","label":"Home energy"}]},
+        {"type":"text","id":"family","label":"Family label","default":"JUMP STARTERS"},
+        {"type":"text","id":"title","label":"Title","default":"Model certificate"},
+        {"type":"textarea","id":"description","label":"Description","default":"Open the certificate connected to the exact product model."},
+        {"type":"text","id":"resource_one_label","label":"Certificate 1 title","default":"FCC declaration"},
+        {"type":"textarea","id":"resource_one_text","label":"Certificate 1 description","default":"Open the model-matched certificate PDF."},
+        {"type":"text","id":"resource_one_asset","label":"Certificate 1 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
+        {"type":"url","id":"resource_one_url","label":"Certificate 1 URL"},
+        {"type":"text","id":"resource_two_label","label":"Certificate 2 title"},
+        {"type":"textarea","id":"resource_two_text","label":"Certificate 2 description"},
+        {"type":"text","id":"resource_two_asset","label":"Certificate 2 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
+        {"type":"url","id":"resource_two_url","label":"Certificate 2 URL"},
+        {"type":"text","id":"resource_three_label","label":"Certificate 3 title"},
+        {"type":"textarea","id":"resource_three_text","label":"Certificate 3 description"},
+        {"type":"text","id":"resource_three_asset","label":"Certificate 3 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
+        {"type":"url","id":"resource_three_url","label":"Certificate 3 URL"}
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "SuntNeew Certificates",
+      "blocks": [
+        {"type":"certificate_group"}
+      ]
+    }
+  ]
+}
+{% endschema %}

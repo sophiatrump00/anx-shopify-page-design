@@ -63,7 +63,7 @@ const assetReferences = new Set();
 const collect = (value) => {
   if (Array.isArray(value)) value.forEach(collect);
   else if (value && typeof value === 'object') Object.values(value).forEach(collect);
-  else if (typeof value === 'string' && /^(suntneew|energy-star)-.*\.(jpg|png|webp|js|css)$/.test(value)) assetReferences.add(value);
+  else if (typeof value === 'string' && /^(suntneew|energy-star)-.*\.(jpg|png|webp|js|css|pdf)$/.test(value)) assetReferences.add(value);
 };
 for (const { template } of templates) collect(template);
 for (const asset of assetReferences) {

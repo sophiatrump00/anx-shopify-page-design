@@ -1,4 +1,5 @@
 {%- render 'section-spacing-collapsing' -%}
+{{ 'suntneew-journal.css' | asset_url | stylesheet_tag }}
 
 <style>
   #shopify-section-{{ section.id }} {
@@ -24,18 +25,42 @@
   {% endif %}
 >
   {%- if blog.articles_count == 0 -%}
-    <div class="empty-state">
-      <div class="empty-state__icon-wrapper">
-        {%- render 'icon' with 'picto-comment', width: 32, height: 32, stroke_width: 1 -%}
-      </div>
+    <section class="sn-journal-empty">
+      <div class="sn-journal-empty__shell">
+        <p class="sn-journal-empty__eyebrow">JOURNAL</p>
+        <h1>Practical power notes, ready for their first chapter.</h1>
+        <p class="sn-journal-empty__intro">The Journal is ready for SuntNeew articles. While the first posts are being prepared, these useful starting points are already available.</p>
 
-      <div class="prose">
-        <h1 class="h4">{{ 'blog.general.empty_blog' | t }}</h1>
+        <div class="sn-journal-empty__grid">
+          <a href="/pages/technology" class="sn-journal-empty__card">
+            <span class="sn-journal-empty__number">01</span>
+            <span class="sn-journal-empty__card-copy">
+              <strong>Certificates &amp; compliance</strong>
+              <span>Open model-matched certificate documents instead of a product listing.</span>
+            </span>
+            <span class="sn-journal-empty__arrow" aria-hidden="true">&rarr;</span>
+          </a>
 
-        {%- assign button_content = 'blog.general.back_to_home' | t -%}
-        {%- render 'button', size: 'xl', content: button_content, href: routes.root_url -%}
+          <a href="/pages/request-for-quote" class="sn-journal-empty__card">
+            <span class="sn-journal-empty__number">02</span>
+            <span class="sn-journal-empty__card-copy">
+              <strong>Ask Support</strong>
+              <span>Request help with model selection, product details or technical questions.</span>
+            </span>
+            <span class="sn-journal-empty__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <a href="{{ routes.collections_url }}" class="sn-journal-empty__card">
+            <span class="sn-journal-empty__number">03</span>
+            <span class="sn-journal-empty__card-copy">
+              <strong>Explore product series</strong>
+              <span>Start with the power path that fits road, RV or home use.</span>
+            </span>
+            <span class="sn-journal-empty__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
   {%- else -%}
     <header
       {% render 'surface',

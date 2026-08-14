@@ -39,6 +39,21 @@
 
         <ul class="v-stack gap-4">
           {%- for link in main_menu.links -%}
+            {% liquid
+              assign mobile_link_title_downcase = link.title | strip | downcase
+              assign is_technology_mobile_menu = false
+              assign is_support_mobile_menu = false
+
+              if mobile_link_title_downcase == 'technology' or link.url contains '/pages/technology'
+                assign is_technology_mobile_menu = true
+              endif
+
+              if is_mega_menu == false
+                if mobile_link_title_downcase == 'support' or link.url contains '/pages/request-for-quote'
+                  assign is_support_mobile_menu = true
+                endif
+              endif
+            %}
             {%- unless is_mega_menu -%}
               {% liquid
                 assign link_title_downcase = link.title | downcase
@@ -69,8 +84,9 @@
               {%- endif -%}
             {%- endunless -%}
 
+            {%- unless is_technology_mobile_menu -%}
             <li class="h3 sm:h4">
-              {%- if link.links.size > 0 or mega_menu_block != '' and is_mega_menu == false -%}
+              {%- if is_support_mobile_menu or link.links.size > 0 or mega_menu_block != '' and is_mega_menu == false -%}
                 <button class="text-with-icon w-full group justify-between" aria-expanded="false" data-panel="1-{% increment level_1 %}">
                   <span>{{ link.title }}</span>
                   <span class="circle-chevron group-hover:colors group-expanded:colors">{%- render 'icon' with 'chevron-right-small', direction_aware: true -%}</span>
@@ -84,7 +100,7 @@
               {%- endif -%}
             </li>
 
-            {%- if link.links.size > 0 or mega_menu_block != '' and is_mega_menu == false -%}
+            {%- if is_support_mobile_menu or link.links.size > 0 or mega_menu_block != '' and is_mega_menu == false -%}
               {%- capture link_level_2 -%}
                 {{- link_level_2 -}}
 
@@ -95,6 +111,10 @@
                         {%- render 'icon' with 'chevron-left', direction_aware: true -%} {{ link.title }}
                       </button>
                     </li>
+
+                    {%- if is_support_mobile_menu -%}
+                      {%- render 'suntneew-support-mobile-links', support_url: link.url -%}
+                    {%- endif -%}
 
                     {%- if link.links.size > 0 -%}
                       {%- for sub_link in link.links -%}
@@ -191,6 +211,7 @@
                 </div>
               {%- endcapture -%}
             {%- endif -%}
+            {%- endunless -%}
           {%- endfor -%}
         </ul>
 
