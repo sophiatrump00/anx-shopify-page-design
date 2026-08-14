@@ -12,6 +12,7 @@
   * type: can be either "country" or "locale" (required)
   * show_country_name: for type "country" if set to true the country/currency name are shown
   * show_country_flag: for type "country" if set to true the country flags are shown
+  * compact: for type "country", show only the current flag in the trigger
   * popover_horizontal_position: an optional vertical position
   * popover_vertical_position: an optional horizontal position (start if none is passed)
 {%- endcomment -%}
@@ -46,15 +47,17 @@
             <span class="country-flags country-flags--{{ localization.country.iso_code }}"></span>
           {%- endif -%}
 
-          <span class="bold text-sm">
-            {%- if show_country_name -%}
-              {{ localization.country.name }} ({{ localization.country.currency.iso_code }}
-              {% if localization.country.currency.symbol %}{{ localization.country.currency.symbol }}){%- endif -%}
-            {%- else -%}
-              {{ localization.country.currency.iso_code }}
-              {% if localization.country.currency.symbol %}{{ localization.country.currency.symbol }}{%- endif -%}
-            {%- endif -%}
-          </span>
+          {%- unless compact -%}
+            <span class="bold text-sm">
+              {%- if show_country_name -%}
+                {{ localization.country.name }} ({{ localization.country.currency.iso_code }}
+                {% if localization.country.currency.symbol %}{{ localization.country.currency.symbol }}){%- endif -%}
+              {%- else -%}
+                {{ localization.country.currency.iso_code }}
+                {% if localization.country.currency.symbol %}{{ localization.country.currency.symbol }}{%- endif -%}
+              {%- endif -%}
+            </span>
+          {%- endunless -%}
         </div>
 
         {%- render 'icon' with 'chevron-bottom' -%}

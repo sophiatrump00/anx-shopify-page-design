@@ -170,7 +170,6 @@
                             {% endif %}
                           >
                             {{- link.title -}}
-                            {%- render 'icon' with 'chevron-bottom' -%}
                           </summary>
 
                           {%- render 'suntneew-series-mega-menu', link: link -%}
@@ -361,6 +360,7 @@
                 type: 'country',
                 show_country_name: section.settings.show_country_name,
                 show_country_flag: section.settings.show_country_flag,
+                compact: true,
                 popover_vertical_position: 'end'
               -%}
             </li>
@@ -474,7 +474,7 @@
       "type": "checkbox",
       "id": "enable_sticky",
       "label": "Enable sticky header",
-      "default": true
+      "default": false
     },
     {
       "type": "checkbox",
