@@ -87,6 +87,7 @@
 
 {%- if request.page_type == 'index' -%}
   {%- assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' -%}
+  {%- assign theme_logo_url = 'suntneew-logo-ai-dark.png' | asset_url | prepend: request.origin -%}
 
   <script type="application/ld+json">
     [
@@ -105,9 +106,7 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": {{ shop.name | json }},
-        {%- if shop.brand.logo -%}
-          "logo": {{ shop.brand.logo | image_url: width: shop.brand.logo.width | prepend: "https:" | json }},
-        {%- endif -%}
+        "logo": {{ theme_logo_url | json }},
         {%- if shop.brand.short_description -%}
           "description": {{ shop.brand.short_description | json }},
         {%- endif -%}

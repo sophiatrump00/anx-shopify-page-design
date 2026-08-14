@@ -18,10 +18,10 @@
             "fallback_asset": "suntneew-hero-rv-desktop.jpg",
             "image_alt": "RV campsite at dusk",
             "eyebrow": "RV BATTERIES",
-            "status": "SERIES PREPARING",
+            "status": "GUIDES & FITMENT",
             "title": "RV Batteries",
-            "text": "The RV product series remains in the site structure. Product listings and product pages will be added later.",
-            "link_label": "View RV series",
+            "text": "Deep-cycle power guidance for RV, marine and off-grid applications.",
+            "link_label": "Explore RV batteries",
             "link": "shopify://collections/rv-batteries"
           }
         },
@@ -31,10 +31,10 @@
             "fallback_asset": "suntneew-hero-a20-desktop.jpg",
             "image_alt": "SUNTNEEW jump starter beside a vehicle",
             "eyebrow": "JUMP STARTERS",
-            "status": "A20 · A3",
+            "status": "PORTABLE POWER",
             "title": "Jump Starters",
-            "text": "Portable starting power, emergency lighting and device charging for life on the road.",
-            "link_label": "View jump starter series",
+            "text": "Portable starting power, emergency lighting and device charging for the road.",
+            "link_label": "Explore jump starters",
             "link": "shopify://collections/jump-starters"
           }
         },
@@ -42,12 +42,12 @@
           "type": "series",
           "settings": {
             "fallback_asset": "energy-star-home-hero-v1.png",
-            "image_alt": "ENERGY STAR home energy storage system beside a solar home",
+            "image_alt": "SuntNeew home energy storage system beside a solar home",
             "eyebrow": "HOME ENERGY STORAGE",
-            "status": "ENERGY STAR",
+            "status": "SYSTEM PLANNING",
             "title": "Home Energy Storage",
-            "text": "Low-voltage and high-voltage configurations to plan stored energy around a home system.",
-            "link_label": "View home energy series",
+            "text": "Plan compatible stored energy around essential circuits, energy needs and installation conditions.",
+            "link_label": "Explore home energy",
             "link": "shopify://collections/home-energy-storage"
           }
         }
@@ -56,7 +56,7 @@
       "settings": {
         "eyebrow": "ALL PRODUCTS",
         "heading": "Power systems for the road, home and what comes next.",
-        "body": "Browse the three SuntNeew product series. Each series has its own product collection, with available models leading straight to the relevant product detail page."
+        "body": "Start with how you use power. Each series brings together products, practical guidance and model-specific resources."
       }
     }
   },

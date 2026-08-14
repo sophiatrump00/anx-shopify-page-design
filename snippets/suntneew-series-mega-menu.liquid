@@ -1,100 +1,109 @@
 {%- comment -%}
-  Product Series uses the navigation as the source of truth for each link URL.
-  The card imagery and copy are deliberately mapped by collection handle so this
-  menu stays consistent when Shopify Markets translates navigation titles.
+  A compact Product Series menu intentionally uses no campaign imagery. The
+  Shopify navigation remains the source of truth for collection URLs and titles.
 {%- endcomment -%}
 
 <style>
   #suntneew-series-mega-menu {
-    --mega-menu-justify-content: center;
+    --mega-menu-justify-content: flex-start;
     --mega-menu-gap: 0;
-    padding-block: 0 var(--spacing-8);
+    width: min(360px, calc(100vw - 48px));
+    max-height: none;
+    padding: 10px;
+    overflow: visible;
+    border: 1px solid rgb(24 35 48 / .14);
+    border-radius: 0 0 16px 16px;
+    background: #fff;
+    color: #182330;
+    box-shadow: 0 18px 44px rgb(18 29 41 / .18);
     mix-blend-mode: normal;
+    top: calc(100% + 38px);
+    left: 0;
   }
 
   #suntneew-series-mega-menu .suntneew-series-mega-menu__grid {
-    width: min(100%, 1800px);
-    gap: clamp(14px, 1.2vw, 24px);
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     display: grid;
-  }
-
-  #suntneew-series-mega-menu .suntneew-series-mega-menu__card {
-    min-height: clamp(210px, 16vw, 286px);
-    isolation: isolate;
-    color: #fff;
-    border-radius: 0 0 20px 20px;
-    align-items: flex-end;
-    overflow: hidden;
-    display: flex;
-    position: relative;
-  }
-
-  #suntneew-series-mega-menu .suntneew-series-mega-menu__card::after {
-    content: '';
-    z-index: -1;
-    background: linear-gradient(180deg, rgb(7 13 22 / .14) 5%, rgb(7 13 22 / .86) 100%);
-    position: absolute;
-    inset: 0;
-  }
-
-  #suntneew-series-mega-menu .suntneew-series-mega-menu__image {
-    z-index: -2;
-    object-fit: cover;
     width: 100%;
-    height: 100%;
-    transition: transform .45s ease;
-    position: absolute;
-    inset: 0;
+    gap: 2px;
   }
 
-  #suntneew-series-mega-menu .suntneew-series-mega-menu__card:hover .suntneew-series-mega-menu__image {
-    transform: scale(1.04);
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__item {
+    display: grid;
+    min-height: 78px;
+    grid-template-columns: 38px minmax(0, 1fr) auto;
+    gap: 13px;
+    align-items: center;
+    padding: 12px;
+    border-radius: 10px;
+    color: inherit;
+    text-decoration: none;
+    transition: background 160ms ease, color 160ms ease;
   }
 
-  #suntneew-series-mega-menu .suntneew-series-mega-menu__content {
-    max-width: min(100%, 35rem);
-    padding: clamp(20px, 2vw, 34px);
-    align-items: flex-start;
-    gap: var(--spacing-3);
-    display: flex;
-    flex-direction: column;
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__item:hover,
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__item:focus-visible {
+    background: #f4f7f9;
+    color: #e9653b;
+    outline: none;
   }
 
-  #suntneew-series-mega-menu .suntneew-series-mega-menu__eyebrow {
-    font-size: .6875rem;
-    letter-spacing: .12em;
-    font-weight: 700;
-    line-height: 1.2;
-    text-transform: uppercase;
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 1px solid rgb(233 101 59 / .18);
+    border-radius: 10px;
+    background: #fff5f0;
+    color: #e9653b;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__icon svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__copy {
+    display: grid;
+    gap: 3px;
   }
 
   #suntneew-series-mega-menu .suntneew-series-mega-menu__title {
-    font-size: clamp(1.45rem, 2vw, 2.25rem);
-    letter-spacing: -.035em;
-    font-weight: 500;
-    line-height: 1.05;
+    color: #17212e;
+    font-size: .8125rem;
+    font-weight: 800;
+    line-height: 1.2;
   }
 
   #suntneew-series-mega-menu .suntneew-series-mega-menu__description {
-    max-width: 34rem;
-    font-size: .875rem;
-    line-height: 1.45;
+    color: #697582;
+    font-size: .75rem;
+    line-height: 1.4;
   }
 
-  #suntneew-series-mega-menu .suntneew-series-mega-menu__cta {
-    font-size: .8125rem;
-    font-weight: 700;
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__arrow {
+    align-self: center;
+    color: #e9653b;
+    font-size: 1.125rem;
+    line-height: 1;
+    transition: transform 160ms ease;
   }
 
-  #suntneew-series-mega-menu .suntneew-series-mega-menu__cta::after {
-    content: ' →';
-    color: #ff6a1a;
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__item:hover .suntneew-series-mega-menu__arrow,
+  #suntneew-series-mega-menu .suntneew-series-mega-menu__item:focus-visible .suntneew-series-mega-menu__arrow {
+    transform: translateX(3px);
   }
 
   @media screen and (max-width: 1149px) {
     #suntneew-series-mega-menu {
       display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #suntneew-series-mega-menu .suntneew-series-mega-menu__item,
+    #suntneew-series-mega-menu .suntneew-series-mega-menu__arrow {
+      transition: none;
     }
   }
 </style>
@@ -103,94 +112,31 @@
   <div class="suntneew-series-mega-menu__grid">
     {%- for sub_link in link.links -%}
       {%- assign collection_handle = sub_link.object.handle | default: '' -%}
-      {%- assign image_asset = '' -%}
-      {%- assign card_title = sub_link.title -%}
-      {%- assign card_description = '' -%}
+      {%- assign icon = '' -%}
+      {%- assign description = '' -%}
 
       {%- case collection_handle -%}
         {%- when 'rv-batteries' -%}
-          {%- assign image_asset = 'suntneew-use-rv.jpg' -%}
-          {%- assign card_title = 'RV power, ready for its next chapter.' -%}
-          {%- assign card_description = 'The RV series stays available as a category. Its product listings and individual product pages are temporarily blank.' -%}
+          {%- assign icon = 'rv' -%}
+          {%- assign description = 'RV, marine and off-grid power.' -%}
         {%- when 'jump-starters' -%}
-          {%- assign image_asset = 'suntneew-use-jump.jpg' -%}
-          {%- assign card_title = 'Start the vehicle and get back on the road.' -%}
-          {%- assign card_description = 'Starting power, charging and emergency support that stays close to the vehicle.' -%}
+          {%- assign icon = 'jump' -%}
+          {%- assign description = 'Portable starting power for the road.' -%}
         {%- when 'home-energy-storage' -%}
-          {%- assign image_asset = 'suntneew-use-home-energy.jpg' -%}
-          {%- assign card_title = 'Keep essential home power within reach.' -%}
-          {%- assign card_description = 'Begin with the energy you need, then plan a compatible system around your home.' -%}
+          {%- assign icon = 'home' -%}
+          {%- assign description = 'Plan resilient power for essential home loads.' -%}
       {%- endcase -%}
 
-      {%- if image_asset != blank -%}
-        <a href="{{ sub_link.url }}" class="suntneew-series-mega-menu__card">
-          <img
-            src="{{ image_asset | asset_url }}"
-            alt="{{ sub_link.title | escape }}"
-            class="suntneew-series-mega-menu__image"
-            width="1200"
-            height="1400"
-            loading="lazy"
-          >
-          <span class="suntneew-series-mega-menu__content">
-            <span class="suntneew-series-mega-menu__eyebrow">{{ sub_link.title }}</span>
-            <span class="suntneew-series-mega-menu__title">
-              {%- case request.locale.iso_code -%}
-                {%- when 'de' -%}
-                  {%- case collection_handle -%}
-                    {%- when 'rv-batteries' -%}RV-Energie, bereit für ihr nächstes Kapitel.
-                    {%- when 'jump-starters' -%}Das Fahrzeug starten und weiterfahren.
-                    {%- when 'home-energy-storage' -%}Wichtige Energie für Zuhause immer in Reichweite.
-                  {%- endcase -%}
-                {%- when 'es' -%}
-                  {%- case collection_handle -%}
-                    {%- when 'rv-batteries' -%}Energía para RV, lista para su próximo capítulo.
-                    {%- when 'jump-starters' -%}Arranca el vehículo y vuelve a la carretera.
-                    {%- when 'home-energy-storage' -%}La energía esencial del hogar, siempre a tu alcance.
-                  {%- endcase -%}
-                {%- when 'zh-CN' -%}
-                  {%- case collection_handle -%}
-                    {%- when 'rv-batteries' -%}房车供电，准备开启下一段旅程。
-                    {%- when 'jump-starters' -%}启动车辆，继续前行。
-                    {%- when 'home-energy-storage' -%}家庭关键用电，始终触手可及。
-                  {%- endcase -%}
-                {%- else -%}{{ card_title }}
-              {%- endcase -%}
-            </span>
-            {%- if card_description != blank -%}
-              <span class="suntneew-series-mega-menu__description">
-                {%- case request.locale.iso_code -%}
-                  {%- when 'de' -%}
-                    {%- case collection_handle -%}
-                      {%- when 'rv-batteries' -%}Die RV-Serie bleibt als Kategorie sichtbar. Produktlisten und einzelne Produktseiten sind vorübergehend leer.
-                      {%- when 'jump-starters' -%}Starthilfe, Laden und Nothilfe bleiben nah am Fahrzeug.
-                      {%- when 'home-energy-storage' -%}Beginnen Sie mit dem Energiebedarf und planen Sie ein kompatibles System für Ihr Zuhause.
-                    {%- endcase -%}
-                  {%- when 'es' -%}
-                    {%- case collection_handle -%}
-                      {%- when 'rv-batteries' -%}La serie RV sigue disponible como categoría. Sus listados y páginas de producto están temporalmente vacíos.
-                      {%- when 'jump-starters' -%}Arranque, carga y asistencia de emergencia al alcance del vehículo.
-                      {%- when 'home-energy-storage' -%}Empieza con la energía que necesitas y planifica un sistema compatible para tu hogar.
-                    {%- endcase -%}
-                  {%- when 'zh-CN' -%}
-                    {%- case collection_handle -%}
-                      {%- when 'rv-batteries' -%}房车系列作为产品类别保留展示；产品列表与详情页暂时留空。
-                      {%- when 'jump-starters' -%}搭电、充电和应急支持，始终靠近车辆。
-                      {%- when 'home-energy-storage' -%}从实际用电需求出发，为家规划兼容的储能系统。
-                    {%- endcase -%}
-                  {%- else -%}{{ card_description }}
-                {%- endcase -%}
-              </span>
-            {%- endif -%}
-            <span class="suntneew-series-mega-menu__cta">
-              {%- case request.locale.iso_code -%}
-                {%- when 'de' -%}Serie entdecken
-                {%- when 'es' -%}Explorar la serie
-                {%- when 'zh-CN' -%}探索系列
-                {%- else -%}Explore series
-              {%- endcase -%}
-            </span>
+      {%- if icon != blank -%}
+        <a href="{{ sub_link.url }}" class="suntneew-series-mega-menu__item" aria-label="Explore {{ sub_link.title | escape }}">
+          <span class="suntneew-series-mega-menu__icon" aria-hidden="true">
+            {%- render 'suntneew-series-icon', icon: icon -%}
           </span>
+          <span class="suntneew-series-mega-menu__copy">
+            <span class="suntneew-series-mega-menu__title">{{ sub_link.title }}</span>
+            <span class="suntneew-series-mega-menu__description">{{ description }}</span>
+          </span>
+          <span class="suntneew-series-mega-menu__arrow" aria-hidden="true">→</span>
         </a>
       {%- endif -%}
     {%- endfor -%}

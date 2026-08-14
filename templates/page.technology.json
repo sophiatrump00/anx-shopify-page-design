@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-technology-center",
+      "blocks": {
+        "rv": {
+          "type": "family",
+          "settings": {
+            "icon": "rv",
+            "family": "RV BATTERIES",
+            "title": "Manuals, fitment and safety",
+            "description": "Plan the battery, charging and installation details around the exact RV or off-grid application.",
+            "resource_one_label": "Product manuals",
+            "resource_one_text": "Match the guide to the voltage, capacity and model on your battery label.",
+            "resource_one_url": "",
+            "resource_two_label": "Safety and transport",
+            "resource_two_text": "Review storage, handling and transport information for the exact model.",
+            "resource_two_url": "",
+            "resource_three_label": "Fitment support",
+            "resource_three_text": "Check charging, connections and compatible accessories before installation.",
+            "resource_three_url": "",
+            "link_label": "Explore RV batteries",
+            "link": "shopify://collections/rv-batteries"
+          }
+        },
+        "jump": {
+          "type": "family",
+          "settings": {
+            "icon": "jump",
+            "family": "JUMP STARTERS",
+            "title": "Starting power, step by step",
+            "description": "Find the practical setup and storage guidance that keeps a portable jump starter ready when it is needed.",
+            "resource_one_label": "Getting started",
+            "resource_one_text": "Identify the right starting procedure before connecting to a vehicle.",
+            "resource_one_url": "",
+            "resource_two_label": "Connection and safety",
+            "resource_two_text": "Use model-specific guidance for clamps, polarity and roadside safety.",
+            "resource_two_url": "",
+            "resource_three_label": "Charging and storage",
+            "resource_three_text": "Keep the unit maintained between trips and emergency use.",
+            "resource_three_url": "",
+            "link_label": "Explore jump starters",
+            "link": "shopify://collections/jump-starters"
+          }
+        },
+        "home": {
+          "type": "family",
+          "settings": {
+            "icon": "home",
+            "family": "HOME ENERGY STORAGE",
+            "title": "Plan before installation",
+            "description": "Use system-level guidance to shape a compatible home energy storage path around your essential loads.",
+            "resource_one_label": "System planning",
+            "resource_one_text": "Start with essential circuits, energy needs and the intended use case.",
+            "resource_one_url": "",
+            "resource_two_label": "Compatibility",
+            "resource_two_text": "Confirm the configuration and supporting equipment for the exact system.",
+            "resource_two_url": "",
+            "resource_three_label": "Installation readiness",
+            "resource_three_text": "Review site conditions and use qualified installation support where required.",
+            "resource_three_url": "",
+            "link_label": "Explore home energy",
+            "link": "shopify://collections/home-energy-storage"
+          }
+        }
+      },
+      "block_order": ["rv", "jump", "home"],
+      "settings": {
+        "eyebrow": "TECHNICAL RESOURCES",
+        "heading": "Technology, made useful.",
+        "intro": "Choose a product family to find practical guidance, model-specific resources and the technical support path that fits your system.",
+        "note_title": "Use the exact model before relying on a document.",
+        "note": "Manuals, safety records and compliance documents are published by product model. Match the model on your product label before downloading or installing."
+      }
+    }
+  },
+  "order": ["main"]
+}

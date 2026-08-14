@@ -19,6 +19,30 @@
   color: #e9653b;
 }
 
+.header__logo {
+  isolation: isolate;
+}
+
+/* A restrained highlight follows the new angular S mark without changing its color language. */
+.header__logo::after {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - 1px);
+  left: calc(var(--header-logo-width) * .035);
+  width: calc(var(--header-logo-width) * .17);
+  height: 1px;
+  opacity: .34;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / .9), transparent);
+  content: '';
+  pointer-events: none;
+  transform: skewX(-32deg);
+  transition: opacity 180ms ease;
+}
+
+.header__logo:hover::after {
+  opacity: .68;
+}
+
 @media screen and (min-width: 1150px) {
   .header__wrapper {
     /* Keep the header on the same content rails as the hero instead of adding a second inset. */
@@ -31,15 +55,19 @@
   }
 
   .header__main-nav {
+    align-self: center;
     justify-self: start;
     min-width: 0;
     margin-inline-start: 0;
-    /* The nav font has more lower-line-box space than the logo and icons. Lift only the desktop nav to align their visible centers. */
-    transform: translateY(-4px);
+    transform: none;
   }
 
   .header__main-nav .header__link-list {
     justify-content: flex-start;
+  }
+
+  .header__main-nav .header__product-series-menu {
+    position: relative;
   }
 
   .header__secondary-nav {
@@ -50,5 +78,9 @@
 @media (prefers-reduced-motion: reduce) {
   .header * {
     scroll-behavior: auto;
+  }
+
+  .header__logo::after {
+    transition: none;
   }
 }

@@ -149,7 +149,7 @@
                     endif
                   %}
 
-                  <li>
+                  <li{% if is_series_card_menu %} class="header__product-series-menu"{% endif %}>
                     {%- if link.levels == 0 and mega_menu_block == '' and is_series_card_menu == false -%}
                       <a
                         href="{{ link.url }}"
@@ -497,14 +497,14 @@
       "id": "logo_asset",
       "label": "Theme logo asset filename",
       "info": "Optional. Uses a file from the theme assets folder and overrides the image picker.",
-      "default": "suntneew-logo-light.png"
+      "default": "suntneew-logo-ai-dark.png"
     },
     {
       "type": "text",
       "id": "transparent_logo_asset",
       "label": "Transparent header logo asset filename",
       "info": "Optional. Uses a second theme asset while the header overlays the first section.",
-      "default": "suntneew-logo-orange-white-clean.png"
+      "default": "suntneew-logo-ai-white.png"
     },
     {
       "type": "range",
@@ -513,7 +513,7 @@
       "max": 8,
       "step": 0.1,
       "label": "Theme asset logo aspect ratio",
-      "default": 6.2
+      "default": 5.9
     },
     {
       "type": "range",
