@@ -17,12 +17,12 @@
         "sku":{"type":"sku","settings":{}},
         "price":{"type":"price","settings":{"show_taxes_notice":false}},
         "separator":{"type":"separator","settings":{}},
-        "intro":{"type":"text","settings":{"text":"<p>A 12.8V, 314Ah LiFePO4 RV battery with 4,019.2Wh rated energy, Bluetooth 5.0 monitoring and an 8,000-cycle reference at 70% state of health.</p>"}},
+        "intro":{"type":"text","settings":{"text":"<p>A 12.8V, 314Ah LiFePO4 RV battery with 4,019.2Wh rated energy, Bluetooth 5.0 monitoring, 63A recommended charging and 157A maximum continuous charge and discharge.</p>"}},
         "quantity_selector":{"type":"quantity_selector","settings":{}},
         "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
       },
       "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","buy_buttons"],
-      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":60,"desktop_media_layout":"grid_highlight","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type":"suntneew-pdp-proof",
@@ -30,9 +30,9 @@
         "energy":{"type":"metric","settings":{"value":"4,019.2Wh","label":"Rated energy","variant_match":""}},
         "capacity":{"type":"metric","settings":{"value":"314Ah","label":"12.8V LiFePO4","variant_match":""}},
         "cycles":{"type":"metric","settings":{"value":"8,000+ cycles","label":"At 70% state of health","variant_match":""}},
-        "connect":{"type":"metric","settings":{"value":"Bluetooth 5.0","label":"Battery monitoring","variant_match":""}}
+        "current":{"type":"metric","settings":{"value":"157A","label":"Max continuous charge / discharge","variant_match":""}}
       },
-      "block_order":["energy","capacity","cycles","connect"],
+      "block_order":["energy","capacity","cycles","current"],
       "settings":{"accessibility_label":"314Ah RV battery highlights"}
     },
     "anchor_nav": {
@@ -41,20 +41,22 @@
         "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
         "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
         "install":{"type":"link","settings":{"label":"Before installation","target_id":"in-the-box"}},
+        "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
         "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
-      "block_order":["features","specs","install","faq"],
+      "block_order":["features","specs","install","manuals","faq"],
       "settings":{}
     },
     "features": {
       "type":"suntneew-pdp-story",
       "blocks": {
-        "product":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-gallery-main.jpg","image_alt":"SUNTNEEW 12.8V 314Ah LiFePO4 RV battery","eyebrow":"Maximum current range capacity","heading":"More than 4kWh in one 12.8V enclosure","body":"<p>The 314Ah configuration provides 4,019.2Wh rated energy in a 522 x 268 x 222mm enclosure. Confirm the 26kg installation weight and access before ordering.</p>","variant_match":""}},
-        "rv_scene":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-a-plus-rv-scene.jpg","image_alt":"314Ah battery positioned in an RV energy compartment","image_fit":"cover","eyebrow":"High-capacity installation","heading":"Plan structure, restraint and cable routing around the 26kg battery","body":"<p>A high-capacity battery needs a mounting structure that supports its weight and keeps terminal protection, service access and ventilation in the system plan.</p>","variant_match":""}},
-        "system":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-a-plus-specs.jpg","image_alt":"314Ah RV battery in a technical product setting","image_fit":"cover","eyebrow":"Verify the exact BMS version","heading":"Confirm current limits before sizing the inverter or charger","body":"<p>The verified source set contains more than one BMS-current reference. Match the exact SKU and BMS version before using a charge or discharge current in the installation design.</p>","variant_match":""}}
+        "rv_scene":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-a-plus-rv-scene.jpg","image_alt":"314Ah battery positioned in an RV energy compartment","image_fit":"cover","eyebrow":"Start with the structure","heading":"Plan restraint, service access and cable routing around the 26kg battery","body":"<p>The mounting structure must support the battery weight, restrain movement and leave room for terminal protection, inspection and cable bend radius. Confirm the compartment before ordering.</p>","variant_match":""}},
+        "product":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-gallery-main.jpg","image_alt":"SUNTNEEW 12.8V 314Ah LiFePO4 RV battery","image_fit":"contain","eyebrow":"High-capacity RV power","heading":"4.019kWh in one 522 x 268 x 220mm enclosure","body":"<p>The 12.8V, 314Ah configuration stores 4,019.2Wh in a single enclosure. Use the size and 26kg weight together when checking structure, restraint and service access.</p>","variant_match":""}},
+        "system":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-a-plus-specs.jpg","image_alt":"314Ah RV battery in a technical product setting","image_fit":"cover","eyebrow":"Documented current limits","heading":"63A recommended charging with 157A continuous charge and discharge limits","body":"<p>The current English manual confirms 63A recommended charging and 157A maximum continuous charge and discharge. Size the charger, inverter, conductors and fuses to the lowest verified system limit.</p>","variant_match":""}},
+        "system_fit":{"type":"feature","settings":{"image_asset":"","image_alt":"","image_fit":"contain","eyebrow":"System fit","heading":"Coordinate more than 4kWh of storage with the complete RV electrical system","body":"<p>Use the 14.4V +/- 0.2V CC/CV profile across shore, solar and alternator charging. Low-temperature charging protection stops charging below 0C and resumes above 5C; it remains one safeguard within a fully protected installation.</p>","variant_match":""}}
       },
-      "block_order":["product","rv_scene","system"],
-      "settings":{"anchor_id":"features","eyebrow":"314Ah RV power","heading":"Maximum stored energy with no shortcuts in system design","lede":"<p>Use the verified capacity, size, weight and cycle reference now; confirm the exact BMS current version before final electrical sizing.</p>"}
+      "block_order":["rv_scene","product","system","system_fit"],
+      "settings":{"anchor_id":"features","eyebrow":"314Ah RV power","heading":"More than 4kWh, explained from structure to current limits","lede":"<p>Confirm the physical installation, understand the charging and discharge limits, then coordinate every connected component in the RV power system.</p>"}
     },
     "details": {
       "type":"suntneew-pdp-details",
@@ -63,28 +65,40 @@
         "voltage":{"type":"spec","settings":{"label":"Rated voltage","value":"12.8V","group":"primary","variant_match":""}},
         "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"314Ah","group":"primary","variant_match":""}},
         "energy":{"type":"spec","settings":{"label":"Rated energy","value":"4,019.2Wh","group":"primary","variant_match":""}},
+        "power":{"type":"spec","settings":{"label":"Maximum continuous output power","value":"2,010W","group":"primary","variant_match":""}},
         "cycles":{"type":"spec","settings":{"label":"Cycle-life reference","value":"At least 8,000 cycles at 70% state of health","group":"primary","variant_match":""}},
+        "model":{"type":"spec","settings":{"label":"Model","value":"ESS-LFP12314B","group":"system","variant_match":""}},
+        "charge_method":{"type":"spec","settings":{"label":"Charge method","value":"CC/CV","group":"system","variant_match":""}},
+        "charge_voltage":{"type":"spec","settings":{"label":"Charge voltage","value":"14.4V +/- 0.2V","group":"system","variant_match":""}},
+        "recommended_charge":{"type":"spec","settings":{"label":"Recommended charge current","value":"63A (0.2C)","group":"system","variant_match":""}},
+        "charge":{"type":"spec","settings":{"label":"Maximum continuous charge current","value":"157A","group":"system","variant_match":""}},
+        "discharge":{"type":"spec","settings":{"label":"Maximum continuous discharge current","value":"157A","group":"system","variant_match":""}},
         "bluetooth":{"type":"spec","settings":{"label":"Wireless monitoring","value":"Bluetooth 5.0","group":"system","variant_match":""}},
-        "bms":{"type":"spec","settings":{"label":"BMS current rating","value":"Confirm against the exact SKU before installation","group":"system","variant_match":""}},
-        "dimensions":{"type":"spec","settings":{"label":"Dimensions","value":"522 x 268 x 222mm","group":"installation","variant_match":""}},
+        "low_temp":{"type":"spec","settings":{"label":"Low-temperature charging protection","value":"Stops below 0C; resumes above 5C","group":"system","variant_match":""}},
+        "dimensions":{"type":"spec","settings":{"label":"Dimensions (L x W x H)","value":"522 x 268 x 220mm","group":"installation","variant_match":""}},
         "weight":{"type":"spec","settings":{"label":"Weight","value":"26kg","group":"installation","variant_match":""}},
+        "housing":{"type":"spec","settings":{"label":"Housing material","value":"ABS","group":"installation","variant_match":""}},
+        "torque":{"type":"spec","settings":{"label":"Recommended terminal torque","value":"12 to 14 N.m","group":"installation","variant_match":""}},
+        "temperature":{"type":"spec","settings":{"label":"Temperature range","value":"Charge 0 to 55C; discharge -20 to 60C; storage -10 to 50C","group":"installation","variant_match":""}},
         "note1":{"type":"included","settings":{"item":"Verify that the mounting structure supports the 26kg battery","variant_match":""}},
-        "note2":{"type":"included","settings":{"item":"Confirm the exact SKU and BMS version before choosing charger or inverter current","variant_match":""}},
+        "note2":{"type":"included","settings":{"item":"Use 63A as the recommended charge reference and keep charge and discharge within 157A continuous","variant_match":""}},
         "note3":{"type":"included","settings":{"item":"Protect terminals and size conductors and fuses for the confirmed system limits","variant_match":""}},
-        "note4":{"type":"included","settings":{"item":"Keep service access, cable bend radius and restraint in the enclosure plan","variant_match":""}}
+        "note4":{"type":"included","settings":{"item":"Keep service access, cable bend radius and restraint in the enclosure plan","variant_match":""}},
+        "manual":{"type":"download","settings":{"label":"314Ah user manual (EN PDF)","link":"","asset_name":"suntneew-rv-314ah-manual-en.pdf","variant_match":""}}
       },
-      "block_order":["chemistry","voltage","capacity","energy","cycles","bluetooth","bms","dimensions","weight","note1","note2","note3","note4"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Verified product data","heading":"314Ah technical specifications","lede":"<p>The capacity, size, weight and cycle reference are verified. Current limits remain intentionally dependent on the exact BMS version.</p>","primary_group_heading":"Capacity & cycle reference","system_group_heading":"Monitoring & BMS verification","installation_group_heading":"Physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation"}
+      "block_order":["chemistry","voltage","capacity","energy","power","cycles","model","charge_method","charge_voltage","recommended_charge","charge","discharge","bluetooth","low_temp","dimensions","weight","housing","torque","temperature","note1","note2","note3","note4","manual"],
+      "settings":{"anchor_id":"specifications","eyebrow":"Verified product data","heading":"314Ah technical specifications","lede":"<p>The key capacity, charging, protection and installation values are transcribed from the current English product manual. Use the manual for the full operating sequence and safety limits.</p>","primary_group_heading":"Capacity & performance","system_group_heading":"Charging, monitoring & protection","installation_group_heading":"Enclosure & physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation","download_eyebrow":"Product documentation","download_heading":"Manuals & downloads"}
     },
     "faq": {
       "type":"suntneew-pdp-faq",
       "blocks": {
         "q1":{"type":"question","settings":{"question":"How much energy does the 314Ah battery store?","answer":"<p>The rated energy is 4,019.2Wh from the documented 12.8V and 314Ah ratings. Actual usable energy depends on operating limits, load and system settings.</p>"}},
-        "q2":{"type":"question","settings":{"question":"What is the maximum charge or discharge current?","answer":"<p>Do not use a generic current figure for this listing. Confirm the exact product SKU and BMS version, then size the charger, inverter, conductors and protection to that documented limit.</p>"}},
-        "q3":{"type":"question","settings":{"question":"Can the 314Ah battery use the same compartment as the 230Ah model?","answer":"<p>The stated enclosure dimensions are the same, but the 314Ah battery weighs 26kg. Recheck structure, restraint, access and the complete electrical design for the exact model.</p>"}},
-        "q4":{"type":"question","settings":{"question":"Is an enclosure protection rating stated?","answer":"<p>The current verified source set does not state an IP rating for this model. Choose the installation location and environmental protection accordingly.</p>"}}
+        "q2":{"type":"question","settings":{"question":"What is the maximum charge or discharge current?","answer":"<p>The current English manual specifies 157A maximum continuous charge and 157A maximum continuous discharge, with 63A as the recommended charge current. The complete system must stay within its lowest-rated component.</p>"}},
+        "q3":{"type":"question","settings":{"question":"Can the 314Ah battery use the same compartment as the 230Ah model?","answer":"<p>The stated 522 x 268 x 220mm enclosure dimensions are the same, but the 314Ah battery weighs 26kg. Recheck structure, restraint, access and the complete electrical design for the exact model.</p>"}},
+        "q4":{"type":"question","settings":{"question":"Is an enclosure protection rating stated?","answer":"<p>The current verified source set does not state an IP rating for this model. Choose the installation location and environmental protection accordingly.</p>"}},
+        "q5":{"type":"question","settings":{"question":"Where can I review the complete operating limits?","answer":"<p>The current English product manual is available in Documents on this page. Review it together with the charger, inverter and RV manufacturer instructions before installation.</p>"}}
       },
-      "block_order":["q1","q2","q3","q4"],
+      "block_order":["q1","q2","q3","q4","q5"],
       "settings":{"anchor_id":"faq","eyebrow":"314Ah planning","heading":"Frequently asked questions"}
     },
     "related-products":{"type":"related-products","settings":{}}

@@ -22,7 +22,7 @@
         "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
       },
       "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","buy_buttons"],
-      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":60,"desktop_media_layout":"grid_highlight","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type":"suntneew-pdp-proof",
@@ -41,20 +41,22 @@
         "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
         "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
         "install":{"type":"link","settings":{"label":"Before installation","target_id":"in-the-box"}},
+        "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
         "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
-      "block_order":["features","specs","install","faq"],
+      "block_order":["features","specs","install","manuals","faq"],
       "settings":{}
     },
     "features": {
       "type":"suntneew-pdp-story",
       "blocks": {
-        "product":{"type":"feature","settings":{"image_asset":"suntneew-rv-230ah-gallery-main.jpg","image_alt":"SUNTNEEW 12.8V 230Ah LiFePO4 RV battery","eyebrow":"High-capacity RV power","heading":"2.944kWh in one 12.8V battery enclosure","body":"<p>The 230Ah configuration stores more energy while keeping a single-battery system format. Confirm the 522 x 268 x 222mm enclosure and 20.6kg weight against the planned compartment.</p>","variant_match":""}},
-        "rv_scene":{"type":"feature","settings":{"image_asset":"suntneew-rv-230ah-a-plus-rv-scene.jpg","image_alt":"230Ah battery positioned in an RV battery compartment","image_fit":"cover","eyebrow":"Plan for the real enclosure","heading":"Higher capacity needs deliberate mounting and service access","body":"<p>Use a structure that supports the battery weight, restrains movement and leaves space for terminal protection, cable routing and inspection.</p>","variant_match":""}},
-        "electrical":{"type":"feature","settings":{"image_asset":"suntneew-rv-230ah-a-plus-specs.jpg","image_alt":"230Ah RV battery in a technical product setting","image_fit":"cover","eyebrow":"Documented current limits","heading":"115A charging and 200A continuous discharge","body":"<p>Coordinate the BMS limits with the charger, inverter, conductors and protection devices. The lowest-rated component remains the system limit.</p>","variant_match":""}}
+        "rv_scene":{"type":"feature","settings":{"image_asset":"suntneew-rv-230ah-a-plus-rv-scene.jpg","image_alt":"230Ah battery positioned in an RV battery compartment","image_fit":"cover","eyebrow":"Start with the structure","heading":"Higher capacity needs deliberate mounting and service access","body":"<p>Use a structure that supports the 20.6kg battery, restrains movement and leaves room for terminal protection, cable routing and inspection. Confirm the compartment before ordering.</p>","variant_match":""}},
+        "product":{"type":"feature","settings":{"image_asset":"suntneew-rv-230ah-gallery-main.jpg","image_alt":"SUNTNEEW 12.8V 230Ah LiFePO4 RV battery","image_fit":"contain","eyebrow":"High-capacity RV power","heading":"2.944kWh in one 522 x 268 x 220mm enclosure","body":"<p>The 12.8V, 230Ah configuration stores 2,944Wh in a single-battery format. Use the enclosure and weight together when checking the tray, surrounding structure and service clearance.</p>","variant_match":""}},
+        "electrical":{"type":"feature","settings":{"image_asset":"suntneew-rv-230ah-a-plus-specs.jpg","image_alt":"230Ah RV battery in a technical product setting","image_fit":"cover","eyebrow":"Documented current limits","heading":"46A recommended charging, 115A maximum charge and 200A discharge","body":"<p>The manual distinguishes the recommended 46A charge current from the 115A maximum continuous charge limit. Coordinate both with the inverter, conductors, fuses and the 200A maximum continuous-discharge rating.</p>","variant_match":""}},
+        "system_fit":{"type":"feature","settings":{"image_asset":"","image_alt":"","image_fit":"contain","eyebrow":"System fit","heading":"Build the 230Ah battery into one coordinated charging and load plan","body":"<p>Use the 14.4V +/- 0.2V CC/CV profile across shore, solar and alternator charging. Low-temperature charging protection stops charging below 0C and resumes above 5C; the complete system still needs correctly sized conductors, protection and terminal covers.</p>","variant_match":""}}
       },
-      "block_order":["product","rv_scene","electrical"],
-      "settings":{"anchor_id":"features","eyebrow":"230Ah RV power","heading":"More stored energy, planned as a complete system","lede":"<p>Use the 2.944kWh capacity together with the documented current limits, enclosure size and installation weight.</p>"}
+      "block_order":["rv_scene","product","electrical","system_fit"],
+      "settings":{"anchor_id":"features","eyebrow":"230Ah RV power","heading":"More stored energy, explained from structure to current limits","lede":"<p>Confirm the physical installation, understand the charging and discharge limits, then coordinate every connected component in the RV power system.</p>"}
     },
     "details": {
       "type":"suntneew-pdp-details",
@@ -63,29 +65,40 @@
         "voltage":{"type":"spec","settings":{"label":"Rated voltage","value":"12.8V","group":"primary","variant_match":""}},
         "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"230Ah","group":"primary","variant_match":""}},
         "energy":{"type":"spec","settings":{"label":"Rated energy","value":"2,944Wh","group":"primary","variant_match":""}},
+        "power":{"type":"spec","settings":{"label":"Maximum continuous output power","value":"2,560W","group":"primary","variant_match":""}},
         "cycles":{"type":"spec","settings":{"label":"Cycle-life reference","value":"At least 6,000 cycles at 70% state of health","group":"primary","variant_match":""}},
-        "charge":{"type":"spec","settings":{"label":"Maximum charging current","value":"115A","group":"system","variant_match":""}},
-        "discharge":{"type":"spec","settings":{"label":"Maximum continuous discharge","value":"200A","group":"system","variant_match":""}},
+        "model":{"type":"spec","settings":{"label":"Model","value":"ESS-LFP12230B","group":"system","variant_match":""}},
+        "charge_method":{"type":"spec","settings":{"label":"Charge method","value":"CC/CV","group":"system","variant_match":""}},
+        "charge_voltage":{"type":"spec","settings":{"label":"Charge voltage","value":"14.4V +/- 0.2V","group":"system","variant_match":""}},
+        "recommended_charge":{"type":"spec","settings":{"label":"Recommended charge current","value":"46A (0.2C)","group":"system","variant_match":""}},
+        "charge":{"type":"spec","settings":{"label":"Maximum continuous charge current","value":"115A","group":"system","variant_match":""}},
+        "discharge":{"type":"spec","settings":{"label":"Maximum continuous discharge current","value":"200A","group":"system","variant_match":""}},
         "bluetooth":{"type":"spec","settings":{"label":"Wireless monitoring","value":"Bluetooth 5.0","group":"system","variant_match":""}},
-        "dimensions":{"type":"spec","settings":{"label":"Dimensions","value":"522 x 268 x 222mm","group":"installation","variant_match":""}},
+        "low_temp":{"type":"spec","settings":{"label":"Low-temperature charging protection","value":"Stops below 0C; resumes above 5C","group":"system","variant_match":""}},
+        "dimensions":{"type":"spec","settings":{"label":"Dimensions (L x W x H)","value":"522 x 268 x 220mm","group":"installation","variant_match":""}},
         "weight":{"type":"spec","settings":{"label":"Weight","value":"20.6kg","group":"installation","variant_match":""}},
+        "housing":{"type":"spec","settings":{"label":"Housing material","value":"ABS","group":"installation","variant_match":""}},
+        "torque":{"type":"spec","settings":{"label":"Recommended terminal torque","value":"12 to 14 N.m","group":"installation","variant_match":""}},
+        "temperature":{"type":"spec","settings":{"label":"Temperature range","value":"Charge 0 to 55C; discharge -20 to 60C; storage -10 to 50C","group":"installation","variant_match":""}},
         "note1":{"type":"included","settings":{"item":"Verify that the mounting structure supports the 20.6kg battery","variant_match":""}},
         "note2":{"type":"included","settings":{"item":"Size the inverter, conductors and protection within the 200A continuous limit","variant_match":""}},
-        "note3":{"type":"included","settings":{"item":"Keep every charging source within the 115A maximum charging current","variant_match":""}},
-        "note4":{"type":"included","settings":{"item":"Protect terminals and allow safe service access around the enclosure","variant_match":""}}
+        "note3":{"type":"included","settings":{"item":"Use 46A as the recommended charge reference and keep total charging within the 115A maximum","variant_match":""}},
+        "note4":{"type":"included","settings":{"item":"Protect terminals and allow safe service access around the enclosure","variant_match":""}},
+        "manual":{"type":"download","settings":{"label":"230Ah user manual (EN PDF)","link":"","asset_name":"suntneew-rv-230ah-manual-en.pdf","variant_match":""}}
       },
-      "block_order":["chemistry","voltage","capacity","energy","cycles","charge","discharge","bluetooth","dimensions","weight","note1","note2","note3","note4"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Verified product data","heading":"230Ah technical specifications","lede":"<p>Use the electrical limits, size and weight together when planning the complete RV system.</p>","primary_group_heading":"Capacity & cycle reference","system_group_heading":"Current limits & monitoring","installation_group_heading":"Physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation"}
+      "block_order":["chemistry","voltage","capacity","energy","power","cycles","model","charge_method","charge_voltage","recommended_charge","charge","discharge","bluetooth","low_temp","dimensions","weight","housing","torque","temperature","note1","note2","note3","note4","manual"],
+      "settings":{"anchor_id":"specifications","eyebrow":"Verified product data","heading":"230Ah technical specifications","lede":"<p>The key capacity, charging, protection and installation values are transcribed from the current English product manual. Use the manual for the full operating sequence and safety limits.</p>","primary_group_heading":"Capacity & performance","system_group_heading":"Charging, monitoring & protection","installation_group_heading":"Enclosure & physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation","download_eyebrow":"Product documentation","download_heading":"Manuals & downloads"}
     },
     "faq": {
       "type":"suntneew-pdp-faq",
       "blocks": {
         "q1":{"type":"question","settings":{"question":"How much energy does the 230Ah battery store?","answer":"<p>The rated energy is 2,944Wh, calculated from the documented 12.8V and 230Ah ratings. Usable energy depends on system settings, load and operating conditions.</p>"}},
         "q2":{"type":"question","settings":{"question":"Can I run a 200A load continuously?","answer":"<p>200A is the documented maximum continuous-discharge rating. The inverter, conductors, fuses, terminals and temperature conditions must also support the planned load.</p>"}},
-        "q3":{"type":"question","settings":{"question":"What charger size should I use?","answer":"<p>The charger and total charging sources must stay within the documented 115A maximum and use the correct LiFePO4 voltage profile. Follow the exact product documentation and system design.</p>"}},
-        "q4":{"type":"question","settings":{"question":"Is an enclosure protection rating stated?","answer":"<p>The current verified source set does not state an IP rating for this model. Choose the installation location and environmental protection accordingly.</p>"}}
+        "q3":{"type":"question","settings":{"question":"What charger size should I use?","answer":"<p>The manual lists 46A as the recommended charge current and 115A as the maximum continuous charge current, using a 14.4V +/- 0.2V CC/CV profile. Coordinate all charging sources within those limits.</p>"}},
+        "q4":{"type":"question","settings":{"question":"Is an enclosure protection rating stated?","answer":"<p>The current verified source set does not state an IP rating for this model. Choose the installation location and environmental protection accordingly.</p>"}},
+        "q5":{"type":"question","settings":{"question":"Where can I review the complete operating limits?","answer":"<p>The current English product manual is available in Documents on this page. Review it together with the charger, inverter and RV manufacturer instructions before installation.</p>"}}
       },
-      "block_order":["q1","q2","q3","q4"],
+      "block_order":["q1","q2","q3","q4","q5"],
       "settings":{"anchor_id":"faq","eyebrow":"230Ah planning","heading":"Frequently asked questions"}
     },
     "related-products":{"type":"related-products","settings":{}}
