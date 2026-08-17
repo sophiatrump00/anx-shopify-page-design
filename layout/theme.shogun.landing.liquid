@@ -70,7 +70,9 @@ This file can be re-written at any time.
     {%- if request.page_type == 'index' -%}
       <script src="{{ 'suntneew-home.js' | asset_url }}" defer></script>
     {%- endif -%}
-  </head>
+  
+  {% render 'shogun-head' %}
+</head>
   <body class="{% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}">
     {% include 'shogun-content-handler' %}
 

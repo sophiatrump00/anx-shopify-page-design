@@ -1,3 +1,4 @@
+{% include 'shogun-content-handler' %}
 {%- comment -%}
   ------------------------------------------------------------------------------------------------------------------------
   NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing this theme as much as we did for
@@ -75,7 +76,9 @@
     {%- if request.page_type == 'index' -%}
       <script src="{{ 'suntneew-home.js' | asset_url }}" defer></script>
     {%- endif -%}
-  </head>
+  
+  {% render 'shogun-head' %}
+</head>
 
   <body class="{% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}">
     {%- render 'shadow-dom-templates' -%}
