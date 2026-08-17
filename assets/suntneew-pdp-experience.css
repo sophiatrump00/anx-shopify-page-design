@@ -12,6 +12,18 @@
 @media screen and (min-width: 1000px) {
   .suntneew-product-page--experience .suntneew-pdp-media-column { position: sticky; top: calc(var(--sticky-area-height) + 18px); align-self: start; }
   .suntneew-product-page--experience .product-info { position: static; top: auto; }
+
+  /* Grid PDPs scroll the two-column media rail while the buying column stays available. */
+  .suntneew-product-page--media-grid .suntneew-pdp-media-column,
+  .suntneew-product-page--media-grid-highlight .suntneew-pdp-media-column,
+  .suntneew-product-page--media-grid-one .suntneew-pdp-media-column { position: static; }
+  .suntneew-product-page--media-grid .product-info,
+  .suntneew-product-page--media-grid-highlight .product-info,
+  .suntneew-product-page--media-grid-one .product-info { position: sticky; top: calc(var(--sticky-area-height) + 18px); align-self: start; }
+  .suntneew-product-page--media-grid .suntneew-media-modes,
+  .suntneew-product-page--media-grid-highlight .suntneew-media-modes,
+  .suntneew-product-page--media-grid-one .suntneew-media-modes { display: none; }
+
   .suntneew-product-page--experience .product-gallery__thumbnail-list-wrapper { position: absolute; z-index: 4; right: 20px; bottom: 74px; left: 20px; width: auto; overflow: hidden; pointer-events: none; }
   .suntneew-product-page--experience .product-gallery__thumbnail-list { justify-content: center; gap: 8px; grid-auto-columns: auto; }
   .suntneew-product-page--experience .product-gallery__thumbnail { width: 62px; height: 48px; overflow: hidden; border: 1px solid rgb(255 255 255 / .42); border-radius: 7px; background: rgb(12 18 27 / .42); opacity: .58; pointer-events: auto; transition: width 230ms ease, height 230ms ease, opacity 180ms ease, transform 180ms ease, border-color 180ms ease, background 180ms ease; }
