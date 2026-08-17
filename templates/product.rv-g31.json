@@ -22,7 +22,7 @@
         "buy_buttons": {"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
       },
       "block_order": ["vendor","title","sku","price","separator","intro","quantity_selector","buy_buttons"],
-      "settings": {"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":60,"desktop_media_layout":"grid_highlight","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "settings": {"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type": "suntneew-pdp-proof",
@@ -41,22 +41,23 @@
         "features": {"type":"link","settings":{"label":"Features","target_id":"features"}},
         "specs": {"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
         "install": {"type":"link","settings":{"label":"Before installation","target_id":"in-the-box"}},
+        "manuals": {"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
         "faq": {"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
-      "block_order": ["features","specs","install","faq"],
+      "block_order": ["features","specs","install","manuals","faq"],
       "settings": {}
     },
     "features": {
       "type": "suntneew-pdp-story",
       "blocks": {
-        "bluetooth": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-a-plus-bluetooth.jpg","image_alt":"Group 31 RV battery beside a phone in a motorhome","image_fit":"cover","eyebrow":"Bluetooth monitoring","heading":"Check battery status without opening the storage bay","body":"<p>Bluetooth 5.0 gives the Group 31 battery a practical monitoring path. Pair only with the documented app and verify the exact readings and alerts for the installed battery.</p>","variant_match":""}},
-        "dimensions": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-a-plus-specs.jpg","image_alt":"Group 31 RV battery in a clean technical setting","image_fit":"cover","eyebrow":"Plan the footprint","heading":"Group 31 capacity in a 339 x 185 x 218mm enclosure","body":"<p>Use the stated dimensions and 9.6kg weight to confirm tray clearance, terminal access, cable bend radius and secure restraint before ordering.</p>","variant_match":""}},
-        "bms": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-a-plus-bms.jpg","image_alt":"Group 31 RV battery in an enclosed installation setting","image_fit":"cover","eyebrow":"System protection","heading":"Build the battery into a complete protected DC system","body":"<p>The battery includes a BMS, but the installation still needs correctly sized conductors, over-current protection and charging equipment configured for the exact 12.8V LiFePO4 system.</p>","variant_match":""}},
-        "rv_scene": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-a-plus-rv-scene.jpg","image_alt":"Group 31 battery positioned in an RV storage bay","image_fit":"cover","eyebrow":"RV-ready footprint","heading":"A battery that belongs in a planned, restrained installation","body":"<p>Confirm enclosure clearance, ventilation, cable routing and fastening points. Do not treat a loose battery placed in a compartment as a finished installation.</p>","variant_match":""}},
-        "charging": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-a-plus-charging.jpg","image_alt":"Group 31 battery beside a motorhome and portable solar panel","image_fit":"cover","eyebrow":"Charging compatibility","heading":"Match every charging source to the LiFePO4 profile","body":"<p>Review the converter, shore charger, alternator charging path and solar controller as one system. Use only settings and limits confirmed for the exact battery and installation.</p>","variant_match":""}}
+        "rv_scene": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-a-plus-rv-scene.jpg","image_alt":"Group 31 battery positioned in an RV storage bay","image_fit":"cover","eyebrow":"Start with the installation","heading":"Give the Group 31 battery a measured, restrained place in the RV","body":"<p>Confirm the 339 x 185 x 218mm enclosure, terminal clearance, cable route and hold-down arrangement before ordering. The compartment shown here is a planning reference, not a substitute for a secured installation.</p>","variant_match":""}},
+        "dimensions": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-a-plus-specs.jpg","image_alt":"Group 31 RV battery in a clean technical setting","image_fit":"cover","eyebrow":"Capacity in context","heading":"1.28kWh in a familiar Group 31 footprint","body":"<p>The 12.8V, 100Ah battery delivers 1,280Wh of rated energy. Use the stated dimensions and 9.6kg weight to check the tray, surrounding structure and service access.</p>","variant_match":""}},
+        "bluetooth": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-a-plus-bluetooth.jpg","image_alt":"Group 31 RV battery beside a phone in a motorhome","image_fit":"cover","eyebrow":"Bluetooth monitoring","heading":"Check battery status without reopening the storage bay","body":"<p>Bluetooth 5.0 provides a practical monitoring path for the installed battery. Use the documented app and verify the readings, alerts and pairing steps for the exact battery version.</p>","variant_match":""}},
+        "charging": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-a-plus-charging.jpg","image_alt":"Group 31 battery beside a motorhome and portable solar panel","image_fit":"cover","eyebrow":"Charging compatibility","heading":"Match every charging source to the 14.4V CC/CV profile","body":"<p>The manual specifies 30A recommended charging and 100A maximum continuous charge and discharge. Review shore power, alternator and solar charging together before connection.</p>","variant_match":""}},
+        "system_fit": {"type":"feature","settings":{"image_asset":"","image_alt":"","image_fit":"contain","eyebrow":"System fit","heading":"Plan charging, protection and low-temperature behavior as one system","body":"<p>The integrated BMS and low-temperature charging protection are safeguards inside a complete installation. Size conductors and over-current protection for the verified limits, protect the terminals and follow the battery, charger, inverter and RV manufacturer instructions.</p>","variant_match":""}}
       },
-      "block_order": ["bluetooth","dimensions","bms","rv_scene","charging"],
-      "settings": {"anchor_id":"features","eyebrow":"Group 31 RV power","heading":"A 1.28kWh battery designed around the installation","lede":"<p>Start with the verified capacity and physical fit, then plan charging, protection, cable routing and monitoring as one RV electrical system.</p>"}
+      "block_order": ["rv_scene","dimensions","bluetooth","charging","system_fit"],
+      "settings": {"anchor_id":"features","eyebrow":"Group 31 RV power","heading":"A Group 31 battery explained from fit to charging","lede":"<p>Start with the physical fit, verify the electrical limits, then review monitoring, protection and installation as one RV power system.</p>"}
     },
     "details": {
       "type": "suntneew-pdp-details",
@@ -65,18 +66,30 @@
         "voltage": {"type":"spec","settings":{"label":"Rated voltage","value":"12.8V","group":"primary","variant_match":""}},
         "capacity": {"type":"spec","settings":{"label":"Rated capacity","value":"100Ah","group":"primary","variant_match":""}},
         "energy": {"type":"spec","settings":{"label":"Rated energy","value":"1,280Wh","group":"primary","variant_match":""}},
-        "cycles": {"type":"spec","settings":{"label":"Cycle-life target","value":"4,000 cycles","group":"primary","variant_match":""}},
+        "power": {"type":"spec","settings":{"label":"Maximum continuous output power","value":"1,280W","group":"primary","variant_match":""}},
+        "cycles": {"type":"spec","settings":{"label":"Cycle-life reference","value":"At least 4,000 cycles","group":"primary","variant_match":""}},
+        "model": {"type":"spec","settings":{"label":"Model","value":"ESS-12.8V100AH-B-G31","group":"system","variant_match":""}},
+        "charge_method": {"type":"spec","settings":{"label":"Charge method","value":"CC/CV","group":"system","variant_match":""}},
+        "charge_voltage": {"type":"spec","settings":{"label":"Charge voltage","value":"14.4V +/- 0.2V","group":"system","variant_match":""}},
+        "recommended_charge": {"type":"spec","settings":{"label":"Recommended charge current","value":"30A (0.3C)","group":"system","variant_match":""}},
+        "max_charge": {"type":"spec","settings":{"label":"Maximum continuous charge current","value":"100A","group":"system","variant_match":""}},
+        "max_discharge": {"type":"spec","settings":{"label":"Maximum continuous discharge current","value":"100A","group":"system","variant_match":""}},
         "bluetooth": {"type":"spec","settings":{"label":"Wireless monitoring","value":"Bluetooth 5.0","group":"system","variant_match":""}},
+        "low_temp": {"type":"spec","settings":{"label":"Low-temperature charging protection","value":"Stops below 0C; resumes above 5C","group":"system","variant_match":""}},
         "rating": {"type":"spec","settings":{"label":"Enclosure rating","value":"IP65","group":"installation","variant_match":""}},
-        "dimensions": {"type":"spec","settings":{"label":"Dimensions","value":"339 x 185 x 218mm","group":"installation","variant_match":""}},
+        "dimensions": {"type":"spec","settings":{"label":"Dimensions (L x W x H)","value":"339 x 185 x 218mm","group":"installation","variant_match":""}},
         "weight": {"type":"spec","settings":{"label":"Weight","value":"9.6kg","group":"installation","variant_match":""}},
+        "housing": {"type":"spec","settings":{"label":"Housing material","value":"ABS","group":"installation","variant_match":""}},
+        "torque": {"type":"spec","settings":{"label":"Recommended terminal torque","value":"12 to 14 N.m","group":"installation","variant_match":""}},
+        "temperature": {"type":"spec","settings":{"label":"Temperature range","value":"Charge 0 to 55C; discharge -20 to 60C; storage -10 to 50C","group":"installation","variant_match":""}},
         "note1": {"type":"included","settings":{"item":"Confirm tray, hold-down and terminal clearance before ordering","variant_match":""}},
         "note2": {"type":"included","settings":{"item":"Use conductors and over-current protection sized for the complete DC system","variant_match":""}},
         "note3": {"type":"included","settings":{"item":"Configure every charger and controller for the exact LiFePO4 battery limits","variant_match":""}},
-        "note4": {"type":"included","settings":{"item":"Follow the battery, charger, inverter and RV manufacturer instructions","variant_match":""}}
+        "note4": {"type":"included","settings":{"item":"Follow the battery, charger, inverter and RV manufacturer instructions","variant_match":""}},
+        "manual": {"type":"download","settings":{"label":"Group 31 user manual (EN PDF)","link":"","asset_name":"suntneew-rv-g31-manual-en.pdf","variant_match":""}}
       },
-      "block_order": ["chemistry","voltage","capacity","energy","cycles","bluetooth","rating","dimensions","weight","note1","note2","note3","note4"],
-      "settings": {"anchor_id":"specifications","eyebrow":"Verified product data","heading":"Group 31 technical specifications","lede":"<p>Use these values to shortlist the battery, then verify the complete installation design before connection.</p>","primary_group_heading":"Capacity & cycle reference","system_group_heading":"Monitoring & system","installation_group_heading":"Enclosure & physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation"}
+      "block_order": ["chemistry","voltage","capacity","energy","power","cycles","model","charge_method","charge_voltage","recommended_charge","max_charge","max_discharge","bluetooth","low_temp","rating","dimensions","weight","housing","torque","temperature","note1","note2","note3","note4","manual"],
+      "settings": {"anchor_id":"specifications","eyebrow":"Verified product data","heading":"Group 31 technical specifications","lede":"<p>The key capacity, charging, protection and installation values are transcribed from the current English product manual. Use the manual for the full operating sequence and safety limits.</p>","primary_group_heading":"Capacity & performance","system_group_heading":"Charging, monitoring & protection","installation_group_heading":"Enclosure & physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation","download_eyebrow":"Product documentation","download_heading":"Manuals & downloads"}
     },
     "faq": {
       "type": "suntneew-pdp-faq",
@@ -84,9 +97,10 @@
         "q1": {"type":"question","settings":{"question":"Is this the same size as every Group 31 battery?","answer":"<p>No. Group labels are a starting point, not a substitute for measurement. Confirm the stated 339 x 185 x 218mm dimensions, terminal position and hold-down arrangement.</p>"}},
         "q2": {"type":"question","settings":{"question":"Can I monitor it by phone?","answer":"<p>The product is specified with Bluetooth 5.0 monitoring. Confirm the supported app, pairing steps and available data for the exact battery version.</p>"}},
         "q3": {"type":"question","settings":{"question":"Can I use my existing RV charger?","answer":"<p>Only if its voltage profile and current limits are compatible with the exact LiFePO4 battery and the rest of the RV electrical system. Verify the charger documentation before connection.</p>"}},
-        "q4": {"type":"question","settings":{"question":"Does IP65 make the battery suitable for any location?","answer":"<p>No. IP65 does not replace secure mounting, protected terminals, correct cable routing or the environmental limits in the product documentation.</p>"}}
+        "q4": {"type":"question","settings":{"question":"Does IP65 make the battery suitable for any location?","answer":"<p>No. IP65 does not replace secure mounting, protected terminals, correct cable routing or the environmental limits in the product documentation.</p>"}},
+        "q5": {"type":"question","settings":{"question":"Where can I find the charging and installation limits?","answer":"<p>The current English product manual is available in Documents on this page. Review it together with the charger, inverter and RV manufacturer instructions before installation.</p>"}}
       },
-      "block_order": ["q1","q2","q3","q4"],
+      "block_order": ["q1","q2","q3","q4","q5"],
       "settings": {"anchor_id":"faq","eyebrow":"Group 31 planning","heading":"Frequently asked questions"}
     },
     "related-products": {"type":"related-products","settings":{}}

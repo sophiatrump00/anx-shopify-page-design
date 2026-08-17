@@ -22,7 +22,7 @@
         "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
       },
       "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","buy_buttons"],
-      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":60,"desktop_media_layout":"grid_highlight","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type":"suntneew-pdp-proof",
@@ -41,20 +41,22 @@
         "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
         "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
         "install":{"type":"link","settings":{"label":"Before installation","target_id":"in-the-box"}},
+        "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
         "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
-      "block_order":["features","specs","install","faq"],
+      "block_order":["features","specs","install","manuals","faq"],
       "settings":{}
     },
     "features": {
       "type":"suntneew-pdp-story",
       "blocks": {
-        "footprint":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-gallery-main.jpg","image_alt":"SUNTNEEW Group 24 12.8V 100Ah LiFePO4 battery","eyebrow":"Compact Group 24","heading":"1.28kWh in a smaller RV battery footprint","body":"<p>The Group 24 enclosure measures 260 x 170 x 212mm excluding terminals and weighs 9.4kg. Measure the real installation space and terminal clearance before ordering.</p>","variant_match":""}},
-        "rv_scene":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-a-plus-rv-scene.jpg","image_alt":"Group 24 battery positioned in a clean RV storage bay","image_fit":"cover","eyebrow":"Installation-aware design","heading":"Use the smaller footprint without compromising restraint or protection","body":"<p>Plan secure mounting, protected terminals, correctly sized cable and accessible service space. The compact enclosure still belongs in a complete engineered DC system.</p>","variant_match":""}},
-        "specs":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-a-plus-specs.jpg","image_alt":"Group 24 battery in a clean technical setting","image_fit":"cover","eyebrow":"Electrical fit","heading":"100A charge and continuous-discharge ratings","body":"<p>Use the documented 100A limits when sizing the charger, conductors, fuses and loads. The lowest-rated component in the complete system sets the practical limit.</p>","variant_match":""}}
+        "rv_scene":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-a-plus-rv-scene.jpg","image_alt":"Group 24 battery positioned in a clean RV storage bay","image_fit":"cover","eyebrow":"Start with the compartment","heading":"Use the smaller footprint without compromising restraint or protection","body":"<p>Measure the tray, hold-down, terminal clearance and cable route before ordering. The compact Group 24 enclosure still needs secure mounting, protected terminals and accessible service space.</p>","variant_match":""}},
+        "footprint":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-gallery-main.jpg","image_alt":"SUNTNEEW Group 24 12.8V 100Ah LiFePO4 battery","image_fit":"contain","eyebrow":"Compact Group 24","heading":"1.28kWh in a 260 x 170 x 212mm enclosure","body":"<p>The 12.8V, 100Ah battery stores 1,280Wh and weighs 9.4kg. The stated height excludes the terminal clearance needed for lugs, covers and cable bend radius.</p>","variant_match":""}},
+        "specs":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-a-plus-specs.jpg","image_alt":"Group 24 battery in a clean technical setting","image_fit":"cover","eyebrow":"Electrical fit","heading":"30A recommended charging with 100A continuous limits","body":"<p>The manual specifies a 14.4V +/- 0.2V CC/CV profile, 30A recommended charging and 100A maximum continuous charge and discharge. Size every connected component to the lowest verified limit.</p>","variant_match":""}},
+        "system_fit":{"type":"feature","settings":{"image_asset":"","image_alt":"","image_fit":"contain","eyebrow":"System fit","heading":"Treat the compact battery as one part of the complete RV power system","body":"<p>Coordinate the charger, inverter, solar controller, alternator path, conductors and over-current protection. Low-temperature charging protection stops charging below 0C and resumes above 5C, but it does not replace a complete installation plan.</p>","variant_match":""}}
       },
-      "block_order":["footprint","rv_scene","specs"],
-      "settings":{"anchor_id":"features","eyebrow":"Group 24 RV power","heading":"Compact dimensions, clearly documented limits","lede":"<p>Use the physical fit and 100A electrical ratings together when planning a Group 24 RV installation.</p>"}
+      "block_order":["rv_scene","footprint","specs","system_fit"],
+      "settings":{"anchor_id":"features","eyebrow":"Group 24 RV power","heading":"A compact Group 24 battery, explained from fit to charging","lede":"<p>Confirm the enclosure, understand the usable electrical limits, then plan charging and protection around the complete RV system.</p>"}
     },
     "details": {
       "type":"suntneew-pdp-details",
@@ -63,19 +65,29 @@
         "voltage":{"type":"spec","settings":{"label":"Rated voltage","value":"12.8V","group":"primary","variant_match":""}},
         "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"100Ah","group":"primary","variant_match":""}},
         "energy":{"type":"spec","settings":{"label":"Rated energy","value":"1,280Wh","group":"primary","variant_match":""}},
-        "charge":{"type":"spec","settings":{"label":"Maximum charge current","value":"100A","group":"system","variant_match":""}},
-        "discharge":{"type":"spec","settings":{"label":"Maximum continuous discharge","value":"100A","group":"system","variant_match":""}},
+        "power":{"type":"spec","settings":{"label":"Maximum continuous output power","value":"1,280W","group":"primary","variant_match":""}},
         "cycles":{"type":"spec","settings":{"label":"Cycle-life reference","value":"At least 5,000 cycles","group":"primary","variant_match":""}},
+        "model":{"type":"spec","settings":{"label":"Model","value":"ESS-LFP12100BG24","group":"system","variant_match":""}},
+        "charge_method":{"type":"spec","settings":{"label":"Charge method","value":"CC/CV","group":"system","variant_match":""}},
+        "charge_voltage":{"type":"spec","settings":{"label":"Charge voltage","value":"14.4V +/- 0.2V","group":"system","variant_match":""}},
+        "recommended_charge":{"type":"spec","settings":{"label":"Recommended charge current","value":"30A (0.3C)","group":"system","variant_match":""}},
+        "charge":{"type":"spec","settings":{"label":"Maximum continuous charge current","value":"100A","group":"system","variant_match":""}},
+        "discharge":{"type":"spec","settings":{"label":"Maximum continuous discharge current","value":"100A","group":"system","variant_match":""}},
         "bluetooth":{"type":"spec","settings":{"label":"Wireless monitoring","value":"Bluetooth 5.0","group":"system","variant_match":""}},
-        "dimensions":{"type":"spec","settings":{"label":"Dimensions","value":"260 x 170 x 212mm, excluding terminals","group":"installation","variant_match":""}},
+        "low_temp":{"type":"spec","settings":{"label":"Low-temperature charging protection","value":"Stops below 0C; resumes above 5C","group":"system","variant_match":""}},
+        "dimensions":{"type":"spec","settings":{"label":"Dimensions (L x W x H)","value":"260 x 170 x 212mm, excluding terminals","group":"installation","variant_match":""}},
         "weight":{"type":"spec","settings":{"label":"Weight","value":"9.4kg","group":"installation","variant_match":""}},
+        "housing":{"type":"spec","settings":{"label":"Housing material","value":"ABS","group":"installation","variant_match":""}},
+        "torque":{"type":"spec","settings":{"label":"Recommended terminal torque","value":"12 to 14 N.m","group":"installation","variant_match":""}},
+        "temperature":{"type":"spec","settings":{"label":"Temperature range","value":"Charge 0 to 55C; discharge -20 to 60C; storage -10 to 50C","group":"installation","variant_match":""}},
         "note1":{"type":"included","settings":{"item":"Measure the compartment and terminal clearance before ordering","variant_match":""}},
         "note2":{"type":"included","settings":{"item":"Size conductors, fuses and loads within the verified current limits","variant_match":""}},
         "note3":{"type":"included","settings":{"item":"Use compatible LiFePO4 charging settings across every charging source","variant_match":""}},
-        "note4":{"type":"included","settings":{"item":"Secure the enclosure and protect terminals from accidental contact","variant_match":""}}
+        "note4":{"type":"included","settings":{"item":"Secure the enclosure and protect terminals from accidental contact","variant_match":""}},
+        "manual":{"type":"download","settings":{"label":"Group 24 user manual (EN PDF)","link":"","asset_name":"suntneew-rv-g24-manual-en.pdf","variant_match":""}}
       },
-      "block_order":["chemistry","voltage","capacity","energy","cycles","charge","discharge","bluetooth","dimensions","weight","note1","note2","note3","note4"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Verified product data","heading":"Group 24 technical specifications","lede":"<p>Use these values to confirm both the physical and electrical fit before connection.</p>","primary_group_heading":"Capacity & cycle reference","system_group_heading":"Current limits & monitoring","installation_group_heading":"Physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation"}
+      "block_order":["chemistry","voltage","capacity","energy","power","cycles","model","charge_method","charge_voltage","recommended_charge","charge","discharge","bluetooth","low_temp","dimensions","weight","housing","torque","temperature","note1","note2","note3","note4","manual"],
+      "settings":{"anchor_id":"specifications","eyebrow":"Verified product data","heading":"Group 24 technical specifications","lede":"<p>The key capacity, charging, protection and installation values are transcribed from the current English product manual. Use the manual for the full operating sequence and safety limits.</p>","primary_group_heading":"Capacity & performance","system_group_heading":"Charging, monitoring & protection","installation_group_heading":"Enclosure & physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation","download_eyebrow":"Product documentation","download_heading":"Manuals & downloads"}
     },
     "faq": {
       "type":"suntneew-pdp-faq",
@@ -83,9 +95,10 @@
         "q1":{"type":"question","settings":{"question":"Are the stated dimensions including the terminals?","answer":"<p>No. The 260 x 170 x 212mm dimensions are stated without the terminals. Allow extra clearance for terminal hardware, cable lugs and protective covers.</p>"}},
         "q2":{"type":"question","settings":{"question":"Can the battery continuously supply 100A?","answer":"<p>The current product data lists 100A as the maximum continuous-discharge rating. The practical system limit also depends on conductors, protection devices, connections and the connected equipment.</p>"}},
         "q3":{"type":"question","settings":{"question":"Can I use an automotive lead-acid charger?","answer":"<p>Only if the charger documentation explicitly supports the required LiFePO4 voltage profile and current limits. Do not assume every lead-acid charger is compatible.</p>"}},
-        "q4":{"type":"question","settings":{"question":"Does Group 24 guarantee a drop-in fit?","answer":"<p>No. Measure the actual tray, hold-down, terminal orientation and cable route. Group naming alone cannot confirm the installation.</p>"}}
+        "q4":{"type":"question","settings":{"question":"Does Group 24 guarantee a drop-in fit?","answer":"<p>No. Measure the actual tray, hold-down, terminal orientation and cable route. Group naming alone cannot confirm the installation.</p>"}},
+        "q5":{"type":"question","settings":{"question":"Where can I review the full charging and temperature limits?","answer":"<p>The current English product manual is available in Documents on this page. Review it together with every connected charger and the RV manufacturer instructions before installation.</p>"}}
       },
-      "block_order":["q1","q2","q3","q4"],
+      "block_order":["q1","q2","q3","q4","q5"],
       "settings":{"anchor_id":"faq","eyebrow":"Group 24 planning","heading":"Frequently asked questions"}
     },
     "related-products":{"type":"related-products","settings":{}}
