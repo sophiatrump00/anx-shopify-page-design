@@ -11,16 +11,87 @@
   "sections": {
     "main": {
       "type": "suntneew-series-collection",
+      "blocks": {
+        "g31": {
+          "type": "product_card",
+          "settings": {
+            "fallback_asset": "suntneew-rv-g31-gallery-main.jpg",
+            "image_alt": "SUNTNEEW 12.8V 100Ah Group 31 LiFePO4 RV battery",
+            "badge": "GROUP 31",
+            "eyebrow": "1.28KWH RV BATTERY",
+            "title": "12.8V 100Ah — Group 31",
+            "text": "A Group 31-format LiFePO4 battery with Bluetooth monitoring and an IP65 enclosure.",
+            "fact_one": "1,280Wh",
+            "fact_two": "Bluetooth 5.0",
+            "fact_three": "9.6kg",
+            "link_label": "View Group 31",
+            "link": "shopify://products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-31"
+          }
+        },
+        "g24": {
+          "type": "product_card",
+          "settings": {
+            "fallback_asset": "suntneew-rv-g24-gallery-main.jpg",
+            "image_alt": "SUNTNEEW 12.8V 100Ah Group 24 LiFePO4 RV battery",
+            "badge": "GROUP 24",
+            "eyebrow": "COMPACT 1.28KWH",
+            "title": "12.8V 100Ah — Group 24",
+            "text": "A compact Group 24-format battery with 100A charge and continuous-discharge ratings.",
+            "fact_one": "1,280Wh",
+            "fact_two": "100A continuous",
+            "fact_three": "9.4kg",
+            "link_label": "View Group 24",
+            "link": "shopify://products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-24"
+          }
+        },
+        "rv230": {
+          "type": "product_card",
+          "settings": {
+            "fallback_asset": "suntneew-rv-230ah-gallery-main.jpg",
+            "image_alt": "SUNTNEEW 12.8V 230Ah LiFePO4 RV battery",
+            "badge": "HIGH CAPACITY",
+            "eyebrow": "2.944KWH RV BATTERY",
+            "title": "12.8V 230Ah",
+            "text": "More stored energy with Bluetooth monitoring and a 200A continuous-discharge rating.",
+            "fact_one": "2,944Wh",
+            "fact_two": "200A continuous",
+            "fact_three": "20.6kg",
+            "link_label": "View 230Ah",
+            "link": "shopify://products/suntneew-12-8v-230ah-lifepo4-rv-battery"
+          }
+        },
+        "rv314": {
+          "type": "product_card",
+          "settings": {
+            "fallback_asset": "suntneew-rv-314ah-gallery-main.jpg",
+            "image_alt": "SUNTNEEW 12.8V 314Ah LiFePO4 RV battery",
+            "badge": "MAXIMUM ENERGY",
+            "eyebrow": "4.019KWH RV BATTERY",
+            "title": "12.8V 314Ah",
+            "text": "The largest capacity in the current RV range, with Bluetooth monitoring and a long cycle-life reference.",
+            "fact_one": "4,019.2Wh",
+            "fact_two": "8,000+ cycles",
+            "fact_three": "26kg",
+            "link_label": "View 314Ah",
+            "link": "shopify://products/suntneew-12-8v-314ah-lifepo4-rv-battery"
+          }
+        }
+      },
+      "block_order": ["g31", "g24", "rv230", "rv314"],
       "settings": {
         "anchor_id": "rv-batteries",
         "eyebrow": "RV BATTERIES",
-        "heading": "RV power, coming into view.",
-        "body": "RV Batteries remains one of SuntNeew's three product series. We are keeping this collection ready while its product listings and individual detail pages are completed.",
-        "hero_asset": "suntneew-hero-rv-desktop.jpg",
-        "hero_alt": "RV campsite at dusk",
+        "heading": "Power the road beyond the campsite.",
+        "body": "Four 12.8V LiFePO4 configurations cover compact Group 24 and Group 31 installations through higher-capacity 230Ah and 314Ah RV systems.",
+        "hero_asset": "suntneew-rv-series-hero-desktop.jpg",
+        "hero_mobile_asset": "suntneew-rv-series-hero-mobile.jpg",
+        "hero_alt": "SUNTNEEW RV battery beside a motorhome at a forest campsite",
         "back_label": "All product series",
         "back_link": "shopify://collections",
-        "catalog_state": "preparing",
+        "catalog_state": "available",
+        "catalog_eyebrow": "CHOOSE YOUR CAPACITY",
+        "catalog_heading": "Match the battery to the RV system.",
+        "catalog_body": "Compare energy, physical footprint and verified electrical limits. Open a product page for the installation details and full specifications.",
         "empty_eyebrow": "CATALOG IN PREPARATION",
         "empty_heading": "This collection is getting ready for the road.",
         "empty_body": "The RV series stays visible in the site structure. Product cards and RV product pages will appear here when the range is ready to launch.",

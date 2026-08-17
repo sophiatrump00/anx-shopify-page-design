@@ -129,18 +129,21 @@
         {%- form 'localization', id: localization_form_id -%}
           <x-listbox class="popover-listbox popover-listbox--sm" role="listbox">
             {%- for language in localization.available_languages -%}
-              <button
-                type="submit"
-                class="popover-listbox__option"
-                name="locale_code"
-                role="option"
-                value="{{ language.iso_code }}"
-                {% if language.iso_code == localization.language.iso_code %}
-                  aria-selected="true"
-                {% endif %}
-              >
-                {{- language.endonym_name | capitalize -}}
-              </button>
+              {%- assign language_prefix = language.iso_code | downcase | slice: 0, 2 -%}
+              {%- unless language_prefix == 'zh' -%}
+                <button
+                  type="submit"
+                  class="popover-listbox__option"
+                  name="locale_code"
+                  role="option"
+                  value="{{ language.iso_code }}"
+                  {% if language.iso_code == localization.language.iso_code %}
+                    aria-selected="true"
+                  {% endif %}
+                >
+                  {{- language.endonym_name | capitalize -}}
+                </button>
+              {%- endunless -%}
             {%- endfor -%}
           </x-listbox>
         {%- endform -%}

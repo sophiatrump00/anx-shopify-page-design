@@ -19,7 +19,8 @@
     {%- when 'it', 'it-IT' -%}IT
     {%- when 'ja', 'ja-JP' -%}JP
     {%- when 'ko', 'ko-KR' -%}KR
-    {%- when 'pt', 'pt-PT', 'pt-BR' -%}PT
+    {%- when 'pt-BR' -%}BR
+    {%- when 'pt', 'pt-PT' -%}PT
     {%- when 'nl', 'nl-NL' -%}NL
     {%- when 'pl', 'pl-PL' -%}PL
     {%- when 'sv', 'sv-SE' -%}SE
@@ -57,42 +58,44 @@
     {%- form 'localization', id: localization_form_id -%}
       <x-listbox class="popover-listbox popover-listbox--sm suntneew-language-selector__list" role="listbox">
         {%- for language in localization.available_languages -%}
-          {%- capture language_flag_code -%}
-            {%- case language.iso_code -%}
-              {%- when 'en', 'en-US', 'en-GB', 'en-CA', 'en-AU' -%}US
-              {%- when 'zh', 'zh-CN', 'zh-Hans' -%}CN
-              {%- when 'zh-TW', 'zh-Hant' -%}TW
-              {%- when 'de', 'de-DE' -%}DE
-              {%- when 'es', 'es-ES' -%}ES
-              {%- when 'fr', 'fr-FR' -%}FR
-              {%- when 'it', 'it-IT' -%}IT
-              {%- when 'ja', 'ja-JP' -%}JP
-              {%- when 'ko', 'ko-KR' -%}KR
-              {%- when 'pt', 'pt-PT', 'pt-BR' -%}PT
-              {%- when 'nl', 'nl-NL' -%}NL
-              {%- when 'pl', 'pl-PL' -%}PL
-              {%- when 'sv', 'sv-SE' -%}SE
-              {%- when 'da', 'da-DK' -%}DK
-              {%- when 'fi', 'fi-FI' -%}FI
-              {%- when 'no', 'nb-NO', 'nn-NO' -%}NO
-              {%- when 'ar', 'ar-SA' -%}SA
-              {%- else -%}{{ localization.country.iso_code }}
-            {%- endcase -%}
-          {%- endcapture -%}
+          {%- assign language_prefix = language.iso_code | downcase | slice: 0, 2 -%}
+          {%- unless language_prefix == 'zh' -%}
+            {%- capture language_flag_code -%}
+              {%- case language.iso_code -%}
+                {%- when 'en', 'en-US', 'en-GB', 'en-CA', 'en-AU' -%}US
+                {%- when 'de', 'de-DE' -%}DE
+                {%- when 'es', 'es-ES' -%}ES
+                {%- when 'fr', 'fr-FR' -%}FR
+                {%- when 'it', 'it-IT' -%}IT
+                {%- when 'ja', 'ja-JP' -%}JP
+                {%- when 'ko', 'ko-KR' -%}KR
+                {%- when 'pt-BR' -%}BR
+                {%- when 'pt', 'pt-PT' -%}PT
+                {%- when 'nl', 'nl-NL' -%}NL
+                {%- when 'pl', 'pl-PL' -%}PL
+                {%- when 'sv', 'sv-SE' -%}SE
+                {%- when 'da', 'da-DK' -%}DK
+                {%- when 'fi', 'fi-FI' -%}FI
+                {%- when 'no', 'nb-NO', 'nn-NO' -%}NO
+                {%- when 'ar', 'ar-SA' -%}SA
+                {%- else -%}{{ localization.country.iso_code }}
+              {%- endcase -%}
+            {%- endcapture -%}
 
-          <button
-            type="submit"
-            class="popover-listbox__option suntneew-language-selector__option"
-            name="locale_code"
-            role="option"
-            value="{{ language.iso_code }}"
-            {% if language.iso_code == localization.language.iso_code %}
-              aria-selected="true"
-            {% endif %}
-          >
-            <span class="country-flags country-flags--{{ language_flag_code | strip }}" aria-hidden="true"></span>
-            <span>{{- language.endonym_name | capitalize -}}</span>
-          </button>
+            <button
+              type="submit"
+              class="popover-listbox__option suntneew-language-selector__option"
+              name="locale_code"
+              role="option"
+              value="{{ language.iso_code }}"
+              {% if language.iso_code == localization.language.iso_code %}
+                aria-selected="true"
+              {% endif %}
+            >
+              <span class="country-flags country-flags--{{ language_flag_code | strip }}" aria-hidden="true"></span>
+              <span>{{- language.endonym_name | capitalize -}}</span>
+            </button>
+          {%- endunless -%}
         {%- endfor -%}
       </x-listbox>
     {%- endform -%}
