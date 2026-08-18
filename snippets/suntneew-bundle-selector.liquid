@@ -1,71 +1,127 @@
-{%- comment -%}
-  Same-variant multi-pack selector. It changes the quantity of the existing
-  product form. The displayed discount is intentionally shown only after the
-  merchant has enabled the matching Shopify automatic-discount ladder.
-{%- endcomment -%}
+{% doc %}
+Renders preset multi-pack quantities that update the product form quantity.
+
+@param {product} product - Product rendered by the product form.
+@param {string} product_form_id - Product form ID.
+@param {block} block - Multi-pack block settings.
+{% enddoc %}
 
 {%- if block.settings.enabled and product.available -%}
-  {%- assign selected_variant = product.selected_or_first_available_variant -%}
-  {%- assign bundle_minimum = block.settings.minimum_quantity | default: 2 -%}
-  {%- assign bundle_maximum = block.settings.maximum_quantity | default: 4 -%}
-  {%- assign bundle_discount_per_extra_unit = block.settings.discount_percent | default: 3 -%}
-  {%- assign bundle_maximum_extra_units = bundle_maximum | minus: 1 -%}
-  {%- assign bundle_maximum_discount = bundle_discount_per_extra_unit | times: bundle_maximum_extra_units -%}
+  {%- liquid
+    assign selected_variant = product.selected_or_first_available_variant
+    assign savings_enabled = block.settings.show_savings
+    assign discount_step = block.settings.discount_percent | default: 3
+    assign middle_discount = discount_step | times: 2
+    assign maximum_discount = discount_step | times: 3
+    assign preset_quantities = '1,2,5,10' | split: ','
+    assign minimum_quantity = selected_variant.quantity_rule.min | default: 1
+    assign initial_quantity = minimum_quantity
+    assign quantity_increment = selected_variant.quantity_rule.increment | default: 1
+    assign initial_quantity_text = initial_quantity | append: ''
+    assign initial_is_preset = false
+
+    if preset_quantities contains initial_quantity_text
+      assign initial_is_preset = true
+    endif
+  -%}
 
   <div
     class="suntneew-bundle-selector"
     data-suntneew-bundle-selector
     data-form-id="{{ product_form_id }}"
     data-currency="{{ localization.country.currency.iso_code | escape }}"
-    data-minimum-quantity="{{ bundle_minimum }}"
-    data-discount-per-extra-unit="{{ bundle_discount_per_extra_unit }}"
   >
     <div class="suntneew-bundle-selector__heading">
       <div>
-        <p class="suntneew-bundle-selector__eyebrow">MULTI-PACK SAVINGS</p>
+        <p class="suntneew-bundle-selector__eyebrow">
+          {%- if savings_enabled -%}
+            {{ 'product.quantity.multi_pack_eyebrow' | t }}
+          {%- else -%}
+            {{ 'product.quantity.multi_pack_quantity_eyebrow' | t }}
+          {%- endif -%}
+        </p>
         <h3>{{ block.settings.heading }}</h3>
       </div>
-      <span class="suntneew-bundle-selector__badge">SAVE UP TO {{ bundle_maximum_discount }}%</span>
+      {%- if savings_enabled -%}
+        <span class="suntneew-bundle-selector__badge">{{ 'product.quantity.save_up_to' | t: percent: maximum_discount }}</span>
+      {%- endif -%}
     </div>
 
     {%- if block.settings.body != blank -%}
       <p class="suntneew-bundle-selector__body">{{ block.settings.body }}</p>
     {%- endif -%}
 
-    <div class="suntneew-bundle-selector__options" role="group" aria-label="Select a multi-pack quantity">
-      {%- for quantity in (1..bundle_maximum) -%}
-        {%- assign undiscounted_price = selected_variant.price | times: quantity -%}
-        {%- assign is_discounted_pack = false -%}
-        {%- assign pack_discount = 0 -%}
-        {%- assign pack_price = undiscounted_price -%}
+    <div class="suntneew-bundle-selector__options" role="group" aria-label="{{ 'product.quantity.multi_pack_aria' | t | escape }}">
+      {%- for quantity_text in preset_quantities -%}
+        {%- liquid
+          assign quantity = quantity_text | plus: 0
+          assign pack_discount = 0
 
-        {%- if quantity >= bundle_minimum -%}
-          {%- assign is_discounted_pack = true -%}
-          {%- assign extra_units = quantity | minus: 1 -%}
-          {%- assign pack_discount = bundle_discount_per_extra_unit | times: extra_units -%}
-          {%- assign bundle_multiplier = 100 | minus: pack_discount -%}
-          {%- assign pack_price = undiscounted_price | times: bundle_multiplier | divided_by: 100 -%}
-        {%- endif -%}
+          if savings_enabled
+            if quantity >= 4
+              assign pack_discount = maximum_discount
+            elsif quantity >= 3
+              assign pack_discount = middle_discount
+            elsif quantity >= 2
+              assign pack_discount = discount_step
+            endif
+          endif
+
+          assign undiscounted_price = selected_variant.price | times: quantity
+          assign bundle_multiplier = 100 | minus: pack_discount
+          assign pack_price = undiscounted_price | times: bundle_multiplier | divided_by: 100
+          assign preset_available = true
+
+          if quantity < minimum_quantity
+            assign preset_available = false
+          endif
+
+          if selected_variant.quantity_rule.max != nil and quantity > selected_variant.quantity_rule.max
+            assign preset_available = false
+          endif
+
+          assign quantity_offset = quantity | minus: minimum_quantity
+          assign quantity_remainder = quantity_offset | modulo: quantity_increment
+
+          if quantity_offset < 0 or quantity_remainder != 0
+            assign preset_available = false
+          endif
+        -%}
 
         <button
           type="button"
-          class="suntneew-bundle-selector__option{% if quantity == 1 %} is-selected{% endif %}"
+          class="suntneew-bundle-selector__option{% if quantity == initial_quantity %} is-selected{% endif %}"
           data-bundle-quantity="{{ quantity }}"
-          aria-pressed="{% if quantity == 1 %}true{% else %}false{% endif %}"
+          data-bundle-discount="{{ pack_discount }}"
+          aria-pressed="{% if quantity == initial_quantity %}true{% else %}false{% endif %}"
+          {% unless preset_available %}disabled{% endunless %}
         >
           <span class="suntneew-bundle-selector__option-copy">
-            <strong>{{ quantity }} {% if quantity == 1 %}unit{% else %}units{% endif %}</strong>
-            <small>{% if is_discounted_pack %}Save {{ pack_discount }}% on this pack{% else %}Standard unit price{% endif %}</small>
+            <strong>{{ 'product.quantity.unit_count' | t: count: quantity }}</strong>
+            <small>{% if pack_discount > 0 %}{{ 'product.quantity.save_percent' | t: percent: pack_discount }}{% else %}{{ 'product.quantity.standard_price' | t }}{% endif %}</small>
           </span>
           <span class="suntneew-bundle-selector__price-wrap">
             <span class="suntneew-bundle-selector__price" data-bundle-price>{{ pack_price | money }}</span>
-            <s class="suntneew-bundle-selector__compare" data-bundle-compare{% unless is_discounted_pack %} hidden{% endunless %}>{{ undiscounted_price | money }}</s>
+            <s class="suntneew-bundle-selector__compare" data-bundle-compare{% if pack_discount == 0 %} hidden{% endif %}>{{ undiscounted_price | money }}</s>
           </span>
         </button>
       {%- endfor -%}
     </div>
 
-    <p class="suntneew-bundle-selector__note">Save {{ bundle_discount_per_extra_unit }}% per extra unit: 2 units {{ bundle_discount_per_extra_unit }}% off, 3 units {{ bundle_discount_per_extra_unit | times: 2 }}% off, 4 units {{ bundle_maximum_discount }}% off. The quantity selector previews the ladder; activate the matching Shopify discount ladder before publishing.</p>
+    <button
+      type="button"
+      class="suntneew-bundle-selector__custom{% unless initial_is_preset %} is-selected{% endunless %}"
+      data-bundle-custom
+      aria-controls="{{ product_form_id }}-quantity"
+      aria-pressed="{% if initial_is_preset %}false{% else %}true{% endif %}"
+    >
+      <span>{{ 'product.quantity.custom_quantity' | t }}</span>
+      <small>{{ 'product.quantity.custom_quantity_hint' | t }}</small>
+    </button>
+
+    {%- if savings_enabled -%}
+      <p class="suntneew-bundle-selector__note">{{ 'product.quantity.discount_ladder_note' | t: two: discount_step, three: middle_discount, four: maximum_discount }}</p>
+    {%- endif -%}
 
     <script type="application/json" data-suntneew-bundle-variants>{{ product.variants | json }}</script>
   </div>

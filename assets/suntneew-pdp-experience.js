@@ -95,11 +95,11 @@
     let variants = [];
     try { variants = JSON.parse(data.textContent); } catch (_) { return; }
 
-    const minimum = Number(selector.dataset.minimumQuantity || 2);
-    const discountPerExtraUnit = Number(selector.dataset.discountPerExtraUnit || 0) / 100;
     const currency = selector.dataset.currency;
-    const quantityInput = document.getElementById(`${selector.dataset.formId}-quantity`) || document.querySelector(`[name="quantity"][form="${selector.dataset.formId}"]`);
+    const quantityInput = () => document.getElementById(`${selector.dataset.formId}-quantity`) || document.querySelector(`[name="quantity"][form="${selector.dataset.formId}"]`);
     const optionButtons = [...selector.querySelectorAll('[data-bundle-quantity]')];
+    const customButton = selector.querySelector('[data-bundle-custom]');
+    const productInfo = selector.closest('.product-info') || document;
     let currentVariantId;
 
     const selectedVariant = () => {
@@ -113,44 +113,87 @@
       const variant = selectedVariant();
       if (!variant) return;
 
+      const quantityRule = variant.quantity_rule || {};
+      const minimum = Number(quantityRule.min || 1);
+      const maximum = quantityRule.max == null ? null : Number(quantityRule.max);
+      const increment = Number(quantityRule.increment || 1);
+
       optionButtons.forEach((button) => {
         const quantity = Number(button.dataset.bundleQuantity);
         const original = variant.price * quantity;
-        const applies = quantity >= minimum;
-        const discount = applies ? discountPerExtraUnit * Math.max(0, quantity - 1) : 0;
-        const finalPrice = applies ? Math.round(original * (1 - discount)) : original;
+        const discount = Number(button.dataset.bundleDiscount || 0) / 100;
+        const finalPrice = Math.round(original * (1 - discount));
+        const offset = quantity - minimum;
+        const available = variant.available !== false
+          && offset >= 0
+          && (maximum === null || quantity <= maximum)
+          && offset % increment === 0;
+        button.disabled = !available;
         const price = button.querySelector('[data-bundle-price]');
         const compare = button.querySelector('[data-bundle-compare]');
         if (price) price.textContent = formatMoney(finalPrice, currency);
         if (compare) {
           compare.textContent = formatMoney(original, currency);
-          compare.hidden = !applies;
+          compare.hidden = discount === 0;
         }
       });
+    };
+
+    const syncSelection = () => {
+      const input = quantityInput();
+      const value = Number(input?.value);
+      let presetSelected = false;
+      optionButtons.forEach((button) => {
+        const selected = !button.disabled && Number(button.dataset.bundleQuantity) === value;
+        button.classList.toggle('is-selected', selected);
+        button.setAttribute('aria-pressed', String(selected));
+        if (selected) presetSelected = true;
+      });
+      if (customButton) {
+        customButton.classList.toggle('is-selected', !presetSelected);
+        customButton.setAttribute('aria-pressed', String(!presetSelected));
+      }
     };
 
     optionButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const quantity = Number(button.dataset.bundleQuantity);
-        optionButtons.forEach((option) => {
-          const selected = option === button;
-          option.classList.toggle('is-selected', selected);
-          option.setAttribute('aria-pressed', String(selected));
-        });
-        if (quantityInput) {
-          quantityInput.value = quantity;
-          quantityInput.dispatchEvent(new Event('input', { bubbles: true }));
-          quantityInput.dispatchEvent(new Event('change', { bubbles: true }));
+        const input = quantityInput();
+        if (input) {
+          input.value = quantity;
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+          input.dispatchEvent(new Event('change', { bubbles: true }));
         }
       });
+    });
+
+    customButton?.addEventListener('click', () => {
+      optionButtons.forEach((button) => {
+        button.classList.remove('is-selected');
+        button.setAttribute('aria-pressed', 'false');
+      });
+      customButton.classList.add('is-selected');
+      customButton.setAttribute('aria-pressed', 'true');
+      const input = quantityInput();
+      input?.focus();
+      input?.select();
+    });
+
+    productInfo.addEventListener('input', (event) => {
+      if (event.target?.matches?.(`[name="quantity"][form="${selector.dataset.formId}"]`)) syncSelection();
+    });
+    productInfo.addEventListener('change', (event) => {
+      if (event.target?.matches?.(`[name="quantity"][form="${selector.dataset.formId}"]`)) syncSelection();
     });
 
     form.addEventListener('change', refresh);
     form.addEventListener('variant:change', (event) => {
       currentVariantId = event.detail?.variant?.id;
       refresh();
+      syncSelection();
     });
     refresh();
+    syncSelection();
   };
 
   const initialize = (root = document) => {

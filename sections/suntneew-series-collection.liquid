@@ -1,4 +1,4 @@
-<section class="sn-series-page sn-series-page--{{ section.settings.catalog_state }}" id="{{ section.settings.anchor_id | escape }}">
+<section class="sn-series-page sn-series-page--{{ section.settings.catalog_state }}" id="{{ section.settings.anchor_id | escape }}" data-series-collection data-default-view="{{ section.settings.default_view | escape }}">
   <div class="sn-series-page__hero">
     <div class="sn-series-page__hero-media" aria-hidden="true">
       <picture>
@@ -25,9 +25,32 @@
         <h2>{{ section.settings.catalog_heading }}</h2>
         {%- if section.settings.catalog_body != blank -%}<p>{{ section.settings.catalog_body }}</p>{%- endif -%}
       </header>
-      <div class="sn-series-product-grid sn-series-product-grid--count-{{ section.blocks.size }}">
+
+      <div class="sn-series-page__catalog-controls">
+        <div class="sn-series-page__capacity-filter" role="group" aria-label="{{ section.settings.capacity_filter_label | escape }}">
+          <button type="button" class="sn-series-control is-selected" data-series-filter="" aria-pressed="true">{{ section.settings.all_capacity_label }}</button>
+          {%- assign rendered_filters = '|' -%}
+          {%- for block in section.blocks -%}
+            {%- assign filter_value = block.settings.filter_value | handleize -%}
+            {%- capture filter_token -%}|{{ filter_value }}|{%- endcapture -%}
+            {%- if filter_value != blank -%}
+              {%- unless rendered_filters contains filter_token -%}
+                <button type="button" class="sn-series-control" data-series-filter="{{ filter_value | escape }}" aria-pressed="false">{{ block.settings.filter_label | default: block.settings.filter_value }}</button>
+                {%- assign rendered_filters = rendered_filters | append: filter_value | append: '|' -%}
+              {%- endunless -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div class="sn-series-page__view-switcher" role="group" aria-label="{{ section.settings.view_label | escape }}">
+          <button type="button" class="sn-series-control{% if section.settings.default_view == 'cards' %} is-selected{% endif %}" data-series-view="cards" aria-pressed="{% if section.settings.default_view == 'cards' %}true{% else %}false{% endif %}">{{ section.settings.cards_label }}</button>
+          <button type="button" class="sn-series-control{% if section.settings.default_view == 'list' %} is-selected{% endif %}" data-series-view="list" aria-pressed="{% if section.settings.default_view == 'list' %}true{% else %}false{% endif %}">{{ section.settings.list_label }}</button>
+        </div>
+      </div>
+
+      <div class="sn-series-product-grid sn-series-product-grid--count-{{ section.blocks.size }}{% if section.settings.default_view == 'list' %} sn-series-product-grid--list{% endif %}" data-series-products>
         {%- for block in section.blocks -%}
-          <article class="sn-series-product-card" {{ block.shopify_attributes }}>
+          <article class="sn-series-product-card" data-series-product data-filter-value="{{ block.settings.filter_value | handleize | escape }}" {{ block.shopify_attributes }}>
             <a href="{{ block.settings.link | default: routes.collections_url }}" class="sn-series-product-card__link" aria-label="{{ block.settings.title | escape }}">
               <span class="sn-series-product-card__image">
                 {%- if block.settings.image != blank -%}
@@ -65,6 +88,49 @@
   </div>
 </section>
 
+<script>
+  (() => {
+    const root = document.querySelector('#shopify-section-{{ section.id }} [data-series-collection]');
+    if (!root || root.dataset.ready === 'true') return;
+    root.dataset.ready = 'true';
+
+    const grid = root.querySelector('[data-series-products]');
+    const cards = [...root.querySelectorAll('[data-series-product]')];
+    const filterButtons = [...root.querySelectorAll('[data-series-filter]')];
+    const viewButtons = [...root.querySelectorAll('[data-series-view]')];
+
+    const selectView = (view) => {
+      if (!grid) return;
+      grid.classList.toggle('sn-series-product-grid--list', view === 'list');
+      viewButtons.forEach((button) => {
+        const selected = button.dataset.seriesView === view;
+        button.classList.toggle('is-selected', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      });
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const value = button.dataset.seriesFilter || '';
+        filterButtons.forEach((item) => {
+          const selected = item === button;
+          item.classList.toggle('is-selected', selected);
+          item.setAttribute('aria-pressed', String(selected));
+        });
+        cards.forEach((card) => {
+          card.hidden = value !== '' && card.dataset.filterValue !== value;
+        });
+      });
+    });
+
+    viewButtons.forEach((button) => {
+      button.addEventListener('click', () => selectView(button.dataset.seriesView));
+    });
+
+    selectView(root.dataset.defaultView || 'cards');
+  })();
+</script>
+
 {% schema %}
 {
   "name": "SuntNeew series page",
@@ -82,6 +148,12 @@
     {"type":"text","id":"catalog_eyebrow","label":"Catalog eyebrow","default":"CHOOSE A PRODUCT"},
     {"type":"text","id":"catalog_heading","label":"Catalog heading","default":"Products in this series."},
     {"type":"textarea","id":"catalog_body","label":"Catalog body","default":"Open a product page to compare variants, capacity and the details that matter."},
+    {"type":"text","id":"capacity_filter_label","label":"Capacity filter label","default":"Filter by capacity"},
+    {"type":"text","id":"all_capacity_label","label":"All capacities label","default":"All capacities"},
+    {"type":"text","id":"view_label","label":"View switcher label","default":"Product view"},
+    {"type":"text","id":"cards_label","label":"Cards label","default":"Cards"},
+    {"type":"text","id":"list_label","label":"List label","default":"List"},
+    {"type":"select","id":"default_view","label":"Default product view","default":"cards","options":[{"value":"cards","label":"Cards"},{"value":"list","label":"List"}]},
     {"type":"text","id":"empty_eyebrow","label":"Empty-state eyebrow","default":"SERIES IN PREPARATION"},
     {"type":"text","id":"empty_heading","label":"Empty-state heading","default":"This product series is being prepared."},
     {"type":"textarea","id":"empty_body","label":"Empty-state body","default":"The RV Batteries series remains part of SuntNeew. Product listings and individual product pages will be added when they are ready."},
@@ -100,6 +172,8 @@
         {"type":"text","id":"eyebrow","label":"Eyebrow","default":"PRODUCT"},
         {"type":"text","id":"title","label":"Title","default":"SuntNeew product"},
         {"type":"textarea","id":"text","label":"Description","default":"Explore product specifications, variants and use cases."},
+        {"type":"text","id":"filter_value","label":"Capacity filter value","default":"100Ah"},
+        {"type":"text","id":"filter_label","label":"Capacity filter label","default":"100Ah"},
         {"type":"text","id":"fact_one","label":"Fact one"},
         {"type":"text","id":"fact_two","label":"Fact two"},
         {"type":"text","id":"fact_three","label":"Fact three"},

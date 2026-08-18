@@ -20,7 +20,7 @@
         "intro": {"type":"text","settings":{"text":"<p>One compact jump-starter platform with capacity and color choices. Select a variant to see its matching peak current, energy, price and availability.</p>"}},
         "variant_picker": {"type":"variant_picker","settings":{"hide_sold_out_variants":false,"stack_blocks":true,"selector_style":"block","swatch_selector_style":"block_swatch","variant_image_options":"Color"}},
         "quantity_selector": {"type":"quantity_selector","settings":{}},
-        "bundle": {"type":"suntneew_bundle_selector","settings":{"enabled":true,"heading":"Build an A20 multi-pack","body":"Save 3% per extra unit - up to 9% when you buy four.","discount_percent":3,"minimum_quantity":2,"maximum_quantity":4}},
+        "bundle": {"type":"suntneew_bundle_selector","settings":{"enabled":true,"show_savings":true,"heading":"Build an A20 multi-pack","body":"Choose 1, 2, 5 or 10 units, or use a custom quantity.","discount_percent":3}},
         "buy_buttons": {"type":"buy_buttons","settings":{"show_payment_button":false,"show_gift_card_recipient":false}}
       },
       "block_order": ["vendor","title","sku","price","separator","intro","variant_picker","quantity_selector","bundle","buy_buttons"],

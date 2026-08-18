@@ -19,10 +19,11 @@
         "separator":{"type":"separator","settings":{}},
         "intro":{"type":"text","settings":{"text":"<p>51.2V, 100Ah low-voltage LFP home battery with 5.12kWh rated capacity. Choose your quantity and purchase online; review inverter compatibility and installation requirements before installation.</p>"}},
         "quantity_selector":{"type":"quantity_selector","settings":{}},
+        "bundle":{"type":"suntneew_bundle_selector","settings":{"enabled":true,"heading":"Build a WL5A multi-pack","body":"Choose 1, 2, 5 or 10 units, or use a custom quantity.","discount_percent":3}},
         "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
       },
-      "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","buy_buttons"],
-      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_left","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","bundle","buy_buttons"],
+      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_bottom","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type":"suntneew-pdp-proof",

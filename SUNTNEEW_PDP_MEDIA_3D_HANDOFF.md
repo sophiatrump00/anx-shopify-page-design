@@ -41,12 +41,12 @@ Shopify accepts MP4, MOV and WebM product video files, up to 10 minutes, 1 GB an
 - Use real scale, centered origin and a neutral default camera angle. Confirm that labels are legible, surfaces are not stretched, metallic/transparent parts render plausibly, and the model has no gaps or unwanted holes.
 - Approve on desktop, Android and iPhone/iPad AR before attaching it to the product. The theme already uses Shopify's native model viewer and AR entry point; the **3D** control appears when the model exists.
 
-## 4. Multi-pack data needed before enabling the 3% selector
+## 4. Multi-pack data needed before enabling the selector
 
 The theme contains a disabled multi-pack selector. Before it can be turned on, provide and approve:
 
 1. The specific product/SKUs covered and whether customers can mix variants.
-2. Discount rule: 2 units save 3%, 3 units save 6%, and 4 units save 9%; confirm whether this exact ladder applies to every covered SKU.
+2. Discount rule: 2+ units save 3%, 3+ units save 6%, and 4+ units save 9%; confirm whether this exact ladder applies to every covered SKU.
 3. Whether the automatic discount stacks with coupons, bundles or wholesale/B2B pricing.
 4. Inventory/fulfilment handling for multiple units and any maximum-per-order rule.
 5. Final customer-facing wording and the person approving the price policy.
@@ -57,11 +57,11 @@ For a non-Plus store, do not create three combinable product discounts: Shopify 
 
 | Cart quantity | Automatic product discount |
 | --- | --- |
-| 2 | 3% off |
-| 3 | 6% off |
-| 4 | 9% off |
+| 2+ | 3% off |
+| 3+ | 6% off |
+| 4+ | 9% off |
 
-Keep every other promotion, coupon and bundle rule in the test. Shopify selects the best qualifying non-combinable discount, so acceptance requires four real cart checks (1/2/3/4 units) before the selector is enabled. Only after that checkout rule matches this page should the product-template block be enabled. This avoids displaying a saving that checkout cannot honor.
+The current active rules cover A20, A3, U23 and U32 only. Their product pages use 1, 2, 5 and 10 as presets, so the effective preset savings are 0%, 3%, 9% and 9%; customers can still enter 3 or 4 through the standard quantity control. Keep every other promotion, coupon and bundle rule in the test. Shopify selects the best qualifying non-combinable discount, so acceptance requires real cart checks at 1, 2, 3, 4, 5 and 10 units before savings are shown. Do not enable savings on home-storage or RV templates unless the matching Shopify discounts are expanded to those products.
 
 ## Sources
 

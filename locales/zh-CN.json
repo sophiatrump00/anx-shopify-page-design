@@ -113,7 +113,20 @@
       "decrease_quantity": "减少数量",
       "minimum_of": "最小值 {{ min }}",
       "maximum_of": "最大值 {{ max }}",
-      "increment_of": "增量 {{ step }}"
+      "increment_of": "增量 {{ step }}",
+      "multi_pack_eyebrow": "多件优惠",
+      "multi_pack_quantity_eyebrow": "多件数量",
+      "save_up_to": "最高节省 {{ percent }}%",
+      "multi_pack_aria": "选择预设数量",
+      "unit_count": {
+        "one": "{{ count }} 件",
+        "other": "{{ count }} 件"
+      },
+      "standard_price": "标准价格",
+      "save_percent": "节省 {{ percent }}%",
+      "custom_quantity": "自定义数量",
+      "custom_quantity_hint": "使用数量控件输入其他数量",
+      "discount_ladder_note": "购买 2 件及以上省 {{ two }}%，3 件及以上省 {{ three }}%，4 件及以上省 {{ four }}%。最终适用价格将在结账时显示。"
     },
     "volume_pricing": {
       "title": "批量定价",

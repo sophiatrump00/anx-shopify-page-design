@@ -113,7 +113,20 @@
       "decrease_quantity": "減少數量",
       "minimum_of": "最小值 {{ min }}",
       "maximum_of": "最大值 {{ max }}",
-      "increment_of": "增量 {{ step }}"
+      "increment_of": "增量 {{ step }}",
+      "multi_pack_eyebrow": "多件優惠",
+      "multi_pack_quantity_eyebrow": "多件數量",
+      "save_up_to": "最高節省 {{ percent }}%",
+      "multi_pack_aria": "選擇預設數量",
+      "unit_count": {
+        "one": "{{ count }} 件",
+        "other": "{{ count }} 件"
+      },
+      "standard_price": "標準價格",
+      "save_percent": "節省 {{ percent }}%",
+      "custom_quantity": "自訂數量",
+      "custom_quantity_hint": "使用數量控制輸入其他數量",
+      "discount_ladder_note": "購買 2 件及以上省 {{ two }}%，3 件及以上省 {{ three }}%，4 件及以上省 {{ four }}%。最終適用價格將在結帳時顯示。"
     },
     "volume_pricing": {
       "title": "批發價",

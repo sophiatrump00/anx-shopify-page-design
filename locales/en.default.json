@@ -113,7 +113,20 @@
       "decrease_quantity": "Decrease quantity",
       "minimum_of": "Minimum of {{ min }}",
       "maximum_of": "Maximum of {{ max }}",
-      "increment_of": "Increment of {{ step }}"
+      "increment_of": "Increment of {{ step }}",
+      "multi_pack_eyebrow": "Multi-pack savings",
+      "multi_pack_quantity_eyebrow": "Multi-pack quantity",
+      "save_up_to": "Save up to {{ percent }}%",
+      "multi_pack_aria": "Select a preset quantity",
+      "unit_count": {
+        "one": "{{ count }} unit",
+        "other": "{{ count }} units"
+      },
+      "standard_price": "Standard price",
+      "save_percent": "Save {{ percent }}%",
+      "custom_quantity": "Custom quantity",
+      "custom_quantity_hint": "Use the quantity control for another amount",
+      "discount_ladder_note": "2 or more units save {{ two }}%, 3 or more save {{ three }}%, and 4 or more save {{ four }}%. Checkout shows the final eligible price."
     },
     "volume_pricing": {
       "title": "Volume pricing",

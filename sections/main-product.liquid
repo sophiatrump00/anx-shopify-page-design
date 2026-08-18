@@ -1048,7 +1048,14 @@
           "id": "enabled",
           "label": "Show multi-pack selector",
           "default": false,
-          "info": "Enable this only after the matching Shopify automatic-discount ladder is active."
+          "info": "Adds 1, 2, 5 and 10-unit presets while keeping the standard quantity control."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_savings",
+          "label": "Show automatic-discount savings",
+          "default": false,
+          "info": "Enable only for products included in the active 2+, 3+ and 4+ unit Shopify automatic discounts."
         },
         {
           "type": "text",
@@ -1060,35 +1067,18 @@
           "type": "textarea",
           "id": "body",
           "label": "Supporting text",
-          "default": "Choose more units for the same build. Your eligible saving is shown at checkout."
+          "default": "Choose 1, 2, 5 or 10 units, or use a custom quantity."
         },
         {
           "type": "range",
           "id": "discount_percent",
-          "label": "Saving added per extra unit",
+          "label": "Base saving at 2+ units",
           "min": 1,
           "max": 15,
           "step": 1,
           "unit": "%",
-          "default": 3
-        },
-        {
-          "type": "range",
-          "id": "minimum_quantity",
-          "label": "Minimum quantity for savings",
-          "min": 2,
-          "max": 4,
-          "step": 1,
-          "default": 2
-        },
-        {
-          "type": "range",
-          "id": "maximum_quantity",
-          "label": "Maximum quantity shown",
-          "min": 2,
-          "max": 4,
-          "step": 1,
-          "default": 4
+          "default": 3,
+          "info": "The 3+ unit tier doubles this value and the 4+ unit tier triples it. Match the Shopify discount ladder before publishing."
         }
       ]
     },
