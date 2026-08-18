@@ -1,56 +1,43 @@
-/* SuntNeew PDP media and buying experience. Enabled only on selected product templates. */
 .suntneew-pdp-media-column { min-width: 0; }
 
-.suntneew-product-page--experience .product-gallery { position: relative; grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: auto !important; grid-auto-flow: row !important; grid-auto-columns: auto !important; }
+.suntneew-product-page--experience .product-gallery { position: relative; min-width: 0; gap: 0; grid-template-columns: minmax(0, 1fr) !important; grid-template-rows: auto !important; grid-auto-flow: row !important; grid-auto-columns: auto !important; }
 
-.suntneew-media-modes { display: flex; flex-wrap: wrap; grid-column: 1; gap: 8px; width: auto; margin-top: 10px; }
+.suntneew-media-modes { display: flex; justify-content: center; flex-wrap: wrap; grid-column: 1; gap: 8px; width: 100%; margin-top: 14px; }
 .suntneew-media-modes__button { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 8px 16px; border: 1px solid rgb(24 35 48 / .12); border-radius: 999px; background: #f4f5f5; color: #3e4853; font: inherit; font-size: 13px; font-weight: 750; line-height: 1; cursor: pointer; transition: background 160ms ease, color 160ms ease, border-color 160ms ease; }
 .suntneew-media-modes__button[aria-selected="true"] { border-color: #182330; background: #182330; color: #fff; }
 .suntneew-media-modes__button:hover, .suntneew-media-modes__button:focus-visible { border-color: #e9653b; outline: none; }
 .suntneew-media-modes__icon { display: inline-grid; width: 14px; height: 14px; place-items: center; font-size: 12px; line-height: 1; }
 
 @media screen and (min-width: 1000px) {
+  .suntneew-product-page--experience .product { width: min(1200px, calc(100% - 48px)); margin-inline: auto; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
   .suntneew-product-page--experience .suntneew-pdp-media-column { position: sticky; top: calc(var(--sticky-area-height) + 18px); align-self: start; }
-  .suntneew-product-page--experience .product-info { position: static; top: auto; }
+  .suntneew-product-page--experience .product-info { --product-info-block-spacing: 16px; position: static; top: auto; min-width: 0; width: 100%; }
+  .suntneew-product-page--experience .product-info__title { font-size: 32px; line-height: 1.16; letter-spacing: 0; }
+  .suntneew-product-page--experience .product-gallery__ar-wrapper { min-width: 0; }
+  .suntneew-product-page--experience .product-gallery__media-list-wrapper { width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 6px; background: #f4f6f7; }
+  .suntneew-product-page--experience .product-gallery__media-list { width: 100%; height: 100% !important; min-height: 100%; align-items: stretch; }
+  .suntneew-product-page--experience .product-gallery__media { width: 100%; height: 100%; min-height: 0; overflow: hidden; }
+  .suntneew-product-page--experience .product-gallery__media > * { width: 100%; height: 100%; }
+  .suntneew-product-page--experience .product-gallery__media img { width: 100%; height: 100%; object-fit: cover; }
+  .suntneew-product-page--experience .product-gallery__zoom { top: 16px; right: 16px; bottom: auto; }
 
-  /* Grid PDPs scroll the two-column media rail while the buying column stays available. */
-  .suntneew-product-page--media-grid .suntneew-pdp-media-column,
-  .suntneew-product-page--media-grid-highlight .suntneew-pdp-media-column,
-  .suntneew-product-page--media-grid-one .suntneew-pdp-media-column { position: static; }
-  .suntneew-product-page--media-grid .product-info,
-  .suntneew-product-page--media-grid-highlight .product-info,
-  .suntneew-product-page--media-grid-one .product-info { position: sticky; top: calc(var(--sticky-area-height) + 18px); align-self: start; }
-  .suntneew-product-page--media-grid .suntneew-media-modes,
-  .suntneew-product-page--media-grid-highlight .suntneew-media-modes,
-  .suntneew-product-page--media-grid-one .suntneew-media-modes { display: none; }
-
-  .suntneew-product-page--experience .product-gallery__thumbnail-list-wrapper { position: absolute; z-index: 4; right: 20px; bottom: 74px; left: 20px; width: auto; overflow: hidden; pointer-events: none; }
-  .suntneew-product-page--experience .product-gallery__thumbnail-list { justify-content: center; gap: 8px; grid-auto-columns: auto; }
-  .suntneew-product-page--experience .product-gallery__thumbnail { width: 62px; height: 48px; overflow: hidden; border: 1px solid rgb(255 255 255 / .42); border-radius: 7px; background: rgb(12 18 27 / .42); opacity: .58; pointer-events: auto; transition: width 230ms ease, height 230ms ease, opacity 180ms ease, transform 180ms ease, border-color 180ms ease, background 180ms ease; }
-  .suntneew-product-page--experience .product-gallery__thumbnail img { width: 100%; height: 100%; object-fit: cover; opacity: .82; transition: opacity 180ms ease; }
-  .suntneew-product-page--experience .product-gallery__thumbnail[aria-current="true"] { border-color: #fff; opacity: 1; transform: translateY(-2px); }
+  .suntneew-product-page--experience .product-gallery__thumbnail-list-wrapper { position: absolute; z-index: 4; right: 20px; bottom: 70px; left: 20px; display: flex; align-items: center; width: auto; height: 56px; overflow: hidden; pointer-events: auto; }
+  .suntneew-product-page--experience .product-gallery__thumbnail-list { display: flex; align-items: center; justify-content: flex-start; gap: 10px; width: max-content; max-width: 100%; margin-inline: auto; padding: 4px; overflow-x: auto; overflow-y: hidden; overscroll-behavior-inline: contain; scrollbar-width: none; }
+  .suntneew-product-page--experience .product-gallery__thumbnail-list::-webkit-scrollbar { display: none; }
+  .suntneew-product-page--experience .product-gallery__thumbnail { flex: 0 0 48px; width: 48px; height: 48px; padding: 0; overflow: hidden; border: 1px solid rgb(255 255 255 / .72); border-radius: 4px; background: rgb(255 255 255 / .86); opacity: .68; pointer-events: auto; transition: flex-basis 180ms ease, width 180ms ease, height 180ms ease, opacity 160ms ease, border-color 160ms ease, background 160ms ease; }
+  .suntneew-product-page--experience .product-gallery__thumbnail img { width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 160ms ease; }
+  .suntneew-product-page--experience .product-gallery__thumbnail[aria-current="true"] { border-color: #e9653b; background: #fff; opacity: 1; }
   .suntneew-product-page--experience .product-gallery__thumbnail:after { display: none; }
-  .suntneew-product-page--experience .product-gallery__thumbnail-list-wrapper:focus-within, .suntneew-product-page--experience .product-gallery:hover .product-gallery__thumbnail-list-wrapper { overflow: visible; }
 
-  /* Away from the gallery, the visual rail becomes small navigation dots. */
-  .suntneew-product-page--experience .product-gallery:not(:hover):not(:focus-within) .product-gallery__thumbnail-list { gap: 9px; }
-  .suntneew-product-page--experience .product-gallery:not(:hover):not(:focus-within) .product-gallery__thumbnail { width: 9px; height: 9px; border: 1px solid rgb(255 255 255 / .68); border-radius: 999px; background: rgb(16 26 36 / .24); opacity: .95; transform: none; }
-  .suntneew-product-page--experience .product-gallery:not(:hover):not(:focus-within) .product-gallery__thumbnail[aria-current="true"] { border-color: #e9653b; background: #e9653b; transform: scale(1.18); }
+  .suntneew-product-page--experience .product-gallery:not(:hover):not(:focus-within) .product-gallery__thumbnail-list { justify-content: center; gap: 0; width: 9px; padding: 0; overflow: hidden; }
+  .suntneew-product-page--experience .product-gallery:not(:hover):not(:focus-within) .product-gallery__thumbnail { flex-basis: 0; width: 0; height: 0; border: 0; opacity: 0; pointer-events: none; }
+  .suntneew-product-page--experience .product-gallery:not(:hover):not(:focus-within) .product-gallery__thumbnail[aria-current="true"] { flex-basis: 9px; width: 9px; height: 9px; border: 1px solid #e9653b; border-radius: 999px; background: #e9653b; opacity: 1; }
   .suntneew-product-page--experience .product-gallery:not(:hover):not(:focus-within) .product-gallery__thumbnail img,
   .suntneew-product-page--experience .product-gallery:not(:hover):not(:focus-within) .product-gallery__media-badge { opacity: 0; }
+}
 
-  .suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery__thumbnail-list-wrapper { position: relative; inset: auto; z-index: 1; width: 100%; margin-top: 8px; overflow: hidden; pointer-events: auto; }
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery .product-gallery__thumbnail-list { justify-content: start; gap: 10px; width: 100%; grid-auto-columns: 72px; overflow-x: auto; }
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery:not(:hover):not(:focus-within) .product-gallery__thumbnail-list { justify-content: center; gap: 9px; grid-auto-columns: 9px; }
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery:hover .product-gallery__thumbnail-list,
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery:focus-within .product-gallery__thumbnail-list { justify-content: start; gap: 10px; grid-auto-columns: 72px; }
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery:hover .product-gallery__thumbnail,
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery:focus-within .product-gallery__thumbnail { width: 72px; height: 56px; border: 1px solid rgb(24 35 48 / .14); border-radius: 7px; background: #fff; opacity: .72; transform: none; }
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery:hover .product-gallery__thumbnail img,
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery:focus-within .product-gallery__thumbnail img { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery:hover .product-gallery__thumbnail[aria-current="true"],
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery:focus-within .product-gallery__thumbnail[aria-current="true"] { border-color: #e9653b; opacity: 1; transform: translateY(-2px); }
-  .suntneew-product-page--experience.suntneew-product-page--media-carousel-thumbnails-bottom .product-gallery .product-gallery__thumbnail:after { display: none; }
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
+  .suntneew-product-page--experience .product-info__title { font-size: 28px; }
 }
 
 .suntneew-pdp-promise-wrap { width: 100%; margin-top: clamp(30px, 4vw, 58px); clear: both; }

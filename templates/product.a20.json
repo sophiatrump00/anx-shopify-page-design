@@ -24,7 +24,7 @@
         "buy_buttons": {"type":"buy_buttons","settings":{"show_payment_button":false,"show_gift_card_recipient":false}}
       },
       "block_order": ["vendor","title","sku","price","separator","intro","variant_picker","quantity_selector","bundle","buy_buttons"],
-      "settings": {"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":55,"desktop_media_layout":"carousel_thumbnails_bottom","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "settings": {"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":50,"desktop_media_layout":"carousel_thumbnails_bottom","mobile_media_size":"contained","mobile_carousel_control":"dots"}
     },
     "proof": {
       "type":"suntneew-pdp-proof",
