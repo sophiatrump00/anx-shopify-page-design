@@ -15,7 +15,7 @@
         "g31": {
           "type": "product_card",
           "settings": {
-            "fallback_asset": "suntneew-rv-g31-gallery-main.jpg",
+            "fallback_asset": "suntneew-rv-g31-feature-product-desktop.jpg",
             "image_alt": "SUNTNEEW 12.8V 100Ah Group 31 LiFePO4 RV battery",
             "badge": "GROUP 31",
             "eyebrow": "1.28KWH RV BATTERY",
@@ -33,7 +33,7 @@
         "g24": {
           "type": "product_card",
           "settings": {
-            "fallback_asset": "suntneew-rv-g24-gallery-main.jpg",
+            "fallback_asset": "suntneew-rv-g24-feature-product-desktop.jpg",
             "image_alt": "SUNTNEEW 12.8V 100Ah Group 24 LiFePO4 RV battery",
             "badge": "GROUP 24",
             "eyebrow": "COMPACT 1.28KWH",
@@ -51,7 +51,7 @@
         "rv230": {
           "type": "product_card",
           "settings": {
-            "fallback_asset": "suntneew-rv-230ah-gallery-main.jpg",
+            "fallback_asset": "suntneew-rv-230ah-feature-product-desktop.jpg",
             "image_alt": "SUNTNEEW 12.8V 230Ah LiFePO4 RV battery",
             "badge": "HIGH CAPACITY",
             "eyebrow": "2.944KWH RV BATTERY",
@@ -69,7 +69,7 @@
         "rv314": {
           "type": "product_card",
           "settings": {
-            "fallback_asset": "suntneew-rv-314ah-gallery-main.jpg",
+            "fallback_asset": "suntneew-rv-314ah-feature-product-desktop.jpg",
             "image_alt": "SUNTNEEW 12.8V 314Ah LiFePO4 RV battery",
             "badge": "MAXIMUM ENERGY",
             "eyebrow": "4.019KWH RV BATTERY",
@@ -91,9 +91,9 @@
         "eyebrow": "RV BATTERIES",
         "heading": "Power the road beyond the campsite.",
         "body": "Four 12.8V LiFePO4 configurations cover compact Group 24 and Group 31 installations through higher-capacity 230Ah and 314Ah RV systems.",
-        "hero_asset": "suntneew-rv-series-hero-desktop.jpg",
-        "hero_mobile_asset": "suntneew-rv-series-hero-mobile.jpg",
-        "hero_alt": "SUNTNEEW RV battery beside a motorhome at a forest campsite",
+        "hero_asset": "suntneew-rv-g31-feature-lifestyle-desktop.jpg",
+        "hero_mobile_asset": "suntneew-rv-g31-feature-lifestyle-mobile.jpg",
+        "hero_alt": "SUNTNEEW Group 31 RV battery beside a motorhome at a lakeside campsite",
         "back_label": "All product series",
         "back_link": "shopify://collections",
         "catalog_state": "available",

@@ -8,12 +8,18 @@
 
     <div class="sn-pdp-story__stack">
       {%- for block in section.blocks -%}
-        <article class="sn-pdp-story__row{% if block.settings.image == blank and block.settings.image_asset == blank %} sn-pdp-story__row--copy-only{% endif %}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
-          {%- if block.settings.image != blank or block.settings.image_asset != blank -%}<div class="sn-pdp-story__media">
+        <article class="sn-pdp-story__row{% if block.settings.image == blank and block.settings.image_asset == blank and block.settings.mobile_image_asset == blank %} sn-pdp-story__row--copy-only{% endif %}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank or block.settings.image_asset != blank or block.settings.mobile_image_asset != blank -%}<div class="sn-pdp-story__media">
             {%- if block.settings.image != blank -%}
               {{- block.settings.image | image_url: width: 1800 | image_tag: widths: '600,900,1200,1500,1800', sizes: '(max-width: 899px) 100vw, 60vw', loading: 'lazy', alt: block.settings.image_alt, style: block.settings.image_fit | prepend: 'object-fit: ' -}}
-            {%- elsif block.settings.image_asset != blank -%}
-              <img src="{{ block.settings.image_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="1600" height="1200" loading="lazy" style="object-fit: {{ block.settings.image_fit }}">
+            {%- else -%}
+              {%- assign desktop_image_asset = block.settings.image_asset | default: block.settings.mobile_image_asset -%}
+              <picture>
+                {%- if block.settings.mobile_image_asset != blank -%}
+                  <source media="(max-width: 899px)" srcset="{{ block.settings.mobile_image_asset | asset_url }}">
+                {%- endif -%}
+                <img src="{{ desktop_image_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="1600" height="1200" loading="lazy" style="object-fit: {{ block.settings.image_fit }}">
+              </picture>
             {%- endif -%}
           </div>{%- endif -%}
           <div class="sn-pdp-story__copy">
@@ -40,6 +46,7 @@
     {"type":"feature","name":"Feature row","settings":[
       {"type":"image_picker","id":"image","label":"Image override"},
       {"type":"text","id":"image_asset","label":"Bundled image asset","info":"Theme asset filename, for example suntneew-a20-8000-1500a-v1.png."},
+      {"type":"text","id":"mobile_image_asset","label":"Bundled mobile image asset","info":"Optional mobile asset used below 900px when no image override is selected."},
       {"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew product feature"},
       {"type":"select","id":"image_fit","label":"Image fit","default":"contain","options":[{"value":"contain","label":"Contain"},{"value":"cover","label":"Cover"}]},
       {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Performance"},
