@@ -7,7 +7,8 @@
 
     if (!root || !core) return;
 
-    var storageKey = 'suntneew-power-planner-v2';
+    var storageKey = 'suntneew-power-planner-v3';
+    var customLoadSequence = 0;
     var state = {
       scenario: null,
       result: null,
@@ -17,6 +18,9 @@
 
     var scenarioButtons = Array.prototype.slice.call(root.querySelectorAll('[data-scenario]'));
     var forms = Array.prototype.slice.call(root.querySelectorAll('[data-scenario-form]'));
+    var scenarioStage = root.querySelector('[data-scenario-stage]');
+    var scenarioContinue = root.querySelector('[data-scenario-continue]');
+    var stepItems = Array.prototype.slice.call(root.querySelectorAll('[data-planner-step-item]'));
     var progress = root.querySelector('[data-progress]');
     var results = root.querySelector('[data-results]');
     var resultKicker = root.querySelector('[data-result-kicker]');
@@ -63,6 +67,41 @@
       } catch (error) {
         return null;
       }
+    }
+
+    function updateRangeVisual(range) {
+      if (!range) return;
+      var min = Number(range.min);
+      var max = Number(range.max);
+      var value = Number(range.value);
+      var progress = Number.isFinite(value) && max > min ? ((value - min) / (max - min)) * 100 : 0;
+      range.style.setProperty('--snpc-range-progress', Math.max(0, Math.min(100, progress)) + '%');
+    }
+
+    function syncRangeControl(control, source) {
+      if (!control) return;
+      var range = control.querySelector('[data-range-input]');
+      var number = control.querySelector('[data-range-number]');
+      if (!range || !number) return;
+
+      if (source === range) {
+        number.value = range.value;
+      } else {
+        var value = Number(number.value);
+        if (Number.isFinite(value)) {
+          var min = Number(range.min);
+          var max = Number(range.max);
+          range.value = Math.max(min, Math.min(max, value));
+        }
+      }
+
+      updateRangeVisual(range);
+    }
+
+    function initializeRangeControls(scope) {
+      Array.prototype.forEach.call((scope || root).querySelectorAll('[data-range-control]'), function (control) {
+        syncRangeControl(control, control.querySelector('[data-range-number]'));
+      });
     }
 
     function writeStorage() {
@@ -123,6 +162,8 @@
       if (saved.scenario === 'rv' || saved.scenario === 'jump' || saved.scenario === 'home') {
         selectScenario(saved.scenario, false);
       }
+
+      initializeRangeControls(root);
     }
 
     function hasAnalyticsConsent() {
@@ -261,7 +302,31 @@
       error.hidden = !message;
     }
 
-    function selectScenario(scenario, announce) {
+    function setPlannerStep(step) {
+      var stepOrder = ['scenario', 'details', 'recommendation'];
+      var currentIndex = stepOrder.indexOf(step);
+
+      root.dataset.plannerStep = step;
+      stepItems.forEach(function (item) {
+        var itemIndex = stepOrder.indexOf(item.dataset.plannerStepItem);
+        var isCurrent = itemIndex === currentIndex;
+        item.classList.toggle('is-active', isCurrent);
+        item.classList.toggle('is-complete', itemIndex < currentIndex);
+        if (isCurrent) {
+          item.setAttribute('aria-current', 'step');
+        } else {
+          item.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    function scrollToElement(element, block) {
+      if (!element) return;
+      var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      element.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: block || 'start' });
+    }
+
+    function chooseScenario(scenario, announce) {
       state.scenario = scenario;
       state.result = null;
       state.productId = null;
@@ -271,15 +336,10 @@
         button.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
 
-      forms.forEach(function (form) {
-        var active = form.dataset.scenarioForm === scenario;
-        form.hidden = !active;
-        if (active) showFormError(form, '');
-      });
-
-      progress.hidden = false;
-      progress.textContent = 'Step 2 · Add a few system details';
+      if (scenarioContinue) scenarioContinue.disabled = false;
+      setPlannerStep('scenario');
       results.hidden = true;
+
       if (announce) {
         if (!state.startTracked) state.startTracked = track('start', { scenario: scenario, step: 'scenario' });
         track('scenario_selected', { scenario: scenario, step: 'scenario' });
@@ -287,18 +347,59 @@
       writeStorage();
     }
 
+    function openScenario(scenario, shouldScroll) {
+      chooseScenario(scenario, false);
+      if (scenarioStage) scenarioStage.hidden = true;
+
+      forms.forEach(function (form) {
+        var active = form.dataset.scenarioForm === scenario;
+        form.hidden = !active;
+        if (active) showFormError(form, '');
+      });
+
+      progress.hidden = false;
+      progress.textContent = 'Step 2: Add your power needs';
+      results.hidden = true;
+      setPlannerStep('details');
+      writeStorage();
+
+      if (shouldScroll) {
+        var activeForm = forms.find(function (form) { return form.dataset.scenarioForm === scenario; });
+        scrollToElement(activeForm, 'start');
+      }
+    }
+
+    function selectScenario(scenario, announce) {
+      chooseScenario(scenario, announce);
+      openScenario(scenario, false);
+    }
+
+    function returnToScenarioSelection() {
+      forms.forEach(function (form) { form.hidden = true; });
+      results.hidden = true;
+      progress.hidden = true;
+      if (scenarioStage) scenarioStage.hidden = false;
+      setPlannerStep('scenario');
+      scrollToElement(scenarioStage, 'start');
+    }
+
     function createCustomLoad(list) {
       if (!list) return null;
+      customLoadSequence += 1;
+      var inputId = 'sn-custom-load-' + customLoadSequence;
       var row = document.createElement('div');
       row.className = 'sn-power-calculator__load-row is-custom';
       row.setAttribute('data-load-row', '');
-      row.innerHTML = '<div class="sn-power-calculator__field"><label>Custom load</label><input type="text" maxlength="40" value="" data-load-name aria-label="Custom load name"></div>' +
-        '<div class="sn-power-calculator__field"><label>Watts</label><input type="number" min="1" max="10000" value="100" data-load-watts inputmode="decimal" aria-label="Custom load watts"></div>' +
-        '<div class="sn-power-calculator__field"><label>Hours</label><input type="number" min="0.1" max="24" step="0.1" value="1" data-load-hours inputmode="decimal" aria-label="Custom load hours per day"></div>' +
-        '<label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label>' +
-        '<label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label>' +
+      row.innerHTML = '<div class="sn-power-calculator__load-heading"><div class="sn-power-calculator__field sn-power-calculator__custom-name"><label for="' + inputId + '-name">Custom load</label><input id="' + inputId + '-name" type="text" maxlength="40" value="" data-load-name></div><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label></div></div>' +
+        '<div class="sn-power-calculator__range-control" data-range-control><div class="sn-power-calculator__range-head"><label for="' + inputId + '-watts">Power draw</label><span class="sn-power-calculator__range-value"><input id="' + inputId + '-watts" type="number" min="1" max="10000" step="1" value="100" data-load-watts data-range-number inputmode="decimal"><span>W</span></span></div><input class="sn-power-calculator__range" type="range" min="10" max="10000" step="10" value="100" data-range-input aria-label="Custom load power draw"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>10W</span><span>10kW</span></div></div>' +
+        '<div class="sn-power-calculator__range-control" data-range-control><div class="sn-power-calculator__range-head"><label for="' + inputId + '-hours">Daily run time</label><span class="sn-power-calculator__range-value"><input id="' + inputId + '-hours" type="number" min="0.1" max="24" step="0.1" value="1" data-load-hours data-range-number inputmode="decimal"><span>hours/day</span></span></div><input class="sn-power-calculator__range" type="range" min="0.1" max="24" step="0.1" value="1" data-range-input aria-label="Custom load daily run time"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>24h</span></div></div>' +
         '<button type="button" class="sn-power-calculator__remove" data-remove-load aria-label="Remove custom load">Remove</button>';
       list.appendChild(row);
+      row.querySelector('[data-remove-load]').addEventListener('click', function () {
+        row.remove();
+        writeStorage();
+      });
+      initializeRangeControls(row);
       return row;
     }
 
@@ -394,6 +495,7 @@
 
     function renderResult(result) {
       state.result = result;
+      forms.forEach(function (form) { form.hidden = true; });
       results.hidden = false;
       results.dataset.status = result.status;
       resultSupportActions.hidden = result.status !== 'support';
@@ -436,8 +538,11 @@
         resultMetrics.innerHTML = '';
       }
 
+      progress.hidden = false;
+      progress.textContent = 'Step 3: Review your recommendation';
+      setPlannerStep('recommendation');
       results.focus({ preventScroll: true });
-      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollToElement(results, 'start');
       writeStorage();
     }
 
@@ -455,11 +560,30 @@
       track('step_completed', { scenario: scenario, step: 'details' });
     }
 
+    function editAnswers() {
+      results.hidden = true;
+      var activeForm = forms.find(function (form) { return form.dataset.scenarioForm === state.scenario; });
+      if (activeForm) {
+        activeForm.hidden = false;
+        showFormError(activeForm, '');
+      }
+      progress.hidden = false;
+      progress.textContent = 'Step 2: Add your power needs';
+      setPlannerStep('details');
+      scrollToElement(activeForm, 'start');
+    }
+
     scenarioButtons.forEach(function (button) {
       button.addEventListener('click', function () {
-        selectScenario(button.dataset.scenario, true);
+        chooseScenario(button.dataset.scenario, true);
       });
     });
+
+    if (scenarioContinue) {
+      scenarioContinue.addEventListener('click', function () {
+        if (state.scenario) openScenario(state.scenario, true);
+      });
+    }
 
     forms.forEach(function (form) {
       form.addEventListener('submit', function (event) {
@@ -467,49 +591,49 @@
         submitForm(form);
       });
 
-      form.addEventListener('input', writeStorage);
-      form.addEventListener('change', writeStorage);
-    });
-
-    root.addEventListener('click', function (event) {
-      var addButton = event.target.closest('[data-add-load]');
-      var removeButton = event.target.closest('[data-remove-load]');
-      var switchButton = event.target.closest('[data-switch-scenario]');
-      var productLink = event.target.closest('[data-result-product-link], [data-result-secondary-link]');
-      var supportLink = event.target.closest('[data-result-support-link]');
-
-      if (addButton) addCustomLoad(addButton);
-
-      if (removeButton) {
-        var row = removeButton.closest('[data-load-row]');
-        if (row) row.remove();
+      form.addEventListener('input', function (event) {
+        var rangeControl = event.target.closest('[data-range-control]');
+        if (rangeControl) syncRangeControl(rangeControl, event.target);
         writeStorage();
-      }
-
-      if (switchButton) {
-        results.hidden = true;
-        var scenarioGrid = root.querySelector('.sn-power-calculator__scenario-grid');
-        if (scenarioGrid) scenarioGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-
-      if (productLink && productLink.href && productLink.getAttribute('href') !== '#') {
-        track('product_clicked', { scenario: state.scenario, productId: productLink.dataset.productId });
-      }
-
-      if (supportLink) {
-        track('support_clicked', { scenario: state.scenario, resultType: state.result && state.result.resultType });
-      }
+      });
+      form.addEventListener('change', function (event) {
+        var rangeControl = event.target.closest('[data-range-control]');
+        if (rangeControl) syncRangeControl(rangeControl, event.target);
+        writeStorage();
+      });
     });
+
+    Array.prototype.forEach.call(root.querySelectorAll('[data-add-load]'), function (button) {
+      button.addEventListener('click', function () { addCustomLoad(button); });
+    });
+
+    Array.prototype.forEach.call(root.querySelectorAll('[data-switch-scenario]'), function (button) {
+      button.addEventListener('click', returnToScenarioSelection);
+    });
+
+    Array.prototype.forEach.call(root.querySelectorAll('[data-edit-answers]'), function (button) {
+      button.addEventListener('click', editAnswers);
+    });
+
+    Array.prototype.forEach.call(root.querySelectorAll('[data-result-product-link], [data-result-secondary-link]'), function (link) {
+      link.addEventListener('click', function () {
+        if (link.href && link.getAttribute('href') !== '#') {
+          track('product_clicked', { scenario: state.scenario, productId: link.dataset.productId });
+        }
+      });
+    });
+
+    if (resultSupportLink) {
+      resultSupportLink.addEventListener('click', function () {
+        track('support_clicked', { scenario: state.scenario, resultType: state.result && state.result.resultType });
+      });
+    }
 
     if (resultReset) {
       resultReset.addEventListener('click', function () {
-        results.hidden = true;
         state.result = null;
         state.productId = null;
-        var activeForm = forms.find(function (form) { return form.dataset.scenarioForm === state.scenario; });
-        if (activeForm) showFormError(activeForm, '');
-        var scenarioGrid = root.querySelector('.sn-power-calculator__scenario-grid');
-        if (scenarioGrid) scenarioGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        returnToScenarioSelection();
       });
     }
 
@@ -520,6 +644,7 @@
       track: track
     };
 
+    initializeRangeControls(root);
     restoreStorage();
   }
 
