@@ -1,0 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: This template can also be updated by the theme editor.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-power-calculator",
+      "settings": {
+        "eyebrow": "SUNTNEEW POWER PLANNER",
+        "heading": "Power planning, with a clear next step.",
+        "intro": "Choose the system you are trying to power. We will calculate a practical product starting point, then show where a technical review still matters.",
+        "privacy_note": "Your selections stay in this page session. No personal information or free-text device names are sent by this planner.",
+        "scenario_eyebrow": "START WITH THE JOB",
+        "scenario_heading": "Choose Your Scenario",
+        "scenario_body": "The right first question depends on the job: daily RV energy, a vehicle start or essential home backup.",
+        "support_url": "/pages/request-for-quote",
+        "disclaimer": "Planning estimates use the values entered here and verified product reference data. Confirm model specifications, compatibility, protection, wiring and installation requirements before purchase or installation."
+      }
+    }
+  },
+  "order": ["main"]
+}

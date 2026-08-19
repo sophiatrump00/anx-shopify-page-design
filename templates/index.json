@@ -145,6 +145,17 @@
         "link_url": ""
       }
     },
+    "power_planner_entry": {
+      "type": "suntneew-calculator-entry",
+      "settings": {
+        "anchor_id": "power-planner-entry",
+        "eyebrow": "HELP ME CHOOSE",
+        "heading": "A clearer route to the right power system.",
+        "body": "Tell us whether you are powering an RV, starting a vehicle or backing up a home. Get a product starting point in a few steps.",
+        "button_label": "Open Power Planner",
+        "link": "shopify://pages/power-calculator"
+      }
+    },
     "rv_proof": {
       "type": "suntneew-rv-hotspots",
       "blocks": {
@@ -308,5 +319,5 @@
       }
     }
   },
-  "order": ["main_slideshow", "ways_to_power", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
+  "order": ["main_slideshow", "ways_to_power", "power_planner_entry", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
 }

@@ -1,0 +1,31 @@
+{{ 'suntneew-power-calculator.css' | asset_url | stylesheet_tag }}
+
+<section class="sn-power-calculator-entry" id="{{ section.settings.anchor_id | escape }}">
+  <div class="sn-power-calculator-entry__shell">
+    <div>
+      <p class="sn-power-calculator-entry__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <h2>{{ section.settings.heading | escape }}</h2>
+      <p>{{ section.settings.body | escape }}</p>
+    </div>
+    <div class="sn-power-calculator-entry__action">
+      <a class="sn-power-calculator-entry__button" href="{{ section.settings.link | default: '/pages/power-calculator' }}">{{ section.settings.button_label | escape }} <span aria-hidden="true">&#8594;</span></a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SuntNeew calculator entry",
+  "tag": "section",
+  "class": "shopify-section--suntneew-calculator-entry",
+  "settings": [
+    {"type":"text","id":"anchor_id","label":"Anchor ID","default":"power-planner-entry"},
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"HELP ME CHOOSE"},
+    {"type":"text","id":"heading","label":"Heading","default":"A clearer route to the right power system."},
+    {"type":"textarea","id":"body","label":"Body","default":"Tell us whether you are powering an RV, starting a vehicle or backing up a home. Get a product starting point in a few steps."},
+    {"type":"text","id":"button_label","label":"Button label","default":"Open Power Planner"},
+    {"type":"url","id":"link","label":"Calculator link"}
+  ],
+  "presets": [{"name":"SuntNeew calculator entry"}]
+}
+{% endschema %}
