@@ -10,69 +10,34 @@
   'use strict';
 
   var PLANNING_FACTOR = 0.85;
+  var MIN_LOAD_W = 1;
+  var MAX_LOAD_W = 1000000;
+  var MIN_LOAD_HOURS = 0.1;
+  var MAX_LOAD_HOURS = 24;
+  var MIN_RV_BACKUP_DAYS = 1;
+  var MAX_RV_BACKUP_DAYS = 30;
+  var MIN_JUMP_ENGINE_LITERS = 0.1;
+  var MIN_HOME_BACKUP_HOURS = 1;
+  var MAX_HOME_BACKUP_HOURS = 168;
 
-  var RV_PRODUCTS = [
-    { key: 'rv-g31', id: 'g31-100ah', model: 'Group 31 100Ah', capacityWh: 1280, outputW: 1280 },
-    { key: 'rv-230', id: '230ah', model: '230Ah', capacityWh: 2944, outputW: 2560 },
-    { key: 'rv-314', id: '314ah', model: '314Ah', capacityWh: 4019.2, outputW: 2010 }
+  var DEFAULT_CATALOG = [
+    { scenario: 'rv', key: 'rv-g31', id: 'g31-100ah', model: 'Group 31 100Ah', fit: 'group31', capacityWh: 1280, outputW: 1280, maxSeries: 4, maxParallel: 4 },
+    { scenario: 'rv', key: 'rv-g24', id: 'g24-100ah', model: 'Group 24 100Ah', fit: 'group24', capacityWh: 1280, outputW: 1280, maxSeries: 4, maxParallel: 4 },
+    { scenario: 'rv', key: 'rv-230', id: '230ah', model: '230Ah', fit: 'flexible', capacityWh: 2944, outputW: 2560, maxSeries: 4, maxParallel: 4 },
+    { scenario: 'rv', key: 'rv-314', id: '314ah', model: '314Ah', fit: 'flexible', capacityWh: 4019.2, outputW: 2010, maxSeries: 4, maxParallel: 4 },
+    { scenario: 'jump', key: 'jump-u23', id: 'u23-8000', model: 'U23', variant: '8,000mAh', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 0, display: 1, charging: 3, reserve: 5 } },
+    { scenario: 'jump', key: 'jump-a20', id: 'a20-8000', model: 'A20', variant: '8,000mAh variant', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 2, display: 3, charging: 3, reserve: 4 } },
+    { scenario: 'jump', key: 'jump-u32', id: 'u32-10000', model: 'U32', variant: '10,000mAh', voltage: '12v', gasoline: 6.5, diesel: 3.5, priority: { compact: 1, display: 0, charging: 2, reserve: 3 } },
+    { scenario: 'jump', key: 'jump-a20', id: 'a20-12000', model: 'A20', variant: '12,000mAh variant', voltage: '12v', gasoline: 7, diesel: 4, priority: { compact: 3, display: 3, charging: 1, reserve: 2 } },
+    { scenario: 'jump', key: 'jump-a3', id: 'a3-16000', model: 'A3', variant: '16,000mAh', voltage: '12v', gasoline: 8, diesel: 5, priority: { compact: 4, display: 2, charging: 0, reserve: 1 } },
+    { scenario: 'jump', key: 'jump-a20', id: 'a20-16000', model: 'A20', variant: '16,000mAh variant', voltage: '12v', gasoline: 8, diesel: 5, priority: { compact: 5, display: 3, charging: 1, reserve: 0 } },
+    { scenario: 'home', key: 'home-wl5a', id: 'wl5a', model: 'ENERGY STAR WL5A', architecture: 'low', capacityWh: 5120, maxUnits: 9, maxSystemOutputW: 12000 },
+    { scenario: 'home', key: 'home-wl10b', id: 'wl10b', model: 'ENERGY STAR WL10B', architecture: 'low', capacityWh: 10240, maxUnits: 9, maxSystemOutputW: 12000 },
+    { scenario: 'home', key: 'home-vh', id: 'vh-10', model: 'ENERGY STAR VH', variant: '10.24kWh configuration', architecture: 'high', capacityWh: 10240, maxUnits: 1, maxSystemOutputW: 12000 },
+    { scenario: 'home', key: 'home-vh', id: 'vh-15', model: 'ENERGY STAR VH', variant: '15.36kWh configuration', architecture: 'high', capacityWh: 15360, maxUnits: 1, maxSystemOutputW: 12000 }
   ];
 
-  var JUMP_PRODUCTS = [
-    {
-      key: 'jump-u23',
-      id: 'u23-8000',
-      model: 'U23',
-      variant: '8,000mAh',
-      gasoline: 6,
-      diesel: 3,
-      priority: { compact: 0, display: 1, charging: 3, reserve: 5 }
-    },
-    {
-      key: 'jump-a20',
-      id: 'a20-8000',
-      model: 'A20',
-      variant: '8,000mAh variant',
-      gasoline: 6,
-      diesel: 3,
-      priority: { compact: 2, display: 3, charging: 3, reserve: 4 }
-    },
-    {
-      key: 'jump-u32',
-      id: 'u32-10000',
-      model: 'U32',
-      variant: '10,000mAh',
-      gasoline: 6.5,
-      diesel: 3.5,
-      priority: { compact: 1, display: 0, charging: 2, reserve: 3 }
-    },
-    {
-      key: 'jump-a20',
-      id: 'a20-12000',
-      model: 'A20',
-      variant: '12,000mAh variant',
-      gasoline: 7,
-      diesel: 4,
-      priority: { compact: 3, display: 3, charging: 1, reserve: 2 }
-    },
-    {
-      key: 'jump-a3',
-      id: 'a3-16000',
-      model: 'A3',
-      variant: '16,000mAh',
-      gasoline: 8,
-      diesel: 5,
-      priority: { compact: 4, display: 2, charging: 0, reserve: 1 }
-    },
-    {
-      key: 'jump-a20',
-      id: 'a20-16000',
-      model: 'A20',
-      variant: '16,000mAh variant',
-      gasoline: 8,
-      diesel: 5,
-      priority: { compact: 5, display: 3, charging: 1, reserve: 0 }
-    }
-  ];
+  var catalog = buildCatalog(DEFAULT_CATALOG);
 
   function asNumber(value, fallback) {
     var parsed = Number(value);
@@ -84,13 +49,140 @@
     return Math.round((value + Number.EPSILON) * factor) / factor;
   }
 
-  function calculateLoads(loads) {
-    var activeLoads = Array.isArray(loads)
-      ? loads.filter(function (load) {
-          return load && load.selected !== false && asNumber(load.watts, 0) > 0 && asNumber(load.hours, 0) > 0;
-        })
-      : [];
+  function clonePriority(priority) {
+    return {
+      compact: asNumber(priority && priority.compact, 3),
+      display: asNumber(priority && priority.display, 3),
+      charging: asNumber(priority && priority.charging, 3),
+      reserve: asNumber(priority && priority.reserve, 3)
+    };
+  }
 
+  function normalizeRecord(record) {
+    if (!record || record.enabled === false) return null;
+
+    var scenario = record.scenario;
+    var common = {
+      scenario: scenario,
+      key: String(record.key || ''),
+      id: String(record.id || record.key || ''),
+      model: String(record.model || record.key || '')
+    };
+
+    if (!common.key || !common.id || !common.model) return null;
+
+    if (scenario === 'rv') {
+      var rvCapacityWh = asNumber(record.capacityWh, 0);
+      var rvOutputW = asNumber(record.outputW, 0);
+      var fit = record.fit === 'group24' || record.fit === 'group31' ? record.fit : 'flexible';
+      if (rvCapacityWh <= 0 || rvOutputW <= 0) return null;
+      return Object.assign(common, {
+        fit: fit,
+        capacityWh: rvCapacityWh,
+        outputW: rvOutputW,
+        maxSeries: Math.max(1, Math.floor(asNumber(record.maxSeries, 1))),
+        maxParallel: Math.max(1, Math.floor(asNumber(record.maxParallel, asNumber(record.maxUnits, 1))))
+      });
+    }
+
+    if (scenario === 'jump') {
+      var gasoline = asNumber(record.gasoline, 0);
+      var diesel = asNumber(record.diesel, 0);
+      if (gasoline <= 0 && diesel <= 0) return null;
+      return Object.assign(common, {
+        variant: String(record.variant || ''),
+        voltage: String(record.voltage || '12v'),
+        gasoline: gasoline,
+        diesel: diesel,
+        priority: clonePriority(record.priority)
+      });
+    }
+
+    if (scenario === 'home') {
+      var homeCapacityWh = asNumber(record.capacityWh, 0);
+      var architecture = record.architecture;
+      if (homeCapacityWh <= 0 || (architecture !== 'low' && architecture !== 'high')) return null;
+      return Object.assign(common, {
+        variant: String(record.variant || ''),
+        architecture: architecture,
+        capacityWh: homeCapacityWh,
+        maxUnits: Math.max(1, Math.floor(asNumber(record.maxUnits, 1))),
+        maxSystemOutputW: Math.max(1, asNumber(record.maxSystemOutputW, 12000))
+      });
+    }
+
+    return null;
+  }
+
+  function flattenRecords(records) {
+    if (Array.isArray(records)) return records;
+    if (!records || typeof records !== 'object') return [];
+    return ['rv', 'jump', 'home'].reduce(function (all, scenario) {
+      var scenarioRecords = Array.isArray(records[scenario]) ? records[scenario] : [];
+      return all.concat(scenarioRecords.map(function (record) {
+        return Object.assign({ scenario: scenario }, record);
+      }));
+    }, []);
+  }
+
+  function buildCatalog(records) {
+    var next = { rv: [], jump: [], home: [] };
+    var positions = { rv: {}, jump: {}, home: {} };
+
+    flattenRecords(records).forEach(function (record) {
+      var normalized = normalizeRecord(record);
+      if (!normalized) return;
+      var identity = normalized.id;
+      var existingIndex = positions[normalized.scenario][identity];
+      if (existingIndex !== undefined) {
+        next[normalized.scenario][existingIndex] = normalized;
+      } else {
+        positions[normalized.scenario][identity] = next[normalized.scenario].length;
+        next[normalized.scenario].push(normalized);
+      }
+    });
+
+    return next;
+  }
+
+  function configureCatalog(records) {
+    var configured = buildCatalog(records);
+    var defaults = buildCatalog(DEFAULT_CATALOG);
+    ['rv', 'jump', 'home'].forEach(function (scenario) {
+      catalog[scenario] = configured[scenario].length ? configured[scenario] : defaults[scenario];
+    });
+    return getCatalog();
+  }
+
+  function resetCatalog() {
+    catalog = buildCatalog(DEFAULT_CATALOG);
+    return getCatalog();
+  }
+
+  function getCatalog() {
+    return ['rv', 'jump', 'home'].reduce(function (copy, scenario) {
+      copy[scenario] = catalog[scenario].map(function (record) {
+        var cloned = Object.assign({}, record);
+        if (record.priority) cloned.priority = clonePriority(record.priority);
+        return cloned;
+      });
+      return copy;
+    }, {});
+  }
+
+  function selectedLoads(loads) {
+    return Array.isArray(loads)
+      ? loads.filter(function (load) { return load && load.selected !== false; })
+      : [];
+  }
+
+  function calculateLoads(loads) {
+    var activeLoads = selectedLoads(loads);
+    var valid = activeLoads.every(function (load) {
+      var watts = asNumber(load.watts, 0);
+      var hours = asNumber(load.hours, 0);
+      return watts >= MIN_LOAD_W && watts <= MAX_LOAD_W && hours >= MIN_LOAD_HOURS && hours <= MAX_LOAD_HOURS;
+    });
     var dailyWh = activeLoads.reduce(function (total, load) {
       return total + asNumber(load.watts, 0) * asNumber(load.hours, 0);
     }, 0);
@@ -102,9 +194,32 @@
     }, 0);
 
     return {
+      valid: valid,
       activeCount: activeLoads.length,
       dailyWh: round(dailyWh, 1),
       peakW: round(Math.max(largestLoadW, simultaneousW), 1)
+    };
+  }
+
+  function loadMetricsWithout(loads, excludedIndex) {
+    var dailyWh = 0;
+    var largestLoadW = 0;
+    var simultaneousW = 0;
+
+    (Array.isArray(loads) ? loads : []).forEach(function (load, index) {
+      if (!load || index === excludedIndex || load.selected === false) return;
+      var watts = Math.max(0, asNumber(load.watts, 0));
+      var hours = Math.max(0, asNumber(load.hours, 0));
+      dailyWh += watts * hours;
+      largestLoadW = Math.max(largestLoadW, watts);
+      if (load.simultaneous) simultaneousW += watts;
+    });
+
+    return {
+      dailyWh: dailyWh,
+      largestLoadW: largestLoadW,
+      simultaneousW: simultaneousW,
+      peakW: Math.max(largestLoadW, simultaneousW)
     };
   }
 
@@ -123,34 +238,250 @@
     return 'over_4_kw';
   }
 
-  function invalidResult(scenario, reason) {
-    return {
+  function invalidResult(scenario, reason, details) {
+    return Object.assign({
       status: 'invalid',
       resultType: 'invalid',
       scenario: scenario,
       reason: reason
+    }, details || {});
+  }
+
+  function supportResult(scenario, reason) {
+    return {
+      status: 'support',
+      resultType: 'catalog_review',
+      scenario: scenario,
+      reason: reason,
+      title: 'Product data needs a technical review.',
+      guidance: 'The calculator could not find a complete verified catalog record for this scenario.'
     };
   }
 
-  function supportResult(scenario, reason, metrics) {
-    return Object.assign(
-      {
-        status: 'support',
-        resultType: 'technical_review',
-        scenario: scenario,
-        reason: reason
+  function rvProductsForFit(fit, seriesCount) {
+    if (fit === 'group24' || fit === 'group31') {
+      return catalog.rv.filter(function (product) {
+        return product.fit === fit && product.maxSeries >= seriesCount;
+      });
+    }
+    return catalog.rv.filter(function (product) { return product.maxSeries >= seriesCount; });
+  }
+
+  function homeProductsForArchitecture(architecture) {
+    if (architecture === 'low' || architecture === 'high') {
+      return catalog.home.filter(function (product) { return product.architecture === architecture; });
+    }
+    return catalog.home.slice();
+  }
+
+  function rvCapability(product, seriesCount) {
+    return {
+      record: product,
+      capacityWh: product.capacityWh * seriesCount * product.maxParallel,
+      outputW: product.outputW * seriesCount * product.maxParallel
+    };
+  }
+
+  function homeCapability(product) {
+    return {
+      record: product,
+      capacityWh: product.capacityWh * product.maxUnits,
+      outputW: product.maxSystemOutputW
+    };
+  }
+
+  function getLoadInputLimits(loads, capabilities, duration, durationKind) {
+    var safeDuration = Math.max(durationKind === 'rv' ? MIN_RV_BACKUP_DAYS : MIN_HOME_BACKUP_HOURS, asNumber(duration, 0));
+    var allLoads = Array.isArray(loads) ? loads : [];
+    var loadLimits = allLoads.map(function (load, index) {
+      var other = loadMetricsWithout(allLoads, index);
+      var hours = Math.max(MIN_LOAD_HOURS, asNumber(load && load.hours, MIN_LOAD_HOURS));
+      var watts = Math.max(MIN_LOAD_W, asNumber(load && load.watts, MIN_LOAD_W));
+      var simultaneous = Boolean(load && load.simultaneous);
+      var maxWatts = 0;
+      var maxHours = 0;
+
+      capabilities.forEach(function (capability) {
+        if (other.peakW > capability.outputW) return;
+        var dailyLimit = durationKind === 'rv'
+          ? (capability.capacityWh * PLANNING_FACTOR) / safeDuration
+          : (capability.capacityWh * PLANNING_FACTOR * 24) / safeDuration;
+        var energyWatts = (dailyLimit - other.dailyWh) / hours;
+        var outputWatts = simultaneous ? capability.outputW - other.simultaneousW : capability.outputW;
+        var candidateMaxWatts = Math.min(energyWatts, outputWatts, MAX_LOAD_W);
+        if (candidateMaxWatts >= MIN_LOAD_W) maxWatts = Math.max(maxWatts, candidateMaxWatts);
+
+        var peakWithCurrentWatts = Math.max(
+          other.largestLoadW,
+          simultaneous ? other.simultaneousW + watts : watts,
+          other.simultaneousW
+        );
+        if (peakWithCurrentWatts > capability.outputW) return;
+        var candidateMaxHours = (dailyLimit - other.dailyWh) / watts;
+        if (candidateMaxHours >= MIN_LOAD_HOURS) maxHours = Math.max(maxHours, Math.min(MAX_LOAD_HOURS, candidateMaxHours));
+      });
+
+      return {
+        minWatts: MIN_LOAD_W,
+        maxWatts: round(Math.max(MIN_LOAD_W, maxWatts), 2),
+        minHours: MIN_LOAD_HOURS,
+        maxHours: round(Math.max(MIN_LOAD_HOURS, maxHours), 2)
+      };
+    });
+
+    return loadLimits;
+  }
+
+  function maximumDuration(loads, capabilities, durationKind) {
+    var metrics = calculateLoads(loads);
+    if (!metrics.activeCount || metrics.dailyWh <= 0) {
+      return durationKind === 'rv' ? MAX_RV_BACKUP_DAYS : MAX_HOME_BACKUP_HOURS;
+    }
+
+    var maximum = 0;
+    capabilities.forEach(function (capability) {
+      if (metrics.peakW > capability.outputW) return;
+      var candidate = durationKind === 'rv'
+        ? (capability.capacityWh * PLANNING_FACTOR) / metrics.dailyWh
+        : (capability.capacityWh * PLANNING_FACTOR * 24) / metrics.dailyWh;
+      maximum = Math.max(maximum, candidate);
+    });
+
+    var configuredMaximum = durationKind === 'rv' ? MAX_RV_BACKUP_DAYS : MAX_HOME_BACKUP_HOURS;
+    return round(Math.min(configuredMaximum, maximum), 2);
+  }
+
+  function summarizeCapabilities(capabilities) {
+    return capabilities.reduce(function (summary, capability) {
+      summary.maxStoredEnergyWh = Math.max(summary.maxStoredEnergyWh, capability.capacityWh);
+      summary.maxPeakW = Math.max(summary.maxPeakW, capability.outputW);
+      return summary;
+    }, { maxStoredEnergyWh: 0, maxPeakW: 0 });
+  }
+
+  function getRvInputLimits(input) {
+    var fit = input && input.fit ? input.fit : 'flexible';
+    var seriesCount = Math.max(1, Math.min(4, Math.floor(asNumber(input && input.seriesCount, 1))));
+    var products = rvProductsForFit(fit, seriesCount);
+    var capabilities = products.map(function (product) { return rvCapability(product, seriesCount); });
+    var backupDays = asNumber(input && input.backupDays, MIN_RV_BACKUP_DAYS);
+    var loads = input && input.loads;
+    var summary = summarizeCapabilities(capabilities);
+
+    return Object.assign(summary, {
+      available: capabilities.length > 0,
+      fit: fit,
+      seriesCount: seriesCount,
+      nominalSystemVoltage: round(12.8 * seriesCount, 1),
+      maximumBatteryCount: products.reduce(function (maximum, product) {
+        return Math.max(maximum, seriesCount * product.maxParallel);
+      }, 0),
+      maximumParallelStrings: products.reduce(function (maximum, product) {
+        return Math.max(maximum, product.maxParallel);
+      }, 0),
+      availableFits: {
+        flexible: catalog.rv.some(function (product) { return product.maxSeries >= seriesCount; }),
+        group24: catalog.rv.some(function (product) { return product.fit === 'group24' && product.maxSeries >= seriesCount; }),
+        group31: catalog.rv.some(function (product) { return product.fit === 'group31' && product.maxSeries >= seriesCount; })
       },
-      metrics || {}
-    );
+      availableSeriesCounts: [1, 2, 3, 4].filter(function (count) {
+        return catalog.rv.some(function (product) {
+          var fitMatches = fit === 'flexible' || product.fit === fit;
+          return fitMatches && product.maxSeries >= count;
+        });
+      }),
+      minBackupDays: MIN_RV_BACKUP_DAYS,
+      maxBackupDays: Math.max(MIN_RV_BACKUP_DAYS, maximumDuration(loads, capabilities, 'rv')),
+      loadLimits: getLoadInputLimits(loads, capabilities, backupDays, 'rv')
+    });
+  }
+
+  function environmentFactor(environment) {
+    return environment === 'demanding' ? 1.15 : environment === 'cold' ? 1.08 : 1;
+  }
+
+  function getJumpInputLimits(input) {
+    var fuel = input && input.fuel === 'diesel' ? 'diesel' : 'gasoline';
+    var voltage = String(input && input.voltage ? input.voltage : '12v');
+    var factor = environmentFactor(input && input.environment);
+    var voltageProducts = catalog.jump.filter(function (product) { return product.voltage === voltage; });
+    var maxCoverageLiters = voltageProducts.reduce(function (maximum, product) {
+      return Math.max(maximum, asNumber(product[fuel], 0));
+    }, 0);
+    var voltages = catalog.jump.reduce(function (available, product) {
+      if (available.indexOf(product.voltage) === -1) available.push(product.voltage);
+      return available;
+    }, []);
+
+    return {
+      available: maxCoverageLiters > 0,
+      availableVoltages: voltages,
+      fuel: fuel,
+      voltage: voltage,
+      environmentFactor: factor,
+      minEngineLiters: MIN_JUMP_ENGINE_LITERS,
+      maxEngineLiters: round(maxCoverageLiters / factor, 1),
+      maxCoverageLiters: maxCoverageLiters
+    };
+  }
+
+  function getHomeInputLimits(input) {
+    var architecture = input && input.architecture ? input.architecture : 'auto';
+    if (architecture !== 'low' && architecture !== 'high') architecture = 'auto';
+    var products = homeProductsForArchitecture(architecture);
+    var capabilities = products.map(homeCapability);
+    var backupHours = asNumber(input && input.backupHours, MIN_HOME_BACKUP_HOURS);
+    var loads = input && input.loads;
+    var summary = summarizeCapabilities(capabilities);
+
+    return Object.assign(summary, {
+      available: capabilities.length > 0,
+      architecture: architecture,
+      availableArchitectures: {
+        auto: catalog.home.length > 0,
+        low: catalog.home.some(function (product) { return product.architecture === 'low'; }),
+        high: catalog.home.some(function (product) { return product.architecture === 'high'; })
+      },
+      minBackupHours: MIN_HOME_BACKUP_HOURS,
+      maxBackupHours: Math.max(MIN_HOME_BACKUP_HOURS, maximumDuration(loads, capabilities, 'home')),
+      loadLimits: getLoadInputLimits(loads, capabilities, backupHours, 'home')
+    });
+  }
+
+  function rankRvProducts(products, requiredWh, peakW, seriesCount) {
+    return products.map(function (product) {
+      var energyParallelCount = Math.ceil(requiredWh / (product.capacityWh * seriesCount));
+      var outputParallelCount = Math.ceil(peakW / (product.outputW * seriesCount));
+      var parallelCount = Math.max(1, energyParallelCount, outputParallelCount);
+      var quantity = seriesCount * parallelCount;
+      return Object.assign({}, product, {
+        seriesCount: seriesCount,
+        parallelCount: parallelCount,
+        quantity: quantity,
+        combinedWh: round(product.capacityWh * quantity, 1),
+        combinedOutputW: round(product.outputW * quantity, 1),
+        overageWh: round(product.capacityWh * quantity - requiredWh, 1)
+      });
+    }).filter(function (product) {
+      return product.seriesCount <= product.maxSeries && product.parallelCount <= product.maxParallel;
+    }).sort(function (a, b) {
+      return a.quantity - b.quantity || a.overageWh - b.overageWh || b.combinedOutputW - a.combinedOutputW;
+    });
   }
 
   function recommendRv(input) {
     var loadMetrics = calculateLoads(input && input.loads);
     var backupDays = asNumber(input && input.backupDays, 0);
-    var fit = (input && input.fit) || 'flexible';
+    var fit = input && input.fit ? input.fit : 'flexible';
+    var seriesCount = Math.max(1, Math.min(4, Math.floor(asNumber(input && input.seriesCount, 1))));
+    var products = rvProductsForFit(fit, seriesCount);
 
+    if (!products.length) return supportResult('rv', 'No verified RV product is configured for the selected footprint.');
     if (!loadMetrics.activeCount) return invalidResult('rv', 'Select at least one appliance.');
-    if (backupDays <= 0 || backupDays > 7) return invalidResult('rv', 'Choose a backup period from 1 to 7 days.');
+    if (!loadMetrics.valid) return invalidResult('rv', 'Use positive load values and run times from 0.1 to 24 hours.');
+    if (backupDays < MIN_RV_BACKUP_DAYS || backupDays > MAX_RV_BACKUP_DAYS) {
+      return invalidResult('rv', 'Choose a backup period within the available range.');
+    }
 
     var requiredWh = round((loadMetrics.dailyWh * backupDays) / PLANNING_FACTOR, 1);
     var metrics = {
@@ -160,45 +491,15 @@
       energyBand: energyBand(loadMetrics.dailyWh),
       peakBand: peakBand(loadMetrics.peakW)
     };
-
-    if (requiredWh > 24000 || loadMetrics.peakW > 10000) {
-      return supportResult('rv', 'This load is beyond the calculator\'s standard RV configuration range.', metrics);
-    }
-
-    var products = RV_PRODUCTS.slice();
-    if (fit === 'group24') {
-      products = [{ key: 'rv-g24', id: 'g24-100ah', model: 'Group 24 100Ah', capacityWh: 1280, outputW: 1280 }];
-    } else if (fit === 'group31') {
-      products = [{ key: 'rv-g31', id: 'g31-100ah', model: 'Group 31 100Ah', capacityWh: 1280, outputW: 1280 }];
-    }
-
-    var ranked = products
-      .map(function (product) {
-        var energyQuantity = Math.ceil(requiredWh / product.capacityWh);
-        var outputQuantity = Math.ceil(loadMetrics.peakW / product.outputW);
-        var quantity = Math.max(1, energyQuantity, outputQuantity);
-        return Object.assign({}, product, {
-          quantity: quantity,
-          combinedWh: round(product.capacityWh * quantity, 1),
-          overageWh: round(product.capacityWh * quantity - requiredWh, 1)
-        });
-      })
-      .filter(function (product) {
-        return product.quantity <= 6;
-      })
-      .sort(function (a, b) {
-        return a.quantity - b.quantity || a.overageWh - b.overageWh || b.outputW - a.outputW;
-      });
-
+    var ranked = rankRvProducts(products, requiredWh, loadMetrics.peakW, seriesCount);
     if (!ranked.length) {
-      return supportResult('rv', 'The estimated battery count needs a custom system review.', metrics);
+      return invalidResult('rv', 'One or more values are above the verified range. Adjust the highlighted inputs.', Object.assign(metrics, {
+        limits: getRvInputLimits(input)
+      }));
     }
 
     var match = ranked[0];
-    var alternateKey = null;
-    if (match.key === 'rv-g31' && fit === 'flexible') alternateKey = 'rv-g24';
-    if (match.key === 'rv-g24' && fit === 'flexible') alternateKey = 'rv-g31';
-
+    var alternate = ranked.find(function (candidate) { return candidate.key !== match.key; });
     return Object.assign(metrics, {
       status: 'match',
       resultType: match.quantity > 1 ? 'multi_battery_starting_point' : 'product_match',
@@ -207,63 +508,56 @@
       productId: match.id,
       model: match.model,
       quantity: match.quantity,
+      seriesCount: match.seriesCount,
+      parallelCount: match.parallelCount,
+      nominalSystemVoltage: round(12.8 * match.seriesCount, 1),
       unitCapacityWh: match.capacityWh,
       unitOutputW: match.outputW,
       combinedWh: match.combinedWh,
-      alternateKey: alternateKey,
-      needsSystemReview: match.quantity > 1
+      alternateKey: alternate ? alternate.key : null,
+      alternateId: alternate ? alternate.id : null,
+      alternateModel: alternate ? alternate.model : null,
+      needsSystemReview: match.quantity > 1,
+      productCaveat: match.quantity > 1
+        ? 'Use only identical, supported batteries in balanced series/parallel strings. Confirm battery state of charge, busbars, conductors, protection, charging and inverter voltage before installation.'
+        : null
     });
   }
 
   function recommendJump(input) {
-    var voltage = input && input.voltage;
+    var voltage = String(input && input.voltage ? input.voltage : '');
     var fuel = input && input.fuel;
     var engineLiters = asNumber(input && input.engineLiters, 0);
-    var environment = (input && input.environment) || 'standard';
-    var priority = (input && input.priority) || 'compact';
+    var environment = input && input.environment ? input.environment : 'standard';
+    var priority = input && input.priority ? input.priority : 'compact';
+    var limits = getJumpInputLimits(input);
 
     if (fuel !== 'gasoline' && fuel !== 'diesel') return invalidResult('jump', 'Choose gasoline or diesel.');
-    if (engineLiters <= 0 || engineLiters > 12) return invalidResult('jump', 'Enter a valid engine displacement.');
-
-    var environmentFactor = environment === 'demanding' ? 1.15 : environment === 'cold' ? 1.08 : 1;
-    var planningLiters = round(engineLiters * environmentFactor, 2);
-    var metrics = {
-      engineLiters: engineLiters,
-      planningLiters: planningLiters,
-      fuel: fuel,
-      environment: environment,
-      peakBand: 'vehicle_starting',
-      energyBand: 'not_applicable'
-    };
-
-    if (voltage !== '12v') {
-      return supportResult('jump', 'SuntNeew jump starter matches in this planner are limited to verified 12V vehicle use.', metrics);
+    if (!limits.available) {
+      return invalidResult('jump', 'Choose a vehicle voltage with a verified SuntNeew product range.', { limits: limits });
+    }
+    if (engineLiters < MIN_JUMP_ENGINE_LITERS || engineLiters > limits.maxEngineLiters) {
+      return invalidResult('jump', 'Enter an engine size within the verified range shown above.', { limits: limits });
     }
 
-    var candidates = JUMP_PRODUCTS
-      .filter(function (product) {
-        return product[fuel] >= planningLiters;
-      })
-      .map(function (product) {
-        return Object.assign({}, product, {
-          score: asNumber(product.priority[priority], 3),
-          coverageOverage: round(product[fuel] - planningLiters, 2)
-        });
-      })
-      .sort(function (a, b) {
-        return a.score - b.score || a.coverageOverage - b.coverageOverage;
+    var factor = environmentFactor(environment);
+    var planningLiters = round(engineLiters * factor, 2);
+    var candidates = catalog.jump.filter(function (product) {
+      return product.voltage === voltage && product[fuel] >= planningLiters;
+    }).map(function (product) {
+      return Object.assign({}, product, {
+        score: asNumber(product.priority[priority], 3),
+        coverageOverage: round(product[fuel] - planningLiters, 2)
       });
-
-    if (!candidates.length) {
-      return supportResult('jump', 'The vehicle or operating conditions fall outside the verified standard matching table.', metrics);
-    }
-
-    var match = candidates[0];
-    var alternate = candidates.find(function (candidate) {
-      return candidate.id !== match.id;
+    }).sort(function (a, b) {
+      return a.score - b.score || a.coverageOverage - b.coverageOverage;
     });
 
-    return Object.assign(metrics, {
+    if (!candidates.length) return supportResult('jump', 'The configured starting coverage table is incomplete.');
+
+    var match = candidates[0];
+    var alternate = candidates.find(function (candidate) { return candidate.id !== match.id; });
+    return {
       status: 'match',
       resultType: 'product_match',
       scenario: 'jump',
@@ -272,20 +566,48 @@
       model: match.model,
       variant: match.variant,
       coverageLiters: match[fuel],
+      engineLiters: engineLiters,
+      planningLiters: planningLiters,
+      fuel: fuel,
+      voltage: voltage,
+      environment: environment,
+      peakBand: 'vehicle_starting',
+      energyBand: 'not_applicable',
       alternateKey: alternate ? alternate.key : null,
       alternateId: alternate ? alternate.id : null,
       alternateModel: alternate ? alternate.model : null,
       alternateVariant: alternate ? alternate.variant : null
+    };
+  }
+
+  function rankHomeProducts(products, requiredWh, peakW) {
+    return products.map(function (product) {
+      var quantity = Math.max(1, Math.ceil(requiredWh / product.capacityWh));
+      return Object.assign({}, product, {
+        quantity: quantity,
+        combinedWh: round(product.capacityWh * quantity, 1),
+        overageWh: round(product.capacityWh * quantity - requiredWh, 1)
+      });
+    }).filter(function (product) {
+      return product.quantity <= product.maxUnits && peakW <= product.maxSystemOutputW;
+    }).sort(function (a, b) {
+      return a.quantity - b.quantity || a.overageWh - b.overageWh || b.maxSystemOutputW - a.maxSystemOutputW;
     });
   }
 
   function recommendHome(input) {
     var loadMetrics = calculateLoads(input && input.loads);
     var backupHours = asNumber(input && input.backupHours, 0);
-    var architecture = input && input.architecture;
+    var architecture = input && input.architecture ? input.architecture : 'auto';
+    if (architecture !== 'low' && architecture !== 'high') architecture = 'auto';
+    var products = homeProductsForArchitecture(architecture);
 
+    if (!products.length) return supportResult('home', 'No verified home battery is configured for the selected architecture.');
     if (!loadMetrics.activeCount) return invalidResult('home', 'Select at least one essential load.');
-    if (backupHours <= 0 || backupHours > 72) return invalidResult('home', 'Choose a backup window from 4 to 72 hours.');
+    if (!loadMetrics.valid) return invalidResult('home', 'Use positive load values and run times from 0.1 to 24 hours.');
+    if (backupHours < MIN_HOME_BACKUP_HOURS || backupHours > MAX_HOME_BACKUP_HOURS) {
+      return invalidResult('home', 'Choose a backup window within the available range.');
+    }
 
     var requiredWh = round((loadMetrics.dailyWh * (backupHours / 24)) / PLANNING_FACTOR, 1);
     var metrics = {
@@ -295,78 +617,59 @@
       energyBand: energyBand(requiredWh),
       peakBand: peakBand(loadMetrics.peakW)
     };
-
-    if (architecture !== 'low' && architecture !== 'high') {
-      return supportResult('home', 'Battery voltage architecture must be confirmed with the inverter and installer before choosing a model.', metrics);
+    var ranked = rankHomeProducts(products, requiredWh, loadMetrics.peakW);
+    if (!ranked.length) {
+      return invalidResult('home', 'One or more values are above the verified range. Adjust the highlighted inputs.', Object.assign(metrics, {
+        limits: getHomeInputLimits(input)
+      }));
     }
 
-    if (loadMetrics.peakW > 12000) {
-      return supportResult('home', 'The simultaneous peak load needs an engineered inverter and battery review.', metrics);
-    }
-
-    if (architecture === 'low') {
-      if (requiredWh <= 5120) {
-        return Object.assign(metrics, {
-          status: 'match',
-          resultType: 'product_match',
-          scenario: 'home',
-          productKey: 'home-wl5a',
-          productId: 'wl5a',
-          model: 'ENERGY STAR WL5A',
-          nominalWh: 5120,
-          architecture: 'low_voltage'
-        });
-      }
-      if (requiredWh <= 10240) {
-        return Object.assign(metrics, {
-          status: 'match',
-          resultType: 'product_match',
-          scenario: 'home',
-          productKey: 'home-wl10b',
-          productId: 'wl10b',
-          model: 'ENERGY STAR WL10B',
-          nominalWh: 10240,
-          architecture: 'low_voltage'
-        });
-      }
-      return supportResult('home', 'The estimated low-voltage capacity is above one standard WL10B starting point.', metrics);
-    }
-
-    if (requiredWh <= 10240) {
-      return Object.assign(metrics, {
-        status: 'match',
-        resultType: 'product_match',
-        scenario: 'home',
-        productKey: 'home-vh',
-        productId: 'vh-10',
-        model: 'ENERGY STAR VH',
-        variant: '10.24kWh configuration',
-        nominalWh: 10240,
-        architecture: 'high_voltage'
-      });
-    }
-    if (requiredWh <= 15360) {
-      return Object.assign(metrics, {
-        status: 'match',
-        resultType: 'product_match',
-        scenario: 'home',
-        productKey: 'home-vh',
-        productId: 'vh-15',
-        model: 'ENERGY STAR VH',
-        variant: '15.36kWh configuration',
-        nominalWh: 15360,
-        architecture: 'high_voltage'
-      });
-    }
-
-    return supportResult('home', 'The estimated high-voltage capacity needs a project-specific system design.', metrics);
+    var match = ranked[0];
+    var alternate = ranked.find(function (candidate) { return candidate.key !== match.key || candidate.id !== match.id; });
+    return Object.assign(metrics, {
+      status: 'match',
+      resultType: match.quantity > 1 ? 'multi_battery_starting_point' : 'product_match',
+      scenario: 'home',
+      productKey: match.key,
+      productId: match.id,
+      model: match.model,
+      variant: match.variant,
+      nominalWh: match.capacityWh,
+      combinedWh: match.combinedWh,
+      quantity: match.quantity,
+      architecture: match.architecture === 'high' ? 'high_voltage' : 'low_voltage',
+      alternateKey: alternate ? alternate.key : null,
+      alternateId: alternate ? alternate.id : null,
+      alternateModel: alternate ? alternate.model : null,
+      needsSystemReview: match.quantity > 1,
+      productCaveat: match.quantity > 1
+        ? 'This quantity is a capacity starting point. Confirm the documented connection topology, inverter compatibility, current sharing, conductors, protection and communications before installation.'
+        : null
+    });
   }
 
   return {
     PLANNING_FACTOR: PLANNING_FACTOR,
+    limits: {
+      minLoadW: MIN_LOAD_W,
+      maxLoadW: MAX_LOAD_W,
+      minLoadHours: MIN_LOAD_HOURS,
+      maxLoadHours: MAX_LOAD_HOURS,
+      minRvBackupDays: MIN_RV_BACKUP_DAYS,
+      maxRvBackupDays: MAX_RV_BACKUP_DAYS,
+      minJumpEngineLiters: MIN_JUMP_ENGINE_LITERS,
+      minHomeBackupHours: MIN_HOME_BACKUP_HOURS,
+      maxHomeBackupHours: MAX_HOME_BACKUP_HOURS
+    },
+    configureCatalog: configureCatalog,
+    resetCatalog: resetCatalog,
+    getCatalog: getCatalog,
     calculateLoads: calculateLoads,
     energyBand: energyBand,
     peakBand: peakBand,
+    getRvInputLimits: getRvInputLimits,
+    getJumpInputLimits: getJumpInputLimits,
+    getHomeInputLimits: getHomeInputLimits,
     recommendRv: recommendRv,
     recommendJump: recommendJump,
     recommendHome: recommendHome

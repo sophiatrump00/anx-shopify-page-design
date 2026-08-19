@@ -7,7 +7,7 @@
 
     if (!root || !core) return;
 
-    var storageKey = 'suntneew-power-planner-v3';
+    var storageKey = 'suntneew-power-planner-v4';
     var customLoadSequence = 0;
     var state = {
       scenario: null,
@@ -29,25 +29,59 @@
     var resultMetrics = root.querySelector('[data-result-metrics]');
     var resultProduct = root.querySelector('[data-result-product]');
     var resultProductImage = root.querySelector('[data-result-image]');
+    var resultProductLabel = root.querySelector('[data-result-product-label]');
     var resultProductTitle = root.querySelector('[data-result-product-title]');
     var resultProductSpecs = root.querySelector('[data-result-product-specs]');
     var resultProductCopy = root.querySelector('[data-result-product-copy]');
+    var resultProductNote = root.querySelector('[data-result-product-note]');
     var resultProductLink = root.querySelector('[data-result-product-link]');
     var resultSecondaryLink = root.querySelector('[data-result-secondary-link]');
     var resultSupportActions = root.querySelector('[data-result-support-actions]');
     var resultSupportLink = root.querySelector('[data-result-support-link]');
     var resultReset = root.querySelector('[data-result-reset]');
     var productRecords = {};
+    var productRecordsById = {};
 
     Array.prototype.forEach.call(root.querySelectorAll('[data-product-record]'), function (record) {
-      productRecords[record.dataset.productKey] = {
+      var presentation = {
         id: record.dataset.productId,
         model: record.dataset.productModel,
+        variant: record.dataset.productVariant,
         url: record.dataset.productUrl,
         image: record.dataset.productImage,
         description: record.dataset.productDescription
       };
+      productRecords[record.dataset.productKey] = productRecords[record.dataset.productKey] || [];
+      productRecords[record.dataset.productKey].push(presentation);
+      if (presentation.id) productRecordsById[presentation.id] = presentation;
     });
+
+    core.configureCatalog(Array.prototype.map.call(root.querySelectorAll('[data-product-record]'), function (record) {
+      return {
+        scenario: record.dataset.productScenario,
+        key: record.dataset.productKey,
+        id: record.dataset.productId,
+        model: record.dataset.productModel,
+        variant: record.dataset.productVariant,
+        fit: record.dataset.productFit,
+        capacityWh: record.dataset.productCapacityWh,
+        outputW: record.dataset.productOutputW,
+        maxSeries: record.dataset.productMaxSeries,
+        maxParallel: record.dataset.productMaxParallel,
+        maxUnits: record.dataset.productMaxUnits,
+        voltage: record.dataset.productVoltage,
+        gasoline: record.dataset.productGasoline,
+        diesel: record.dataset.productDiesel,
+        priority: {
+          compact: record.dataset.productPriorityCompact,
+          display: record.dataset.productPriorityDisplay,
+          charging: record.dataset.productPriorityCharging,
+          reserve: record.dataset.productPriorityReserve
+        },
+        architecture: record.dataset.productArchitecture,
+        maxSystemOutputW: record.dataset.productMaxSystemOutputW
+      };
+    }));
 
     function safeStorage() {
       try {
@@ -78,7 +112,16 @@
       range.style.setProperty('--snpc-range-progress', Math.max(0, Math.min(100, progress)) + '%');
     }
 
-    function syncRangeControl(control, source) {
+    function snapDown(value, step, minimum) {
+      var safeStep = Number(step);
+      var safeMinimum = Number(minimum);
+      if (!Number.isFinite(value)) return safeMinimum;
+      if (!Number.isFinite(safeStep) || safeStep <= 0) return value;
+      var snapped = Math.floor((value - safeMinimum + 0.0000001) / safeStep) * safeStep + safeMinimum;
+      return Number(snapped.toFixed(6));
+    }
+
+    function syncRangeControl(control, source, commit) {
       if (!control) return;
       var range = control.querySelector('[data-range-input]');
       var number = control.querySelector('[data-range-number]');
@@ -89,6 +132,14 @@
       } else {
         var value = Number(number.value);
         if (Number.isFinite(value)) {
+          if (commit) {
+            var numberMin = Number(number.min);
+            var numberMax = Number(number.max);
+            if (Number.isFinite(numberMin)) value = Math.max(numberMin, value);
+            if (Number.isFinite(numberMax)) value = Math.min(numberMax, value);
+            value = snapDown(value, number.step, numberMin);
+            number.value = value;
+          }
           var min = Number(range.min);
           var max = Number(range.max);
           range.value = Math.max(min, Math.min(max, value));
@@ -98,9 +149,33 @@
       updateRangeVisual(range);
     }
 
-    function initializeRangeControls(scope) {
+    function setRangeControlMax(control, maximum, suffix) {
+      if (!control || !Number.isFinite(Number(maximum))) return false;
+      var range = control.querySelector('[data-range-input]');
+      var number = control.querySelector('[data-range-number]');
+      if (!range || !number) return false;
+
+      var minimum = Number(number.min);
+      var step = Number(number.step);
+      var safeMaximum = Math.max(Number.isFinite(minimum) ? minimum : 0, snapDown(Number(maximum), step, minimum));
+      var previousValue = Number(number.value);
+      if (!range.dataset.baseMax) range.dataset.baseMax = range.max;
+      number.max = String(safeMaximum);
+      range.min = Number.isFinite(minimum) ? String(minimum) : range.min;
+      range.max = String(Math.max(Number(range.min), Math.min(safeMaximum, Number(range.dataset.baseMax))));
+      if (Number.isFinite(Number(number.value)) && Number(number.value) > safeMaximum) number.value = safeMaximum;
+      if (Number.isFinite(Number(range.value)) && Number(range.value) > Number(range.max)) range.value = range.max;
+
+      var scale = control.querySelector('.sn-power-calculator__range-scale');
+      var lastScale = scale && scale.lastElementChild;
+      if (lastScale && suffix) lastScale.textContent = String(range.max) + suffix;
+      syncRangeControl(control, number, true);
+      return Number.isFinite(previousValue) && previousValue > safeMaximum;
+    }
+
+    function initializeRangeControls(scope, commit) {
       Array.prototype.forEach.call((scope || root).querySelectorAll('[data-range-control]'), function (control) {
-        syncRangeControl(control, control.querySelector('[data-range-number]'));
+        syncRangeControl(control, control.querySelector('[data-range-number]'), commit === true);
       });
     }
 
@@ -163,7 +238,8 @@
         selectScenario(saved.scenario, false);
       }
 
-      initializeRangeControls(root);
+      forms.forEach(function (form) { updateFormLimits(form, null, true); });
+      initializeRangeControls(root, true);
     }
 
     function hasAnalyticsConsent() {
@@ -274,7 +350,8 @@
         return {
           loads: collectLoads(form),
           backupDays: form.querySelector('[data-rv-backup-days]').value,
-          fit: form.querySelector('[data-rv-fit]').value
+          fit: form.querySelector('[data-rv-fit]').value,
+          seriesCount: form.querySelector('[data-rv-series]').value
         };
       }
 
@@ -291,8 +368,153 @@
       return {
         loads: collectLoads(form),
         backupHours: form.querySelector('[data-home-backup-hours]').value,
-        architecture: getSelectedRadio(form, '[data-home-architecture]') || 'unsure'
+        architecture: getSelectedRadio(form, '[data-home-architecture]') || 'auto'
       };
+    }
+
+    function formatDecimal(value, maximumDigits) {
+      return Number(value).toLocaleString(undefined, {
+        maximumFractionDigits: maximumDigits == null ? 1 : maximumDigits
+      });
+    }
+
+    function setSelectAvailability(select, availableValues, fallbackValue) {
+      if (!select) return false;
+      var changed = false;
+      Array.prototype.forEach.call(select.options, function (option) {
+        option.disabled = availableValues.indexOf(option.value) === -1;
+      });
+      if (select.selectedOptions.length && select.selectedOptions[0].disabled) {
+        var fallback = Array.prototype.find.call(select.options, function (option) {
+          return !option.disabled && (!fallbackValue || option.value === fallbackValue);
+        }) || Array.prototype.find.call(select.options, function (option) { return !option.disabled; });
+        if (fallback) {
+          select.value = fallback.value;
+          changed = true;
+        }
+      }
+      return changed;
+    }
+
+    function setRadioAvailability(form, selector, availableValues, fallbackValue) {
+      var radios = Array.prototype.slice.call(form.querySelectorAll(selector));
+      var changed = false;
+      radios.forEach(function (radio) {
+        radio.disabled = availableValues.indexOf(radio.value) === -1;
+        var label = radio.closest('label');
+        if (label) label.classList.toggle('is-disabled', radio.disabled);
+      });
+      var checked = radios.find(function (radio) { return radio.checked; });
+      if (!checked || checked.disabled) {
+        var fallback = radios.find(function (radio) { return !radio.disabled && radio.value === fallbackValue; }) || radios.find(function (radio) { return !radio.disabled; });
+        if (fallback) {
+          fallback.checked = true;
+          changed = true;
+        }
+      }
+      return changed;
+    }
+
+    function applyLoadLimits(form, limits) {
+      var clamped = false;
+      Array.prototype.forEach.call(form.querySelectorAll('[data-load-row]'), function (row, index) {
+        var loadLimit = limits[index];
+        if (!loadLimit) return;
+        var watts = row.querySelector('[data-load-watts]');
+        var hours = row.querySelector('[data-load-hours]');
+        clamped = setRangeControlMax(watts && watts.closest('[data-range-control]'), loadLimit.maxWatts, 'W') || clamped;
+        clamped = setRangeControlMax(hours && hours.closest('[data-range-control]'), loadLimit.maxHours, 'h') || clamped;
+      });
+      return clamped;
+    }
+
+    function setLimitNote(form, message, clamped) {
+      var note = form.querySelector('[data-limit-note]');
+      if (!note) return;
+      note.textContent = (clamped ? 'A value was reduced to remain within the verified product range. ' : '') + message;
+      note.classList.toggle('is-adjusted', clamped);
+    }
+
+    function updateRvLimits(form) {
+      var input = collectScenarioInput(form, 'rv');
+      var seriesSelect = form.querySelector('[data-rv-series]');
+      var fitSelect = form.querySelector('[data-rv-fit]');
+      var limits = core.getRvInputLimits(input);
+      var clamped = false;
+
+      clamped = setSelectAvailability(seriesSelect, limits.availableSeriesCounts.map(String), '1') || clamped;
+      if (String(input.seriesCount) !== seriesSelect.value) input = collectScenarioInput(form, 'rv');
+      limits = core.getRvInputLimits(input);
+      var availableFits = Object.keys(limits.availableFits).filter(function (fit) { return limits.availableFits[fit]; });
+      clamped = setSelectAvailability(fitSelect, availableFits, 'flexible') || clamped;
+      input = collectScenarioInput(form, 'rv');
+
+      for (var pass = 0; pass < 3; pass += 1) {
+        limits = core.getRvInputLimits(input);
+        clamped = applyLoadLimits(form, limits.loadLimits) || clamped;
+        input = collectScenarioInput(form, 'rv');
+      }
+      limits = core.getRvInputLimits(input);
+      clamped = setRangeControlMax(form.querySelector('[data-rv-backup-days]').closest('[data-range-control]'), limits.maxBackupDays, ' days') || clamped;
+      input = collectScenarioInput(form, 'rv');
+      limits = core.getRvInputLimits(input);
+      setLimitNote(
+        form,
+        'Verified ' + formatDecimal(limits.nominalSystemVoltage, 1) + 'V range: up to ' + limits.maximumBatteryCount + ' batteries (' + limits.seriesCount + 'S' + limits.maximumParallelStrings + 'P), ' + formatWh(limits.maxStoredEnergyWh) + ' stored energy and ' + formatW(limits.maxPeakW) + ' peak.',
+        clamped
+      );
+      return limits;
+    }
+
+    function updateJumpLimits(form) {
+      var input = collectScenarioInput(form, 'jump');
+      var limits = core.getJumpInputLimits(input);
+      var voltageSelect = form.querySelector('[data-jump-voltage]');
+      var clamped = setSelectAvailability(voltageSelect, limits.availableVoltages, limits.availableVoltages[0]);
+      input = collectScenarioInput(form, 'jump');
+      limits = core.getJumpInputLimits(input);
+      clamped = setRangeControlMax(form.querySelector('[data-jump-engine]').closest('[data-range-control]'), limits.maxEngineLiters, 'L') || clamped;
+      setLimitNote(
+        form,
+        'Verified ' + input.voltage.toUpperCase() + ' range for these conditions: up to ' + formatDecimal(limits.maxEngineLiters, 1) + 'L ' + input.fuel + '.',
+        clamped
+      );
+      return limits;
+    }
+
+    function updateHomeLimits(form) {
+      var input = collectScenarioInput(form, 'home');
+      var availableArchitectures = ['auto'].concat(['low', 'high'].filter(function (architecture) {
+        return core.getHomeInputLimits({ architecture: architecture, loads: input.loads, backupHours: input.backupHours }).available;
+      }));
+      var clamped = setRadioAvailability(form, '[data-home-architecture]', availableArchitectures, 'auto');
+      input = collectScenarioInput(form, 'home');
+
+      var limits;
+      for (var pass = 0; pass < 3; pass += 1) {
+        limits = core.getHomeInputLimits(input);
+        clamped = applyLoadLimits(form, limits.loadLimits) || clamped;
+        input = collectScenarioInput(form, 'home');
+      }
+      limits = core.getHomeInputLimits(input);
+      clamped = setRangeControlMax(form.querySelector('[data-home-backup-hours]').closest('[data-range-control]'), limits.maxBackupHours, 'h') || clamped;
+      input = collectScenarioInput(form, 'home');
+      limits = core.getHomeInputLimits(input);
+      var architectureLabel = limits.architecture === 'low' ? 'low-voltage' : limits.architecture === 'high' ? 'high-voltage' : 'automatic architecture';
+      setLimitNote(
+        form,
+        'Verified ' + architectureLabel + ' range: up to ' + formatWh(limits.maxStoredEnergyWh) + ' stored energy and ' + formatW(limits.maxPeakW) + ' peak.',
+        clamped
+      );
+      return limits;
+    }
+
+    function updateFormLimits(form) {
+      if (!form) return null;
+      var scenario = form.dataset.scenarioForm;
+      if (scenario === 'rv') return updateRvLimits(form);
+      if (scenario === 'jump') return updateJumpLimits(form);
+      return updateHomeLimits(form);
     }
 
     function showFormError(form, message) {
@@ -396,10 +618,13 @@
         '<button type="button" class="sn-power-calculator__remove" data-remove-load aria-label="Remove custom load">Remove</button>';
       list.appendChild(row);
       row.querySelector('[data-remove-load]').addEventListener('click', function () {
+        var form = row.closest('[data-scenario-form]');
         row.remove();
+        updateFormLimits(form);
         writeStorage();
       });
       initializeRangeControls(row);
+      updateFormLimits(row.closest('[data-scenario-form]'));
       return row;
     }
 
@@ -416,10 +641,11 @@
       var metrics = [];
 
       if (result.scenario === 'jump') {
+        var verifiedCoverage = Number.isFinite(Number(result.coverageLiters)) ? result.coverageLiters + 'L' : '12V only';
         metrics = [
           { value: result.fuel === 'diesel' ? 'Diesel' : 'Gasoline', label: 'Fuel reference' },
           { value: Number.isFinite(Number(result.engineLiters)) ? result.engineLiters + 'L' : 'Review', label: 'Engine input' },
-          { value: result.coverageLiters ? result.coverageLiters + 'L' : 'Review', label: 'Reference coverage' },
+          { value: verifiedCoverage, label: result.voltage === '12v' ? 'Verified coverage' : 'Verified product voltage' },
           { value: !result.environment || result.environment === 'standard' ? 'Standard' : 'Reserve', label: 'Condition factor' }
         ];
       } else {
@@ -436,8 +662,14 @@
       }).join('');
     }
 
+    function findProductRecord(key, id) {
+      if (id && productRecordsById[id]) return productRecordsById[id];
+      var records = productRecords[key];
+      return records && records.length ? records[0] : null;
+    }
+
     function renderProduct(result) {
-      var record = productRecords[result.productKey];
+      var record = findProductRecord(result.productKey, result.productId);
       if (!record) {
         resultProduct.hidden = true;
         return;
@@ -447,29 +679,41 @@
       resultProduct.hidden = false;
       resultProductImage.src = record.image;
       resultProductImage.alt = record.model;
+      if (resultProductLabel) {
+        resultProductLabel.textContent = result.status === 'support'
+          ? (result.referenceType === 'alternative_starting_point' ? 'ALTERNATIVE STARTING POINT' : 'CLOSEST VERIFIED REFERENCE')
+          : 'RECOMMENDED STARTING POINT';
+      }
       resultProductTitle.textContent = result.model || record.model;
       resultProductCopy.textContent = record.description;
+      if (resultProductNote) {
+        resultProductNote.textContent = result.productCaveat || '';
+        resultProductNote.hidden = !result.productCaveat;
+      }
       resultProductLink.href = record.url;
       resultProductLink.dataset.productId = state.productId;
+      resultProductLink.textContent = result.status === 'support' ? 'View reference product' : 'Open product details';
 
       var specs = [];
       if (result.scenario === 'rv') {
         specs = [
           result.quantity > 1 ? result.quantity + ' units' : '1 unit',
-          formatWh(result.unitCapacityWh) + ' each',
-          formatW(result.unitOutputW) + ' each'
+          result.seriesCount + 'S' + result.parallelCount + 'P / ' + formatDecimal(result.nominalSystemVoltage, 1) + 'V',
+          formatWh(result.combinedWh) + ' combined'
         ];
       } else if (result.scenario === 'jump') {
         specs = [result.variant || 'Model variant', result.coverageLiters + 'L ' + result.fuel, '12V vehicle use'];
+      } else if (result.quantity > 1) {
+        specs = [result.quantity + ' units', formatWh(result.nominalWh) + ' each', formatWh(result.combinedWh) + ' nominal'];
       } else {
-        specs = [formatWh(result.nominalWh), result.architecture === 'high_voltage' ? 'High voltage' : 'Low voltage', 'System review required'];
+        specs = [formatWh(result.nominalWh), result.architecture === 'high_voltage' ? 'High voltage' : 'Low voltage', result.status === 'support' ? 'Review required' : 'System starting point'];
       }
       resultProductSpecs.innerHTML = specs.map(function (spec) {
         return '<span class="sn-power-calculator__product-spec">' + escapeHtml(spec) + '</span>';
       }).join('');
 
       var alternateKey = result.alternateKey;
-      var alternateRecord = alternateKey ? productRecords[alternateKey] : null;
+      var alternateRecord = alternateKey ? findProductRecord(alternateKey, result.alternateId) : null;
       if (alternateRecord && alternateKey !== result.productKey) {
         resultSecondaryLink.hidden = false;
         resultSecondaryLink.href = alternateRecord.url;
@@ -498,8 +742,9 @@
       forms.forEach(function (form) { form.hidden = true; });
       results.hidden = false;
       results.dataset.status = result.status;
+      var hasProduct = Boolean(findProductRecord(result.productKey, result.productId));
       resultSupportActions.hidden = result.status !== 'support';
-      resultProduct.hidden = result.status !== 'match';
+      resultProduct.hidden = !hasProduct;
       resultSecondaryLink.hidden = true;
 
       if (result.status === 'match') {
@@ -520,10 +765,11 @@
           productId: result.productId
         });
       } else if (result.status === 'support') {
-        resultKicker.textContent = 'TECHNICAL REVIEW';
-        resultTitle.textContent = 'This needs a project-specific check.';
-        resultSummary.textContent = result.reason;
+        resultKicker.textContent = hasProduct ? 'REVIEW + REFERENCE' : 'TECHNICAL REVIEW';
+        resultTitle.textContent = result.title || 'This needs a project-specific check.';
+        resultSummary.textContent = [result.reason, result.guidance].filter(Boolean).join(' ');
         renderMetrics(result);
+        if (hasProduct) renderProduct(result);
         setSupportLink(result);
         track('support_recommended', {
           scenario: result.scenario,
@@ -548,6 +794,9 @@
 
     function submitForm(form) {
       var scenario = form.dataset.scenarioForm;
+      initializeRangeControls(form, true);
+      updateFormLimits(form);
+      initializeRangeControls(form, true);
       var input = collectScenarioInput(form, scenario);
       var result = scenario === 'rv'
         ? core.recommendRv(input)
@@ -555,7 +804,13 @@
           ? core.recommendJump(input)
           : core.recommendHome(input);
 
-      showFormError(form, result.status === 'invalid' ? result.reason : '');
+      if (result.status === 'invalid') {
+        showFormError(form, result.reason);
+        scrollToElement(form.querySelector('[data-form-error]'), 'center');
+        return;
+      }
+
+      showFormError(form, '');
       renderResult(result);
       track('step_completed', { scenario: scenario, step: 'details' });
     }
@@ -593,12 +848,14 @@
 
       form.addEventListener('input', function (event) {
         var rangeControl = event.target.closest('[data-range-control]');
-        if (rangeControl) syncRangeControl(rangeControl, event.target);
+        if (rangeControl) syncRangeControl(rangeControl, event.target, false);
+        updateFormLimits(form);
         writeStorage();
       });
       form.addEventListener('change', function (event) {
         var rangeControl = event.target.closest('[data-range-control]');
-        if (rangeControl) syncRangeControl(rangeControl, event.target);
+        if (rangeControl) syncRangeControl(rangeControl, event.target, true);
+        updateFormLimits(form);
         writeStorage();
       });
     });
@@ -641,11 +898,14 @@
       root: root,
       selectScenario: selectScenario,
       submitForm: submitForm,
+      updateFormLimits: updateFormLimits,
       track: track
     };
 
-    initializeRangeControls(root);
+    forms.forEach(function (form) { updateFormLimits(form); });
+    initializeRangeControls(root, true);
     restoreStorage();
+    forms.forEach(function (form) { updateFormLimits(form); });
   }
 
   if (document.readyState === 'loading') {
