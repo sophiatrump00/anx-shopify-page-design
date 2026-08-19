@@ -17,6 +17,9 @@
 
     var scenarioButtons = Array.prototype.slice.call(root.querySelectorAll('[data-scenario]'));
     var forms = Array.prototype.slice.call(root.querySelectorAll('[data-scenario-form]'));
+    var scenarioStage = root.querySelector('[data-scenario-stage]');
+    var scenarioContinue = root.querySelector('[data-scenario-continue]');
+    var stepItems = Array.prototype.slice.call(root.querySelectorAll('[data-planner-step-item]'));
     var progress = root.querySelector('[data-progress]');
     var results = root.querySelector('[data-results]');
     var resultKicker = root.querySelector('[data-result-kicker]');
@@ -261,7 +264,31 @@
       error.hidden = !message;
     }
 
-    function selectScenario(scenario, announce) {
+    function setPlannerStep(step) {
+      var stepOrder = ['scenario', 'details', 'recommendation'];
+      var currentIndex = stepOrder.indexOf(step);
+
+      root.dataset.plannerStep = step;
+      stepItems.forEach(function (item) {
+        var itemIndex = stepOrder.indexOf(item.dataset.plannerStepItem);
+        var isCurrent = itemIndex === currentIndex;
+        item.classList.toggle('is-active', isCurrent);
+        item.classList.toggle('is-complete', itemIndex < currentIndex);
+        if (isCurrent) {
+          item.setAttribute('aria-current', 'step');
+        } else {
+          item.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    function scrollToElement(element, block) {
+      if (!element) return;
+      var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      element.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: block || 'start' });
+    }
+
+    function chooseScenario(scenario, announce) {
       state.scenario = scenario;
       state.result = null;
       state.productId = null;
@@ -271,6 +298,21 @@
         button.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
 
+      if (scenarioContinue) scenarioContinue.disabled = false;
+      setPlannerStep('scenario');
+      results.hidden = true;
+
+      if (announce) {
+        if (!state.startTracked) state.startTracked = track('start', { scenario: scenario, step: 'scenario' });
+        track('scenario_selected', { scenario: scenario, step: 'scenario' });
+      }
+      writeStorage();
+    }
+
+    function openScenario(scenario, shouldScroll) {
+      chooseScenario(scenario, false);
+      if (scenarioStage) scenarioStage.hidden = true;
+
       forms.forEach(function (form) {
         var active = form.dataset.scenarioForm === scenario;
         form.hidden = !active;
@@ -278,13 +320,29 @@
       });
 
       progress.hidden = false;
-      progress.textContent = 'Step 2 · Add a few system details';
+      progress.textContent = 'Step 2: Add your power needs';
       results.hidden = true;
-      if (announce) {
-        if (!state.startTracked) state.startTracked = track('start', { scenario: scenario, step: 'scenario' });
-        track('scenario_selected', { scenario: scenario, step: 'scenario' });
-      }
+      setPlannerStep('details');
       writeStorage();
+
+      if (shouldScroll) {
+        var activeForm = forms.find(function (form) { return form.dataset.scenarioForm === scenario; });
+        scrollToElement(activeForm, 'start');
+      }
+    }
+
+    function selectScenario(scenario, announce) {
+      chooseScenario(scenario, announce);
+      openScenario(scenario, false);
+    }
+
+    function returnToScenarioSelection() {
+      forms.forEach(function (form) { form.hidden = true; });
+      results.hidden = true;
+      progress.hidden = true;
+      if (scenarioStage) scenarioStage.hidden = false;
+      setPlannerStep('scenario');
+      scrollToElement(scenarioStage, 'start');
     }
 
     function createCustomLoad(list) {
@@ -394,6 +452,7 @@
 
     function renderResult(result) {
       state.result = result;
+      forms.forEach(function (form) { form.hidden = true; });
       results.hidden = false;
       results.dataset.status = result.status;
       resultSupportActions.hidden = result.status !== 'support';
@@ -436,8 +495,11 @@
         resultMetrics.innerHTML = '';
       }
 
+      progress.hidden = false;
+      progress.textContent = 'Step 3: Review your recommendation';
+      setPlannerStep('recommendation');
       results.focus({ preventScroll: true });
-      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollToElement(results, 'start');
       writeStorage();
     }
 
@@ -457,9 +519,15 @@
 
     scenarioButtons.forEach(function (button) {
       button.addEventListener('click', function () {
-        selectScenario(button.dataset.scenario, true);
+        chooseScenario(button.dataset.scenario, true);
       });
     });
+
+    if (scenarioContinue) {
+      scenarioContinue.addEventListener('click', function () {
+        if (state.scenario) openScenario(state.scenario, true);
+      });
+    }
 
     forms.forEach(function (form) {
       form.addEventListener('submit', function (event) {
@@ -475,6 +543,7 @@
       var addButton = event.target.closest('[data-add-load]');
       var removeButton = event.target.closest('[data-remove-load]');
       var switchButton = event.target.closest('[data-switch-scenario]');
+      var editAnswersButton = event.target.closest('[data-edit-answers]');
       var productLink = event.target.closest('[data-result-product-link], [data-result-secondary-link]');
       var supportLink = event.target.closest('[data-result-support-link]');
 
@@ -487,9 +556,20 @@
       }
 
       if (switchButton) {
+        returnToScenarioSelection();
+      }
+
+      if (editAnswersButton) {
         results.hidden = true;
-        var scenarioGrid = root.querySelector('.sn-power-calculator__scenario-grid');
-        if (scenarioGrid) scenarioGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        var activeForm = forms.find(function (form) { return form.dataset.scenarioForm === state.scenario; });
+        if (activeForm) {
+          activeForm.hidden = false;
+          showFormError(activeForm, '');
+        }
+        progress.hidden = false;
+        progress.textContent = 'Step 2: Add your power needs';
+        setPlannerStep('details');
+        scrollToElement(activeForm, 'start');
       }
 
       if (productLink && productLink.href && productLink.getAttribute('href') !== '#') {
@@ -503,13 +583,9 @@
 
     if (resultReset) {
       resultReset.addEventListener('click', function () {
-        results.hidden = true;
         state.result = null;
         state.productId = null;
-        var activeForm = forms.find(function (form) { return form.dataset.scenarioForm === state.scenario; });
-        if (activeForm) showFormError(activeForm, '');
-        var scenarioGrid = root.querySelector('.sn-power-calculator__scenario-grid');
-        if (scenarioGrid) scenarioGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        returnToScenarioSelection();
       });
     }
 

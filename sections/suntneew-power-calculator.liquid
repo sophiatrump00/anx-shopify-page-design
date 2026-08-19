@@ -18,63 +18,82 @@
   class="sn-power-calculator"
   data-suntneew-calculator
   data-support-url="{{ section.settings.support_url | default: '/pages/request-for-quote' | escape }}"
+  data-planner-step="scenario"
 >
   <div class="sn-power-calculator__hero">
-    <div class="sn-power-calculator__shell sn-power-calculator__hero-grid">
-      <div>
+    <div class="sn-power-calculator__shell">
+      <div class="sn-power-calculator__hero-copy-block">
         <p class="sn-power-calculator__eyebrow">{{ section.settings.eyebrow | escape }}</p>
         <h1>{{ section.settings.heading | escape }}</h1>
-      </div>
-      <div>
         <p class="sn-power-calculator__hero-copy">{{ section.settings.intro | escape }}</p>
-        <p class="sn-power-calculator__privacy-note">{{ section.settings.privacy_note | escape }}</p>
       </div>
+
+      <ol class="sn-power-calculator__stepper" aria-label="Power planner progress">
+        <li class="is-active" data-planner-step-item="scenario" aria-current="step">
+          <span class="sn-power-calculator__step-number">1</span>
+          <span><small>Step 1</small><strong>Scenario</strong></span>
+        </li>
+        <li data-planner-step-item="details">
+          <span class="sn-power-calculator__step-number">2</span>
+          <span><small>Step 2</small><strong>Your needs</strong></span>
+        </li>
+        <li data-planner-step-item="recommendation">
+          <span class="sn-power-calculator__step-number">3</span>
+          <span><small>Step 3</small><strong>Recommendation</strong></span>
+        </li>
+      </ol>
+
+      <p class="sn-power-calculator__privacy-note">{{ section.settings.privacy_note | escape }}</p>
     </div>
   </div>
 
   <div class="sn-power-calculator__body">
     <div class="sn-power-calculator__shell">
-      <div class="sn-power-calculator__scenario-header">
-        <div>
+      <div class="sn-power-calculator__scenario-stage" data-scenario-stage>
+        <div class="sn-power-calculator__scenario-header">
           <p class="sn-power-calculator__step-kicker">{{ section.settings.scenario_eyebrow | escape }}</p>
           <h2>{{ section.settings.scenario_heading | escape }}</h2>
+          <p>{{ section.settings.scenario_body | escape }}</p>
         </div>
-        <p>{{ section.settings.scenario_body | escape }}</p>
-      </div>
 
-      <div class="sn-power-calculator__scenario-grid" role="group" aria-label="Choose a power scenario">
-        <button type="button" class="sn-power-calculator__scenario" data-scenario="rv" aria-pressed="false">
-          <span class="sn-power-calculator__scenario-top">
-            <span class="sn-power-calculator__scenario-index">01</span>
-            <span class="sn-power-calculator__scenario-arrow" aria-hidden="true">&#8594;</span>
-          </span>
-          <span>
-            <strong>Power My RV</strong>
-            <small>Match stored energy, simultaneous load and battery fit.</small>
-          </span>
-        </button>
+        <div class="sn-power-calculator__scenario-grid" role="group" aria-label="Choose a power scenario">
+          <button type="button" class="sn-power-calculator__scenario" data-scenario="rv" aria-pressed="false">
+            <span class="sn-power-calculator__scenario-media">
+              <img src="{{ 'suntneew-use-rv.jpg' | asset_url }}" alt="SuntNeew batteries powering an RV campsite" width="1200" height="1400" loading="eager">
+              <span class="sn-power-calculator__scenario-check" aria-hidden="true">&#10003;</span>
+            </span>
+            <span class="sn-power-calculator__scenario-copy">
+              <strong>RV Power</strong>
+              <small>Size a battery starting point around daily loads and available space.</small>
+            </span>
+          </button>
 
-        <button type="button" class="sn-power-calculator__scenario" data-scenario="jump" aria-pressed="false">
-          <span class="sn-power-calculator__scenario-top">
-            <span class="sn-power-calculator__scenario-index">02</span>
-            <span class="sn-power-calculator__scenario-arrow" aria-hidden="true">&#8594;</span>
-          </span>
-          <span>
-            <strong>Start My Vehicle</strong>
-            <small>Match a verified 12V jump starter to fuel and engine size.</small>
-          </span>
-        </button>
+          <button type="button" class="sn-power-calculator__scenario" data-scenario="jump" aria-pressed="false">
+            <span class="sn-power-calculator__scenario-media">
+              <img src="{{ 'suntneew-use-jump.jpg' | asset_url }}" alt="SuntNeew jump starter connected in a vehicle engine bay" width="1200" height="1400" loading="eager">
+              <span class="sn-power-calculator__scenario-check" aria-hidden="true">&#10003;</span>
+            </span>
+            <span class="sn-power-calculator__scenario-copy">
+              <strong>Vehicle Starting</strong>
+              <small>Match a 12V jump starter to fuel type, engine size and conditions.</small>
+            </span>
+          </button>
 
-        <button type="button" class="sn-power-calculator__scenario" data-scenario="home" aria-pressed="false">
-          <span class="sn-power-calculator__scenario-top">
-            <span class="sn-power-calculator__scenario-index">03</span>
-            <span class="sn-power-calculator__scenario-arrow" aria-hidden="true">&#8594;</span>
-          </span>
-          <span>
-            <strong>Back Up My Home</strong>
-            <small>Estimate essential-load energy before confirming system architecture.</small>
-          </span>
-        </button>
+          <button type="button" class="sn-power-calculator__scenario" data-scenario="home" aria-pressed="false">
+            <span class="sn-power-calculator__scenario-media">
+              <img src="{{ 'suntneew-use-home-energy.jpg' | asset_url }}" alt="SuntNeew home energy storage beside a solar-powered home" width="1921" height="1080" loading="eager">
+              <span class="sn-power-calculator__scenario-check" aria-hidden="true">&#10003;</span>
+            </span>
+            <span class="sn-power-calculator__scenario-copy">
+              <strong>Home Backup</strong>
+              <small>Estimate essential-load capacity before confirming system architecture.</small>
+            </span>
+          </button>
+        </div>
+
+        <div class="sn-power-calculator__scenario-actions">
+          <button type="button" class="sn-power-calculator__button" data-scenario-continue disabled>Continue <span aria-hidden="true">&#8594;</span></button>
+        </div>
       </div>
 
       <div class="sn-power-calculator__progress" data-progress hidden aria-live="polite">Choose a scenario to begin</div>
@@ -82,8 +101,8 @@
       <form class="sn-power-calculator__form" data-scenario-form="rv" hidden novalidate>
         <div class="sn-power-calculator__form-header">
           <div>
-            <p class="sn-power-calculator__step-kicker">RV BATTERY PLANNER</p>
-            <h2>Build a useful starting point for the road.</h2>
+            <p class="sn-power-calculator__step-kicker">STEP 2 &middot; RV POWER</p>
+            <h2>What needs power on the road?</h2>
           </div>
           <p>Use the loads you expect to run together. The result is a planning estimate, not a substitute for a complete RV electrical design.</p>
         </div>
@@ -148,8 +167,8 @@
       <form class="sn-power-calculator__form" data-scenario-form="jump" hidden novalidate>
         <div class="sn-power-calculator__form-header">
           <div>
-            <p class="sn-power-calculator__step-kicker">VEHICLE START PLANNER</p>
-            <h2>Choose a jump starter around the vehicle.</h2>
+            <p class="sn-power-calculator__step-kicker">STEP 2 &middot; VEHICLE STARTING</p>
+            <h2>Tell us about the vehicle.</h2>
           </div>
           <p>The coverage table is based on verified 12V starting references. Final fit depends on the vehicle, battery condition and operating conditions.</p>
         </div>
@@ -187,8 +206,8 @@
       <form class="sn-power-calculator__form" data-scenario-form="home" hidden novalidate>
         <div class="sn-power-calculator__form-header">
           <div>
-            <p class="sn-power-calculator__step-kicker">HOME ENERGY PLANNER</p>
-            <h2>Start with essential loads, then confirm the system.</h2>
+            <p class="sn-power-calculator__step-kicker">STEP 2 &middot; HOME BACKUP</p>
+            <h2>What should stay powered?</h2>
           </div>
           <p>Use only the loads you need during an outage. The result is a capacity starting point; inverter, transfer equipment and installation still need a qualified review.</p>
         </div>
@@ -277,6 +296,11 @@
         </div>
 
         <p class="sn-power-calculator__fine-print" data-result-fine-print>{{ section.settings.disclaimer | escape }}</p>
+
+        <div class="sn-power-calculator__result-navigation">
+          <button type="button" class="sn-power-calculator__text-button" data-edit-answers>Edit my answers</button>
+          <button type="button" class="sn-power-calculator__text-button" data-switch-scenario>Choose another scenario</button>
+        </div>
       </div>
     </div>
   </div>
@@ -303,12 +327,12 @@
   "class": "shopify-section--suntneew-power-calculator",
   "settings": [
     {"type":"text","id":"eyebrow","label":"Eyebrow","default":"SUNTNEEW POWER PLANNER"},
-    {"type":"text","id":"heading","label":"Heading","default":"Power planning, with a clear next step."},
-    {"type":"textarea","id":"intro","label":"Intro","default":"Choose the system you are trying to power. We will calculate a practical product starting point, then show where a technical review still matters."},
+    {"type":"text","id":"heading","label":"Heading","default":"Help Me Choose"},
+    {"type":"textarea","id":"intro","label":"Intro","default":"Answer a few practical questions and get a clear SuntNeew product starting point."},
     {"type":"textarea","id":"privacy_note","label":"Privacy note","default":"Your selections stay in this page session. No personal information or free-text device names are sent by this planner."},
-    {"type":"text","id":"scenario_eyebrow","label":"Scenario eyebrow","default":"START WITH THE JOB"},
+    {"type":"text","id":"scenario_eyebrow","label":"Scenario eyebrow","default":"STEP 1 OF 3"},
     {"type":"text","id":"scenario_heading","label":"Scenario heading","default":"Choose Your Scenario"},
-    {"type":"textarea","id":"scenario_body","label":"Scenario body","default":"The right first question depends on the job: daily RV energy, a vehicle start or essential home backup."},
+    {"type":"textarea","id":"scenario_body","label":"Scenario body","default":"Where do you need dependable power?"},
     {"type":"url","id":"support_url","label":"Technical support URL"},
     {"type":"textarea","id":"disclaimer","label":"Result disclaimer","default":"Planning estimates use the values entered here and verified product reference data. Confirm model specifications, compatibility, protection, wiring and installation requirements before purchase or installation."}
   ],

@@ -13,12 +13,12 @@
       "type": "suntneew-power-calculator",
       "settings": {
         "eyebrow": "SUNTNEEW POWER PLANNER",
-        "heading": "Power planning, with a clear next step.",
-        "intro": "Choose the system you are trying to power. We will calculate a practical product starting point, then show where a technical review still matters.",
+        "heading": "Help Me Choose",
+        "intro": "Answer a few practical questions and get a clear SuntNeew product starting point.",
         "privacy_note": "Your selections stay in this page session. No personal information or free-text device names are sent by this planner.",
-        "scenario_eyebrow": "START WITH THE JOB",
+        "scenario_eyebrow": "STEP 1 OF 3",
         "scenario_heading": "Choose Your Scenario",
-        "scenario_body": "The right first question depends on the job: daily RV energy, a vehicle start or essential home backup.",
+        "scenario_body": "Where do you need dependable power?",
         "support_url": "/pages/request-for-quote",
         "disclaimer": "Planning estimates use the values entered here and verified product reference data. Confirm model specifications, compatibility, protection, wiring and installation requirements before purchase or installation."
       }
