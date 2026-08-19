@@ -8,17 +8,20 @@
 - Customer-facing name: `SuntNeew Power Planner`
 - SEO title supplied by the template: `Power Calculator & Product Finder | SuntNeew`
 
-## Publish after merge
+## Shopify Admin setup
 
-The JSON template does not create a Shopify Page resource. After this branch is merged and the theme is deployed:
+Completed on August 19, 2026:
 
-1. In Shopify Admin, create a page named `SuntNeew Power Planner`.
-2. Set its URL handle to `power-calculator`.
-3. Assign the `power-calculator` theme template.
-4. Publish the page and verify `/pages/power-calculator` on the deployed theme.
-5. Add `Help Me Choose` to the top-level main menu, linking to that page.
+- Live page: `https://www.suntneew.com/pages/power-calculator`
+- Page ID: `gid://shopify/Page/162244755751`
+- Page title: `SuntNeew Power Planner`
+- Page handle: `power-calculator`
+- Template suffix: `power-calculator`
+- Published: yes
+- Header menu: `suntneew-main-menu-0811`
+- Top-level menu item: `Help Me Choose`
 
-The theme already supplies a homepage entry, a Support mega-menu link, a mobile Support link and a Footer fallback link. Do not add a duplicate Footer or Support link if the saved Shopify menus are updated later.
+The theme also supplies a homepage entry, a Support mega-menu link, a mobile Support link and a Footer fallback link. Do not add duplicate Footer or Support links if the saved Shopify menus are updated later.
 
 ## Analytics contract
 
