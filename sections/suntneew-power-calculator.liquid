@@ -112,32 +112,56 @@
           <p class="sn-power-calculator__step-caption">Select the appliances you want included, then mark Peak for loads expected to run at the same time.</p>
           <div class="sn-power-calculator__load-list" data-load-list>
             <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__field"><label>Refrigerator</label><input type="number" min="1" max="5000" value="50" data-load-watts inputmode="decimal" aria-label="Refrigerator watts"></div>
-              <div class="sn-power-calculator__field"><label>Hours</label><input type="number" min="0.1" max="24" step="0.1" value="24" data-load-hours inputmode="decimal" aria-label="Refrigerator hours per day"></div>
-              <span class="sn-power-calculator__unit">hours/day</span>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label>
+              <div class="sn-power-calculator__load-heading"><strong>Refrigerator</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label></div></div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-rv-fridge-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-rv-fridge-watts-{{ section.id }}" type="number" min="1" max="5000" step="1" value="50" data-load-watts data-range-number inputmode="decimal" aria-label="Refrigerator watts"><span>W</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="10" max="500" step="10" value="50" data-range-input aria-label="Refrigerator power draw">
+                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>10W</span><span>500W</span></div>
+              </div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-rv-fridge-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-rv-fridge-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="24" data-load-hours data-range-number inputmode="decimal" aria-label="Refrigerator hours per day"><span>hours/day</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="0.1" max="24" step="0.1" value="24" data-range-input aria-label="Refrigerator daily run time">
+                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>24h</span></div>
+              </div>
             </div>
             <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__field"><label>Microwave</label><input type="number" min="1" max="5000" value="800" data-load-watts inputmode="decimal" aria-label="Microwave watts"></div>
-              <div class="sn-power-calculator__field"><label>Hours</label><input type="number" min="0.1" max="24" step="0.1" value="0.2" data-load-hours inputmode="decimal" aria-label="Microwave hours per day"></div>
-              <span class="sn-power-calculator__unit">hours/day</span>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label>
+              <div class="sn-power-calculator__load-heading"><strong>Microwave</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label></div></div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-rv-microwave-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-rv-microwave-watts-{{ section.id }}" type="number" min="1" max="5000" step="1" value="800" data-load-watts data-range-number inputmode="decimal" aria-label="Microwave watts"><span>W</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="100" max="2500" step="50" value="800" data-range-input aria-label="Microwave power draw">
+                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>100W</span><span>2.5kW</span></div>
+              </div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-rv-microwave-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-rv-microwave-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="0.2" data-load-hours data-range-number inputmode="decimal" aria-label="Microwave hours per day"><span>hours/day</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="0.1" max="4" step="0.1" value="0.2" data-range-input aria-label="Microwave daily run time">
+                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>4h</span></div>
+              </div>
             </div>
             <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__field"><label>Air conditioner</label><input type="number" min="1" max="10000" value="800" data-load-watts inputmode="decimal" aria-label="Air conditioner watts"></div>
-              <div class="sn-power-calculator__field"><label>Hours</label><input type="number" min="0.1" max="24" step="0.1" value="1" data-load-hours inputmode="decimal" aria-label="Air conditioner hours per day"></div>
-              <span class="sn-power-calculator__unit">hours/day</span>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label>
+              <div class="sn-power-calculator__load-heading"><strong>Air conditioner</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label></div></div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-rv-ac-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-rv-ac-watts-{{ section.id }}" type="number" min="1" max="10000" step="1" value="800" data-load-watts data-range-number inputmode="decimal" aria-label="Air conditioner watts"><span>W</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="200" max="5000" step="50" value="800" data-range-input aria-label="Air conditioner power draw">
+                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>200W</span><span>5kW</span></div>
+              </div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-rv-ac-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-rv-ac-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="1" data-load-hours data-range-number inputmode="decimal" aria-label="Air conditioner hours per day"><span>hours/day</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="0.5" max="12" step="0.5" value="1" data-range-input aria-label="Air conditioner daily run time">
+                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.5h</span><span>12h</span></div>
+              </div>
             </div>
             <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__field"><label>Lighting</label><input type="number" min="1" max="2000" value="120" data-load-watts inputmode="decimal" aria-label="Lighting watts"></div>
-              <div class="sn-power-calculator__field"><label>Hours</label><input type="number" min="0.1" max="24" step="0.1" value="5" data-load-hours inputmode="decimal" aria-label="Lighting hours per day"></div>
-              <span class="sn-power-calculator__unit">hours/day</span>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" data-load-simultaneous> Peak</label>
+              <div class="sn-power-calculator__load-heading"><strong>Lighting</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" data-load-simultaneous> Peak</label></div></div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-rv-lighting-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-rv-lighting-watts-{{ section.id }}" type="number" min="1" max="2000" step="1" value="120" data-load-watts data-range-number inputmode="decimal" aria-label="Lighting watts"><span>W</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="10" max="1000" step="10" value="120" data-range-input aria-label="Lighting power draw">
+                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>10W</span><span>1kW</span></div>
+              </div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-rv-lighting-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-rv-lighting-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="5" data-load-hours data-range-number inputmode="decimal" aria-label="Lighting hours per day"><span>hours/day</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="0.1" max="12" step="0.1" value="5" data-range-input aria-label="Lighting daily run time">
+                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>12h</span></div>
+              </div>
             </div>
           </div>
           <button type="button" class="sn-power-calculator__text-button" data-add-load>Add another load</button>
@@ -146,9 +170,10 @@
         <div class="sn-power-calculator__inline-fields">
           <div class="sn-power-calculator__step">
             <label class="sn-power-calculator__step-title" for="sn-rv-backup-days-{{ section.id }}">Backup period</label>
-            <div class="sn-power-calculator__number-field">
-              <div class="sn-power-calculator__field"><span class="sn-power-calculator__field-label">Days</span><input id="sn-rv-backup-days-{{ section.id }}" type="number" min="1" max="7" step="1" value="1" data-rv-backup-days inputmode="numeric"></div>
-              <span class="sn-power-calculator__unit">days</span>
+            <div class="sn-power-calculator__range-control" data-range-control>
+              <div class="sn-power-calculator__range-head"><label for="sn-rv-backup-days-{{ section.id }}">Days</label><span class="sn-power-calculator__range-value"><input id="sn-rv-backup-days-{{ section.id }}" type="number" min="1" max="7" step="1" value="1" data-rv-backup-days data-range-number inputmode="numeric"><span>days</span></span></div>
+              <input class="sn-power-calculator__range" type="range" min="1" max="7" step="1" value="1" data-range-input aria-label="RV backup period in days">
+              <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>1 day</span><span>7 days</span></div>
             </div>
           </div>
           <div class="sn-power-calculator__step">
@@ -177,7 +202,7 @@
           <legend class="sn-power-calculator__step-title">Vehicle basics</legend>
           <div class="sn-power-calculator__inline-fields">
             <div class="sn-power-calculator__field"><label for="sn-jump-fuel-{{ section.id }}">Fuel</label><select id="sn-jump-fuel-{{ section.id }}" data-jump-fuel><option value="gasoline">Gasoline</option><option value="diesel">Diesel</option></select></div>
-            <div class="sn-power-calculator__field"><label for="sn-jump-engine-{{ section.id }}">Engine displacement</label><div class="sn-power-calculator__number-field"><input id="sn-jump-engine-{{ section.id }}" type="number" min="0.1" max="12" step="0.1" value="3" data-jump-engine inputmode="decimal"><span class="sn-power-calculator__unit">L</span></div></div>
+            <div class="sn-power-calculator__field"><div class="sn-power-calculator__range-control" data-range-control><div class="sn-power-calculator__range-head"><label for="sn-jump-engine-{{ section.id }}">Engine displacement</label><span class="sn-power-calculator__range-value"><input id="sn-jump-engine-{{ section.id }}" type="number" min="0.1" max="12" step="0.1" value="3" data-jump-engine data-range-number inputmode="decimal"><span>L</span></span></div><input class="sn-power-calculator__range" type="range" min="0.1" max="12" step="0.1" value="3" data-range-input aria-label="Engine displacement in liters"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1L</span><span>12L</span></div></div></div>
           </div>
           <div class="sn-power-calculator__field"><label for="sn-jump-voltage-{{ section.id }}">Vehicle voltage</label><select id="sn-jump-voltage-{{ section.id }}" data-jump-voltage><option value="12v">12V</option><option value="24v">24V</option><option value="unknown">Not sure</option></select></div>
         </fieldset>
@@ -217,25 +242,37 @@
           <p class="sn-power-calculator__step-caption">Select the loads that should remain available, then mark Peak for loads expected to run at the same time.</p>
           <div class="sn-power-calculator__load-list" data-load-list>
             <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__field"><label>Refrigerator</label><input type="number" min="1" max="5000" value="150" data-load-watts inputmode="decimal" aria-label="Home refrigerator watts"></div>
-              <div class="sn-power-calculator__field"><label>Hours</label><input type="number" min="0.1" max="24" step="0.1" value="12" data-load-hours inputmode="decimal" aria-label="Home refrigerator hours per day"></div>
-              <span class="sn-power-calculator__unit">hours/day</span>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label>
+              <div class="sn-power-calculator__load-heading"><strong>Refrigerator</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label></div></div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-home-fridge-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-home-fridge-watts-{{ section.id }}" type="number" min="1" max="5000" step="1" value="150" data-load-watts data-range-number inputmode="decimal" aria-label="Home refrigerator watts"><span>W</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="10" max="1000" step="10" value="150" data-range-input aria-label="Home refrigerator power draw"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>10W</span><span>1kW</span></div>
+              </div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-home-fridge-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-home-fridge-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="12" data-load-hours data-range-number inputmode="decimal" aria-label="Home refrigerator hours per day"><span>hours/day</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="0.1" max="24" step="0.1" value="12" data-range-input aria-label="Home refrigerator daily run time"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>24h</span></div>
+              </div>
             </div>
             <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__field"><label>Lighting</label><input type="number" min="1" max="3000" value="100" data-load-watts inputmode="decimal" aria-label="Home lighting watts"></div>
-              <div class="sn-power-calculator__field"><label>Hours</label><input type="number" min="0.1" max="24" step="0.1" value="5" data-load-hours inputmode="decimal" aria-label="Home lighting hours per day"></div>
-              <span class="sn-power-calculator__unit">hours/day</span>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" data-load-simultaneous> Peak</label>
+              <div class="sn-power-calculator__load-heading"><strong>Lighting</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" data-load-simultaneous> Peak</label></div></div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-home-lighting-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-home-lighting-watts-{{ section.id }}" type="number" min="1" max="3000" step="1" value="100" data-load-watts data-range-number inputmode="decimal" aria-label="Home lighting watts"><span>W</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="10" max="1000" step="10" value="100" data-range-input aria-label="Home lighting power draw"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>10W</span><span>1kW</span></div>
+              </div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-home-lighting-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-home-lighting-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="5" data-load-hours data-range-number inputmode="decimal" aria-label="Home lighting hours per day"><span>hours/day</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="0.1" max="12" step="0.1" value="5" data-range-input aria-label="Home lighting daily run time"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>12h</span></div>
+              </div>
             </div>
             <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__field"><label>Internet / router</label><input type="number" min="1" max="1000" value="25" data-load-watts inputmode="decimal" aria-label="Internet router watts"></div>
-              <div class="sn-power-calculator__field"><label>Hours</label><input type="number" min="0.1" max="24" step="0.1" value="24" data-load-hours inputmode="decimal" aria-label="Internet router hours per day"></div>
-              <span class="sn-power-calculator__unit">hours/day</span>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label>
-              <label class="sn-power-calculator__load-check"><input type="checkbox" data-load-simultaneous> Peak</label>
+              <div class="sn-power-calculator__load-heading"><strong>Internet / router</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" data-load-simultaneous> Peak</label></div></div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-home-router-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-home-router-watts-{{ section.id }}" type="number" min="1" max="1000" step="1" value="25" data-load-watts data-range-number inputmode="decimal" aria-label="Internet router watts"><span>W</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="5" max="300" step="5" value="25" data-range-input aria-label="Internet router power draw"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>5W</span><span>300W</span></div>
+              </div>
+              <div class="sn-power-calculator__range-control" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-home-router-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-home-router-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="24" data-load-hours data-range-number inputmode="decimal" aria-label="Internet router hours per day"><span>hours/day</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="0.1" max="24" step="0.1" value="24" data-range-input aria-label="Internet router daily run time"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>24h</span></div>
+              </div>
             </div>
           </div>
           <button type="button" class="sn-power-calculator__text-button" data-add-load>Add another load</button>
@@ -244,9 +281,9 @@
         <div class="sn-power-calculator__inline-fields">
           <div class="sn-power-calculator__step">
             <label class="sn-power-calculator__step-title" for="sn-home-backup-hours-{{ section.id }}">Backup window</label>
-            <div class="sn-power-calculator__number-field">
-              <div class="sn-power-calculator__field"><span class="sn-power-calculator__field-label">Hours</span><input id="sn-home-backup-hours-{{ section.id }}" type="number" min="4" max="72" step="1" value="12" data-home-backup-hours inputmode="numeric"></div>
-              <span class="sn-power-calculator__unit">hours</span>
+            <div class="sn-power-calculator__range-control" data-range-control>
+              <div class="sn-power-calculator__range-head"><label for="sn-home-backup-hours-{{ section.id }}">Hours</label><span class="sn-power-calculator__range-value"><input id="sn-home-backup-hours-{{ section.id }}" type="number" min="4" max="72" step="1" value="12" data-home-backup-hours data-range-number inputmode="numeric"><span>hours</span></span></div>
+              <input class="sn-power-calculator__range" type="range" min="4" max="72" step="1" value="12" data-range-input aria-label="Home backup window in hours"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>4 hours</span><span>72 hours</span></div>
             </div>
           </div>
           <fieldset class="sn-power-calculator__step">
