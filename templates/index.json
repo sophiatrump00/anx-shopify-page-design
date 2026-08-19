@@ -96,7 +96,7 @@
           "type": "path",
           "settings": {
             "fallback_asset": "suntneew-rv-230ah-feature-lifestyle-desktop.jpg",
-            "mobile_fallback_asset": "suntneew-rv-g24-feature-lifestyle-mobile.jpg",
+            "mobile_fallback_asset": "suntneew-rv-230ah-feature-lifestyle-mobile.jpg",
             "image_alt": "RV campsite powered by a SuntNeew battery",
             "eyebrow": "RV BATTERIES",
             "product_label": "SERIES PREPARING",
