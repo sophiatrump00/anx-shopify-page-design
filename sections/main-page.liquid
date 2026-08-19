@@ -1,15 +1,46 @@
+{%- liquid
+  assign is_suntneew_about_page = false
+  assign is_suntneew_return_policy_page = false
+
+  if page.handle == 'about-us'
+    assign is_suntneew_about_page = true
+  elsif page.handle == 'return-policy'
+    assign is_suntneew_return_policy_page = true
+  endif
+
+  assign page_max_width = section.settings.content_width
+
+  if is_suntneew_about_page
+    assign page_max_width = '1200px'
+  endif
+-%}
+
+{%- if is_suntneew_about_page or is_suntneew_return_policy_page -%}
+  {{- 'suntneew-static-pages.css' | asset_url | stylesheet_tag -}}
+{%- endif -%}
+
 <style>
   #shopify-section-{{ section.id }} {
-    --page-max-width: {{ section.settings.content_width }};
+    --page-max-width: {{ page_max_width }};
   }
 </style>
 
 <div class="container">
   <div class="page-spacer">
-    <div class="page">
-      <h1 class="h1 text-center">{{ page.title }}</h1>
+    <div class="page{% if is_suntneew_about_page %} page--suntneew-about{% elsif is_suntneew_return_policy_page %} page--suntneew-policy{% endif %}">
+      <h1 class="h1 text-center" id="PageHeading-{{ section.id }}">
+        {%- if is_suntneew_about_page -%}
+          About SuntNeew
+        {%- else -%}
+          {{- page.title -}}
+        {%- endif -%}
+      </h1>
 
-      {%- if page.content != empty -%}
+      {%- if is_suntneew_about_page -%}
+        {%- render 'suntneew-about-page', section_id: section.id -%}
+      {%- elsif is_suntneew_return_policy_page -%}
+        {%- render 'suntneew-return-policy' -%}
+      {%- elsif page.content != empty -%}
         <div class="prose">
           {{ page.content }}
         </div>
