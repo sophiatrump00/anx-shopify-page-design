@@ -1,0 +1,130 @@
+<div class="sn-about">
+  <section class="sn-about__lead" aria-labelledby="AboutLead-{{ section_id }}">
+    <div class="sn-about__lead-copy">
+      <p class="sn-about__eyebrow">Power for real life</p>
+      <h2 id="AboutLead-{{ section_id }}">Energy choices should feel clear.</h2>
+      <p class="sn-about__lede">
+        SuntNeew brings practical power solutions to the road, the driveway, and the home. Our range spans LiFePO4 RV
+        batteries, portable jump starters, and home energy storage systems.
+      </p>
+      <p>
+        Across every category, we focus on useful product information, application fit, and a straightforward path to
+        support, so you can choose around the way you actually use power.
+      </p>
+    </div>
+
+    <figure class="sn-about__lead-media">
+      <img
+        src="{{ 'suntneew-rv-g31-feature-lifestyle-desktop.jpg' | asset_url }}"
+        alt="SuntNeew RV battery supporting a lakeside motorhome trip"
+        width="2400"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+      >
+    </figure>
+  </section>
+
+  <section class="sn-about__principles" aria-labelledby="AboutPrinciples-{{ section_id }}">
+    <header class="sn-about__section-heading">
+      <p class="sn-about__eyebrow">How we think</p>
+      <h2 id="AboutPrinciples-{{ section_id }}">Start with the job. Then choose the power.</h2>
+      <p>
+        A better decision begins with the real constraint: physical fit, usable energy, output, system compatibility,
+        or the kind of emergency you are preparing for.
+      </p>
+    </header>
+
+    <div class="sn-about__principle-grid">
+      <article>
+        <span aria-hidden="true">01</span>
+        <h3>Clarity before checkout</h3>
+        <p>We organize choices around specifications and use cases that help customers compare the right details.</p>
+      </article>
+      <article>
+        <span aria-hidden="true">02</span>
+        <h3>Built around real use</h3>
+        <p>Road travel, roadside readiness, and home energy each call for a different starting point.</p>
+      </article>
+      <article>
+        <span aria-hidden="true">03</span>
+        <h3>Support beyond the product page</h3>
+        <p>Guidance, product documentation, and direct support remain part of the experience after purchase.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sn-about__range" aria-labelledby="AboutRange-{{ section_id }}">
+    <header class="sn-about__section-heading">
+      <p class="sn-about__eyebrow">One brand, three power paths</p>
+      <h2 id="AboutRange-{{ section_id }}">Meet SuntNeew where energy matters.</h2>
+    </header>
+
+    <div class="sn-about__range-grid">
+      <a class="sn-about__range-item" href="{{ collections['rv-batteries'].url }}">
+        <span class="sn-about__range-media">
+          <img
+            src="{{ 'suntneew-rv-g31-feature-lifestyle-desktop.jpg' | asset_url }}"
+            alt="Motorhome powered by a SuntNeew RV battery"
+            width="2400"
+            height="1200"
+            loading="lazy"
+          >
+        </span>
+        <span class="sn-about__range-copy">
+          <span class="sn-about__eyebrow">RV batteries</span>
+          <strong>Power for time off-grid</strong>
+          <span>Compare case fit, capacity, and continuous output for the way your RV is used.</span>
+          <span class="sn-about__text-link">Explore RV batteries</span>
+        </span>
+      </a>
+
+      <a class="sn-about__range-item" href="{{ collections['jump-starters'].url }}">
+        <span class="sn-about__range-media">
+          <img
+            src="{{ 'suntneew-use-jump.jpg' | asset_url }}"
+            alt="SuntNeew portable jump starter connected in an engine bay"
+            width="1200"
+            height="1400"
+            loading="lazy"
+          >
+        </span>
+        <span class="sn-about__range-copy">
+          <span class="sn-about__eyebrow">Jump starters</span>
+          <strong>Readiness when plans change</strong>
+          <span>Choose portable starting power around vehicle fit, starting current, and everyday carry needs.</span>
+          <span class="sn-about__text-link">Explore jump starters</span>
+        </span>
+      </a>
+
+      <a class="sn-about__range-item" href="{{ collections['home-energy-storage'].url }}">
+        <span class="sn-about__range-media">
+          <img
+            src="{{ 'suntneew-use-home-energy.jpg' | asset_url }}"
+            alt="SuntNeew home energy storage systems beside a solar-powered home"
+            width="1921"
+            height="1080"
+            loading="lazy"
+          >
+        </span>
+        <span class="sn-about__range-copy">
+          <span class="sn-about__eyebrow">Home energy storage</span>
+          <strong>Storage planned as a system</strong>
+          <span>Begin with energy needs, inverter compatibility, site conditions, and the installation plan.</span>
+          <span class="sn-about__text-link">Explore home energy</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sn-about__cta" aria-labelledby="AboutCta-{{ section_id }}">
+    <div>
+      <p class="sn-about__eyebrow">Your next step</p>
+      <h2 id="AboutCta-{{ section_id }}">Find the right starting point.</h2>
+    </div>
+    <div class="sn-about__actions">
+      <a class="sn-about__button" href="{{ routes.all_products_collection_url }}">Browse all products</a>
+      <a class="sn-about__button sn-about__button--secondary" href="/pages/contact-us">Contact us</a>
+    </div>
+  </section>
+</div>
