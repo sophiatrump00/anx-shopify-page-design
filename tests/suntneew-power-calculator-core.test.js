@@ -79,6 +79,50 @@ assert.equal(rvLimits12V.maximumBatteryCount, 4);
 assert.equal(rvLimits51V.maximumBatteryCount, 16);
 assert.equal(rvLimits51V.maximumParallelStrings, 4);
 
+const defaultRvCatalog = core.getCatalog().rv;
+assert.deepEqual(
+  defaultRvCatalog.find((product) => product.id === 'g24-100ah') && {
+    lengthMm: defaultRvCatalog.find((product) => product.id === 'g24-100ah').lengthMm,
+    widthMm: defaultRvCatalog.find((product) => product.id === 'g24-100ah').widthMm,
+    heightMm: defaultRvCatalog.find((product) => product.id === 'g24-100ah').heightMm
+  },
+  { lengthMm: 260, widthMm: 170, heightMm: 212 }
+);
+
+const measuredLimits = core.getRvInputLimits({
+  loads: [selectedLoad(500, 1)],
+  backupDays: 1,
+  seriesCount: 1,
+  spaceMode: 'measured',
+  space: { longSideMm: 270, shortSideMm: 180, heightMm: 220 }
+});
+assert.equal(measuredLimits.available, true);
+assert.equal(measuredLimits.spaceMatchCount, 1);
+assert.equal(measuredLimits.measuredSpaceLimits.minLongSideMm, 260);
+assert.equal(measuredLimits.measuredSpaceLimits.minShortSideMm, 170);
+assert.equal(measuredLimits.measuredSpaceLimits.minHeightMm, 212);
+
+const measuredRotatedMatch = core.recommendRv({
+  loads: [selectedLoad(500, 1)],
+  backupDays: 1,
+  seriesCount: 1,
+  spaceMode: 'measured',
+  space: { longSideMm: 180, shortSideMm: 270, heightMm: 220 }
+});
+assert.equal(measuredRotatedMatch.status, 'match');
+assert.equal(measuredRotatedMatch.productKey, 'rv-g24');
+assert.equal(measuredRotatedMatch.spaceVerified, true);
+assert.deepEqual(measuredRotatedMatch.unitDimensions, { longSideMm: 260, shortSideMm: 170, heightMm: 212 });
+
+const group31SpaceMatch = core.recommendRv({
+  loads: [selectedLoad(500, 1)],
+  backupDays: 1,
+  seriesCount: 1,
+  spaceMode: 'group31'
+});
+assert.equal(group31SpaceMatch.status, 'match');
+assert.equal(group31SpaceMatch.productKey, 'rv-g31');
+
 const invalidLoads = core.calculateLoads([selectedLoad(0, 2), selectedLoad(100, 25)]);
 assert.equal(invalidLoads.valid, false);
 
@@ -169,6 +213,9 @@ core.configureCatalog([
     id: 'future-500ah',
     model: 'Future 500Ah',
     fit: 'flexible',
+    lengthMm: 610,
+    widthMm: 300,
+    heightMm: 250,
     capacityWh: 6400,
     outputW: 5000,
     maxSeries: 4,
@@ -192,6 +239,18 @@ const futureMatch = core.recommendRv({
 assert.equal(futureMatch.status, 'match');
 assert.equal(futureMatch.productKey, 'rv-future');
 assert.equal(futureMatch.quantity, 12);
+
+const futureMeasuredLimits = core.getRvInputLimits({
+  loads: [selectedLoad(1000, 1)],
+  backupDays: 1,
+  fit: 'flexible',
+  spaceMode: 'measured',
+  space: { longSideMm: 610, shortSideMm: 300, heightMm: 250 },
+  seriesCount: 1
+});
+assert.equal(futureMeasuredLimits.available, true);
+assert.equal(futureMeasuredLimits.measuredSpaceLimits.minLongSideMm, 610);
+assert.equal(futureMeasuredLimits.measuredSpaceLimits.minShortSideMm, 300);
 
 core.resetCatalog();
 assert.equal(core.getCatalog().rv.length, 4);

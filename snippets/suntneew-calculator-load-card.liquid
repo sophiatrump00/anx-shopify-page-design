@@ -1,0 +1,64 @@
+{% doc %}
+Renders an expandable appliance card for the SuntNeew calculator.
+
+@param {string} scenario - Scenario identifier.
+@param {string} load_key - Stable appliance identifier.
+@param {string} name - Appliance name.
+@param {string} icon - Appliance icon name.
+@param {number} watts - Default power draw.
+@param {number} max_watts - Maximum power draw.
+@param {number} watts_step - Power input step.
+@param {number} hours - Default daily run time.
+@param {number} max_hours - Maximum daily run time.
+@param {number} hours_step - Runtime input step.
+@param {boolean} selected - Whether the appliance starts selected.
+@param {boolean} simultaneous - Whether it contributes to simultaneous peak.
+@param {string} section_id - Section identifier used for unique input IDs.
+
+@example
+{% render 'suntneew-calculator-load-card', scenario: 'rv', load_key: 'fridge', name: 'Refrigerator', icon: 'refrigerator', watts: 50, max_watts: 500, watts_step: 10, hours: 24, max_hours: 24, hours_step: 0.1, selected: true, simultaneous: true, section_id: section.id %}
+{% enddoc %}
+
+{%- capture load_id -%}sn-{{ scenario }}-{{ load_key }}-{{ section_id }}{%- endcapture -%}
+<article class="sn-power-calculator__load-card{% if selected %} is-selected{% endif %}" data-load-row data-load-key="{{ load_key | escape }}">
+  <div class="sn-power-calculator__load-card-main">
+    <button class="sn-power-calculator__load-toggle" type="button" data-load-toggle aria-pressed="{% if selected %}true{% else %}false{% endif %}" aria-controls="{{ load_id }}-controls">
+      <span class="sn-power-calculator__load-icon">{% render 'suntneew-calculator-icon', icon: icon %}</span>
+      <span class="sn-power-calculator__load-copy">
+        <strong data-load-title>{{ name | escape }}</strong>
+        <small data-load-preview>{{ watts }}W / {{ hours }}h per day</small>
+      </span>
+    </button>
+    <label class="sn-power-calculator__switch">
+      <input type="checkbox" data-load-selected{% if selected %} checked{% endif %} aria-label="Include {{ name | escape }}">
+      <span aria-hidden="true"></span>
+    </label>
+  </div>
+
+  <div id="{{ load_id }}-controls" class="sn-power-calculator__load-controls" data-load-controls{% unless selected %} hidden{% endunless %}>
+    <div class="sn-power-calculator__power-control">
+      <label for="{{ load_id }}-watts">Power draw</label>
+      <span class="sn-power-calculator__number-unit">
+        <input id="{{ load_id }}-watts" type="number" min="1" max="{{ max_watts }}" step="{{ watts_step }}" value="{{ watts }}" inputmode="decimal" data-load-watts data-base-max="{{ max_watts }}">
+        <span>W</span>
+      </span>
+    </div>
+
+    <div class="sn-power-calculator__range-control" data-range-control>
+      <div class="sn-power-calculator__range-head">
+        <label for="{{ load_id }}-hours">Daily run time</label>
+        <span class="sn-power-calculator__number-unit sn-power-calculator__number-unit--time">
+          <input id="{{ load_id }}-hours" type="number" min="0.1" max="{{ max_hours }}" step="{{ hours_step }}" value="{{ hours }}" inputmode="decimal" data-load-hours data-range-number>
+          <span>h/day</span>
+        </span>
+      </div>
+      <input class="sn-power-calculator__range" type="range" min="0.1" max="{{ max_hours }}" step="{{ hours_step }}" value="{{ hours }}" data-range-input aria-label="{{ name | escape }} daily run time">
+      <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>{{ max_hours }}h</span></div>
+    </div>
+
+    <label class="sn-power-calculator__peak-choice">
+      <input type="checkbox" data-load-simultaneous{% if simultaneous %} checked{% endif %}>
+      <span>May run with other selected loads</span>
+    </label>
+  </div>
+</article>

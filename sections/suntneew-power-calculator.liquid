@@ -20,37 +20,39 @@
   data-support-url="{{ section.settings.support_url | default: '/pages/request-for-quote' | escape }}"
   data-planner-step="scenario"
 >
-  <div class="sn-power-calculator__hero">
-    <div class="sn-power-calculator__shell">
+  <header class="sn-power-calculator__hero">
+    <div class="sn-power-calculator__shell sn-power-calculator__hero-inner">
       <div class="sn-power-calculator__hero-copy-block">
         <p class="sn-power-calculator__eyebrow">{{ section.settings.eyebrow | escape }}</p>
         <h1>{{ section.settings.heading | escape }}</h1>
-        <p class="sn-power-calculator__hero-copy">{{ section.settings.intro | escape }}</p>
+        <p>{{ section.settings.intro | escape }}</p>
       </div>
 
       <ol class="sn-power-calculator__stepper" aria-label="Power planner progress">
         <li class="is-active" data-planner-step-item="scenario" aria-current="step">
           <span class="sn-power-calculator__step-number">1</span>
-          <span><small>Step 1</small><strong>Scenario</strong></span>
+          <span class="sn-power-calculator__step-label"><small>Step 1</small><strong>Scenario</strong></span>
         </li>
-        <li data-planner-step-item="details">
+        <li data-planner-step-item="setup">
           <span class="sn-power-calculator__step-number">2</span>
-          <span><small>Step 2</small><strong>Your needs</strong></span>
+          <span class="sn-power-calculator__step-label"><small>Step 2</small><strong>Setup</strong></span>
+        </li>
+        <li data-planner-step-item="needs">
+          <span class="sn-power-calculator__step-number">3</span>
+          <span class="sn-power-calculator__step-label"><small>Step 3</small><strong>Needs</strong></span>
         </li>
         <li data-planner-step-item="recommendation">
-          <span class="sn-power-calculator__step-number">3</span>
-          <span><small>Step 3</small><strong>Recommendation</strong></span>
+          <span class="sn-power-calculator__step-number">4</span>
+          <span class="sn-power-calculator__step-label"><small>Step 4</small><strong aria-label="Recommendation"><span class="sn-power-calculator__step-name--full" aria-hidden="true">Recommendation</span><span class="sn-power-calculator__step-name--short" aria-hidden="true">Result</span></strong></span>
         </li>
       </ol>
-
-      <p class="sn-power-calculator__privacy-note">{{ section.settings.privacy_note | escape }}</p>
     </div>
-  </div>
+  </header>
 
   <div class="sn-power-calculator__body">
     <div class="sn-power-calculator__shell">
-      <div class="sn-power-calculator__scenario-stage" data-scenario-stage>
-        <div class="sn-power-calculator__scenario-header">
+      <section class="sn-power-calculator__scenario-stage" data-scenario-stage>
+        <div class="sn-power-calculator__stage-heading sn-power-calculator__stage-heading--center">
           <p class="sn-power-calculator__step-kicker">{{ section.settings.scenario_eyebrow | escape }}</p>
           <h2>{{ section.settings.scenario_heading | escape }}</h2>
           <p>{{ section.settings.scenario_body | escape }}</p>
@@ -62,10 +64,7 @@
               <img src="{{ 'suntneew-use-rv.jpg' | asset_url }}" alt="SuntNeew batteries powering an RV campsite" width="1200" height="1400" loading="eager">
               <span class="sn-power-calculator__scenario-check" aria-hidden="true">&#10003;</span>
             </span>
-            <span class="sn-power-calculator__scenario-copy">
-              <strong>RV Power</strong>
-              <small>Size a battery starting point around daily loads and available space.</small>
-            </span>
+            <span class="sn-power-calculator__scenario-copy"><strong>RV Power</strong><small>Plan daily energy, voltage and installation space.</small></span>
           </button>
 
           <button type="button" class="sn-power-calculator__scenario" data-scenario="jump" aria-pressed="false">
@@ -73,10 +72,7 @@
               <img src="{{ 'suntneew-use-jump.jpg' | asset_url }}" alt="SuntNeew jump starter connected in a vehicle engine bay" width="1200" height="1400" loading="eager">
               <span class="sn-power-calculator__scenario-check" aria-hidden="true">&#10003;</span>
             </span>
-            <span class="sn-power-calculator__scenario-copy">
-              <strong>Vehicle Starting</strong>
-              <small>Match a 12V jump starter to fuel type, engine size and conditions.</small>
-            </span>
+            <span class="sn-power-calculator__scenario-copy"><strong>Vehicle Starting</strong><small>Match fuel, engine size and operating conditions.</small></span>
           </button>
 
           <button type="button" class="sn-power-calculator__scenario" data-scenario="home" aria-pressed="false">
@@ -84,281 +80,195 @@
               <img src="{{ 'suntneew-use-home-energy.jpg' | asset_url }}" alt="SuntNeew home energy storage beside a solar-powered home" width="1921" height="1080" loading="eager">
               <span class="sn-power-calculator__scenario-check" aria-hidden="true">&#10003;</span>
             </span>
-            <span class="sn-power-calculator__scenario-copy">
-              <strong>Home Backup</strong>
-              <small>Estimate essential-load capacity before confirming system architecture.</small>
-            </span>
+            <span class="sn-power-calculator__scenario-copy"><strong>Home Backup</strong><small>Estimate essential loads and a practical backup window.</small></span>
           </button>
         </div>
 
         <div class="sn-power-calculator__scenario-actions">
           <button type="button" class="sn-power-calculator__button" data-scenario-continue disabled>Continue <span aria-hidden="true">&#8594;</span></button>
         </div>
-      </div>
-
-      <div class="sn-power-calculator__progress" data-progress hidden aria-live="polite">Choose a scenario to begin</div>
+      </section>
 
       <form class="sn-power-calculator__form" data-scenario-form="rv" hidden novalidate>
-        <div class="sn-power-calculator__form-header">
-          <div>
-            <p class="sn-power-calculator__step-kicker">STEP 2 &middot; RV POWER</p>
-            <h2>What needs power on the road?</h2>
+        <section class="sn-power-calculator__form-stage" data-form-stage="setup">
+          <div class="sn-power-calculator__stage-heading">
+            <p class="sn-power-calculator__step-kicker">STEP 2 &middot; RV SETUP</p>
+            <h2>Start with the space and battery bank.</h2>
+            <p>Choose a known tray or enter the usable enclosure space. Measurements check one battery enclosure and allow horizontal rotation.</p>
           </div>
-          <p>Use the loads you expect to run together. The result is a planning estimate, not a substitute for a complete RV electrical design.</p>
-        </div>
 
-        <fieldset class="sn-power-calculator__step">
-          <legend class="sn-power-calculator__step-title">Daily appliance loads</legend>
-          <p class="sn-power-calculator__step-caption">Select the appliances you want included, then mark Peak for loads expected to run at the same time.</p>
-          <div class="sn-power-calculator__load-list" data-load-list>
-            <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__load-heading"><strong>Refrigerator</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label></div></div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-rv-fridge-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-rv-fridge-watts-{{ section.id }}" type="number" min="1" max="20000" step="1" value="50" data-load-watts data-range-number inputmode="decimal" aria-label="Refrigerator watts"><span>W</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="10" max="500" step="10" value="50" data-range-input aria-label="Refrigerator power draw">
-                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>10W</span><span>500W</span></div>
+          <div class="sn-power-calculator__setup-stack">
+            <fieldset class="sn-power-calculator__setup-section">
+              <legend>Installation space</legend>
+              <div class="sn-power-calculator__option-grid sn-power-calculator__option-grid--4">
+                <label class="sn-power-calculator__option-card"><input type="radio" name="sn-rv-space-{{ section.id }}" value="all" checked data-rv-space-mode><span><strong>Not sure</strong><small>Show every verified size</small></span></label>
+                <label class="sn-power-calculator__option-card"><input type="radio" name="sn-rv-space-{{ section.id }}" value="group24" data-rv-space-mode><span><strong>Group 24 tray</strong><small>260 &times; 170 &times; 212mm</small></span></label>
+                <label class="sn-power-calculator__option-card"><input type="radio" name="sn-rv-space-{{ section.id }}" value="group31" data-rv-space-mode><span><strong>Group 31 tray</strong><small>339 &times; 185 &times; 218mm</small></span></label>
+                <label class="sn-power-calculator__option-card"><input type="radio" name="sn-rv-space-{{ section.id }}" value="measured" data-rv-space-mode><span><strong>Measured space</strong><small>Use your clear dimensions</small></span></label>
               </div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-rv-fridge-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-rv-fridge-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="24" data-load-hours data-range-number inputmode="decimal" aria-label="Refrigerator hours per day"><span>hours/day</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="0.1" max="24" step="0.1" value="24" data-range-input aria-label="Refrigerator daily run time">
-                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>24h</span></div>
-              </div>
-            </div>
-            <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__load-heading"><strong>Microwave</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label></div></div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-rv-microwave-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-rv-microwave-watts-{{ section.id }}" type="number" min="1" max="20000" step="1" value="800" data-load-watts data-range-number inputmode="decimal" aria-label="Microwave watts"><span>W</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="100" max="2500" step="50" value="800" data-range-input aria-label="Microwave power draw">
-                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>100W</span><span>2.5kW</span></div>
-              </div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-rv-microwave-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-rv-microwave-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="0.2" data-load-hours data-range-number inputmode="decimal" aria-label="Microwave hours per day"><span>hours/day</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="0.1" max="4" step="0.1" value="0.2" data-range-input aria-label="Microwave daily run time">
-                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>4h</span></div>
-              </div>
-            </div>
-            <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__load-heading"><strong>Air conditioner</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label></div></div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-rv-ac-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-rv-ac-watts-{{ section.id }}" type="number" min="1" max="20000" step="1" value="800" data-load-watts data-range-number inputmode="decimal" aria-label="Air conditioner watts"><span>W</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="200" max="5000" step="50" value="800" data-range-input aria-label="Air conditioner power draw">
-                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>200W</span><span>5kW</span></div>
-              </div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-rv-ac-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-rv-ac-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="1" data-load-hours data-range-number inputmode="decimal" aria-label="Air conditioner hours per day"><span>hours/day</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="0.5" max="12" step="0.5" value="1" data-range-input aria-label="Air conditioner daily run time">
-                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.5h</span><span>12h</span></div>
-              </div>
-            </div>
-            <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__load-heading"><strong>Lighting</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" data-load-simultaneous> Peak</label></div></div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-rv-lighting-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-rv-lighting-watts-{{ section.id }}" type="number" min="1" max="20000" step="1" value="120" data-load-watts data-range-number inputmode="decimal" aria-label="Lighting watts"><span>W</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="10" max="1000" step="10" value="120" data-range-input aria-label="Lighting power draw">
-                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>10W</span><span>1kW</span></div>
-              </div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-rv-lighting-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-rv-lighting-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="5" data-load-hours data-range-number inputmode="decimal" aria-label="Lighting hours per day"><span>hours/day</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="0.1" max="12" step="0.1" value="5" data-range-input aria-label="Lighting daily run time">
-                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>12h</span></div>
-              </div>
-            </div>
-          </div>
-          <button type="button" class="sn-power-calculator__text-button" data-add-load>Add another load</button>
-        </fieldset>
 
-        <div class="sn-power-calculator__inline-fields sn-power-calculator__inline-fields--rv">
-          <div class="sn-power-calculator__step">
-            <label class="sn-power-calculator__step-title" for="sn-rv-backup-days-{{ section.id }}">Backup period</label>
-            <div class="sn-power-calculator__range-control" data-range-control>
-              <div class="sn-power-calculator__range-head"><label for="sn-rv-backup-days-{{ section.id }}">Days</label><span class="sn-power-calculator__range-value"><input id="sn-rv-backup-days-{{ section.id }}" type="number" min="1" max="30" step="1" value="1" data-rv-backup-days data-range-number inputmode="numeric"><span>days</span></span></div>
-              <input class="sn-power-calculator__range" type="range" min="1" max="30" step="1" value="1" data-range-input aria-label="RV backup period in days">
-              <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>1 day</span><span>30 days</span></div>
+              <div class="sn-power-calculator__measured-space" data-measured-space hidden>
+                <div class="sn-power-calculator__range-control" data-range-control>
+                  <div class="sn-power-calculator__range-head"><label for="sn-rv-space-long-{{ section.id }}">Usable long side</label><span class="sn-power-calculator__number-unit"><input id="sn-rv-space-long-{{ section.id }}" type="number" min="260" max="1000" step="1" value="400" inputmode="numeric" data-rv-space-long data-range-number><span>mm</span></span></div>
+                  <input class="sn-power-calculator__range" type="range" min="260" max="1000" step="1" value="400" data-range-input aria-label="Usable battery space long side">
+                  <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>260mm</span><span>1000mm</span></div>
+                </div>
+                <div class="sn-power-calculator__range-control" data-range-control>
+                  <div class="sn-power-calculator__range-head"><label for="sn-rv-space-short-{{ section.id }}">Usable short side</label><span class="sn-power-calculator__number-unit"><input id="sn-rv-space-short-{{ section.id }}" type="number" min="170" max="600" step="1" value="220" inputmode="numeric" data-rv-space-short data-range-number><span>mm</span></span></div>
+                  <input class="sn-power-calculator__range" type="range" min="170" max="600" step="1" value="220" data-range-input aria-label="Usable battery space short side">
+                  <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>170mm</span><span>600mm</span></div>
+                </div>
+                <div class="sn-power-calculator__range-control" data-range-control>
+                  <div class="sn-power-calculator__range-head"><label for="sn-rv-space-height-{{ section.id }}">Usable height</label><span class="sn-power-calculator__number-unit"><input id="sn-rv-space-height-{{ section.id }}" type="number" min="212" max="500" step="1" value="250" inputmode="numeric" data-rv-space-height data-range-number><span>mm</span></span></div>
+                  <input class="sn-power-calculator__range" type="range" min="212" max="500" step="1" value="250" data-range-input aria-label="Usable battery space height">
+                  <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>212mm</span><span>500mm</span></div>
+                </div>
+                <p class="sn-power-calculator__field-note" data-space-note></p>
+              </div>
+            </fieldset>
+
+            <fieldset class="sn-power-calculator__setup-section">
+              <legend>Battery-bank voltage</legend>
+              <div class="sn-power-calculator__option-grid sn-power-calculator__option-grid--4">
+                <label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-rv-series-{{ section.id }}" value="1" checked data-rv-series><span><strong>12.8V</strong><small>1 in series</small></span></label>
+                <label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-rv-series-{{ section.id }}" value="2" data-rv-series><span><strong>25.6V</strong><small>2 in series</small></span></label>
+                <label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-rv-series-{{ section.id }}" value="3" data-rv-series><span><strong>38.4V</strong><small>3 in series</small></span></label>
+                <label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-rv-series-{{ section.id }}" value="4" data-rv-series><span><strong>51.2V</strong><small>4 in series</small></span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="sn-power-calculator__setup-section">
+              <legend>Backup period</legend>
+              <div class="sn-power-calculator__range-control sn-power-calculator__range-control--wide" data-range-control>
+                <div class="sn-power-calculator__range-head"><label for="sn-rv-backup-days-{{ section.id }}">Days without recharging</label><span class="sn-power-calculator__number-unit"><input id="sn-rv-backup-days-{{ section.id }}" type="number" min="1" max="30" step="1" value="1" inputmode="numeric" data-rv-backup-days data-range-number><span>days</span></span></div>
+                <input class="sn-power-calculator__range" type="range" min="1" max="30" step="1" value="1" data-range-input aria-label="RV backup period in days">
+                <div class="sn-power-calculator__range-scale" aria-hidden="true"><span>1 day</span><span>30 days</span></div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="sn-power-calculator__stage-actions"><button type="button" class="sn-power-calculator__text-button" data-switch-scenario>&#8592; Scenarios</button><button type="button" class="sn-power-calculator__button" data-stage-continue>Choose appliances <span aria-hidden="true">&#8594;</span></button></div>
+        </section>
+
+        <section class="sn-power-calculator__form-stage" data-form-stage="needs" hidden>
+          <div class="sn-power-calculator__workspace">
+            <div class="sn-power-calculator__needs-panel">
+              <div class="sn-power-calculator__stage-heading">
+                <p class="sn-power-calculator__step-kicker">STEP 3 &middot; RV NEEDS</p>
+                <h2>What will you power each day?</h2>
+                <p>Turn on the appliances you use. Selected cards expand so you can adjust power and run time.</p>
+              </div>
+              <div class="sn-power-calculator__load-grid" data-load-list>
+                {% render 'suntneew-calculator-load-card', scenario: 'rv', load_key: 'fridge', name: 'Refrigerator', icon: 'refrigerator', watts: 50, max_watts: 500, watts_step: 10, hours: 24, max_hours: 24, hours_step: 0.1, selected: true, simultaneous: true, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'rv', load_key: 'lighting', name: 'Lighting', icon: 'lightbulb', watts: 120, max_watts: 1000, watts_step: 10, hours: 5, max_hours: 12, hours_step: 0.1, selected: false, simultaneous: false, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'rv', load_key: 'pump', name: 'Water pump', icon: 'pump', watts: 60, max_watts: 1000, watts_step: 10, hours: 1, max_hours: 12, hours_step: 0.1, selected: false, simultaneous: true, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'rv', load_key: 'devices', name: 'Phone / laptop', icon: 'laptop', watts: 60, max_watts: 500, watts_step: 5, hours: 3, max_hours: 12, hours_step: 0.1, selected: false, simultaneous: false, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'rv', load_key: 'starlink', name: 'Starlink', icon: 'wifi', watts: 75, max_watts: 500, watts_step: 5, hours: 8, max_hours: 24, hours_step: 0.1, selected: false, simultaneous: false, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'rv', load_key: 'fan', name: 'Fan', icon: 'fan', watts: 30, max_watts: 500, watts_step: 5, hours: 4, max_hours: 24, hours_step: 0.1, selected: false, simultaneous: false, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'rv', load_key: 'tv', name: 'TV / entertainment', icon: 'tv', watts: 80, max_watts: 1000, watts_step: 10, hours: 2, max_hours: 12, hours_step: 0.1, selected: false, simultaneous: false, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'rv', load_key: 'microwave', name: 'Microwave', icon: 'microwave', watts: 1000, max_watts: 2500, watts_step: 50, hours: 0.2, max_hours: 4, hours_step: 0.1, selected: false, simultaneous: true, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'rv', load_key: 'air-conditioner', name: 'Air conditioner', icon: 'snowflake', watts: 1000, max_watts: 5000, watts_step: 50, hours: 1, max_hours: 12, hours_step: 0.5, selected: false, simultaneous: true, section_id: section.id %}
+                <button type="button" class="sn-power-calculator__add-load-card" data-add-load><span>{% render 'suntneew-calculator-icon', icon: 'plus' %}</span><strong>Add custom device</strong></button>
+              </div>
+              <p class="sn-power-calculator__limit-note" data-limit-note role="status" aria-live="polite"></p>
+              <p class="sn-power-calculator__error" data-form-error role="alert" hidden></p>
+              <div class="sn-power-calculator__needs-back"><button type="button" class="sn-power-calculator__text-button" data-stage-back>&#8592; Edit setup</button></div>
             </div>
+            <aside class="sn-power-calculator__summary" data-live-summary aria-label="Live power summary">
+              <div><p class="sn-power-calculator__summary-eyebrow">YOUR CURRENT PLAN</p><h3>RV energy estimate</h3></div>
+              <div class="sn-power-calculator__summary-primary"><span data-summary-primary-label>Daily energy</span><strong data-summary-primary>0.00<small>kWh</small></strong></div>
+              <div class="sn-power-calculator__summary-progress" aria-hidden="true"><span data-summary-progress></span></div>
+              <p class="sn-power-calculator__summary-capacity" data-summary-capacity></p>
+              <dl class="sn-power-calculator__summary-stats"><div><dt>Peak power</dt><dd data-summary-peak>0W</dd></div><div><dt>Selected</dt><dd data-summary-count>0</dd></div></dl>
+              <div class="sn-power-calculator__summary-list"><p>May run together</p><ul data-summary-loads><li>No appliances selected</li></ul></div>
+              <button type="submit" class="sn-power-calculator__button sn-power-calculator__button--full" data-summary-submit>See recommendation <span aria-hidden="true">&#8594;</span></button>
+            </aside>
           </div>
-          <div class="sn-power-calculator__step">
-            <label class="sn-power-calculator__step-title" for="sn-rv-fit-{{ section.id }}">Battery fit</label>
-            <div class="sn-power-calculator__field"><span class="sn-power-calculator__field-label">Starting footprint</span><select id="sn-rv-fit-{{ section.id }}" data-rv-fit><option value="flexible">Flexible footprint</option><option value="group24">Group 24 compartment</option><option value="group31">Group 31 compartment</option></select></div>
-          </div>
-          <div class="sn-power-calculator__step">
-            <label class="sn-power-calculator__step-title" for="sn-rv-series-{{ section.id }}">RV electrical system</label>
-            <div class="sn-power-calculator__field"><span class="sn-power-calculator__field-label">Nominal battery-bank voltage</span><select id="sn-rv-series-{{ section.id }}" data-rv-series><option value="1">12.8V (1 in series)</option><option value="2">25.6V (2 in series)</option><option value="3">38.4V (3 in series)</option><option value="4">51.2V (4 in series)</option></select></div>
-          </div>
-        </div>
-
-        <p class="sn-power-calculator__limit-note" data-limit-note role="status" aria-live="polite"></p>
-
-        <div class="sn-power-calculator__actions">
-          <button type="submit" class="sn-power-calculator__button">See my RV starting point</button>
-          <button type="button" class="sn-power-calculator__text-button" data-switch-scenario>Choose another scenario</button>
-        </div>
-        <p class="sn-power-calculator__error" data-form-error role="alert" hidden></p>
+          <div class="sn-power-calculator__mobile-summary" data-mobile-summary><span><small data-mobile-primary-label>Daily energy</small><strong data-mobile-primary>0.00kWh</strong></span><span><small data-mobile-secondary-label>Peak</small><strong data-mobile-secondary>0W</strong></span><button type="submit" aria-label="See recommendation">&#8594;</button></div>
+        </section>
       </form>
 
       <form class="sn-power-calculator__form" data-scenario-form="jump" hidden novalidate>
-        <div class="sn-power-calculator__form-header">
-          <div>
-            <p class="sn-power-calculator__step-kicker">STEP 2 &middot; VEHICLE STARTING</p>
-            <h2>Tell us about the vehicle.</h2>
+        <section class="sn-power-calculator__form-stage" data-form-stage="setup">
+          <div class="sn-power-calculator__stage-heading"><p class="sn-power-calculator__step-kicker">STEP 2 &middot; VEHICLE SETUP</p><h2>Tell us about the vehicle.</h2><p>Coverage is matched against the verified SuntNeew starting range currently in the calculator catalog.</p></div>
+          <div class="sn-power-calculator__setup-stack">
+            <fieldset class="sn-power-calculator__setup-section"><legend>Fuel type</legend><div class="sn-power-calculator__option-grid sn-power-calculator__option-grid--2"><label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-jump-fuel-{{ section.id }}" value="gasoline" checked data-jump-fuel><span><strong>Gasoline</strong><small>Passenger and light-duty engines</small></span></label><label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-jump-fuel-{{ section.id }}" value="diesel" data-jump-fuel><span><strong>Diesel</strong><small>Higher starting demand</small></span></label></div></fieldset>
+            <fieldset class="sn-power-calculator__setup-section"><legend>Engine displacement</legend><div class="sn-power-calculator__range-control sn-power-calculator__range-control--wide" data-range-control><div class="sn-power-calculator__range-head"><label for="sn-jump-engine-{{ section.id }}">Engine size</label><span class="sn-power-calculator__number-unit"><input id="sn-jump-engine-{{ section.id }}" type="number" min="0.1" max="8" step="0.1" value="3" inputmode="decimal" data-jump-engine data-range-number><span>L</span></span></div><input class="sn-power-calculator__range" type="range" min="0.1" max="8" step="0.1" value="3" data-range-input aria-label="Engine displacement in liters"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1L</span><span>8L</span></div></div></fieldset>
+            <fieldset class="sn-power-calculator__setup-section"><legend>Vehicle voltage</legend><div class="sn-power-calculator__option-grid sn-power-calculator__option-grid--2"><label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-jump-voltage-{{ section.id }}" value="12v" checked data-jump-voltage><span><strong>12V</strong><small>Standard vehicle system</small></span></label><label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-jump-voltage-{{ section.id }}" value="24v" data-jump-voltage><span><strong>24V</strong><small>Available when a verified product is added</small></span></label></div></fieldset>
           </div>
-          <p>The coverage table is based on verified 12V starting references. Final fit depends on the vehicle, battery condition and operating conditions.</p>
-        </div>
+          <p class="sn-power-calculator__limit-note" data-limit-note role="status" aria-live="polite"></p>
+          <div class="sn-power-calculator__stage-actions"><button type="button" class="sn-power-calculator__text-button" data-switch-scenario>&#8592; Scenarios</button><button type="button" class="sn-power-calculator__button" data-stage-continue>Operating needs <span aria-hidden="true">&#8594;</span></button></div>
+        </section>
 
-        <fieldset class="sn-power-calculator__step">
-          <legend class="sn-power-calculator__step-title">Vehicle basics</legend>
-          <div class="sn-power-calculator__inline-fields">
-            <div class="sn-power-calculator__field"><label for="sn-jump-fuel-{{ section.id }}">Fuel</label><select id="sn-jump-fuel-{{ section.id }}" data-jump-fuel><option value="gasoline">Gasoline</option><option value="diesel">Diesel</option></select></div>
-            <div class="sn-power-calculator__field"><div class="sn-power-calculator__range-control" data-range-control><div class="sn-power-calculator__range-head"><label for="sn-jump-engine-{{ section.id }}">Engine displacement</label><span class="sn-power-calculator__range-value"><input id="sn-jump-engine-{{ section.id }}" type="number" min="0.1" max="20" step="0.1" value="3" data-jump-engine data-range-number inputmode="decimal"><span>L</span></span></div><input class="sn-power-calculator__range" type="range" min="0.1" max="20" step="0.1" value="3" data-range-input aria-label="Engine displacement in liters"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1L</span><span>20L</span></div></div></div>
+        <section class="sn-power-calculator__form-stage" data-form-stage="needs" hidden>
+          <div class="sn-power-calculator__workspace">
+            <div class="sn-power-calculator__needs-panel">
+              <div class="sn-power-calculator__stage-heading"><p class="sn-power-calculator__step-kicker">STEP 3 &middot; STARTING NEEDS</p><h2>How will you use it?</h2><p>Choose the closest operating condition and the feature that matters most.</p></div>
+              <fieldset class="sn-power-calculator__setup-section"><legend>Operating conditions</legend><div class="sn-power-calculator__option-grid sn-power-calculator__option-grid--3"><label class="sn-power-calculator__option-card"><input type="radio" name="sn-jump-environment-{{ section.id }}" value="standard" checked data-jump-environment><span><strong>Standard</strong><small>Occasional starting support</small></span></label><label class="sn-power-calculator__option-card"><input type="radio" name="sn-jump-environment-{{ section.id }}" value="cold" data-jump-environment><span><strong>Cold weather</strong><small>Add reserve for lower temperatures</small></span></label><label class="sn-power-calculator__option-card"><input type="radio" name="sn-jump-environment-{{ section.id }}" value="demanding" data-jump-environment><span><strong>Demanding use</strong><small>Frequent or harder starts</small></span></label></div></fieldset>
+              <fieldset class="sn-power-calculator__setup-section"><legend>Product priority</legend><div class="sn-power-calculator__option-grid sn-power-calculator__option-grid--2"><label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-jump-priority-{{ section.id }}" value="compact" checked data-jump-priority><span><strong>Compact size</strong><small>Easier to carry and store</small></span></label><label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-jump-priority-{{ section.id }}" value="display" data-jump-priority><span><strong>Clear display</strong><small>At-a-glance controls</small></span></label><label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-jump-priority-{{ section.id }}" value="charging" data-jump-priority><span><strong>Charging utility</strong><small>More portable-device use</small></span></label><label class="sn-power-calculator__option-card sn-power-calculator__option-card--compact"><input type="radio" name="sn-jump-priority-{{ section.id }}" value="reserve" data-jump-priority><span><strong>More reserve</strong><small>Higher capacity first</small></span></label></div></fieldset>
+              <p class="sn-power-calculator__error" data-form-error role="alert" hidden></p><div class="sn-power-calculator__needs-back"><button type="button" class="sn-power-calculator__text-button" data-stage-back>&#8592; Edit vehicle</button></div>
+            </div>
+            <aside class="sn-power-calculator__summary" data-live-summary aria-label="Live vehicle summary"><div><p class="sn-power-calculator__summary-eyebrow">YOUR CURRENT VEHICLE</p><h3>Starting reference</h3></div><div class="sn-power-calculator__summary-primary"><span data-summary-primary-label>Engine size</span><strong data-summary-primary>3.0<small>L</small></strong></div><dl class="sn-power-calculator__summary-stats"><div><dt>Fuel</dt><dd data-summary-peak>Gasoline</dd></div><div><dt>Voltage</dt><dd data-summary-count>12V</dd></div></dl><div class="sn-power-calculator__summary-list"><p>Selection</p><ul data-summary-loads><li>Standard conditions</li><li>Compact size priority</li></ul></div><button type="submit" class="sn-power-calculator__button sn-power-calculator__button--full">See recommendation <span aria-hidden="true">&#8594;</span></button></aside>
           </div>
-          <div class="sn-power-calculator__field"><label for="sn-jump-voltage-{{ section.id }}">Vehicle voltage</label><select id="sn-jump-voltage-{{ section.id }}" data-jump-voltage><option value="12v">12V</option><option value="24v" data-voltage-option="24v">24V</option><option value="unknown">Not sure</option></select></div>
-        </fieldset>
-
-        <fieldset class="sn-power-calculator__step">
-          <legend class="sn-power-calculator__step-title">Operating conditions</legend>
-          <div class="sn-power-calculator__choice-grid sn-power-calculator__choice-grid--2">
-            <label class="sn-power-calculator__choice"><input type="radio" name="sn-jump-environment-{{ section.id }}" value="standard" checked data-jump-environment>Standard conditions</label>
-            <label class="sn-power-calculator__choice"><input type="radio" name="sn-jump-environment-{{ section.id }}" value="cold" data-jump-environment>Cold-weather reserve</label>
-            <label class="sn-power-calculator__choice"><input type="radio" name="sn-jump-environment-{{ section.id }}" value="demanding" data-jump-environment>Frequent or demanding use</label>
-          </div>
-        </fieldset>
-
-        <fieldset class="sn-power-calculator__step">
-          <legend class="sn-power-calculator__step-title">What matters most?</legend>
-          <div class="sn-power-calculator__field"><label for="sn-jump-priority-{{ section.id }}">Priority</label><select id="sn-jump-priority-{{ section.id }}" data-jump-priority><option value="compact">Smallest carry size</option><option value="display">Clear display and controls</option><option value="charging">Charging utility</option><option value="reserve">More reserve capacity</option></select></div>
-        </fieldset>
-
-        <p class="sn-power-calculator__limit-note" data-limit-note role="status" aria-live="polite"></p>
-
-        <div class="sn-power-calculator__actions">
-          <button type="submit" class="sn-power-calculator__button">Find my jump starter</button>
-          <button type="button" class="sn-power-calculator__text-button" data-switch-scenario>Choose another scenario</button>
-        </div>
-        <p class="sn-power-calculator__error" data-form-error role="alert" hidden></p>
+          <div class="sn-power-calculator__mobile-summary" data-mobile-summary><span><small data-mobile-primary-label>Engine</small><strong data-mobile-primary>3.0L</strong></span><span><small data-mobile-secondary-label>Fuel</small><strong data-mobile-secondary>Gasoline</strong></span><button type="submit" aria-label="See recommendation">&#8594;</button></div>
+        </section>
       </form>
 
       <form class="sn-power-calculator__form" data-scenario-form="home" hidden novalidate>
-        <div class="sn-power-calculator__form-header">
-          <div>
-            <p class="sn-power-calculator__step-kicker">STEP 2 &middot; HOME BACKUP</p>
-            <h2>What should stay powered?</h2>
+        <section class="sn-power-calculator__form-stage" data-form-stage="setup">
+          <div class="sn-power-calculator__stage-heading"><p class="sn-power-calculator__step-kicker">STEP 2 &middot; HOME SETUP</p><h2>Set the backup window and architecture.</h2><p>This is a capacity starting point. Inverter compatibility, transfer equipment and installation still require a qualified review.</p></div>
+          <div class="sn-power-calculator__setup-stack">
+            <fieldset class="sn-power-calculator__setup-section"><legend>Battery architecture</legend><div class="sn-power-calculator__option-grid sn-power-calculator__option-grid--3"><label class="sn-power-calculator__option-card"><input type="radio" name="sn-home-architecture-{{ section.id }}" value="auto" checked data-home-architecture><span><strong>Planner choice</strong><small>Compare all configured systems</small></span></label><label class="sn-power-calculator__option-card"><input type="radio" name="sn-home-architecture-{{ section.id }}" value="low" data-home-architecture><span><strong>Low voltage</strong><small>WL5A and WL10B range</small></span></label><label class="sn-power-calculator__option-card"><input type="radio" name="sn-home-architecture-{{ section.id }}" value="high" data-home-architecture><span><strong>High voltage</strong><small>VH system range</small></span></label></div></fieldset>
+            <fieldset class="sn-power-calculator__setup-section"><legend>Backup window</legend><div class="sn-power-calculator__range-control sn-power-calculator__range-control--wide" data-range-control><div class="sn-power-calculator__range-head"><label for="sn-home-backup-hours-{{ section.id }}">Hours of essential-load backup</label><span class="sn-power-calculator__number-unit"><input id="sn-home-backup-hours-{{ section.id }}" type="number" min="1" max="168" step="1" value="12" inputmode="numeric" data-home-backup-hours data-range-number><span>hours</span></span></div><input class="sn-power-calculator__range" type="range" min="1" max="168" step="1" value="12" data-range-input aria-label="Home backup window in hours"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>1 hour</span><span>7 days</span></div></div></fieldset>
           </div>
-          <p>Use only the loads you need during an outage. The result is a capacity starting point; inverter, transfer equipment and installation still need a qualified review.</p>
-        </div>
+          <p class="sn-power-calculator__limit-note" data-limit-note role="status" aria-live="polite"></p>
+          <div class="sn-power-calculator__stage-actions"><button type="button" class="sn-power-calculator__text-button" data-switch-scenario>&#8592; Scenarios</button><button type="button" class="sn-power-calculator__button" data-stage-continue>Choose essential loads <span aria-hidden="true">&#8594;</span></button></div>
+        </section>
 
-        <fieldset class="sn-power-calculator__step">
-          <legend class="sn-power-calculator__step-title">Essential loads</legend>
-          <p class="sn-power-calculator__step-caption">Select the loads that should remain available, then mark Peak for loads expected to run at the same time.</p>
-          <div class="sn-power-calculator__load-list" data-load-list>
-            <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__load-heading"><strong>Refrigerator</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-simultaneous> Peak</label></div></div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-home-fridge-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-home-fridge-watts-{{ section.id }}" type="number" min="1" max="20000" step="1" value="150" data-load-watts data-range-number inputmode="decimal" aria-label="Home refrigerator watts"><span>W</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="10" max="1000" step="10" value="150" data-range-input aria-label="Home refrigerator power draw"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>10W</span><span>1kW</span></div>
+        <section class="sn-power-calculator__form-stage" data-form-stage="needs" hidden>
+          <div class="sn-power-calculator__workspace">
+            <div class="sn-power-calculator__needs-panel">
+              <div class="sn-power-calculator__stage-heading"><p class="sn-power-calculator__step-kicker">STEP 3 &middot; HOME NEEDS</p><h2>What should stay powered?</h2><p>Choose only the essential loads you expect to use during an outage.</p></div>
+              <div class="sn-power-calculator__load-grid" data-load-list>
+                {% render 'suntneew-calculator-load-card', scenario: 'home', load_key: 'fridge', name: 'Refrigerator', icon: 'refrigerator', watts: 150, max_watts: 1000, watts_step: 10, hours: 12, max_hours: 24, hours_step: 0.1, selected: true, simultaneous: true, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'home', load_key: 'lighting', name: 'Essential lighting', icon: 'lightbulb', watts: 100, max_watts: 1500, watts_step: 10, hours: 5, max_hours: 24, hours_step: 0.1, selected: true, simultaneous: false, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'home', load_key: 'router', name: 'Internet / router', icon: 'router', watts: 25, max_watts: 300, watts_step: 5, hours: 24, max_hours: 24, hours_step: 0.1, selected: true, simultaneous: false, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'home', load_key: 'freezer', name: 'Freezer', icon: 'freezer', watts: 180, max_watts: 1200, watts_step: 10, hours: 12, max_hours: 24, hours_step: 0.1, selected: false, simultaneous: true, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'home', load_key: 'sump-pump', name: 'Sump pump', icon: 'pump', watts: 800, max_watts: 3000, watts_step: 50, hours: 1, max_hours: 12, hours_step: 0.1, selected: false, simultaneous: true, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'home', load_key: 'medical', name: 'Medical device', icon: 'medical', watts: 200, max_watts: 2000, watts_step: 10, hours: 8, max_hours: 24, hours_step: 0.1, selected: false, simultaneous: true, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'home', load_key: 'tv', name: 'TV / entertainment', icon: 'tv', watts: 100, max_watts: 1000, watts_step: 10, hours: 3, max_hours: 12, hours_step: 0.1, selected: false, simultaneous: false, section_id: section.id %}
+                {% render 'suntneew-calculator-load-card', scenario: 'home', load_key: 'fan', name: 'Fan', icon: 'fan', watts: 50, max_watts: 500, watts_step: 5, hours: 8, max_hours: 24, hours_step: 0.1, selected: false, simultaneous: false, section_id: section.id %}
+                <button type="button" class="sn-power-calculator__add-load-card" data-add-load><span>{% render 'suntneew-calculator-icon', icon: 'plus' %}</span><strong>Add custom load</strong></button>
               </div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-home-fridge-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-home-fridge-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="12" data-load-hours data-range-number inputmode="decimal" aria-label="Home refrigerator hours per day"><span>hours/day</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="0.1" max="24" step="0.1" value="12" data-range-input aria-label="Home refrigerator daily run time"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>24h</span></div>
-              </div>
+              <p class="sn-power-calculator__limit-note" data-limit-note role="status" aria-live="polite"></p><p class="sn-power-calculator__error" data-form-error role="alert" hidden></p><div class="sn-power-calculator__needs-back"><button type="button" class="sn-power-calculator__text-button" data-stage-back>&#8592; Edit setup</button></div>
             </div>
-            <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__load-heading"><strong>Lighting</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" data-load-simultaneous> Peak</label></div></div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-home-lighting-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-home-lighting-watts-{{ section.id }}" type="number" min="1" max="20000" step="1" value="100" data-load-watts data-range-number inputmode="decimal" aria-label="Home lighting watts"><span>W</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="10" max="1000" step="10" value="100" data-range-input aria-label="Home lighting power draw"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>10W</span><span>1kW</span></div>
-              </div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-home-lighting-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-home-lighting-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="5" data-load-hours data-range-number inputmode="decimal" aria-label="Home lighting hours per day"><span>hours/day</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="0.1" max="12" step="0.1" value="5" data-range-input aria-label="Home lighting daily run time"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>12h</span></div>
-              </div>
-            </div>
-            <div class="sn-power-calculator__load-row" data-load-row>
-              <div class="sn-power-calculator__load-heading"><strong>Internet / router</strong><div class="sn-power-calculator__load-options"><label class="sn-power-calculator__load-check"><input type="checkbox" checked data-load-selected> Include</label><label class="sn-power-calculator__load-check"><input type="checkbox" data-load-simultaneous> Peak</label></div></div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-home-router-watts-{{ section.id }}">Power draw</label><span class="sn-power-calculator__range-value"><input id="sn-home-router-watts-{{ section.id }}" type="number" min="1" max="20000" step="1" value="25" data-load-watts data-range-number inputmode="decimal" aria-label="Internet router watts"><span>W</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="5" max="300" step="5" value="25" data-range-input aria-label="Internet router power draw"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>5W</span><span>300W</span></div>
-              </div>
-              <div class="sn-power-calculator__range-control" data-range-control>
-                <div class="sn-power-calculator__range-head"><label for="sn-home-router-hours-{{ section.id }}">Daily run time</label><span class="sn-power-calculator__range-value"><input id="sn-home-router-hours-{{ section.id }}" type="number" min="0.1" max="24" step="0.1" value="24" data-load-hours data-range-number inputmode="decimal" aria-label="Internet router hours per day"><span>hours/day</span></span></div>
-                <input class="sn-power-calculator__range" type="range" min="0.1" max="24" step="0.1" value="24" data-range-input aria-label="Internet router daily run time"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>0.1h</span><span>24h</span></div>
-              </div>
-            </div>
+            <aside class="sn-power-calculator__summary" data-live-summary aria-label="Live home backup summary"><div><p class="sn-power-calculator__summary-eyebrow">YOUR CURRENT PLAN</p><h3>Home backup estimate</h3></div><div class="sn-power-calculator__summary-primary"><span data-summary-primary-label>Daily energy</span><strong data-summary-primary>0.00<small>kWh</small></strong></div><div class="sn-power-calculator__summary-progress" aria-hidden="true"><span data-summary-progress></span></div><p class="sn-power-calculator__summary-capacity" data-summary-capacity></p><dl class="sn-power-calculator__summary-stats"><div><dt>Peak power</dt><dd data-summary-peak>0W</dd></div><div><dt>Selected</dt><dd data-summary-count>0</dd></div></dl><div class="sn-power-calculator__summary-list"><p>May run together</p><ul data-summary-loads><li>No loads selected</li></ul></div><button type="submit" class="sn-power-calculator__button sn-power-calculator__button--full">See recommendation <span aria-hidden="true">&#8594;</span></button></aside>
           </div>
-          <button type="button" class="sn-power-calculator__text-button" data-add-load>Add another load</button>
-        </fieldset>
-
-        <div class="sn-power-calculator__inline-fields">
-          <div class="sn-power-calculator__step">
-            <label class="sn-power-calculator__step-title" for="sn-home-backup-hours-{{ section.id }}">Backup window</label>
-            <div class="sn-power-calculator__range-control" data-range-control>
-              <div class="sn-power-calculator__range-head"><label for="sn-home-backup-hours-{{ section.id }}">Hours</label><span class="sn-power-calculator__range-value"><input id="sn-home-backup-hours-{{ section.id }}" type="number" min="1" max="168" step="1" value="12" data-home-backup-hours data-range-number inputmode="numeric"><span>hours</span></span></div>
-              <input class="sn-power-calculator__range" type="range" min="1" max="168" step="1" value="12" data-range-input aria-label="Home backup window in hours"><div class="sn-power-calculator__range-scale" aria-hidden="true"><span>1 hour</span><span>7 days</span></div>
-            </div>
-          </div>
-          <fieldset class="sn-power-calculator__step">
-            <legend class="sn-power-calculator__step-title">Battery architecture</legend>
-            <div class="sn-power-calculator__choice-grid sn-power-calculator__choice-grid--2">
-              <label class="sn-power-calculator__choice"><input type="radio" name="sn-home-architecture-{{ section.id }}" value="low" checked data-home-architecture>Low voltage</label>
-              <label class="sn-power-calculator__choice"><input type="radio" name="sn-home-architecture-{{ section.id }}" value="high" data-home-architecture>High voltage</label>
-              <label class="sn-power-calculator__choice"><input type="radio" name="sn-home-architecture-{{ section.id }}" value="auto" data-home-architecture>Let the planner choose</label>
-            </div>
-          </fieldset>
-        </div>
-
-        <p class="sn-power-calculator__limit-note" data-limit-note role="status" aria-live="polite"></p>
-
-        <div class="sn-power-calculator__actions">
-          <button type="submit" class="sn-power-calculator__button">Find my home starting point</button>
-          <button type="button" class="sn-power-calculator__text-button" data-switch-scenario>Choose another scenario</button>
-        </div>
-        <p class="sn-power-calculator__error" data-form-error role="alert" hidden></p>
+          <div class="sn-power-calculator__mobile-summary" data-mobile-summary><span><small data-mobile-primary-label>Daily energy</small><strong data-mobile-primary>0.00kWh</strong></span><span><small data-mobile-secondary-label>Peak</small><strong data-mobile-secondary>0W</strong></span><button type="submit" aria-label="See recommendation">&#8594;</button></div>
+        </section>
       </form>
 
-      <div class="sn-power-calculator__results" data-results hidden aria-live="polite" tabindex="-1">
-        <div class="sn-power-calculator__results-header">
-          <div>
-            <p class="sn-power-calculator__result-kicker" data-result-kicker>YOUR STARTING POINT</p>
-            <h2 data-result-title>Choose a scenario to see a starting point.</h2>
-          </div>
-          <p class="sn-power-calculator__result-summary" data-result-summary></p>
-        </div>
-
+      <section class="sn-power-calculator__results" data-results hidden aria-live="polite" tabindex="-1">
+        <div class="sn-power-calculator__results-header"><div><p class="sn-power-calculator__result-kicker" data-result-kicker>YOUR STARTING POINT</p><h2 data-result-title>Choose a scenario to see a starting point.</h2></div><p data-result-summary></p></div>
         <div class="sn-power-calculator__metric-grid" data-result-metrics></div>
-
         <div class="sn-power-calculator__product" data-result-product hidden>
           <div class="sn-power-calculator__product-media"><img data-result-image src="{{ 'suntneew-product-g31.jpg' | asset_url }}" alt="" width="600" height="600" loading="lazy"></div>
-          <div class="sn-power-calculator__product-copy">
-            <p class="sn-power-calculator__product-label" data-result-product-label>RECOMMENDED STARTING POINT</p>
-            <h3 data-result-product-title></h3>
-            <div class="sn-power-calculator__product-specs" data-result-product-specs></div>
-            <p data-result-product-copy></p>
-            <p class="sn-power-calculator__product-note" data-result-product-note hidden></p>
-            <div class="sn-power-calculator__result-actions">
-              <a class="sn-power-calculator__result-link" data-result-product-link href="#">Open product details</a>
-              <a class="sn-power-calculator__result-link sn-power-calculator__result-link--secondary" data-result-secondary-link href="#" hidden>Compare another option</a>
-            </div>
-          </div>
+          <div class="sn-power-calculator__product-copy"><p class="sn-power-calculator__product-label" data-result-product-label>RECOMMENDED STARTING POINT</p><h3 data-result-product-title></h3><div class="sn-power-calculator__product-specs" data-result-product-specs></div><p data-result-product-copy></p><p class="sn-power-calculator__product-note" data-result-product-note hidden></p><div class="sn-power-calculator__result-actions"><a class="sn-power-calculator__result-link" data-result-product-link href="#">Open product details</a><a class="sn-power-calculator__result-link sn-power-calculator__result-link--secondary" data-result-secondary-link href="#" hidden>Compare another option</a></div></div>
         </div>
+        <div class="sn-power-calculator__result-actions" data-result-support-actions hidden><a class="sn-power-calculator__result-link" data-result-support-link href="{{ section.settings.support_url | default: '/pages/request-for-quote' }}">Request technical support</a><button type="button" class="sn-power-calculator__result-link sn-power-calculator__result-link--secondary" data-result-reset>Start again</button></div>
+        <p class="sn-power-calculator__fine-print">{{ section.settings.disclaimer | escape }}</p>
+        <div class="sn-power-calculator__result-navigation"><button type="button" class="sn-power-calculator__text-button" data-edit-answers>Edit my answers</button><button type="button" class="sn-power-calculator__text-button" data-switch-scenario>Choose another scenario</button></div>
+      </section>
 
-        <div class="sn-power-calculator__result-actions" data-result-support-actions hidden>
-          <a class="sn-power-calculator__result-link" data-result-support-link href="{{ section.settings.support_url | default: '/pages/request-for-quote' }}">Request technical support</a>
-          <button type="button" class="sn-power-calculator__result-link sn-power-calculator__result-link--secondary" data-result-reset>Start again</button>
-        </div>
-
-        <p class="sn-power-calculator__fine-print" data-result-fine-print>{{ section.settings.disclaimer | escape }}</p>
-
-        <div class="sn-power-calculator__result-navigation">
-          <button type="button" class="sn-power-calculator__text-button" data-edit-answers>Edit my answers</button>
-          <button type="button" class="sn-power-calculator__text-button" data-switch-scenario>Choose another scenario</button>
-        </div>
-      </div>
+      <p class="sn-power-calculator__privacy-note">{{ section.settings.privacy_note | escape }}</p>
     </div>
   </div>
 
   <div class="sn-power-calculator__catalog" hidden aria-hidden="true">
-    <span data-product-record data-product-scenario="rv" data-product-key="rv-g24" data-product-id="g24-100ah" data-product-model="Group 24 100Ah" data-product-fit="group24" data-product-capacity-wh="1280" data-product-output-w="1280" data-product-max-series="4" data-product-max-parallel="4" data-product-url="{{ product_rv_g24.url | default: '/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-24' }}" data-product-image="{{ 'suntneew-product-g24.jpg' | asset_url }}" data-product-description="1,280Wh rated energy and 1,280W continuous output. Confirm the Group 24 compartment and complete RV system before ordering."></span>
-    <span data-product-record data-product-scenario="rv" data-product-key="rv-g31" data-product-id="g31-100ah" data-product-model="Group 31 100Ah" data-product-fit="group31" data-product-capacity-wh="1280" data-product-output-w="1280" data-product-max-series="4" data-product-max-parallel="4" data-product-url="{{ product_rv_g31.url | default: '/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-31' }}" data-product-image="{{ 'suntneew-product-g31.jpg' | asset_url }}" data-product-description="1,280Wh rated energy and 1,280W continuous output. Confirm the Group 31 compartment and complete RV system before ordering."></span>
-    <span data-product-record data-product-scenario="rv" data-product-key="rv-230" data-product-id="230ah" data-product-model="230Ah" data-product-fit="flexible" data-product-capacity-wh="2944" data-product-output-w="2560" data-product-max-series="4" data-product-max-parallel="4" data-product-url="{{ product_rv_230.url | default: '/products/suntneew-12-8v-230ah-lifepo4-rv-battery' }}" data-product-image="{{ 'suntneew-product-230ah.jpg' | asset_url }}" data-product-description="2,944Wh rated energy and 2,560W continuous output in one higher-capacity RV battery."></span>
-    <span data-product-record data-product-scenario="rv" data-product-key="rv-314" data-product-id="314ah" data-product-model="314Ah" data-product-fit="flexible" data-product-capacity-wh="4019.2" data-product-output-w="2010" data-product-max-series="4" data-product-max-parallel="4" data-product-url="{{ product_rv_314.url | default: '/products/suntneew-12-8v-314ah-lifepo4-rv-battery' }}" data-product-image="{{ 'suntneew-product-314ah.jpg' | asset_url }}" data-product-description="4,019.2Wh rated energy and 2,010W continuous output. Confirm enclosure, restraint and service access."></span>
+    <span data-product-record data-product-scenario="rv" data-product-key="rv-g24" data-product-id="g24-100ah" data-product-model="Group 24 100Ah" data-product-fit="group24" data-product-length-mm="260" data-product-width-mm="170" data-product-height-mm="212" data-product-capacity-wh="1280" data-product-output-w="1280" data-product-max-series="4" data-product-max-parallel="4" data-product-url="{{ product_rv_g24.url | default: '/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-24' }}" data-product-image="{{ 'suntneew-product-g24.jpg' | asset_url }}" data-product-description="1,280Wh rated energy and 1,280W continuous output. Confirm the complete RV system before ordering."></span>
+    <span data-product-record data-product-scenario="rv" data-product-key="rv-g31" data-product-id="g31-100ah" data-product-model="Group 31 100Ah" data-product-fit="group31" data-product-length-mm="339" data-product-width-mm="185" data-product-height-mm="218" data-product-capacity-wh="1280" data-product-output-w="1280" data-product-max-series="4" data-product-max-parallel="4" data-product-url="{{ product_rv_g31.url | default: '/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-31' }}" data-product-image="{{ 'suntneew-product-g31.jpg' | asset_url }}" data-product-description="1,280Wh rated energy and 1,280W continuous output. Confirm the complete RV system before ordering."></span>
+    <span data-product-record data-product-scenario="rv" data-product-key="rv-230" data-product-id="230ah" data-product-model="230Ah" data-product-fit="flexible" data-product-length-mm="522" data-product-width-mm="268" data-product-height-mm="220" data-product-capacity-wh="2944" data-product-output-w="2560" data-product-max-series="4" data-product-max-parallel="4" data-product-url="{{ product_rv_230.url | default: '/products/suntneew-12-8v-230ah-lifepo4-rv-battery' }}" data-product-image="{{ 'suntneew-product-230ah.jpg' | asset_url }}" data-product-description="2,944Wh rated energy and 2,560W continuous output in one higher-capacity RV battery."></span>
+    <span data-product-record data-product-scenario="rv" data-product-key="rv-314" data-product-id="314ah" data-product-model="314Ah" data-product-fit="flexible" data-product-length-mm="522" data-product-width-mm="268" data-product-height-mm="220" data-product-capacity-wh="4019.2" data-product-output-w="2010" data-product-max-series="4" data-product-max-parallel="4" data-product-url="{{ product_rv_314.url | default: '/products/suntneew-12-8v-314ah-lifepo4-rv-battery' }}" data-product-image="{{ 'suntneew-product-314ah.jpg' | asset_url }}" data-product-description="4,019.2Wh rated energy and 2,010W continuous output. Confirm enclosure, restraint and service access."></span>
     <span data-product-record data-product-scenario="jump" data-product-key="jump-u23" data-product-id="u23-8000" data-product-model="U23 Jump Starter" data-product-variant="8,000mAh" data-product-voltage="12v" data-product-gasoline="6" data-product-diesel="3" data-product-priority-compact="0" data-product-priority-display="1" data-product-priority-charging="3" data-product-priority-reserve="5" data-product-url="{{ product_u23.url | default: '/products/suntneew-u23-portable-car-jump-starter-8-000mah' }}" data-product-image="{{ 'suntneew-u23-gallery-01.jpg' | asset_url }}" data-product-description="Compact 12V starting option with a verified 8,000mAh reference. Check the exact vehicle fit on the product page."></span>
     <span data-product-record data-product-scenario="jump" data-product-key="jump-a20" data-product-id="a20-8000" data-product-model="A20 Jump Starter" data-product-variant="8,000mAh variant" data-product-voltage="12v" data-product-gasoline="6" data-product-diesel="3" data-product-priority-compact="2" data-product-priority-display="3" data-product-priority-charging="3" data-product-priority-reserve="4" data-product-url="{{ product_a20.url | default: '/products/suntneew-a20-jump-starter-8000mah' }}" data-product-image="{{ 'suntneew-product-a20.jpg' | asset_url }}" data-product-description="A20 is one product family with capacity and color variants. Select the exact variant on the product page."></span>
     <span data-product-record data-product-scenario="jump" data-product-key="jump-u32" data-product-id="u32-10000" data-product-model="U32 Jump Starter" data-product-variant="10,000mAh" data-product-voltage="12v" data-product-gasoline="6.5" data-product-diesel="3.5" data-product-priority-compact="1" data-product-priority-display="0" data-product-priority-charging="2" data-product-priority-reserve="3" data-product-url="{{ product_u32.url | default: '/products/suntneew-u32-portable-car-jump-starter-10-000mah' }}" data-product-image="{{ 'suntneew-u32-gallery-01.jpg' | asset_url }}" data-product-description="Large-display 12V starting option with a verified 10,000mAh reference. Check the exact vehicle fit on the product page."></span>
@@ -373,7 +283,7 @@
     {%- for block in section.blocks -%}
       {%- assign block_product = block.settings.product -%}
       {%- if block_product != blank and block.settings.product_key != blank -%}
-        <span data-product-record data-product-scenario="{{ block.settings.scenario | escape }}" data-product-key="{{ block.settings.product_key | escape }}" data-product-id="{{ block.settings.product_id | default: block.settings.product_key | escape }}" data-product-model="{{ block.settings.model | default: block_product.title | escape }}" data-product-variant="{{ block.settings.variant | escape }}" data-product-fit="{{ block.settings.fit | escape }}" data-product-capacity-wh="{{ block.settings.capacity_wh | escape }}" data-product-output-w="{{ block.settings.output_w | escape }}" data-product-max-series="{{ block.settings.max_series | escape }}" data-product-max-parallel="{{ block.settings.max_parallel | escape }}" data-product-max-units="{{ block.settings.max_units | escape }}" data-product-voltage="{{ block.settings.voltage | escape }}" data-product-gasoline="{{ block.settings.gasoline_liters | escape }}" data-product-diesel="{{ block.settings.diesel_liters | escape }}" data-product-priority-compact="{{ block.settings.priority_compact | escape }}" data-product-priority-display="{{ block.settings.priority_display | escape }}" data-product-priority-charging="{{ block.settings.priority_charging | escape }}" data-product-priority-reserve="{{ block.settings.priority_reserve | escape }}" data-product-architecture="{{ block.settings.architecture | escape }}" data-product-max-system-output-w="{{ block.settings.max_system_output_w | escape }}" data-product-url="{{ block_product.url }}" data-product-image="{{ block_product.featured_image | image_url: width: 600 }}" data-product-description="{{ block.settings.description | default: block_product.description | strip_html | escape }}" {{ block.shopify_attributes }}></span>
+        <span data-product-record data-product-scenario="{{ block.settings.scenario | escape }}" data-product-key="{{ block.settings.product_key | escape }}" data-product-id="{{ block.settings.product_id | default: block.settings.product_key | escape }}" data-product-model="{{ block.settings.model | default: block_product.title | escape }}" data-product-variant="{{ block.settings.variant | escape }}" data-product-fit="{{ block.settings.fit | escape }}" data-product-length-mm="{{ block.settings.length_mm | escape }}" data-product-width-mm="{{ block.settings.width_mm | escape }}" data-product-height-mm="{{ block.settings.height_mm | escape }}" data-product-capacity-wh="{{ block.settings.capacity_wh | escape }}" data-product-output-w="{{ block.settings.output_w | escape }}" data-product-max-series="{{ block.settings.max_series | escape }}" data-product-max-parallel="{{ block.settings.max_parallel | escape }}" data-product-max-units="{{ block.settings.max_units | escape }}" data-product-voltage="{{ block.settings.voltage | escape }}" data-product-gasoline="{{ block.settings.gasoline_liters | escape }}" data-product-diesel="{{ block.settings.diesel_liters | escape }}" data-product-priority-compact="{{ block.settings.priority_compact | escape }}" data-product-priority-display="{{ block.settings.priority_display | escape }}" data-product-priority-charging="{{ block.settings.priority_charging | escape }}" data-product-priority-reserve="{{ block.settings.priority_reserve | escape }}" data-product-architecture="{{ block.settings.architecture | escape }}" data-product-max-system-output-w="{{ block.settings.max_system_output_w | escape }}" data-product-url="{{ block_product.url }}" data-product-image="{{ block_product.featured_image | image_url: width: 600 }}" data-product-description="{{ block.settings.description | default: block_product.description | strip_html | escape }}" {{ block.shopify_attributes }}></span>
       {%- endif -%}
     {%- endfor -%}
   </div>
@@ -387,9 +297,9 @@
   "settings": [
     {"type":"text","id":"eyebrow","label":"Eyebrow","default":"SUNTNEEW POWER PLANNER"},
     {"type":"text","id":"heading","label":"Heading","default":"Help Me Choose"},
-    {"type":"textarea","id":"intro","label":"Intro","default":"Answer a few practical questions and get a clear SuntNeew product starting point."},
-    {"type":"textarea","id":"privacy_note","label":"Privacy note","default":"Your selections stay in this page session. No personal information or free-text device names are sent by this planner."},
-    {"type":"text","id":"scenario_eyebrow","label":"Scenario eyebrow","default":"STEP 1 OF 3"},
+    {"type":"textarea","id":"intro","label":"Intro","default":"Build a practical power plan around your setup, daily needs and the current SuntNeew product range."},
+    {"type":"textarea","id":"privacy_note","label":"Privacy note","default":"Selections are stored in this browser session. Analytics events are emitted only when Shopify analytics consent is granted."},
+    {"type":"text","id":"scenario_eyebrow","label":"Scenario eyebrow","default":"STEP 1 OF 4"},
     {"type":"text","id":"scenario_heading","label":"Scenario heading","default":"Choose Your Scenario"},
     {"type":"textarea","id":"scenario_body","label":"Scenario body","default":"Where do you need dependable power?"},
     {"type":"url","id":"support_url","label":"Technical support URL"},
@@ -406,7 +316,10 @@
         {"type":"select","id":"scenario","label":"Scenario","options":[{"value":"rv","label":"RV power"},{"value":"jump","label":"Vehicle starting"},{"value":"home","label":"Home backup"}],"default":"rv"},
         {"type":"text","id":"model","label":"Display model"},
         {"type":"text","id":"variant","label":"Variant label"},
-        {"type":"select","id":"fit","label":"RV footprint","options":[{"value":"flexible","label":"Flexible"},{"value":"group24","label":"Group 24"},{"value":"group31","label":"Group 31"}],"default":"flexible"},
+        {"type":"select","id":"fit","label":"RV footprint class","options":[{"value":"flexible","label":"Flexible"},{"value":"group24","label":"Group 24"},{"value":"group31","label":"Group 31"}],"default":"flexible"},
+        {"type":"text","id":"length_mm","label":"RV enclosure length (mm)"},
+        {"type":"text","id":"width_mm","label":"RV enclosure width (mm)"},
+        {"type":"text","id":"height_mm","label":"RV enclosure height (mm)","info":"Use enclosure height excluding terminals unless the published dimension includes them."},
         {"type":"text","id":"capacity_wh","label":"Rated capacity (Wh)"},
         {"type":"text","id":"output_w","label":"RV continuous output (W)"},
         {"type":"text","id":"max_series","label":"Maximum batteries in series","default":"1"},

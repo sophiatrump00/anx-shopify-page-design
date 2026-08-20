@@ -14,9 +14,9 @@
       "settings": {
         "eyebrow": "SUNTNEEW POWER PLANNER",
         "heading": "Help Me Choose",
-        "intro": "Answer a few practical questions and get a clear SuntNeew product starting point.",
-        "privacy_note": "Your selections stay in this page session. No personal information or free-text device names are sent by this planner.",
-        "scenario_eyebrow": "STEP 1 OF 3",
+        "intro": "Build a practical power plan around your setup, daily needs and the current SuntNeew product range.",
+        "privacy_note": "Selections are stored in this browser session. Analytics events are emitted only when Shopify analytics consent is granted.",
+        "scenario_eyebrow": "STEP 1 OF 4",
         "scenario_heading": "Choose Your Scenario",
         "scenario_body": "Where do you need dependable power?",
         "support_url": "/pages/request-for-quote",

@@ -19,12 +19,15 @@
   var MIN_JUMP_ENGINE_LITERS = 0.1;
   var MIN_HOME_BACKUP_HOURS = 1;
   var MAX_HOME_BACKUP_HOURS = 168;
+  var MAX_SPACE_LONG_MM = 1000;
+  var MAX_SPACE_SHORT_MM = 600;
+  var MAX_SPACE_HEIGHT_MM = 500;
 
   var DEFAULT_CATALOG = [
-    { scenario: 'rv', key: 'rv-g31', id: 'g31-100ah', model: 'Group 31 100Ah', fit: 'group31', capacityWh: 1280, outputW: 1280, maxSeries: 4, maxParallel: 4 },
-    { scenario: 'rv', key: 'rv-g24', id: 'g24-100ah', model: 'Group 24 100Ah', fit: 'group24', capacityWh: 1280, outputW: 1280, maxSeries: 4, maxParallel: 4 },
-    { scenario: 'rv', key: 'rv-230', id: '230ah', model: '230Ah', fit: 'flexible', capacityWh: 2944, outputW: 2560, maxSeries: 4, maxParallel: 4 },
-    { scenario: 'rv', key: 'rv-314', id: '314ah', model: '314Ah', fit: 'flexible', capacityWh: 4019.2, outputW: 2010, maxSeries: 4, maxParallel: 4 },
+    { scenario: 'rv', key: 'rv-g31', id: 'g31-100ah', model: 'Group 31 100Ah', fit: 'group31', lengthMm: 339, widthMm: 185, heightMm: 218, capacityWh: 1280, outputW: 1280, maxSeries: 4, maxParallel: 4 },
+    { scenario: 'rv', key: 'rv-g24', id: 'g24-100ah', model: 'Group 24 100Ah', fit: 'group24', lengthMm: 260, widthMm: 170, heightMm: 212, capacityWh: 1280, outputW: 1280, maxSeries: 4, maxParallel: 4 },
+    { scenario: 'rv', key: 'rv-230', id: '230ah', model: '230Ah', fit: 'flexible', lengthMm: 522, widthMm: 268, heightMm: 220, capacityWh: 2944, outputW: 2560, maxSeries: 4, maxParallel: 4 },
+    { scenario: 'rv', key: 'rv-314', id: '314ah', model: '314Ah', fit: 'flexible', lengthMm: 522, widthMm: 268, heightMm: 220, capacityWh: 4019.2, outputW: 2010, maxSeries: 4, maxParallel: 4 },
     { scenario: 'jump', key: 'jump-u23', id: 'u23-8000', model: 'U23', variant: '8,000mAh', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 0, display: 1, charging: 3, reserve: 5 } },
     { scenario: 'jump', key: 'jump-a20', id: 'a20-8000', model: 'A20', variant: '8,000mAh variant', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 2, display: 3, charging: 3, reserve: 4 } },
     { scenario: 'jump', key: 'jump-u32', id: 'u32-10000', model: 'U32', variant: '10,000mAh', voltage: '12v', gasoline: 6.5, diesel: 3.5, priority: { compact: 1, display: 0, charging: 2, reserve: 3 } },
@@ -74,10 +77,15 @@
     if (scenario === 'rv') {
       var rvCapacityWh = asNumber(record.capacityWh, 0);
       var rvOutputW = asNumber(record.outputW, 0);
-      var fit = record.fit === 'group24' || record.fit === 'group31' ? record.fit : 'flexible';
+      var requestedFit = record.fitClass || record.fit;
+      var fit = requestedFit === 'group24' || requestedFit === 'group31' ? requestedFit : 'flexible';
       if (rvCapacityWh <= 0 || rvOutputW <= 0) return null;
       return Object.assign(common, {
         fit: fit,
+        fitClass: fit,
+        lengthMm: Math.max(0, asNumber(record.lengthMm, 0)),
+        widthMm: Math.max(0, asNumber(record.widthMm, 0)),
+        heightMm: Math.max(0, asNumber(record.heightMm, 0)),
         capacityWh: rvCapacityWh,
         outputW: rvOutputW,
         maxSeries: Math.max(1, Math.floor(asNumber(record.maxSeries, 1))),
@@ -258,13 +266,80 @@
     };
   }
 
-  function rvProductsForFit(fit, seriesCount) {
-    if (fit === 'group24' || fit === 'group31') {
-      return catalog.rv.filter(function (product) {
-        return product.fit === fit && product.maxSeries >= seriesCount;
-      });
+  function productDimensions(product) {
+    var lengthMm = asNumber(product && product.lengthMm, 0);
+    var widthMm = asNumber(product && product.widthMm, 0);
+    var heightMm = asNumber(product && product.heightMm, 0);
+    if (lengthMm <= 0 || widthMm <= 0 || heightMm <= 0) return null;
+    return {
+      longSideMm: Math.max(lengthMm, widthMm),
+      shortSideMm: Math.min(lengthMm, widthMm),
+      heightMm: heightMm
+    };
+  }
+
+  function normalizeRvSpace(input) {
+    var mode = input && input.spaceMode;
+    if (mode !== 'group24' && mode !== 'group31' && mode !== 'measured') {
+      return mode === 'all' ? { mode: 'all' } : null;
     }
-    return catalog.rv.filter(function (product) { return product.maxSeries >= seriesCount; });
+
+    if (mode === 'group24') {
+      return { mode: mode, longSideMm: 260, shortSideMm: 170, heightMm: 212 };
+    }
+    if (mode === 'group31') {
+      return { mode: mode, longSideMm: 339, shortSideMm: 185, heightMm: 218 };
+    }
+
+    var measured = input.space || {};
+    var firstSide = asNumber(measured.longSideMm != null ? measured.longSideMm : input.spaceLongMm, 0);
+    var secondSide = asNumber(measured.shortSideMm != null ? measured.shortSideMm : input.spaceShortMm, 0);
+    return {
+      mode: mode,
+      longSideMm: Math.max(firstSide, secondSide),
+      shortSideMm: Math.min(firstSide, secondSide),
+      heightMm: asNumber(measured.heightMm != null ? measured.heightMm : input.spaceHeightMm, 0)
+    };
+  }
+
+  function productFitsSpace(product, space) {
+    if (!space || space.mode === 'all') return true;
+    var dimensions = productDimensions(product);
+    if (!dimensions) return false;
+    return dimensions.longSideMm <= space.longSideMm &&
+      dimensions.shortSideMm <= space.shortSideMm &&
+      dimensions.heightMm <= space.heightMm;
+  }
+
+  function rvProductsForFit(fit, seriesCount, space) {
+    return catalog.rv.filter(function (product) {
+      if (product.maxSeries < seriesCount) return false;
+      if (space) return productFitsSpace(product, space);
+      if (fit === 'group24' || fit === 'group31') return product.fit === fit;
+      return true;
+    });
+  }
+
+  function measuredSpaceLimits(seriesCount) {
+    var dimensioned = catalog.rv.filter(function (product) {
+      return product.maxSeries >= seriesCount && productDimensions(product);
+    }).map(function (product) {
+      return { product: product, dimensions: productDimensions(product) };
+    }).sort(function (a, b) {
+      var aVolume = a.dimensions.longSideMm * a.dimensions.shortSideMm * a.dimensions.heightMm;
+      var bVolume = b.dimensions.longSideMm * b.dimensions.shortSideMm * b.dimensions.heightMm;
+      return aVolume - bVolume || a.dimensions.longSideMm - b.dimensions.longSideMm;
+    });
+    var smallest = dimensioned.length ? dimensioned[0].dimensions : null;
+    return {
+      available: Boolean(smallest),
+      minLongSideMm: smallest ? smallest.longSideMm : 1,
+      maxLongSideMm: Math.max(MAX_SPACE_LONG_MM, smallest ? smallest.longSideMm : 0),
+      minShortSideMm: smallest ? smallest.shortSideMm : 1,
+      maxShortSideMm: Math.max(MAX_SPACE_SHORT_MM, smallest ? smallest.shortSideMm : 0),
+      minHeightMm: smallest ? smallest.heightMm : 1,
+      maxHeightMm: Math.max(MAX_SPACE_HEIGHT_MM, smallest ? smallest.heightMm : 0)
+    };
   }
 
   function homeProductsForArchitecture(architecture) {
@@ -362,7 +437,8 @@
   function getRvInputLimits(input) {
     var fit = input && input.fit ? input.fit : 'flexible';
     var seriesCount = Math.max(1, Math.min(4, Math.floor(asNumber(input && input.seriesCount, 1))));
-    var products = rvProductsForFit(fit, seriesCount);
+    var space = normalizeRvSpace(input || {});
+    var products = rvProductsForFit(fit, seriesCount, space);
     var capabilities = products.map(function (product) { return rvCapability(product, seriesCount); });
     var backupDays = asNumber(input && input.backupDays, MIN_RV_BACKUP_DAYS);
     var loads = input && input.loads;
@@ -371,6 +447,9 @@
     return Object.assign(summary, {
       available: capabilities.length > 0,
       fit: fit,
+      spaceMode: space ? space.mode : null,
+      spaceMatchCount: products.length,
+      measuredSpaceLimits: measuredSpaceLimits(seriesCount),
       seriesCount: seriesCount,
       nominalSystemVoltage: round(12.8 * seriesCount, 1),
       maximumBatteryCount: products.reduce(function (maximum, product) {
@@ -384,11 +463,18 @@
         group24: catalog.rv.some(function (product) { return product.fit === 'group24' && product.maxSeries >= seriesCount; }),
         group31: catalog.rv.some(function (product) { return product.fit === 'group31' && product.maxSeries >= seriesCount; })
       },
+      availableSpaceModes: {
+        all: catalog.rv.some(function (product) { return product.maxSeries >= seriesCount; }),
+        group24: catalog.rv.some(function (product) {
+          return product.maxSeries >= seriesCount && productFitsSpace(product, normalizeRvSpace({ spaceMode: 'group24' }));
+        }),
+        group31: catalog.rv.some(function (product) {
+          return product.maxSeries >= seriesCount && productFitsSpace(product, normalizeRvSpace({ spaceMode: 'group31' }));
+        }),
+        measured: measuredSpaceLimits(seriesCount).available
+      },
       availableSeriesCounts: [1, 2, 3, 4].filter(function (count) {
-        return catalog.rv.some(function (product) {
-          var fitMatches = fit === 'flexible' || product.fit === fit;
-          return fitMatches && product.maxSeries >= count;
-        });
+        return rvProductsForFit(fit, count, space).length > 0;
       }),
       minBackupDays: MIN_RV_BACKUP_DAYS,
       maxBackupDays: Math.max(MIN_RV_BACKUP_DAYS, maximumDuration(loads, capabilities, 'rv')),
@@ -474,7 +560,8 @@
     var backupDays = asNumber(input && input.backupDays, 0);
     var fit = input && input.fit ? input.fit : 'flexible';
     var seriesCount = Math.max(1, Math.min(4, Math.floor(asNumber(input && input.seriesCount, 1))));
-    var products = rvProductsForFit(fit, seriesCount);
+    var space = normalizeRvSpace(input || {});
+    var products = rvProductsForFit(fit, seriesCount, space);
 
     if (!products.length) return supportResult('rv', 'No verified RV product is configured for the selected footprint.');
     if (!loadMetrics.activeCount) return invalidResult('rv', 'Select at least one appliance.');
@@ -500,6 +587,15 @@
 
     var match = ranked[0];
     var alternate = ranked.find(function (candidate) { return candidate.key !== match.key; });
+    var dimensions = productDimensions(match);
+    var spaceCaveat = space && space.mode !== 'all'
+      ? (match.quantity > 1
+        ? 'The selected space was checked for one battery enclosure only. The complete bank layout, restraint, terminals, cabling and service clearance are not verified.'
+        : 'The selected usable space was checked against one battery enclosure. Restraint, terminals, cabling and service clearance are not verified.')
+      : null;
+    var topologyCaveat = match.quantity > 1
+      ? 'Use only identical, supported batteries in balanced series/parallel strings. Confirm battery state of charge, busbars, conductors, protection, charging and inverter voltage before installation.'
+      : null;
     return Object.assign(metrics, {
       status: 'match',
       resultType: match.quantity > 1 ? 'multi_battery_starting_point' : 'product_match',
@@ -514,13 +610,15 @@
       unitCapacityWh: match.capacityWh,
       unitOutputW: match.outputW,
       combinedWh: match.combinedWh,
+      fit: match.fit,
+      spaceMode: space ? space.mode : 'all',
+      spaceVerified: Boolean(space && space.mode !== 'all' && dimensions),
+      unitDimensions: dimensions,
       alternateKey: alternate ? alternate.key : null,
       alternateId: alternate ? alternate.id : null,
       alternateModel: alternate ? alternate.model : null,
       needsSystemReview: match.quantity > 1,
-      productCaveat: match.quantity > 1
-        ? 'Use only identical, supported batteries in balanced series/parallel strings. Confirm battery state of charge, busbars, conductors, protection, charging and inverter voltage before installation.'
-        : null
+      productCaveat: [topologyCaveat, spaceCaveat].filter(Boolean).join(' ')
     });
   }
 
