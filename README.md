@@ -56,7 +56,6 @@ This repository is the source of truth for SuntNeew Shopify homepage work. Shopi
 5. Jump starter vehicle-readiness proof
 6. Home energy capacity and configuration panel
 7. FAQ and support
-8. POWER ON brand close
 
 ## Guardrails
 

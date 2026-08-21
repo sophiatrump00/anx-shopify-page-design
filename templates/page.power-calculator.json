@@ -12,7 +12,7 @@
     "main": {
       "type": "suntneew-power-calculator",
       "settings": {
-        "eyebrow": "SUNTNEEW POWER PLANNER",
+        "eyebrow": "SuntNeew Power Planner",
         "heading": "Help Me Choose",
         "intro": "Build a practical power plan around your setup, daily needs and the current SuntNeew product range.",
         "privacy_note": "Selections are stored in this browser session. Analytics events are emitted only when Shopify analytics consent is granted.",

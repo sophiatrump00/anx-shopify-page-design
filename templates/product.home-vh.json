@@ -35,10 +35,9 @@
         "vh15energy":{"type":"metric","settings":{"value":"15.36kWh","label":"Usable capacity","variant_match":"15.36 kWh"}},
         "vh15voltage":{"type":"metric","settings":{"value":"153.6V","label":"Rated voltage","variant_match":"15.36 kWh"}},
         "vh15modules":{"type":"metric","settings":{"value":"3 modules","label":"5.12kWh per module","variant_match":"15.36 kWh"}},
-        "bms":{"type":"metric","settings":{"value":"Smart BMS","label":"CAN / RS485 communication","variant_match":""}},
-        "ip":{"type":"metric","settings":{"value":"IP65","label":"Enclosure rating","variant_match":""}}
+        "bms":{"type":"metric","settings":{"value":"Smart BMS","label":"CAN / RS485 communication","variant_match":""}}
       },
-      "block_order":["vh10energy","vh10voltage","vh10modules","vh15energy","vh15voltage","vh15modules","bms","ip"],
+      "block_order":["vh10energy","vh10voltage","vh10modules","vh15energy","vh15voltage","vh15modules","bms"],
       "settings":{"accessibility_label":"VH system highlights"}
     },
     "anchor_nav": {
@@ -88,7 +87,7 @@
         "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485","group":"system","variant_match":""}},
         "display":{"type":"spec","settings":{"label":"Display","value":"LCD touch screen, LED power indicator","group":"system","variant_match":""}},
         "cooling":{"type":"spec","settings":{"label":"Cooling / installation","value":"Natural convection / vertical","group":"installation","variant_match":""}},
-        "environment":{"type":"spec","settings":{"label":"Installation environment","value":"Indoor / outdoor, IP65","group":"installation","variant_match":""}},
+        "environment":{"type":"spec","settings":{"label":"Installation environment","value":"Confirm site conditions with a qualified installer","group":"installation","variant_match":""}},
         "scope1":{"type":"included","settings":{"item":"Selected VH battery system configuration","variant_match":""}},
         "scope2":{"type":"included","settings":{"item":"Review the inverter communication and electrical specifications before installation","variant_match":""}},
         "scope3":{"type":"included","settings":{"item":"Confirm the delivery destination and any local receiving requirements","variant_match":""}},
@@ -103,7 +102,7 @@
       "blocks": {
         "q1":{"type":"question","settings":{"question":"Which size should I choose?","answer":"<p>VH10A provides 10.24kWh; VH15A provides 15.36kWh. Selection also depends on inverter voltage window, protocol, daily consumption, backup load and installation constraints.</p>"}},
         "q2":{"type":"question","settings":{"question":"Can I buy a VH system online?","answer":"<p>Yes. Select the capacity and quantity, then use Add to cart or Buy it now. Review inverter compatibility and local installation requirements before installation.</p>"}},
-        "q3":{"type":"question","settings":{"question":"Is the product suitable outdoors?","answer":"<p>VH is specified with an IP65 enclosure and indoor/outdoor application. Confirm site exposure, mounting and local electrical requirements with the installer for the intended project.</p>"}},
+        "q3":{"type":"question","settings":{"question":"How should I assess the installation environment?","answer":"<p>Confirm site exposure, mounting, inverter compatibility and local electrical requirements with a qualified installer for the intended project.</p>"}},
         "q4":{"type":"question","settings":{"question":"Which documents are available?","answer":"<p>The current product specification sheet is available on this page. Contact support only if you need destination-specific technical documentation.</p>"}}
       },
       "block_order":["q1","q2","q3","q4"],

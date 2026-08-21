@@ -41,8 +41,15 @@
           {%- for link in main_menu.links -%}
             {% liquid
               assign mobile_link_title_downcase = link.title | strip | downcase
+              assign mobile_rendered_link_url = link.url
               assign is_technology_mobile_menu = false
               assign is_support_mobile_menu = false
+
+              if mobile_link_title_downcase == 'all products'
+                assign mobile_rendered_link_url = routes.all_products_collection_url
+              elsif mobile_link_title_downcase == 'product series'
+                assign mobile_rendered_link_url = routes.collections_url
+              endif
 
               if mobile_link_title_downcase == 'technology' or link.url contains '/pages/technology'
                 assign is_technology_mobile_menu = true
@@ -92,7 +99,7 @@
                   <span class="circle-chevron group-hover:colors group-expanded:colors">{%- render 'icon' with 'chevron-right-small', direction_aware: true -%}</span>
                 </button>
               {%- else -%}
-                <a href="{{ link.url }}" class="group block w-full">
+                <a href="{{ mobile_rendered_link_url }}" class="group block w-full">
                   <span
                     ><span class="reversed-link">{{ link.title }}</span></span
                   >
@@ -113,7 +120,7 @@
                     </li>
 
                     {%- if is_support_mobile_menu -%}
-                      {%- render 'suntneew-support-mobile-links', support_url: link.url -%}
+                      {%- render 'suntneew-support-mobile-links', support_url: mobile_rendered_link_url -%}
                     {%- endif -%}
 
                     {%- if link.links.size > 0 -%}

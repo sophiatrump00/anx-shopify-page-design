@@ -124,6 +124,7 @@
                     assign series_card_count = 0
                     assign is_technology_menu = false
                     assign is_support_menu = false
+                    assign primary_menu_key = ''
 
                     # Keep the storefront navigation deterministic even when the
                     # saved Shopify menu still contains stale or duplicate URLs.
@@ -134,8 +135,16 @@
                       # /collections. Keep All Products on Shopify's canonical
                       # all-products route so it cannot collapse into Product Series.
                       assign rendered_link_url = '/collections/all'
+                      assign primary_menu_key = 'all-products'
                     elsif link_title_downcase == 'product series'
                       assign rendered_link_url = routes.collections_url
+                      assign primary_menu_key = 'product-series'
+                    endif
+
+                    if link_title_downcase == 'help me choose' or link.url contains '/pages/power-calculator'
+                      assign primary_menu_key = 'help-me-choose'
+                    elsif link_title_downcase == 'journal' or link.url contains '/blogs/news'
+                      assign primary_menu_key = 'journal'
                     endif
 
                     if link_title_downcase == 'technology' or link.url contains '/pages/technology'
@@ -164,15 +173,13 @@
                       endif
                     endfor
 
-                    assign is_series_card_menu = false
-
                     if series_card_count == 3
-                      assign is_series_card_menu = true
+                      assign primary_menu_key = 'product-series'
                     endif
                   %}
 
                   {%- unless is_technology_menu -%}
-                    <li{% if is_series_card_menu %} class="header__product-series-menu"{% elsif is_support_menu %} class="header__support-menu"{% endif %}>
+                    <li{% if is_support_menu %} class="header__support-menu"{% elsif primary_menu_key != blank %} class="header__primary-menu"{% endif %}>
                     {%- if is_support_menu -%}
                       <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
                         <summary class="suntneew-support-menu__trigger bold link-faded-reverse">
@@ -181,16 +188,15 @@
 
                         {%- render 'suntneew-support-mega-menu', support_url: rendered_link_url -%}
                       </details>
-                    {%- elsif is_series_card_menu -%}
-                      <a
-                        href="{{ rendered_link_url }}"
-                        class="bold link-faded-reverse suntneew-product-series-link"
-                        {% if link.current %}
-                          aria-current="page"
-                        {% endif %}
-                      >
-                        {{- link.title -}}
-                      </a>
+                    {%- elsif primary_menu_key != blank -%}
+                      <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
+                        <summary class="suntneew-primary-menu__trigger text-with-icon gap-2.5 bold link-faded-reverse">
+                          {{- link.title -}}
+                          {%- render 'icon' with 'chevron-bottom' -%}
+                        </summary>
+
+                        {%- render 'suntneew-primary-mega-menu', menu_key: primary_menu_key -%}
+                      </details>
                     {%- elsif link.levels == 0 and mega_menu_block == '' -%}
                       <a
                         href="{{ rendered_link_url }}"
@@ -320,10 +326,10 @@
 
       {%- capture logo_content -%}
         {%- if use_asset_logo -%}
-          <span class="sr-only">{{ shop.name }}</span>
+          <span class="sr-only">SuntNeew</span>
           <img
             src="{{ section.settings.logo_asset | asset_url }}"
-            alt="{{ shop.name | escape }}"
+            alt="SuntNeew"
             class="header__logo-image header__logo-image--asset"
             width="{{ section.settings.logo_max_width }}"
             height="{{ section.settings.logo_max_width | divided_by: section.settings.logo_asset_aspect_ratio | round }}"
@@ -343,15 +349,15 @@
         {%- elsif section.settings.logo -%}
           {%- capture sizes -%}{{ section.settings.logo_max_width }}px{%- endcapture -%}
           {%- capture widths -%}{{ section.settings.logo_max_width | times: 2 | at_most: section.settings.logo.width }}, {{ section.settings.logo_max_width | times: 3 | at_most: section.settings.logo.width }}{%- endcapture -%}
-          <span class="sr-only">{{ shop.name }}</span>
-          {%- assign alt_text = section.settings.logo.alt | default: shop.name -%}
+          <span class="sr-only">SuntNeew</span>
+          {%- assign alt_text = section.settings.logo.alt | default: 'SuntNeew' -%}
           {{- section.settings.logo | image_url: width: section.settings.logo.width | image_tag: sizes: sizes, alt: alt_text, widths: widths, class: 'header__logo-image' -}}
 
           {%- if section.settings.transparent_logo -%}
             {{- section.settings.transparent_logo | image_url: width: section.settings.transparent_logo.width | image_tag: sizes: sizes, widths: widths, class: 'header__logo-image header__logo-image--transparent' -}}
           {%- endif -%}
         {%- else -%}
-          <span class="header__logo-text h4">{{ shop.name }}</span>
+          <span class="header__logo-text h4">SuntNeew</span>
         {%- endif -%}
       {%- endcapture -%}
 

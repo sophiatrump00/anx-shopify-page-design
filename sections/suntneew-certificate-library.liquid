@@ -61,7 +61,7 @@
                       <strong>{{ block.settings.resource_one_label }}</strong>
                       <span>{{ block.settings.resource_one_text }}</span>
                     </span>
-                    <span class="sn-cert-library__resource-action">Open PDF</span>
+                    <span class="sn-cert-library__resource-action">Open document</span>
                   </a>
                 {%- else -%}
                   <div>
@@ -81,7 +81,7 @@
                       <strong>{{ block.settings.resource_two_label }}</strong>
                       <span>{{ block.settings.resource_two_text }}</span>
                     </span>
-                    <span class="sn-cert-library__resource-action">Open PDF</span>
+                    <span class="sn-cert-library__resource-action">Open document</span>
                   </a>
                 {%- else -%}
                   <div>
@@ -101,7 +101,7 @@
                       <strong>{{ block.settings.resource_three_label }}</strong>
                       <span>{{ block.settings.resource_three_text }}</span>
                     </span>
-                    <span class="sn-cert-library__resource-action">Open PDF</span>
+                    <span class="sn-cert-library__resource-action">Open document</span>
                   </a>
                 {%- else -%}
                   <div>
@@ -120,43 +120,43 @@
 
 {% schema %}
 {
-  "name": "SuntNeew Certificates",
+  "name": "SuntNeew document library",
   "settings": [
     {"type":"text","id":"eyebrow","label":"Eyebrow","default":"SUPPORT RESOURCES"},
-    {"type":"text","id":"heading","label":"Heading","default":"Certificates, matched to the model."},
-    {"type":"textarea","id":"intro","label":"Intro","default":"Open the certificate that matches the model code on your product label. Every document below links to the certificate itself, not to a product page."},
+    {"type":"text","id":"heading","label":"Heading","default":"Product document center."},
+    {"type":"textarea","id":"intro","label":"Intro","default":"Match the product label before opening a document. Each entry identifies its document type, source model and reference; any confirmed shared-design scope is stated explicitly. These records are not series-wide approval claims."},
     {"type":"text","id":"note_title","label":"Information title","default":"Check the model before relying on a document."},
-    {"type":"textarea","id":"note","label":"Information text","default":"A certificate applies only to the model named in that document. If your product label does not match, contact Support before using it for compliance, transport or installation decisions."}
+    {"type":"textarea","id":"note","label":"Information text","default":"A document applies only to its named model, responsible party, product label and intended market unless an entry explicitly identifies a confirmed shared-design scope. If your product label does not match, contact Support before using it for compliance, transport or installation decisions."}
   ],
   "blocks": [
     {
       "type": "certificate_group",
-      "name": "Certificate group",
+      "name": "Document group",
       "settings": [
         {"type":"text","id":"anchor_id","label":"Anchor ID","default":"u23-certificates"},
         {"type":"select","id":"icon","label":"Icon","default":"jump","options":[{"value":"rv","label":"RV battery"},{"value":"jump","label":"Jump starter"},{"value":"home","label":"Home energy"}]},
         {"type":"text","id":"family","label":"Family label","default":"JUMP STARTERS"},
-        {"type":"text","id":"title","label":"Title","default":"Model certificate"},
-        {"type":"textarea","id":"description","label":"Description","default":"Open the certificate connected to the exact product model."},
-        {"type":"text","id":"resource_one_label","label":"Certificate 1 title","default":"FCC declaration"},
-        {"type":"textarea","id":"resource_one_text","label":"Certificate 1 description","default":"Open the model-matched certificate PDF."},
-        {"type":"text","id":"resource_one_asset","label":"Certificate 1 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
-        {"type":"url","id":"resource_one_url","label":"Certificate 1 URL"},
-        {"type":"text","id":"resource_two_label","label":"Certificate 2 title"},
-        {"type":"textarea","id":"resource_two_text","label":"Certificate 2 description"},
-        {"type":"text","id":"resource_two_asset","label":"Certificate 2 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
-        {"type":"url","id":"resource_two_url","label":"Certificate 2 URL"},
-        {"type":"text","id":"resource_three_label","label":"Certificate 3 title"},
-        {"type":"textarea","id":"resource_three_text","label":"Certificate 3 description"},
-        {"type":"text","id":"resource_three_asset","label":"Certificate 3 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
-        {"type":"url","id":"resource_three_url","label":"Certificate 3 URL"}
+        {"type":"text","id":"title","label":"Title","default":"Model document"},
+        {"type":"textarea","id":"description","label":"Description","default":"Open the document connected to the exact product model."},
+        {"type":"text","id":"resource_one_label","label":"Document 1 title","default":"FCC declaration"},
+        {"type":"textarea","id":"resource_one_text","label":"Document 1 description","default":"Open the model-matched document."},
+        {"type":"text","id":"resource_one_asset","label":"Document 1 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
+        {"type":"url","id":"resource_one_url","label":"Document 1 URL"},
+        {"type":"text","id":"resource_two_label","label":"Document 2 title"},
+        {"type":"textarea","id":"resource_two_text","label":"Document 2 description"},
+        {"type":"text","id":"resource_two_asset","label":"Document 2 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
+        {"type":"url","id":"resource_two_url","label":"Document 2 URL"},
+        {"type":"text","id":"resource_three_label","label":"Document 3 title"},
+        {"type":"textarea","id":"resource_three_text","label":"Document 3 description"},
+        {"type":"text","id":"resource_three_asset","label":"Document 3 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
+        {"type":"url","id":"resource_three_url","label":"Document 3 URL"}
       ]
     }
   ],
   "max_blocks": 12,
   "presets": [
     {
-      "name": "SuntNeew Certificates",
+      "name": "SuntNeew document library",
       "blocks": [
         {"type":"certificate_group"}
       ]

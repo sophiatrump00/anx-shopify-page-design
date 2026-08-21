@@ -266,27 +266,57 @@
 
 .sn-power-calculator__scenario-media {
   position: relative;
-  display: block;
+  display: grid;
+  place-items: center;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #e5e7e9;
+  background: #f0f1f2;
+  color: #1f252d;
 }
 
-.sn-power-calculator__scenario-media img {
+.sn-power-calculator__scenario-media::before {
+  position: absolute;
+  inset: 18% 18%;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  content: '';
+  opacity: 0.11;
+  transform: scale(1.24);
+}
+
+.sn-power-calculator__scenario[data-scenario="rv"] .sn-power-calculator__scenario-media {
+  background: #f0ede8;
+  color: #34404b;
+}
+
+.sn-power-calculator__scenario[data-scenario="jump"] .sn-power-calculator__scenario-media {
+  background: #292e35;
+  color: #ff6b22;
+}
+
+.sn-power-calculator__scenario[data-scenario="home"] .sn-power-calculator__scenario-media {
+  background: #e6efea;
+  color: #237257;
+}
+
+.sn-power-calculator__scenario-icon {
+  position: relative;
+  z-index: 1;
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 300ms ease;
+  width: clamp(96px, 10vw, 132px);
+  height: clamp(96px, 10vw, 132px);
+  stroke-width: 1.45;
+  transition: transform 220ms ease;
 }
 
-.sn-power-calculator__scenario[data-scenario="rv"] .sn-power-calculator__scenario-media img,
-.sn-power-calculator__scenario[data-scenario="jump"] .sn-power-calculator__scenario-media img {
-  object-position: center 48%;
+.sn-power-calculator__scenario:hover .sn-power-calculator__scenario-icon,
+.sn-power-calculator__scenario:focus-visible .sn-power-calculator__scenario-icon {
+  transform: translateY(-4px) scale(1.035);
 }
 
-.sn-power-calculator__scenario:hover img {
-  transform: scale(1.025);
+.sn-power-calculator__scenario[aria-pressed="true"] .sn-power-calculator__scenario-media {
+  background: #fff4ec;
+  color: var(--snpc-accent);
 }
 
 .sn-power-calculator__scenario-check {
@@ -462,6 +492,35 @@
   min-height: 78px;
 }
 
+.sn-power-calculator__option-card--with-icon > span {
+  min-height: 102px;
+  padding-left: 76px;
+}
+
+.sn-power-calculator__option-card--with-icon.sn-power-calculator__option-card--compact > span {
+  min-height: 88px;
+}
+
+.sn-power-calculator__option-icon {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  color: #59636d;
+  transform: translateY(-50%);
+  transition: color 140ms ease, transform 140ms ease;
+}
+
+.sn-power-calculator__option-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.55;
+}
+
 .sn-power-calculator__option-card:hover > span,
 .sn-power-calculator__option-card:focus-within > span {
   border-color: #aeb3ba;
@@ -482,6 +541,11 @@
 .sn-power-calculator__option-card input:checked + span::after {
   border: 5px solid var(--snpc-accent);
   background: #fff;
+}
+
+.sn-power-calculator__option-card input:checked + span .sn-power-calculator__option-icon {
+  color: var(--snpc-accent);
+  transform: translateY(-50%) scale(1.06);
 }
 
 .sn-power-calculator__option-card.is-disabled {
@@ -1544,6 +1608,11 @@
     min-height: 132px;
   }
 
+  .sn-power-calculator__scenario-icon {
+    width: 76px;
+    height: 76px;
+  }
+
   .sn-power-calculator__scenario-copy {
     display: flex;
     min-height: 132px;
@@ -1693,6 +1762,11 @@
   .sn-power-calculator__scenario-media,
   .sn-power-calculator__scenario-copy {
     min-height: 122px;
+  }
+
+  .sn-power-calculator__scenario-icon {
+    width: 62px;
+    height: 62px;
   }
 
   .sn-power-calculator__scenario-copy {

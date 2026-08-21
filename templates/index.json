@@ -262,12 +262,12 @@
       "settings": {
         "eyebrow": "BUY WITH CONFIDENCE",
         "heading": "Buy with confidence. Power with confidence.",
-        "body": "Certified products, five-year limited warranty coverage, fast U.S. delivery, free shipping, 14-day returns and technical support beyond the purchase.",
+        "body": "Model-matched documents, clear policies and technical support help you make a practical purchase decision.",
         "product_asset": "suntneew-product-a20.jpg",
-        "product_alt": "SUNTNEEW A20 jump starter",
-        "product_title": "Model-matched documents, where they matter",
-        "product_text": "Open certificates and supporting documents from Support, then check the exact model code before relying on a record.",
-        "product_link_label": "Open certificates",
+        "product_alt": "SuntNeew A20 jump starter",
+        "product_title": "Model-matched documents",
+        "product_text": "Review the exact model, product label, document type and destination before relying on a record.",
+        "product_link_label": "Open document center",
         "product_link": "shopify://pages/technology",
         "guidance_title": "Lifetime Technical Support",
         "guidance_text": "Get product selection, setup guidance and troubleshooting support throughout product ownership.",
@@ -282,7 +282,7 @@
         "faq_output": {"type":"item","settings":{"title":"Does more Ah always mean more output?","content":"<p>No. Stored energy and continuous output are different constraints. Compare both values, alongside system voltage, cables, fuse requirements and intended load.</p>"}},
         "faq_jump": {"type":"item","settings":{"title":"Which jump starter should I choose?","content":"<p>Start with the supported vehicle and engine range listed on the product page, then compare portability, capacity, ports and emergency-light features.</p>"}},
         "faq_home": {"type":"item","settings":{"title":"Can I buy home energy storage as an individual?","content":"<p>Yes. Choose the model and capacity that fit your needs, then add it to cart or use Buy it now. Review compatibility and local installation requirements before installation.</p>"}},
-        "faq_docs": {"type":"item","settings":{"title":"Where can I find certification and test information?","content":"<p>Relevant model-specific safety, transport and compliance information can be requested when you need it for a specific product.</p>"}}
+        "faq_docs": {"type":"item","settings":{"title":"Where can I find model documents and test information?","content":"<p>Open the document center and match the exact model code on your product label. Contact Support if you need destination-specific technical documentation.</p>"}}
       },
       "block_order": ["faq_rv", "faq_output", "faq_jump", "faq_home", "faq_docs"],
       "settings": {
@@ -306,19 +306,7 @@
         "accordion_background": "#F2F7FD",
         "accordion_text_color": "#1B2433"
       }
-    },
-    "brand_close": {
-      "type": "suntneew-brand-close",
-      "settings": {
-        "anchor_id": "power-on",
-        "image_alt": "SuntNeew power for roadside readiness and home energy",
-        "impact_text": "POWER ON",
-        "heading": "Power that earns its place in real life.",
-        "body": "A visible path for RV power, roadside power when a vehicle needs a start, and home energy built around the way you use electricity.",
-        "button_label": "Explore power paths",
-        "button_link": "#ways-to-power"
-      }
     }
   },
-  "order": ["main_slideshow", "ways_to_power", "power_planner_entry", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq", "brand_close"]
+  "order": ["main_slideshow", "ways_to_power", "power_planner_entry", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq"]
 }
