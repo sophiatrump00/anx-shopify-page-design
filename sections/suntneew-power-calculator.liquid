@@ -11,8 +11,13 @@
 {%- assign product_vh = all_products['suntneew-vh-high-voltage-home-energy-storage-system'] -%}
 
 {{ 'suntneew-power-calculator.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'suntneew-power-calculator-core.js' | asset_url }}" defer></script>
-<script src="{{ 'suntneew-power-calculator.js' | asset_url }}" defer></script>
+<script type="module">
+  (async () => {
+    if (!document.querySelector('[data-suntneew-calculator]')) return;
+    await import({{ 'suntneew-power-calculator-core.js' | asset_url | json }});
+    await import({{ 'suntneew-power-calculator.js' | asset_url | json }});
+  })();
+</script>
 
 <section
   class="sn-power-calculator"

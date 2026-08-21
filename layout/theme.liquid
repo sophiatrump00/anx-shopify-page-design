@@ -1,3 +1,6 @@
+{% assign shogun_content_for_header = blank %}
+{% assign shogun_content_for_layout = blank %}
+{% # theme-check-disable-next-line DeprecatedTag %}
 {% include 'shogun-content-handler' %}
 {%- comment -%}
   ------------------------------------------------------------------------------------------------------------------------
@@ -43,14 +46,12 @@
     {%- comment -%}Few prefetch to increase performance on commonly used third-parties{%- endcomment -%}
     <link rel="preconnect" href="https://cdn.shopify.com">
     <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
-
     {%- unless settings.heading_font.system? -%}
-      <link rel="preload" href="{{ settings.heading_font | font_url }}" as="font" type="font/woff2" crossorigin>
+      {{ settings.heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2' }}
     {%- endunless -%}
 
     {%- unless settings.text_font.system? -%}
-      <link rel="preload" href="{{ settings.text_font | font_url }}" as="font" type="font/woff2" crossorigin>
+      {{ settings.text_font | font_url | preload_tag: as: 'font', type: 'font/woff2' }}
     {%- endunless -%}
 
     {%- render 'social-meta-tags' -%}
@@ -69,12 +70,20 @@
       }
     </script>
 
-    <script type="module" src="{{ 'vendor.min.js' | asset_url }}"></script>
-    <script type="module" src="{{ 'theme.js' | asset_url }}"></script>
+    <script type="module">
+      const loadTheme = () => import('theme');
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadTheme, { once: true });
+      } else {
+        loadTheme();
+      }
+    </script>
 
-    {{ content_for_header }}
+    {{ shogun_content_for_header | default: content_for_header }}
 
-    {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'theme-bundle-1.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'theme-bundle-2.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'theme-bundle-3.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'suntneew-site.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'suntneew-home.css' | asset_url | stylesheet_tag: preload: true -}}
     {%- if request.page_type == 'index' -%}
@@ -114,7 +123,7 @@
     {%- endif -%}
 
     <main role="main" id="main" class="anchor">
-      {{ content_for_layout }}
+      {{ shogun_content_for_layout | default: content_for_layout }}
 
       {%- comment -%}
         IMPLEMENTATION NOTE: due to the very complex logic of margin/padding collapsing in Impact, the footer group is

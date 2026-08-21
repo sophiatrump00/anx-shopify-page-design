@@ -3,6 +3,7 @@
     {%- assign posted_successfully = false -%}
     {%- assign newsletter_id = 'newsletter-' | append: section.id -%}
 
+    {% # theme-check-disable-next-line VariableName %}
     {%- capture _temporary -%}
       {%- form 'customer', id: newsletter_id, class: 'form' -%}
         {%- assign posted_successfully = form.posted_successfully? -%}

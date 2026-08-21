@@ -23,6 +23,7 @@
           {%- for comment in article.comments -%}
             <article class="comment">
               {%- if show_gravatar -%}
+                {% # theme-check-disable RemoteAsset %}
                 <img
                   class="comment__gravatar rounded-full"
                   loading="lazy"
@@ -31,6 +32,7 @@
                   src="//www.gravatar.com/avatar/{{ comment.email | md5 }}"
                   alt="{{ comment.author }}"
                 >
+                {% # theme-check-enable RemoteAsset %}
               {%- endif -%}
 
               <div class="v-stack gap-2 sm:gap-3">

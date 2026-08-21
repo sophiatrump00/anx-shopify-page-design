@@ -13,15 +13,14 @@
       -}}
     {%- endif -%}
 
-    {%- liquid
-      capture _recovery
-        form 'recover_customer_password'
-          if form.errors or form.posted_successfully?
-            assign show_recover_form = true
-          endif
-        endform
-      endcapture
-    -%}
+    {% # theme-check-disable-next-line VariableName %}
+    {%- capture _recovery -%}
+      {%- form 'recover_customer_password' -%}
+        {%- if form.errors or form.posted_successfully? -%}
+          {%- assign show_recover_form = true -%}
+        {%- endif -%}
+      {%- endform -%}
+    {%- endcapture -%}
 
     <div
       {% render 'surface',
