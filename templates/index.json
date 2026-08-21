@@ -271,8 +271,8 @@
         "product_link": "shopify://pages/technology",
         "guidance_title": "Lifetime Technical Support",
         "guidance_text": "Get product selection, setup guidance and troubleshooting support throughout product ownership.",
-        "guidance_link_label": "Get expert support",
-        "guidance_link": "shopify://pages/request-for-quote"
+        "guidance_link_label": "Contact support",
+        "guidance_link": "shopify://pages/contact-us"
       }
     },
     "faq": {
@@ -292,9 +292,9 @@
         "content": "<p>Use these starting points, then check the selected product page or request model-specific technical guidance.</p>",
         "team_avatar_width": 120,
         "support_hours": "Technical guidance for product selection and setup.",
-        "answer_time": "Response time is shown on the request page.",
-        "button_text": "Request support",
-        "button_url": "shopify://pages/request-for-quote",
+        "answer_time": "Contact Support for product-specific guidance.",
+        "button_text": "Contact support",
+        "button_url": "shopify://pages/contact-us",
         "text_position": "start",
         "background": "#F6F8FA",
         "background_gradient": "",

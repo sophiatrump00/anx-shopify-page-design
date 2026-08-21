@@ -121,37 +121,38 @@
                     assign link_title_downcase = link.title | strip | downcase
                     assign rendered_link_url = link.url
                     assign mega_menu_block = ''
-                    assign series_card_count = 0
                     assign is_technology_menu = false
                     assign is_support_menu = false
+                    assign is_product_series_menu = false
+                    assign is_direct_primary_link = false
                     assign primary_menu_key = ''
 
                     # Keep the storefront navigation deterministic even when the
                     # saved Shopify menu still contains stale or duplicate URLs.
-                    # All Products is the product index; Product Series is the
-                    # series hub. Titles remain translated/displayed as configured.
+                    # The header deliberately retains one product menu only:
+                    # All Products. Product Series remains in Shopify's saved
+                    # navigation data but is not rendered in the storefront header.
                     if link_title_downcase == 'all products'
                       # The store's saved menu currently resolves both labels to
                       # /collections. Keep All Products on Shopify's canonical
-                      # all-products route so it cannot collapse into Product Series.
+                      # all-products route.
                       assign rendered_link_url = '/collections/all'
                       assign primary_menu_key = 'all-products'
                     elsif link_title_downcase == 'product series'
-                      assign rendered_link_url = routes.collections_url
-                      assign primary_menu_key = 'product-series'
-                    endif
-
-                    if link_title_downcase == 'help me choose' or link.url contains '/pages/power-calculator'
-                      assign primary_menu_key = 'help-me-choose'
+                      assign is_product_series_menu = true
+                    elsif link_title_downcase == 'help me choose' or link.url contains '/pages/power-calculator'
+                      assign rendered_link_url = '/pages/power-calculator'
+                      assign is_direct_primary_link = true
                     elsif link_title_downcase == 'journal' or link.url contains '/blogs/news'
-                      assign primary_menu_key = 'journal'
+                      assign rendered_link_url = '/blogs/news'
+                      assign is_direct_primary_link = true
                     endif
 
                     if link_title_downcase == 'technology' or link.url contains '/pages/technology'
                       assign is_technology_menu = true
                     endif
 
-                    if link_title_downcase == 'support' or link.url contains '/pages/request-for-quote'
+                    if link_title_downcase == 'support'
                       assign is_support_menu = true
                     endif
 
@@ -163,22 +164,9 @@
                         break
                       endif
                     endfor
-
-                    # The Product Series item is a fixed three-collection path. Detect it from
-                    # its destinations (not from its translated title), so the visual menu works
-                    # in every storefront language.
-                    for sub_link in link.links
-                      if sub_link.url contains '/collections/rv-batteries' or sub_link.url contains '/collections/jump-starters' or sub_link.url contains '/collections/home-energy-storage'
-                        assign series_card_count = series_card_count | plus: 1
-                      endif
-                    endfor
-
-                    if series_card_count == 3
-                      assign primary_menu_key = 'product-series'
-                    endif
                   %}
 
-                  {%- unless is_technology_menu -%}
+                  {%- unless is_technology_menu or is_product_series_menu -%}
                     <li{% if is_support_menu %} class="header__support-menu"{% elsif primary_menu_key != blank %} class="header__primary-menu"{% endif %}>
                     {%- if is_support_menu -%}
                       <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
@@ -186,7 +174,7 @@
                           {{- link.title -}}
                         </summary>
 
-                        {%- render 'suntneew-support-mega-menu', support_url: rendered_link_url -%}
+                        {%- render 'suntneew-support-mega-menu' -%}
                       </details>
                     {%- elsif primary_menu_key != blank -%}
                       <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
@@ -197,6 +185,16 @@
 
                         {%- render 'suntneew-primary-mega-menu', menu_key: primary_menu_key -%}
                       </details>
+                    {%- elsif is_direct_primary_link -%}
+                      <a
+                        href="{{ rendered_link_url }}"
+                        class="bold link-faded-reverse"
+                        {% if link.current %}
+                          aria-current="page"
+                        {% endif %}
+                      >
+                        {{- link.title -}}
+                      </a>
                     {%- elsif link.levels == 0 and mega_menu_block == '' -%}
                       <a
                         href="{{ rendered_link_url }}"

@@ -1,21 +1,13 @@
 {%- comment -%}
   The compact, touch-friendly counterpart to the desktop Support mega menu.
-  Keep Technology inside Product Resources so there is one clear support path.
+  Do not duplicate the direct Help Me Choose or Journal header routes here.
 {%- endcomment -%}
 
-{%- assign support_center_url = support_url | default: '/pages/request-for-quote' -%}
-
 <li class="h6 text-subdued">Support</li>
-<li class="h3 sm:h4"><a class="group block w-full" href="{{ support_center_url }}"><span><span class="reversed-link">Support Center</span></span></a></li>
-<li class="h3 sm:h4"><a class="group block w-full" href="/pages/power-calculator"><span><span class="reversed-link">Help Me Choose</span></span></a></li>
 <li class="h3 sm:h4"><a class="group block w-full" href="/pages/contact-us"><span><span class="reversed-link">Contact Us</span></span></a></li>
-<li class="h3 sm:h4"><a class="group block w-full" href="{{ support_center_url }}"><span><span class="reversed-link">Technical Request</span></span></a></li>
 
 <li class="h6 text-subdued">Product Resources</li>
 <li class="h3 sm:h4"><a class="group block w-full" href="/pages/technology"><span><span class="reversed-link">Model documents &amp; compliance</span></span></a></li>
-
-<li class="h6 text-subdued">Journal</li>
-<li class="h3 sm:h4"><a class="group block w-full" href="/blogs/news"><span><span class="reversed-link">Power Notes &amp; Guides</span></span></a></li>
 
 <li class="h6 text-subdued">Policies</li>
 <li class="h3 sm:h4"><a class="group block w-full" href="/pages/shipping-policy"><span><span class="reversed-link">Shipping Policy</span></span></a></li>

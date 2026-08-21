@@ -44,11 +44,21 @@
               assign mobile_rendered_link_url = link.url
               assign is_technology_mobile_menu = false
               assign is_support_mobile_menu = false
+              assign is_all_products_mobile_menu = false
+              assign is_product_series_mobile_menu = false
+              assign is_direct_primary_mobile_link = false
 
               if mobile_link_title_downcase == 'all products'
                 assign mobile_rendered_link_url = routes.all_products_collection_url
+                assign is_all_products_mobile_menu = true
               elsif mobile_link_title_downcase == 'product series'
-                assign mobile_rendered_link_url = routes.collections_url
+                assign is_product_series_mobile_menu = true
+              elsif mobile_link_title_downcase == 'help me choose' or link.url contains '/pages/power-calculator'
+                assign mobile_rendered_link_url = '/pages/power-calculator'
+                assign is_direct_primary_mobile_link = true
+              elsif mobile_link_title_downcase == 'journal' or link.url contains '/blogs/news'
+                assign mobile_rendered_link_url = '/blogs/news'
+                assign is_direct_primary_mobile_link = true
               endif
 
               if mobile_link_title_downcase == 'technology' or link.url contains '/pages/technology'
@@ -56,7 +66,7 @@
               endif
 
               if is_mega_menu == false
-                if mobile_link_title_downcase == 'support' or link.url contains '/pages/request-for-quote'
+                if mobile_link_title_downcase == 'support'
                   assign is_support_mobile_menu = true
                 endif
               endif
@@ -91,9 +101,21 @@
               {%- endif -%}
             {%- endunless -%}
 
-            {%- unless is_technology_mobile_menu -%}
+            {% liquid
+              assign opens_mobile_panel = false
+
+              if is_support_mobile_menu or is_all_products_mobile_menu
+                assign opens_mobile_panel = true
+              elsif is_direct_primary_mobile_link == false
+                if link.links.size > 0 or mega_menu_block != '' and is_mega_menu == false
+                  assign opens_mobile_panel = true
+                endif
+              endif
+            %}
+
+            {%- unless is_technology_mobile_menu or is_product_series_mobile_menu -%}
             <li class="h3 sm:h4">
-              {%- if is_support_mobile_menu or link.links.size > 0 or mega_menu_block != '' and is_mega_menu == false -%}
+              {%- if opens_mobile_panel -%}
                 <button class="text-with-icon w-full group justify-between" aria-expanded="false" data-panel="1-{% increment level_1 %}">
                   <span>{{ link.title }}</span>
                   <span class="circle-chevron group-hover:colors group-expanded:colors">{%- render 'icon' with 'chevron-right-small', direction_aware: true -%}</span>
@@ -107,7 +129,7 @@
               {%- endif -%}
             </li>
 
-            {%- if is_support_mobile_menu or link.links.size > 0 or mega_menu_block != '' and is_mega_menu == false -%}
+            {%- if opens_mobile_panel -%}
               {%- capture link_level_2 -%}
                 {{- link_level_2 -}}
 
@@ -119,11 +141,13 @@
                       </button>
                     </li>
 
-                    {%- if is_support_mobile_menu -%}
-                      {%- render 'suntneew-support-mobile-links', support_url: mobile_rendered_link_url -%}
+                    {%- if is_all_products_mobile_menu -%}
+                      {%- render 'suntneew-product-mobile-links' -%}
+                    {%- elsif is_support_mobile_menu -%}
+                      {%- render 'suntneew-support-mobile-links' -%}
                     {%- endif -%}
 
-                    {%- if link.links.size > 0 -%}
+                    {%- if link.links.size > 0 and is_all_products_mobile_menu == false -%}
                       {%- for sub_link in link.links -%}
                         <li class="h3 {% if is_mega_menu %}sm:h5{% else %}sm:h4{% endif %}">
                           {%- if sub_link.links.size > 0 -%}

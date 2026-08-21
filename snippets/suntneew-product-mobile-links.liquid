@@ -1,0 +1,17 @@
+{%- comment -%}
+  Keep mobile All Products aligned with the intentional desktop product menu.
+  Do not render stale Product Series or scenario links from the saved menu.
+{%- endcomment -%}
+
+{% liquid
+  assign all_products_url = routes.all_products_collection_url
+  assign rv_batteries_url = collections['rv-batteries'].url
+  assign jump_starters_url = collections['jump-starters'].url
+  assign home_energy_storage_url = collections['home-energy-storage'].url
+%}
+
+<li class="h6 text-subdued">Shop products</li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ all_products_url }}"><span><span class="reversed-link">All products</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ rv_batteries_url }}"><span><span class="reversed-link">RV batteries</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ jump_starters_url }}"><span><span class="reversed-link">Jump starters</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ home_energy_storage_url }}"><span><span class="reversed-link">Home energy storage</span></span></a></li>

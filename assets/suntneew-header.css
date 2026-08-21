@@ -138,9 +138,9 @@
 
   #suntneew-support-mega-menu .suntneew-support-mega-menu__grid {
     display: grid;
-    width: min(100%, 1240px);
+    width: min(100%, 960px);
     margin-inline: auto;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   #suntneew-support-mega-menu .suntneew-support-mega-menu__column {
@@ -195,18 +195,14 @@
 
   .suntneew-primary-mega-menu__grid {
     display: grid;
-    width: min(100%, 1080px);
+    width: min(100%, 760px);
     margin-inline: auto;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .suntneew-primary-mega-menu__column {
     min-width: 0;
     padding-inline: clamp(20px, 3vw, 46px);
-  }
-
-  .suntneew-primary-mega-menu__column + .suntneew-primary-mega-menu__column {
-    border-inline-start: 1px solid rgb(24 35 48 / .12);
   }
 
   .suntneew-primary-mega-menu__heading {
@@ -224,6 +220,11 @@
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  .suntneew-primary-mega-menu__links--product-catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
   }
 
   .suntneew-primary-mega-menu__links a {

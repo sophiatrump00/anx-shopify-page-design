@@ -789,7 +789,7 @@
     }
 
     function setSupportLink(result) {
-      var supportUrl = root.dataset.supportUrl || '/pages/request-for-quote';
+      var supportUrl = root.dataset.supportUrl || '/pages/contact-us';
       var separator = supportUrl.indexOf('?') === -1 ? '?' : '&';
       resultSupportLink.href = supportUrl + separator + 'planner=scenario-' + encodeURIComponent(result.scenario || 'unknown') + '&result=technical-review';
     }

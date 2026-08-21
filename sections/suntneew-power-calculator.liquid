@@ -17,7 +17,7 @@
 <section
   class="sn-power-calculator"
   data-suntneew-calculator
-  data-support-url="{{ section.settings.support_url | default: '/pages/request-for-quote' | escape }}"
+  data-support-url="{{ section.settings.support_url | default: '/pages/contact-us' | escape }}"
   data-planner-step="scenario"
 >
   <header class="sn-power-calculator__hero">
@@ -255,7 +255,7 @@
           <div class="sn-power-calculator__product-media"><img data-result-image src="{{ 'suntneew-product-g31.jpg' | asset_url }}" alt="" width="600" height="600" loading="lazy"></div>
           <div class="sn-power-calculator__product-copy"><p class="sn-power-calculator__product-label" data-result-product-label>RECOMMENDED STARTING POINT</p><h3 data-result-product-title></h3><div class="sn-power-calculator__product-specs" data-result-product-specs></div><p data-result-product-copy></p><p class="sn-power-calculator__product-note" data-result-product-note hidden></p><div class="sn-power-calculator__result-actions"><a class="sn-power-calculator__result-link" data-result-product-link href="#">Open product details</a><a class="sn-power-calculator__result-link sn-power-calculator__result-link--secondary" data-result-secondary-link href="#" hidden>Compare another option</a></div></div>
         </div>
-        <div class="sn-power-calculator__result-actions" data-result-support-actions hidden><a class="sn-power-calculator__result-link" data-result-support-link href="{{ section.settings.support_url | default: '/pages/request-for-quote' }}">Request technical support</a><button type="button" class="sn-power-calculator__result-link sn-power-calculator__result-link--secondary" data-result-reset>Start again</button></div>
+        <div class="sn-power-calculator__result-actions" data-result-support-actions hidden><a class="sn-power-calculator__result-link" data-result-support-link href="{{ section.settings.support_url | default: '/pages/contact-us' }}">Contact support</a><button type="button" class="sn-power-calculator__result-link sn-power-calculator__result-link--secondary" data-result-reset>Start again</button></div>
         <p class="sn-power-calculator__fine-print">{{ section.settings.disclaimer | escape }}</p>
         <div class="sn-power-calculator__result-navigation"><button type="button" class="sn-power-calculator__text-button" data-edit-answers>Edit my answers</button><button type="button" class="sn-power-calculator__text-button" data-switch-scenario>Choose another scenario</button></div>
       </section>

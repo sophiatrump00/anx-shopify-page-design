@@ -1,18 +1,11 @@
 {%- comment -%}
-  Purpose-built navigation for the four primary storefront routes that are
-  currently leaf items in Shopify's saved menu. Keeping these links here makes
-  their desktop disclosure useful without depending on stale menu children.
-
-  Accepted values for menu_key:
-  - all-products
-  - product-series
-  - help-me-choose
-  - journal
+  Purpose-built product menu for the one desktop product disclosure.
+  The saved Shopify menu may still contain Product Series and route children,
+  but the storefront header deliberately exposes only All Products here.
 {%- endcomment -%}
 
 {% liquid
   assign all_products_url = routes.all_products_collection_url
-  assign product_series_url = routes.collections_url
   assign rv_batteries_url = collections['rv-batteries'].url
   assign jump_starters_url = collections['jump-starters'].url
   assign home_energy_storage_url = collections['home-energy-storage'].url
@@ -24,110 +17,11 @@
       {%- when 'all-products' -%}
         <section class="suntneew-primary-mega-menu__column" aria-label="Shop all products">
           <p class="suntneew-primary-mega-menu__heading">Shop products</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
+          <ul class="suntneew-primary-mega-menu__links suntneew-primary-mega-menu__links--product-catalog" role="list">
             <li><a href="{{ all_products_url }}">All products</a></li>
             <li><a href="{{ rv_batteries_url }}">RV batteries</a></li>
             <li><a href="{{ jump_starters_url }}">Jump starters</a></li>
             <li><a href="{{ home_energy_storage_url }}">Home energy storage</a></li>
-          </ul>
-        </section>
-
-        <section class="suntneew-primary-mega-menu__column" aria-label="Choose power by use">
-          <p class="suntneew-primary-mega-menu__heading">Choose by use</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="{{ rv_batteries_url }}">RV and off-grid power</a></li>
-            <li><a href="{{ jump_starters_url }}">Vehicle starting</a></li>
-            <li><a href="{{ home_energy_storage_url }}">Home backup</a></li>
-          </ul>
-        </section>
-
-        <section class="suntneew-primary-mega-menu__column" aria-label="Product planning and support">
-          <p class="suntneew-primary-mega-menu__heading">Plan with confidence</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="/pages/power-calculator">Help me choose</a></li>
-            <li><a href="/pages/technology">Documents &amp; compliance</a></li>
-            <li><a href="/pages/request-for-quote">Support center</a></li>
-          </ul>
-        </section>
-
-      {%- when 'product-series' -%}
-        <section class="suntneew-primary-mega-menu__column" aria-label="Product series">
-          <p class="suntneew-primary-mega-menu__heading">Find your series</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="{{ rv_batteries_url }}">RV batteries</a></li>
-            <li><a href="{{ jump_starters_url }}">Jump starters</a></li>
-            <li><a href="{{ home_energy_storage_url }}">Home energy storage</a></li>
-          </ul>
-        </section>
-
-        <section class="suntneew-primary-mega-menu__column" aria-label="Browse the catalog">
-          <p class="suntneew-primary-mega-menu__heading">Browse the catalog</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="{{ all_products_url }}">View all products</a></li>
-            <li><a href="{{ product_series_url }}">Explore product series</a></li>
-          </ul>
-        </section>
-
-        <section class="suntneew-primary-mega-menu__column" aria-label="Help choosing a series">
-          <p class="suntneew-primary-mega-menu__heading">Need a starting point?</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="/pages/power-calculator">Open power planner</a></li>
-            <li><a href="/pages/request-for-quote">Ask a product question</a></li>
-            <li><a href="/pages/technology">Model documents</a></li>
-          </ul>
-        </section>
-
-      {%- when 'help-me-choose' -%}
-        <section class="suntneew-primary-mega-menu__column" aria-label="Power planning">
-          <p class="suntneew-primary-mega-menu__heading">Start a power plan</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="/pages/power-calculator">Open power planner</a></li>
-            <li><a href="/pages/request-for-quote">Get technical support</a></li>
-          </ul>
-        </section>
-
-        <section class="suntneew-primary-mega-menu__column" aria-label="Choose by scenario">
-          <p class="suntneew-primary-mega-menu__heading">Choose by scenario</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="{{ rv_batteries_url }}">RV and off-grid power</a></li>
-            <li><a href="{{ jump_starters_url }}">Vehicle starting</a></li>
-            <li><a href="{{ home_energy_storage_url }}">Home backup</a></li>
-          </ul>
-        </section>
-
-        <section class="suntneew-primary-mega-menu__column" aria-label="Before you buy">
-          <p class="suntneew-primary-mega-menu__heading">Before you buy</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="/pages/technology">Model documents</a></li>
-            <li><a href="/blogs/news">Power notes &amp; guides</a></li>
-            <li><a href="/pages/contact-us">Contact us</a></li>
-          </ul>
-        </section>
-
-      {%- when 'journal' -%}
-        <section class="suntneew-primary-mega-menu__column" aria-label="Journal">
-          <p class="suntneew-primary-mega-menu__heading">Journal</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="/blogs/news">Power notes &amp; guides</a></li>
-            <li><a href="/blogs/news">Browse all articles</a></li>
-          </ul>
-        </section>
-
-        <section class="suntneew-primary-mega-menu__column" aria-label="Guides by system">
-          <p class="suntneew-primary-mega-menu__heading">Guides by system</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="{{ rv_batteries_url }}">RV batteries</a></li>
-            <li><a href="{{ jump_starters_url }}">Jump starters</a></li>
-            <li><a href="{{ home_energy_storage_url }}">Home energy storage</a></li>
-          </ul>
-        </section>
-
-        <section class="suntneew-primary-mega-menu__column" aria-label="Useful resources">
-          <p class="suntneew-primary-mega-menu__heading">Useful resources</p>
-          <ul class="suntneew-primary-mega-menu__links" role="list">
-            <li><a href="/pages/power-calculator">Power planner</a></li>
-            <li><a href="/pages/technology">Model documents</a></li>
-            <li><a href="/pages/request-for-quote">Support center</a></li>
           </ul>
         </section>
     {%- endcase -%}
