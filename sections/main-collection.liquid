@@ -63,7 +63,6 @@
 <div class="container">
   {%- if collection.handle == 'all' -%}
     {{ 'suntneew-catalog.css' | asset_url | stylesheet_tag }}
-    {%- render 'suntneew-all-products-intro', collection: collection -%}
   {%- endif -%}
 
   {%- if collection.all_products_count == 0 -%}
