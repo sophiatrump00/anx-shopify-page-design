@@ -64,20 +64,14 @@
 
                     {%- assign footer_menu_title_downcase = block.settings.menu_title | default: block.settings.menu.title | strip | downcase -%}
                     {%- assign footer_has_calculator_link = false -%}
-                    {%- assign footer_has_support_center_link = false -%}
                     {%- for footer_link in block.settings.menu.links -%}
                       {%- assign footer_link_title_downcase = footer_link.title | strip | downcase -%}
                       {%- if footer_link.url contains '/pages/power-calculator' or footer_link_title_downcase == 'help me choose' -%}
                         {%- assign footer_has_calculator_link = true -%}
-                      {%- endif -%}
-                      {%- if footer_link.url contains '/pages/support' or footer_link_title_downcase == 'support center' -%}
-                        {%- assign footer_has_support_center_link = true -%}
+                        {%- break -%}
                       {%- endif -%}
                     {%- endfor -%}
                     <ul class="v-stack gap-3" role="list">
-                      {%- if footer_menu_title_downcase == 'support' and footer_has_support_center_link == false -%}
-                        <li><a href="/pages/support" class="inline-block link-faded break-all">Support Center</a></li>
-                      {%- endif -%}
                       {%- if footer_menu_title_downcase == 'support' and footer_has_calculator_link == false -%}
                         <li><a href="/pages/power-calculator" class="inline-block link-faded break-all">Help Me Choose</a></li>
                       {%- endif -%}
