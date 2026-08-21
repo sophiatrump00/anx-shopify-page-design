@@ -1,0 +1,86 @@
+{{ 'suntneew-support.css' | asset_url | stylesheet_tag }}
+
+<section class="sn-support" aria-labelledby="sn-support-heading">
+  <div class="sn-support__shell">
+    <header class="sn-support__hero">
+      <p class="sn-support__eyebrow">SUPPORT CENTER</p>
+      <h1 id="sn-support-heading">{{ page.title | default: section.settings.heading }}</h1>
+      <p>{{ section.settings.intro }}</p>
+    </header>
+
+    <section class="sn-support__routes" aria-labelledby="sn-support-routes-heading">
+      <div class="sn-support__section-heading">
+        <p class="sn-support__eyebrow">CHOOSE A ROUTE</p>
+        <h2 id="sn-support-routes-heading">Get to the right answer faster.</h2>
+      </div>
+
+      <div class="sn-support__route-grid">
+        <a class="sn-support__route-card" href="/pages/technology">
+          <span class="sn-support__route-number" aria-hidden="true">01</span>
+          <span class="sn-support__route-label">PRODUCT RESOURCES</span>
+          <strong>Model documents</strong>
+          <span>Find model-specific documents and compliance information.</span>
+          <span class="sn-support__route-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a class="sn-support__route-card" href="/pages/shipping-policy">
+          <span class="sn-support__route-number" aria-hidden="true">02</span>
+          <span class="sn-support__route-label">ORDER HELP</span>
+          <strong>Shipping information</strong>
+          <span>Review shipping timing, delivery and order policy details.</span>
+          <span class="sn-support__route-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a class="sn-support__route-card" href="/pages/return-policy">
+          <span class="sn-support__route-number" aria-hidden="true">03</span>
+          <span class="sn-support__route-label">AFTER PURCHASE</span>
+          <strong>Returns</strong>
+          <span>Read the return policy before starting a return request.</span>
+          <span class="sn-support__route-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a class="sn-support__route-card" href="/pages/contact-us">
+          <span class="sn-support__route-number" aria-hidden="true">04</span>
+          <span class="sn-support__route-label">CONTACT</span>
+          <strong>Talk with support</strong>
+          <span>Send the team a question about a product, order or technical issue.</span>
+          <span class="sn-support__route-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="sn-support__prepare" aria-labelledby="sn-support-prepare-heading">
+      <div>
+        <p class="sn-support__eyebrow">BEFORE YOU CONTACT US</p>
+        <h2 id="sn-support-prepare-heading">A few details help us help you faster.</h2>
+      </div>
+      <ol>
+        <li>Have the product model or product link ready.</li>
+        <li>For order questions, include the order number and email used at checkout.</li>
+        <li>For a technical question, describe your setup and the behavior you are seeing.</li>
+      </ol>
+    </section>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SuntNeew support center",
+  "class": "shopify-section--suntneew-support-center",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Fallback heading",
+      "default": "Support Center"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "Find the right resources for your SuntNeew product, order or technical question."
+    }
+  ]
+}
+{% endschema %}

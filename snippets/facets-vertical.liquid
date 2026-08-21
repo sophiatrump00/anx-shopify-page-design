@@ -44,6 +44,36 @@
     <input type="hidden" name="type" value="product">
   {%- endif -%}
 
+  {%- if show_filters and results.handle == 'all' -%}
+    <div class="sn-catalog-filter-guidance">
+      <p class="sn-catalog-filter-guidance__eyebrow">Build your shortlist</p>
+      <p class="sn-catalog-filter-guidance__body">Start with Product Series or Use Case, then narrow by the technical details that apply to your setup.</p>
+    </div>
+
+    {%- assign rv_battery_filter_value = 'RV Battery' | url_encode -%}
+    {%- assign jump_starter_filter_value = 'Jump Starter' | url_encode -%}
+    {%- assign home_energy_filter_value = 'Home Energy Storage' | url_encode -%}
+    {%- assign rv_use_case_filter_value = 'RV' | url_encode -%}
+    {%- assign vehicle_use_case_filter_value = 'Vehicle starting' | url_encode -%}
+    {%- assign home_use_case_filter_value = 'Home backup' | url_encode -%}
+
+    <nav class="sn-catalog-filter-quick-start" aria-label="Quick catalog filters">
+      <p class="sn-catalog-filter-quick-start__label">START WITH A SERIES</p>
+      <div class="sn-catalog-filter-quick-start__links">
+        <a is="facet-link" href="{{ routes.all_products_collection_url }}?filter.p.product_type={{ rv_battery_filter_value }}">RV Batteries</a>
+        <a is="facet-link" href="{{ routes.all_products_collection_url }}?filter.p.product_type={{ jump_starter_filter_value }}">Jump Starters</a>
+        <a is="facet-link" href="{{ routes.all_products_collection_url }}?filter.p.product_type={{ home_energy_filter_value }}">Home Energy</a>
+      </div>
+
+      <p class="sn-catalog-filter-quick-start__label">OR BY USE CASE</p>
+      <div class="sn-catalog-filter-quick-start__links">
+        <a is="facet-link" href="{{ routes.all_products_collection_url }}?filter.p.m.custom.suntneew_use_case={{ rv_use_case_filter_value }}">RV &amp; Off-grid</a>
+        <a is="facet-link" href="{{ routes.all_products_collection_url }}?filter.p.m.custom.suntneew_use_case={{ vehicle_use_case_filter_value }}">Vehicle Starting</a>
+        <a is="facet-link" href="{{ routes.all_products_collection_url }}?filter.p.m.custom.suntneew_use_case={{ home_use_case_filter_value }}">Home Backup</a>
+      </div>
+    </nav>
+  {%- endif -%}
+
   {%- if show_sort_by -%}
     {%- capture accordion_content -%}
       <div class="checkbox-list">

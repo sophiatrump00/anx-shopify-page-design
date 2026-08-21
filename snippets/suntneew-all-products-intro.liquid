@@ -1,0 +1,40 @@
+{%- comment -%}
+  The All Products page is both the catalog and the durable home for product
+  series. The calculator remains a direct header route, so it is not repeated
+  as a competing call to action here.
+{%- endcomment -%}
+
+<section class="sn-catalog-intro" aria-labelledby="sn-catalog-intro-heading">
+  <div class="sn-catalog-intro__header">
+    <div>
+      <p class="sn-catalog-intro__eyebrow">SHOP BY SERIES</p>
+      <h2 id="sn-catalog-intro-heading">Start with the power path that fits your life.</h2>
+      <p>Each series has its own products and technical fit. Choose a starting point, then use the filters below to narrow the details.</p>
+    </div>
+
+    <a class="sn-catalog-intro__series-link" href="{{ routes.collections_url }}">
+      <span>View Product Series</span>
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+
+  <nav class="sn-catalog-intro__series-grid" aria-label="Browse product series">
+    <a class="sn-catalog-intro__series-card" href="{{ collections['rv-batteries'].url }}">
+      <span class="sn-catalog-intro__series-index" aria-hidden="true">01</span>
+      <span class="sn-catalog-intro__series-name">RV Batteries</span>
+      <span class="sn-catalog-intro__series-copy">Deep-cycle power for RV, marine and off-grid applications.</span>
+    </a>
+
+    <a class="sn-catalog-intro__series-card" href="{{ collections['jump-starters'].url }}">
+      <span class="sn-catalog-intro__series-index" aria-hidden="true">02</span>
+      <span class="sn-catalog-intro__series-name">Jump Starters</span>
+      <span class="sn-catalog-intro__series-copy">Portable starting power, safety and device charging for the road.</span>
+    </a>
+
+    <a class="sn-catalog-intro__series-card" href="{{ collections['home-energy-storage'].url }}">
+      <span class="sn-catalog-intro__series-index" aria-hidden="true">03</span>
+      <span class="sn-catalog-intro__series-name">Home Energy Storage</span>
+      <span class="sn-catalog-intro__series-copy">Stored energy planned around backup needs and system architecture.</span>
+    </a>
+  </nav>
+</section>

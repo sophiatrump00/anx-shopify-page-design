@@ -1,11 +1,12 @@
 {%- comment -%}
   Purpose-built product menu for the one desktop product disclosure.
-  The saved Shopify menu may still contain Product Series and route children,
-  but the storefront header deliberately exposes only All Products here.
+  Product Series belongs inside All Products, rather than competing with it as
+  a separate top-level header item.
 {%- endcomment -%}
 
 {% liquid
   assign all_products_url = routes.all_products_collection_url
+  assign product_series_url = routes.collections_url
   assign rv_batteries_url = collections['rv-batteries'].url
   assign jump_starters_url = collections['jump-starters'].url
   assign home_energy_storage_url = collections['home-energy-storage'].url
@@ -15,10 +16,17 @@
   <div class="suntneew-primary-mega-menu__grid">
     {%- case menu_key -%}
       {%- when 'all-products' -%}
-        <section class="suntneew-primary-mega-menu__column" aria-label="Shop all products">
-          <p class="suntneew-primary-mega-menu__heading">Shop products</p>
+        <section class="suntneew-primary-mega-menu__column" aria-label="Browse the full catalog">
+          <p class="suntneew-primary-mega-menu__heading">Browse the catalog</p>
           <ul class="suntneew-primary-mega-menu__links suntneew-primary-mega-menu__links--product-catalog" role="list">
             <li><a href="{{ all_products_url }}">All products</a></li>
+          </ul>
+        </section>
+
+        <section class="suntneew-primary-mega-menu__column" aria-label="Browse products by series">
+          <p class="suntneew-primary-mega-menu__heading">Shop by series</p>
+          <ul class="suntneew-primary-mega-menu__links suntneew-primary-mega-menu__links--product-catalog" role="list">
+            <li><a href="{{ product_series_url }}">Product series</a></li>
             <li><a href="{{ rv_batteries_url }}">RV batteries</a></li>
             <li><a href="{{ jump_starters_url }}">Jump starters</a></li>
             <li><a href="{{ home_energy_storage_url }}">Home energy storage</a></li>

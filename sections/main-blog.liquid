@@ -27,38 +27,87 @@
   {%- if blog.articles_count == 0 -%}
     <section class="sn-journal-empty">
       <div class="sn-journal-empty__shell">
-        <p class="sn-journal-empty__eyebrow">JOURNAL</p>
-        <h1>Practical power notes, ready for their first chapter.</h1>
-        <p class="sn-journal-empty__intro">The Journal is ready for SuntNeew articles. While the first posts are being prepared, these useful starting points are already available.</p>
+        <header class="sn-journal-empty__hero">
+          <p class="sn-journal-empty__eyebrow">JOURNAL</p>
+          <h1>Field notes for more dependable power.</h1>
+          <p class="sn-journal-empty__intro">The SuntNeew Journal is an editorial space for practical planning, real-world learning and thoughtful energy stories.</p>
+        </header>
 
-        <div class="sn-journal-empty__grid">
-          <a href="/pages/technology" class="sn-journal-empty__card">
-            <span class="sn-journal-empty__number">01</span>
-            <span class="sn-journal-empty__card-copy">
-              <strong>Documents &amp; compliance</strong>
-              <span>Open a document matched to the exact model and document type.</span>
-            </span>
-            <span class="sn-journal-empty__arrow" aria-hidden="true">&rarr;</span>
-          </a>
+        <section class="sn-journal-empty__topics" aria-labelledby="journal-topics-heading">
+          <div class="sn-journal-empty__section-heading">
+            <p class="sn-journal-empty__eyebrow">CATEGORIES</p>
+            <h2 id="journal-topics-heading">Explore by topic.</h2>
+          </div>
 
-          <a href="/pages/contact-us" class="sn-journal-empty__card">
-            <span class="sn-journal-empty__number">02</span>
-            <span class="sn-journal-empty__card-copy">
-              <strong>Ask Support</strong>
-              <span>Request help with model selection, product details or technical questions.</span>
-            </span>
-            <span class="sn-journal-empty__arrow" aria-hidden="true">&rarr;</span>
-          </a>
+          <div class="sn-journal-empty__topic-grid">
+            <article class="sn-journal-empty__topic-card">
+              <span class="sn-journal-empty__number" aria-hidden="true">01</span>
+              <p>POWER PLANNING</p>
+              <h3>Plan with confidence</h3>
+              <span>Clear thinking for capacity, practical needs and system decisions.</span>
+            </article>
 
-          <a href="{{ routes.collections_url }}" class="sn-journal-empty__card">
-            <span class="sn-journal-empty__number">03</span>
-            <span class="sn-journal-empty__card-copy">
-              <strong>Explore product series</strong>
-              <span>Start with the power path that fits road, RV or home use.</span>
-            </span>
-            <span class="sn-journal-empty__arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
+            <article class="sn-journal-empty__topic-card">
+              <span class="sn-journal-empty__number" aria-hidden="true">02</span>
+              <p>ON THE ROAD</p>
+              <h3>Go further prepared</h3>
+              <span>Stories and checklists for travel, vehicle readiness and portable power.</span>
+            </article>
+
+            <article class="sn-journal-empty__topic-card">
+              <span class="sn-journal-empty__number" aria-hidden="true">03</span>
+              <p>HOME ENERGY</p>
+              <h3>Keep essentials running</h3>
+              <span>Useful context for resilient home backup and energy storage.</span>
+            </article>
+          </div>
+        </section>
+
+        <section class="sn-journal-empty__feature" aria-labelledby="journal-featured-heading">
+          <div>
+            <p class="sn-journal-empty__eyebrow">FEATURED</p>
+            <h2 id="journal-featured-heading">The first featured story is in preparation.</h2>
+          </div>
+          <p>When it is published, this space will surface the Journal’s most useful long-form article first.</p>
+        </section>
+
+        <section class="sn-journal-empty__articles" aria-labelledby="journal-articles-heading">
+          <div class="sn-journal-empty__section-heading">
+            <p class="sn-journal-empty__eyebrow">ARTICLES</p>
+            <h2 id="journal-articles-heading">Latest articles.</h2>
+          </div>
+          <div class="sn-journal-empty__article-state">
+            <p>New articles will appear here as they are published.</p>
+          </div>
+        </section>
+
+        <section class="sn-journal-empty__newsletter" aria-labelledby="journal-newsletter-heading">
+          <div>
+            <p class="sn-journal-empty__eyebrow">STAY IN THE LOOP</p>
+            <h2 id="journal-newsletter-heading">Receive the next issue.</h2>
+            <p>Occasional field notes, guides and new stories from SuntNeew.</p>
+          </div>
+
+          {%- form 'customer', id: 'journal-empty-newsletter', class: 'sn-journal-empty__newsletter-form form' -%}
+            {%- if form.posted_successfully? -%}
+              {%- capture success_message -%}{{ 'general.newsletter.subscribed_successfully' | t }}{%- endcapture -%}
+              {%- render 'banner', content: success_message, status: 'success' -%}
+            {%- else -%}
+              {%- if form.errors -%}
+                {%- assign content = form.errors | default_errors -%}
+                {%- render 'banner', status: 'error', content: content -%}
+              {%- endif -%}
+            {%- endif -%}
+
+            <input type="hidden" name="contact[tags]" value="newsletter">
+
+            <div class="fieldset-with-submit">
+              {%- assign label = 'blog.comments.email' | t -%}
+              {%- render 'input', type: 'email', name: 'contact[email]', label: label, value: customer.email, required: true, autocomplete: 'email' -%}
+              {%- render 'button', content: 'Subscribe', icon: 'email', type: 'submit', size: 'xl' -%}
+            </div>
+          {%- endform -%}
+        </section>
       </div>
     </section>
   {%- else -%}

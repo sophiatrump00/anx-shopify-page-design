@@ -116,6 +116,7 @@
           {%- if section.settings.layout != 'drawer' and section.settings.menu.links.size > 0 -%}
             <nav class="header__link-list {% if section.settings.layout == 'logo_left_navigation_center' %}justify-center{% endif %} wrap" role="navigation">
               <ul class="contents" role="list">
+                {%- assign header_has_support_menu = false -%}
                 {%- for link in section.settings.menu.links -%}
                   {% liquid
                     assign link_title_downcase = link.title | strip | downcase
@@ -130,8 +131,8 @@
                     # Keep the storefront navigation deterministic even when the
                     # saved Shopify menu still contains stale or duplicate URLs.
                     # The header deliberately retains one product menu only:
-                    # All Products. Product Series remains in Shopify's saved
-                    # navigation data but is not rendered in the storefront header.
+                    # All Products. Product Series remains nested inside that
+                    # menu rather than becoming a competing top-level item.
                     if link_title_downcase == 'all products'
                       # The store's saved menu currently resolves both labels to
                       # /collections. Keep All Products on Shopify's canonical
@@ -154,6 +155,7 @@
 
                     if link_title_downcase == 'support'
                       assign is_support_menu = true
+                      assign header_has_support_menu = true
                     endif
 
                     for block in section.blocks
@@ -170,8 +172,9 @@
                     <li{% if is_support_menu %} class="header__support-menu"{% elsif primary_menu_key != blank %} class="header__primary-menu"{% endif %}>
                     {%- if is_support_menu -%}
                       <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
-                        <summary class="suntneew-support-menu__trigger bold link-faded-reverse">
+                        <summary class="suntneew-support-menu__trigger text-with-icon gap-2.5 bold link-faded-reverse">
                           {{- link.title -}}
+                          {%- render 'icon' with 'chevron-bottom' -%}
                         </summary>
 
                         {%- render 'suntneew-support-mega-menu' -%}
@@ -310,6 +313,19 @@
                     </li>
                   {%- endunless -%}
                 {%- endfor -%}
+
+                {%- unless header_has_support_menu -%}
+                  <li class="header__support-menu">
+                    <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
+                      <summary class="suntneew-support-menu__trigger text-with-icon gap-2.5 bold link-faded-reverse">
+                        Support
+                        {%- render 'icon' with 'chevron-bottom' -%}
+                      </summary>
+
+                      {%- render 'suntneew-support-mega-menu' -%}
+                    </details>
+                  </li>
+                {%- endunless -%}
               </ul>
             </nav>
           {%- endif -%}

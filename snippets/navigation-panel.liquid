@@ -37,6 +37,17 @@
           </button>
         {%- endif -%}
 
+        {%- assign suntneew_mobile_has_support = false -%}
+        {%- unless is_mega_menu -%}
+          {%- for main_menu_link in main_menu.links -%}
+            {%- assign main_menu_link_title = main_menu_link.title | strip | downcase -%}
+            {%- if main_menu_link_title == 'support' -%}
+              {%- assign suntneew_mobile_has_support = true -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endunless -%}
+
         <ul class="v-stack gap-4">
           {%- for link in main_menu.links -%}
             {% liquid
@@ -244,6 +255,12 @@
             {%- endif -%}
             {%- endunless -%}
           {%- endfor -%}
+
+          {%- if is_mega_menu == false and suntneew_mobile_has_support == false -%}
+            <li class="h3 sm:h4">
+              <a href="/pages/support" class="group block w-full"><span><span class="reversed-link">Support</span></span></a>
+            </li>
+          {%- endif -%}
         </ul>
 
         {%- if secondary_menu != blank -%}
