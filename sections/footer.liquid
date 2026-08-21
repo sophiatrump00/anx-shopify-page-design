@@ -77,7 +77,7 @@
                       {%- endif -%}
                       {%- for link in block.settings.menu.links -%}
                         {%- assign footer_link_title = link.title | strip | downcase -%}
-                        {%- unless footer_link_title == 'technology' or link.url contains '/pages/technology' -%}
+                        {%- unless footer_link_title == 'technology' or link.url contains '/pages/technology' or footer_link_title == 'for business' or link.url contains '/pages/for-business' -%}
                           {%- assign footer_link_url = link.url -%}
                           {%- if footer_link_title == 'all products' -%}
                             {%- assign footer_link_url = '/collections/all' -%}
