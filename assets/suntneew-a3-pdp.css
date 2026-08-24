@@ -8,6 +8,8 @@
   background: #fff;
 }
 
+.sn-a3-pdp[data-pdp-panel][hidden] { display: none !important; }
+
 .sn-a3-pdp__shell { width: min(1240px, calc(100% - 40px)); margin-inline: auto; }
 .sn-a3-pdp__section { padding-block: clamp(56px, 8vw, 112px); }
 .sn-a3-pdp__eyebrow { margin: 0 0 10px; color: var(--a3-accent); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }

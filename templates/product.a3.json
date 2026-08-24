@@ -33,7 +33,7 @@
       "blocks": {
         "features": {"type": "link", "settings": {"label": "Features", "target_id": "features"}},
         "specs": {"type": "link", "settings": {"label": "Specifications", "target_id": "specifications"}},
-        "box": {"type": "link", "settings": {"label": "In the Box", "target_id": "a3-kit"}},
+        "box": {"type": "link", "settings": {"label": "In the Box", "target_id": "in-the-box"}},
         "manuals": {"type": "link", "settings": {"label": "Manuals", "target_id": "manuals"}},
         "faq": {"type": "link", "settings": {"label": "FAQ", "target_id": "faq"}}
       },
@@ -57,12 +57,17 @@
         "temperature": {"type": "spec", "settings": {"label": "Working temperature", "value": "-20°C to 60°C", "group": "installation", "variant_match": ""}},
         "shell": {"type": "spec", "settings": {"label": "Shell", "value": "Aluminum alloy", "group": "installation", "variant_match": ""}},
         "weight": {"type": "spec", "settings": {"label": "Product weight", "value": "764g", "group": "installation", "variant_match": ""}},
+        "box1": {"type": "included", "settings": {"item": "A3 main unit x1", "variant_match": ""}},
+        "box2": {"type": "included", "settings": {"item": "Intelligent jumper clamps x1", "variant_match": ""}},
+        "box3": {"type": "included", "settings": {"item": "PD 60W USB-C cable x1", "variant_match": ""}},
+        "box4": {"type": "included", "settings": {"item": "EVA carry case x1", "variant_match": ""}},
+        "box5": {"type": "included", "settings": {"item": "User manual x1", "variant_match": ""}},
         "manual": {"type": "download", "settings": {"label": "A3 product pack (PDF)", "link": "https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A3_English_Product_Pack.pdf?v=1786349789", "asset_name": "", "variant_match": ""}},
         "fcc": {"type": "download", "settings": {"label": "FCC Supplier’s Declaration of Conformity (CY-A3)", "link": "", "asset_name": "suntneew-a3-fcc-sdoc.pdf", "variant_match": ""}},
         "un38": {"type": "download", "settings": {"label": "UN38.3 test summary (CY-A3)", "link": "", "asset_name": "suntneew-a3-un38.3-summary.pdf", "variant_match": ""}}
       },
-      "block_order": ["capacity", "energy", "start", "peak", "engine", "starts", "input", "output", "light", "safety", "temperature", "shell", "weight", "manual", "fcc", "un38"],
-      "settings": {"anchor_id": "specifications", "eyebrow": "PRODUCT DETAILS", "heading": "A3 technical specifications", "lede": "<p>A3 is the independent-site name for product model CY-A3. All values below refer to the single documented A3 configuration.</p>", "primary_group_heading": "Starting performance", "system_group_heading": "Charging, light & protection", "installation_group_heading": "Construction & operating range", "included_heading": "In the box", "download_heading": "Documents & downloads"}
+      "block_order": ["capacity", "energy", "start", "peak", "engine", "starts", "input", "output", "light", "safety", "temperature", "shell", "weight", "box1", "box2", "box3", "box4", "box5", "manual", "fcc", "un38"],
+      "settings": {"anchor_id": "specifications", "eyebrow": "PRODUCT DETAILS", "heading": "A3 technical specifications", "lede": "<p>A3 is the independent-site name for product model CY-A3. All values below refer to the single documented A3 configuration.</p>", "primary_group_heading": "Starting performance", "system_group_heading": "Charging, light & protection", "installation_group_heading": "Construction & operating range", "included_heading": "In the box", "download_heading": "Manuals & downloads"}
     },
     "faq": {
       "type": "suntneew-pdp-faq",
