@@ -4,7 +4,8 @@
 <section class="sn-pdp sn-pdp-proof" aria-label="{{ section.settings.accessibility_label | escape }}">
   <div class="sn-pdp__shell sn-pdp-proof__grid">
     {%- for block in section.blocks -%}
-      <div class="sn-pdp-proof__item" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
+      <div class="sn-pdp-proof__item{% if block.type == 'certification' %} sn-pdp-proof__item--certification{% endif %}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
+        {%- if block.type == 'certification' -%}<span class="sn-pdp-proof__badge-icon" aria-hidden="true">✓</span>{%- endif -%}
         <strong class="sn-pdp-proof__value">{{ block.settings.value }}</strong>
         <span class="sn-pdp-proof__label">{{ block.settings.label }}</span>
       </div>
@@ -25,6 +26,15 @@
       "settings":[
         {"type":"text","id":"value","label":"Value","default":"1500A"},
         {"type":"text","id":"label","label":"Label","default":"Peak current"},
+        {"type":"text","id":"variant_match","label":"Only show for variant","info":"Optional. Match capacity, color, title or SKU, for example 8000mAh."}
+      ]
+    },
+    {
+      "type":"certification",
+      "name":"Certification badge",
+      "settings":[
+        {"type":"text","id":"value","label":"Certification","default":"UL 2743"},
+        {"type":"text","id":"label","label":"Supporting text","default":"Certified safety standard"},
         {"type":"text","id":"variant_match","label":"Only show for variant","info":"Optional. Match capacity, color, title or SKU, for example 8000mAh."}
       ]
     }
