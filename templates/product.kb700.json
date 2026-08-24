@@ -1,0 +1,130 @@
+/*
+ * KB700 Fan Jump Starter PDP configuration.
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {"type":"vendor","settings":{}},
+        "title": {"type":"title","settings":{"heading_tag":"h1"}},
+        "sku": {"type":"sku","settings":{}},
+        "price": {"type":"price","settings":{"show_taxes_notice":false}},
+        "separator": {"type":"separator","settings":{}},
+        "intro": {"type":"text","settings":{"text":"<p>KB700 combines a compact 12V jump starter, a three-speed air duster, USB device charging and an emergency light in one carry-ready kit.</p>"}},
+        "quantity_selector": {"type":"quantity_selector","settings":{}},
+        "bundle": {"type":"suntneew_bundle_selector","settings":{"enabled":true,"show_savings":true,"heading":"Build a KB700 multi-pack","body":"Choose 1, 2, 5 or 10 units, or use a custom quantity.","discount_percent":3}},
+        "buy_buttons": {"type":"buy_buttons","settings":{"show_payment_button":false,"show_gift_card_recipient":false}}
+      },
+      "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","bundle","buy_buttons"],
+      "settings":{"show_fixed_add_to_cart":false,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":50,"desktop_media_layout":"carousel_thumbnails_bottom","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+    },
+    "gallery_fallback": {
+      "type":"suntneew-pdp-gallery-fallback",
+      "blocks": {
+        "image1":{"type":"image","settings":{"asset_name":"suntneew-kb700-2026-gallery-01-main.jpg","alt":"SuntNeew KB700 fan jump starter with smart clamp, air nozzle and USB cable"}},
+        "image2":{"type":"image","settings":{"asset_name":"suntneew-kb700-2026-gallery-02-starting.png","alt":"KB700 12V starting performance and engine compatibility"}},
+        "image3":{"type":"image","settings":{"asset_name":"suntneew-kb700-2026-gallery-03-clamps.png","alt":"KB700 intelligent jumper clamp with reverse-polarity protection"}},
+        "image4":{"type":"image","settings":{"asset_name":"suntneew-kb700-2026-gallery-04-wind.jpg","alt":"KB700 three-speed 105000 RPM maximum air duster"}},
+        "image5":{"type":"image","settings":{"asset_name":"suntneew-kb700-2026-gallery-05-led.jpg","alt":"KB700 LED light with steady strobe and SOS modes"}},
+        "image6":{"type":"image","settings":{"asset_name":"suntneew-kb700-2026-gallery-06-charging.png","alt":"KB700 Type-C input and USB-A device charging"}},
+        "image7":{"type":"image","settings":{"asset_name":"suntneew-kb700-2026-gallery-07-scenarios.jpg","alt":"KB700 air duster for snow leaves seats and outdoor use"}},
+        "image8":{"type":"image","settings":{"asset_name":"suntneew-kb700-2026-gallery-08-in-the-box.jpg","alt":"KB700 jump starter kit and included accessories"}}
+      },
+      "block_order":["image1","image2","image3","image4","image5","image6","image7","image8"],
+      "settings":{"eyebrow":"PRODUCT GALLERY","heading":"A closer look at the kit."}
+    },
+    "proof": {
+      "type":"suntneew-pdp-proof",
+      "blocks": {
+        "peak":{"type":"metric","settings":{"value":"1,000A","label":"Peak current","variant_match":""}},
+        "starting":{"type":"metric","settings":{"value":"500A","label":"Starting current","variant_match":""}},
+        "capacity":{"type":"metric","settings":{"value":"7,200mAh","label":"Rated capacity","variant_match":""}},
+        "fan":{"type":"metric","settings":{"value":"105,000 RPM","label":"Maximum fan speed","variant_match":""}},
+        "certification":{"type":"certification","settings":{"value":"UL 2743","label":"Certified safety standard","variant_match":""}}
+      },
+      "block_order":["peak","starting","capacity","fan","certification"],
+      "settings":{"accessibility_label":"KB700 product highlights"}
+    },
+    "anchor_nav": {
+      "type":"suntneew-pdp-anchor-nav",
+      "blocks": {
+        "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
+        "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
+        "box":{"type":"link","settings":{"label":"In the Box","target_id":"in-the-box"}},
+        "manuals":{"type":"link","settings":{"label":"Manuals","target_id":"manuals"}},
+        "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
+      },
+      "block_order":["features","specs","box","manuals","faq"],
+      "settings":{}
+    },
+    "features": {
+      "type":"suntneew-pdp-story",
+      "blocks": {
+        "overview":{"type":"feature","settings":{"image_asset":"suntneew-kb700-2026-pdp-01-overview.png","image_alt":"KB700 fan jump starter overview","image_fit":"cover","eyebrow":"Four tools, one kit","heading":"A practical companion for the moments you did not plan for.","body":"<p>KB700 combines a 12V jump starter, high-speed air duster, USB device charging and 2W emergency light. The product visual stays focused on the device; the supporting details below explain exactly what each function does.</p>","variant_match":""}},
+        "specifications":{"type":"feature","settings":{"image_asset":"suntneew-kb700-2026-pdp-02-specifications.png","image_alt":"KB700 core specifications","image_fit":"cover","eyebrow":"Core specifications","heading":"The documented essentials, in one place.","body":"<p>KB700 is specified at <strong>7,200mAh / 26.64Wh</strong>, <strong>1,000A peak</strong>, <strong>500A starting current</strong> and up to <strong>105,000 RPM</strong> of air-duster speed. Use the full Specifications panel for temperature, ports and physical dimensions.</p>","variant_match":""}},
+        "starting":{"type":"feature","settings":{"image_asset":"suntneew-kb700-2026-pdp-03-starting.png","image_alt":"KB700 12V engine compatibility","image_fit":"cover","eyebrow":"12V starting support","heading":"Ready for compatible gas and diesel vehicles.","body":"<p>For compatible 12V vehicle batteries, KB700 is documented for engines up to <strong>6.0L Gas</strong> or <strong>4.0L Diesel</strong>, with <strong>1,000A peak</strong> and <strong>500A starting current</strong>. A full charge is rated for <strong>up to 25 starts</strong>; actual results vary with vehicle, battery health and temperature.</p>","variant_match":""}},
+        "wind":{"type":"feature","settings":{"image_asset":"suntneew-kb700-2026-pdp-04-wind.png","image_alt":"KB700 three-speed air duster motor","image_fit":"cover","eyebrow":"Three-speed air duster","heading":"Choose the airflow that suits the job.","body":"<p>The brushless fan has three documented speed levels: <strong>30,000 RPM</strong> for up to 18 minutes, <strong>70,000 RPM</strong> for up to 8 minutes and <strong>100,000 RPM</strong> for up to 4.5 minutes. Maximum specification: <strong>105,000 RPM / 360W / 550g wind pressure</strong>.</p>","variant_match":""}},
+        "vehicle_cleaning":{"type":"feature","settings":{"image_asset":"suntneew-kb700-2026-pdp-05-vehicle-cleaning.jpg","image_alt":"KB700 outdoor and vehicle cleaning uses","image_fit":"cover","eyebrow":"Outdoor cleanup","heading":"Clear leaves, light snow and loose debris before the drive.","body":"<p>Use the air-duster function for light, dry debris around the vehicle and outdoor gear. Keep the jump starter, clamps and ports dry; this product is not presented as waterproof or IP rated.</p>","variant_match":""}},
+        "detail_cleaning":{"type":"feature","settings":{"image_asset":"suntneew-kb700-2026-pdp-06-detail-cleaning.jpg","image_alt":"KB700 detailed cleaning of vents and window tracks","image_fit":"cover","eyebrow":"Detail cleaning","heading":"A compact way to reach the places cloths miss.","body":"<p>The included air nozzle helps direct airflow for car vents, window tracks, seats and dry dusty surfaces. Start at a lower setting and avoid blowing debris toward eyes, moving parts or electronics.</p>","variant_match":""}},
+        "controls":{"type":"feature","settings":{"image_asset":"suntneew-kb700-2026-pdp-07-controls.jpg","image_alt":"KB700 controls ports and jump-start connection","image_fit":"cover","eyebrow":"Controls and ports","heading":"Everything you need is marked on the device.","body":"<p>KB700 has a Type-C charging input, USB-A device output, EC5 jump-start port, fan control, lighting control and power key. The below specification table gives the supported <strong>5V/2A</strong> input and output limits.</p>","variant_match":""}},
+        "safeguards":{"type":"feature","settings":{"image_asset":"suntneew-kb700-2026-pdp-08-safeguards.jpg","image_alt":"KB700 smart clamp safeguards","image_fit":"cover","eyebrow":"Intelligent clamp protection","heading":"Clear clamp guidance before you start.","body":"<p>The EC5 smart clamp uses a <strong>10AWG</strong> cable and status/buzzer guidance. Its documented protection logic includes reverse polarity, short circuit, overcharge, over-discharge, over-current, overheating, high/low input voltage and timeout conditions.</p>","variant_match":""}},
+        "steps":{"type":"feature","settings":{"image_asset":"suntneew-kb700-2026-pdp-09-steps.jpg","image_alt":"Four KB700 jump-start steps","image_fit":"cover","eyebrow":"Four-step starting","heading":"Connect carefully, then start the vehicle.","body":"<p>Make sure KB700 is at least <strong>50%</strong> charged. Insert the clamp plug, connect red to positive and black to negative, wait for the green indication and start. Remove the clamp within 30 seconds after the vehicle starts.</p>","variant_match":""}},
+        "charging":{"type":"feature","settings":{"image_asset":"suntneew-kb700-2026-pdp-10-charging.png","image_alt":"KB700 USB device charging scene","image_fit":"cover","eyebrow":"Device charging","heading":"Keep a phone or small device within reach.","body":"<p>USB-A output supports everyday emergency charging at <strong>5V/2A</strong>. Recharge KB700 through the Type-C port at <strong>5V/2A</strong> in about four hours. Use the supplied USB-A to Type-C cable or an equivalent compatible cable.</p>","variant_match":""}}
+      },
+      "block_order":["overview","specifications","starting","wind","vehicle_cleaning","detail_cleaning","controls","safeguards","steps","charging"],
+      "settings":{"anchor_id":"features","eyebrow":"KB700 FEATURES","heading":"Feature visuals with the details that make them useful.","lede":"<p>Each visual keeps the product and its useful in-image information intact. The text below each section adds the confirmed specification, operating context and safe-use guidance in a consistent SuntNeew reading style.</p>","layout_mode":"full_width_below"}
+    },
+    "details": {
+      "type":"suntneew-pdp-details",
+      "blocks": {
+        "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"7,200mAh","group":"primary","variant_match":""}},
+        "energy":{"type":"spec","settings":{"label":"Rated energy","value":"26.64Wh","group":"primary","variant_match":""}},
+        "starting":{"type":"spec","settings":{"label":"Starting current","value":"500A","group":"primary","variant_match":""}},
+        "peak":{"type":"spec","settings":{"label":"Peak current","value":"1,000A","group":"primary","variant_match":""}},
+        "range":{"type":"spec","settings":{"label":"Engine reference","value":"Up to 6.0L Gas / 4.0L Diesel","group":"primary","variant_match":""}},
+        "starts":{"type":"spec","settings":{"label":"Starting reference","value":"Up to 25 starts per charge","group":"primary","variant_match":""}},
+        "fan_speed":{"type":"spec","settings":{"label":"Maximum fan speed","value":"105,000 RPM (±10%)","group":"system","variant_match":""}},
+        "fan_power":{"type":"spec","settings":{"label":"High-speed fan","value":"360W; 550g wind pressure","group":"system","variant_match":""}},
+        "fan_levels":{"type":"spec","settings":{"label":"Fan levels","value":"30,000 / 70,000 / 100,000 RPM","group":"system","variant_match":""}},
+        "input":{"type":"spec","settings":{"label":"Type-C input","value":"5V/2A","group":"system","variant_match":""}},
+        "output":{"type":"spec","settings":{"label":"USB-A output","value":"5V/2A","group":"system","variant_match":""}},
+        "charge":{"type":"spec","settings":{"label":"Recharge time","value":"About 4 hours","group":"system","variant_match":""}},
+        "light":{"type":"spec","settings":{"label":"Emergency light","value":"2W; Steady, Flashing and SOS","group":"system","variant_match":""}},
+        "clamp":{"type":"spec","settings":{"label":"Smart clamp","value":"EC5; 10AWG cable; 50cm span","group":"system","variant_match":""}},
+        "certification":{"type":"spec","settings":{"label":"Safety standard","value":"UL 2743","group":"system","variant_match":""}},
+        "shell":{"type":"spec","settings":{"label":"Housing","value":"ABS + PC","group":"installation","variant_match":""}},
+        "dimension":{"type":"spec","settings":{"label":"Product size","value":"203 × 85 × 36mm","group":"installation","variant_match":""}},
+        "weight":{"type":"spec","settings":{"label":"Net weight","value":"465g / 1.0lb","group":"installation","variant_match":""}},
+        "temperature":{"type":"spec","settings":{"label":"Discharge operating range","value":"-20°C–60°C","group":"installation","variant_match":""}},
+        "charge_temp":{"type":"spec","settings":{"label":"Charging temperature","value":"0°C–45°C","group":"installation","variant_match":""}},
+        "box1":{"type":"included","settings":{"item":"KB700 fan jump starter x1","variant_match":""}},
+        "box2":{"type":"included","settings":{"item":"EC5 smart jumper clamp x1","variant_match":""}},
+        "box3":{"type":"included","settings":{"item":"USB-A to Type-C cable x1","variant_match":""}},
+        "box4":{"type":"included","settings":{"item":"Air nozzle x1","variant_match":""}},
+        "box5":{"type":"included","settings":{"item":"EVA storage case x1","variant_match":""}},
+        "box6":{"type":"included","settings":{"item":"English user manual x1","variant_match":""}},
+        "box7":{"type":"included","settings":{"item":"Color box x1","variant_match":""}},
+        "manual":{"type":"download","settings":{"label":"KB700 user manual (English PDF)","link":"","asset_name":"suntneew-kb700-user-manual-en.pdf","variant_match":""}}
+      },
+      "block_order":["capacity","energy","starting","peak","range","starts","fan_speed","fan_power","fan_levels","input","output","charge","light","clamp","certification","shell","dimension","weight","temperature","charge_temp","box1","box2","box3","box4","box5","box6","box7","manual"],
+      "settings":{"anchor_id":"specifications","eyebrow":"Product details","heading":"KB700 technical specifications","lede":"<p>Specifications are drawn from the KB700 English manual and approved product documentation. Follow the manual’s operating sequence and safety limits before every use.</p>","primary_group_heading":"Starting performance","system_group_heading":"Fan, charging & clamp","installation_group_heading":"Physical & operating limits","included_heading":"In the box","download_heading":"Manuals & downloads"}
+    },
+    "faq": {
+      "type":"suntneew-pdp-faq",
+      "blocks": {
+        "q1":{"type":"question","settings":{"question":"Which vehicles can KB700 support?","answer":"<p>KB700 is for compatible 12V vehicle batteries, with a documented reference of up to 6.0L gasoline or 4.0L diesel engines. Do not attempt to jump-start a higher-rated engine or a battery with a different voltage.</p>"}},
+        "q2":{"type":"question","settings":{"question":"What does up to 25 starts mean?","answer":"<p>The up-to-25-starts reference is based on the product documentation for a typical 1.5L passenger vehicle under a full charge. Results vary with engine size, battery condition, temperature and vehicle condition.</p>"}},
+        "q3":{"type":"question","settings":{"question":"How do I use KB700 to jump-start a vehicle?","answer":"<p>Charge the unit to at least 50%, insert the clamp plug, connect red to the positive terminal and black to the negative terminal, wait for the green indication, then start the vehicle. Remove the clamps within 30 seconds after the vehicle starts.</p>"}},
+        "q4":{"type":"question","settings":{"question":"What are the three air-duster speeds?","answer":"<p>The documented three levels are 30,000 RPM for up to 18 minutes, 70,000 RPM for up to 8 minutes and 100,000 RPM for up to 4.5 minutes. The maximum fan speed specification is 105,000 RPM (±10%).</p>"}},
+        "q5":{"type":"question","settings":{"question":"Can I charge a phone with KB700?","answer":"<p>Yes. The USB-A output supports emergency device charging at 5V/2A. Recharge KB700 through its Type-C input at 5V/2A; typical recharge time is about four hours.</p>"}},
+        "q6":{"type":"question","settings":{"question":"What light modes are available?","answer":"<p>The 2W LED has Steady, Flashing and SOS modes. Turn the unit on, then press the lighting key to move through the modes.</p>"}},
+        "q7":{"type":"question","settings":{"question":"Can I use KB700 in rain or rinse it clean?","answer":"<p>No. Keep the unit, clamps and ports dry. The product is not marketed as waterproof or IP rated; do not rinse, submerge or use it when wet.</p>"}}
+      },
+      "block_order":["q1","q2","q3","q4","q5","q6","q7"],
+      "settings":{"anchor_id":"faq","eyebrow":"KB700 SUPPORT","heading":"Frequently asked questions"}
+    },
+    "related-products":{"type":"related-products","settings":{}}
+  },
+  "order":["main","gallery_fallback","proof","anchor_nav","features","details","faq","related-products"]
+}
