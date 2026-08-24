@@ -35,11 +35,10 @@
         "steps": {"type": "link", "settings": {"label": "How it works", "target_id": "how-it-works"}},
         "safety": {"type": "link", "settings": {"label": "Safety", "target_id": "safety"}},
         "specs": {"type": "link", "settings": {"label": "Specifications", "target_id": "specifications"}},
-        "box": {"type": "link", "settings": {"label": "In the box", "target_id": "in-the-box"}},
         "manuals": {"type": "link", "settings": {"label": "Documents", "target_id": "manuals"}},
         "faq": {"type": "link", "settings": {"label": "FAQ", "target_id": "faq"}}
       },
-      "block_order": ["features", "steps", "safety", "specs", "box", "manuals", "faq"],
+      "block_order": ["features", "steps", "safety", "specs", "manuals", "faq"],
       "settings": {}
     },
     "experience": {"type": "suntneew-a3-experience", "settings": {}},
