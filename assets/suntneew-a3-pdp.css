@@ -47,6 +47,7 @@
 .sn-a3-pdp__step h3 { margin: 8px 0 0; font-size: 18px; line-height: 1.2; }
 .sn-a3-pdp__step p { margin: 8px 0 0; color: var(--a3-muted); font-size: 14px; line-height: 1.5; }
 .sn-a3-pdp__safety-note { max-width: 760px; margin: 18px 0 0; color: var(--a3-muted); line-height: 1.6; }
+.sn-a3-pdp__safety-feature { margin-top: clamp(32px, 5vw, 54px); }
 .sn-a3-pdp__safeguards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: clamp(30px, 5vw, 54px); }
 .sn-a3-pdp__safeguard { min-height: 132px; padding: 20px; border: 1px solid var(--a3-line); border-radius: 14px; background: #fff; }
 .sn-a3-pdp__safeguard strong { display: block; color: var(--a3-accent); font-size: 11px; letter-spacing: .12em; }
@@ -58,9 +59,14 @@
 .sn-a3-pdp__range p { margin: 16px 0 0; color: rgb(255 255 255 / .74); line-height: 1.6; }
 .sn-a3-pdp__range-value { padding-top: 14px; border-top: 1px solid rgb(255 255 255 / .26); font-size: clamp(30px, 4vw, 54px); font-weight: 800; letter-spacing: -.05em; }
 .sn-a3-pdp__range-value span { display: block; margin-top: 7px; color: rgb(255 255 255 / .72); font-size: 13px; font-weight: 600; letter-spacing: 0; }
+.sn-a3-pdp__applications { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr); gap: clamp(24px, 5vw, 72px); align-items: center; margin-top: clamp(28px, 5vw, 48px); padding: clamp(28px, 5vw, 56px); border: 1px solid var(--a3-line); border-radius: 22px; background: var(--a3-soft); }
+.sn-a3-pdp__applications h2 { margin: 0; font-size: clamp(27px, 3.2vw, 44px); line-height: 1.08; letter-spacing: -.04em; }
+.sn-a3-pdp__applications ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.sn-a3-pdp__applications li { padding: 15px; border: 1px solid var(--a3-line); border-radius: 12px; background: #fff; font-weight: 760; }
+.sn-a3-pdp__applications p:last-child { grid-column: 1 / -1; margin: 0; color: var(--a3-muted); font-size: 14px; line-height: 1.6; }
 
 @media screen and (max-width: 899px) {
-  .sn-a3-pdp__wide-copy, .sn-a3-pdp__feature, .sn-a3-pdp__range { grid-template-columns: 1fr; }
+  .sn-a3-pdp__wide-copy, .sn-a3-pdp__feature, .sn-a3-pdp__range, .sn-a3-pdp__applications { grid-template-columns: 1fr; }
   .sn-a3-pdp__feature--reverse .sn-a3-pdp__feature-media { order: initial; }
   .sn-a3-pdp__step-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sn-a3-pdp__safeguards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -68,7 +74,7 @@
 
 @media screen and (max-width: 599px) {
   .sn-a3-pdp__shell { width: min(100% - 28px, 1240px); }
-  .sn-a3-pdp__wide, .sn-a3-pdp__feature, .sn-a3-pdp__range { border-radius: 16px; }
+  .sn-a3-pdp__wide, .sn-a3-pdp__feature, .sn-a3-pdp__range, .sn-a3-pdp__applications { border-radius: 16px; }
   .sn-a3-pdp__wide-copy { padding: 26px 20px; }
   .sn-a3-pdp__feature-copy { padding: 28px 22px; }
   .sn-a3-pdp__metrics { grid-template-columns: 1fr 1fr; }
@@ -77,4 +83,5 @@
   .sn-a3-pdp__step-grid { grid-template-columns: 1fr; }
   .sn-a3-pdp__step img { aspect-ratio: 1.2 / 1; object-fit: cover; }
   .sn-a3-pdp__range { padding: 30px 22px; }
+  .sn-a3-pdp__applications { padding: 26px 22px; }
 }
