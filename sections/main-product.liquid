@@ -47,7 +47,7 @@
 
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
-<div class="suntneew-product-page{% if section.settings.enable_suntneew_pdp_experience %} suntneew-product-page--experience suntneew-product-page--media-{{ section.settings.desktop_media_layout | replace: '_', '-' }}{% endif %}" {% render 'section-properties', tight: true %}>
+<div class="suntneew-product-page{% if section.settings.enable_suntneew_pdp_experience %} suntneew-product-page--experience suntneew-product-page--media-{{ section.settings.desktop_media_layout | replace: '_', '-' }}{% endif %}{% if product.handle == 'suntneew-a3-jump-starter-16000mah' %} suntneew-product-page--a3{% endif %}" {% render 'section-properties', tight: true %}>
   <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
     <div class="product">
       {%- if product.media.size > 0 -%}
