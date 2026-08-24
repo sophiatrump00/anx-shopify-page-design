@@ -17,7 +17,7 @@
         "sku": {"type":"sku","settings":{}},
         "price": {"type":"price","settings":{"show_taxes_notice":false}},
         "separator": {"type":"separator","settings":{}},
-        "intro": {"type":"text","settings":{"text":"<p>A compact 12V jump starter for roadside use. U23 combines a documented 700A starting current, 1,500A peak current, status display and 5W light in a carry-ready format.</p>"}},
+        "intro": {"type":"text","settings":{"text":"<p>A compact 12V jump starter for roadside readiness. U23 brings 700A starting current, 1,500A peak power, 8,000mAh stored energy, a 150LM / 5W emergency light and smart-clamp guidance into one carry-ready kit.</p>"}},
         "quantity_selector": {"type":"quantity_selector","settings":{}},
         "bundle": {"type":"suntneew_bundle_selector","settings":{"enabled":true,"show_savings":true,"heading":"Build a U23 multi-pack","body":"Choose 1, 2, 5 or 10 units, or use a custom quantity.","discount_percent":3}},
         "buy_buttons": {"type":"buy_buttons","settings":{"show_payment_button":false,"show_gift_card_recipient":false}}
@@ -28,10 +28,16 @@
     "gallery_fallback": {
       "type":"suntneew-pdp-gallery-fallback",
       "blocks": {
-        "image1":{"type":"image","settings":{"asset_name":"suntneew-u23-gallery-main-horizontal.jpg","alt":"SuntNeew U23 jump starter with smart clamp and USB cable"}},
-        "image2":{"type":"image","settings":{"asset_name":"suntneew-u23-gallery-alt-angle.jpg","alt":"SuntNeew U23 jump starter alternate product angle"}}
+        "image1":{"type":"image","settings":{"asset_name":"suntneew-u23-2026-gallery-01-main.jpg","alt":"SuntNeew U23 jump starter with smart clamps and Type-C charging cable"}},
+        "image2":{"type":"image","settings":{"asset_name":"suntneew-u23-2026-gallery-02-starting.jpg","alt":"SuntNeew U23 connected to a compatible vehicle battery"}},
+        "image3":{"type":"image","settings":{"asset_name":"suntneew-u23-2026-gallery-03-safeguards.jpg","alt":"SuntNeew U23 intelligent jumper clamps and safety safeguards"}},
+        "image4":{"type":"image","settings":{"asset_name":"suntneew-u23-2026-gallery-04-device-power.jpg","alt":"SuntNeew U23 USB device charging ports"}},
+        "image5":{"type":"image","settings":{"asset_name":"suntneew-u23-2026-gallery-05-led.jpg","alt":"SuntNeew U23 150LM LED emergency light"}},
+        "image6":{"type":"image","settings":{"asset_name":"suntneew-u23-2026-gallery-06-compact.jpg","alt":"Compact SuntNeew U23 jump starter for everyday carry"}},
+        "image7":{"type":"image","settings":{"asset_name":"suntneew-u23-2026-gallery-07-display.jpg","alt":"SuntNeew U23 battery and charging status display"}},
+        "image8":{"type":"image","settings":{"asset_name":"suntneew-u23-2026-gallery-08-in-box.jpg","alt":"SuntNeew U23 included accessories"}}
       },
-      "block_order":["image1","image2"],
+      "block_order":["image1","image2","image3","image4","image5","image6","image7","image8"],
       "settings":{"eyebrow":"PRODUCT GALLERY","heading":"Product views, without the noise."}
     },
     "proof": {
@@ -60,57 +66,62 @@
     "features": {
       "type":"suntneew-pdp-story",
       "blocks": {
-        "performance":{"type":"feature","settings":{"image_asset":"suntneew-u23-a-plus-performance.jpg","image_alt":"SuntNeew U23 jump starter prepared in a vehicle engine bay","image_fit":"cover","eyebrow":"Starting performance","heading":"A documented 700A start and 1,500A peak","body":"<p>U23 is built for 12V vehicle applications, with a rated 700A starting current and 1,500A peak current. The source product range references engines up to 6.0L gasoline and 3.0L diesel; confirm the vehicle, battery condition and manual before use.</p>","variant_match":""}},
-        "roadside":{"type":"feature","settings":{"image_asset":"suntneew-u23-a-plus-roadside.jpg","image_alt":"SuntNeew U23 portable jump starter beside an open vehicle hood","image_fit":"cover","eyebrow":"Roadside ready","heading":"Keep the starting routine visible when the moment matters","body":"<p>Keep the U23, smart clamp and USB cable together in the vehicle. Check polarity, connect as directed and allow the unit to recover between attempts according to the manual.</p>","variant_match":""}},
-        "clamp":{"type":"feature","settings":{"image_asset":"suntneew-u23-gallery-alt-angle.jpg","image_alt":"SuntNeew U23 smart clamp and EC5 connector","eyebrow":"Connection first","heading":"The smart clamp is part of the safety routine","body":"<p>U23 uses an EC5 smart clamp with documented reverse-polarity, short-circuit, over-temperature and over-time protection. Always inspect the connection and follow the model manual before starting.</p>","variant_match":""}},
-        "display":{"type":"feature","settings":{"image_asset":"suntneew-u23-gallery-main-horizontal.jpg","image_alt":"SuntNeew U23 front display, clamp and USB cable","eyebrow":"At-a-glance status","heading":"Read the unit before you connect it","body":"<p>The front display shows the unit status. USB-C input is documented at 5V/2A, while USB-A output is documented at 5V/2.4A for everyday device charging.</p>","variant_match":""}},
-        "fit":{"type":"feature","settings":{"image_asset":"","image_alt":"","image_fit":"contain","eyebrow":"Choose by fit","heading":"Confirm the vehicle before you buy","body":"<p>U23 is a 12V jump starter. Match the model to the vehicle and engine requirements, then use the documented starting range only as a reference. Results vary with battery condition, temperature and vehicle design.</p>","variant_match":""}}
+        "overview":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-01-overview.jpg","image_alt":"SuntNeew U23 jump starter overview","image_fit":"cover","eyebrow":"U23 overview","heading":"Compact backup power for a no-start moment.","body":"<p>A carry-ready 12V kit for emergency starting, device power and visibility. <strong>8,000mAh / 29.6Wh</strong> stored energy, <strong>1,500A peak</strong> and <strong>700A starting current</strong> are shown in a calm, practical format.</p>","variant_match":""}},
+        "starting":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-02-starting.jpg","image_alt":"SuntNeew U23 connected for a vehicle start","image_fit":"cover","eyebrow":"Starting support","heading":"Built for the compatible 12V vehicle.","body":"<p>The documented fit reference is up to <strong>6.0L gasoline</strong> or <strong>3.0L diesel</strong>. A full charge can provide <strong>up to 25 starts</strong> using a standard 1.5L sedan as the reference; real results vary with battery health, temperature and engine condition.</p>","variant_match":""}},
+        "capacity":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-03-capacity.jpg","image_alt":"SuntNeew U23 8000mAh capacity feature","image_fit":"cover","eyebrow":"Capacity","heading":"Power that stays ready between trips.","body":"<p>The 8,000mAh / 29.6Wh battery is designed for repeated roadside readiness. Keep U23 charged and use it only on the compatible 12V vehicles listed in the manual.</p>","variant_match":""}},
+        "vehicle_fit":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-04-vehicle-fit.jpg","image_alt":"SuntNeew U23 compatible vehicle range","image_fit":"cover","eyebrow":"Vehicle fit","heading":"Built around the 12V vehicle routine.","body":"<p>Use the U23 with compatible 12V cars within the stated engine range. Check the vehicle’s battery condition and follow the manual’s clamp sequence before attempting a start.</p>","variant_match":""}},
+        "device_power":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-05-device-power.jpg","image_alt":"SuntNeew U23 Type-C input and USB-A output","image_fit":"cover","eyebrow":"Device power","heading":"A useful power bank between roadside calls.","body":"<p>Recharge through <strong>Type-C 5V / 2A</strong> in about <strong>3–4 hours</strong>; the USB-A port provides <strong>5V / 2.4A</strong> for everyday phone and small-device charging.</p>","variant_match":""}},
+        "led":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-06-led.jpg","image_alt":"SuntNeew U23 150LM LED emergency light","image_fit":"cover","eyebrow":"Emergency light","heading":"See the connection, signal the situation.","body":"<p>The original product callout keeps its <strong>150LM</strong> value. The manual specifies a <strong>5W</strong> light with <strong>Steady, Flashing and SOS</strong> modes for roadside use.</p>","variant_match":""}},
+        "safety":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-07-safety.jpg","image_alt":"SuntNeew U23 six core safety safeguards","image_fit":"cover","eyebrow":"Smart clamp safety","heading":"Protection made visible at the clamp.","body":"<p>U23’s smart-clamp system is described with <strong>10 total safety protections</strong>. This graphic preserves the visible <strong>6-in-1</strong> core safeguards: reverse polarity, short circuit, over-voltage, over-current, overheat and over-discharge. <strong>UL 2743</strong> is cited for the model.</p>","variant_match":""}},
+        "scenarios":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-08-scenarios.jpg","image_alt":"SuntNeew U23 for everyday vehicle and outdoor scenarios","image_fit":"cover","eyebrow":"Ready where you park","heading":"One small kit for routine and unexpected stops.","body":"<p>Keep the U23 accessible for commutes, weekend trips and the moments a vehicle needs a little backup. Store it dry, inspect the clamp before each use and recharge after use.</p>","variant_match":""}},
+        "steps":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-09-steps.jpg","image_alt":"Four U23 jump-start steps","image_fit":"cover","eyebrow":"Four-step start","heading":"Connect deliberately. Start with confidence.","body":"<p>Charge U23 to at least 50%, connect the smart clamp, confirm its green indication, then start the vehicle within 30 seconds. Disconnect as directed once the vehicle has started.</p>","variant_match":""}},
+        "in_box":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-10-in-box.png","image_alt":"SuntNeew U23 items included in the box","image_fit":"cover","eyebrow":"What’s in the box","heading":"The essentials are already together.","body":"<p>U23 main unit, Intelligent Jumper Clamps, Type-C charging cable, user manual, color box and carrying pouch.</p>","variant_match":""}}
       },
-      "block_order":["performance","roadside","clamp","display","fit"],
-      "settings":{"anchor_id":"features","eyebrow":"U23 performance","heading":"A compact start kit, explained clearly","lede":"<p>Use the verified product facts, then confirm vehicle fit and follow the manual before connecting the smart clamp.</p>"}
+      "block_order":["overview","starting","capacity","vehicle_fit","device_power","led","safety","scenarios","steps","in_box"],
+      "settings":{"anchor_id":"features","eyebrow":"U23 FEATURES","heading":"Every feature, with the original product detail intact.","lede":"<p>Original A+ visuals carry the product story; the page adds a consistent reading order, confirmed specifications and the operating context that matters.</p>"}
     },
     "details": {
       "type":"suntneew-pdp-details",
       "blocks": {
         "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"8,000mAh","group":"primary","variant_match":""}},
-        "energy":{"type":"spec","settings":{"label":"Rated energy","value":"29.6Wh at 3.7V","group":"primary","variant_match":""}},
+        "energy":{"type":"spec","settings":{"label":"Rated energy","value":"29.6Wh","group":"primary","variant_match":""}},
         "starting":{"type":"spec","settings":{"label":"Starting current","value":"700A","group":"primary","variant_match":""}},
         "peak":{"type":"spec","settings":{"label":"Peak current","value":"1,500A","group":"primary","variant_match":""}},
-        "range":{"type":"spec","settings":{"label":"Product range reference","value":"Up to 6.0L gasoline / 3.0L diesel","group":"primary","variant_match":""}},
-        "cycles":{"type":"spec","settings":{"label":"Cycle-life reference","value":"300 cycles","group":"primary","variant_match":""}},
+        "range":{"type":"spec","settings":{"label":"Engine reference","value":"Up to 6.0L Gas / 3.0L Diesel","group":"primary","variant_match":""}},
+        "starts":{"type":"spec","settings":{"label":"Starting reference","value":"Up to 25 starts (standard 1.5L sedan reference)","group":"primary","variant_match":""}},
         "input":{"type":"spec","settings":{"label":"Type-C input","value":"5V/2A","group":"system","variant_match":""}},
         "output":{"type":"spec","settings":{"label":"USB-A output","value":"5V/2.4A","group":"system","variant_match":""}},
-        "charge":{"type":"spec","settings":{"label":"Charge time reference","value":"3 to 4 hours","group":"system","variant_match":""}},
-        "light_spec":{"type":"spec","settings":{"label":"Flashlight","value":"5W; steady, flash and SOS","group":"system","variant_match":""}},
-        "clamp":{"type":"spec","settings":{"label":"Smart clamp","value":"EC5; 10AWG silicone cable; 50cm","group":"system","variant_match":""}},
-        "cell":{"type":"spec","settings":{"label":"Cell configuration","value":"703880-2000mAh x 4","group":"installation","variant_match":""}},
-        "shell":{"type":"spec","settings":{"label":"Housing","value":"ABS + PC","group":"installation","variant_match":""}},
-        "dimension":{"type":"spec","settings":{"label":"Product size","value":"15.5 x 5.5 x 5.5cm","group":"installation","variant_match":""}},
-        "weight":{"type":"spec","settings":{"label":"Net weight","value":"0.35kg","group":"installation","variant_match":""}},
-        "temperature":{"type":"spec","settings":{"label":"Operating temperature reference","value":"Charge 0 to 45C; discharge -20 to 60C","group":"installation","variant_match":""}},
+        "charge":{"type":"spec","settings":{"label":"Recharge time","value":"3–4 hours","group":"system","variant_match":""}},
+        "light_spec":{"type":"spec","settings":{"label":"Emergency light","value":"150LM / 5W; Steady, Flashing and SOS","group":"system","variant_match":""}},
+        "clamp":{"type":"spec","settings":{"label":"Smart clamp","value":"EC5; 10AWG cable; 10 safety protections","group":"system","variant_match":""}},
+        "certification":{"type":"spec","settings":{"label":"Safety reference","value":"UL 2743","group":"system","variant_match":""}},
+        "dimension":{"type":"spec","settings":{"label":"Product size","value":"6.1 × 2.2 × 2.2 in","group":"installation","variant_match":""}},
+        "weight":{"type":"spec","settings":{"label":"Net weight","value":"0.77lb / 0.35kg","group":"installation","variant_match":""}},
+        "temperature":{"type":"spec","settings":{"label":"Operating temperature","value":"-20°C–60°C","group":"installation","variant_match":""}},
+        "water":{"type":"spec","settings":{"label":"Water exposure","value":"Not waterproof; keep dry and do not rinse","group":"installation","variant_match":""}},
         "box1":{"type":"included","settings":{"item":"U23 main unit x1","variant_match":""}},
         "box2":{"type":"included","settings":{"item":"Smart clamp x1","variant_match":""}},
-        "box3":{"type":"included","settings":{"item":"USB data cable x1","variant_match":""}},
+        "box3":{"type":"included","settings":{"item":"Type-C charging cable x1","variant_match":""}},
         "box4":{"type":"included","settings":{"item":"User manual x1","variant_match":""}},
         "box5":{"type":"included","settings":{"item":"Color box x1","variant_match":""}},
-        "box6":{"type":"included","settings":{"item":"Velvet pouch x1","variant_match":""}},
-        "manual":{"type":"download","settings":{"label":"U23 user manual (CN PDF)","link":"","asset_name":"suntneew-u23-manual-cn.pdf","variant_match":""}},
-        "clamp_manual":{"type":"download","settings":{"label":"Smart clamp guide (CN PDF)","link":"","asset_name":"suntneew-smart-clamp-guide-cn.pdf","variant_match":""}}
+        "box6":{"type":"included","settings":{"item":"Carrying pouch x1","variant_match":""}},
+        "manual":{"type":"download","settings":{"label":"U23 user manual (English PDF)","link":"","asset_name":"suntneew-u23-user-manual-en.pdf","variant_match":""}}
       },
-      "block_order":["capacity","energy","starting","peak","range","cycles","input","output","charge","light_spec","clamp","cell","shell","dimension","weight","temperature","box1","box2","box3","box4","box5","box6","manual","clamp_manual"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Product details","heading":"U23 technical specifications","lede":"<p>These values are transcribed from the U23 product workbook and source documents. Use the model manual for the operating sequence and safety limits.</p>","primary_group_heading":"Starting performance","system_group_heading":"Charging, ports & clamp","installation_group_heading":"Physical & operating limits","included_heading":"In the box","download_heading":"Manuals & downloads"}
+      "block_order":["capacity","energy","starting","peak","range","starts","input","output","charge","light_spec","clamp","certification","dimension","weight","temperature","water","box1","box2","box3","box4","box5","box6","manual"],
+      "settings":{"anchor_id":"specifications","eyebrow":"Product details","heading":"U23 technical specifications","lede":"<p>Confirmed values are drawn from the U23 English manual and approved product materials. Follow the manual’s operating sequence and safety limits before every use.</p>","primary_group_heading":"Starting performance","system_group_heading":"Charging, ports & clamp","installation_group_heading":"Physical & operating limits","included_heading":"In the box","download_heading":"Manuals & downloads"}
     },
     "faq": {
       "type":"suntneew-pdp-faq",
       "blocks": {
-        "q1":{"type":"question","settings":{"question":"Is U23 suitable for every vehicle?","answer":"<p>No. U23 is documented for 12V applications. Confirm the vehicle and engine requirements, battery condition and product manual before use; the reference engine range is not a guarantee for every vehicle.</p>"}},
-        "q2":{"type":"question","settings":{"question":"What are U23's starting figures?","answer":"<p>The verified U23 source lists 700A starting current and 1,500A peak current, with 8,000mAh rated capacity and 29.6Wh rated energy.</p>"}},
-        "q3":{"type":"question","settings":{"question":"What is included in the U23 package?","answer":"<p>The documented package includes the U23 main unit, smart clamp, USB data cable, manual, color box and one velvet pouch.</p>"}},
-        "q4":{"type":"question","settings":{"question":"Can I use U23 to charge a phone?","answer":"<p>U23 has a documented USB-A output of 5V/2.4A for everyday device charging. Use the correct cable and do not treat the unit as a general-purpose charger for every device.</p>"}},
-        "q5":{"type":"question","settings":{"question":"What are U23's water-use limits?","answer":"<p>Do not submerge the unit or use it in standing water. Keep the product, clamp and ports dry and follow the source manual for environmental limits.</p>"}}
+        "q1":{"type":"question","settings":{"question":"Which vehicles is U23 designed to support?","answer":"<p>U23 is for compatible 12V vehicles, with a stated reference of up to 6.0L gasoline or 3.0L diesel engines. Confirm the vehicle, battery condition and manual before use.</p>"}},
+        "q2":{"type":"question","settings":{"question":"What do the current and start figures mean?","answer":"<p>U23 has a documented 700A starting current, 1,500A peak current, 8,000mAh rated capacity and 29.6Wh rated energy. Up to 25 starts is based on a standard 1.5L sedan reference; results vary with vehicle and battery condition.</p>"}},
+        "q3":{"type":"question","settings":{"question":"How do 10 safety protections and 6-in-1 protection relate?","answer":"<p>The smart-clamp system is described as having 10 total safety protections. The original feature graphic highlights six core protections—reverse polarity, short circuit, over-voltage, over-current, overheat and over-discharge—within that broader protection system.</p>"}},
+        "q4":{"type":"question","settings":{"question":"Can U23 charge a phone or small device?","answer":"<p>Yes. The USB-A output is specified at 5V / 2.4A for everyday device charging. Recharge the U23 itself through its Type-C 5V / 2A input.</p>"}},
+        "q5":{"type":"question","settings":{"question":"What light modes does U23 have?","answer":"<p>The product visual keeps the 150LM callout. The English manual specifies a 5W emergency light with Steady, Flashing and SOS modes.</p>"}},
+        "q6":{"type":"question","settings":{"question":"Can I use U23 in rain or rinse it clean?","answer":"<p>No. U23 is not waterproof. Keep the unit, clamp and ports dry; do not submerge or rinse the product.</p>"}}
       },
-      "block_order":["q1","q2","q3","q4","q5"],
-      "settings":{"anchor_id":"faq","eyebrow":"U23 support","heading":"Frequently asked questions"}
+      "block_order":["q1","q2","q3","q4","q5","q6"],
+      "settings":{"anchor_id":"faq","eyebrow":"U23 SUPPORT","heading":"Frequently asked questions"}
     },
     "related-products":{"type":"related-products","settings":{}}
   },
