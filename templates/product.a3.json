@@ -31,14 +31,13 @@
     "anchor_nav": {
       "type": "suntneew-pdp-anchor-nav",
       "blocks": {
-        "features": {"type": "link", "settings": {"label": "Performance", "target_id": "features"}},
-        "steps": {"type": "link", "settings": {"label": "How it works", "target_id": "how-it-works"}},
-        "safety": {"type": "link", "settings": {"label": "Safety", "target_id": "safety"}},
+        "features": {"type": "link", "settings": {"label": "Features", "target_id": "features"}},
         "specs": {"type": "link", "settings": {"label": "Specifications", "target_id": "specifications"}},
-        "manuals": {"type": "link", "settings": {"label": "Documents", "target_id": "manuals"}},
+        "box": {"type": "link", "settings": {"label": "In the Box", "target_id": "a3-kit"}},
+        "manuals": {"type": "link", "settings": {"label": "Manuals", "target_id": "manuals"}},
         "faq": {"type": "link", "settings": {"label": "FAQ", "target_id": "faq"}}
       },
-      "block_order": ["features", "steps", "safety", "specs", "manuals", "faq"],
+      "block_order": ["features", "specs", "box", "manuals", "faq"],
       "settings": {}
     },
     "experience": {"type": "suntneew-a3-experience", "settings": {}},

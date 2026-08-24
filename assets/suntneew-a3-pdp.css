@@ -15,6 +15,7 @@
 .sn-a3-pdp__lede { max-width: 720px; margin: 18px 0 0; color: var(--a3-muted); font-size: clamp(16px, 1.6vw, 20px); line-height: 1.65; }
 
 .sn-a3-pdp__wide-stack { display: grid; gap: clamp(40px, 7vw, 96px); margin-top: clamp(36px, 6vw, 72px); }
+.sn-a3-pdp__wide-stack--tight { margin-top: 0; }
 .sn-a3-pdp__wide { overflow: hidden; border: 1px solid var(--a3-line); border-radius: 22px; background: #101923; }
 .sn-a3-pdp__wide img { display: block; width: 100%; height: auto; }
 .sn-a3-pdp__wide-copy { display: grid; grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr); gap: clamp(30px, 6vw, 92px); align-items: center; padding: clamp(28px, 5vw, 64px); background: #fff; }
@@ -48,7 +49,11 @@
 .sn-a3-pdp__step p { margin: 8px 0 0; color: var(--a3-muted); font-size: 14px; line-height: 1.5; }
 .sn-a3-pdp__safety-note { max-width: 760px; margin: 18px 0 0; color: var(--a3-muted); line-height: 1.6; }
 .sn-a3-pdp__safety-feature { margin-top: clamp(32px, 5vw, 54px); }
+.sn-a3-pdp__soft-section { background: var(--a3-soft); }
 .sn-a3-pdp__safeguards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: clamp(30px, 5vw, 54px); }
+.sn-a3-pdp__safeguards--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; }
+.sn-a3-pdp__safeguards--compact .sn-a3-pdp__safeguard { min-height: 0; padding: 13px; }
+.sn-a3-pdp__safeguards--compact .sn-a3-pdp__safeguard span { margin-top: 7px; font-size: 13px; }
 .sn-a3-pdp__safeguard { min-height: 132px; padding: 20px; border: 1px solid var(--a3-line); border-radius: 14px; background: #fff; }
 .sn-a3-pdp__safeguard strong { display: block; color: var(--a3-accent); font-size: 11px; letter-spacing: .12em; }
 .sn-a3-pdp__safeguard span { display: block; margin-top: 18px; font-size: 15px; font-weight: 760; line-height: 1.25; }
@@ -59,6 +64,10 @@
 .sn-a3-pdp__range p { margin: 16px 0 0; color: rgb(255 255 255 / .74); line-height: 1.6; }
 .sn-a3-pdp__range-value { padding-top: 14px; border-top: 1px solid rgb(255 255 255 / .26); font-size: clamp(30px, 4vw, 54px); font-weight: 800; letter-spacing: -.05em; }
 .sn-a3-pdp__range-value span { display: block; margin-top: 7px; color: rgb(255 255 255 / .72); font-size: 13px; font-weight: 600; letter-spacing: 0; }
+.sn-a3-pdp__range-value--light { border-color: var(--a3-line); color: var(--a3-ink); }
+.sn-a3-pdp__range-value--light span { color: var(--a3-muted); }
+.sn-a3-pdp__application-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.sn-a3-pdp__application-list li { padding: 14px; border: 1px solid var(--a3-line); border-radius: 10px; background: var(--a3-soft); font-size: 14px; font-weight: 750; }
 .sn-a3-pdp__applications { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr); gap: clamp(24px, 5vw, 72px); align-items: center; margin-top: clamp(28px, 5vw, 48px); padding: clamp(28px, 5vw, 56px); border: 1px solid var(--a3-line); border-radius: 22px; background: var(--a3-soft); }
 .sn-a3-pdp__applications h2 { margin: 0; font-size: clamp(27px, 3.2vw, 44px); line-height: 1.08; letter-spacing: -.04em; }
 .sn-a3-pdp__applications ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
