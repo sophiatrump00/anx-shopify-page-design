@@ -55,22 +55,7 @@
       "block_order":["features","specs","box","manuals","faq"],
       "settings":{}
     },
-    "features": {
-      "type":"suntneew-pdp-story",
-      "blocks": {
-        "capacity_8":{"type":"feature","settings":{"image_asset":"suntneew-a20-8000-a-plus-specs.jpg","image_alt":"A20 8000mAh jump starter with 1500A peak current","image_fit":"cover","eyebrow":"8,000mAh variant","heading":"1500A peak current in the compact A20 body","body":"<p>The 8,000mAh model pairs 29.6Wh of rated energy with 750A starting current and 1500A peak current. Available in orange or red.</p>","variant_match":"8000mAh"}},
-        "capacity_12":{"type":"feature","settings":{"image_asset":"suntneew-a20-12000-a-plus-specs.jpg","image_alt":"A20 12000mAh jump starter with 3000A peak current","image_fit":"cover","eyebrow":"12,000mAh variant","heading":"Step up to 3000A peak current","body":"<p>The 12,000mAh model combines 44.4Wh of rated energy with 1500A starting current and 3000A peak current. Match the selected variant to your 12V vehicle and follow the product manual before use.</p>","variant_match":"12000mAh"}},
-        "capacity_16":{"type":"feature","settings":{"image_asset":"suntneew-a20-16000-a-plus-specs.jpg","image_alt":"A20 16000mAh jump starter with 4000A peak current","image_fit":"cover","eyebrow":"16,000mAh variant","heading":"Maximum A20 capacity and 4000A peak current","body":"<p>The 16,000mAh model carries 59.2Wh of rated energy with 2000A starting current and 4000A peak current.</p>","variant_match":"16000mAh"}},
-        "roadside":{"type":"feature","settings":{"image_asset":"suntneew-a20-a-plus-roadside.jpg","image_alt":"A20 jump starter connected beside a 12V vehicle battery","image_fit":"cover","eyebrow":"Roadside ready","heading":"A familiar jump-start routine, pictured in the moment it matters","body":"<p>Keep the unit and smart clamp close to the vehicle, then confirm polarity and follow the selected product pack before starting. The capability figures above still follow the chosen capacity.</p>","variant_match":""}},
-        "clamps":{"type":"feature","settings":{"image_asset":"suntneew-a20-a-plus-safety.jpg","image_alt":"A20 smart clamp connected in a vehicle engine bay","image_fit":"cover","eyebrow":"Connection first","heading":"Smart clamps make the starting connection easier to read","body":"<p>Connect the clamps carefully, check polarity and use the clamp indicators as directed in the manual before starting.</p>","variant_match":""}},
-        "display":{"type":"feature","settings":{"image_asset":"suntneew-a20-gallery-display.jpg","image_alt":"A20 screen displaying charge and output information","eyebrow":"At-a-glance status","heading":"See charge and output information before you head out","body":"<p>The front display shows battery percentage and active input or output information. USB-C input and dual USB-A output support the documented everyday charging role.</p>","variant_match":""}},
-        "carry":{"type":"feature","settings":{"image_asset":"suntneew-a20-gallery-carry.jpg","image_alt":"Compact A20 jump starter ready to carry in a vehicle","eyebrow":"Keep it close","heading":"A compact format that stays with the vehicle","body":"<p>Keep the selected A20, clamp and cable together in the vehicle so roadside power is where you need it.</p>","variant_match":""}},
-        "kit":{"type":"feature","settings":{"image_asset":"suntneew-a20-gallery-in-the-box.jpg","image_alt":"A20 jump starter package contents","eyebrow":"What arrives","heading":"The core emergency-start kit in one place","body":"<p>The documented package includes the A20 unit, smart clamp, USB cable, manual and color box. Check the selected SKU and its product pack before placing an order.</p>","variant_match":""}},
-        "how_to":{"type":"feature","settings":{"image_asset":"suntneew-a20-a-plus-how-to.jpg","image_alt":"Four-step A20 jump-start connection sequence","image_fit":"cover","eyebrow":"Four clear steps","heading":"Connect, check, start and disconnect in the right order","body":"<p>Use the illustrated sequence as a quick overview, then follow the full A20 manual and the vehicle manufacturer's instructions before every start.</p>","variant_match":""}}
-      },
-      "block_order":["capacity_8","capacity_12","capacity_16","roadside","clamps","display","carry","kit","how_to"],
-      "settings":{"anchor_id":"features","eyebrow":"Choose your A20","heading":"One familiar platform, three power levels","lede":"<p>Capacity is a real product option. Select a variant above to show its matching current, energy and feature panel.</p>"}
-    },
+    "features": {"type":"suntneew-a20-experience","settings":{}},
     "details": {
       "type":"suntneew-pdp-details",
       "blocks": {
