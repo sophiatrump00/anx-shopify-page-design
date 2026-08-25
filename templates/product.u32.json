@@ -77,7 +77,7 @@
         "steps":{"type":"feature","settings":{"image_asset":"suntneew-u32-2026-pdp-10-steps.jpg","image_alt":"Four U32 jump-start steps","image_fit":"cover","eyebrow":"Four-step start","heading":"Connect deliberately. Start with confidence.","body":"<p>Charge U32 to at least 50%, insert the EC5 smart clamp, connect red to positive and black to negative, then start within 30 seconds after the clamp shows green. Disconnect once the vehicle has started.</p>","variant_match":""}}
       },
       "block_order":["overview","specifications","starting","smart_clamp","temperature","capacity","safeguards","scenarios","led","steps"],
-      "settings":{"anchor_id":"features","eyebrow":"U32 FEATURES","heading":"Every feature, with the original product detail intact.","lede":"<p>Original A+ visuals carry the product story; the page adds a consistent reading order, confirmed specifications and the operating context that matters.</p>"}
+      "settings":{"anchor_id":"features","eyebrow":"U32 FEATURES","heading":"Every feature, with the original product detail intact.","lede":"<p>Original A+ visuals carry the product story; the page adds a consistent reading order, confirmed specifications and the operating context that matters.</p>","layout_mode":"full_width_below"}
     },
     "details": {
       "type":"suntneew-pdp-details",

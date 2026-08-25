@@ -78,7 +78,7 @@
         "in_box":{"type":"feature","settings":{"image_asset":"suntneew-u23-2026-pdp-10-in-box.png","image_alt":"SuntNeew U23 items included in the box","image_fit":"cover","eyebrow":"What’s in the box","heading":"The essentials are already together.","body":"<p>U23 main unit, Intelligent Jumper Clamps, Type-C charging cable, user manual, color box and carrying pouch.</p>","variant_match":""}}
       },
       "block_order":["overview","starting","capacity","vehicle_fit","device_power","led","safety","scenarios","steps","in_box"],
-      "settings":{"anchor_id":"features","eyebrow":"U23 FEATURES","heading":"Every feature, with the original product detail intact.","lede":"<p>Original A+ visuals carry the product story; the page adds a consistent reading order, confirmed specifications and the operating context that matters.</p>"}
+      "settings":{"anchor_id":"features","eyebrow":"U23 FEATURES","heading":"Every feature, with the original product detail intact.","lede":"<p>Original A+ visuals carry the product story; the page adds a consistent reading order, confirmed specifications and the operating context that matters.</p>","layout_mode":"full_width_below"}
     },
     "details": {
       "type":"suntneew-pdp-details",

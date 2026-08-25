@@ -18,6 +18,7 @@
   * payment_button_background: the custom dynamic checkout button background
   * payment_button_text_color: the custom dynamic checkout button text color
   * form_id: if specified, define the form ID linked to this input
+  * show_suntneew_purchase_panel: replace the branded dynamic checkout button with the shared PDP purchase panel
 {%- endcomment -%}
 
 {%- assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
@@ -27,6 +28,11 @@
 {%- if product.gift_card? and show_gift_card_recipient -%}
   {%- assign recipient_feature_active = true -%}
   {%- assign show_payment_button = false -%}
+{%- endif -%}
+
+{%- assign show_dynamic_payment_button = show_payment_button -%}
+{%- if show_suntneew_purchase_panel -%}
+  {%- assign show_dynamic_payment_button = false -%}
 {%- endif -%}
 
 {%- form 'product', product, is: 'product-form', id: form_id -%}
@@ -83,19 +89,32 @@
       </gift-card-recipient>
     {%- endif -%}
 
-    <buy-buttons class="buy-buttons {% if show_payment_button %}buy-buttons--multiple{% endif %}" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
+    <buy-buttons class="buy-buttons {% if show_dynamic_payment_button %}buy-buttons--multiple{% endif %}{% if show_suntneew_purchase_panel %} suntneew-purchase-actions{% endif %}" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
       {%- render 'button',
         content: button_content,
         type: 'submit',
         size: button_size,
         disabled: button_disabled,
-        secondary: show_payment_button,
+        secondary: show_dynamic_payment_button,
         subdued: button_disabled,
         background: atc_button_background,
         text_color: atc_button_text_color
       -%}
 
-      {%- if show_payment_button -%}
+      {%- if show_suntneew_purchase_panel -%}
+        <button
+          type="button"
+          class="button{% if button_size != blank and button_size != 'base' %} button--{{ button_size }}{% endif %} suntneew-purchase-actions__buy-now"
+          form="{{ form_id }}"
+          data-suntneew-buy-now
+          {% if button_disabled %}disabled{% endif %}
+          {% if payment_button_background != blank and payment_button_background != 'rgba(0,0,0,0)' or payment_button_text_color != blank and payment_button_text_color != 'rgba(0,0,0,0)' %}
+            style="{% if payment_button_background != blank and payment_button_background != 'rgba(0,0,0,0)' %}--button-background: {{ payment_button_background.rgb }} / var(--button-background-opacity, 1); --button-outline-color: {{ payment_button_background.rgb }};{% endif %}{% if payment_button_text_color != blank and payment_button_text_color != 'rgba(0,0,0,0)' %} --button-text-color: {{ payment_button_text_color.rgb }};{% endif %}"
+          {% endif %}
+        >
+          Buy Now
+        </button>
+      {%- elsif show_dynamic_payment_button -%}
         {{- form | payment_button -}}
 
         <style>
@@ -115,5 +134,9 @@
         </style>
       {%- endif -%}
     </buy-buttons>
+
+    {%- if show_suntneew_purchase_panel -%}
+      {%- render 'suntneew-purchase-panel' -%}
+    {%- endif -%}
   </div>
 {%- endform -%}

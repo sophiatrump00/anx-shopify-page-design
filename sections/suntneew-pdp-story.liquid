@@ -1,6 +1,14 @@
 {{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'suntneew-pdp.js' | asset_url }}" defer></script>
-<section id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp sn-pdp-story sn-pdp__section" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}">
+{%- assign story_layout = section.settings.layout_mode | default: 'split' -%}
+{%- if template.suffix == 'kb700' or template.suffix == 'u23' or template.suffix == 'u32' -%}
+  {%- assign story_layout = 'full_width_below' -%}
+{%- endif -%}
+{%- assign story_image_sizes = '(max-width: 899px) 100vw, 60vw' -%}
+{%- if story_layout == 'full_width_below' -%}
+  {%- assign story_image_sizes = '(max-width: 899px) 100vw, 1240px' -%}
+{%- endif -%}
+<section id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp sn-pdp-story sn-pdp__section{% if story_layout == 'full_width_below' %} sn-pdp-story--wide-below{% endif %}" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}">
   <div class="sn-pdp__shell">
     {%- if section.settings.eyebrow != blank -%}<p class="sn-pdp__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
     <h2 class="sn-pdp__heading">{{ section.settings.heading }}</h2>
@@ -11,14 +19,28 @@
         <article class="sn-pdp-story__row{% if block.settings.image == blank and block.settings.image_asset == blank and block.settings.mobile_image_asset == blank %} sn-pdp-story__row--copy-only{% endif %}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
           {%- if block.settings.image != blank or block.settings.image_asset != blank or block.settings.mobile_image_asset != blank -%}<div class="sn-pdp-story__media">
             {%- if block.settings.image != blank -%}
-              {{- block.settings.image | image_url: width: 1800 | image_tag: widths: '600,900,1200,1500,1800', sizes: '(max-width: 899px) 100vw, 60vw', loading: 'lazy', alt: block.settings.image_alt, style: block.settings.image_fit | prepend: 'object-fit: ' -}}
+              {{- block.settings.image | image_url: width: 1800 | image_tag: widths: '600,900,1200,1500,1800', sizes: story_image_sizes, loading: 'lazy', alt: block.settings.image_alt, style: block.settings.image_fit | prepend: 'object-fit: ' -}}
             {%- else -%}
               {%- assign desktop_image_asset = block.settings.image_asset | default: block.settings.mobile_image_asset -%}
+              {%- assign story_asset_width = 2400 -%}
+              {%- assign story_asset_height = 1600 -%}
+              {%- if story_layout == 'full_width_below' -%}
+                {%- if desktop_image_asset contains 'u23-2026-pdp-02-starting' -%}
+                  {%- assign story_asset_width = 1464 -%}
+                  {%- assign story_asset_height = 1200 -%}
+                {%- elsif desktop_image_asset contains 'u23-2026-pdp-10-in-box' -%}
+                  {%- assign story_asset_width = 1959 -%}
+                  {%- assign story_asset_height = 803 -%}
+                {%- elsif desktop_image_asset contains 'u23-2026-pdp-' or desktop_image_asset contains 'u32-2026-pdp-' -%}
+                  {%- assign story_asset_width = 1464 -%}
+                  {%- assign story_asset_height = 600 -%}
+                {%- endif -%}
+              {%- endif -%}
               <picture>
                 {%- if block.settings.mobile_image_asset != blank -%}
                   <source media="(max-width: 899px)" srcset="{{ block.settings.mobile_image_asset | asset_url }}">
                 {%- endif -%}
-                <img src="{{ desktop_image_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="2400" height="1600" loading="lazy" style="object-fit: {{ block.settings.image_fit }}">
+                <img src="{{ desktop_image_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="{{ story_asset_width }}" height="{{ story_asset_height }}" loading="lazy" style="object-fit: {{ block.settings.image_fit }}">
               </picture>
             {%- endif -%}
           </div>{%- endif -%}
@@ -40,7 +62,8 @@
     {"type":"text","id":"anchor_id","label":"Anchor ID","default":"features"},
     {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Why it stands out"},
     {"type":"text","id":"heading","label":"Heading","default":"Built for the moment power matters"},
-    {"type":"richtext","id":"lede","label":"Introduction","default":"<p>Clear product evidence, practical features and the details needed to choose confidently.</p>"}
+    {"type":"richtext","id":"lede","label":"Introduction","default":"<p>Clear product evidence, practical features and the details needed to choose confidently.</p>"},
+    {"type":"select","id":"layout_mode","label":"Feature layout","default":"split","options":[{"value":"split","label":"Split image and copy"},{"value":"full_width_below","label":"Full-width image with copy below"}]}
   ],
   "blocks":[
     {"type":"feature","name":"Feature row","settings":[

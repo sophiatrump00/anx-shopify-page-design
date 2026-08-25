@@ -210,6 +210,41 @@
 
 .sn-pdp-story__copy { padding: clamp(30px, 5vw, 74px); }
 
+/* The U23/U32 A+ assets are wide banners. Keep the source composition intact
+   and move the explanatory copy below the image instead of cropping it into
+   the legacy split-card height. */
+.sn-pdp-story--wide-below .sn-pdp-story__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+}
+
+.sn-pdp-story--wide-below .sn-pdp-story__media,
+.sn-pdp-story--wide-below .sn-pdp-story__media picture {
+  min-height: 0;
+  height: auto;
+}
+
+.sn-pdp-story--wide-below .sn-pdp-story__media {
+  background: #0c111a;
+}
+
+.sn-pdp-story--wide-below .sn-pdp-story__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+}
+
+.sn-pdp-story--wide-below .sn-pdp-story__row:nth-child(even) .sn-pdp-story__media {
+  order: initial;
+}
+
+.sn-pdp-story--wide-below .sn-pdp-story__copy {
+  padding: clamp(30px, 4.5vw, 64px) clamp(30px, 5vw, 74px);
+}
+
 .sn-pdp-story__copy h3 {
   margin: 0;
   font-size: clamp(28px, 3.2vw, 46px);
@@ -352,6 +387,7 @@
   .sn-pdp-story__row { grid-template-columns: 1fr; }
   .sn-pdp-story__row:nth-child(even) .sn-pdp-story__media { order: initial; }
   .sn-pdp-story__media { min-height: min(78vw, 520px); }
+  .sn-pdp-story--wide-below .sn-pdp-story__media { min-height: 0; }
   .sn-pdp-specs { grid-template-columns: 1fr; }
 }
 
