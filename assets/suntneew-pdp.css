@@ -259,6 +259,99 @@
   line-height: 1.65;
 }
 
+/* Impact matrix: an editorial, image-led feature wall for the RV range. */
+.sn-pdp-story--impact {
+  position: relative;
+  overflow: hidden;
+  background: #07121d;
+  color: #f7f8f3;
+}
+
+.sn-pdp-story--impact::before {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 86% 8%, rgba(181, 239, 66, .18), transparent 28%), linear-gradient(115deg, rgba(7, 18, 29, .98), rgba(7, 18, 29, .88));
+  content: '';
+  pointer-events: none;
+}
+
+.sn-pdp-story--impact .sn-pdp__shell { position: relative; z-index: 1; width: min(1320px, calc(100% - 40px)); }
+.sn-pdp-story--impact .sn-pdp__eyebrow { color: #b5ef42; }
+.sn-pdp-story--impact .sn-pdp__heading { max-width: 920px; color: #fff; font-size: clamp(38px, 5.3vw, 76px); }
+.sn-pdp-story--impact .sn-pdp__lede { max-width: 760px; color: rgba(246, 247, 244, .72); }
+
+.sn-pdp-impact__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: minmax(190px, 14vw);
+  gap: 14px;
+  margin-top: clamp(34px, 5vw, 68px);
+}
+
+.sn-pdp-impact__card {
+  position: relative;
+  min-height: 238px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 18px;
+  background: #122231;
+  isolation: isolate;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .22);
+}
+
+.sn-pdp-impact__card--0 { grid-column: span 7; grid-row: span 2; min-height: 500px; }
+.sn-pdp-impact__card--1,
+.sn-pdp-impact__card--2 { grid-column: span 5; }
+.sn-pdp-impact__card--3,
+.sn-pdp-impact__card--4,
+.sn-pdp-impact__card--5 { grid-column: span 4; }
+.sn-pdp-impact__card--6,
+.sn-pdp-impact__card--7,
+.sn-pdp-impact__card--8,
+.sn-pdp-impact__card--9 { grid-column: span 6; }
+
+.sn-pdp-impact__media,
+.sn-pdp-impact__media picture,
+.sn-pdp-impact__media img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sn-pdp-impact__media img { object-fit: cover; object-position: center; transition: transform .7s cubic-bezier(.2, .65, .2, 1); }
+.sn-pdp-impact__card:hover .sn-pdp-impact__media img { transform: scale(1.045); }
+
+.sn-pdp-impact__wash {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 10, 16, .05) 12%, rgba(4, 10, 16, .18) 42%, rgba(4, 10, 16, .9) 100%);
+  pointer-events: none;
+}
+
+.sn-pdp-impact__card--0 .sn-pdp-impact__wash { background: linear-gradient(90deg, rgba(4, 10, 16, .82) 0%, rgba(4, 10, 16, .22) 66%, rgba(4, 10, 16, .52) 100%); }
+.sn-pdp-impact__card--copy-only { background: linear-gradient(135deg, #183552, #0e7185); }
+.sn-pdp-impact__card--copy-only .sn-pdp-impact__wash { background: linear-gradient(135deg, rgba(181, 239, 66, .15), transparent 60%); }
+
+.sn-pdp-impact__meta,
+.sn-pdp-impact__copy { position: absolute; z-index: 2; right: 24px; left: 24px; }
+.sn-pdp-impact__meta { top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: rgba(255, 255, 255, .72); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.sn-pdp-impact__meta span:first-child { color: #b5ef42; font-size: 13px; }
+.sn-pdp-impact__copy { bottom: 22px; }
+.sn-pdp-impact__copy h3 { max-width: 520px; margin: 0; color: #fff; font-size: clamp(22px, 2.3vw, 34px); line-height: 1.02; letter-spacing: -.045em; }
+.sn-pdp-impact__card--0 .sn-pdp-impact__copy { right: clamp(24px, 4vw, 54px); bottom: clamp(26px, 4vw, 50px); left: clamp(24px, 4vw, 54px); }
+.sn-pdp-impact__card--0 .sn-pdp-impact__copy h3 { max-width: 610px; font-size: clamp(34px, 4vw, 62px); }
+.sn-pdp-impact__copy > div { max-width: 520px; margin-top: 12px; color: rgba(246, 247, 244, .78); font-size: 14px; line-height: 1.5; }
+.sn-pdp-impact__copy p { margin: 0; }
+.sn-pdp-impact__card--0 .sn-pdp-impact__copy > div { max-width: 480px; font-size: 16px; }
+.sn-pdp-impact__card--3 .sn-pdp-impact__copy h3,
+.sn-pdp-impact__card--4 .sn-pdp-impact__copy h3,
+.sn-pdp-impact__card--5 .sn-pdp-impact__copy h3 { font-size: clamp(20px, 2vw, 28px); }
+
+.sn-pdp-story--impact .sn-pdp-impact__card:focus-within { outline: 2px solid #b5ef42; outline-offset: 3px; }
+
 .sn-pdp-details { background: #fff; }
 .sn-pdp-details__panel { max-width: 1040px; margin-inline: auto; }
 
@@ -389,6 +482,19 @@
   .sn-pdp-story__media { min-height: min(78vw, 520px); }
   .sn-pdp-story--wide-below .sn-pdp-story__media { min-height: 0; }
   .sn-pdp-specs { grid-template-columns: 1fr; }
+
+  .sn-pdp-story--impact .sn-pdp__shell { width: min(100% - 28px, 1320px); }
+  .sn-pdp-impact__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(210px, 32vw); }
+  .sn-pdp-impact__card--0 { grid-column: span 2; min-height: min(64vw, 560px); }
+  .sn-pdp-impact__card--1,
+  .sn-pdp-impact__card--2,
+  .sn-pdp-impact__card--3,
+  .sn-pdp-impact__card--4,
+  .sn-pdp-impact__card--5,
+  .sn-pdp-impact__card--6,
+  .sn-pdp-impact__card--7,
+  .sn-pdp-impact__card--8,
+  .sn-pdp-impact__card--9 { grid-column: span 1; }
 }
 
 @media (max-width: 599px) {
@@ -397,6 +503,28 @@
   .sn-pdp-proof__item { min-height: 112px; padding: 22px 18px; }
   .sn-pdp-list--cards { grid-template-columns: 1fr; }
   .sn-pdp-spec-group__count { display: none; }
+
+  .sn-pdp-story--impact .sn-pdp__heading { font-size: clamp(38px, 13vw, 58px); }
+  .sn-pdp-impact__grid { display: grid; grid-template-columns: 1fr; grid-auto-rows: auto; gap: 11px; margin-top: 30px; }
+  .sn-pdp-impact__card,
+  .sn-pdp-impact__card--0,
+  .sn-pdp-impact__card--1,
+  .sn-pdp-impact__card--2,
+  .sn-pdp-impact__card--3,
+  .sn-pdp-impact__card--4,
+  .sn-pdp-impact__card--5,
+  .sn-pdp-impact__card--6,
+  .sn-pdp-impact__card--7,
+  .sn-pdp-impact__card--8,
+  .sn-pdp-impact__card--9 { grid-column: 1; min-height: 360px; }
+  .sn-pdp-impact__card--0 { min-height: 470px; }
+  .sn-pdp-impact__meta { top: 16px; right: 18px; left: 18px; }
+  .sn-pdp-impact__copy { right: 18px; bottom: 18px; left: 18px; }
+  .sn-pdp-impact__card--0 .sn-pdp-impact__copy { right: 22px; bottom: 24px; left: 22px; }
+  .sn-pdp-impact__copy h3,
+  .sn-pdp-impact__card--0 .sn-pdp-impact__copy h3 { font-size: clamp(27px, 8vw, 42px); }
+  .sn-pdp-impact__copy > div,
+  .sn-pdp-impact__card--0 .sn-pdp-impact__copy > div { font-size: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
