@@ -1,104 +1,123 @@
 {% doc %}
-  RV battery gallery with a high-impact, bundled asset sequence.
+  Renders the bundled RV battery gallery with the theme's standard product-gallery presentation.
 
+  @param {product} product - Product associated with the gallery.
+  @param {string} product_form_id - Product form identifier.
+  @param {string} gallery_instance_id - Unique section instance identifier.
+  @param {boolean} enable_image_zoom - Whether image zoom is enabled.
+  @param {number} max_image_zoom_level - Maximum image zoom level.
+  @param {string} mobile_carousel_control - Mobile carousel control style.
+  @param {string} mobile_media_size - Mobile gallery width setting.
+  @param {number} media_autoplay_interval - Image autoplay interval in seconds.
 {% enddoc %}
-
-{{ 'suntneew-rv-showcase.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'suntneew-rv-showcase.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign rv_model = template.suffix | default: 'rv-230ah'
-  assign model_label = '230Ah'
-  assign energy_label = '2.94 kWh'
-  assign size_label = '522 × 268 × 220 mm'
-  assign gallery_focus = 'HIGH OUTPUT / LONG STAY'
-  assign gallery_headline = 'POWER'
-  assign gallery_headline_accent = 'for the long way.'
-  assign gallery_deck = 'A high-capacity platform for longer stays, heavier loads and the roads between charging stops.'
   assign gallery_assets = 'suntneew-rv-230ah-gallery-new-hero.jpg|suntneew-rv-230ah-gallery-terminal-source-crop-v1.png|suntneew-rv-230ah-new-lifestyle.jpg|suntneew-rv-230ah-new-monitoring.jpg|suntneew-rv-230ah-new-temperature.jpg|suntneew-rv-230ah-new-in-box.jpg'
-  assign gallery_labels = 'Hero product|Terminal detail|Life at camp|Bluetooth insight|Cold-weather confidence|In the box'
-  assign gallery_kinds = 'main|detail|scene|lifestyle|system|box'
-  assign gallery_alts = 'SuntNeew 12.8V 230Ah LiFePO4 RV battery hero view|SuntNeew 230Ah LiFePO4 battery terminal detail|SuntNeew 230Ah LiFePO4 battery supporting a lakeside RV campsite|SuntNeew 230Ah LiFePO4 battery with Bluetooth monitoring in an RV|SuntNeew 230Ah LiFePO4 battery pictured with a motorhome in a mountain landscape|SuntNeew 230Ah LiFePO4 battery package contents'
+  assign gallery_alts = 'SuntNeew 12.8V 230Ah LiFePO4 RV battery product view|SuntNeew 230Ah LiFePO4 battery terminal detail|SuntNeew 230Ah LiFePO4 battery beside a motorhome at a lakeside campsite|SuntNeew 230Ah LiFePO4 battery with Bluetooth monitoring|SuntNeew 230Ah LiFePO4 battery in a mountain RV setting|SuntNeew 230Ah LiFePO4 battery and included accessories'
 
-  if rv_model == 'rv-g24'
-    assign model_label = 'Group 24 / 100Ah'
-    assign energy_label = '1.28 kWh'
-    assign size_label = '260 × 170 × 212 mm'
-    assign gallery_focus = 'COMPACT / RV-READY'
-    assign gallery_headline = 'POWER'
-    assign gallery_headline_accent = 'in the pocket.'
-    assign gallery_deck = 'A compact Group 24 footprint that keeps everyday RV comfort easy to place and easy to read.'
-    assign gallery_assets = 'suntneew-rv-g24-gallery-new-hero.jpg|suntneew-rv-g24-gallery-terminal-v1.png|suntneew-rv-g24-new-lifestyle.jpg|suntneew-rv-g24-new-monitoring.jpg|suntneew-rv-g24-new-temperature.jpg|suntneew-rv-g24-new-in-box.jpg'
-    assign gallery_labels = 'Hero product|Terminal detail|Life at camp|Bluetooth insight|Cold-weather confidence|In the box'
-    assign gallery_alts = 'SuntNeew Group 24 100Ah LiFePO4 RV battery hero view|SuntNeew Group 24 battery terminal detail|SuntNeew Group 24 battery supporting a comfortable RV campsite|SuntNeew Group 24 battery with Bluetooth monitoring in an RV|SuntNeew Group 24 battery pictured with a motorhome in a snowy landscape|SuntNeew Group 24 battery package contents'
-  elsif rv_model == 'rv-g31'
-    assign model_label = 'Group 31 / 100Ah'
-    assign energy_label = '1.28 kWh'
-    assign size_label = '339 × 185 × 218 mm'
-    assign gallery_focus = 'ROOMIER SYSTEMS / 100AH'
-    assign gallery_headline = 'MAKE SPACE'
-    assign gallery_headline_accent = 'for power.'
-    assign gallery_deck = 'A longer Group 31 platform for roomy bays, practical service access and a calmer power plan.'
-    assign gallery_assets = 'suntneew-rv-g31-gallery-new-hero.jpg|suntneew-rv-g31-gallery-terminal-handle-v1.png|suntneew-rv-g31-new-lifestyle.jpg|suntneew-rv-g31-new-monitoring.jpg|suntneew-rv-g31-new-temperature.jpg|suntneew-rv-g31-new-in-box.jpg'
-    assign gallery_labels = 'Hero product|Terminal + handle|Life at camp|Bluetooth insight|Cold-weather confidence|In the box'
-    assign gallery_alts = 'SuntNeew Group 31 100Ah LiFePO4 RV battery hero view|SuntNeew Group 31 battery terminal and carry-handle detail|SuntNeew Group 31 battery supporting a relaxed RV campsite|SuntNeew Group 31 battery with Bluetooth monitoring in an RV|SuntNeew Group 31 battery pictured with a motorhome in a mountain landscape|SuntNeew Group 31 battery package contents'
-  elsif rv_model == 'rv-314ah'
-    assign model_label = '314Ah'
-    assign energy_label = '4.02 kWh'
-    assign size_label = '522 × 268 × 220 mm'
-    assign gallery_focus = '4KWH-CLASS / LONG STAY'
-    assign gallery_headline = 'STAY OUT'
-    assign gallery_headline_accent = 'longer.'
-    assign gallery_deck = 'A 4kWh-class reserve for off-grid days that should feel less like a countdown.'
+  if rv_model == 'rv-314ah'
     assign gallery_assets = 'suntneew-rv-314ah-gallery-new-hero.jpg|suntneew-rv-314ah-gallery-terminal-source-crop-v1.png|suntneew-rv-314ah-new-lifestyle.jpg|suntneew-rv-314ah-new-monitoring.jpg|suntneew-rv-314ah-new-temperature.jpg|suntneew-rv-314ah-new-in-box.jpg'
-    assign gallery_labels = 'Hero product|Terminal detail|Life at camp|Bluetooth insight|Cold-weather confidence|In the box'
-    assign gallery_alts = 'SuntNeew 12.8V 314Ah LiFePO4 RV battery hero view|SuntNeew 314Ah LiFePO4 battery terminal detail|SuntNeew 314Ah LiFePO4 battery supporting extended RV living|SuntNeew 314Ah LiFePO4 battery with Bluetooth monitoring in an RV|SuntNeew 314Ah LiFePO4 battery pictured with a motorhome beside a mountain lake|SuntNeew 314Ah LiFePO4 battery package contents'
+    assign gallery_alts = 'SuntNeew 12.8V 314Ah LiFePO4 RV battery product view|SuntNeew 314Ah LiFePO4 battery terminal detail|SuntNeew 314Ah LiFePO4 battery beside a motorhome at a lakeside campsite|SuntNeew 314Ah LiFePO4 battery with Bluetooth monitoring|SuntNeew 314Ah LiFePO4 battery beside a motorhome and mountain lake|SuntNeew 314Ah LiFePO4 battery and included accessories'
+  elsif rv_model == 'rv-g24'
+    assign gallery_assets = 'suntneew-rv-g24-gallery-new-hero.jpg|suntneew-rv-g24-gallery-terminal-v1.png|suntneew-rv-g24-new-lifestyle.jpg|suntneew-rv-g24-new-monitoring.jpg|suntneew-rv-g24-new-temperature.jpg|suntneew-rv-g24-new-in-box.jpg'
+    assign gallery_alts = 'SuntNeew Group 24 100Ah LiFePO4 RV battery product view|SuntNeew Group 24 battery terminal detail|SuntNeew Group 24 battery beside a motorhome at a lakeside campsite|SuntNeew Group 24 battery with Bluetooth monitoring|SuntNeew Group 24 battery in a snowy RV setting|SuntNeew Group 24 battery and included accessories'
+  elsif rv_model == 'rv-g31'
+    assign gallery_assets = 'suntneew-rv-g31-gallery-new-hero.jpg|suntneew-rv-g31-gallery-terminal-handle-v1.png|suntneew-rv-g31-new-lifestyle.jpg|suntneew-rv-g31-new-monitoring.jpg|suntneew-rv-g31-new-temperature.jpg|suntneew-rv-g31-new-in-box.jpg'
+    assign gallery_alts = 'SuntNeew Group 31 100Ah LiFePO4 RV battery product view|SuntNeew Group 31 battery terminal and carry-handle detail|SuntNeew Group 31 battery beside a motorhome at a lakeside campsite|SuntNeew Group 31 battery with Bluetooth monitoring|SuntNeew Group 31 battery beside a motorhome and mountain lake|SuntNeew Group 31 battery and included accessories'
   endif
 
   assign gallery_assets = gallery_assets | split: '|'
-  assign gallery_labels = gallery_labels | split: '|'
-  assign gallery_kinds = gallery_kinds | split: '|'
   assign gallery_alts = gallery_alts | split: '|'
+  assign gallery_id = 'rv-product-gallery-' | append: product.id | append: '-' | append: gallery_instance_id
 -%}
 
-<div class="sn-rv-gallery" data-rv-showcase-gallery data-rv-model="{{ rv_model | escape }}" data-rv-count="{{ gallery_assets.size }}" tabindex="-1">
-  <div class="sn-rv-gallery__stage" aria-live="polite">
-    {%- for asset_name in gallery_assets -%}
-      {%- assign slide_alt = gallery_alts[forloop.index0] -%}
-      {%- assign slide_label = gallery_labels[forloop.index0] -%}
-      {%- assign slide_kind = gallery_kinds[forloop.index0] -%}
-      <figure class="sn-rv-gallery__slide sn-rv-gallery__slide--{{ slide_kind }}{% if forloop.first %} is-active{% endif %}" data-rv-gallery-slide data-index="{{ forloop.index0 }}" aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}">
-        <img src="{{ asset_name | asset_url }}" alt="{{ slide_alt | escape }}" width="2000" height="1600" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
-        <figcaption><span>0{{ forloop.index }}</span><strong>{{ slide_label }}</strong></figcaption>
-      </figure>
-    {%- endfor -%}
-    <div class="sn-rv-gallery__grid" aria-hidden="true"></div>
-    <div class="sn-rv-gallery__vignette" aria-hidden="true"></div>
+<product-gallery
+  form="{{ product_form_id }}"
+  filtered-indexes="[]"
+  data-suntneew-media-gallery
+  data-autoplay-interval="{{ media_autoplay_interval | default: 6 }}"
+  {% if enable_image_zoom %}allow-zoom="{{ max_image_zoom_level }}"{% endif %}
+  class="product-gallery {% if mobile_carousel_control contains 'dots' %}product-gallery--mobile-dots{% endif %} product-gallery--desktop-carousel"
+>
+  {%- capture page_dots -%}
+    <page-dots class="page-dots {% if mobile_carousel_control == 'floating_dots' %}page-dots--blurred{% endif %} md:hidden" aria-controls="{{ gallery_id }}">
+      {%- for asset_name in gallery_assets -%}
+        <button type="button" class="tap-area" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
+          <span class="sr-only">{{ 'general.accessibility.go_to_item' | t: index: forloop.index }}</span>
+        </button>
+      {%- endfor -%}
+    </page-dots>
+  {%- endcapture -%}
 
-    <div class="sn-rv-gallery__content">
-      <div class="sn-rv-gallery__topline"><span>{{ gallery_focus }} / {{ model_label }}</span><span>01 — {{ gallery_assets.size | prepend: '0' }}</span></div>
-      <h2>{{ gallery_headline }}<br><em>{{ gallery_headline_accent }}</em></h2>
-      <p>{{ gallery_deck }}</p>
-      <div class="sn-rv-gallery__stats" aria-label="Product highlights">
-        <span><strong>{{ energy_label }}</strong><small>nominal energy</small></span>
-        <span><strong>{{ size_label }}</strong><small>enclosure footprint</small></span>
-      </div>
-    </div>
+  <div class="product-gallery__ar-wrapper">
+    <div class="product-gallery__media-list-wrapper">
+      <custom-cursor class="product-gallery__cursor">
+        <div class="circle-button circle-button--fill circle-button--lg">
+          {%- render 'icon' with 'chevron-right' -%}
+        </div>
+      </custom-cursor>
 
-    <div class="sn-rv-gallery__controls">
-      <button type="button" class="sn-rv-gallery__arrow" data-rv-gallery-prev aria-label="Previous image">←</button>
-      <div class="sn-rv-gallery__progress" aria-hidden="true"><span data-rv-gallery-progress></span></div>
-      <button type="button" class="sn-rv-gallery__arrow" data-rv-gallery-next aria-label="Next image">→</button>
+      <media-carousel
+        desktop-mode="carousel_thumbnails_bottom"
+        adaptive-height
+        initial-index="0"
+        id="{{ gallery_id }}"
+        class="product-gallery__media-list {% if mobile_media_size == 'expanded' %}full-bleed{% else %}bleed{% endif %} scroll-area md:unbleed"
+      >
+        {%- for asset_name in gallery_assets -%}
+          <div class="product-gallery__media snap-center" data-media-type="image" data-media-id="{{ gallery_instance_id }}-rv-{{ forloop.index }}">
+            <img
+              src="{{ asset_name | asset_url }}"
+              alt="{{ gallery_alts[forloop.index0] | escape }}"
+              width="2000"
+              height="2000"
+              {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
+            >
+          </div>
+        {%- endfor -%}
+      </media-carousel>
+
+      {%- if enable_image_zoom -%}
+        <div class="product-gallery__zoom">
+          <button type="button" is="product-zoom-button" class="circle-button circle-button--fill ring">
+            <span class="sr-only">{{ 'product.gallery.zoom' | t }}</span>
+            {%- render 'icon' with 'image-zoom' -%}
+          </button>
+        </div>
+      {%- endif -%}
+
+      {%- if mobile_carousel_control == 'floating_dots' -%}
+        {{- page_dots -}}
+      {%- endif -%}
     </div>
   </div>
 
-  <div class="sn-rv-gallery__thumbs" role="tablist" aria-label="{{ model_label }} gallery">
-    {%- for asset_name in gallery_assets -%}
-      {%- assign slide_label = gallery_labels[forloop.index0] -%}
-      <button type="button" class="sn-rv-gallery__thumb{% if forloop.first %} is-active{% endif %}" data-rv-gallery-thumb data-index="{{ forloop.index0 }}" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="{{ slide_label | escape }}">
-        <img src="{{ asset_name | asset_url }}" alt="" width="120" height="90" loading="lazy">
-        <span>0{{ forloop.index }}</span>
-      </button>
-    {%- endfor -%}
+  <div class="suntneew-media-modes" role="tablist" aria-label="Product media">
+    <button type="button" class="suntneew-media-modes__button" data-media-mode="image" role="tab" aria-selected="true">
+      <span class="suntneew-media-modes__icon" aria-hidden="true">▣</span>
+      Features
+    </button>
   </div>
-</div>
+
+  {%- if mobile_carousel_control == 'dots' -%}
+    {{- page_dots -}}
+  {%- endif -%}
+
+  <scroll-shadow class="product-gallery__thumbnail-list-wrapper">
+    <page-dots align-selected class="product-gallery__thumbnail-list scroll-area bleed md:unbleed" aria-controls="{{ gallery_id }}">
+      {%- for asset_name in gallery_assets -%}
+        <button
+          type="button"
+          class="product-gallery__thumbnail"
+          aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-label="{{ 'general.accessibility.go_to_item' | t: index: forloop.index | escape }}"
+          data-media-id="{{ gallery_instance_id }}-rv-{{ forloop.index }}"
+          data-media-type="image"
+        >
+          <img src="{{ asset_name | asset_url }}" alt="" width="128" height="128" loading="lazy" class="object-contain rounded-sm">
+        </button>
+      {%- endfor -%}
+    </page-dots>
+  </scroll-shadow>
+</product-gallery>

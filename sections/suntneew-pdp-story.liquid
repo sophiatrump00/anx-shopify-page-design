@@ -8,47 +8,13 @@
 {%- if story_layout == 'full_width_below' -%}
   {%- assign story_image_sizes = '(max-width: 899px) 100vw, 1240px' -%}
 {%- endif -%}
-<section id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp sn-pdp-story sn-pdp__section{% if story_layout == 'full_width_below' %} sn-pdp-story--wide-below{% elsif story_layout == 'impact' %} sn-pdp-story--impact{% endif %}" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}">
+<section id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp sn-pdp-story sn-pdp__section{% if story_layout == 'full_width_below' %} sn-pdp-story--wide-below{% endif %}" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}">
   <div class="sn-pdp__shell">
     {%- if section.settings.eyebrow != blank -%}<p class="sn-pdp__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
     <h2 class="sn-pdp__heading">{{ section.settings.heading }}</h2>
     {%- if section.settings.lede != blank -%}<div class="sn-pdp__lede">{{ section.settings.lede }}</div>{%- endif -%}
 
-    {%- if story_layout == 'impact' -%}
-      <div class="sn-pdp-impact__grid">
-        {%- for block in section.blocks -%}
-          {%- assign impact_index = forloop.index0 -%}
-          {%- assign has_story_image = false -%}
-          {%- if block.settings.image != blank or block.settings.image_asset != blank or block.settings.mobile_image_asset != blank -%}
-            {%- assign has_story_image = true -%}
-          {%- endif -%}
-          <article class="sn-pdp-impact__card sn-pdp-impact__card--{{ impact_index }}{% unless has_story_image %} sn-pdp-impact__card--copy-only{% endunless %}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
-            {%- if has_story_image -%}
-              <div class="sn-pdp-impact__media">
-                {%- if block.settings.image != blank -%}
-                  {{- block.settings.image | image_url: width: 2000 | image_tag: widths: '700,1000,1400,1700,2000', sizes: '(max-width: 599px) 100vw, (max-width: 899px) 50vw, 60vw', loading: 'lazy', alt: block.settings.image_alt -}}
-                {%- else -%}
-                  {%- assign impact_desktop_asset = block.settings.image_asset | default: block.settings.mobile_image_asset -%}
-                  <picture>
-                    {%- if block.settings.mobile_image_asset != blank -%}
-                      <source media="(max-width: 599px)" srcset="{{ block.settings.mobile_image_asset | asset_url }}">
-                    {%- endif -%}
-                    <img src="{{ impact_desktop_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="2400" height="1600" loading="lazy" style="object-fit: {{ block.settings.image_fit | default: 'cover' }}">
-                  </picture>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
-            <div class="sn-pdp-impact__wash" aria-hidden="true"></div>
-            <div class="sn-pdp-impact__meta"><span>0{{ forloop.index }}</span><span>{{ block.settings.eyebrow }}</span></div>
-            <div class="sn-pdp-impact__copy">
-              <h3>{{ block.settings.heading }}</h3>
-              <div>{{ block.settings.body }}</div>
-            </div>
-          </article>
-        {%- endfor -%}
-      </div>
-    {%- else -%}
-      <div class="sn-pdp-story__stack">
+    <div class="sn-pdp-story__stack">
         {%- for block in section.blocks -%}
           <article class="sn-pdp-story__row{% if block.settings.image == blank and block.settings.image_asset == blank and block.settings.mobile_image_asset == blank %} sn-pdp-story__row--copy-only{% endif %}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
             {%- if block.settings.image != blank or block.settings.image_asset != blank or block.settings.mobile_image_asset != blank -%}<div class="sn-pdp-story__media">
@@ -85,8 +51,7 @@
             </div>
           </article>
         {%- endfor -%}
-      </div>
-    {%- endif -%}
+    </div>
   </div>
 </section>
 
@@ -98,7 +63,7 @@
     {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Why it stands out"},
     {"type":"text","id":"heading","label":"Heading","default":"Built for the moment power matters"},
     {"type":"richtext","id":"lede","label":"Introduction","default":"<p>Clear product evidence, practical features and the details needed to choose confidently.</p>"},
-    {"type":"select","id":"layout_mode","label":"Feature layout","default":"split","options":[{"value":"split","label":"Split image and copy"},{"value":"full_width_below","label":"Full-width image with copy below"},{"value":"impact","label":"Impact visual matrix"}]}
+    {"type":"select","id":"layout_mode","label":"Feature layout","default":"split","options":[{"value":"split","label":"Split image and copy"},{"value":"full_width_below","label":"Full-width image with copy below"}]}
   ],
   "blocks":[
     {"type":"feature","name":"Feature row","settings":[

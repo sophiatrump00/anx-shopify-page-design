@@ -56,7 +56,16 @@
       {%- if product.media.size > 0 -%}
         <div class="suntneew-pdp-media-column">
           {%- if template.suffix contains 'rv-' -%}
-            {%- render 'suntneew-rv-gallery', product: product, product_form_id: product_form_id -%}
+            {%- render 'suntneew-rv-gallery',
+              product: product,
+              product_form_id: product_form_id,
+              gallery_instance_id: section.id,
+              enable_image_zoom: section.settings.enable_image_zoom,
+              max_image_zoom_level: section.settings.max_image_zoom_level,
+              mobile_carousel_control: section.settings.mobile_carousel_control,
+              mobile_media_size: section.settings.mobile_media_size,
+              media_autoplay_interval: section.settings.suntneew_media_autoplay_interval
+            -%}
           {%- else -%}
             {%- render 'product-gallery', product: product, product_form_id: product_form_id -%}
           {%- endif -%}
