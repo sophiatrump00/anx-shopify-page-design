@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -17,7 +8,7 @@
         "sku": {"type":"sku","settings":{}},
         "price": {"type":"price","settings":{"show_taxes_notice":false}},
         "separator": {"type":"separator","settings":{}},
-        "intro": {"type":"text","settings":{"text":"<p>A 12.8V, 100Ah Group 31 LiFePO4 battery with 1,280Wh of rated energy, Bluetooth 5.0 monitoring, IP65 protection and 5,000+ cycles for planned RV power systems.</p>"}},
+        "intro": {"type":"text","settings":{"text":"<p>A 12.8V 100Ah Group 31 LiFePO4 deep-cycle battery with 1,280Wh rated energy, Bluetooth 5.0 monitoring, IP65 protection, up to 15,000 cycles at 60% DoD and an up-to-10-year life reference for RV, marine and off-grid auxiliary power systems.</p>"}},
         "quantity_selector": {"type":"quantity_selector","settings":{}},
         "bundle": {"type":"suntneew_bundle_selector","settings":{"enabled":true,"heading":"Build a Group 31 multi-pack","body":"Choose 1, 2, 5 or 10 units, or use a custom quantity.","discount_percent":3}},
         "buy_buttons": {"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
@@ -29,11 +20,11 @@
       "type": "suntneew-pdp-proof",
       "blocks": {
         "energy": {"type":"metric","settings":{"value":"1,280Wh","label":"Rated energy","variant_match":""}},
-        "capacity": {"type":"metric","settings":{"value":"12.8V / 100Ah","label":"Group 31 LiFePO4","variant_match":""}},
-        "cycles": {"type":"metric","settings":{"value":"5,000+ cycles","label":"Cycle-life reference","variant_match":""}},
-        "ip": {"type":"metric","settings":{"value":"IP65","label":"Enclosure protection","variant_match":""}}
+        "cycles": {"type":"metric","settings":{"value":"Up to 15,000","label":"Cycles at 60% DoD","variant_match":""}},
+        "life": {"type":"metric","settings":{"value":"Up to 10 years","label":"Product-life reference","variant_match":""}},
+        "ip": {"type":"metric","settings":{"value":"IP65","label":"Dust-tight; protected against water jets","variant_match":""}}
       },
-      "block_order": ["energy","capacity","cycles","ip"],
+      "block_order": ["energy","cycles","life","ip"],
       "settings": {"accessibility_label":"Group 31 RV battery highlights"}
     },
     "anchor_nav": {
@@ -41,26 +32,185 @@
       "blocks": {
         "features": {"type":"link","settings":{"label":"Features","target_id":"features"}},
         "specs": {"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
-        "install": {"type":"link","settings":{"label":"Before installation","target_id":"in-the-box"}},
-        "manuals": {"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
+        "box": {"type":"link","settings":{"label":"In the Box","target_id":"in-the-box"}},
+        "support": {"type":"link","settings":{"label":"Support & Certificates","target_id":"support-certificates"}},
+        "manuals": {"type":"link","settings":{"label":"Manuals","target_id":"manuals"}},
         "faq": {"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
-      "block_order": ["features","specs","install","manuals","faq"],
+      "block_order": ["features","specs","box","support","manuals","faq"],
       "settings": {}
     },
     "features": {
       "type": "suntneew-rv-experience",
       "blocks": {
-        "lifestyle": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-new-lifestyle.jpg","mobile_image_asset":"suntneew-rv-g31-new-lifestyle.jpg","image_alt":"Group 31 100Ah LiFePO4 battery supporting a relaxed RV campsite","eyebrow":"ROOMIER RV PLATFORM","heading":"Give the battery bay a clearer centerline.","body":"<p>Group 31 brings 1,280Wh of stored energy to RV builds that have room for a longer, more serviceable enclosure.</p>","metric_1_value":"100Ah","metric_1_label":"Rated capacity","metric_2_value":"1,280Wh","metric_2_label":"Rated energy","metric_3_value":"12.8V","metric_3_label":"Rated voltage","metric_4_value":"9.6kg","metric_4_label":"Battery weight","variant_match":""}},
-        "installation": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-gallery-new-hero.jpg","mobile_image_asset":"suntneew-rv-g31-gallery-new-hero.jpg","image_alt":"Group 31 LiFePO4 battery front view showing its long enclosure and carry handle","eyebrow":"GROUP 31 FIT AND HANDLE","heading":"A longer case with a practical way to lift it.","body":"<p>The integrated top handle supports routine placement and service while the Group 31 footprint gives cable routing and terminal access more room to breathe.</p>","metric_1_value":"339mm","metric_1_label":"Enclosure length","metric_2_value":"185mm","metric_2_label":"Enclosure width","metric_3_value":"218mm","metric_3_label":"Enclosure height","metric_4_value":"Top handle","metric_4_label":"Integrated carry point","variant_match":""}},
-        "output": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-new-weight-compare.jpg","mobile_image_asset":"suntneew-rv-g31-new-weight-compare.jpg","image_alt":"Group 31 LiFePO4 battery capacity and weight comparison visual","eyebrow":"SERVICEABLE 100A PLATFORM","heading":"Useful RV output in a case designed around access.","body":"<p>A 100A continuous profile supports a practical 12V auxiliary system, while the longer enclosure gives the surrounding installation more planning room.</p>","metric_1_value":"100A","metric_1_label":"Max continuous discharge","metric_2_value":"1,280W","metric_2_label":"Max continuous output","metric_3_value":"100A","metric_3_label":"Max continuous charge","metric_4_value":"30A","metric_4_label":"Recommended charge current","variant_match":""}},
-        "monitoring": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-new-monitoring-wide.jpg","mobile_image_asset":"suntneew-rv-g31-new-monitoring.jpg","image_alt":"Group 31 LiFePO4 battery monitored by Bluetooth app","eyebrow":"BLUETOOTH 5.0 MONITORING","heading":"Read the installed battery before opening the storage bay.","body":"<p>Use the supported app to review battery state before changing loads, connecting charging sources or beginning the next leg.</p>","metric_1_value":"Bluetooth 5.0","metric_1_label":"Wireless connection","metric_2_value":"SOC","metric_2_label":"State-of-charge view","metric_3_value":"V / A","metric_3_label":"Voltage and current","metric_4_value":"Temperature","metric_4_label":"Battery condition view","variant_match":""}},
-        "protection": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-new-protection.jpg","mobile_image_asset":"suntneew-rv-g31-new-protection.jpg","image_alt":"Group 31 LiFePO4 battery protection and system-planning visual","eyebrow":"ROOMIER SYSTEM PROTECTION","heading":"Built-in safeguards for a cleaner complete installation.","body":"<p>Battery protection works with the correctly sized fuse, conductors, disconnect and terminal covers around a more spacious Group 31 layout.</p>","metric_1_value":"IP65","metric_1_label":"Enclosure protection","metric_2_value":"CC/CV","metric_2_label":"Charge method","metric_3_value":"14.4V ±0.2V","metric_3_label":"Charge voltage","metric_4_value":"5,000+","metric_4_label":"Cycle-life reference","variant_match":""}},
-        "temperature": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-new-temperature-wide.jpg","mobile_image_asset":"suntneew-rv-g31-new-temperature.jpg","image_alt":"Group 31 LiFePO4 battery in a cold-weather RV setting","eyebrow":"COLD-WEATHER PROTECTION","heading":"Keep the larger battery bay plan clear in colder weather.","body":"<p>Low-temperature charging protection pauses charging below the documented limit and resumes after the battery returns to a suitable temperature.</p>","metric_1_value":"0°C","metric_1_label":"Charging stops below","metric_2_value":"5°C","metric_2_label":"Charging resumes above","metric_3_value":"-20–60°C","metric_3_label":"Discharge range","metric_4_value":"-10–50°C","metric_4_label":"Storage range","variant_match":""}},
-        "expansion": {"type":"feature","settings":{"image_asset":"suntneew-rv-g31-new-expansion.jpg","mobile_image_asset":"suntneew-rv-g31-new-expansion.jpg","image_alt":"Group 31 LiFePO4 battery bank expansion concept for an RV system","eyebrow":"ROOMIER BANK EXPANSION","heading":"Use the longer platform as the start of a larger system.","body":"<p>Series and parallel support lets the Group 31 installation scale when all batteries, conductors and protection devices are matched and planned together.</p>","metric_1_value":"4S","metric_1_label":"Maximum series layout","metric_2_value":"4P","metric_2_label":"Maximum parallel layout","metric_3_value":"51.2V","metric_3_label":"Four-battery series voltage","metric_4_value":"16","metric_4_label":"Batteries in a 4P4S bank","variant_match":""}}
+        "overview": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-amazon-aplus-overview.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-overview.jpg",
+            "image_alt":"SuntNeew 12.8V 100Ah Group 31 LiFePO4 battery overview for RV auxiliary power",
+            "eyebrow":"1,280WH GROUP 31 PLATFORM",
+            "heading":"One Group 31 battery for a capable 12V auxiliary system.",
+            "body":"<p>The single-battery configuration combines 100Ah capacity, 1,280Wh rated energy, Bluetooth monitoring and an IP65 enclosure in a practical Group 31 case. It is a deep-cycle battery and is not intended for engine starting.</p>",
+            "metric_1_value":"100Ah",
+            "metric_1_label":"Rated capacity",
+            "metric_2_value":"1,280Wh",
+            "metric_2_label":"Rated energy",
+            "metric_3_value":"12.8V",
+            "metric_3_label":"Rated voltage",
+            "metric_4_value":"Group 31",
+            "metric_4_label":"Battery form factor",
+            "variant_match":""
+          }
+        },
+        "cycles": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-amazon-aplus-cycles.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-cycles.jpg",
+            "image_alt":"SuntNeew Group 31 battery cycle-life tiers from 4,000 to 15,000 cycles",
+            "eyebrow":"UP TO 15,000 CYCLES",
+            "heading":"Cycle life scales with depth of discharge.",
+            "body":"<p>The cycle-life reference is 4,000+ cycles at 100% DoD, 6,000+ at 80% DoD and up to 15,000 at 60% DoD, with an up-to-10-year product-life reference. Actual cycle and service life vary with use, temperature, charge and discharge rate, maintenance and operating conditions.</p>",
+            "metric_1_value":"4,000+",
+            "metric_1_label":"Cycles at 100% DoD",
+            "metric_2_value":"6,000+",
+            "metric_2_label":"Cycles at 80% DoD",
+            "metric_3_value":"15,000+",
+            "metric_3_label":"Cycles at 60% DoD",
+            "metric_4_value":"Up to 10 years",
+            "metric_4_label":"Product-life reference",
+            "variant_match":""
+          }
+        },
+        "bluetooth": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-amazon-aplus-bluetooth.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-bluetooth.jpg",
+            "image_alt":"Phone displaying Bluetooth battery information beside a SuntNeew Group 31 battery",
+            "eyebrow":"BLUETOOTH 5.0 MONITORING",
+            "heading":"Check battery status without reopening the bay.",
+            "body":"<p>Use the supported mobile app to review state of charge, voltage, current, power, temperature and cycle information before changing loads or charging sources.</p>",
+            "metric_1_value":"SOC",
+            "metric_1_label":"State of charge",
+            "metric_2_value":"V / A",
+            "metric_2_label":"Voltage and current",
+            "metric_3_value":"Power",
+            "metric_3_label":"Live system view",
+            "metric_4_value":"Temperature",
+            "metric_4_label":"Battery condition",
+            "variant_match":""
+          }
+        },
+        "bms": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-amazon-aplus-bms.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-bms.jpg",
+            "image_alt":"Six-tier battery management system protection graphic",
+            "eyebrow":"6-TIER BMS PROTECTION",
+            "heading":"Built-in protection for everyday deep-cycle use.",
+            "body":"<p>The integrated BMS covers low-temperature charging, overcharge, over-discharge, over-current, short-circuit and over-temperature conditions. Correct fusing, cable sizing, terminal protection and compatible charging remain part of the complete installation.</p>",
+            "metric_1_value":"6-tier",
+            "metric_1_label":"Protection profile",
+            "metric_2_value":"100A",
+            "metric_2_label":"Max continuous charge",
+            "metric_3_value":"100A",
+            "metric_3_label":"Max continuous discharge",
+            "metric_4_value":"LTCP",
+            "metric_4_label":"Low-temperature charge protection",
+            "variant_match":""
+          }
+        },
+        "all_season": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-amazon-aplus-all-season.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-all-season.jpg",
+            "image_alt":"SuntNeew Group 31 battery shown in cold and wet RV conditions",
+            "eyebrow":"IP65 & TEMPERATURE PROTECTION",
+            "heading":"Prepared for changing seasons when installed correctly.",
+            "body":"<p>The IP65 enclosure is dust-tight and protected against water jets, but it is not designed for immersion. Low-temperature charging protection stops charging below 0°C and resumes above 5°C battery temperature.</p>",
+            "metric_1_value":"IP65",
+            "metric_1_label":"Enclosure protection",
+            "metric_2_value":"0–55°C",
+            "metric_2_label":"Charge range",
+            "metric_3_value":"-20–60°C",
+            "metric_3_label":"Discharge range",
+            "metric_4_value":"0°C / 5°C",
+            "metric_4_label":"Charge stop / resume",
+            "variant_match":""
+          }
+        },
+        "charging": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-amazon-aplus-charging.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-charging.jpg",
+            "image_alt":"Four compatible charging paths for a SuntNeew Group 31 LiFePO4 battery",
+            "eyebrow":"FOUR CHARGING PATHS",
+            "heading":"Charge from AC, solar, alternator or generator through compatible equipment.",
+            "body":"<p>Use a LiFePO4 AC charger, solar with an MPPT controller, an alternator with a DC-to-DC charger, or a generator feeding a compatible LiFePO4 charger. Do not connect solar, an alternator or an AC generator directly to the battery terminals.</p>",
+            "metric_1_value":"CC/CV",
+            "metric_1_label":"Charge method",
+            "metric_2_value":"14.4V ±0.2V",
+            "metric_2_label":"Charge voltage",
+            "metric_3_value":"30A",
+            "metric_3_label":"Recommended current",
+            "metric_4_value":"100A",
+            "metric_4_label":"Max continuous charge",
+            "variant_match":""
+          }
+        },
+        "runtime": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-amazon-aplus-runtime.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-runtime.jpg",
+            "image_alt":"RV appliance runtime examples based on 1,280Wh rated battery energy",
+            "eyebrow":"THEORETICAL RUNTIME EXAMPLES",
+            "heading":"Translate 1,280Wh into familiar RV loads.",
+            "body":"<p>The examples shown are theoretical estimates based on 1,280Wh rated energy. Actual runtime varies by appliance load, duty cycle, inverter efficiency, battery condition and temperature; AC appliances require a correctly sized inverter and complete power system.</p>",
+            "metric_1_value":"64h",
+            "metric_1_label":"20W LED lighting",
+            "metric_2_value":"12.8h",
+            "metric_2_label":"100W TV",
+            "metric_3_value":"8.5h",
+            "metric_3_label":"150W refrigerator",
+            "metric_4_value":"1.28h",
+            "metric_4_label":"1,000W microwave",
+            "variant_match":""
+          }
+        },
+        "expansion": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-amazon-aplus-expansion.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-expansion.jpg",
+            "image_alt":"Matched SuntNeew Group 31 batteries arranged in 4P4S expansion options",
+            "eyebrow":"UP TO 4P4S EXPANSION",
+            "heading":"Scale a matched bank up to 20.48kWh.",
+            "body":"<p>Up to 16 identical batteries can form a 4P4S bank when model, capacity, BMS rating, purchase timing, conductors and protection are matched. This is an auxiliary energy-storage configuration, not an engine-starting application.</p>",
+            "metric_1_value":"4S",
+            "metric_1_label":"Up to 51.2V 100Ah",
+            "metric_2_value":"4P",
+            "metric_2_label":"Up to 12.8V 400Ah",
+            "metric_3_value":"16",
+            "metric_3_label":"Maximum matched batteries",
+            "metric_4_value":"20.48kWh",
+            "metric_4_label":"4P4S rated energy",
+            "variant_match":""
+          }
+        }
       },
-      "block_order": ["lifestyle","installation","output","monitoring","protection","temperature","expansion"],
-      "settings": {"anchor_id":"features","eyebrow":"FEATURES","heading":"A longer Group 31 platform for roomier, serviceable RV power bays.","lede":"<p>The 339 × 185 × 218mm enclosure combines 1,280Wh of reserve, a 9.6kg weight and an integrated top handle for installations that prioritize access.</p>"}
+      "block_order": ["overview","cycles","bluetooth","bms","all_season","charging","runtime","expansion"],
+      "settings": {
+        "anchor_id":"features",
+        "eyebrow":"GROUP 31 FEATURES",
+        "heading":"A complete power story, from battery bay to the next trip.",
+        "lede":"<p>Explore capacity, cycle life, monitoring, protection, charging, runtime and matched-bank expansion in a sequence that makes the G31 easier to compare and plan around.</p>"
+      }
     },
     "details": {
       "type": "suntneew-pdp-details",
@@ -70,43 +220,121 @@
         "capacity": {"type":"spec","settings":{"label":"Rated capacity","value":"100Ah","group":"primary","variant_match":""}},
         "energy": {"type":"spec","settings":{"label":"Rated energy","value":"1,280Wh","group":"primary","variant_match":""}},
         "power": {"type":"spec","settings":{"label":"Maximum continuous output power","value":"1,280W","group":"primary","variant_match":""}},
-        "cycles": {"type":"spec","settings":{"label":"Cycle-life reference","value":"5,000+ cycles","group":"primary","variant_match":""}},
+        "cycles_100": {"type":"spec","settings":{"label":"Cycle-life reference at 100% DoD","value":"4,000+ cycles","group":"primary","variant_match":""}},
+        "cycles_80": {"type":"spec","settings":{"label":"Cycle-life reference at 80% DoD","value":"6,000+ cycles","group":"primary","variant_match":""}},
+        "cycles_60": {"type":"spec","settings":{"label":"Cycle-life reference at 60% DoD","value":"Up to 15,000 cycles","group":"primary","variant_match":""}},
+        "life": {"type":"spec","settings":{"label":"Product-life reference","value":"Up to 10 years; actual life varies by operating conditions","group":"primary","variant_match":""}},
         "model": {"type":"spec","settings":{"label":"Model","value":"ESS-12.8V100AH-B-G31","group":"system","variant_match":""}},
+        "fcc_id": {"type":"spec","settings":{"label":"FCC ID","value":"2BQK7-12100BG31","group":"system","variant_match":""}},
         "charge_method": {"type":"spec","settings":{"label":"Charge method","value":"CC/CV","group":"system","variant_match":""}},
-        "charge_voltage": {"type":"spec","settings":{"label":"Charge voltage","value":"14.4V +/- 0.2V","group":"system","variant_match":""}},
+        "charge_voltage": {"type":"spec","settings":{"label":"Charge voltage","value":"14.4V ±0.2V","group":"system","variant_match":""}},
         "recommended_charge": {"type":"spec","settings":{"label":"Recommended charge current","value":"30A (0.3C)","group":"system","variant_match":""}},
         "max_charge": {"type":"spec","settings":{"label":"Maximum continuous charge current","value":"100A","group":"system","variant_match":""}},
         "max_discharge": {"type":"spec","settings":{"label":"Maximum continuous discharge current","value":"100A","group":"system","variant_match":""}},
         "bluetooth": {"type":"spec","settings":{"label":"Wireless monitoring","value":"Bluetooth 5.0","group":"system","variant_match":""}},
-        "ip_rating": {"type":"spec","settings":{"label":"Enclosure protection","value":"IP65 (not for immersion)","group":"system","variant_match":""}},
-        "low_temp": {"type":"spec","settings":{"label":"Low-temperature charging protection","value":"Stops below 0C; resumes above 5C","group":"system","variant_match":""}},
-        "dimensions": {"type":"spec","settings":{"label":"Dimensions (L x W x H)","value":"339 x 185 x 218mm","group":"installation","variant_match":""}},
-        "weight": {"type":"spec","settings":{"label":"Weight","value":"9.6kg","group":"installation","variant_match":""}},
+        "bms": {"type":"spec","settings":{"label":"BMS protection","value":"Low-temperature charge, overcharge, over-discharge, over-current, short-circuit and over-temperature protection","group":"system","variant_match":""}},
+        "expansion": {"type":"spec","settings":{"label":"Series / parallel expansion","value":"Up to 4S or 4P; up to 16 matched batteries in 4P4S","group":"system","variant_match":""}},
+        "dimensions": {"type":"spec","settings":{"label":"Dimensions (L × W × H)","value":"339 × 185 × 218mm / 13.34 × 7.28 × 8.58in","group":"installation","variant_match":""}},
+        "weight": {"type":"spec","settings":{"label":"Weight","value":"9.6kg / 21.16lb","group":"installation","variant_match":""}},
         "housing": {"type":"spec","settings":{"label":"Housing material","value":"ABS","group":"installation","variant_match":""}},
-        "torque": {"type":"spec","settings":{"label":"Recommended terminal torque","value":"12 to 14 N.m","group":"installation","variant_match":""}},
-        "temperature": {"type":"spec","settings":{"label":"Temperature range","value":"Charge 0 to 55C; discharge -20 to 60C; storage -10 to 50C","group":"installation","variant_match":""}},
-        "note1": {"type":"included","settings":{"item":"Confirm tray, hold-down and terminal clearance before ordering","variant_match":""}},
-        "note2": {"type":"included","settings":{"item":"Use conductors and over-current protection sized for the complete DC system","variant_match":""}},
-        "note3": {"type":"included","settings":{"item":"Configure every charger and controller for the exact LiFePO4 battery limits","variant_match":""}},
-        "note4": {"type":"included","settings":{"item":"Follow the battery, charger, inverter and RV manufacturer instructions","variant_match":""}},
-        "manual": {"type":"download","settings":{"label":"Group 31 user manual (EN PDF)","link":"","asset_name":"suntneew-rv-g31-manual-en.pdf","variant_match":""}}
+        "terminals": {"type":"spec","settings":{"label":"Terminal hardware","value":"M8 × 12mm positive and negative terminal bolts","group":"installation","variant_match":""}},
+        "torque": {"type":"spec","settings":{"label":"Recommended terminal torque","value":"12–14N·m / 106.2–123.9in-lb","group":"installation","variant_match":""}},
+        "ip_rating": {"type":"spec","settings":{"label":"Enclosure protection","value":"IP65 — dust-tight and protected against water jets; not for immersion","group":"installation","variant_match":""}},
+        "temperature": {"type":"spec","settings":{"label":"Temperature ranges","value":"Charge 0–55°C; discharge -20–60°C; storage -10–50°C; charging resumes above 5°C after low-temperature protection","group":"installation","variant_match":""}},
+        "box_battery": {"type":"included","settings":{"item":"Group 31 12.8V 100Ah LiFePO4 battery ×1","variant_match":""}},
+        "box_manual": {"type":"included","settings":{"item":"English product manual ×1","variant_match":""}},
+        "box_bolts": {"type":"included","settings":{"item":"M8 × 12mm terminal bolts ×2","variant_match":""}},
+        "box_caps": {"type":"included","settings":{"item":"Red insulating cap ×1 and black insulating cap ×1","variant_match":""}},
+        "manual": {"type":"download","settings":{"label":"Group 31 product manual — English PDF","link":"","asset_name":"suntneew-rv-g31-manual-en.pdf","variant_match":""}},
+        "ip65": {"type":"download","settings":{"label":"IP65 Certificate of Compliance — PDF","link":"","asset_name":"suntneew-rv-g31-ip65-certificate.pdf","variant_match":""}},
+        "fcc_grant": {"type":"download","settings":{"label":"FCC Equipment Authorization — FCC ID 2BQK7-12100BG31","link":"","asset_name":"suntneew-rv-g31-fcc-grant.pdf","variant_match":""}},
+        "fcc_sdoc": {"type":"download","settings":{"label":"FCC Supplier's Declaration of Conformity — PDF","link":"","asset_name":"suntneew-rv-g31-fcc-sdoc.pdf","variant_match":""}},
+        "emc": {"type":"download","settings":{"label":"EMC Certificate of Conformity — PDF","link":"","asset_name":"suntneew-rv-g31-emc-certificate.pdf","variant_match":""}},
+        "rohs": {"type":"download","settings":{"label":"EU RoHS Test Report — PDF","link":"","asset_name":"suntneew-rv-g31-rohs-report.pdf","variant_match":""}},
+        "ul1642": {"type":"download","settings":{"label":"UL 1642 cell Certificate of Compliance — PDF","link":"","asset_name":"suntneew-rv-g31-ul1642-cell-certificate.pdf","variant_match":""}}
       },
-      "block_order": ["chemistry","voltage","capacity","energy","power","cycles","model","charge_method","charge_voltage","recommended_charge","max_charge","max_discharge","bluetooth","ip_rating","low_temp","dimensions","weight","housing","torque","temperature","note1","note2","note3","note4","manual"],
-      "settings": {"anchor_id":"specifications","eyebrow":"Verified product data","heading":"Group 31 technical specifications","lede":"<p>The key capacity, charging, protection and installation values are transcribed from the current English product manual. Use the manual for the full operating sequence and safety limits.</p>","primary_group_heading":"Capacity & performance","system_group_heading":"Charging, monitoring & protection","installation_group_heading":"Enclosure & physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation","download_eyebrow":"Product documentation","download_heading":"Manuals & downloads"}
+      "block_order": ["chemistry","voltage","capacity","energy","power","cycles_100","cycles_80","cycles_60","life","model","fcc_id","charge_method","charge_voltage","recommended_charge","max_charge","max_discharge","bluetooth","bms","expansion","dimensions","weight","housing","terminals","torque","ip_rating","temperature","box_battery","box_manual","box_bolts","box_caps","manual","ip65","fcc_grant","fcc_sdoc","emc","rohs","ul1642"],
+      "settings": {
+        "anchor_id":"specifications",
+        "eyebrow":"PRODUCT DATA",
+        "heading":"Group 31 technical specifications",
+        "lede":"<p>Review the G31's electrical, environmental and service information in one place. Cycle life, product life and runtime vary with depth of discharge, load, charging, temperature and operating conditions.</p>",
+        "primary_group_heading":"Capacity, output & cycle life",
+        "system_group_heading":"Charging, monitoring & expansion",
+        "installation_group_heading":"Enclosure, terminals & environment",
+        "included_eyebrow":"PACKAGE CONTENTS",
+        "included_heading":"In the box",
+        "download_eyebrow":"SUPPORTING FILES",
+        "download_heading":"Manuals & certificates"
+      }
+    },
+    "service_proof": {
+      "type": "suntneew-pdp-story",
+      "blocks": {
+        "support": {
+          "type":"feature",
+          "settings":{
+            "image_asset":"suntneew-rv-g31-amazon-aplus-support-24-7.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-support-24-7.jpg",
+            "image_alt":"SuntNeew 24/7 after-sales support graphic",
+            "image_fit":"contain",
+            "eyebrow":"24/7 SUPPORT",
+            "heading":"Product and after-sales help when you need it.",
+            "body":"<p>Contact SuntNeew support 24/7 for product setup, charging, Bluetooth, installation and after-sales questions. Keep the order details, model number and clear photos available to help the team handle the request efficiently.</p>",
+            "variant_match":""
+          }
+        },
+        "service": {
+          "type":"feature",
+          "settings":{
+            "image_asset":"suntneew-rv-g31-amazon-aplus-service-5-year.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-service-5-year.jpg",
+            "image_alt":"SuntNeew five-year service graphic",
+            "image_fit":"contain",
+            "eyebrow":"5-YEAR SERVICE",
+            "heading":"Five years of product service coverage.",
+            "body":"<p>The 5-Year Service period covers the product's after-sales service relationship and is separate from the Up to 10-Year Life reference. Product life describes expected service life under suitable conditions; it is not a 10-year warranty statement.</p>",
+            "variant_match":""
+          }
+        },
+        "certificates": {
+          "type":"feature",
+          "settings":{
+            "image_asset":"suntneew-rv-g31-amazon-aplus-certificates.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-certificates.jpg",
+            "image_alt":"Collection of product compliance and test documents",
+            "image_fit":"contain",
+            "eyebrow":"SUPPORTING DOCUMENTS",
+            "heading":"Open the available model and cell documentation.",
+            "body":"<p>The downloads include FCC equipment authorization and supplier declaration, IP65, EMC, RoHS and UL 1642 cell documentation. The UL 1642 file applies to the listed cell models and should not be read as a complete-battery UL certification.</p>",
+            "variant_match":""
+          }
+        }
+      },
+      "block_order":["support","service","certificates"],
+      "settings":{
+        "anchor_id":"support-certificates",
+        "eyebrow":"SUPPORT & CERTIFICATES",
+        "heading":"Support, service and the documents behind the product.",
+        "lede":"<p>Keep after-sales support, 5-Year Service and the available compliance files together so customers can review the promise and the supporting material in one place.</p>",
+        "layout_mode":"full_width_below"
+      }
     },
     "faq": {
       "type": "suntneew-pdp-faq",
       "blocks": {
-        "q1": {"type":"question","settings":{"question":"Is this the same size as every Group 31 battery?","answer":"<p>No. Group labels are a starting point, not a substitute for measurement. Confirm the stated 339 x 185 x 218mm dimensions, terminal position and hold-down arrangement.</p>"}},
-        "q2": {"type":"question","settings":{"question":"Can I monitor it by phone?","answer":"<p>The product is specified with Bluetooth 5.0 monitoring. Confirm the supported app, pairing steps and available data for the exact battery version.</p>"}},
-        "q3": {"type":"question","settings":{"question":"Can I use my existing RV charger?","answer":"<p>Only if its voltage profile and current limits are compatible with the exact LiFePO4 battery and the rest of the RV electrical system. Verify the charger documentation before connection.</p>"}},
-        "q4": {"type":"question","settings":{"question":"How should I plan for wet conditions?","answer":"<p>Keep terminals, cable routing and the battery location protected in line with the current product manual and RV manufacturer instructions. A dry, secured installation remains essential.</p>"}},
-        "q5": {"type":"question","settings":{"question":"What does IP65 mean for this battery?","answer":"<p>IP65 indicates a dust-tight enclosure with protection against water jets. It is not an immersion rating; keep the battery location, terminals and cable routing protected and follow the installation manual.</p>"}}
+        "cycles": {"type":"question","settings":{"question":"What conditions apply to the 15,000+ cycle claim?","answer":"<p>The current tiered reference is 4,000+ cycles at 100% depth of discharge, 6,000+ at 80% DoD and up to 15,000 at 60% DoD. Actual cycle life varies with charge and discharge rate, temperature, maintenance, depth of discharge and operating conditions.</p>"}},
+        "life_service": {"type":"question","settings":{"question":"Is Up to 10-Year Life the same as 5-Year Service?","answer":"<p>No. Up to 10-Year Life is a product-life reference under suitable use. 5-Year Service describes the after-sales service period. Neither phrase should be rewritten as a 10-year warranty.</p>"}},
+        "support": {"type":"question","settings":{"question":"What is included in 24/7 Support?","answer":"<p>You can contact SuntNeew support for product setup, charging, Bluetooth, installation and after-sales questions. Provide the order information, model number and photos or readings relevant to the issue.</p>"}},
+        "starting": {"type":"question","settings":{"question":"Can this battery be used to start an engine?","answer":"<p>No. This is a deep-cycle auxiliary battery and is not intended to start a vehicle, boat engine or other device. Do not use it as a starting battery.</p>"}},
+        "installation": {"type":"question","settings":{"question":"What should I confirm before installation?","answer":"<p>Confirm the 339 × 185 × 218mm enclosure, terminal position, hold-down, upright mounting, cable route and service clearance. Size conductors, fuses, disconnects, inverter and charging sources for the complete DC system.</p>"}},
+        "runtime": {"type":"question","settings":{"question":"Are the appliance runtime figures guaranteed?","answer":"<p>No. They are theoretical estimates based on 1,280Wh rated energy and the stated appliance loads. Actual runtime changes with duty cycle, inverter efficiency, battery condition, temperature and the real power draw of the connected equipment.</p>"}},
+        "ip65": {"type":"question","settings":{"question":"Can an IP65 battery be submerged?","answer":"<p>No. IP65 means the enclosure is dust-tight and protected against water jets. It is not an immersion rating; keep the battery secured, upright and protected in accordance with the product manual.</p>"}}
       },
-      "block_order": ["q1","q2","q3","q4","q5"],
-      "settings": {"anchor_id":"faq","eyebrow":"Group 31 planning","heading":"Frequently asked questions"}
+      "block_order": ["cycles","life_service","support","starting","installation","runtime","ip65"],
+      "settings": {"anchor_id":"faq","eyebrow":"GROUP 31 BUYING QUESTIONS","heading":"Frequently asked questions"}
     },
     "related-products": {"type":"related-products","settings":{}}
   },
-  "order": ["main","proof","anchor_nav","features","details","faq","related-products"]
+  "order": ["main","proof","anchor_nav","features","details","service_proof","faq","related-products"]
 }

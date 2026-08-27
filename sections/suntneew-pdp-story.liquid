@@ -24,7 +24,10 @@
                 {%- assign desktop_image_asset = block.settings.image_asset | default: block.settings.mobile_image_asset -%}
                 {%- assign story_asset_width = 2400 -%}
                 {%- assign story_asset_height = 1600 -%}
-                {%- if story_layout == 'full_width_below' -%}
+                {%- if desktop_image_asset contains 'g31-amazon-aplus' -%}
+                  {%- assign story_asset_width = 1464 -%}
+                  {%- assign story_asset_height = 600 -%}
+                {%- elsif story_layout == 'full_width_below' -%}
                   {%- if desktop_image_asset contains 'u23-2026-pdp-02-starting' -%}
                     {%- assign story_asset_width = 1464 -%}
                     {%- assign story_asset_height = 1200 -%}

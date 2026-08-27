@@ -79,7 +79,11 @@
       }
     </script>
 
-    {{ shogun_content_for_header | default: content_for_header }}
+    {%- if shogun_content_for_header != blank -%}
+      {{ shogun_content_for_header }}
+    {%- else -%}
+      {{ content_for_header }}
+    {%- endif -%}
 
     {{- 'theme-bundle-1.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'theme-bundle-2.css' | asset_url | stylesheet_tag: preload: true -}}
@@ -123,7 +127,11 @@
     {%- endif -%}
 
     <main role="main" id="main" class="anchor">
-      {{ shogun_content_for_layout | default: content_for_layout }}
+      {%- if shogun_content_for_layout != blank -%}
+        {{ shogun_content_for_layout }}
+      {%- else -%}
+        {{ content_for_layout }}
+      {%- endif -%}
 
       {%- comment -%}
         IMPLEMENTATION NOTE: due to the very complex logic of margin/padding collapsing in Impact, the footer group is

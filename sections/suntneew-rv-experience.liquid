@@ -13,11 +13,17 @@
           {%- if block.settings.image != blank -%}
             {{- block.settings.image | image_url: width: 2000 | image_tag: widths: '700,1000,1400,1700,2000', sizes: '(max-width: 599px) calc(100vw - 28px), 1240px', loading: 'lazy', alt: block.settings.image_alt -}}
           {%- elsif desktop_asset != blank -%}
+            {%- assign bundled_asset_width = 2400 -%}
+            {%- assign bundled_asset_height = 1600 -%}
+            {%- if desktop_asset contains 'g31-amazon-aplus' -%}
+              {%- assign bundled_asset_width = 1464 -%}
+              {%- assign bundled_asset_height = 600 -%}
+            {%- endif -%}
             <picture style="display: block">
               {%- if block.settings.mobile_image_asset != blank -%}
                 <source media="(max-width: 599px)" srcset="{{ block.settings.mobile_image_asset | asset_url }}">
               {%- endif -%}
-              <img src="{{ desktop_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="2400" height="1600" loading="lazy">
+              <img src="{{ desktop_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="{{ bundled_asset_width }}" height="{{ bundled_asset_height }}" loading="lazy">
             </picture>
           {%- endif -%}
 
