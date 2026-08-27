@@ -47,6 +47,23 @@
                       </div>
                     {%- endif -%}
 
+                    {%- if block.settings.contact_email != blank or block.settings.contact_phone != blank or block.settings.contact_address != blank -%}
+                      {%- assign contact_phone_href = block.settings.contact_phone | strip | remove: ' ' | remove: '(' | remove: ')' | remove: '-' -%}
+                      <address class="sn-footer__contact">
+                        {%- if block.settings.contact_email != blank -%}
+                          <p><a href="mailto:{{ block.settings.contact_email | strip | escape }}">{{ block.settings.contact_email | strip | escape }}</a></p>
+                        {%- endif -%}
+
+                        {%- if block.settings.contact_phone != blank -%}
+                          <p><a href="tel:{{ contact_phone_href | escape }}">{{ block.settings.contact_phone | strip | escape }}</a></p>
+                        {%- endif -%}
+
+                        {%- if block.settings.contact_address != blank -%}
+                          <p>{{ block.settings.contact_address | escape }}</p>
+                        {%- endif -%}
+                      </address>
+                    {%- endif -%}
+
                     {%- if shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
                       <div class="follow-on-shop">
                         {{- shop | login_button: action: 'follow' -}}
@@ -314,6 +331,21 @@
           "id": "content",
           "label": "Content",
           "default": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme editor.</p>"
+        },
+        {
+          "type": "text",
+          "id": "contact_email",
+          "label": "Contact email"
+        },
+        {
+          "type": "text",
+          "id": "contact_phone",
+          "label": "Contact phone"
+        },
+        {
+          "type": "textarea",
+          "id": "contact_address",
+          "label": "Contact address"
         },
         {
           "type": "checkbox",

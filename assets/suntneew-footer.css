@@ -82,6 +82,34 @@
   margin: 0;
 }
 
+.shopify-section--footer .sn-footer .sn-footer__contact {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.15rem 0 0;
+  color: var(--sn-footer-muted);
+  font-family: var(--text-font-family);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: var(--text-font-weight);
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+
+.shopify-section--footer .sn-footer .sn-footer__contact p {
+  margin: 0;
+}
+
+.shopify-section--footer .sn-footer .sn-footer__contact a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.shopify-section--footer .sn-footer .sn-footer__contact a:hover,
+.shopify-section--footer .sn-footer .sn-footer__contact a:focus-visible {
+  color: var(--sn-footer-accent);
+}
+
 .shopify-section--footer .sn-footer .footer__aside {
   gap: 0;
 }
@@ -164,7 +192,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .shopify-section--footer .sn-footer .sn-footer__column a {
+  .shopify-section--footer .sn-footer .sn-footer__column a,
+  .shopify-section--footer .sn-footer .sn-footer__contact a {
     transition: none;
   }
 }

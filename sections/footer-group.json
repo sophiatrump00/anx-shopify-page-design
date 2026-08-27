@@ -51,6 +51,9 @@
           "settings": {
             "title": "SuntNeew",
             "content": "<p>Power for life,<br>on the road<br>&amp; beyond.</p>",
+            "contact_email": "info@suntneew.com",
+            "contact_phone": "+1 (909) 652-1298",
+            "contact_address": "6/F Manulife Place, 348 Kwun Tong Road, Kowloon, Hong Kong",
             "enable_follow_on_shop": false
           }
         }
