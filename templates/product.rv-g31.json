@@ -106,13 +106,34 @@
             "card_size":"tile"
           }
         },
+        "environment": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-a-plus-rv-scene.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-a-plus-rv-scene.jpg",
+            "image_alt":"SuntNeew Group 31 battery in a protected RV storage compartment",
+            "eyebrow":"4. PROTECTED FOR THE REAL RV ENVIRONMENT",
+            "heading":"Protection helps define the boundary—correct installation completes it.",
+            "body":"<p>IP65 is dust-tight and protected against water jets, not immersion. The built-in BMS covers the listed temperature, current and voltage protection functions; low-temperature charge protection stops charging below 0°C and resumes above 5°C battery temperature. Secure the battery upright and use correctly sized fuses, cables and terminal covers as part of the complete system.</p>",
+            "metric_1_value":"IP65",
+            "metric_1_label":"Dust-tight; water jets",
+            "metric_2_value":"0°C / 5°C",
+            "metric_2_label":"Charge stop / resume",
+            "metric_3_value":"-20–60°C",
+            "metric_3_label":"Specified discharge range",
+            "metric_4_value":"BMS",
+            "metric_4_label":"Built-in battery protection",
+            "variant_match":"",
+            "card_size":"tile"
+          }
+        },
         "charging": {
           "type": "feature",
           "settings": {
             "image_asset":"suntneew-rv-g31-a-plus-charging.jpg",
             "mobile_image_asset":"suntneew-rv-g31-a-plus-charging.jpg",
             "image_alt":"SuntNeew Group 31 battery in an RV solar charging setup",
-            "eyebrow":"4. BUILD COMPATIBLE CHARGING PATHS",
+            "eyebrow":"5. BUILD COMPATIBLE CHARGING PATHS",
             "heading":"Bring shore, solar or driving charge through the right equipment.",
             "body":"<p>Plan LiFePO4-compatible CC/CV charge sources: an AC charger, solar with an MPPT controller, an alternator through a DC-to-DC charger, or a generator feeding a compatible charger. Do not connect sources directly to the battery terminals.</p>",
             "metric_1_value":"CC/CV",
@@ -124,11 +145,11 @@
             "metric_4_value":"100A",
             "metric_4_label":"Max continuous charge",
             "variant_match":"",
-            "card_size":"tile"
+            "card_size":"wide-short"
           }
         }
       },
-      "block_order": ["fit","everyday_power","bluetooth","charging"],
+      "block_order": ["fit","everyday_power","bluetooth","environment","charging"],
       "settings": {
         "anchor_id":"features",
         "eyebrow":"GROUP 31 FEATURES",
