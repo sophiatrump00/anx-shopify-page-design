@@ -60,7 +60,8 @@
             "metric_3_label":"Rated voltage",
             "metric_4_value":"Group 31",
             "metric_4_label":"Battery form factor",
-            "variant_match":""
+            "variant_match":"",
+            "card_size":"wide"
           }
         },
         "cycles": {
@@ -80,7 +81,8 @@
             "metric_3_label":"Cycles at 60% DoD",
             "metric_4_value":"Up to 10 years",
             "metric_4_label":"Product-life reference",
-            "variant_match":""
+            "variant_match":"",
+            "card_size":"tile"
           }
         },
         "bluetooth": {
@@ -100,7 +102,8 @@
             "metric_3_label":"Live system view",
             "metric_4_value":"Temperature",
             "metric_4_label":"Battery condition",
-            "variant_match":""
+            "variant_match":"",
+            "card_size":"tile"
           }
         },
         "bms": {
@@ -120,7 +123,8 @@
             "metric_3_label":"Max continuous discharge",
             "metric_4_value":"LTCP",
             "metric_4_label":"Low-temperature charge protection",
-            "variant_match":""
+            "variant_match":"",
+            "card_size":"tile"
           }
         },
         "all_season": {
@@ -140,7 +144,8 @@
             "metric_3_label":"Discharge range",
             "metric_4_value":"0°C / 5°C",
             "metric_4_label":"Charge stop / resume",
-            "variant_match":""
+            "variant_match":"",
+            "card_size":"tile"
           }
         },
         "charging": {
@@ -160,7 +165,8 @@
             "metric_3_label":"Recommended current",
             "metric_4_value":"100A",
             "metric_4_label":"Max continuous charge",
-            "variant_match":""
+            "variant_match":"",
+            "card_size":"tile"
           }
         },
         "runtime": {
@@ -180,7 +186,8 @@
             "metric_3_label":"150W refrigerator",
             "metric_4_value":"1.28h",
             "metric_4_label":"1,000W microwave",
-            "variant_match":""
+            "variant_match":"",
+            "card_size":"tile"
           }
         },
         "expansion": {
@@ -200,16 +207,18 @@
             "metric_3_label":"Maximum matched batteries",
             "metric_4_value":"20.48kWh",
             "metric_4_label":"4P4S rated energy",
-            "variant_match":""
+            "variant_match":"",
+            "card_size":"wide"
           }
         }
       },
-      "block_order": ["overview","cycles","bluetooth","bms","all_season","charging","runtime","expansion"],
+      "block_order": ["overview","bluetooth","all_season","cycles","bms","charging","runtime","expansion"],
       "settings": {
         "anchor_id":"features",
         "eyebrow":"GROUP 31 FEATURES",
         "heading":"A complete power story, from battery bay to the next trip.",
-        "lede":"<p>Explore capacity, cycle life, monitoring, protection, charging, runtime and matched-bank expansion in a sequence that makes the G31 easier to compare and plan around.</p>"
+        "lede":"<p>Explore capacity, cycle life, monitoring, protection, charging, runtime and matched-bank expansion in a sequence that makes the G31 easier to compare and plan around.</p>",
+        "layout_mode":"editorial_grid"
       }
     },
     "details": {

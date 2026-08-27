@@ -1,15 +1,18 @@
 {{ 'suntneew-a3-pdp.css' | asset_url | stylesheet_tag }}
 
+{%- assign feature_layout = section.settings.layout_mode | default: 'stories' -%}
+
 <section id="{{ section.settings.anchor_id | handleize }}" class="sn-a3-pdp" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}" aria-labelledby="rv-experience-heading-{{ section.id }}">
   <div class="sn-a3-pdp__shell sn-a3-pdp__section">
     {%- if section.settings.eyebrow != blank -%}<p class="sn-a3-pdp__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
     <h2 class="sn-a3-pdp__heading" id="rv-experience-heading-{{ section.id }}">{{ section.settings.heading }}</h2>
     {%- if section.settings.lede != blank -%}<p class="sn-a3-pdp__lede">{{ section.settings.lede | strip_html }}</p>{%- endif -%}
 
-    <div class="sn-a3-pdp__wide-stack">
+    <div class="sn-a3-pdp__wide-stack{% if feature_layout == 'editorial_grid' %} sn-a3-pdp__wide-stack--editorial{% endif %}">
       {%- for block in section.blocks -%}
         {%- assign desktop_asset = block.settings.image_asset | default: block.settings.mobile_image_asset -%}
-        <article class="sn-a3-pdp__wide" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
+        {%- assign feature_card_size = block.settings.card_size | default: 'tile' -%}
+        <article class="sn-a3-pdp__wide{% if feature_layout == 'editorial_grid' %} sn-a3-pdp__wide--{{ feature_card_size }}{% endif %}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
           {%- if block.settings.image != blank -%}
             {{- block.settings.image | image_url: width: 2000 | image_tag: widths: '700,1000,1400,1700,2000', sizes: '(max-width: 599px) calc(100vw - 28px), 1240px', loading: 'lazy', alt: block.settings.image_alt -}}
           {%- elsif desktop_asset != blank -%}
@@ -54,7 +57,8 @@
     {"type":"text","id":"anchor_id","label":"Anchor ID","default":"features"},
     {"type":"text","id":"eyebrow","label":"Eyebrow","default":"FEATURES"},
     {"type":"text","id":"heading","label":"Heading","default":"RV power designed around the way you travel."},
-    {"type":"richtext","id":"lede","label":"Introduction","default":"<p>Clear product benefits, practical system information and the details that distinguish this battery.</p>"}
+    {"type":"richtext","id":"lede","label":"Introduction","default":"<p>Clear product benefits, practical system information and the details that distinguish this battery.</p>"},
+    {"type":"select","id":"layout_mode","label":"Feature layout","default":"stories","options":[{"value":"stories","label":"Wide stories"},{"value":"editorial_grid","label":"Editorial grid"}]}
   ],
   "blocks": [
     {
@@ -65,6 +69,7 @@
         {"type":"text","id":"image_asset","label":"Bundled desktop image"},
         {"type":"text","id":"mobile_image_asset","label":"Bundled mobile image"},
         {"type":"text","id":"image_alt","label":"Image alt text","default":"SuntNeew RV battery feature"},
+        {"type":"select","id":"card_size","label":"Editorial card size","default":"tile","options":[{"value":"tile","label":"Tile"},{"value":"wide","label":"Full width"}]},
         {"type":"text","id":"eyebrow","label":"Eyebrow","default":"RV POWER"},
         {"type":"text","id":"heading","label":"Heading","default":"Power for the road ahead."},
         {"type":"richtext","id":"body","label":"Body","default":"<p>Describe the product benefit in clear customer language.</p>"},
