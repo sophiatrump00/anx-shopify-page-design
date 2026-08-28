@@ -130,9 +130,9 @@
         "protection": {
           "type": "feature",
           "settings": {
-            "image_asset":"suntneew-rv-g31-a-plus-bms.jpg",
-            "mobile_image_asset":"suntneew-rv-g31-a-plus-bms.jpg",
-            "image_alt":"SuntNeew Group 31 battery in a protected RV service compartment",
+            "image_asset":"suntneew-rv-g31-amazon-aplus-bms.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-bms.jpg",
+            "image_alt":"Six built-in BMS protection functions for the SuntNeew Group 31 battery",
             "eyebrow":"5. PROTECT THE BATTERY AND THE INSTALL",
             "heading":"BMS and IP65 define the battery boundary; system design completes it.",
             "body":"<p>The built-in BMS covers the listed current, voltage, temperature and short-circuit protections. IP65 means dust-tight and protected against water jets, not immersion; secure the battery upright and use correctly sized fuses, cables and terminal covers.</p>",
@@ -145,7 +145,8 @@
             "metric_4_value":"Not immersion",
             "metric_4_label":"Installation boundary",
             "variant_match":"",
-            "card_size":"tile"
+            "card_size":"tile",
+            "media_style":"contain_dark"
           }
         },
         "temperature": {
@@ -172,9 +173,9 @@
         "charging": {
           "type": "feature",
           "settings": {
-            "image_asset":"suntneew-rv-g31-a-plus-charging.jpg",
-            "mobile_image_asset":"suntneew-rv-g31-a-plus-charging.jpg",
-            "image_alt":"SuntNeew Group 31 battery in an RV solar charging setup",
+            "image_asset":"suntneew-rv-g31-amazon-aplus-charging.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-charging.jpg",
+            "image_alt":"Four LiFePO4-compatible charging paths for the SuntNeew Group 31 battery",
             "eyebrow":"7. BUILD COMPATIBLE CHARGING PATHS",
             "heading":"Four practical charging paths—when each uses the right equipment.",
             "body":"<p>Plan LiFePO4-compatible CC/CV charge sources: an AC charger, solar with an MPPT controller, an alternator through a DC-to-DC charger, or a generator feeding a compatible charger. Do not connect sources directly to the battery terminals.</p>",
@@ -187,7 +188,8 @@
             "metric_4_value":"100A",
             "metric_4_label":"Max continuous charge",
             "variant_match":"",
-            "card_size":"tile"
+            "card_size":"tile",
+            "media_style":"contain_light"
           }
         },
         "expansion": {

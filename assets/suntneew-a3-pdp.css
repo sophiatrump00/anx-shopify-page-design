@@ -46,6 +46,14 @@
 .sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--wide > img,
 .sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--wide-short > picture img,
 .sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--wide-short > img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--contain_light > picture,
+.sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--contain_light > img { background: #f7f7f4; }
+.sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--contain_dark > picture,
+.sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--contain_dark > img { background: #05080d; }
+.sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--contain_light > picture img,
+.sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--contain_light > img,
+.sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--contain_dark > picture img,
+.sn-a3-pdp--rv-g31 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--contain_dark > img { object-fit: contain; }
 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide-copy { align-items: start; }
 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--tile .sn-a3-pdp__wide-copy { display: block; padding: clamp(24px, 3vw, 34px); }
 .sn-a3-pdp__wide-stack--editorial .sn-a3-pdp__wide--tile .sn-a3-pdp__wide-copy h3 { font-size: clamp(25px, 2.4vw, 34px); }
