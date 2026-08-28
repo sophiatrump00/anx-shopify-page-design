@@ -43,35 +43,14 @@
     "features": {
       "type": "suntneew-rv-experience",
       "blocks": {
-        "fit": {
-          "type": "feature",
-          "settings": {
-            "image_asset":"suntneew-rv-g31-feature-install-candidate-v1.png",
-            "mobile_image_asset":"suntneew-rv-g31-feature-install-candidate-v1.png",
-            "image_alt":"SuntNeew Group 31 battery installed in an RV auxiliary battery bay",
-            "eyebrow":"1. START WITH THE BATTERY BAY",
-            "heading":"A Group 31 format built around the auxiliary battery bay.",
-            "body":"<p>The 339 × 185 × 218mm case helps set the layout for an RV auxiliary system. Confirm your tray, hold-down, terminal clearance and cable route before ordering; the Group 31 name does not guarantee a universal drop-in fit.</p>",
-            "metric_1_value":"Group 31",
-            "metric_1_label":"Listed case format",
-            "metric_2_value":"339 × 185 × 218mm",
-            "metric_2_label":"Listed dimensions",
-            "metric_3_value":"M8 × 12mm",
-            "metric_3_label":"Terminal bolts included",
-            "metric_4_value":"9.6kg / 21.16lb",
-            "metric_4_label":"Listed weight",
-            "variant_match":"",
-            "card_size":"wide"
-          }
-        },
         "everyday_power": {
           "type": "feature",
           "settings": {
-            "image_asset":"suntneew-rv-g31-new-lifestyle.jpg",
-            "mobile_image_asset":"suntneew-rv-g31-new-lifestyle.jpg",
-            "image_alt":"SuntNeew Group 31 battery supporting 12 volt auxiliary RV power at a campsite",
-            "eyebrow":"2. POWER THE STOP",
-            "heading":"1,280Wh for the 12V loads that make a campsite feel settled.",
+            "image_asset":"suntneew-rv-g31-final-feature-lifestyle-v2.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-final-feature-lifestyle-v2.jpg",
+            "image_alt":"SuntNeew Group 31 battery installed in an RV service bay at a lakeside campsite",
+            "eyebrow":"1. SETTLE IN",
+            "heading":"1,280Wh for the 12V loads that make an RV stop feel settled.",
             "body":"<p>100Ah rated capacity and a 100A continuous-discharge rating support a planned 12V auxiliary system, not engine starting. Use the runtime guide in the gallery as an estimate, then size the inverter, fusing and wiring around your actual loads.</p>",
             "metric_1_value":"100Ah",
             "metric_1_label":"Rated capacity",
@@ -85,14 +64,35 @@
             "card_size":"wide"
           }
         },
+        "fit": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-final-feature-install-v2.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-final-feature-install-v2.jpg",
+            "image_alt":"SuntNeew Group 31 battery secured in an RV auxiliary battery bay",
+            "eyebrow":"2. FIT THE GROUP 31 BAY",
+            "heading":"Start with the tray, hold-down and cable path—not the label alone.",
+            "body":"<p>The 339 × 185 × 218mm case sets the starting point for an RV auxiliary system. Confirm tray size, hold-down clearance, terminal access and cable routing before ordering; the Group 31 name does not guarantee a universal drop-in fit.</p>",
+            "metric_1_value":"Group 31",
+            "metric_1_label":"Listed case format",
+            "metric_2_value":"339 × 185 × 218mm",
+            "metric_2_label":"Listed dimensions",
+            "metric_3_value":"M8 × 12mm",
+            "metric_3_label":"Terminal bolts included",
+            "metric_4_value":"12–14N·m",
+            "metric_4_label":"Recommended terminal torque",
+            "variant_match":"",
+            "card_size":"tile"
+          }
+        },
         "bluetooth": {
           "type": "feature",
           "settings": {
-            "image_asset":"suntneew-rv-g31-a-plus-bluetooth.jpg",
-            "mobile_image_asset":"suntneew-rv-g31-a-plus-bluetooth.jpg",
-            "image_alt":"SuntNeew Group 31 battery and phone for Bluetooth status monitoring",
+            "image_asset":"suntneew-rv-g31-final-feature-bluetooth-v2.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-final-feature-bluetooth-v2.jpg",
+            "image_alt":"Phone displaying Bluetooth battery status above a SuntNeew Group 31 battery in an RV",
             "eyebrow":"3. CHECK IT BEFORE YOU OPEN THE BAY",
-            "heading":"Bluetooth status visibility for everyday use.",
+            "heading":"Bluetooth status visibility from inside the RV.",
             "body":"<p>Use compatible Bluetooth 5.0 monitoring to review state of charge, voltage, current and battery temperature before changing loads or charging sources. Follow the product manual and app instructions for the available functions.</p>",
             "metric_1_value":"SOC",
             "metric_1_label":"State of charge",
@@ -106,23 +106,65 @@
             "card_size":"tile"
           }
         },
-        "environment": {
+        "lightweight": {
           "type": "feature",
           "settings": {
-            "image_asset":"suntneew-rv-g31-a-plus-rv-scene.jpg",
-            "mobile_image_asset":"suntneew-rv-g31-a-plus-rv-scene.jpg",
-            "image_alt":"SuntNeew Group 31 battery in a protected RV storage compartment",
-            "eyebrow":"4. PROTECTED FOR THE REAL RV ENVIRONMENT",
-            "heading":"Protection helps define the boundary—correct installation completes it.",
-            "body":"<p>IP65 is dust-tight and protected against water jets, not immersion. The built-in BMS covers the listed temperature, current and voltage protection functions; low-temperature charge protection stops charging below 0°C and resumes above 5°C battery temperature. Secure the battery upright and use correctly sized fuses, cables and terminal covers as part of the complete system.</p>",
+            "image_asset":"suntneew-rv-g31-final-feature-lightweight-v2.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-final-feature-lightweight-v2.jpg",
+            "image_alt":"SuntNeew Group 31 LiFePO4 battery being carried beside a conventional lead-acid battery",
+            "eyebrow":"4. LIGHTER WORK AROUND THE BAY",
+            "heading":"21.16 lb makes installation—and the next service visit—easier.",
+            "body":"<p>At a listed 9.6kg / 21.16lb, the G31 is easier to move into service position than many comparably sized lead-acid batteries. Use the integrated carry strap for handling, then secure the case with a correctly sized tray and hold-down.</p>",
+            "metric_1_value":"21.16lb",
+            "metric_1_label":"Listed weight",
+            "metric_2_value":"9.6kg",
+            "metric_2_label":"Metric weight",
+            "metric_3_value":"Carry strap",
+            "metric_3_label":"Integrated handling",
+            "metric_4_value":"LiFePO4",
+            "metric_4_label":"Battery chemistry",
+            "variant_match":"",
+            "card_size":"wide-short"
+          }
+        },
+        "protection": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-a-plus-bms.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-a-plus-bms.jpg",
+            "image_alt":"SuntNeew Group 31 battery in a protected RV service compartment",
+            "eyebrow":"5. PROTECT THE BATTERY AND THE INSTALL",
+            "heading":"BMS and IP65 define the battery boundary; system design completes it.",
+            "body":"<p>The built-in BMS covers the listed current, voltage, temperature and short-circuit protections. IP65 means dust-tight and protected against water jets, not immersion; secure the battery upright and use correctly sized fuses, cables and terminal covers.</p>",
             "metric_1_value":"IP65",
             "metric_1_label":"Dust-tight; water jets",
-            "metric_2_value":"0°C / 5°C",
-            "metric_2_label":"Charge stop / resume",
-            "metric_3_value":"-20–60°C",
-            "metric_3_label":"Specified discharge range",
-            "metric_4_value":"BMS",
-            "metric_4_label":"Built-in battery protection",
+            "metric_2_value":"BMS",
+            "metric_2_label":"Built-in protection",
+            "metric_3_value":"100A",
+            "metric_3_label":"Max continuous discharge",
+            "metric_4_value":"Not immersion",
+            "metric_4_label":"Installation boundary",
+            "variant_match":"",
+            "card_size":"tile"
+          }
+        },
+        "temperature": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-pdp-temperature-desktop.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-pdp-temperature-desktop.jpg",
+            "image_alt":"SuntNeew Group 31 battery and RV shown in cold-weather operating conditions",
+            "eyebrow":"6. PAUSE CHARGING WHEN THE CELL IS TOO COLD",
+            "heading":"Low-temperature charge protection knows when to stop and resume.",
+            "body":"<p>Charging stops below 0°C battery temperature and resumes above 5°C. The listed operating ranges are 0–55°C for charging and -20–60°C for discharging; use the battery within the manual's environmental limits.</p>",
+            "metric_1_value":"0°C",
+            "metric_1_label":"Charging stops below",
+            "metric_2_value":"5°C",
+            "metric_2_label":"Charging resumes above",
+            "metric_3_value":"0–55°C",
+            "metric_3_label":"Specified charge range",
+            "metric_4_value":"-20–60°C",
+            "metric_4_label":"Specified discharge range",
             "variant_match":"",
             "card_size":"tile"
           }
@@ -133,8 +175,8 @@
             "image_asset":"suntneew-rv-g31-a-plus-charging.jpg",
             "mobile_image_asset":"suntneew-rv-g31-a-plus-charging.jpg",
             "image_alt":"SuntNeew Group 31 battery in an RV solar charging setup",
-            "eyebrow":"5. BUILD COMPATIBLE CHARGING PATHS",
-            "heading":"Bring shore, solar or driving charge through the right equipment.",
+            "eyebrow":"7. BUILD COMPATIBLE CHARGING PATHS",
+            "heading":"Four practical charging paths—when each uses the right equipment.",
             "body":"<p>Plan LiFePO4-compatible CC/CV charge sources: an AC charger, solar with an MPPT controller, an alternator through a DC-to-DC charger, or a generator feeding a compatible charger. Do not connect sources directly to the battery terminals.</p>",
             "metric_1_value":"CC/CV",
             "metric_1_label":"Charge method",
@@ -145,16 +187,37 @@
             "metric_4_value":"100A",
             "metric_4_label":"Max continuous charge",
             "variant_match":"",
-            "card_size":"wide-short"
+            "card_size":"tile"
+          }
+        },
+        "expansion": {
+          "type": "feature",
+          "settings": {
+            "image_asset":"suntneew-rv-g31-pdp-expansion-desktop.jpg",
+            "mobile_image_asset":"suntneew-rv-g31-pdp-expansion-desktop.jpg",
+            "image_alt":"Matched SuntNeew Group 31 batteries arranged as an expandable off-grid power bank",
+            "eyebrow":"8. SCALE A MATCHED BATTERY BANK",
+            "heading":"Expand from one G31 to a planned 4S / 4P system.",
+            "body":"<p>Use matched batteries of the same model, capacity and state of charge. The listed architecture supports up to 4 in series or 4 in parallel, and up to 16 matched batteries in a 4P4S bank; follow the manual for balancing, protection and cabling.</p>",
+            "metric_1_value":"4S",
+            "metric_1_label":"Up to four in series",
+            "metric_2_value":"4P",
+            "metric_2_label":"Up to four in parallel",
+            "metric_3_value":"16",
+            "metric_3_label":"Up to 4P4S batteries",
+            "metric_4_value":"20.48kWh",
+            "metric_4_label":"Rated energy at 4P4S",
+            "variant_match":"",
+            "card_size":"tile"
           }
         }
       },
-      "block_order": ["fit","everyday_power","bluetooth","environment","charging"],
+      "block_order": ["everyday_power","fit","bluetooth","lightweight","protection","temperature","charging","expansion"],
       "settings": {
         "anchor_id":"features",
         "eyebrow":"GROUP 31 FEATURES",
-        "heading":"A Group 31 battery selected from the bay outward.",
-        "lede":"<p>G31 starts with the physical battery bay, then focuses on practical 12V auxiliary power, status visibility and compatible charging for the way an RV is actually used.</p>",
+        "heading":"Built for the Group 31 bay—and the way an RV is actually used.",
+        "lede":"<p>Start with verified fit, then follow the G31 story from lighter installation to daily 12V power, Bluetooth visibility, protected charging and a matched expandable system.</p>",
         "layout_mode":"editorial_grid"
       }
     },

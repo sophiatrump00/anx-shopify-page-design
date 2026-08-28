@@ -2,7 +2,7 @@
 
 {%- assign feature_layout = section.settings.layout_mode | default: 'stories' -%}
 
-<section id="{{ section.settings.anchor_id | handleize }}" class="sn-a3-pdp" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}" aria-labelledby="rv-experience-heading-{{ section.id }}">
+<section id="{{ section.settings.anchor_id | handleize }}" class="sn-a3-pdp{% if template.suffix != blank %} sn-a3-pdp--{{ template.suffix | handleize }}{% endif %}" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}" aria-labelledby="rv-experience-heading-{{ section.id }}">
   <div class="sn-a3-pdp__shell sn-a3-pdp__section">
     {%- if section.settings.eyebrow != blank -%}<p class="sn-a3-pdp__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
     <h2 class="sn-a3-pdp__heading" id="rv-experience-heading-{{ section.id }}">{{ section.settings.heading }}</h2>
