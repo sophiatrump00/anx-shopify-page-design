@@ -7,9 +7,6 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-/*
- * KB700 Fan Jump Starter PDP configuration.
- */
 {
   "sections": {
     "main": {

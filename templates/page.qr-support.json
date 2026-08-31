@@ -7,14 +7,6 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-/*
- * ------------------------------------------------------------
- * QR support page template.
- *
- * Create one Shopify page per product, assign this template, then
- * replace the example blocks with the model-matched resources.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
