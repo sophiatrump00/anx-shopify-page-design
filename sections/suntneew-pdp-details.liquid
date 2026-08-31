@@ -60,21 +60,96 @@
     {%- endif -%}
 
     {%- assign download_blocks = section.blocks | where: 'type', 'download' -%}
+    {%- assign manual_count = 0 -%}
+    {%- assign compliance_count = 0 -%}
+    {%- for block in download_blocks -%}
+      {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
+      {%- if block.settings.document_group == blank -%}
+        {%- assign label_lower = block.settings.label | downcase -%}
+        {%- if label_lower contains 'fcc' or label_lower contains 'emc' or label_lower contains 'rohs' or label_lower contains 'ip65' or label_lower contains 'ul ' or label_lower contains 'un38' or label_lower contains 'sds' or label_lower contains 'msds' or label_lower contains 'tdg' or label_lower contains 'dgm' or label_lower contains 'certificate' or label_lower contains 'report' or label_lower contains 'grant' -%}
+          {%- assign document_group = 'compliance' -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if document_group == 'compliance' -%}
+        {%- assign compliance_count = compliance_count | plus: 1 -%}
+      {%- else -%}
+        {%- assign manual_count = manual_count | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+
     {%- if download_blocks.size > 0 -%}
       <div id="manuals" class="sn-pdp-details__panel" role="tabpanel" data-pdp-panel="manuals">
         <p class="sn-pdp__eyebrow">{{ section.settings.download_eyebrow }}</p>
         <h2 class="sn-pdp__heading">{{ section.settings.download_heading }}</h2>
-        <div class="sn-pdp-downloads">
-          {%- for block in download_blocks -%}
-            {%- if block.settings.link != blank -%}
-              <a class="sn-pdp-download" href="{{ block.settings.link }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
-            {%- elsif block.settings.asset_name != blank -%}
-              <a class="sn-pdp-download" href="{{ block.settings.asset_name | asset_url }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
-            {%- else -%}
-              <span class="sn-pdp-download" aria-disabled="true" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</span>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
+
+        {%- if manual_count > 0 -%}
+          <section class="sn-pdp-doc-group" aria-labelledby="{{ section.id }}-manuals-heading">
+            <h3 id="{{ section.id }}-manuals-heading" class="sn-pdp-doc-group__heading">{{ section.settings.manuals_group_heading }}</h3>
+            <div class="sn-pdp-downloads">
+              {%- for block in download_blocks -%}
+                {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
+                {%- if block.settings.document_group == blank -%}
+                  {%- assign label_lower = block.settings.label | downcase -%}
+                  {%- if label_lower contains 'fcc' or label_lower contains 'emc' or label_lower contains 'rohs' or label_lower contains 'ip65' or label_lower contains 'ul ' or label_lower contains 'un38' or label_lower contains 'sds' or label_lower contains 'msds' or label_lower contains 'tdg' or label_lower contains 'dgm' or label_lower contains 'certificate' or label_lower contains 'report' or label_lower contains 'grant' -%}
+                    {%- assign document_group = 'compliance' -%}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if document_group != 'compliance' -%}
+                  {%- if block.settings.link != blank -%}
+                    <a class="sn-pdp-download" href="{{ block.settings.link }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+                  {%- elsif block.settings.asset_name != blank -%}
+                    <a class="sn-pdp-download" href="{{ block.settings.asset_name | asset_url }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+                  {%- else -%}
+                    <span class="sn-pdp-download" aria-disabled="true" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ block.settings.label }}</span>
+                  {%- endif -%}
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </section>
+        {%- endif -%}
+
+        {%- if compliance_count > 0 -%}
+          <section class="sn-pdp-doc-group" aria-labelledby="{{ section.id }}-compliance-heading">
+            <h3 id="{{ section.id }}-compliance-heading" class="sn-pdp-doc-group__heading">{{ section.settings.compliance_group_heading }}</h3>
+            {%- if section.settings.compliance_note != blank -%}<p class="sn-pdp-doc-group__note">{{ section.settings.compliance_note }}</p>{%- endif -%}
+            <div class="sn-pdp-compliance-grid">
+              {%- for block in download_blocks -%}
+                {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
+                {%- if block.settings.document_group == blank -%}
+                  {%- assign label_lower = block.settings.label | downcase -%}
+                  {%- if label_lower contains 'fcc' or label_lower contains 'emc' or label_lower contains 'rohs' or label_lower contains 'ip65' or label_lower contains 'ul ' or label_lower contains 'un38' or label_lower contains 'sds' or label_lower contains 'msds' or label_lower contains 'tdg' or label_lower contains 'dgm' or label_lower contains 'certificate' or label_lower contains 'report' or label_lower contains 'grant' -%}
+                    {%- assign document_group = 'compliance' -%}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- if document_group == 'compliance' -%}
+                  {%- assign compliance_standard = block.settings.standard | default: block.settings.label -%}
+                  {%- assign compliance_standard_lower = compliance_standard | downcase -%}
+                  <details class="sn-pdp-compliance-card{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-pdp-compliance-card--ul{% endif %}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
+                    <summary class="sn-pdp-compliance-card__summary">
+                      <span class="sn-pdp-compliance-card__standard">{{ compliance_standard }}</span>
+                      <span class="sn-pdp-compliance-card__summary-copy">
+                        <span class="sn-pdp-compliance-card__title">{{ block.settings.label }}</span>
+                        <span class="sn-pdp-compliance-card__hint">{{ section.settings.compliance_scope_label }}</span>
+                      </span>
+                    </summary>
+                    <div class="sn-pdp-compliance-card__body">
+                      {%- if block.settings.description != blank -%}<p class="sn-pdp-compliance-card__description">{{ block.settings.description }}</p>{%- endif -%}
+                      {%- if block.settings.public_copy_ready and block.settings.link != blank -%}
+                        <a class="sn-pdp-compliance-card__action" href="{{ block.settings.link }}" target="_blank" rel="noopener">{{ section.settings.compliance_link_label }}</a>
+                      {%- elsif block.settings.public_copy_ready and block.settings.asset_name != blank -%}
+                        <a class="sn-pdp-compliance-card__action" href="{{ block.settings.asset_name | asset_url }}" target="_blank" rel="noopener">{{ section.settings.compliance_link_label }}</a>
+                      {%- elsif section.settings.compliance_request_url != blank -%}
+                        <a class="sn-pdp-compliance-card__action sn-pdp-compliance-card__action--pending" href="{{ section.settings.compliance_request_url }}">{{ section.settings.compliance_request_label }}</a>
+                      {%- else -%}
+                        <span class="sn-pdp-compliance-card__action sn-pdp-compliance-card__action--pending" aria-disabled="true">{{ section.settings.compliance_pending_label }}</span>
+                      {%- endif -%}
+                    </div>
+                  </details>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </section>
+        {%- endif -%}
       </div>
     {%- endif -%}
   </div>
@@ -94,7 +169,15 @@
     {"type":"text","id":"included_eyebrow","label":"Included eyebrow","default":"What is included"},
     {"type":"text","id":"included_heading","label":"Included heading","default":"In the box"},
     {"type":"text","id":"download_eyebrow","label":"Downloads eyebrow","default":"Reference material"},
-    {"type":"text","id":"download_heading","label":"Downloads heading","default":"Manuals & downloads"}
+    {"type":"text","id":"download_heading","label":"Downloads heading","default":"Manuals & Documents"},
+    {"type":"text","id":"manuals_group_heading","label":"Manuals group heading","default":"User Manuals"},
+    {"type":"text","id":"compliance_group_heading","label":"Compliance group heading","default":"Safety & Compliance"},
+    {"type":"textarea","id":"compliance_note","label":"Compliance note","default":"Only model-matched public copies should be uploaded here. Check the model, report number and scope before relying on a document."},
+    {"type":"text","id":"compliance_scope_label","label":"Compliance scope label","default":"View scope and document status"},
+    {"type":"text","id":"compliance_link_label","label":"Compliance link label","default":"View public copy"},
+    {"type":"text","id":"compliance_pending_label","label":"Pending compliance label","default":"Public copy pending"},
+    {"type":"text","id":"compliance_request_label","label":"Compliance request label","default":"Request a model-matched copy"},
+    {"type":"url","id":"compliance_request_url","label":"Compliance request URL"}
   ],
   "blocks":[
     {"type":"spec","name":"Specification","settings":[
@@ -111,7 +194,11 @@
       {"type":"text","id":"label","label":"Label","default":"User manual — pending upload"},
       {"type":"url","id":"link","label":"File or page link"},
       {"type":"text","id":"asset_name","label":"Bundled asset filename","info":"Optional theme asset, for example energy-star-wl5a-spec-v1.jpg."},
-      {"type":"text","id":"variant_match","label":"Only show for variant"}
+      {"type":"text","id":"variant_match","label":"Only show for variant"},
+      {"type":"select","id":"document_group","label":"Document group","default":"manuals","options":[{"value":"manuals","label":"User manuals"},{"value":"compliance","label":"Safety & compliance"}]},
+      {"type":"text","id":"standard","label":"Standard or badge text","info":"Optional. Used on safety and compliance cards."},
+      {"type":"textarea","id":"description","label":"Scope or description","info":"Optional. Explain the model, report scope or document purpose."},
+      {"type":"checkbox","id":"public_copy_ready","label":"Public copy is redacted and approved","default":false}
     ]}
   ],
   "max_blocks": 40,

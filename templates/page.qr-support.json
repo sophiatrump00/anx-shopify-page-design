@@ -1,0 +1,73 @@
+/*
+ * ------------------------------------------------------------
+ * QR support page template.
+ *
+ * Create one Shopify page per product, assign this template, then
+ * replace the example blocks with the model-matched resources.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-qr-support",
+      "settings": {
+        "eyebrow": "PRODUCT SUPPORT",
+        "product_handle": "",
+        "product_name": "Your product",
+        "product_code": "",
+        "product_image": "",
+        "image_alt": "Product image",
+        "intro": "Scan this page for the setup steps, model specifications, approved documents and support options for your product.",
+        "product_link_label": "View product page",
+        "setup_video_url": "",
+        "setup_video_label": "Watch setup video",
+        "quick_start_eyebrow": "QUICK START",
+        "quick_start_heading": "Quick Start",
+        "quick_start_note": "Use the model-specific steps below. If your label or setup differs, pause and contact support before installation or use.",
+        "how_to_eyebrow": "HOW TO INSTALL / USE",
+        "how_to_heading": "How to Install / How to Use",
+        "specs_eyebrow": "SPECIFICATIONS & FIT",
+        "specs_heading": "Specifications & Fit",
+        "compliance_eyebrow": "SAFETY & COMPLIANCE",
+        "compliance_heading": "Safety & Compliance",
+        "compliance_note": "Only model-matched, approved public copies should be linked here. Expand a card to review its scope before relying on it.",
+        "compliance_hint": "View scope and document status",
+        "compliance_pending_label": "Public copy pending",
+        "manual_eyebrow": "USER MANUALS",
+        "manual_heading": "User Manual",
+        "shipping_eyebrow": "SHIPPING & RETURNS",
+        "shipping_heading": "Shipping & Returns",
+        "help_eyebrow": "NEED HELP?",
+        "help_heading": "Need Help?",
+        "accessories_eyebrow": "RECOMMENDED ACCESSORIES",
+        "accessories_heading": "Recommended Accessories",
+        "complete_eyebrow": "COMPLETE YOUR SETUP",
+        "complete_heading": "Complete Your Set",
+        "repeat_eyebrow": "NEED ANOTHER ONE?",
+        "repeat_heading": "Need Another One?"
+      },
+      "blocks": {
+        "step_1": {"type":"step","settings":{"number":"01","title":"Confirm the model","body":"Check the model label, dimensions and terminal or connection orientation."}},
+        "step_2": {"type":"step","settings":{"number":"02","title":"Connect correctly","body":"Turn off loads and chargers, then follow the product-specific connection sequence."}},
+        "step_3": {"type":"step","settings":{"number":"03","title":"Secure the setup","body":"Use the correct hold-down, cables, protection devices and service clearance."}},
+        "step_4": {"type":"step","settings":{"number":"04","title":"Check the limits","body":"Set the right charging profile and review the operating temperature and load limits."}},
+        "spec_1": {"type":"spec","settings":{"label":"Rated voltage","value":"12.8V"}},
+        "spec_2": {"type":"spec","settings":{"label":"Rated capacity","value":"100Ah"}},
+        "compliance_fcc": {"type":"compliance","settings":{"standard":"FCC / CE-EMC / RoHS","title":"Radio, EMC & material compliance","scope":"Replace this text with the named model(s), report or certificate references, and approved public-copy status.","link":"","link_label":"View public copy","public_copy_ready":false}},
+        "compliance_un38": {"type":"compliance","settings":{"standard":"UN38.3","title":"Transport test summary","scope":"Add the model-matched UN38.3 summary and the approved public-copy status.","link":"","link_label":"View public copy","public_copy_ready":false}},
+        "compliance_sds": {"type":"compliance","settings":{"standard":"SDS","title":"Safety data sheet","scope":"Add the model-matched SDS/MSDS and the approved public-copy status.","link":"","link_label":"View public copy","public_copy_ready":false}},
+        "compliance_ip65": {"type":"compliance","settings":{"standard":"IP65","title":"Enclosure protection","scope":"State the named model scope and explain that IP65 is dust-tight and protected against water jets, not immersion.","link":"","link_label":"View public copy","public_copy_ready":false}},
+        "compliance_ul": {"type":"compliance","settings":{"standard":"UL Listed/Certified","title":"UL Listed/Certified — UL 2743","scope":"Complete-product UL Listed/Certified documentation for the named model. Add the exact model scope and approved public copy before linking the document.","link":"","link_label":"View public copy","public_copy_ready":false}},
+        "manual": {"type":"resource","settings":{"group":"manual","title":"Download the user manual","body":"Open the model-matched operating guide.","link":"","link_label":"Open manual","external":true}},
+        "shipping": {"type":"resource","settings":{"group":"shipping","title":"Shipping & returns","body":"Link the current shipping, delivery and returns policy for this product or region.","link":"/policies/shipping-policy","link_label":"Open policy","external":false}},
+        "help": {"type":"resource","settings":{"group":"help","title":"Contact support","body":"Keep the model label, order details and clear photos ready when contacting support.","link":"/pages/contact","link_label":"Contact support","external":false}},
+        "accessories": {"type":"resource","settings":{"group":"accessories","title":"Recommended accessories","body":"Add only genuine, compatible accessories that are currently sold and supported.","link":"","link_label":"View accessories","external":false}},
+        "complete": {"type":"resource","settings":{"group":"complete","title":"Complete your setup","body":"Add matched batteries, cables, chargers or other compatible system parts as applicable.","link":"","link_label":"Complete the setup","external":false}},
+        "repeat": {"type":"resource","settings":{"group":"repeat","title":"Buy again or expand","body":"Use the product page to reorder the same model or add a matched unit.","link":"","link_label":"View product","external":false}},
+        "troubleshooting": {"type":"troubleshooting","settings":{"issue":"The product does not start","solution":"<p>Confirm the charge level, connections and model-specific safety sequence before trying again.</p>"}}
+      },
+      "block_order": ["step_1","step_2","step_3","step_4","spec_1","spec_2","compliance_fcc","compliance_un38","compliance_sds","compliance_ip65","compliance_ul","manual","shipping","help","accessories","complete","repeat","troubleshooting"]
+    }
+  },
+  "order": ["main"]
+}

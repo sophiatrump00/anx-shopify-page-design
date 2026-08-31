@@ -19,12 +19,13 @@
     "proof": {
       "type": "suntneew-pdp-proof",
       "blocks": {
+        "capacity": {"type":"metric","settings":{"value":"100Ah","label":"Rated capacity","variant_match":""}},
         "energy": {"type":"metric","settings":{"value":"1,280Wh","label":"Rated energy","variant_match":""}},
         "cycles": {"type":"metric","settings":{"value":"Up to 15,000","label":"Cycles at 60% DoD","variant_match":""}},
         "life": {"type":"metric","settings":{"value":"Up to 10 years","label":"Product-life reference","variant_match":""}},
         "ip": {"type":"metric","settings":{"value":"IP65","label":"Dust-tight; protected against water jets","variant_match":""}}
       },
-      "block_order": ["energy","cycles","life","ip"],
+      "block_order": ["capacity","energy","cycles","life","ip"],
       "settings": {"accessibility_label":"Group 31 RV battery highlights"}
     },
     "anchor_nav": {
@@ -34,7 +35,7 @@
         "specs": {"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
         "box": {"type":"link","settings":{"label":"In the Box","target_id":"in-the-box"}},
         "support": {"type":"link","settings":{"label":"Support & Certificates","target_id":"support-certificates"}},
-        "manuals": {"type":"link","settings":{"label":"Manuals","target_id":"manuals"}},
+        "manuals": {"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
         "faq": {"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
       "block_order": ["features","specs","box","support","manuals","faq"],
@@ -137,7 +138,7 @@
             "heading":"BMS and IP65 define the battery boundary; system design completes it.",
             "body":"<p>The built-in BMS covers the listed current, voltage, temperature and short-circuit protections. IP65 means dust-tight and protected against water jets, not immersion; secure the battery upright and use correctly sized fuses, cables and terminal covers.</p>",
             "metric_1_value":"IP65",
-            "metric_1_label":"Dust-tight; water jets",
+            "metric_1_label":"Dust-tight; protected against water jets",
             "metric_2_value":"BMS",
             "metric_2_label":"Built-in protection",
             "metric_3_value":"100A",
@@ -235,7 +236,7 @@
         "cycles_80": {"type":"spec","settings":{"label":"Cycle-life reference at 80% DoD","value":"6,000+ cycles","group":"primary","variant_match":""}},
         "cycles_60": {"type":"spec","settings":{"label":"Cycle-life reference at 60% DoD","value":"Up to 15,000 cycles","group":"primary","variant_match":""}},
         "life": {"type":"spec","settings":{"label":"Product-life reference","value":"Up to 10 years; actual life varies by operating conditions","group":"primary","variant_match":""}},
-        "model": {"type":"spec","settings":{"label":"Model","value":"ESS-12.8V100AH-B-G31","group":"system","variant_match":""}},
+        "model": {"type":"spec","settings":{"label":"Model / site name","value":"Group 31 / ESS-12.8V100AH-B-G31 / ESS-LFP12100BG31","group":"system","variant_match":""}},
         "fcc_id": {"type":"spec","settings":{"label":"FCC ID","value":"2BQK7-12100BG31","group":"system","variant_match":""}},
         "charge_method": {"type":"spec","settings":{"label":"Charge method","value":"CC/CV","group":"system","variant_match":""}},
         "charge_voltage": {"type":"spec","settings":{"label":"Charge voltage","value":"14.4V ±0.2V","group":"system","variant_match":""}},
@@ -257,14 +258,16 @@
         "box_bolts": {"type":"included","settings":{"item":"M8 × 12mm terminal bolts ×2","variant_match":""}},
         "box_caps": {"type":"included","settings":{"item":"Red insulating cap ×1 and black insulating cap ×1","variant_match":""}},
         "manual": {"type":"download","settings":{"label":"Group 31 product manual — English PDF","link":"","asset_name":"suntneew-rv-g31-manual-en.pdf","variant_match":""}},
-        "ip65": {"type":"download","settings":{"label":"IP65 Certificate of Compliance — PDF","link":"","asset_name":"suntneew-rv-g31-ip65-certificate.pdf","variant_match":""}},
-        "fcc_grant": {"type":"download","settings":{"label":"FCC Equipment Authorization — FCC ID 2BQK7-12100BG31","link":"","asset_name":"suntneew-rv-g31-fcc-grant.pdf","variant_match":""}},
-        "fcc_sdoc": {"type":"download","settings":{"label":"FCC Supplier's Declaration of Conformity — PDF","link":"","asset_name":"suntneew-rv-g31-fcc-sdoc.pdf","variant_match":""}},
-        "emc": {"type":"download","settings":{"label":"EMC Certificate of Conformity — PDF","link":"","asset_name":"suntneew-rv-g31-emc-certificate.pdf","variant_match":""}},
-        "rohs": {"type":"download","settings":{"label":"EU RoHS Test Report — PDF","link":"","asset_name":"suntneew-rv-g31-rohs-report.pdf","variant_match":""}},
-        "ul1642": {"type":"download","settings":{"label":"UL 1642 cell Certificate of Compliance — PDF","link":"","asset_name":"suntneew-rv-g31-ul1642-cell-certificate.pdf","variant_match":""}}
+        "ip65": {"type":"download","settings":{"label":"IP65 enclosure protection — RV battery family","link":"","asset_name":"suntneew-rv-g31-ip65-certificate.pdf","variant_match":"","document_group":"compliance","standard":"IP65","description":"The current site groups the 2026 and 2027 naming aliases under one G31 product. The available evidence is the Group 31 IP65 report; the consumer-facing RV family claim is shown as a shared product-family specification pending public-copy approval. IP65 means dust-tight and protected against water jets, not immersion.","public_copy_ready":false}},
+        "fcc_grant": {"type":"download","settings":{"label":"FCC Equipment Authorization — FCC ID 2BQK7-12100BG31","link":"","asset_name":"suntneew-rv-g31-fcc-grant.pdf","variant_match":"","document_group":"compliance","standard":"FCC ID","description":"Equipment-authorization reference for the G31 Bluetooth design. Public redacted copy pending.","public_copy_ready":false}},
+        "fcc_sdoc": {"type":"download","settings":{"label":"FCC SDoC — G31 listed model","link":"","asset_name":"suntneew-rv-g31-fcc-sdoc.pdf","variant_match":"","document_group":"compliance","standard":"FCC","description":"Supplier's Declaration of Conformity for the G31 listed model; public redacted copy pending.","public_copy_ready":false}},
+        "emc": {"type":"download","settings":{"label":"CE-EMC — G31","link":"","asset_name":"suntneew-rv-g31-emc-certificate.pdf","variant_match":"","document_group":"compliance","standard":"CE-EMC","description":"Model-level EMC documentation for G31; public redacted copy pending.","public_copy_ready":false}},
+        "rohs": {"type":"download","settings":{"label":"RoHS — G31","link":"","asset_name":"suntneew-rv-g31-rohs-report.pdf","variant_match":"","document_group":"compliance","standard":"RoHS","description":"Model-level RoHS documentation for G31; public redacted copy pending.","public_copy_ready":false}},
+        "ul1642": {"type":"download","settings":{"label":"UL 1642 cell documentation — not whole-battery certification","link":"","asset_name":"suntneew-rv-g31-ul1642-cell-certificate.pdf","variant_match":"","document_group":"compliance","standard":"UL 1642","description":"Cell-level documentation only. It does not certify the complete G31 battery; public redacted copy pending.","public_copy_ready":false}},
+        "un38": {"type":"download","settings":{"label":"UN38.3 Summary — G31","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"UN38.3","description":"Transport-test summary for the G31 model; upload only a model-matched public copy.","public_copy_ready":false}},
+        "sds": {"type":"download","settings":{"label":"SDS — G31","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"SDS","description":"Safety data sheet for the G31 battery pack; upload only the approved public copy.","public_copy_ready":false}}
       },
-      "block_order": ["chemistry","voltage","capacity","energy","power","cycles_100","cycles_80","cycles_60","life","model","fcc_id","charge_method","charge_voltage","recommended_charge","max_charge","max_discharge","bluetooth","bms","expansion","dimensions","weight","housing","terminals","torque","ip_rating","temperature","box_battery","box_manual","box_bolts","box_caps","manual","ip65","fcc_grant","fcc_sdoc","emc","rohs","ul1642"],
+      "block_order": ["chemistry","voltage","capacity","energy","power","cycles_100","cycles_80","cycles_60","life","model","fcc_id","charge_method","charge_voltage","recommended_charge","max_charge","max_discharge","bluetooth","bms","expansion","dimensions","weight","housing","terminals","torque","ip_rating","temperature","box_battery","box_manual","box_bolts","box_caps","manual","ip65","fcc_grant","fcc_sdoc","emc","rohs","ul1642","un38","sds"],
       "settings": {
         "anchor_id":"specifications",
         "eyebrow":"PRODUCT DATA",
@@ -276,7 +279,12 @@
         "included_eyebrow":"PACKAGE CONTENTS",
         "included_heading":"In the box",
         "download_eyebrow":"SUPPORTING FILES",
-        "download_heading":"Manuals & certificates"
+        "download_heading":"Manuals & Documents",
+        "manuals_group_heading":"User Manuals",
+        "compliance_group_heading":"Safety & Compliance",
+        "compliance_note":"The G31 page combines the current site name with the 2026 / 2027 model aliases. FCC, EMC, RoHS and IP65 cards show the named scope when expanded; UL 1642 is cell-level documentation only.",
+        "compliance_link_label":"View public copy",
+        "compliance_pending_label":"Public copy pending"
       }
     },
     "service_proof": {

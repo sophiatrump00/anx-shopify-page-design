@@ -1,0 +1,267 @@
+{{ 'suntneew-qr-support.css' | asset_url | stylesheet_tag }}
+
+{%- assign qr_product = all_products[section.settings.product_handle] -%}
+{%- assign hero_image = section.settings.product_image -%}
+{%- if hero_image == blank and qr_product != blank -%}
+  {%- assign hero_image = qr_product.featured_image -%}
+{%- endif -%}
+{%- assign qr_product_name = section.settings.product_name -%}
+{%- if qr_product_name == blank and qr_product != blank -%}
+  {%- assign qr_product_name = qr_product.title -%}
+{%- endif -%}
+
+<section class="sn-qr-support" aria-labelledby="sn-qr-support-heading-{{ section.id }}">
+  <div class="sn-qr-support__shell">
+    <header class="sn-qr-support__hero">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}<p class="sn-qr-support__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h1 id="sn-qr-support-heading-{{ section.id }}">{{ qr_product_name | default: page.title }}</h1>
+        {%- if section.settings.product_code != blank -%}<p class="sn-qr-support__product-code">{{ section.settings.product_code }}</p>{%- endif -%}
+        {%- if section.settings.intro != blank -%}<p class="sn-qr-support__intro">{{ section.settings.intro }}</p>{%- endif -%}
+        <div class="sn-qr-support__actions">
+          {%- if qr_product != blank -%}<a class="sn-qr-support__button sn-qr-support__button--accent" href="{{ qr_product.url }}">{{ section.settings.product_link_label }}</a>{%- endif -%}
+          {%- if section.settings.setup_video_url != blank -%}<a class="sn-qr-support__button" href="{{ section.settings.setup_video_url }}" target="_blank" rel="noopener">{{ section.settings.setup_video_label }}</a>{%- endif -%}
+        </div>
+      </div>
+
+      {%- if hero_image != blank -%}
+        <figure class="sn-qr-support__hero-media">
+          <img src="{{ hero_image | image_url: width: 1000 }}" alt="{{ section.settings.image_alt | default: qr_product_name | escape }}" loading="eager" width="1000" height="1000">
+        </figure>
+      {%- endif -%}
+    </header>
+
+    {%- if section.settings.quick_start_heading != blank or section.settings.quick_start_note != blank or section.settings.setup_video_url != blank -%}
+      <section class="sn-qr-support__section" id="quick-start-{{ section.id }}">
+        <div class="sn-qr-support__section-heading">
+          <div>
+            <p class="sn-qr-support__section-eyebrow">{{ section.settings.quick_start_eyebrow }}</p>
+            <h2>{{ section.settings.quick_start_heading }}</h2>
+          </div>
+          {%- if section.settings.setup_video_url != blank -%}<a class="sn-qr-support__button" href="{{ section.settings.setup_video_url }}" target="_blank" rel="noopener">{{ section.settings.setup_video_label }}</a>{%- endif -%}
+        </div>
+        {%- if section.settings.quick_start_note != blank -%}<p class="sn-qr-support__section-note">{{ section.settings.quick_start_note }}</p>{%- endif -%}
+      </section>
+    {%- endif -%}
+
+    {%- assign step_blocks = section.blocks | where: 'type', 'step' -%}
+    {%- if step_blocks.size > 0 -%}
+      <section class="sn-qr-support__section" id="how-to-{{ section.id }}">
+        <div class="sn-qr-support__section-heading">
+          <div>
+            <p class="sn-qr-support__section-eyebrow">{{ section.settings.how_to_eyebrow }}</p>
+            <h2>{{ section.settings.how_to_heading }}</h2>
+          </div>
+        </div>
+        <ol class="sn-qr-support__steps">
+          {%- for block in step_blocks -%}
+            <li class="sn-qr-support__step" {{ block.shopify_attributes }}>
+              <span class="sn-qr-support__step-number">{{ block.settings.number | default: forloop.index }}</span>
+              <h3>{{ block.settings.title }}</h3>
+              {%- if block.settings.body != blank -%}<p>{{ block.settings.body }}</p>{%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ol>
+      </section>
+    {%- endif -%}
+
+    {%- assign spec_blocks = section.blocks | where: 'type', 'spec' -%}
+    {%- if spec_blocks.size > 0 -%}
+      <section class="sn-qr-support__section" id="specifications-{{ section.id }}">
+        <div class="sn-qr-support__section-heading">
+          <div>
+            <p class="sn-qr-support__section-eyebrow">{{ section.settings.specs_eyebrow }}</p>
+            <h2>{{ section.settings.specs_heading }}</h2>
+          </div>
+        </div>
+        <dl class="sn-qr-support__spec-grid">
+          {%- for block in spec_blocks -%}
+            <div class="sn-qr-support__spec" {{ block.shopify_attributes }}>
+              <dt class="sn-qr-support__spec-label">{{ block.settings.label }}</dt>
+              <dd class="sn-qr-support__spec-value">{{ block.settings.value }}</dd>
+            </div>
+          {%- endfor -%}
+        </dl>
+      </section>
+    {%- endif -%}
+
+    {%- assign compliance_blocks = section.blocks | where: 'type', 'compliance' -%}
+    {%- if compliance_blocks.size > 0 -%}
+      <section class="sn-qr-support__section" id="safety-{{ section.id }}">
+        <div class="sn-qr-support__section-heading">
+          <div>
+            <p class="sn-qr-support__section-eyebrow">{{ section.settings.compliance_eyebrow }}</p>
+            <h2>{{ section.settings.compliance_heading }}</h2>
+          </div>
+        </div>
+        {%- if section.settings.compliance_note != blank -%}<p class="sn-qr-support__section-note">{{ section.settings.compliance_note }}</p>{%- endif -%}
+        <div class="sn-qr-support__compliance-grid">
+          {%- for block in compliance_blocks -%}
+            {%- assign compliance_standard_lower = block.settings.standard | downcase -%}
+            <details class="sn-qr-support__compliance-card{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-qr-support__compliance-card--ul{% endif %}" {{ block.shopify_attributes }}>
+              <summary class="sn-qr-support__compliance-summary">
+                <span class="sn-qr-support__standard">{{ block.settings.standard | default: block.settings.title }}</span>
+                <span>
+                  <span class="sn-qr-support__compliance-title">{{ block.settings.title }}</span>
+                  <span class="sn-qr-support__compliance-hint">{{ section.settings.compliance_hint }}</span>
+                </span>
+              </summary>
+              <div class="sn-qr-support__compliance-body">
+                {%- if block.settings.scope != blank -%}<p>{{ block.settings.scope }}</p>{%- endif -%}
+                {%- if block.settings.public_copy_ready and block.settings.link != blank -%}
+                  <a class="sn-qr-support__resource-link" href="{{ block.settings.link }}" target="_blank" rel="noopener">{{ block.settings.link_label }}</a>
+                {%- else -%}
+                  <span class="sn-qr-support__pending">{{ section.settings.compliance_pending_label }}</span>
+                {%- endif -%}
+              </div>
+            </details>
+          {%- endfor -%}
+        </div>
+      </section>
+    {%- endif -%}
+
+    {%- assign resource_blocks = section.blocks | where: 'type', 'resource' -%}
+    {%- assign resource_groups = 'manual,shipping,help,accessories,complete,repeat' | split: ',' -%}
+    {%- for resource_group in resource_groups -%}
+      {%- assign resource_count = 0 -%}
+      {%- for block in resource_blocks -%}
+        {%- if block.settings.group == resource_group -%}{%- assign resource_count = resource_count | plus: 1 -%}{%- endif -%}
+      {%- endfor -%}
+      {%- if resource_count > 0 -%}
+        {%- case resource_group -%}
+          {%- when 'manual' -%}
+            {%- assign resource_eyebrow = section.settings.manual_eyebrow -%}
+            {%- assign resource_heading = section.settings.manual_heading -%}
+            {%- assign resource_id = 'manuals' -%}
+          {%- when 'shipping' -%}
+            {%- assign resource_eyebrow = section.settings.shipping_eyebrow -%}
+            {%- assign resource_heading = section.settings.shipping_heading -%}
+            {%- assign resource_id = 'shipping-returns' -%}
+          {%- when 'help' -%}
+            {%- assign resource_eyebrow = section.settings.help_eyebrow -%}
+            {%- assign resource_heading = section.settings.help_heading -%}
+            {%- assign resource_id = 'need-help' -%}
+          {%- when 'accessories' -%}
+            {%- assign resource_eyebrow = section.settings.accessories_eyebrow -%}
+            {%- assign resource_heading = section.settings.accessories_heading -%}
+            {%- assign resource_id = 'recommended-accessories' -%}
+          {%- when 'complete' -%}
+            {%- assign resource_eyebrow = section.settings.complete_eyebrow -%}
+            {%- assign resource_heading = section.settings.complete_heading -%}
+            {%- assign resource_id = 'complete-set' -%}
+          {%- else -%}
+            {%- assign resource_eyebrow = section.settings.repeat_eyebrow -%}
+            {%- assign resource_heading = section.settings.repeat_heading -%}
+            {%- assign resource_id = 'buy-again' -%}
+        {%- endcase -%}
+
+        <section class="sn-qr-support__section" id="{{ resource_id }}-{{ section.id }}">
+          <div class="sn-qr-support__section-heading">
+            <div>
+              <p class="sn-qr-support__section-eyebrow">{{ resource_eyebrow }}</p>
+              <h2>{{ resource_heading }}</h2>
+            </div>
+          </div>
+          <div class="sn-qr-support__resource-grid{% if resource_count == 1 %} sn-qr-support__resource-grid--single{% endif %}">
+            {%- for block in resource_blocks -%}
+              {%- if block.settings.group == resource_group -%}
+                <article class="sn-qr-support__resource" {{ block.shopify_attributes }}>
+                  <h3>{{ block.settings.title }}</h3>
+                  {%- if block.settings.body != blank -%}<p>{{ block.settings.body }}</p>{%- endif -%}
+                  {%- if block.settings.link != blank -%}<a class="sn-qr-support__resource-link" href="{{ block.settings.link }}"{% if block.settings.external %} target="_blank" rel="noopener"{% endif %}>{{ block.settings.link_label }}</a>{%- endif -%}
+                </article>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </section>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- assign troubleshooting_blocks = section.blocks | where: 'type', 'troubleshooting' -%}
+    {%- if troubleshooting_blocks.size > 0 -%}
+      <section class="sn-qr-support__section" id="troubleshooting-{{ section.id }}">
+        <div class="sn-qr-support__section-heading">
+          <div>
+            <p class="sn-qr-support__section-eyebrow">{{ section.settings.troubleshooting_eyebrow }}</p>
+            <h2>{{ section.settings.troubleshooting_heading }}</h2>
+          </div>
+        </div>
+        <div class="sn-qr-support__troubleshooting">
+          {%- for block in troubleshooting_blocks -%}
+            <details {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.issue }}</summary>
+              <div>{{ block.settings.solution }}</div>
+            </details>
+          {%- endfor -%}
+        </div>
+      </section>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SuntNeew QR support",
+  "class": "shopify-section--suntneew-qr-support",
+  "tag": "section",
+  "settings": [
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"PRODUCT SUPPORT"},
+    {"type":"text","id":"product_handle","label":"Product handle","info":"Optional. Used for the product link and featured image."},
+    {"type":"text","id":"product_name","label":"Product name","default":"Your product"},
+    {"type":"text","id":"product_code","label":"Product code or model"},
+    {"type":"image_picker","id":"product_image","label":"Product image"},
+    {"type":"text","id":"image_alt","label":"Product image alt text","default":"Product image"},
+    {"type":"textarea","id":"intro","label":"Introduction","default":"Scan this page for the setup steps, model specifications, approved documents and support options for your product."},
+    {"type":"text","id":"product_link_label","label":"Product link label","default":"View product page"},
+    {"type":"url","id":"setup_video_url","label":"Setup video URL"},
+    {"type":"text","id":"setup_video_label","label":"Setup video label","default":"Watch setup video"},
+    {"type":"text","id":"quick_start_eyebrow","label":"Quick start eyebrow","default":"QUICK START"},
+    {"type":"text","id":"quick_start_heading","label":"Quick start heading","default":"Quick Start"},
+    {"type":"textarea","id":"quick_start_note","label":"Quick start note","default":"Use the model-specific steps below. If your label or setup differs, pause and contact support before installation or use."},
+    {"type":"text","id":"how_to_eyebrow","label":"How-to eyebrow","default":"HOW TO INSTALL / USE"},
+    {"type":"text","id":"how_to_heading","label":"How-to heading","default":"How to Install / How to Use"},
+    {"type":"text","id":"specs_eyebrow","label":"Specifications eyebrow","default":"SPECIFICATIONS & FIT"},
+    {"type":"text","id":"specs_heading","label":"Specifications heading","default":"Specifications & Fit"},
+    {"type":"text","id":"compliance_eyebrow","label":"Compliance eyebrow","default":"SAFETY & COMPLIANCE"},
+    {"type":"text","id":"compliance_heading","label":"Compliance heading","default":"Safety & Compliance"},
+    {"type":"textarea","id":"compliance_note","label":"Compliance note","default":"Only model-matched, approved public copies should be linked here. Expand a card to review its scope before relying on it."},
+    {"type":"text","id":"compliance_hint","label":"Compliance card hint","default":"View scope and document status"},
+    {"type":"text","id":"compliance_pending_label","label":"Compliance pending label","default":"Public copy pending"},
+    {"type":"text","id":"manual_eyebrow","label":"Manuals eyebrow","default":"USER MANUALS"},
+    {"type":"text","id":"manual_heading","label":"Manuals heading","default":"User Manual"},
+    {"type":"text","id":"shipping_eyebrow","label":"Shipping eyebrow","default":"SHIPPING & RETURNS"},
+    {"type":"text","id":"shipping_heading","label":"Shipping heading","default":"Shipping & Returns"},
+    {"type":"text","id":"help_eyebrow","label":"Help eyebrow","default":"NEED HELP?"},
+    {"type":"text","id":"help_heading","label":"Help heading","default":"Need Help?"},
+    {"type":"text","id":"accessories_eyebrow","label":"Accessories eyebrow","default":"RECOMMENDED ACCESSORIES"},
+    {"type":"text","id":"accessories_heading","label":"Accessories heading","default":"Recommended Accessories"},
+    {"type":"text","id":"complete_eyebrow","label":"Complete eyebrow","default":"COMPLETE YOUR SETUP"},
+    {"type":"text","id":"complete_heading","label":"Complete heading","default":"Complete Your Set"},
+    {"type":"text","id":"repeat_eyebrow","label":"Repeat eyebrow","default":"NEED ANOTHER ONE?"},
+    {"type":"text","id":"repeat_heading","label":"Repeat heading","default":"Need Another One?"}
+  ],
+  "blocks": [
+    {"type":"step","name":"How-to step","settings":[{"type":"text","id":"number","label":"Step number","default":"01"},{"type":"text","id":"title","label":"Title","default":"Confirm the model"},{"type":"textarea","id":"body","label":"Instruction","default":"Check the model label, dimensions and terminal or connection orientation."}]},
+    {"type":"spec","name":"Specification","settings":[{"type":"text","id":"label","label":"Label","default":"Rated voltage"},{"type":"text","id":"value","label":"Value","default":"12.8V"}]},
+    {"type":"compliance","name":"Compliance document","settings":[{"type":"text","id":"standard","label":"Standard badge","default":"FCC"},{"type":"text","id":"title","label":"Document title","default":"FCC / CE-EMC / RoHS"},{"type":"textarea","id":"scope","label":"Scope","default":"Describe the named model, report reference and document purpose."},{"type":"url","id":"link","label":"Approved public copy URL"},{"type":"text","id":"link_label","label":"Link label","default":"View public copy"},{"type":"checkbox","id":"public_copy_ready","label":"Public copy approved","default":false}]},
+    {"type":"resource","name":"Support resource","settings":[{"type":"select","id":"group","label":"Resource group","default":"manual","options":[{"value":"manual","label":"User manual"},{"value":"shipping","label":"Shipping & returns"},{"value":"help","label":"Need help"},{"value":"accessories","label":"Recommended accessories"},{"value":"complete","label":"Complete your set"},{"value":"repeat","label":"Buy again / expand"}]},{"type":"text","id":"title","label":"Title","default":"Download the user manual"},{"type":"textarea","id":"body","label":"Description","default":"Open the model-matched operating guide."},{"type":"url","id":"link","label":"Link"},{"type":"text","id":"link_label","label":"Link label","default":"Open resource"},{"type":"checkbox","id":"external","label":"Open in a new tab","default":true}]},
+    {"type":"troubleshooting","name":"Troubleshooting item","settings":[{"type":"text","id":"issue","label":"Issue","default":"The product does not start"},{"type":"richtext","id":"solution","label":"Solution","default":"<p>Confirm the charge level, connections and model-specific safety sequence before trying again.</p>"}]}
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "SuntNeew QR support",
+      "blocks": [
+        {"type":"step"},
+        {"type":"step","settings":{"number":"02","title":"Connect correctly"}},
+        {"type":"step","settings":{"number":"03","title":"Secure the setup"}},
+        {"type":"step","settings":{"number":"04","title":"Check the limits"}},
+        {"type":"spec"},
+        {"type":"compliance"},
+        {"type":"resource"},
+        {"type":"troubleshooting"}
+      ]
+    }
+  ]
+}
+{% endschema %}

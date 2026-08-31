@@ -10,103 +10,332 @@
 {
   "sections": {
     "main": {
-      "type":"main-product",
+      "type": "main-product",
       "blocks": {
-        "vendor":{"type":"vendor","settings":{}},
-        "title":{"type":"title","settings":{"heading_tag":"h1"}},
-        "sku":{"type":"sku","settings":{}},
-        "price":{"type":"price","settings":{"show_taxes_notice":false}},
-        "separator":{"type":"separator","settings":{}},
-        "intro":{"type":"text","settings":{"text":"<p>A compact 12.8V, 100Ah Group 24 LiFePO4 battery with 1,280Wh rated energy, Bluetooth 5.0 monitoring, IP65 protection and 5,000+ cycles for RV and camper power systems.</p>"}},
-        "quantity_selector":{"type":"quantity_selector","settings":{}},
-        "bundle":{"type":"suntneew_bundle_selector","settings":{"enabled":true,"heading":"Build a Group 24 multi-pack","body":"Choose 1, 2, 5 or 10 units, or use a custom quantity.","discount_percent":3}},
-        "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
+        "vendor": {"type": "vendor", "settings": {}},
+        "title": {"type": "title", "settings": {"heading_tag": "h1"}},
+        "sku": {"type": "sku", "settings": {}},
+        "price": {"type": "price", "settings": {"show_taxes_notice": false}},
+        "separator": {"type": "separator", "settings": {}},
+        "intro": {"type": "text", "settings": {"text": "<p>A compact 12.8V, 100Ah Group 24 LiFePO4 upgrade with 1,280Wh rated energy, Bluetooth 5.0 monitoring, IP65 protection and a listed 5,000+ cycle-life reference for RV auxiliary power systems.</p>"}},
+        "quantity_selector": {"type": "quantity_selector", "settings": {}},
+        "bundle": {"type": "suntneew_bundle_selector", "settings": {"enabled": true, "heading": "Build a Group 24 multi-pack", "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.", "discount_percent": 3}},
+        "buy_buttons": {"type": "buy_buttons", "settings": {"show_payment_button": true, "show_gift_card_recipient": false}}
       },
-      "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","bundle","buy_buttons"],
-      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":50,"desktop_media_layout":"carousel_thumbnails_bottom","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "block_order": ["vendor", "title", "sku", "price", "separator", "intro", "quantity_selector", "bundle", "buy_buttons"],
+      "settings": {"show_fixed_add_to_cart": true, "enable_suntneew_pdp_experience": true, "suntneew_media_autoplay_interval": 6, "show_suntneew_pdp_promises": true, "desktop_media_width": 50, "desktop_media_layout": "carousel_thumbnails_bottom", "mobile_media_size": "contained", "mobile_carousel_control": "dots"}
     },
     "proof": {
-      "type":"suntneew-pdp-proof",
+      "type": "suntneew-pdp-proof",
       "blocks": {
-        "energy":{"type":"metric","settings":{"value":"1,280Wh","label":"Rated energy","variant_match":""}},
-        "current":{"type":"metric","settings":{"value":"100A","label":"Max charge / continuous discharge","variant_match":""}},
-        "cycles":{"type":"metric","settings":{"value":"5,000+ cycles","label":"Cycle-life reference","variant_match":""}},
-        "ip":{"type":"metric","settings":{"value":"IP65","label":"Enclosure protection","variant_match":""}}
+        "capacity": {"type": "metric", "settings": {"value": "100Ah", "label": "Rated capacity", "variant_match": ""}},
+        "energy": {"type": "metric", "settings": {"value": "1,280Wh", "label": "Rated energy", "variant_match": ""}},
+        "current": {"type": "metric", "settings": {"value": "100A", "label": "Max charge / continuous discharge", "variant_match": ""}},
+        "cycles": {"type": "metric", "settings": {"value": "5,000+ cycles", "label": "Cycle-life reference", "variant_match": ""}},
+        "ip": {"type": "metric", "settings": {"value": "IP65", "label": "Dust-tight; protected against water jets", "variant_match": ""}}
       },
-      "block_order":["energy","current","cycles","ip"],
-      "settings":{"accessibility_label":"Group 24 RV battery highlights"}
+      "block_order": ["capacity", "energy", "current", "cycles", "ip"],
+      "settings": {"accessibility_label": "Group 24 RV battery highlights"}
     },
     "anchor_nav": {
-      "type":"suntneew-pdp-anchor-nav",
+      "type": "suntneew-pdp-anchor-nav",
       "blocks": {
-        "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
-        "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
-        "install":{"type":"link","settings":{"label":"Before installation","target_id":"in-the-box"}},
-        "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
-        "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
+        "features": {"type": "link", "settings": {"label": "Features", "target_id": "features"}},
+        "specs": {"type": "link", "settings": {"label": "Specifications", "target_id": "specifications"}},
+        "box": {"type": "link", "settings": {"label": "In the box", "target_id": "in-the-box"}},
+        "support": {"type": "link", "settings": {"label": "Support & certificates", "target_id": "support-certificates"}},
+        "manuals": {"type": "link", "settings": {"label": "Documents", "target_id": "manuals"}},
+        "faq": {"type": "link", "settings": {"label": "FAQ", "target_id": "faq"}}
       },
-      "block_order":["features","specs","install","manuals","faq"],
-      "settings":{}
+      "block_order": ["features", "specs", "box", "support", "manuals", "faq"],
+      "settings": {}
     },
     "features": {
-      "type":"suntneew-rv-experience",
+      "type": "suntneew-rv-experience",
       "blocks": {
-        "lifestyle":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-new-lifestyle.jpg","mobile_image_asset":"suntneew-rv-g24-new-lifestyle.jpg","image_alt":"Group 24 100Ah LiFePO4 battery supporting a comfortable RV campsite","eyebrow":"COMPACT RV ENERGY","heading":"Keep everyday RV comfort inside a smaller footprint.","body":"<p>Group 24 brings 1,280Wh of stored energy to compact battery bays for lighting, refrigeration, devices and time away from hookups.</p>","metric_1_value":"100Ah","metric_1_label":"Rated capacity","metric_2_value":"1,280Wh","metric_2_label":"Rated energy","metric_3_value":"12.8V","metric_3_label":"Rated voltage","metric_4_value":"9.4kg","metric_4_label":"Battery weight","variant_match":""}},
-        "installation":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-new-install-wide.jpg","mobile_image_asset":"suntneew-rv-g24-new-install.jpg","image_alt":"Group 24 LiFePO4 battery shown during a one-person RV installation","eyebrow":"GROUP 24 FIT","heading":"Designed for tighter bays and one-person handling.","body":"<p>The short enclosure is easier to plan around when tray size, terminal clearance and the service path all compete for space.</p>","metric_1_value":"260mm","metric_1_label":"Enclosure length","metric_2_value":"170mm","metric_2_label":"Enclosure width","metric_3_value":"212mm","metric_3_label":"Height excluding terminals","metric_4_value":"9.4kg","metric_4_label":"One-person-friendly weight","variant_match":""}},
-        "output":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-new-weight-compare.jpg","mobile_image_asset":"suntneew-rv-g24-new-weight-compare.jpg","image_alt":"Group 24 LiFePO4 battery capacity and weight comparison visual","eyebrow":"EVERYDAY 100A PLATFORM","heading":"Compact dimensions without giving up useful RV output.","body":"<p>A 100A continuous profile supports a practical 12V auxiliary system when the inverter, charging sources and protection devices are sized together.</p>","metric_1_value":"100A","metric_1_label":"Max continuous discharge","metric_2_value":"1,280W","metric_2_label":"Max continuous output","metric_3_value":"100A","metric_3_label":"Max continuous charge","metric_4_value":"30A","metric_4_label":"Recommended charge current","variant_match":""}},
-        "monitoring":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-new-monitoring-wide.jpg","mobile_image_asset":"suntneew-rv-g24-new-monitoring.jpg","image_alt":"Group 24 LiFePO4 battery monitored by Bluetooth app beside an RV","eyebrow":"BLUETOOTH 5.0 MONITORING","heading":"Check the compact battery without reopening the bay.","body":"<p>Use the supported app to review the battery state before changing a load, connecting a charger or packing up camp.</p>","metric_1_value":"Bluetooth 5.0","metric_1_label":"Wireless connection","metric_2_value":"SOC","metric_2_label":"State-of-charge view","metric_3_value":"V / A","metric_3_label":"Voltage and current","metric_4_value":"Temperature","metric_4_label":"Battery condition view","variant_match":""}},
-        "protection":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-new-protection.jpg","mobile_image_asset":"suntneew-rv-g24-new-protection.jpg","image_alt":"Group 24 LiFePO4 battery protection and system-planning visual","eyebrow":"COMPACT SYSTEM PROTECTION","heading":"Built-in safeguards for a battery bay that stays simple.","body":"<p>Battery protection works alongside the correctly sized fuse, conductors, disconnect and terminal covers in the complete RV installation.</p>","metric_1_value":"IP65","metric_1_label":"Enclosure protection","metric_2_value":"CC/CV","metric_2_label":"Charge method","metric_3_value":"14.4V ±0.2V","metric_3_label":"Charge voltage","metric_4_value":"5,000+","metric_4_label":"Cycle-life reference","variant_match":""}},
-        "temperature":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-new-temperature-wide.jpg","mobile_image_asset":"suntneew-rv-g24-new-temperature.jpg","image_alt":"Group 24 LiFePO4 battery in a cold-weather RV setting","eyebrow":"COLD-WEATHER PROTECTION","heading":"Keep the weekend plan clear when temperatures change.","body":"<p>Low-temperature charging protection pauses charging below the documented limit and resumes after conditions recover.</p>","metric_1_value":"0°C","metric_1_label":"Charging stops below","metric_2_value":"5°C","metric_2_label":"Charging resumes above","metric_3_value":"-20–60°C","metric_3_label":"Discharge range","metric_4_value":"-10–50°C","metric_4_label":"Storage range","variant_match":""}},
-        "expansion":{"type":"feature","settings":{"image_asset":"suntneew-rv-g24-new-expansion.jpg","mobile_image_asset":"suntneew-rv-g24-new-expansion.jpg","image_alt":"Group 24 LiFePO4 battery bank expansion concept for an RV system","eyebrow":"COMPACT BANK EXPANSION","heading":"A small starting point with room to build a larger bank.","body":"<p>Series and parallel support lets a tidy Group 24 installation expand when all batteries and protection devices are matched and planned together.</p>","metric_1_value":"4S","metric_1_label":"Maximum series layout","metric_2_value":"4P","metric_2_label":"Maximum parallel layout","metric_3_value":"51.2V","metric_3_label":"Four-battery series voltage","metric_4_value":"16","metric_4_label":"Batteries in a 4P4S bank","variant_match":""}}
+        "overview": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-g24-new-lifestyle.jpg",
+            "mobile_image_asset": "suntneew-rv-g24-new-lifestyle.jpg",
+            "image_alt": "SuntNeew Group 24 100Ah LiFePO4 battery supporting RV power at a lakeside campsite",
+            "eyebrow": "GROUP 24, MADE FOR THE BAY YOU HAVE",
+            "heading": "Keep 1,280Wh in the compact battery bay you already own.",
+            "body": "<p>G24 combines 100Ah capacity and 100A continuous current in a 260 × 170 × 212mm case—an RV auxiliary-power upgrade for tighter compartments, not an engine-starting battery.</p>",
+            "metric_1_value": "100Ah",
+            "metric_1_label": "Rated capacity",
+            "metric_2_value": "1,280Wh",
+            "metric_2_label": "Rated energy",
+            "metric_3_value": "260mm",
+            "metric_3_label": "Enclosure length",
+            "metric_4_value": "9.4kg",
+            "metric_4_label": "Listed weight",
+            "variant_match": "",
+            "card_size": "wide"
+          }
+        },
+        "fit": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-g24-g31-fit-comparison.png",
+            "mobile_image_asset": "suntneew-rv-g24-g31-fit-comparison.png",
+            "image_alt": "Group 24 and Group 31 100Ah LiFePO4 batteries compared in RV battery bays",
+            "eyebrow": "CHOOSE BY FIT FIRST",
+            "heading": "The same 100Ah capacity in the Group 24 footprint.",
+            "body": "<p>G24 and G31 both provide 12.8V 100Ah rated energy. G24 is 79mm shorter, 15mm narrower and 6mm lower before terminal clearance, so measure the actual bay rather than relying on the group name alone.</p>",
+            "metric_1_value": "260 × 170 × 212mm",
+            "metric_1_label": "Group 24 enclosure",
+            "metric_2_value": "339 × 185 × 218mm",
+            "metric_2_label": "Group 31 enclosure",
+            "metric_3_value": "100Ah",
+            "metric_3_label": "Rated capacity for both",
+            "metric_4_value": "Measure first",
+            "metric_4_label": "Bay, terminals and hold-down",
+            "variant_match": "",
+            "card_size": "tile"
+          }
+        },
+        "installation": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-g24-new-install-wide.jpg",
+            "mobile_image_asset": "suntneew-rv-g24-new-install.jpg",
+            "image_alt": "Group 24 LiFePO4 battery shown during an RV installation",
+            "eyebrow": "EASIER TO HANDLE, STILL PLAN CAREFULLY",
+            "heading": "A 9.4kg battery you can plan into a one-person install.",
+            "body": "<p>The listed weight reduces the handling burden, while the important work remains the same: isolate power, confirm terminal clearance, use compatible charging settings, then secure the battery and its cabling correctly.</p>",
+            "metric_1_value": "9.4kg",
+            "metric_1_label": "Listed product weight",
+            "metric_2_value": "M8",
+            "metric_2_label": "Terminal screw size",
+            "metric_3_value": "12–14N·m",
+            "metric_3_label": "Recommended torque",
+            "metric_4_value": "212mm",
+            "metric_4_label": "Height excluding terminals",
+            "variant_match": "",
+            "card_size": "tile"
+          }
+        },
+        "monitoring": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-g24-new-monitoring-wide.jpg",
+            "mobile_image_asset": "suntneew-rv-g24-new-monitoring.jpg",
+            "image_alt": "SuntNeew Group 24 battery monitored by Bluetooth app inside an RV",
+            "eyebrow": "BLUETOOTH 5.0 MONITORING",
+            "heading": "Check the battery before you change the plan.",
+            "body": "<p>Use the supported mobile app to review state of charge, voltage, current, power, temperature and cycle information before changing a load, connecting a charger or packing up camp.</p>",
+            "metric_1_value": "SOC",
+            "metric_1_label": "State-of-charge view",
+            "metric_2_value": "V / A",
+            "metric_2_label": "Voltage and current",
+            "metric_3_value": "Power",
+            "metric_3_label": "Live system view",
+            "metric_4_value": "Temperature",
+            "metric_4_label": "Battery condition",
+            "variant_match": "",
+            "card_size": "tile"
+          }
+        },
+        "protection": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-g24-new-protection.jpg",
+            "mobile_image_asset": "suntneew-rv-g24-new-protection.jpg",
+            "image_alt": "Group 24 LiFePO4 battery protection-system visual",
+            "eyebrow": "PROTECTION INSIDE THE BATTERY, DISCIPLINE THROUGHOUT THE INSTALL",
+            "heading": "Keep the compact system simple and protected.",
+            "body": "<p>Battery protection is part of the product; correctly sized fuses, conductors, a disconnect and insulated terminals are still part of the RV system around it. Keep every charging source on a compatible LiFePO4 profile.</p>",
+            "metric_1_value": "IP65",
+            "metric_1_label": "Enclosure protection",
+            "metric_2_value": "CC/CV",
+            "metric_2_label": "Charge method",
+            "metric_3_value": "14.4V ±0.2V",
+            "metric_3_label": "Charge voltage",
+            "metric_4_value": "100A",
+            "metric_4_label": "Max continuous current",
+            "variant_match": "",
+            "card_size": "tile"
+          }
+        },
+        "temperature": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-g24-new-temperature-wide.jpg",
+            "mobile_image_asset": "suntneew-rv-g24-new-temperature.jpg",
+            "image_alt": "Group 24 LiFePO4 battery in a cold-weather RV setting",
+            "eyebrow": "LOW-TEMPERATURE CHARGING PROTECTION",
+            "heading": "Let charging protection make the call in the cold.",
+            "body": "<p>Low-temperature charging protection stops charging below 0°C battery temperature and resumes above 5°C. This does not turn an exposed battery bay into a weatherproof installation—follow the manual for placement and operating limits.</p>",
+            "metric_1_value": "0°C",
+            "metric_1_label": "Charging stops below",
+            "metric_2_value": "5°C",
+            "metric_2_label": "Charging resumes above",
+            "metric_3_value": "-20–60°C",
+            "metric_3_label": "Discharge range",
+            "metric_4_value": "-10–50°C",
+            "metric_4_label": "Storage range",
+            "variant_match": "",
+            "card_size": "tile"
+          }
+        },
+        "in_box": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-g24-new-in-box.jpg",
+            "mobile_image_asset": "suntneew-rv-g24-new-in-box.jpg",
+            "image_alt": "SuntNeew Group 24 battery with supplied terminal screws, insulating caps, washers and user manual",
+            "eyebrow": "READY TO PLAN, NOT READY TO RUSH",
+            "heading": "Everything in the box for a deliberate installation.",
+            "body": "<p>The standard package includes the battery, terminal screws, insulating caps, washers and English manual. Select external fuses, conductors, disconnects and charging equipment for the actual RV system.</p>",
+            "metric_1_value": "1×",
+            "metric_1_label": "12.8V 100Ah battery",
+            "metric_2_value": "2×",
+            "metric_2_label": "M8 terminal screws",
+            "metric_3_value": "2× / 2×",
+            "metric_3_label": "Insulating caps / washers",
+            "metric_4_value": "1×",
+            "metric_4_label": "English user manual",
+            "variant_match": "",
+            "card_size": "tile"
+          }
+        }
       },
-      "block_order":["lifestyle","installation","output","monitoring","protection","temperature","expansion"],
-      "settings":{"anchor_id":"features","eyebrow":"FEATURES","heading":"Compact Group 24 power for battery bays where every millimetre matters.","lede":"<p>A 260 × 170 × 212mm footprint, 9.4kg weight and 1,280Wh reserve make Group 24 the compact, one-person-friendly option in the RV range.</p>"}
+      "block_order": ["overview", "fit", "installation", "monitoring", "protection", "temperature", "in_box"],
+      "settings": {
+        "anchor_id": "features",
+        "eyebrow": "GROUP 24 FEATURES",
+        "heading": "A compact 100Ah upgrade that starts with the battery bay.",
+        "lede": "<p>First confirm the physical fit. Then use G24's 1,280Wh reserve, manageable listed weight and Bluetooth visibility to build a practical RV auxiliary-power system around the space you have.</p>",
+        "layout_mode": "editorial_grid"
+      }
     },
     "details": {
-      "type":"suntneew-pdp-details",
+      "type": "suntneew-pdp-details",
       "blocks": {
-        "chemistry":{"type":"spec","settings":{"label":"Cell chemistry","value":"LiFePO4","group":"primary","variant_match":""}},
-        "voltage":{"type":"spec","settings":{"label":"Rated voltage","value":"12.8V","group":"primary","variant_match":""}},
-        "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"100Ah","group":"primary","variant_match":""}},
-        "energy":{"type":"spec","settings":{"label":"Rated energy","value":"1,280Wh","group":"primary","variant_match":""}},
-        "power":{"type":"spec","settings":{"label":"Maximum continuous output power","value":"1,280W","group":"primary","variant_match":""}},
-        "cycles":{"type":"spec","settings":{"label":"Cycle-life reference","value":"5,000+ cycles","group":"primary","variant_match":""}},
-        "model":{"type":"spec","settings":{"label":"Model","value":"ESS-LFP12100BG24","group":"system","variant_match":""}},
-        "charge_method":{"type":"spec","settings":{"label":"Charge method","value":"CC/CV","group":"system","variant_match":""}},
-        "charge_voltage":{"type":"spec","settings":{"label":"Charge voltage","value":"14.4V +/- 0.2V","group":"system","variant_match":""}},
-        "recommended_charge":{"type":"spec","settings":{"label":"Recommended charge current","value":"30A (0.3C)","group":"system","variant_match":""}},
-        "charge":{"type":"spec","settings":{"label":"Maximum continuous charge current","value":"100A","group":"system","variant_match":""}},
-        "discharge":{"type":"spec","settings":{"label":"Maximum continuous discharge current","value":"100A","group":"system","variant_match":""}},
-        "bluetooth":{"type":"spec","settings":{"label":"Wireless monitoring","value":"Bluetooth 5.0","group":"system","variant_match":""}},
-        "ip_rating":{"type":"spec","settings":{"label":"Enclosure protection","value":"IP65 (not for immersion)","group":"system","variant_match":""}},
-        "low_temp":{"type":"spec","settings":{"label":"Low-temperature charging protection","value":"Stops below 0C; resumes above 5C","group":"system","variant_match":""}},
-        "dimensions":{"type":"spec","settings":{"label":"Dimensions (L x W x H)","value":"260 x 170 x 212mm, excluding terminals","group":"installation","variant_match":""}},
-        "weight":{"type":"spec","settings":{"label":"Weight","value":"9.4kg","group":"installation","variant_match":""}},
-        "housing":{"type":"spec","settings":{"label":"Housing material","value":"ABS","group":"installation","variant_match":""}},
-        "torque":{"type":"spec","settings":{"label":"Recommended terminal torque","value":"12 to 14 N.m","group":"installation","variant_match":""}},
-        "temperature":{"type":"spec","settings":{"label":"Temperature range","value":"Charge 0 to 55C; discharge -20 to 60C; storage -10 to 50C","group":"installation","variant_match":""}},
-        "note1":{"type":"included","settings":{"item":"Measure the compartment and terminal clearance before ordering","variant_match":""}},
-        "note2":{"type":"included","settings":{"item":"Size conductors, fuses and loads within the verified current limits","variant_match":""}},
-        "note3":{"type":"included","settings":{"item":"Use compatible LiFePO4 charging settings across every charging source","variant_match":""}},
-        "note4":{"type":"included","settings":{"item":"Secure the enclosure and protect terminals from accidental contact","variant_match":""}},
-        "manual":{"type":"download","settings":{"label":"Group 24 user manual (EN PDF)","link":"","asset_name":"suntneew-rv-g24-manual-en.pdf","variant_match":""}}
+        "chemistry": {"type": "spec", "settings": {"label": "Cell chemistry", "value": "LiFePO4", "group": "primary", "variant_match": ""}},
+        "voltage": {"type": "spec", "settings": {"label": "Rated voltage", "value": "12.8V", "group": "primary", "variant_match": ""}},
+        "capacity": {"type": "spec", "settings": {"label": "Rated capacity", "value": "100Ah", "group": "primary", "variant_match": ""}},
+        "energy": {"type": "spec", "settings": {"label": "Rated energy", "value": "1,280Wh", "group": "primary", "variant_match": ""}},
+        "power": {"type": "spec", "settings": {"label": "Maximum continuous output power", "value": "1,280W", "group": "primary", "variant_match": ""}},
+        "cycles": {"type": "spec", "settings": {"label": "Cycle-life reference", "value": "5,000+ cycles", "group": "primary", "variant_match": ""}},
+        "model": {"type": "spec", "settings": {"label": "Model / site name", "value": "Group 24 / ESS-LFP12100BG24", "group": "system", "variant_match": ""}},
+        "charge_method": {"type": "spec", "settings": {"label": "Charge method", "value": "CC/CV", "group": "system", "variant_match": ""}},
+        "charge_voltage": {"type": "spec", "settings": {"label": "Charge voltage", "value": "14.4V ±0.2V", "group": "system", "variant_match": ""}},
+        "recommended_charge": {"type": "spec", "settings": {"label": "Recommended charge current", "value": "30A (0.3C)", "group": "system", "variant_match": ""}},
+        "charge": {"type": "spec", "settings": {"label": "Maximum continuous charge current", "value": "100A", "group": "system", "variant_match": ""}},
+        "discharge": {"type": "spec", "settings": {"label": "Maximum continuous discharge current", "value": "100A", "group": "system", "variant_match": ""}},
+        "bluetooth": {"type": "spec", "settings": {"label": "Wireless monitoring", "value": "Bluetooth 5.0", "group": "system", "variant_match": ""}},
+        "ip_rating": {"type": "spec", "settings": {"label": "Enclosure protection", "value": "IP65 — dust-tight and protected against water jets; not for immersion", "group": "system", "variant_match": ""}},
+        "low_temp": {"type": "spec", "settings": {"label": "Low-temperature charging protection", "value": "Stops below 0°C; resumes above 5°C battery temperature", "group": "system", "variant_match": ""}},
+        "expansion": {"type": "spec", "settings": {"label": "Series / parallel expansion", "value": "Up to 4S or 4P; up to 16 matched batteries in a 4P4S system", "group": "system", "variant_match": ""}},
+        "dimensions": {"type": "spec", "settings": {"label": "Dimensions (L × W × H)", "value": "260 × 170 × 212mm / 10.24 × 6.69 × 8.35in, excluding terminals", "group": "installation", "variant_match": ""}},
+        "weight": {"type": "spec", "settings": {"label": "Listed weight", "value": "9.4kg", "group": "installation", "variant_match": ""}},
+        "housing": {"type": "spec", "settings": {"label": "Housing material", "value": "ABS", "group": "installation", "variant_match": ""}},
+        "torque": {"type": "spec", "settings": {"label": "Recommended terminal torque", "value": "12–14N·m / 106.2–123.9in-lb", "group": "installation", "variant_match": ""}},
+        "temperature": {"type": "spec", "settings": {"label": "Temperature range", "value": "Charge 0–55°C; discharge -20–60°C; storage -10–50°C", "group": "installation", "variant_match": ""}},
+        "box_battery": {"type": "included", "settings": {"item": "Group 24 12.8V 100Ah LiFePO4 battery ×1", "variant_match": ""}},
+        "box_screws": {"type": "included", "settings": {"item": "M8 terminal screws ×2", "variant_match": ""}},
+        "box_caps": {"type": "included", "settings": {"item": "Insulating caps ×2", "variant_match": ""}},
+        "box_washers": {"type": "included", "settings": {"item": "Washers ×2", "variant_match": ""}},
+        "box_manual": {"type": "included", "settings": {"item": "English user manual ×1", "variant_match": ""}},
+        "manual": {"type": "download", "settings": {"label": "Group 24 product manual — English PDF", "link": "", "asset_name": "suntneew-rv-g24-manual-en.pdf", "variant_match": ""}},
+        "fcc_sdoc": {"type": "download", "settings": {"label": "FCC SDoC — G24 / G31 shared models", "link": "", "asset_name": "suntneew-rv-g24-g31-fcc-sdoc.pdf", "variant_match": "", "document_group": "compliance", "standard": "FCC", "description": "Shared FCC SDoC listing the G24 / G31 model family; public redacted copy pending.", "public_copy_ready": false}},
+        "emc": {"type": "download", "settings": {"label": "CE-EMC — G24 / G31 shared models", "link": "", "asset_name": "suntneew-rv-g24-g31-emc-certificate.pdf", "variant_match": "", "document_group": "compliance", "standard": "CE-EMC", "description": "Shared EMC documentation listing the G24 / G31 model family; public redacted copy pending.", "public_copy_ready": false}},
+        "rohs": {"type": "download", "settings": {"label": "RoHS — RV battery series", "link": "", "asset_name": "suntneew-rv-series-rohs-test-report.pdf", "variant_match": "", "document_group": "compliance", "standard": "RoHS", "description": "Series-level RoHS report used as a supporting reference for the RV battery line; public redacted copy pending.", "public_copy_ready": false}},
+        "ip65": {"type": "download", "settings": {"label": "IP65 enclosure protection — RV battery family", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "IP65", "description": "IP65 is the unified enclosure specification shown across the RV battery family. The public evidence copy is pending family-scope approval; IP65 means dust-tight and protected against water jets, not immersion.", "public_copy_ready": false}},
+        "fcc_grant": {"type": "download", "settings": {"label": "FCC Equipment Authorization — shared-design reference", "link": "", "asset_name": "suntneew-rv-g31-fcc-grant.pdf", "variant_match": "", "document_group": "compliance", "standard": "FCC ID", "description": "Shared-design FCC authorization reference; the source document retains the listed G31 model and grant details. Public redacted copy pending.", "public_copy_ready": false}},
+        "un38": {"type": "download", "settings": {"label": "UN38.3 Summary — G24", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "UN38.3", "description": "Transport-test summary for the G24 model; upload only a model-matched public copy.", "public_copy_ready": false}},
+        "sds": {"type": "download", "settings": {"label": "SDS — G24", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "SDS", "description": "Safety data sheet for the G24 battery pack; upload only the approved public copy.", "public_copy_ready": false}}
       },
-      "block_order":["chemistry","voltage","capacity","energy","power","cycles","model","charge_method","charge_voltage","recommended_charge","charge","discharge","bluetooth","ip_rating","low_temp","dimensions","weight","housing","torque","temperature","note1","note2","note3","note4","manual"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Verified product data","heading":"Group 24 technical specifications","lede":"<p>The key capacity, charging, protection and installation values are transcribed from the current English product manual. Use the manual for the full operating sequence and safety limits.</p>","primary_group_heading":"Capacity & performance","system_group_heading":"Charging, monitoring & protection","installation_group_heading":"Enclosure & physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation","download_eyebrow":"Product documentation","download_heading":"Manuals & downloads"}
+      "block_order": ["chemistry", "voltage", "capacity", "energy", "power", "cycles", "model", "charge_method", "charge_voltage", "recommended_charge", "charge", "discharge", "bluetooth", "ip_rating", "low_temp", "expansion", "dimensions", "weight", "housing", "torque", "temperature", "box_battery", "box_screws", "box_caps", "box_washers", "box_manual", "manual", "fcc_sdoc", "emc", "rohs", "ip65", "fcc_grant", "un38", "sds"],
+      "settings": {
+        "anchor_id": "specifications",
+        "eyebrow": "PRODUCT DATA",
+        "heading": "Group 24 technical specifications",
+        "lede": "<p>Review fit, capacity, charging and operating values in one place. The product manual remains the source for the full operating sequence, safety limits and installation requirements.</p>",
+        "primary_group_heading": "Capacity & performance",
+        "system_group_heading": "Charging, monitoring & protection",
+        "installation_group_heading": "Enclosure & physical fit",
+        "included_eyebrow": "PACKAGE CONTENTS",
+        "included_heading": "In the box",
+        "download_eyebrow": "PRODUCT DOCUMENT CENTER",
+        "download_heading": "Manuals & Documents",
+        "manuals_group_heading": "User Manuals",
+        "compliance_group_heading": "Safety & Compliance",
+        "compliance_note": "G24 and G31 share the FCC / CE-EMC evidence shown here. IP65 is the unified RV-battery enclosure specification; expand the card to view the named model scope.",
+        "compliance_link_label": "View public copy",
+        "compliance_pending_label": "Public copy pending"
+      }
+    },
+    "service_proof": {
+      "type": "suntneew-pdp-story",
+      "blocks": {
+        "support": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-g31-amazon-aplus-support-24-7.jpg",
+            "mobile_image_asset": "suntneew-rv-g31-amazon-aplus-support-24-7.jpg",
+            "image_alt": "SuntNeew around-the-clock after-sales support graphic",
+            "image_fit": "contain",
+            "eyebrow": "24/7 SUPPORT",
+            "heading": "Product and after-sales help when you need it.",
+            "body": "<p>Contact SuntNeew support 24/7 for product setup, charging, Bluetooth, installation and after-sales questions. Keep the order details, model number and clear photos available to help the team handle the request efficiently.</p>",
+            "variant_match": ""
+          }
+        },
+        "service": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-g31-amazon-aplus-service-5-year.jpg",
+            "mobile_image_asset": "suntneew-rv-g31-amazon-aplus-service-5-year.jpg",
+            "image_alt": "SuntNeew five-year service graphic",
+            "image_fit": "contain",
+            "eyebrow": "5-YEAR SERVICE",
+            "heading": "Five years of product service coverage.",
+            "body": "<p>The 5-Year Service period describes the product's after-sales service relationship. It is a service-period statement, not a replacement for the product manual, nor a statement of a separate ten-year warranty.</p>",
+            "variant_match": ""
+          }
+        },
+        "certificates": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-g31-amazon-aplus-certificates.jpg",
+            "mobile_image_asset": "suntneew-rv-g31-amazon-aplus-certificates.jpg",
+            "image_alt": "Collection of G24 and G31 product compliance documents",
+            "image_fit": "contain",
+            "eyebrow": "SUPPORTING DOCUMENTS",
+            "heading": "Open the files that match G24 or its confirmed shared design.",
+            "body": "<p>The FCC SDoC and EMC certificate list G24. The RoHS report covers the RV battery series. The IP65 and FCC Grant files are G24/G31 shared-design references and retain the original G31 model and legacy-grantee details in the source documents.</p>",
+            "variant_match": ""
+          }
+        }
+      },
+      "block_order": ["support", "service", "certificates"],
+      "settings": {
+        "anchor_id": "support-certificates",
+        "eyebrow": "SUPPORT & CERTIFICATES",
+        "heading": "Support, service and the documents behind G24.",
+        "lede": "<p>24/7 support and 5-Year Service are available across the RV range. The downloadable files below identify their exact G24, RV-series or confirmed G24/G31 shared-design scope.</p>",
+        "layout_mode": "full_width_below"
+      }
     },
     "faq": {
-      "type":"suntneew-pdp-faq",
+      "type": "suntneew-pdp-faq",
       "blocks": {
-        "q1":{"type":"question","settings":{"question":"Are the stated dimensions including the terminals?","answer":"<p>No. The 260 x 170 x 212mm dimensions are stated without the terminals. Allow extra clearance for terminal hardware, cable lugs and protective covers.</p>"}},
-        "q2":{"type":"question","settings":{"question":"Can the battery continuously supply 100A?","answer":"<p>The current product data lists 100A as the maximum continuous-discharge rating. The practical system limit also depends on conductors, protection devices, connections and the connected equipment.</p>"}},
-        "q3":{"type":"question","settings":{"question":"Can I use an automotive lead-acid charger?","answer":"<p>Only if the charger documentation explicitly supports the required LiFePO4 voltage profile and current limits. Do not assume every lead-acid charger is compatible.</p>"}},
-        "q4":{"type":"question","settings":{"question":"Does Group 24 guarantee a drop-in fit?","answer":"<p>No. Measure the actual tray, hold-down, terminal orientation and cable route. Group naming alone cannot confirm the installation.</p>"}},
-        "q5":{"type":"question","settings":{"question":"What does IP65 mean for this battery?","answer":"<p>IP65 indicates a dust-tight enclosure with protection against water jets. It is not an immersion rating; keep the battery location, terminals and cable routing protected and follow the installation manual.</p>"}}
+        "fit": {"type": "question", "settings": {"question": "Can G24 replace a Group 31 battery?", "answer": "<p>Only if the planned battery bay, hold-down, terminal orientation and cable route suit the smaller 260 × 170 × 212mm G24 enclosure. Both batteries are 12.8V 100Ah, but their physical cases are different; measure the actual installation before ordering.</p>"}},
+        "dimensions": {"type": "question", "settings": {"question": "Are the stated dimensions including the terminals?", "answer": "<p>No. The 260 × 170 × 212mm dimensions exclude the terminals. Allow additional clearance for terminal hardware, cable lugs, covers and bend radius.</p>"}},
+        "current": {"type": "question", "settings": {"question": "Can the battery continuously supply 100A?", "answer": "<p>The current product data lists 100A as the maximum continuous charge and discharge rating. The practical system limit also depends on conductors, protection devices, connections, inverter and connected equipment.</p>"}},
+        "starting": {"type": "question", "settings": {"question": "Can this battery start an engine?", "answer": "<p>No. This is a deep-cycle auxiliary battery and is not intended to start a vehicle, boat engine or other device. Do not use it as a starting battery.</p>"}},
+        "charger": {"type": "question", "settings": {"question": "Can I use an automotive lead-acid charger?", "answer": "<p>Only if the charger documentation explicitly supports the required LiFePO4 voltage profile and current limits. Do not assume every lead-acid charger is compatible.</p>"}},
+        "temperature": {"type": "question", "settings": {"question": "What happens when the battery is too cold to charge?", "answer": "<p>Low-temperature charging protection stops battery charging below 0°C and resumes above 5°C battery temperature. This protection does not change the specified charging, discharge, storage or installation limits in the manual.</p>"}},
+        "documents": {"type": "question", "settings": {"question": "Which certificates and files are relevant to G24?", "answer": "<p>The FCC SDoC and EMC certificate identify G24 among their listed models. The RoHS report covers the RV battery series. The IP65 and FCC Grant files are published as confirmed G24/G31 shared-design references; their original documents retain the G31 model and legacy-grantee information.</p>"}},
+        "support": {"type": "question", "settings": {"question": "What do 24/7 Support and 5-Year Service mean?", "answer": "<p>24/7 Support covers product setup, charging, Bluetooth, installation and after-sales questions. 5-Year Service describes the after-sales service period; it should not be read as a separate ten-year warranty statement.</p>"}}
       },
-      "block_order":["q1","q2","q3","q4","q5"],
-      "settings":{"anchor_id":"faq","eyebrow":"Group 24 planning","heading":"Frequently asked questions"}
+      "block_order": ["fit", "dimensions", "current", "starting", "charger", "temperature", "documents", "support"],
+      "settings": {"anchor_id": "faq", "eyebrow": "GROUP 24 BUYING QUESTIONS", "heading": "Frequently asked questions"}
     },
-    "related-products":{"type":"related-products","settings":{}}
+    "related-products": {"type": "related-products", "settings": {}}
   },
-  "order":["main","proof","anchor_nav","features","details","faq","related-products"]
+  "order": ["main", "proof", "anchor_nav", "features", "details", "service_proof", "faq", "related-products"]
 }

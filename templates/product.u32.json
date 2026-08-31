@@ -44,10 +44,9 @@
         "peak":{"type":"metric","settings":{"value":"2,000A","label":"Peak current","variant_match":""}},
         "start":{"type":"metric","settings":{"value":"1,000A","label":"Starting current","variant_match":""}},
         "capacity":{"type":"metric","settings":{"value":"10,000mAh","label":"Rated capacity","variant_match":""}},
-        "energy":{"type":"metric","settings":{"value":"37Wh","label":"Rated energy","variant_match":""}},
-        "certification":{"type":"certification","settings":{"value":"UL 2743","label":"Certified safety standard","variant_match":""}}
+        "energy":{"type":"metric","settings":{"value":"37Wh","label":"Rated energy","variant_match":""}}
       },
-      "block_order":["peak","start","capacity","energy","certification"],
+      "block_order":["peak","start","capacity","energy"],
       "settings":{"accessibility_label":"U32 product highlights"}
     },
     "anchor_nav": {
@@ -56,7 +55,7 @@
         "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
         "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
         "box":{"type":"link","settings":{"label":"In the Box","target_id":"in-the-box"}},
-        "manuals":{"type":"link","settings":{"label":"Manuals","target_id":"manuals"}},
+        "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
         "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
       "block_order":["features","specs","box","manuals","faq"],
@@ -71,7 +70,7 @@
         "smart_clamp":{"type":"feature","settings":{"image_asset":"suntneew-u32-2026-pdp-04-smart-clamp.jpg","image_alt":"SuntNeew U32 intelligent smart clamp protection","image_fit":"cover","eyebrow":"Smart clamp guidance","heading":"A clear connection routine, built into the clamp.","body":"<p>The EC5 smart clamp uses a heavy-duty <strong>10AWG cable</strong> with buzzer and status guidance. Confirm the connection, wait for the green indication and follow the four-step sequence in the manual.</p>","variant_match":""}},
         "temperature":{"type":"feature","settings":{"image_asset":"suntneew-u32-2026-pdp-05-temperature.jpg","image_alt":"SuntNeew U32 operating temperature range","image_fit":"cover","eyebrow":"All-season readiness","heading":"Designed for cold starts and hot-road days.","body":"<p>U32 has a documented operating temperature range of <strong>-20°C–60°C</strong>. Keep the unit clean and dry, and do not rinse or use it as a waterproof device.</p>","variant_match":""}},
         "capacity":{"type":"feature","settings":{"image_asset":"suntneew-u32-2026-pdp-06-capacity.jpg","image_alt":"SuntNeew U32 10000mAh capacity feature","image_fit":"cover","eyebrow":"Stored energy","heading":"Power that stays ready between trips.","body":"<p>The 10,000mAh / 37Wh battery supports repeated roadside readiness and everyday USB device power. Recharge after use and at least once every three months during long-term storage.</p>","variant_match":""}},
-        "safeguards":{"type":"feature","settings":{"image_asset":"suntneew-u32-2026-pdp-07-safeguards.jpg","image_alt":"SuntNeew U32 six-in-one safety safeguards","image_fit":"cover","eyebrow":"Six visible safeguards","heading":"Protection made visible before you start.","body":"<p>The original six-in-one protection graphic is retained: reverse polarity, short circuit, over-voltage, over-current, overheat and over-discharge. U32 is presented with a <strong>UL 2743</strong> safety-standard badge.</p>","variant_match":""}},
+        "safeguards":{"type":"feature","settings":{"image_asset":"suntneew-u32-2026-pdp-07-safeguards.jpg","image_alt":"SuntNeew U32 six-in-one safety safeguards","image_fit":"cover","eyebrow":"Six visible safeguards","heading":"Protection made visible before you start.","body":"<p>The original six-in-one protection graphic is retained: reverse polarity, short circuit, over-voltage, over-current, overheat and over-discharge. U32 is presented as <strong>UL Listed/Certified</strong> to UL 2743; the model scope is shown in Safety &amp; Compliance.</p>","variant_match":""}},
         "scenarios":{"type":"feature","settings":{"image_asset":"suntneew-u32-2026-pdp-08-scenarios.jpg","image_alt":"SuntNeew U32 daily driving and outdoor scenarios","image_fit":"cover","eyebrow":"Ready where you park","heading":"A small emergency kit for ordinary and unexpected stops.","body":"<p>Keep U32 accessible for commutes, road trips, outdoor weekends and low-battery moments. Inspect the clamps before use and always work with a compatible 12V vehicle battery.</p>","variant_match":""}},
         "led":{"type":"feature","settings":{"image_asset":"suntneew-u32-2026-pdp-09-led.jpg","image_alt":"SuntNeew U32 5W LED emergency light","image_fit":"cover","eyebrow":"Emergency light","heading":"See the connection, signal the situation.","body":"<p>The <strong>5W LED</strong> has <strong>Steady, Flashing and SOS</strong> modes. Hold the power key for two seconds or double-click to turn the light on or off, then short-press to cycle modes.</p>","variant_match":""}},
         "steps":{"type":"feature","settings":{"image_asset":"suntneew-u32-2026-pdp-10-steps.jpg","image_alt":"Four U32 jump-start steps","image_fit":"cover","eyebrow":"Four-step start","heading":"Connect deliberately. Start with confidence.","body":"<p>Charge U32 to at least 50%, insert the EC5 smart clamp, connect red to positive and black to negative, then start within 30 seconds after the clamp shows green. Disconnect once the vehicle has started.</p>","variant_match":""}}
@@ -93,7 +92,6 @@
         "charge":{"type":"spec","settings":{"label":"Recharge time","value":"3–5 hours","group":"system","variant_match":""}},
         "light_spec":{"type":"spec","settings":{"label":"Emergency light","value":"5W; Steady, Flashing and SOS","group":"system","variant_match":""}},
         "clamp":{"type":"spec","settings":{"label":"Smart clamp","value":"EC5; 10AWG cable; six visible safeguards","group":"system","variant_match":""}},
-        "certification":{"type":"spec","settings":{"label":"Safety standard","value":"UL 2743","group":"system","variant_match":""}},
         "shell":{"type":"spec","settings":{"label":"Housing","value":"ABS + PC","group":"installation","variant_match":""}},
         "dimension":{"type":"spec","settings":{"label":"Product size","value":"150 × 75 × 25mm","group":"installation","variant_match":""}},
         "weight":{"type":"spec","settings":{"label":"Net weight","value":"480g / 1.06lb","group":"installation","variant_match":""}},
@@ -105,10 +103,14 @@
         "box4":{"type":"included","settings":{"item":"User manual x1","variant_match":""}},
         "box5":{"type":"included","settings":{"item":"Color box x1","variant_match":""}},
         "box6":{"type":"included","settings":{"item":"Tool bag / carrying pouch x1","variant_match":""}},
-        "manual":{"type":"download","settings":{"label":"U32 user manual (English PDF)","link":"","asset_name":"suntneew-u32-user-manual-en.pdf","variant_match":""}}
+        "manual":{"type":"download","settings":{"label":"U32 user manual (English PDF)","link":"","asset_name":"suntneew-u32-user-manual-en.pdf","variant_match":""}},
+        "ul2743":{"type":"download","settings":{"label":"UL Listed/Certified — UL 2743 — U32","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"UL Listed/Certified","description":"Complete-product UL Listed/Certified documentation for the U32 model under UL 2743. The card identifies the model scope; public copy pending.","public_copy_ready":false}},
+        "fcc":{"type":"download","settings":{"label":"FCC SDoC — U32","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"FCC","description":"Model-matched FCC documentation for U32; public redacted copy pending.","public_copy_ready":false}},
+        "un38":{"type":"download","settings":{"label":"UN38.3 Summary — U32","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"UN38.3","description":"Transport-test summary for U32; upload only an approved public copy.","public_copy_ready":false}},
+        "sds":{"type":"download","settings":{"label":"SDS — U32","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"SDS","description":"Safety data sheet for the U32 battery pack; upload only the approved public copy.","public_copy_ready":false}}
       },
-      "block_order":["capacity","energy","starting","peak","range","starts","input","output","charge","light_spec","clamp","certification","shell","dimension","weight","temperature","water","box1","box2","box3","box4","box5","box6","manual"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Product details","heading":"U32 technical specifications","lede":"<p>Confirmed values are drawn from the U32 English manual, approved A+ materials and the documented start-count test. Follow the manual’s operating sequence and safety limits before every use.</p>","primary_group_heading":"Starting performance","system_group_heading":"Charging, ports & clamp","installation_group_heading":"Physical & operating limits","included_heading":"In the box","download_heading":"Manuals & downloads"}
+      "block_order":["capacity","energy","starting","peak","range","starts","input","output","charge","light_spec","clamp","shell","dimension","weight","temperature","water","box1","box2","box3","box4","box5","box6","manual","ul2743","fcc","un38","sds"],
+      "settings":{"anchor_id":"specifications","eyebrow":"Product details","heading":"U32 technical specifications","lede":"<p>Confirmed values are drawn from the U32 English manual, approved A+ materials and the documented start-count test. Follow the manual’s operating sequence and safety limits before every use.</p>","primary_group_heading":"Starting performance","system_group_heading":"Charging, ports & clamp","installation_group_heading":"Physical & operating limits","included_heading":"In the box","download_heading":"Manuals & Documents","manuals_group_heading":"User Manuals","compliance_group_heading":"Safety & Compliance","compliance_note":"The UL Listed/Certified card identifies the complete-product model and its UL 2743 scope. Expand the card to review the model scope.","compliance_link_label":"View public copy","compliance_pending_label":"Public copy pending"}
     },
     "faq": {
       "type":"suntneew-pdp-faq",

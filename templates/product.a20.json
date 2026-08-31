@@ -49,7 +49,7 @@
         "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
         "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
         "box":{"type":"link","settings":{"label":"In the Box","target_id":"in-the-box"}},
-        "manuals":{"type":"link","settings":{"label":"Manuals","target_id":"manuals"}},
+        "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
         "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
       },
       "block_order":["features","specs","box","manuals","faq"],
@@ -85,10 +85,14 @@
         "box5":{"type":"included","settings":{"item":"Color box x1","variant_match":""}},
         "manual8":{"type":"download","settings":{"label":"8,000mAh product pack (PDF)","link":"https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A20-8000MAH_English_Product_Pack.pdf?v=1786349789","variant_match":"8000mAh"}},
         "manual12":{"type":"download","settings":{"label":"12,000mAh product pack (PDF)","link":"https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A20-12000MAH_English_Product_Pack.pdf?v=1786349789","variant_match":"12000mAh"}},
-        "manual16":{"type":"download","settings":{"label":"16,000mAh product pack (PDF)","link":"https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A20-16000MAH_English_Product_Pack.pdf?v=1786349789","variant_match":"16000mAh"}}
+        "manual16":{"type":"download","settings":{"label":"16,000mAh product pack (PDF)","link":"https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A20-16000MAH_English_Product_Pack.pdf?v=1786349789","variant_match":"16000mAh"}},
+        "fcc":{"type":"download","settings":{"label":"FCC Supplier's Declaration of Conformity — CY-A20 family","link":"","asset_name":"suntneew-a20-fcc-sdoc.pdf","variant_match":"","document_group":"compliance","standard":"FCC","description":"Model-family FCC documentation for CY-A20 8,000mAh / 12,000mAh / 16,000mAh variants. Public redacted copy pending.","public_copy_ready":false}},
+        "ul2743":{"type":"download","settings":{"label":"UL Listed/Certified — UL 2743 — A20 family","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"UL Listed/Certified","description":"Complete-product UL Listed/Certified documentation for the A20 8,000mAh / 12,000mAh / 16,000mAh family under UL 2743. The card identifies the model scope; public redacted copy pending.","public_copy_ready":false}},
+        "un38":{"type":"download","settings":{"label":"UN38.3 Summary — A20 family","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"UN38.3","description":"Transport-test summary for the A20 family; upload only a model-matched public copy.","public_copy_ready":false}},
+        "sds":{"type":"download","settings":{"label":"SDS — A20 family","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"SDS","description":"Safety data sheet for the A20 battery pack; upload only the approved public copy.","public_copy_ready":false}}
       },
-      "block_order":["cap8","energy8","start8","peak8","weight8","cap12","energy12","start12","peak12","weight12","cap16","energy16","start16","peak16","weight16","input","output","cycles","temperature","box1","box2","box3","box4","box5","manual8","manual12","manual16"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Product details","heading":"Specifications that follow your selected capacity","lede":"<p>Open only the category you need. The selected capacity controls the performance figures shown on this page.</p>","primary_group_heading":"Starting performance","system_group_heading":"Charging & outputs","installation_group_heading":"Physical & operating limits","included_heading":"In the box","download_heading":"Manuals & downloads"}
+      "block_order":["cap8","energy8","start8","peak8","weight8","cap12","energy12","start12","peak12","weight12","cap16","energy16","start16","peak16","weight16","input","output","cycles","temperature","box1","box2","box3","box4","box5","manual8","manual12","manual16","fcc","ul2743","un38","sds"],
+      "settings":{"anchor_id":"specifications","eyebrow":"Product details","heading":"Specifications that follow your selected capacity","lede":"<p>Open only the category you need. The selected capacity controls the performance figures shown on this page.</p>","primary_group_heading":"Starting performance","system_group_heading":"Charging & outputs","installation_group_heading":"Physical & operating limits","included_heading":"In the box","download_heading":"Manuals & Documents","manuals_group_heading":"User Manuals","compliance_group_heading":"Safety & Compliance","compliance_note":"A20 uses one product page for the 8,000mAh, 12,000mAh and 16,000mAh family. Each compliance card states the model scope; public copies are added only after redaction review.","compliance_link_label":"View public copy","compliance_pending_label":"Public copy pending"}
     },
     "faq": {
       "type":"suntneew-pdp-faq",

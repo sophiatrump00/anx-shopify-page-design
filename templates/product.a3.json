@@ -34,7 +34,7 @@
         "features": {"type": "link", "settings": {"label": "Features", "target_id": "features"}},
         "specs": {"type": "link", "settings": {"label": "Specifications", "target_id": "specifications"}},
         "box": {"type": "link", "settings": {"label": "In the Box", "target_id": "in-the-box"}},
-        "manuals": {"type": "link", "settings": {"label": "Manuals", "target_id": "manuals"}},
+        "manuals": {"type": "link", "settings": {"label": "Documents", "target_id": "manuals"}},
         "faq": {"type": "link", "settings": {"label": "FAQ", "target_id": "faq"}}
       },
       "block_order": ["features", "specs", "box", "manuals", "faq"],
@@ -63,11 +63,15 @@
         "box4": {"type": "included", "settings": {"item": "EVA carry case x1", "variant_match": ""}},
         "box5": {"type": "included", "settings": {"item": "User manual x1", "variant_match": ""}},
         "manual": {"type": "download", "settings": {"label": "A3 product pack (PDF)", "link": "https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A3_English_Product_Pack.pdf?v=1786349789", "asset_name": "", "variant_match": ""}},
-        "fcc": {"type": "download", "settings": {"label": "FCC Supplier’s Declaration of Conformity (CY-A3)", "link": "", "asset_name": "suntneew-a3-fcc-sdoc.pdf", "variant_match": ""}},
-        "un38": {"type": "download", "settings": {"label": "UN38.3 test summary (CY-A3)", "link": "", "asset_name": "suntneew-a3-un38.3-summary.pdf", "variant_match": ""}}
+        "fcc": {"type": "download", "settings": {"label": "FCC SDoC — CY-A3", "link": "", "asset_name": "suntneew-a3-fcc-sdoc.pdf", "variant_match": "", "document_group": "compliance", "standard": "FCC", "description": "Supplier's Declaration of Conformity for the CY-A3 model; public redacted copy pending.", "public_copy_ready": false}},
+        "un38": {"type": "download", "settings": {"label": "UN38.3 Summary — CY-A3", "link": "", "asset_name": "suntneew-a3-un38.3-summary.pdf", "variant_match": "", "document_group": "compliance", "standard": "UN38.3", "description": "Transport-test summary for the CY-A3 model; public redacted copy pending.", "public_copy_ready": false}},
+        "ul2743": {"type": "download", "settings": {"label": "UL Listed/Certified — UL 2743 — A3 / CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "UL Listed/Certified", "description": "Complete-product UL Listed/Certified documentation for the A3 / CY-A3 model under UL 2743. The card identifies the model scope; public redacted copy pending.", "public_copy_ready": false}},
+        "emc": {"type": "download", "settings": {"label": "CE-EMC — CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "CE-EMC", "description": "Model-matched EMC documentation for CY-A3; public redacted copy pending.", "public_copy_ready": false}},
+        "rohs": {"type": "download", "settings": {"label": "RoHS — CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "RoHS", "description": "Model-matched RoHS documentation for CY-A3; public redacted copy pending.", "public_copy_ready": false}},
+        "sds": {"type": "download", "settings": {"label": "SDS — CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "SDS", "description": "Safety data sheet for the A3 battery pack; upload only the approved public copy.", "public_copy_ready": false}}
       },
-      "block_order": ["capacity", "energy", "start", "peak", "engine", "starts", "input", "output", "light", "safety", "temperature", "shell", "weight", "box1", "box2", "box3", "box4", "box5", "manual", "fcc", "un38"],
-      "settings": {"anchor_id": "specifications", "eyebrow": "PRODUCT DETAILS", "heading": "A3 technical specifications", "lede": "<p>A3 is the independent-site name for product model CY-A3. All values below refer to the single documented A3 configuration.</p>", "primary_group_heading": "Starting performance", "system_group_heading": "Charging, light & protection", "installation_group_heading": "Construction & operating range", "included_heading": "In the box", "download_heading": "Manuals & downloads"}
+      "block_order": ["capacity", "energy", "start", "peak", "engine", "starts", "input", "output", "light", "safety", "temperature", "shell", "weight", "box1", "box2", "box3", "box4", "box5", "manual", "fcc", "un38", "ul2743", "emc", "rohs", "sds"],
+      "settings": {"anchor_id": "specifications", "eyebrow": "PRODUCT DETAILS", "heading": "A3 technical specifications", "lede": "<p>A3 is the independent-site name for product model CY-A3. All values below refer to the single documented A3 configuration.</p>", "primary_group_heading": "Starting performance", "system_group_heading": "Charging, light & protection", "installation_group_heading": "Construction & operating range", "included_heading": "In the box", "download_heading": "Manuals & Documents", "manuals_group_heading": "User Manuals", "compliance_group_heading": "Safety & Compliance", "compliance_note": "A3 and CY-A3 are the same product naming family. Compliance cards show the standard and model scope; public copies are added only after redaction review.", "compliance_link_label": "View public copy", "compliance_pending_label": "Public copy pending"}
     },
     "faq": {
       "type": "suntneew-pdp-faq",
