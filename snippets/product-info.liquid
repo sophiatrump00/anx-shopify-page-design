@@ -1,19 +1,10 @@
-{%- comment -%}
-  ----------------------------------------------------------------------------------------------------------------------
-  PRODUCT INFO
-  ----------------------------------------------------------------------------------------------------------------------
+{% doc %}
+Renders the blocks that make up a product information panel.
 
-  This snippet renders all the blocks of a given product. It uses the blocks of the section currently in use (there is
-  no need to manually pass the section as it is globally available)
-
-  ********************************************
-  Supported variables
-  ********************************************
-
-  * product: the product on which to render the information (if blank, it renders placeholder information)
-  * product_form_id: the ID of the product form
-  * context: the context of the product info. Can be "main_product", "featured_product" or "quick_buy"
-{%- endcomment -%}
+@param {product} product - Product displayed by the panel.
+@param {string} product_form_id - ID of the associated product form.
+@param {string} context - Rendering context: main_product, featured_product, or quick_buy.
+{% enddoc %}
 
 <safe-sticky class="product-info">
   {%- assign inside_block_group_context = false -%}
@@ -136,16 +127,18 @@
                 {%- endif -%}
               </div>
 
-              {%- if block.settings.show_taxes_notice -%}
+              {%- if context == 'main_product' or block.settings.show_taxes_notice -%}
                 <p class="text-sm text-subdued">
                   {%- if cart.taxes_included -%}
                     {{ 'product.general.taxes_included' | t }}
-                  {%- else -%}
-                    {{ 'product.general.taxes_excluded' | t }}
-                  {%- endif -%}
 
-                  {%- if shop.shipping_policy.body != blank -%}
-                    {{ 'product.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                    {%- if shop.shipping_policy.body != blank -%}
+                      {{ 'product.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                    {%- endif -%}
+                  {%- elsif shop.shipping_policy.body != blank -%}
+                    {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                  {%- else -%}
+                    {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
                   {%- endif -%}
                 </p>
               {%- endif -%}
