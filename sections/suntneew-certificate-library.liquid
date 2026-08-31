@@ -1,117 +1,120 @@
 {{ 'suntneew-certificates.css' | asset_url | stylesheet_tag }}
 
-<section class="sn-cert-library">
+{%- assign product_groups = section.blocks | where: 'type', 'product_group' -%}
+{%- assign documents = section.blocks | where: 'type', 'document' -%}
+
+<section class="sn-cert-library" aria-labelledby="sn-cert-library-heading-{{ section.id }}">
   <header class="sn-cert-library__hero">
     <div class="sn-cert-library__shell sn-cert-library__hero-content">
-      <p class="sn-cert-library__eyebrow">{{ section.settings.eyebrow }}</p>
-      <h1>{{ section.settings.heading }}</h1>
-      <p class="sn-cert-library__intro">{{ section.settings.intro }}</p>
+      {%- if section.settings.eyebrow != blank -%}<p class="sn-cert-library__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h1 id="sn-cert-library-heading-{{ section.id }}">{{ section.settings.heading }}</h1>
+      {%- if section.settings.intro != blank -%}<p class="sn-cert-library__intro">{{ section.settings.intro }}</p>{%- endif -%}
     </div>
   </header>
 
   <div class="sn-cert-library__shell sn-cert-library__content">
+    {%- if product_groups.size > 0 -%}
+      <nav class="sn-cert-library__index" aria-label="{{ section.settings.index_label | escape }}">
+        <span class="sn-cert-library__index-label">{{ section.settings.index_label }}</span>
+        <div class="sn-cert-library__index-links">
+          {%- for group in product_groups -%}
+            {%- assign group_anchor = group.settings.anchor_id | default: group.settings.group_key | handleize -%}
+            <a href="#{{ group_anchor }}">{{ group.settings.title }}</a>
+          {%- endfor -%}
+        </div>
+      </nav>
+    {%- endif -%}
+
     <aside class="sn-cert-library__note" aria-label="{{ section.settings.note_title | escape }}">
-      <span class="sn-cert-library__note-mark" aria-hidden="true">i</span>
+      <span class="sn-cert-library__note-mark" aria-hidden="true">✓</span>
       <div>
         <strong>{{ section.settings.note_title }}</strong>
-        <p>{{ section.settings.note }}</p>
+        {%- if section.settings.note != blank -%}<p>{{ section.settings.note }}</p>{%- endif -%}
       </div>
     </aside>
 
     <div class="sn-cert-library__grid">
-      {%- for block in section.blocks -%}
-        {% liquid
-          assign resource_one_url = block.settings.resource_one_url
-          assign resource_two_url = block.settings.resource_two_url
-          assign resource_three_url = block.settings.resource_three_url
+      {%- for group in product_groups -%}
+        {%- assign group_key = group.settings.group_key -%}
+        {%- assign group_anchor = group.settings.anchor_id | default: group_key | handleize -%}
+        {%- assign group_has_public_docs = false -%}
+        {%- assign group_document_count = 0 -%}
+        {%- for document in documents -%}
+          {%- if document.settings.group_key == group_key -%}
+            {%- if document.settings.public_copy_ready -%}
+              {%- if document.settings.asset_name != blank or document.settings.link != blank -%}
+                {%- assign group_has_public_docs = true -%}
+                {%- assign group_document_count = group_document_count | plus: 1 -%}
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
 
-          if block.settings.resource_one_asset != blank
-            assign resource_one_url = block.settings.resource_one_asset | asset_url
-          endif
-
-          if block.settings.resource_two_asset != blank
-            assign resource_two_url = block.settings.resource_two_asset | asset_url
-          endif
-
-          if block.settings.resource_three_asset != blank
-            assign resource_three_url = block.settings.resource_three_asset | asset_url
-          endif
-        %}
-
-        <article id="{{ block.settings.anchor_id | default: block.id | escape }}" class="sn-cert-library__card" {{ block.shopify_attributes }}>
+        <article id="{{ group_anchor }}" class="sn-cert-library__card" {{ group.shopify_attributes }}>
           <header class="sn-cert-library__card-header">
             <span class="sn-cert-library__icon" aria-hidden="true">
-              {%- render 'suntneew-series-icon', icon: block.settings.icon -%}
+              {%- render 'suntneew-series-icon', icon: group.settings.icon -%}
             </span>
             <div>
-              <p class="sn-cert-library__family">{{ block.settings.family }}</p>
-              <h2>{{ block.settings.title }}</h2>
+              {%- if group.settings.family != blank -%}<p class="sn-cert-library__family">{{ group.settings.family }}</p>{%- endif -%}
+              <h2>{{ group.settings.title }}</h2>
+              {%- if group.settings.model_line != blank -%}<p class="sn-cert-library__model-line">{{ group.settings.model_line }}</p>{%- endif -%}
             </div>
           </header>
 
-          <p class="sn-cert-library__description">{{ block.settings.description }}</p>
+          {%- if group.settings.standards != blank -%}
+            {%- assign standards = group.settings.standards | split: '|' -%}
+            <ul class="sn-cert-library__badges" role="list" aria-label="{{ section.settings.standards_label | escape }}">
+              {%- for standard in standards -%}
+                {%- assign standard_name = standard | strip -%}
+                {%- if standard_name != blank -%}<li>{{ standard_name }}</li>{%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
 
-          <ul class="sn-cert-library__resources" role="list">
-            {%- if block.settings.resource_one_label != blank -%}
-              <li class="sn-cert-library__resource">
-                <span class="sn-cert-library__resource-index">01</span>
-                {%- if resource_one_url != blank -%}
-                  <a href="{{ resource_one_url }}" target="_blank" rel="noopener">
-                    <span>
-                      <strong>{{ block.settings.resource_one_label }}</strong>
-                      <span>{{ block.settings.resource_one_text }}</span>
-                    </span>
-                    <span class="sn-cert-library__resource-action">Open document</span>
-                  </a>
-                {%- else -%}
-                  <div>
-                    <strong>{{ block.settings.resource_one_label }}</strong>
-                    <p>{{ block.settings.resource_one_text }}</p>
-                  </div>
-                {%- endif -%}
-              </li>
+          <div class="sn-cert-library__documents">
+            {%- if group_has_public_docs -%}
+              <details class="sn-cert-library__document-disclosure">
+                <summary>
+                  <span>{{ section.settings.documents_label }}</span>
+                  <span class="sn-cert-library__document-count">
+                    {{ group_document_count }}
+                    {%- if group_document_count == 1 -%} {{ section.settings.file_label }}{%- else -%} {{ section.settings.files_label }}{%- endif -%}
+                    <span class="sn-cert-library__document-toggle" aria-hidden="true">+</span>
+                  </span>
+                </summary>
+                <ul class="sn-cert-library__resources" role="list">
+                  {%- assign document_index = 0 -%}
+                  {%- for document in documents -%}
+                    {%- if document.settings.group_key == group_key -%}
+                      {%- if document.settings.public_copy_ready -%}
+                        {%- assign document_url = document.settings.link -%}
+                        {%- if document.settings.asset_name != blank -%}
+                          {%- assign document_url = document.settings.asset_name | asset_url -%}
+                        {%- endif -%}
+                        {%- if document_url != blank -%}
+                          {%- assign document_index = document_index | plus: 1 -%}
+                          <li class="sn-cert-library__resource" {{ document.shopify_attributes }}>
+                            <span class="sn-cert-library__resource-index">{{ document_index | prepend: '0' | slice: -2, 2 }}</span>
+                            <a href="{{ document_url }}" target="_blank" rel="noopener">
+                              <span class="sn-cert-library__resource-copy">
+                                <strong>{{ document.settings.title }}</strong>
+                                {%- if document.settings.standard != blank -%}<span>{{ document.settings.standard }}</span>{%- endif -%}
+                                {%- if document.settings.reference != blank -%}<span>{{ document.settings.reference }}</span>{%- endif -%}
+                              </span>
+                              <span class="sn-cert-library__resource-action">{{ section.settings.download_label }} <span aria-hidden="true">↗</span></span>
+                            </a>
+                          </li>
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              </details>
+            {%- elsif group.settings.support_url != blank -%}
+              <a class="sn-cert-library__support-link" href="{{ group.settings.support_url }}">{{ group.settings.support_label | default: section.settings.support_label }} <span aria-hidden="true">→</span></a>
             {%- endif -%}
-
-            {%- if block.settings.resource_two_label != blank -%}
-              <li class="sn-cert-library__resource">
-                <span class="sn-cert-library__resource-index">02</span>
-                {%- if resource_two_url != blank -%}
-                  <a href="{{ resource_two_url }}" target="_blank" rel="noopener">
-                    <span>
-                      <strong>{{ block.settings.resource_two_label }}</strong>
-                      <span>{{ block.settings.resource_two_text }}</span>
-                    </span>
-                    <span class="sn-cert-library__resource-action">Open document</span>
-                  </a>
-                {%- else -%}
-                  <div>
-                    <strong>{{ block.settings.resource_two_label }}</strong>
-                    <p>{{ block.settings.resource_two_text }}</p>
-                  </div>
-                {%- endif -%}
-              </li>
-            {%- endif -%}
-
-            {%- if block.settings.resource_three_label != blank -%}
-              <li class="sn-cert-library__resource">
-                <span class="sn-cert-library__resource-index">03</span>
-                {%- if resource_three_url != blank -%}
-                  <a href="{{ resource_three_url }}" target="_blank" rel="noopener">
-                    <span>
-                      <strong>{{ block.settings.resource_three_label }}</strong>
-                      <span>{{ block.settings.resource_three_text }}</span>
-                    </span>
-                    <span class="sn-cert-library__resource-action">Open document</span>
-                  </a>
-                {%- else -%}
-                  <div>
-                    <strong>{{ block.settings.resource_three_label }}</strong>
-                    <p>{{ block.settings.resource_three_text }}</p>
-                  </div>
-                {%- endif -%}
-              </li>
-            {%- endif -%}
-          </ul>
+          </div>
         </article>
       {%- endfor -%}
     </div>
@@ -120,45 +123,59 @@
 
 {% schema %}
 {
-  "name": "SuntNeew document library",
+  "name": "SuntNeew public documents",
+  "class": "shopify-section--suntneew-certificate-library",
+  "tag": "section",
   "settings": [
-    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"SUPPORT RESOURCES"},
-    {"type":"text","id":"heading","label":"Heading","default":"Product document center."},
-    {"type":"textarea","id":"intro","label":"Intro","default":"Match the product label before opening a document. Each entry identifies its document type, source model and reference; any confirmed shared-design scope is stated explicitly. These records are not series-wide approval claims."},
-    {"type":"text","id":"note_title","label":"Information title","default":"Check the model before relying on a document."},
-    {"type":"textarea","id":"note","label":"Information text","default":"A document applies only to its named model, responsible party, product label and intended market unless an entry explicitly identifies a confirmed shared-design scope. If your product label does not match, contact Support before using it for compliance, transport or installation decisions."}
+    {"type":"text","id":"eyebrow","label":"Eyebrow","default":"SAFETY & COMPLIANCE"},
+    {"type":"text","id":"heading","label":"Heading","default":"Public product documents"},
+    {"type":"textarea","id":"intro","label":"Intro","default":"Model-matched documents for products sold on SuntNeew.com. Choose your product and download the public copy."},
+    {"type":"text","id":"index_label","label":"Product index label","default":"Browse products"},
+    {"type":"text","id":"standards_label","label":"Standards label","default":"Standards"},
+    {"type":"text","id":"documents_label","label":"Documents label","default":"Public documents"},
+    {"type":"text","id":"file_label","label":"Single file label","default":"file"},
+    {"type":"text","id":"files_label","label":"Multiple files label","default":"files"},
+    {"type":"text","id":"download_label","label":"Download label","default":"Download PDF"},
+    {"type":"text","id":"support_label","label":"Support link label","default":"Contact Support"},
+    {"type":"text","id":"note_title","label":"Information title","default":"Use the model name on your product label."},
+    {"type":"textarea","id":"note","label":"Information text","default":"Public copies remove personal contact details and internal references. Match the model before downloading."}
   ],
   "blocks": [
     {
-      "type": "certificate_group",
-      "name": "Document group",
+      "type": "product_group",
+      "name": "Product group",
       "settings": [
-        {"type":"text","id":"anchor_id","label":"Anchor ID","default":"u23-certificates"},
+        {"type":"text","id":"group_key","label":"Group key","default":"jump-a20","info":"Use the same key on each document block in this group."},
+        {"type":"text","id":"anchor_id","label":"Anchor ID","default":"jump-a20"},
         {"type":"select","id":"icon","label":"Icon","default":"jump","options":[{"value":"rv","label":"RV battery"},{"value":"jump","label":"Jump starter"},{"value":"home","label":"Home energy"}]},
         {"type":"text","id":"family","label":"Family label","default":"JUMP STARTERS"},
-        {"type":"text","id":"title","label":"Title","default":"Model document"},
-        {"type":"textarea","id":"description","label":"Description","default":"Open the document connected to the exact product model."},
-        {"type":"text","id":"resource_one_label","label":"Document 1 title","default":"FCC declaration"},
-        {"type":"textarea","id":"resource_one_text","label":"Document 1 description","default":"Open the model-matched document."},
-        {"type":"text","id":"resource_one_asset","label":"Document 1 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
-        {"type":"url","id":"resource_one_url","label":"Document 1 URL"},
-        {"type":"text","id":"resource_two_label","label":"Document 2 title"},
-        {"type":"textarea","id":"resource_two_text","label":"Document 2 description"},
-        {"type":"text","id":"resource_two_asset","label":"Document 2 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
-        {"type":"url","id":"resource_two_url","label":"Document 2 URL"},
-        {"type":"text","id":"resource_three_label","label":"Document 3 title"},
-        {"type":"textarea","id":"resource_three_text","label":"Document 3 description"},
-        {"type":"text","id":"resource_three_asset","label":"Document 3 theme asset filename","info":"Optional. Theme asset takes priority over the URL field."},
-        {"type":"url","id":"resource_three_url","label":"Document 3 URL"}
+        {"type":"text","id":"title","label":"Product title","default":"A20 jump starter"},
+        {"type":"text","id":"model_line","label":"Model line","default":"CY-A20 · 8,000 / 12,000 / 16,000mAh variants"},
+        {"type":"textarea","id":"standards","label":"Standards","default":"UL Listed/Certified|FCC|UN38.3|SDS","info":"Separate badges with a vertical bar (|)."},
+        {"type":"url","id":"support_url","label":"Support URL","info":"Optional fallback shown when this group has no public file."},
+        {"type":"text","id":"support_label","label":"Group support label","default":"Contact Support"}
+      ]
+    },
+    {
+      "type": "document",
+      "name": "Public document",
+      "settings": [
+        {"type":"text","id":"group_key","label":"Group key","default":"jump-a20"},
+        {"type":"text","id":"standard","label":"Standard badge","default":"FCC"},
+        {"type":"text","id":"title","label":"Document title","default":"FCC Supplier's Declaration of Conformity"},
+        {"type":"text","id":"reference","label":"Reference line","default":"Model CY-A20 · Public copy"},
+        {"type":"text","id":"asset_name","label":"Theme asset filename","info":"Use the redacted public PDF filename. Do not use the original file."},
+        {"type":"url","id":"link","label":"Public file URL","info":"Optional. Theme asset takes priority."},
+        {"type":"checkbox","id":"public_copy_ready","label":"Public copy approved","default":false}
       ]
     }
   ],
-  "max_blocks": 12,
+  "max_blocks": 50,
   "presets": [
     {
-      "name": "SuntNeew document library",
+      "name": "SuntNeew public documents",
       "blocks": [
-        {"type":"certificate_group"}
+        {"type":"product_group"}
       ]
     }
   ]

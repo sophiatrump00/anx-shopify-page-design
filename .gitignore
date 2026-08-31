@@ -7,3 +7,5 @@ Thumbs.db
 
 # Theme local development output
 .theme-check.yml.cache
+/output/
+/tmp/

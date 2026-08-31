@@ -105,7 +105,7 @@
         "box6":{"type":"included","settings":{"item":"Tool bag / carrying pouch x1","variant_match":""}},
         "manual":{"type":"download","settings":{"label":"U32 user manual (English PDF)","link":"","asset_name":"suntneew-u32-user-manual-en.pdf","variant_match":""}},
         "ul2743":{"type":"download","settings":{"label":"UL Listed/Certified — UL 2743 — U32","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"UL Listed/Certified","description":"Complete-product UL Listed/Certified documentation for the U32 model under UL 2743. The card identifies the model scope; public copy pending.","public_copy_ready":false}},
-        "fcc":{"type":"download","settings":{"label":"FCC SDoC — U32","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"FCC","description":"Model-matched FCC documentation for U32; public redacted copy pending.","public_copy_ready":false}},
+        "fcc":{"type":"download","settings":{"label":"FCC SDoC — U32","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"FCC","description":"Model-matched FCC documentation for U32.","public_copy_ready":true}},
         "un38":{"type":"download","settings":{"label":"UN38.3 Summary — U32","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"UN38.3","description":"Transport-test summary for U32; upload only an approved public copy.","public_copy_ready":false}},
         "sds":{"type":"download","settings":{"label":"SDS — U32","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"SDS","description":"Safety data sheet for the U32 battery pack; upload only the approved public copy.","public_copy_ready":false}}
       },

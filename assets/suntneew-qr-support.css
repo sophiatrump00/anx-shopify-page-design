@@ -215,6 +215,8 @@
 .sn-qr-support__compliance-summary::-webkit-details-marker { display: none; }
 .sn-qr-support__compliance-summary::after { content: '+'; color: var(--sn-qr-muted); font-size: 20px; }
 .sn-qr-support__compliance-card[open] .sn-qr-support__compliance-summary::after { content: '−'; }
+.sn-qr-support__compliance-summary--static { cursor: default; }
+.sn-qr-support__compliance-summary--static::after { display: none; }
 
 .sn-qr-support__standard {
   display: inline-flex;

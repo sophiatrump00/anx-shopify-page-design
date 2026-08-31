@@ -1,201 +1,285 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "suntneew-certificate-library",
       "blocks": {
-        "u23": {
-          "type": "certificate_group",
+        "a20_group": {
+          "type": "product_group",
           "settings": {
-            "anchor_id": "u23-certificates",
+            "group_key": "jump-a20",
+            "anchor_id": "jump-a20",
             "icon": "jump",
             "family": "JUMP STARTERS",
-            "title": "U23 — FCC SDoC",
-            "description": "This Supplier's Declaration of Conformity names model U23. Match the model code on the product label before relying on this document.",
-            "resource_one_label": "FCC Supplier's Declaration of Conformity",
-            "resource_one_text": "Reference HUAX260526089KC · Model U23 · FCC Part 15, Subpart B Class B · Issued June 1, 2026.",
-            "resource_one_asset": "suntneew-u23-fcc-sdoc.pdf",
-            "resource_one_url": "",
-            "resource_two_label": "",
-            "resource_two_text": "",
-            "resource_two_asset": "",
-            "resource_two_url": "",
-            "resource_three_label": "",
-            "resource_three_text": "",
-            "resource_three_asset": "",
-            "resource_three_url": ""
+            "title": "A20 jump starter",
+            "model_line": "CY-A20 · 8,000 / 12,000 / 16,000mAh variants",
+            "standards": "UL Listed/Certified|FCC|UN38.3|SDS",
+            "support_url": "",
+            "support_label": "Contact Support"
           }
         },
-        "u32": {
-          "type": "certificate_group",
+        "a20_fcc": {
+          "type": "document",
           "settings": {
-            "anchor_id": "u32-certificates",
+            "group_key": "jump-a20",
+            "standard": "FCC",
+            "title": "FCC Supplier's Declaration of Conformity",
+            "reference": "CY-A20 family · 8,000 / 12,000 / 16,000mAh",
+            "asset_name": "suntneew-a20-fcc-sdoc-public.pdf",
+            "link": "",
+            "public_copy_ready": true
+          }
+        },
+        "a3_group": {
+          "type": "product_group",
+          "settings": {
+            "group_key": "jump-a3",
+            "anchor_id": "jump-a3",
             "icon": "jump",
             "family": "JUMP STARTERS",
-            "title": "U32 — FCC SDoC",
-            "description": "This Supplier's Declaration of Conformity names model U32. Match the model code on the product label before relying on this document.",
-            "resource_one_label": "FCC Supplier's Declaration of Conformity",
-            "resource_one_text": "Reference HUAX260526091KC · Model U32 · FCC Part 15, Subpart B Class B · Issued June 1, 2026.",
-            "resource_one_asset": "suntneew-u32-fcc-sdoc.pdf",
-            "resource_one_url": "",
-            "resource_two_label": "",
-            "resource_two_text": "",
-            "resource_two_asset": "",
-            "resource_two_url": "",
-            "resource_three_label": "",
-            "resource_three_text": "",
-            "resource_three_asset": "",
-            "resource_three_url": ""
+            "title": "A3 jump starter",
+            "model_line": "CY-A3",
+            "standards": "UL Listed/Certified|FCC|UN38.3|CE-EMC|RoHS|SDS",
+            "support_url": "",
+            "support_label": "Contact Support"
           }
         },
-        "a20": {
-          "type": "certificate_group",
+        "a3_fcc": {
+          "type": "document",
           "settings": {
-            "anchor_id": "a20-documents",
+            "group_key": "jump-a3",
+            "standard": "FCC",
+            "title": "FCC Supplier's Declaration of Conformity",
+            "reference": "CY-A3 family",
+            "asset_name": "suntneew-a3-fcc-sdoc-public.pdf",
+            "link": "",
+            "public_copy_ready": true
+          }
+        },
+        "kb700_group": {
+          "type": "product_group",
+          "settings": {
+            "group_key": "jump-kb700",
+            "anchor_id": "jump-kb700",
             "icon": "jump",
             "family": "JUMP STARTERS",
-            "title": "A20 / CY-A20 — FCC SDoC",
-            "description": "This Supplier's Declaration of Conformity names model CY-A20. Match your product label and final variant before relying on this document.",
-            "resource_one_label": "FCC Supplier's Declaration of Conformity",
-            "resource_one_text": "Reference HUAX260522301KC · Model CY-A20 · FCC Part 15, Subpart B Class B · Issued May 22, 2026.",
-            "resource_one_asset": "suntneew-a20-fcc-sdoc.pdf",
-            "resource_one_url": "",
-            "resource_two_label": "",
-            "resource_two_text": "",
-            "resource_two_asset": "",
-            "resource_two_url": "",
-            "resource_three_label": "",
-            "resource_three_text": "",
-            "resource_three_asset": "",
-            "resource_three_url": ""
+            "title": "KB700 fan jump starter",
+            "model_line": "KB700 / KP-700",
+            "standards": "UL Listed/Certified|FCC|UN38.3|SDS",
+            "support_url": "/pages/contact",
+            "support_label": "Contact Support"
           }
         },
-        "a3": {
-          "type": "certificate_group",
+        "u23_group": {
+          "type": "product_group",
           "settings": {
-            "anchor_id": "a3-documents",
+            "group_key": "jump-u23",
+            "anchor_id": "jump-u23",
             "icon": "jump",
             "family": "JUMP STARTERS",
-            "title": "A3 / CY-A3 — FCC SDoC",
-            "description": "This Supplier's Declaration of Conformity names model CY-A3. Match your product label and final variant before relying on this document.",
-            "resource_one_label": "FCC Supplier's Declaration of Conformity",
-            "resource_one_text": "Reference HUAX260522303KC · Model CY-A3 · FCC Part 15, Subpart B Class B · Issued May 22, 2026.",
-            "resource_one_asset": "suntneew-a3-fcc-sdoc.pdf",
-            "resource_one_url": "",
-            "resource_two_label": "",
-            "resource_two_text": "",
-            "resource_two_asset": "",
-            "resource_two_url": "",
-            "resource_three_label": "",
-            "resource_three_text": "",
-            "resource_three_asset": "",
-            "resource_three_url": ""
+            "title": "U23 jump starter",
+            "model_line": "U23",
+            "standards": "UL Listed/Certified|FCC|UN38.3|SDS",
+            "support_url": "",
+            "support_label": "Contact Support"
           }
         },
-        "rv-g24-g31": {
-          "type": "certificate_group",
+        "u23_fcc": {
+          "type": "document",
           "settings": {
-            "anchor_id": "rv-g24-g31-documents",
-            "icon": "rv",
-            "family": "RV BATTERIES",
-            "title": "G24 / G31 — FCC & EMC",
-            "description": "G24 and G31 share an internal electrical module but use different enclosure dimensions. These legacy ENERGYSTAR documents explicitly list both model families for SuntNeew use; match the final product label before relying on either document.",
-            "resource_one_label": "FCC Supplier's Declaration of Conformity",
-            "resource_one_text": "Reference HTT2026061087F · Models ESS-LFP12100BG24, ESS-12.8V100AH-B-G31 and ESS-LFP12100BG31 · FCC Part 15 Subpart B · Issued June 30, 2026.",
-            "resource_one_asset": "suntneew-rv-g24-g31-fcc-sdoc.pdf",
-            "resource_one_url": "",
-            "resource_two_label": "EMC Certificate of Conformity",
-            "resource_two_text": "Reference HTT2026061087E · Listed G24 and G31 models · EMC Directive 2014/30/EU · Issued June 30, 2026.",
-            "resource_two_asset": "suntneew-rv-g24-g31-emc-certificate.pdf",
-            "resource_two_url": "",
-            "resource_three_label": "",
-            "resource_three_text": "",
-            "resource_three_asset": "",
-            "resource_three_url": ""
+            "group_key": "jump-u23",
+            "standard": "FCC",
+            "title": "FCC Supplier's Declaration of Conformity",
+            "reference": "U23 family",
+            "asset_name": "suntneew-u23-fcc-sdoc-public.pdf",
+            "link": "",
+            "public_copy_ready": true
           }
         },
-        "rv-230-314": {
-          "type": "certificate_group",
+        "u32_group": {
+          "type": "product_group",
           "settings": {
-            "anchor_id": "rv-230-314-documents",
-            "icon": "rv",
-            "family": "RV BATTERIES",
-            "title": "230Ah / 314Ah — FCC & EMC",
-            "description": "Legacy ENERGYSTAR documents approved for SuntNeew use only for the listed 230Ah and 314Ah model codes. Match the final product label before relying on either document.",
-            "resource_one_label": "FCC Supplier's Declaration of Conformity",
-            "resource_one_text": "Reference HTT2026061086F · Models ESS-LFP12230B and ESS-LFP12314B · FCC Part 15 Subpart B · Issued June 30, 2026.",
-            "resource_one_asset": "suntneew-rv-230-314-fcc-sdoc.pdf",
-            "resource_one_url": "",
-            "resource_two_label": "EMC Certificate of Conformity",
-            "resource_two_text": "Reference HTT2026061086E · Models ESS-LFP12230B and ESS-LFP12314B · EMC Directive 2014/30/EU · Issued June 30, 2026.",
-            "resource_two_asset": "suntneew-rv-230-314-emc-certificate.pdf",
-            "resource_two_url": "",
-            "resource_three_label": "",
-            "resource_three_text": "",
-            "resource_three_asset": "",
-            "resource_three_url": ""
+            "group_key": "jump-u32",
+            "anchor_id": "jump-u32",
+            "icon": "jump",
+            "family": "JUMP STARTERS",
+            "title": "U32 jump starter",
+            "model_line": "U32",
+            "standards": "UL Listed/Certified|FCC|UN38.3|SDS",
+            "support_url": "",
+            "support_label": "Contact Support"
           }
         },
-        "rv-rohs": {
-          "type": "certificate_group",
+        "u32_fcc": {
+          "type": "document",
           "settings": {
-            "anchor_id": "rv-rohs-test-report",
-            "icon": "rv",
-            "family": "RV BATTERIES",
-            "title": "RV battery series — RoHS test report",
-            "description": "This material-restriction test report lists the four RV battery models below. It is a model-matched test record, not a series-wide consumer certification claim.",
-            "resource_one_label": "EU RoHS test report",
-            "resource_one_text": "Reference TSZ26EV012A05-01 · Models ESS-LFP12100BG24, ESS-12.8V100AH-B-G31, ESS-LFP12230B and ESS-LFP12314B · EU RoHS 2011/65/EU and 2015/863/EU · Issued July 13, 2026.",
-            "resource_one_asset": "suntneew-rv-series-rohs-test-report.pdf",
-            "resource_one_url": "",
-            "resource_two_label": "",
-            "resource_two_text": "",
-            "resource_two_asset": "",
-            "resource_two_url": "",
-            "resource_three_label": "",
-            "resource_three_text": "",
-            "resource_three_asset": "",
-            "resource_three_url": ""
+            "group_key": "jump-u32",
+            "standard": "FCC",
+            "title": "FCC Supplier's Declaration of Conformity",
+            "reference": "U32 family",
+            "asset_name": "suntneew-u32-fcc-sdoc-public.pdf",
+            "link": "",
+            "public_copy_ready": true
           }
         },
-        "rv-g31-protection": {
-          "type": "certificate_group",
+        "rv_g24_g31_group": {
+          "type": "product_group",
           "settings": {
-            "anchor_id": "rv-g31-protection-documents",
+            "group_key": "rv-g24-g31",
+            "anchor_id": "rv-g24-g31",
             "icon": "rv",
             "family": "RV BATTERIES",
-            "title": "G24 / G31 — IP65 & FCC Grant",
-            "description": "G24 and G31 share the same internal electrical design and differ only in enclosure dimensions. Per SuntNeew engineering confirmation, these G31 IP65 and FCC Grant records are shared-design references for both variants. The issued documents retain the G31 model code and named legacy grantee.",
-            "resource_one_label": "IP65 Certificate of Compliance · shared-design reference",
-            "resource_one_text": "Reference ZKT-25070115157C · Original record: ESS-12.8V100AH-B-G31 · IP65 under EN 60529:1991+A1:2000+A2:2013 · Used for G24/G31 as a shared-design reference per SuntNeew engineering confirmation.",
-            "resource_one_asset": "suntneew-rv-g31-ip65-certificate.pdf",
-            "resource_one_url": "",
-            "resource_two_label": "FCC Grant of Equipment Authorization · shared-design reference",
-            "resource_two_text": "FCC ID 2BQK7-12100BG31 · Original record: LiFePO4 Battery 12.8V100AH-B-G31 · Used for G24/G31 as a shared-design reference per SuntNeew engineering confirmation; the grant remains issued to the named legacy grantee.",
-            "resource_two_asset": "suntneew-rv-g31-fcc-grant.pdf",
-            "resource_two_url": "",
-            "resource_three_label": "",
-            "resource_three_text": "",
-            "resource_three_asset": "",
-            "resource_three_url": ""
+            "title": "G24 / G31 RV batteries",
+            "model_line": "2026 / 2027 naming aliases · 12.8V 100Ah family",
+            "standards": "UL Listed/Certified|FCC|CE-EMC|RoHS|IP65|UN38.3|SDS",
+            "support_url": "",
+            "support_label": "Contact Support"
+          }
+        },
+        "rv_g24_g31_fcc": {
+          "type": "document",
+          "settings": {
+            "group_key": "rv-g24-g31",
+            "standard": "FCC",
+            "title": "FCC Supplier's Declaration of Conformity",
+            "reference": "G24 / G31 family",
+            "asset_name": "suntneew-rv-g24-g31-fcc-sdoc-public.pdf",
+            "link": "",
+            "public_copy_ready": true
+          }
+        },
+        "rv_g24_g31_emc": {
+          "type": "document",
+          "settings": {
+            "group_key": "rv-g24-g31",
+            "standard": "CE-EMC",
+            "title": "EMC Certificate of Conformity",
+            "reference": "G24 / G31 family",
+            "asset_name": "suntneew-rv-g24-g31-emc-certificate-public.pdf",
+            "link": "",
+            "public_copy_ready": true
+          }
+        },
+        "rv_g24_g31_ip65": {
+          "type": "document",
+          "settings": {
+            "group_key": "rv-g24-g31",
+            "standard": "IP65",
+            "title": "IP65 Certificate of Compliance",
+            "reference": "RV battery family",
+            "asset_name": "suntneew-rv-g31-ip65-certificate-public.pdf",
+            "link": "",
+            "public_copy_ready": true
+          }
+        },
+        "rv_g24_g31_grant": {
+          "type": "document",
+          "settings": {
+            "group_key": "rv-g24-g31",
+            "standard": "FCC ID",
+            "title": "FCC Grant of Equipment Authorization",
+            "reference": "G24 / G31 family",
+            "asset_name": "suntneew-rv-g31-fcc-grant-public.pdf",
+            "link": "",
+            "public_copy_ready": true
+          }
+        },
+        "rv_rohs": {
+          "type": "document",
+          "settings": {
+            "group_key": "rv-g24-g31",
+            "standard": "RoHS",
+            "title": "EU RoHS test report",
+            "reference": "RV battery family",
+            "asset_name": "suntneew-rv-series-rohs-test-report-public-excerpt.pdf",
+            "link": "",
+            "public_copy_ready": true
+          }
+        },
+        "rv_230_314_group": {
+          "type": "product_group",
+          "settings": {
+            "group_key": "rv-230-314",
+            "anchor_id": "rv-230-314",
+            "icon": "rv",
+            "family": "RV BATTERIES",
+            "title": "230Ah / 314Ah RV batteries",
+            "model_line": "12.8V high-capacity family",
+            "standards": "UL Listed/Certified|FCC|CE-EMC|RoHS|IP65|UN38.3|SDS",
+            "support_url": "",
+            "support_label": "Contact Support"
+          }
+        },
+        "rv_230_314_fcc": {
+          "type": "document",
+          "settings": {
+            "group_key": "rv-230-314",
+            "standard": "FCC",
+            "title": "FCC Supplier's Declaration of Conformity",
+            "reference": "230Ah / 314Ah family",
+            "asset_name": "suntneew-rv-230-314-fcc-sdoc-public.pdf",
+            "link": "",
+            "public_copy_ready": true
+          }
+        },
+        "rv_230_314_emc": {
+          "type": "document",
+          "settings": {
+            "group_key": "rv-230-314",
+            "standard": "CE-EMC",
+            "title": "EMC Certificate of Conformity",
+            "reference": "230Ah / 314Ah family",
+            "asset_name": "suntneew-rv-230-314-emc-certificate-public.pdf",
+            "link": "",
+            "public_copy_ready": true
+          }
+        },
+        "rv_230_314_rohs": {
+          "type": "document",
+          "settings": {
+            "group_key": "rv-230-314",
+            "standard": "RoHS",
+            "title": "EU RoHS test report",
+            "reference": "RV battery family",
+            "asset_name": "suntneew-rv-series-rohs-test-report-public-excerpt.pdf",
+            "link": "",
+            "public_copy_ready": true
+          }
+        },
+        "rv_230_314_ip65": {
+          "type": "document",
+          "settings": {
+            "group_key": "rv-230-314",
+            "standard": "IP65",
+            "title": "IP65 Certificate of Compliance",
+            "reference": "RV battery family",
+            "asset_name": "suntneew-rv-g31-ip65-certificate-public.pdf",
+            "link": "",
+            "public_copy_ready": true
           }
         }
       },
-      "block_order": ["u23", "u32", "a20", "a3", "rv-g24-g31", "rv-230-314", "rv-rohs", "rv-g31-protection"],
+      "block_order": [
+        "a20_group", "a20_fcc",
+        "a3_group", "a3_fcc",
+        "kb700_group",
+        "u23_group", "u23_fcc",
+        "u32_group", "u32_fcc",
+        "rv_g24_g31_group", "rv_g24_g31_fcc", "rv_g24_g31_emc", "rv_g24_g31_ip65", "rv_g24_g31_grant", "rv_rohs",
+        "rv_230_314_group", "rv_230_314_fcc", "rv_230_314_emc", "rv_230_314_rohs", "rv_230_314_ip65"
+      ],
       "settings": {
-        "eyebrow": "MODEL DOCUMENT CENTER",
-        "heading": "Product document center.",
-        "intro": "Match the product label before opening a document. Each entry identifies its document type, source model and reference; where G24/G31 share an internal design, the shared-design scope is stated explicitly. These records are not series-wide approval claims.",
-        "note_title": "Check the model before relying on a document.",
-        "note": "A document applies only to its named model, responsible party, product label and intended market unless an entry explicitly identifies the confirmed G24/G31 shared-design scope. Some RV records name ENERGYSTAR, the former SuntNeew identity. An FCC SDoC, FCC grant and test record each have a different scope; transport records are not consumer product certifications. If your label does not match, contact Support before using a document for compliance, transport or installation decisions."
+        "eyebrow": "SAFETY & COMPLIANCE",
+        "heading": "Public product documents",
+        "intro": "Model-matched documents for products sold on SuntNeew.com. Choose your product and download the public copy.",
+        "index_label": "Browse products",
+        "standards_label": "Standards",
+        "documents_label": "Public documents",
+        "file_label": "file",
+        "files_label": "files",
+        "download_label": "Download PDF",
+        "support_label": "Contact Support",
+        "note_title": "Match the model on your product label.",
+        "note": "Choose the matching product family before downloading a document."
       }
     }
   },

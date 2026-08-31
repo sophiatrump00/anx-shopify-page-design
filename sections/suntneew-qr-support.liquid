@@ -94,27 +94,35 @@
             <h2>{{ section.settings.compliance_heading }}</h2>
           </div>
         </div>
-        {%- if section.settings.compliance_note != blank -%}<p class="sn-qr-support__section-note">{{ section.settings.compliance_note }}</p>{%- endif -%}
         <div class="sn-qr-support__compliance-grid">
           {%- for block in compliance_blocks -%}
             {%- assign compliance_standard_lower = block.settings.standard | downcase -%}
-            <details class="sn-qr-support__compliance-card{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-qr-support__compliance-card--ul{% endif %}" {{ block.shopify_attributes }}>
-              <summary class="sn-qr-support__compliance-summary">
-                <span class="sn-qr-support__standard">{{ block.settings.standard | default: block.settings.title }}</span>
-                <span>
-                  <span class="sn-qr-support__compliance-title">{{ block.settings.title }}</span>
-                  <span class="sn-qr-support__compliance-hint">{{ section.settings.compliance_hint }}</span>
-                </span>
-              </summary>
-              <div class="sn-qr-support__compliance-body">
-                {%- if block.settings.scope != blank -%}<p>{{ block.settings.scope }}</p>{%- endif -%}
-                {%- if block.settings.public_copy_ready and block.settings.link != blank -%}
+            {%- assign compliance_has_public_copy = false -%}
+            {%- if block.settings.public_copy_ready and block.settings.link != blank -%}
+              {%- assign compliance_has_public_copy = true -%}
+            {%- endif -%}
+            {%- if compliance_has_public_copy -%}
+              <details class="sn-qr-support__compliance-card{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-qr-support__compliance-card--ul{% endif %}" {{ block.shopify_attributes }}>
+                <summary class="sn-qr-support__compliance-summary">
+                  <span class="sn-qr-support__standard">{{ block.settings.standard | default: block.settings.title }}</span>
+                  <span>
+                    <span class="sn-qr-support__compliance-title">{{ block.settings.title }}</span>
+                  </span>
+                </summary>
+                <div class="sn-qr-support__compliance-body">
                   <a class="sn-qr-support__resource-link" href="{{ block.settings.link }}" target="_blank" rel="noopener">{{ block.settings.link_label }}</a>
-                {%- else -%}
-                  <span class="sn-qr-support__pending">{{ section.settings.compliance_pending_label }}</span>
-                {%- endif -%}
+                </div>
+              </details>
+            {%- else -%}
+              <div class="sn-qr-support__compliance-card{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-qr-support__compliance-card--ul{% endif %}" {{ block.shopify_attributes }}>
+                <div class="sn-qr-support__compliance-summary sn-qr-support__compliance-summary--static">
+                  <span class="sn-qr-support__standard">{{ block.settings.standard | default: block.settings.title }}</span>
+                  <span>
+                    <span class="sn-qr-support__compliance-title">{{ block.settings.title }}</span>
+                  </span>
+                </div>
               </div>
-            </details>
+            {%- endif -%}
           {%- endfor -%}
         </div>
       </section>

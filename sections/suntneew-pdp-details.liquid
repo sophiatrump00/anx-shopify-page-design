@@ -109,10 +109,35 @@
         {%- endif -%}
 
         {%- if compliance_count > 0 -%}
+          {%- liquid
+            assign compliance_library_anchor = ''
+            case template.suffix
+              when 'a20'
+                assign compliance_library_anchor = 'jump-a20'
+              when 'a3'
+                assign compliance_library_anchor = 'jump-a3'
+              when 'kb700'
+                assign compliance_library_anchor = 'jump-kb700'
+              when 'u23'
+                assign compliance_library_anchor = 'jump-u23'
+              when 'u32'
+                assign compliance_library_anchor = 'jump-u32'
+              when 'rv-g24', 'rv-g31'
+                assign compliance_library_anchor = 'rv-g24-g31'
+              when 'rv-230ah', 'rv-314ah'
+                assign compliance_library_anchor = 'rv-230-314'
+            endcase
+
+            assign compliance_library_url = '/pages/technology'
+            if compliance_library_anchor != blank
+              assign compliance_library_url = compliance_library_url | append: '#' | append: compliance_library_anchor
+            endif
+          -%}
           <section class="sn-pdp-doc-group" aria-labelledby="{{ section.id }}-compliance-heading">
             <h3 id="{{ section.id }}-compliance-heading" class="sn-pdp-doc-group__heading">{{ section.settings.compliance_group_heading }}</h3>
-            {%- if section.settings.compliance_note != blank -%}<p class="sn-pdp-doc-group__note">{{ section.settings.compliance_note }}</p>{%- endif -%}
-            <div class="sn-pdp-compliance-grid">
+            <div class="sn-pdp-compliance-overview">
+              <div class="sn-pdp-compliance-badges" aria-label="{{ section.settings.compliance_group_heading | escape }}">
+                {%- assign compliance_standards_seen = '|' -%}
               {%- for block in download_blocks -%}
                 {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
                 {%- if block.settings.document_group == blank -%}
@@ -124,29 +149,18 @@
                 {%- if document_group == 'compliance' -%}
                   {%- assign compliance_standard = block.settings.standard | default: block.settings.label -%}
                   {%- assign compliance_standard_lower = compliance_standard | downcase -%}
-                  <details class="sn-pdp-compliance-card{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-pdp-compliance-card--ul{% endif %}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
-                    <summary class="sn-pdp-compliance-card__summary">
-                      <span class="sn-pdp-compliance-card__standard">{{ compliance_standard }}</span>
-                      <span class="sn-pdp-compliance-card__summary-copy">
-                        <span class="sn-pdp-compliance-card__title">{{ block.settings.label }}</span>
-                        <span class="sn-pdp-compliance-card__hint">{{ section.settings.compliance_scope_label }}</span>
-                      </span>
-                    </summary>
-                    <div class="sn-pdp-compliance-card__body">
-                      {%- if block.settings.description != blank -%}<p class="sn-pdp-compliance-card__description">{{ block.settings.description }}</p>{%- endif -%}
-                      {%- if block.settings.public_copy_ready and block.settings.link != blank -%}
-                        <a class="sn-pdp-compliance-card__action" href="{{ block.settings.link }}" target="_blank" rel="noopener">{{ section.settings.compliance_link_label }}</a>
-                      {%- elsif block.settings.public_copy_ready and block.settings.asset_name != blank -%}
-                        <a class="sn-pdp-compliance-card__action" href="{{ block.settings.asset_name | asset_url }}" target="_blank" rel="noopener">{{ section.settings.compliance_link_label }}</a>
-                      {%- elsif section.settings.compliance_request_url != blank -%}
-                        <a class="sn-pdp-compliance-card__action sn-pdp-compliance-card__action--pending" href="{{ section.settings.compliance_request_url }}">{{ section.settings.compliance_request_label }}</a>
-                      {%- else -%}
-                        <span class="sn-pdp-compliance-card__action sn-pdp-compliance-card__action--pending" aria-disabled="true">{{ section.settings.compliance_pending_label }}</span>
-                      {%- endif -%}
-                    </div>
-                  </details>
+                  {%- assign compliance_standard_token = '|' | append: compliance_standard_lower | append: '|' -%}
+                  {%- unless compliance_standards_seen contains compliance_standard_token -%}
+                    <a class="sn-pdp-compliance-badge{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-pdp-compliance-badge--ul{% endif %}" href="{{ compliance_library_url }}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ compliance_standard }}</a>
+                    {%- assign compliance_standards_seen = compliance_standards_seen | append: compliance_standard_lower | append: '|' -%}
+                  {%- endunless -%}
                 {%- endif -%}
               {%- endfor -%}
+              </div>
+              <a class="sn-pdp-compliance-library-link" href="{{ compliance_library_url }}">
+                <span>{{ section.settings.compliance_library_label }}</span>
+                <span aria-hidden="true">→</span>
+              </a>
             </div>
           </section>
         {%- endif -%}
@@ -172,6 +186,7 @@
     {"type":"text","id":"download_heading","label":"Downloads heading","default":"Manuals & Documents"},
     {"type":"text","id":"manuals_group_heading","label":"Manuals group heading","default":"User Manuals"},
     {"type":"text","id":"compliance_group_heading","label":"Compliance group heading","default":"Safety & Compliance"},
+    {"type":"text","id":"compliance_library_label","label":"Compliance library link label","default":"View public documents"},
     {"type":"textarea","id":"compliance_note","label":"Compliance note","default":"Only model-matched public copies should be uploaded here. Check the model, report number and scope before relying on a document."},
     {"type":"text","id":"compliance_scope_label","label":"Compliance scope label","default":"View scope and document status"},
     {"type":"text","id":"compliance_link_label","label":"Compliance link label","default":"View public copy"},
