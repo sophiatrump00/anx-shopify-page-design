@@ -1,11 +1,14 @@
 {%- liquid
   assign is_suntneew_about_page = false
   assign is_suntneew_return_policy_page = false
+  assign is_suntneew_impressum_page = false
 
   if page.handle == 'about-us'
     assign is_suntneew_about_page = true
   elsif page.handle == 'return-policy'
     assign is_suntneew_return_policy_page = true
+  elsif page.handle == 'impressum'
+    assign is_suntneew_impressum_page = true
   endif
 
   assign page_max_width = section.settings.content_width
@@ -15,7 +18,7 @@
   endif
 -%}
 
-{%- if is_suntneew_about_page or is_suntneew_return_policy_page -%}
+{%- if is_suntneew_about_page or is_suntneew_return_policy_page or is_suntneew_impressum_page -%}
   {{- 'suntneew-static-pages.css' | asset_url | stylesheet_tag -}}
 {%- endif -%}
 
@@ -27,7 +30,7 @@
 
 <div class="container">
   <div class="page-spacer">
-    <div class="page{% if is_suntneew_about_page %} page--suntneew-about{% elsif is_suntneew_return_policy_page %} page--suntneew-policy{% endif %}">
+    <div class="page{% if is_suntneew_about_page %} page--suntneew-about{% elsif is_suntneew_return_policy_page %} page--suntneew-policy{% elsif is_suntneew_impressum_page %} page--suntneew-impressum{% endif %}">
       <h1 class="h1 text-center" id="PageHeading-{{ section.id }}">
         {%- if is_suntneew_about_page -%}
           About SuntNeew

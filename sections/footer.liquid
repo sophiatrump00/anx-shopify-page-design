@@ -81,11 +81,14 @@
 
                     {%- assign footer_menu_title_downcase = block.settings.menu_title | default: block.settings.menu.title | strip | downcase -%}
                     {%- assign footer_has_calculator_link = false -%}
+                    {%- assign footer_has_impressum_link = false -%}
                     {%- for footer_link in block.settings.menu.links -%}
                       {%- assign footer_link_title_downcase = footer_link.title | strip | downcase -%}
                       {%- if footer_link.url contains '/pages/power-calculator' or footer_link_title_downcase == 'help me choose' -%}
                         {%- assign footer_has_calculator_link = true -%}
-                        {%- break -%}
+                      {%- endif -%}
+                      {%- if footer_link.url contains '/pages/impressum' or footer_link_title_downcase == 'impressum' -%}
+                        {%- assign footer_has_impressum_link = true -%}
                       {%- endif -%}
                     {%- endfor -%}
                     <ul class="v-stack gap-3" role="list">
@@ -106,6 +109,11 @@
                           </li>
                         {%- endunless -%}
                       {%- endfor -%}
+                      {%- if footer_menu_title_downcase == 'company' and footer_has_impressum_link == false and pages['impressum'] != blank -%}
+                        <li>
+                          <a href="{{ pages['impressum'].url }}" class="inline-block link-faded break-all">{{ pages['impressum'].title | escape }}</a>
+                        </li>
+                      {%- endif -%}
                     </ul>
                   </div>
                 {%- endif -%}

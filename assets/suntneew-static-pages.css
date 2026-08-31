@@ -6,6 +6,26 @@
   gap: 40px;
 }
 
+.page--suntneew-impressum {
+  gap: 32px;
+}
+
+.page--suntneew-impressum .prose {
+  max-width: 80ch;
+  margin-inline: auto;
+}
+
+.page--suntneew-impressum .prose h2,
+.page--suntneew-impressum .prose h3 {
+  margin-top: 32px;
+}
+
+.page--suntneew-impressum .prose p + p,
+.page--suntneew-impressum .prose ul + p,
+.page--suntneew-impressum .prose p + ul {
+  margin-top: 12px;
+}
+
 .sn-policy {
   max-width: 80ch;
   margin-inline: auto;
