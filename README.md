@@ -60,5 +60,5 @@ This repository is the source of truth for SuntNeew Shopify homepage work. Shopi
 ## Guardrails
 
 - Never publish a theme only because it is in `main`; preview and approve it in Shopify first.
-- Home-energy orders stay on the configuration/request path until delivery, VAT, support, and product publication gates are confirmed.
+- Home-energy products are configured for direct online purchase. Keep the quantity/Buy it now path enabled, while separately verifying delivery, VAT, support, packaging and product-publication gates before Germany launch.
 - Historical branches are snapshots, not deployment candidates.

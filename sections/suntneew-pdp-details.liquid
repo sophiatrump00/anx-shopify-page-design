@@ -135,33 +135,74 @@
           -%}
           <section class="sn-pdp-doc-group" aria-labelledby="{{ section.id }}-compliance-heading">
             <h3 id="{{ section.id }}-compliance-heading" class="sn-pdp-doc-group__heading">{{ section.settings.compliance_group_heading }}</h3>
-            <div class="sn-pdp-compliance-overview">
-              <div class="sn-pdp-compliance-badges" aria-label="{{ section.settings.compliance_group_heading | escape }}">
-                {%- assign compliance_standards_seen = '|' -%}
-              {%- for block in download_blocks -%}
-                {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
-                {%- if block.settings.document_group == blank -%}
-                  {%- assign label_lower = block.settings.label | downcase -%}
-                  {%- if label_lower contains 'fcc' or label_lower contains 'emc' or label_lower contains 'rohs' or label_lower contains 'ip65' or label_lower contains 'ul ' or label_lower contains 'un38' or label_lower contains 'sds' or label_lower contains 'msds' or label_lower contains 'tdg' or label_lower contains 'dgm' or label_lower contains 'certificate' or label_lower contains 'report' or label_lower contains 'grant' -%}
-                    {%- assign document_group = 'compliance' -%}
+            {%- if template.suffix == 'rv-230ah' -%}
+              {%- if section.settings.compliance_note != blank -%}<p class="sn-pdp-doc-group__note">{{ section.settings.compliance_note | escape }}</p>{%- endif -%}
+              <div class="sn-pdp-compliance-docs" aria-label="{{ section.settings.compliance_group_heading | escape }}">
+                {%- for block in download_blocks -%}
+                  {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
+                  {%- if block.settings.document_group == blank -%}
+                    {%- assign label_lower = block.settings.label | downcase -%}
+                    {%- if label_lower contains 'fcc' or label_lower contains 'emc' or label_lower contains 'rohs' or label_lower contains 'ip65' or label_lower contains 'ul ' or label_lower contains 'un38' or label_lower contains 'sds' or label_lower contains 'msds' or label_lower contains 'tdg' or label_lower contains 'dgm' or label_lower contains 'certificate' or label_lower contains 'report' or label_lower contains 'grant' -%}
+                      {%- assign document_group = 'compliance' -%}
+                    {%- endif -%}
                   {%- endif -%}
-                {%- endif -%}
-                {%- if document_group == 'compliance' -%}
-                  {%- assign compliance_standard = block.settings.standard | default: block.settings.label -%}
-                  {%- assign compliance_standard_lower = compliance_standard | downcase -%}
-                  {%- assign compliance_standard_token = '|' | append: compliance_standard_lower | append: '|' -%}
-                  {%- unless compliance_standards_seen contains compliance_standard_token -%}
-                    <a class="sn-pdp-compliance-badge{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-pdp-compliance-badge--ul{% endif %}" href="{{ compliance_library_url }}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ compliance_standard }}</a>
-                    {%- assign compliance_standards_seen = compliance_standards_seen | append: compliance_standard_lower | append: '|' -%}
-                  {%- endunless -%}
-                {%- endif -%}
-              {%- endfor -%}
+                  {%- if document_group == 'compliance' -%}
+                    {%- assign compliance_standard = block.settings.standard | default: block.settings.label -%}
+                    {%- assign compliance_document_url = '' -%}
+                    {%- if block.settings.link != blank -%}
+                      {%- assign compliance_document_url = block.settings.link -%}
+                    {%- elsif block.settings.asset_name != blank and block.settings.public_copy_ready -%}
+                      {%- assign compliance_document_url = block.settings.asset_name | asset_url -%}
+                    {%- endif -%}
+                    {%- if block.settings.public_copy_ready and compliance_document_url != blank -%}
+                      <a class="sn-pdp-compliance-doc" href="{{ compliance_document_url }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
+                        <strong>{{ compliance_standard }}</strong>
+                        <span>{{ block.settings.label }}</span>
+                        <small>{{ section.settings.compliance_link_label }}</small>
+                      </a>
+                    {%- else -%}
+                      <span class="sn-pdp-compliance-doc sn-pdp-compliance-doc--pending" aria-disabled="true" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
+                        <strong>{{ compliance_standard }}</strong>
+                        <span>{{ block.settings.label }}</span>
+                        <small>{{ section.settings.compliance_pending_label }}</small>
+                      </span>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- endfor -%}
               </div>
               <a class="sn-pdp-compliance-library-link" href="{{ compliance_library_url }}">
                 <span>{{ section.settings.compliance_library_label }}</span>
                 <span aria-hidden="true">→</span>
               </a>
-            </div>
+            {%- else -%}
+              <div class="sn-pdp-compliance-overview">
+                <div class="sn-pdp-compliance-badges" aria-label="{{ section.settings.compliance_group_heading | escape }}">
+                  {%- assign compliance_standards_seen = '|' -%}
+                {%- for block in download_blocks -%}
+                  {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
+                  {%- if block.settings.document_group == blank -%}
+                    {%- assign label_lower = block.settings.label | downcase -%}
+                    {%- if label_lower contains 'fcc' or label_lower contains 'emc' or label_lower contains 'rohs' or label_lower contains 'ip65' or label_lower contains 'ul ' or label_lower contains 'un38' or label_lower contains 'sds' or label_lower contains 'msds' or label_lower contains 'tdg' or label_lower contains 'dgm' or label_lower contains 'certificate' or label_lower contains 'report' or label_lower contains 'grant' -%}
+                      {%- assign document_group = 'compliance' -%}
+                    {%- endif -%}
+                  {%- endif -%}
+                  {%- if document_group == 'compliance' -%}
+                    {%- assign compliance_standard = block.settings.standard | default: block.settings.label -%}
+                    {%- assign compliance_standard_lower = compliance_standard | downcase -%}
+                    {%- assign compliance_standard_token = '|' | append: compliance_standard_lower | append: '|' -%}
+                    {%- unless compliance_standards_seen contains compliance_standard_token -%}
+                      <a class="sn-pdp-compliance-badge{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-pdp-compliance-badge--ul{% endif %}" href="{{ compliance_library_url }}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ compliance_standard }}</a>
+                      {%- assign compliance_standards_seen = compliance_standards_seen | append: compliance_standard_lower | append: '|' -%}
+                    {%- endunless -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                </div>
+                <a class="sn-pdp-compliance-library-link" href="{{ compliance_library_url }}">
+                  <span>{{ section.settings.compliance_library_label }}</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            {%- endif -%}
           </section>
         {%- endif -%}
       </div>
