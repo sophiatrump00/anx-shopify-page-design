@@ -41,7 +41,7 @@
         "home": {
           "type": "series",
           "settings": {
-            "fallback_asset": "energy-star-home-hero-v1.png",
+            "fallback_asset": "suntneew-home-hero-v2.png",
             "image_alt": "SuntNeew home energy storage system beside a solar home",
             "eyebrow": "HOME ENERGY STORAGE",
             "status": "SYSTEM PLANNING",

@@ -102,7 +102,7 @@
               {%- assign compliance_has_public_copy = true -%}
             {%- endif -%}
             {%- if compliance_has_public_copy -%}
-              <details class="sn-qr-support__compliance-card{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-qr-support__compliance-card--ul{% endif %}" {{ block.shopify_attributes }}>
+              <details class="sn-qr-support__compliance-card{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'cell safety' %} sn-qr-support__compliance-card--ul{% endif %}" {{ block.shopify_attributes }}>
                 <summary class="sn-qr-support__compliance-summary">
                   <span class="sn-qr-support__standard">{{ block.settings.standard | default: block.settings.title }}</span>
                   <span>
@@ -114,7 +114,7 @@
                 </div>
               </details>
             {%- else -%}
-              <div class="sn-qr-support__compliance-card{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-qr-support__compliance-card--ul{% endif %}" {{ block.shopify_attributes }}>
+              <div class="sn-qr-support__compliance-card{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'cell safety' %} sn-qr-support__compliance-card--ul{% endif %}" {{ block.shopify_attributes }}>
                 <div class="sn-qr-support__compliance-summary sn-qr-support__compliance-summary--static">
                   <span class="sn-qr-support__standard">{{ block.settings.standard | default: block.settings.title }}</span>
                   <span>

@@ -34,10 +34,10 @@
     { scenario: 'jump', key: 'jump-a20', id: 'a20-12000', model: 'A20', variant: '12,000mAh variant', voltage: '12v', gasoline: 7, diesel: 4, priority: { compact: 3, display: 3, charging: 1, reserve: 2 } },
     { scenario: 'jump', key: 'jump-a3', id: 'a3-16000', model: 'A3', variant: '16,000mAh', voltage: '12v', gasoline: 8, diesel: 5, priority: { compact: 4, display: 2, charging: 0, reserve: 1 } },
     { scenario: 'jump', key: 'jump-a20', id: 'a20-16000', model: 'A20', variant: '16,000mAh variant', voltage: '12v', gasoline: 8, diesel: 5, priority: { compact: 5, display: 3, charging: 1, reserve: 0 } },
-    { scenario: 'home', key: 'home-wl5a', id: 'wl5a', model: 'ENERGY STAR WL5A', architecture: 'low', capacityWh: 5120, maxUnits: 9, maxSystemOutputW: 12000 },
-    { scenario: 'home', key: 'home-wl10b', id: 'wl10b', model: 'ENERGY STAR WL10B', architecture: 'low', capacityWh: 10240, maxUnits: 9, maxSystemOutputW: 12000 },
-    { scenario: 'home', key: 'home-vh', id: 'vh-10', model: 'ENERGY STAR VH', variant: '10.24kWh configuration', architecture: 'high', capacityWh: 10240, maxUnits: 1, maxSystemOutputW: 12000 },
-    { scenario: 'home', key: 'home-vh', id: 'vh-15', model: 'ENERGY STAR VH', variant: '15.36kWh configuration', architecture: 'high', capacityWh: 15360, maxUnits: 1, maxSystemOutputW: 12000 }
+    { scenario: 'home', key: 'home-wl5a', id: 'wl5a', model: 'SuntNeew WL5A', architecture: 'low', capacityWh: 5120, maxUnits: 9, maxSystemOutputW: 12000 },
+    { scenario: 'home', key: 'home-wl10b', id: 'wl10b', model: 'SuntNeew WL10B', architecture: 'low', capacityWh: 10240, maxUnits: 9, maxSystemOutputW: 12000 },
+    { scenario: 'home', key: 'home-vh', id: 'vh-10', model: 'SuntNeew VH', variant: '10.24kWh configuration', architecture: 'high', capacityWh: 10240, maxUnits: 1, maxSystemOutputW: 12000 },
+    { scenario: 'home', key: 'home-vh', id: 'vh-15', model: 'SuntNeew VH', variant: '15.36kWh configuration', architecture: 'high', capacityWh: 15360, maxUnits: 1, maxSystemOutputW: 12000 }
   ];
 
   var catalog = buildCatalog(DEFAULT_CATALOG);

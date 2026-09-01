@@ -1,0 +1,139 @@
+query SuntNeewCloseoutAudit {
+  shop {
+    name
+    email
+    contactEmail
+    primaryDomain {
+      host
+      url
+    }
+    shopPolicies {
+      id
+      type
+      title
+      body
+      url
+    }
+  }
+  pages(first: 50) {
+    nodes {
+      id
+      title
+      handle
+      isPublished
+      templateSuffix
+      body
+    }
+  }
+  products(first: 25, query: "status:active") {
+    nodes {
+      id
+      title
+      handle
+      vendor
+      productType
+      descriptionHtml
+      seo {
+        title
+        description
+      }
+      featuredMedia {
+        id
+        alt
+        preview {
+          image {
+            url
+          }
+        }
+      }
+      media(first: 20) {
+        nodes {
+          id
+          alt
+          mediaContentType
+          preview {
+            image {
+              url
+            }
+          }
+        }
+      }
+      options {
+        id
+        name
+        values
+      }
+      variants(first: 30) {
+        nodes {
+          id
+          title
+          sku
+          selectedOptions {
+            name
+            value
+          }
+          inventoryItem {
+            id
+            measurement {
+              weight {
+                unit
+                value
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  deliveryProfiles(first: 20) {
+    nodes {
+      id
+      name
+      profileLocationGroups {
+        locationGroupZones(first: 20) {
+          nodes {
+            zone {
+              id
+              name
+              countries {
+                code {
+                  countryCode
+                }
+              }
+            }
+            methodDefinitions(first: 20) {
+              nodes {
+                id
+                name
+                active
+                description
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  urlRedirects(first: 100) {
+    nodes {
+      id
+      path
+      target
+    }
+  }
+  markets(first: 50) {
+    nodes {
+      id
+      name
+      status
+      regions(first: 50) {
+        nodes {
+          ... on MarketRegionCountry {
+            code
+            name
+          }
+        }
+      }
+    }
+  }
+}

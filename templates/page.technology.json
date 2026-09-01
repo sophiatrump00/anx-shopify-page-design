@@ -21,7 +21,7 @@
             "family": "JUMP STARTERS",
             "title": "A20 jump starter",
             "model_line": "CY-A20 · 8,000 / 12,000 / 16,000mAh variants",
-            "standards": "UL Listed/Certified|FCC|UN38.3|SDS",
+            "standards": "Safety tested to UL 2743|FCC|UN38.3|SDS",
             "support_url": "",
             "support_label": "Contact Support"
           }
@@ -47,7 +47,7 @@
             "family": "JUMP STARTERS",
             "title": "A3 jump starter",
             "model_line": "CY-A3",
-            "standards": "UL Listed/Certified|FCC|UN38.3|CE-EMC|RoHS|SDS",
+            "standards": "Safety tested to UL 2743|FCC|UN38.3|CE-EMC|RoHS|SDS",
             "support_url": "",
             "support_label": "Contact Support"
           }
@@ -73,8 +73,8 @@
             "family": "JUMP STARTERS",
             "title": "KB700 fan jump starter",
             "model_line": "KB700 / KP-700",
-            "standards": "UL Listed/Certified|FCC|UN38.3|SDS",
-            "support_url": "/pages/contact",
+            "standards": "Safety tested to UL 2743|FCC|UN38.3|SDS",
+            "support_url": "/pages/contact-us",
             "support_label": "Contact Support"
           }
         },
@@ -87,7 +87,7 @@
             "family": "JUMP STARTERS",
             "title": "U23 jump starter",
             "model_line": "U23",
-            "standards": "UL Listed/Certified|FCC|UN38.3|SDS",
+            "standards": "Safety tested to UL 2743|FCC|UN38.3|SDS",
             "support_url": "",
             "support_label": "Contact Support"
           }
@@ -113,7 +113,7 @@
             "family": "JUMP STARTERS",
             "title": "U32 jump starter",
             "model_line": "U32",
-            "standards": "UL Listed/Certified|FCC|UN38.3|SDS",
+            "standards": "Safety tested to UL 2743|FCC|UN38.3|SDS",
             "support_url": "",
             "support_label": "Contact Support"
           }
@@ -139,7 +139,7 @@
             "family": "RV BATTERIES",
             "title": "G24 / G31 RV batteries",
             "model_line": "2026 / 2027 naming aliases · 12.8V 100Ah family",
-            "standards": "UL Listed/Certified|FCC|CE-EMC|RoHS|IP65|UN38.3|SDS",
+            "standards": "Cell safety documentation|FCC|CE-EMC|RoHS|IP65|UN38.3|SDS",
             "support_url": "",
             "support_label": "Contact Support"
           }
@@ -213,7 +213,7 @@
             "family": "RV BATTERIES",
             "title": "230Ah / 314Ah RV batteries",
             "model_line": "12.8V high-capacity family",
-            "standards": "UL Listed/Certified|FCC|CE-EMC|RoHS|IP65|UN38.3|SDS",
+            "standards": "Cell safety documentation|FCC|CE-EMC|RoHS|IP65|UN38.3|SDS",
             "support_url": "",
             "support_label": "Contact Support"
           }

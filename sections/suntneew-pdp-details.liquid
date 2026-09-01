@@ -191,7 +191,7 @@
                     {%- assign compliance_standard_lower = compliance_standard | downcase -%}
                     {%- assign compliance_standard_token = '|' | append: compliance_standard_lower | append: '|' -%}
                     {%- unless compliance_standards_seen contains compliance_standard_token -%}
-                      <a class="sn-pdp-compliance-badge{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'ul listed' or compliance_standard_lower contains 'ul certified' %} sn-pdp-compliance-badge--ul{% endif %}" href="{{ compliance_library_url }}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ compliance_standard }}</a>
+                      <a class="sn-pdp-compliance-badge{% if compliance_standard_lower contains 'ul 2743' or compliance_standard_lower contains 'cell safety' %} sn-pdp-compliance-badge--ul{% endif %}" href="{{ compliance_library_url }}" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>{{ compliance_standard }}</a>
                       {%- assign compliance_standards_seen = compliance_standards_seen | append: compliance_standard_lower | append: '|' -%}
                     {%- endunless -%}
                   {%- endif -%}
@@ -249,7 +249,7 @@
     {"type":"download","name":"Download","settings":[
       {"type":"text","id":"label","label":"Label","default":"User manual — pending upload"},
       {"type":"url","id":"link","label":"File or page link"},
-      {"type":"text","id":"asset_name","label":"Bundled asset filename","info":"Optional theme asset, for example energy-star-wl5a-spec-v1.jpg."},
+      {"type":"text","id":"asset_name","label":"Bundled asset filename","info":"Optional theme asset, for example suntneew-wl5a-spec-v2.jpg."},
       {"type":"text","id":"variant_match","label":"Only show for variant"},
       {"type":"select","id":"document_group","label":"Document group","default":"manuals","options":[{"value":"manuals","label":"User manuals"},{"value":"compliance","label":"Safety & compliance"}]},
       {"type":"text","id":"standard","label":"Standard or badge text","info":"Optional. Used on safety and compliance cards."},

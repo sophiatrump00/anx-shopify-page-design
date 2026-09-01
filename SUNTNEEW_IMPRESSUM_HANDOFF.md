@@ -10,7 +10,7 @@ This file is an implementation handoff for the Shopify page. It is not legal adv
 - The English company name above is a direct English rendering of the Chinese registered name `上海顺祥洋清洁能源科技有限公司`; it is not being presented as a separately verified English registration name.
 - Do not disclose a VAT ID at this stage. Do not add a placeholder, a made-up number, or another entity's VAT ID.
 - Germany launches in the current phase, and home-storage products remain directly purchasable online.
-- Public page copy is English only. Keep `SuntNeew` and `ENERGY STAR` capitalization exactly as approved.
+- Public page copy is English only. Keep `SuntNeew` and `ENERGY STAR` capitalization exactly as approved where either brand appears in retained source media or documentation.
 
 ## Page template
 
