@@ -290,6 +290,211 @@
 .sn-pdp-details { background: #fff; }
 .sn-pdp-details__panel { max-width: 1040px; margin-inline: auto; }
 
+/* The QR entry point keeps the same product-page URL. On a phone, the G31
+   Manuals panel becomes a short support surface with large, task-oriented
+   actions; the existing desktop document layout remains unchanged. */
+.sn-pdp-qr-mobile { display: none; }
+
+.sn-pdp-qr-mobile__intro {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--sn-pdp-line);
+  border-radius: 20px;
+  background: var(--sn-pdp-soft);
+}
+
+.sn-pdp-qr-mobile__image {
+  display: grid;
+  width: 112px;
+  height: 112px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.sn-pdp-qr-mobile__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sn-pdp-qr-mobile__intro-copy h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+
+.sn-pdp-qr-mobile__intro-copy p:last-child {
+  margin: 8px 0 0;
+  color: var(--sn-pdp-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.sn-pdp-qr-mobile__eyebrow {
+  margin: 0 0 7px;
+  color: var(--sn-pdp-blue);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+.sn-pdp-qr-mobile__actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.sn-pdp-qr-mobile__action {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3px 12px;
+  align-items: center;
+  min-height: 66px;
+  padding: 13px 16px;
+  border: 1px solid var(--sn-pdp-line);
+  border-radius: 15px;
+  background: #fff;
+  color: var(--sn-pdp-ink);
+  text-decoration: none;
+}
+
+.sn-pdp-qr-mobile__action > span:first-child { font-weight: 800; }
+.sn-pdp-qr-mobile__action > span:last-child { grid-column: 2; grid-row: 1 / span 2; font-size: 20px; }
+.sn-pdp-qr-mobile__action small { color: var(--sn-pdp-muted); font-size: 12px; line-height: 1.35; }
+
+.sn-pdp-qr-mobile__action--primary {
+  border-color: var(--sn-pdp-ink);
+  background: var(--sn-pdp-ink);
+  color: #fff;
+}
+
+.sn-pdp-qr-mobile__action--primary small { color: rgba(255, 255, 255, .72); }
+
+.sn-pdp-qr-mobile__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid var(--sn-pdp-line);
+  border-radius: 16px;
+  background: var(--sn-pdp-line);
+}
+
+.sn-pdp-qr-mobile__facts > div {
+  display: grid;
+  gap: 4px;
+  min-height: 76px;
+  align-content: center;
+  padding: 13px 14px;
+  background: #fff;
+}
+
+.sn-pdp-qr-mobile__facts strong { font-size: 21px; letter-spacing: -.035em; }
+.sn-pdp-qr-mobile__facts span { color: var(--sn-pdp-muted); font-size: 11px; line-height: 1.3; }
+
+.sn-pdp-qr-mobile__details {
+  margin-top: 12px;
+  border: 1px solid var(--sn-pdp-line);
+  border-radius: 15px;
+  background: #fff;
+}
+
+.sn-pdp-qr-mobile__details summary {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+
+.sn-pdp-qr-mobile__details summary::-webkit-details-marker { display: none; }
+.sn-pdp-qr-mobile__details[open] summary span:last-child { transform: rotate(45deg); }
+
+.sn-pdp-qr-mobile__details ul {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0 16px 17px 34px;
+  color: var(--sn-pdp-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.sn-pdp-qr-mobile__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 0 16px;
+}
+
+.sn-pdp-qr-mobile__chips span {
+  padding: 7px 10px;
+  border: 1px solid #c8d2df;
+  border-radius: 999px;
+  color: var(--sn-pdp-ink);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.sn-pdp-qr-mobile__details p {
+  margin: 12px 16px 17px;
+  color: var(--sn-pdp-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.sn-pdp-qr-mobile__document-list {
+  display: grid;
+  gap: 8px;
+  padding: 0 16px 17px;
+}
+
+.sn-pdp-qr-mobile__document-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 11px 13px;
+  border: 1px solid var(--sn-pdp-line);
+  border-radius: 11px;
+  color: var(--sn-pdp-ink);
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.sn-pdp-qr-mobile__document-list a:hover,
+.sn-pdp-qr-mobile__document-list a:focus-visible {
+  border-color: #8995a3;
+}
+
+.sn-pdp-qr-mobile__product-link {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 15px 2px 0;
+  border-top: 1px solid var(--sn-pdp-line);
+  color: var(--sn-pdp-blue);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
 .sn-pdp-spec-groups {
   display: grid;
   gap: 16px;
@@ -563,6 +768,13 @@
   .sn-pdp-compliance-library-link { width: 100%; }
   .sn-pdp-compliance-docs { grid-template-columns: 1fr; }
 
+}
+
+@media (max-width: 749px) {
+  .sn-pdp-details__panel[data-qr-mobile] > .sn-pdp__eyebrow,
+  .sn-pdp-details__panel[data-qr-mobile] > .sn-pdp__heading,
+  .sn-pdp-details__panel[data-qr-mobile] > .sn-pdp-doc-group { display: none; }
+  .sn-pdp-details__panel[data-qr-mobile] .sn-pdp-qr-mobile { display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {

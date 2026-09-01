@@ -1,6 +1,129 @@
 {{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'suntneew-pdp.js' | asset_url }}" defer></script>
 
+{%- assign qr_support_enabled = false -%}
+{%- assign qr_support_model = '' -%}
+{%- assign qr_support_intro = '' -%}
+{%- assign qr_support_install_intro = '' -%}
+{%- assign qr_support_fact_one_value = '' -%}
+{%- assign qr_support_fact_one_label = '' -%}
+{%- assign qr_support_fact_two_value = '' -%}
+{%- assign qr_support_fact_two_label = '' -%}
+{%- assign qr_support_fact_three_value = '' -%}
+{%- assign qr_support_fact_three_label = '' -%}
+{%- assign qr_support_fact_four_value = '' -%}
+{%- assign qr_support_fact_four_label = '' -%}
+{%- case template.suffix -%}
+  {%- when 'rv-g24' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = 'Group 24 RV battery' -%}
+    {%- assign qr_support_intro = 'Product support, documents and installation checks for your 12.8V 100Ah Group 24 battery.' -%}
+    {%- assign qr_support_install_intro = 'Confirm the tray, terminal orientation and charging setup before securing the battery.' -%}
+    {%- assign qr_support_fact_one_value = '12.8V' -%}{%- assign qr_support_fact_one_label = 'Rated voltage' -%}
+    {%- assign qr_support_fact_two_value = '100Ah' -%}{%- assign qr_support_fact_two_label = 'Rated capacity' -%}
+    {%- assign qr_support_fact_three_value = '1,280Wh' -%}{%- assign qr_support_fact_three_label = 'Rated energy' -%}
+    {%- assign qr_support_fact_four_value = 'IP65' -%}{%- assign qr_support_fact_four_label = 'Dust-tight; water jets' -%}
+  {%- when 'rv-g31' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = 'Group 31 RV battery' -%}
+    {%- assign qr_support_intro = 'Product support, documents and installation checks for your 12.8V 100Ah Group 31 battery.' -%}
+    {%- assign qr_support_install_intro = 'Confirm the tray, terminal orientation and charging setup before securing the battery.' -%}
+    {%- assign qr_support_fact_one_value = '12.8V' -%}{%- assign qr_support_fact_one_label = 'Rated voltage' -%}
+    {%- assign qr_support_fact_two_value = '100Ah' -%}{%- assign qr_support_fact_two_label = 'Rated capacity' -%}
+    {%- assign qr_support_fact_three_value = '1,280Wh' -%}{%- assign qr_support_fact_three_label = 'Rated energy' -%}
+    {%- assign qr_support_fact_four_value = 'IP65' -%}{%- assign qr_support_fact_four_label = 'Dust-tight; water jets' -%}
+  {%- when 'rv-230ah' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = '230Ah RV battery' -%}
+    {%- assign qr_support_intro = 'Product support, documents and installation checks for your 12.8V 230Ah RV battery.' -%}
+    {%- assign qr_support_install_intro = 'Confirm the physical fit, M8 terminal access and LiFePO4 charging limits before installation.' -%}
+    {%- assign qr_support_fact_one_value = '12.8V' -%}{%- assign qr_support_fact_one_label = 'Rated voltage' -%}
+    {%- assign qr_support_fact_two_value = '230Ah' -%}{%- assign qr_support_fact_two_label = 'Rated capacity' -%}
+    {%- assign qr_support_fact_three_value = '2,944Wh' -%}{%- assign qr_support_fact_three_label = 'Rated energy' -%}
+    {%- assign qr_support_fact_four_value = '200A' -%}{%- assign qr_support_fact_four_label = 'Max continuous discharge' -%}
+  {%- when 'rv-314ah' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = '314Ah RV battery' -%}
+    {%- assign qr_support_intro = 'Product support, documents and installation checks for your 12.8V 314Ah RV battery.' -%}
+    {%- assign qr_support_install_intro = 'Confirm the physical fit, M8 terminal access and LiFePO4 charging limits before installation.' -%}
+    {%- assign qr_support_fact_one_value = '12.8V' -%}{%- assign qr_support_fact_one_label = 'Rated voltage' -%}
+    {%- assign qr_support_fact_two_value = '314Ah' -%}{%- assign qr_support_fact_two_label = 'Rated capacity' -%}
+    {%- assign qr_support_fact_three_value = '4,019Wh' -%}{%- assign qr_support_fact_three_label = 'Rated energy' -%}
+    {%- assign qr_support_fact_four_value = '157A' -%}{%- assign qr_support_fact_four_label = 'Max continuous operation' -%}
+  {%- when 'a20' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = 'A20 jump starter' -%}
+    {%- assign qr_support_intro = 'Choose the guide that matches the capacity printed on your A20 product label.' -%}
+    {%- assign qr_support_install_intro = 'Charge the unit, identify the 12V vehicle battery terminals and follow the smart-clamp sequence in the matching guide.' -%}
+    {%- assign qr_support_fact_one_value = '12V' -%}{%- assign qr_support_fact_one_label = 'Vehicle system' -%}
+    {%- assign qr_support_fact_two_value = '8–16Ah' -%}{%- assign qr_support_fact_two_label = 'Capacity options' -%}
+    {%- assign qr_support_fact_three_value = 'USB-C' -%}{%- assign qr_support_fact_three_label = 'Charging input' -%}
+    {%- assign qr_support_fact_four_value = '3' -%}{%- assign qr_support_fact_four_label = 'Product guides' -%}
+  {%- when 'a3' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = 'A3 jump starter' -%}
+    {%- assign qr_support_intro = 'Use the A3 product guide for the documented starting sequence, charging and safety limits.' -%}
+    {%- assign qr_support_install_intro = 'Charge the unit, confirm a compatible 12V vehicle battery and connect the smart clamps in the documented order.' -%}
+    {%- assign qr_support_fact_one_value = '12V' -%}{%- assign qr_support_fact_one_label = 'Vehicle system' -%}
+    {%- assign qr_support_fact_two_value = '16,000mAh' -%}{%- assign qr_support_fact_two_label = 'Rated capacity' -%}
+    {%- assign qr_support_fact_three_value = 'USB-C' -%}{%- assign qr_support_fact_three_label = 'Charging input' -%}
+    {%- assign qr_support_fact_four_value = 'Smart clamp' -%}{%- assign qr_support_fact_four_label = 'Connection protection' -%}
+  {%- when 'kb700' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = 'KB700 jump starter' -%}
+    {%- assign qr_support_intro = 'Use the KB700 guide for vehicle starting, air-duster operation, charging and smart-clamp safety.' -%}
+    {%- assign qr_support_install_intro = 'Charge the unit, check the smart-clamp indicators and use the correct operating mode before starting or cleaning.' -%}
+    {%- assign qr_support_fact_one_value = '7,200mAh' -%}{%- assign qr_support_fact_one_label = 'Rated capacity' -%}
+    {%- assign qr_support_fact_two_value = '1,000A' -%}{%- assign qr_support_fact_two_label = 'Peak current' -%}
+    {%- assign qr_support_fact_three_value = '500A' -%}{%- assign qr_support_fact_three_label = 'Starting current' -%}
+    {%- assign qr_support_fact_four_value = '105,000 RPM' -%}{%- assign qr_support_fact_four_label = 'Maximum fan speed' -%}
+  {%- when 'u23' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = 'U23 jump starter' -%}
+    {%- assign qr_support_intro = 'Use the U23 guide for the documented vehicle-starting sequence, charging and clamp safety checks.' -%}
+    {%- assign qr_support_install_intro = 'Charge the unit, turn off vehicle loads and follow the smart-clamp indicator sequence before attempting a start.' -%}
+    {%- assign qr_support_fact_one_value = '8,000mAh' -%}{%- assign qr_support_fact_one_label = 'Rated capacity' -%}
+    {%- assign qr_support_fact_two_value = '1,500A' -%}{%- assign qr_support_fact_two_label = 'Peak current' -%}
+    {%- assign qr_support_fact_three_value = '700A' -%}{%- assign qr_support_fact_three_label = 'Starting current' -%}
+    {%- assign qr_support_fact_four_value = '29.6Wh' -%}{%- assign qr_support_fact_four_label = 'Rated energy' -%}
+  {%- when 'u32' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = 'U32 jump starter' -%}
+    {%- assign qr_support_intro = 'Use the U32 guide for the documented vehicle-starting sequence, charging and clamp safety checks.' -%}
+    {%- assign qr_support_install_intro = 'Charge the unit, turn off vehicle loads and follow the smart-clamp indicator sequence before attempting a start.' -%}
+    {%- assign qr_support_fact_one_value = '10,000mAh' -%}{%- assign qr_support_fact_one_label = 'Rated capacity' -%}
+    {%- assign qr_support_fact_two_value = '2,000A' -%}{%- assign qr_support_fact_two_label = 'Peak current' -%}
+    {%- assign qr_support_fact_three_value = '1,000A' -%}{%- assign qr_support_fact_three_label = 'Starting current' -%}
+    {%- assign qr_support_fact_four_value = '37Wh' -%}{%- assign qr_support_fact_four_label = 'Rated energy' -%}
+  {%- when 'home-vh' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = 'VH home energy storage' -%}
+    {%- assign qr_support_intro = 'Review the current product specification before system planning or installer coordination.' -%}
+    {%- assign qr_support_install_intro = 'Confirm the selected VH configuration, inverter compatibility, site plan and approved installation documentation before commissioning.' -%}
+    {%- assign qr_support_fact_one_value = '10.24 / 15.36kWh' -%}{%- assign qr_support_fact_one_label = 'System energy' -%}
+    {%- assign qr_support_fact_two_value = '102.4 / 153.6V' -%}{%- assign qr_support_fact_two_label = 'System voltage' -%}
+    {%- assign qr_support_fact_three_value = 'IP65' -%}{%- assign qr_support_fact_three_label = 'Enclosure rating' -%}
+    {%- assign qr_support_fact_four_value = 'CAN / RS485' -%}{%- assign qr_support_fact_four_label = 'Communication' -%}
+  {%- when 'home-wl5a' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = 'WL5A home battery' -%}
+    {%- assign qr_support_intro = 'Review the current product specification before system planning or installer coordination.' -%}
+    {%- assign qr_support_install_intro = 'Confirm the system design, inverter compatibility, protection devices and approved installation documentation before commissioning.' -%}
+    {%- assign qr_support_fact_one_value = '5.12kWh' -%}{%- assign qr_support_fact_one_label = 'Rated energy' -%}
+    {%- assign qr_support_fact_two_value = '51.2V' -%}{%- assign qr_support_fact_two_label = 'Rated voltage' -%}
+    {%- assign qr_support_fact_three_value = '100Ah' -%}{%- assign qr_support_fact_three_label = 'Rated capacity' -%}
+    {%- assign qr_support_fact_four_value = 'IP54' -%}{%- assign qr_support_fact_four_label = 'Enclosure rating' -%}
+  {%- when 'home-wl10b' -%}
+    {%- assign qr_support_enabled = true -%}
+    {%- assign qr_support_model = 'WL10B home battery' -%}
+    {%- assign qr_support_intro = 'Review the current product specification before system planning or installer coordination.' -%}
+    {%- assign qr_support_install_intro = 'Confirm the system design, inverter compatibility, protection devices and approved installation documentation before commissioning.' -%}
+    {%- assign qr_support_fact_one_value = '10.24kWh' -%}{%- assign qr_support_fact_one_label = 'Rated energy' -%}
+    {%- assign qr_support_fact_two_value = '51.2V' -%}{%- assign qr_support_fact_two_label = 'Rated voltage' -%}
+    {%- assign qr_support_fact_three_value = '200Ah' -%}{%- assign qr_support_fact_three_label = 'Rated capacity' -%}
+    {%- assign qr_support_fact_four_value = 'IP54' -%}{%- assign qr_support_fact_four_label = 'Enclosure rating' -%}
+{%- endcase -%}
+
 <section class="sn-pdp sn-pdp-details sn-pdp__section" data-pdp-panel-host>
   <div class="sn-pdp__shell">
     <div id="{{ section.settings.anchor_id | handleize }}" class="sn-pdp-details__panel" role="tabpanel" data-pdp-panel="{{ section.settings.anchor_id | handleize }}">
@@ -62,6 +185,7 @@
     {%- assign download_blocks = section.blocks | where: 'type', 'download' -%}
     {%- assign manual_count = 0 -%}
     {%- assign compliance_count = 0 -%}
+    {%- assign qr_primary_document_url = '' -%}
     {%- for block in download_blocks -%}
       {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
       {%- if block.settings.document_group == blank -%}
@@ -74,13 +198,110 @@
         {%- assign compliance_count = compliance_count | plus: 1 -%}
       {%- else -%}
         {%- assign manual_count = manual_count | plus: 1 -%}
+        {%- if qr_primary_document_url == blank -%}
+          {%- if block.settings.link != blank -%}
+            {%- assign qr_primary_document_url = block.settings.link -%}
+          {%- elsif block.settings.asset_name != blank -%}
+            {%- assign qr_primary_document_url = block.settings.asset_name | asset_url -%}
+          {%- endif -%}
+        {%- endif -%}
       {%- endif -%}
     {%- endfor -%}
 
     {%- if download_blocks.size > 0 -%}
-      <div id="manuals" class="sn-pdp-details__panel" role="tabpanel" data-pdp-panel="manuals">
+      <div id="manuals" class="sn-pdp-details__panel" role="tabpanel" data-pdp-panel="manuals"{% if qr_support_enabled %} data-qr-mobile="{{ template.suffix }}"{% endif %}>
         <p class="sn-pdp__eyebrow">{{ section.settings.download_eyebrow }}</p>
         <h2 class="sn-pdp__heading">{{ section.settings.download_heading }}</h2>
+
+        {%- if qr_support_enabled -%}
+          <div class="sn-pdp-qr-mobile" aria-label="{{ qr_support_model | escape }} support">
+            <div class="sn-pdp-qr-mobile__intro">
+              <div class="sn-pdp-qr-mobile__image">
+                {%- if product.featured_image -%}
+                  <img src="{{ product.featured_image | image_url: width: 720 }}" alt="{{ qr_support_model | escape }}" loading="eager" width="720" height="720">
+                {%- endif -%}
+              </div>
+              <div class="sn-pdp-qr-mobile__intro-copy">
+                <p class="sn-pdp-qr-mobile__eyebrow">{{ qr_support_model | upcase }}</p>
+                <h3>Product support for your {{ qr_support_model }}.</h3>
+                <p>{{ qr_support_intro }}</p>
+              </div>
+            </div>
+
+            <div class="sn-pdp-qr-mobile__actions" aria-label="{{ qr_support_model | escape }} support actions">
+              {%- if manual_count > 1 -%}
+                <a class="sn-pdp-qr-mobile__action sn-pdp-qr-mobile__action--primary" href="#qr-product-documents">
+                  <span>Choose your product guide</span>
+                  <small>Match the guide to your capacity or model</small>
+                  <span aria-hidden="true">↓</span>
+                </a>
+                {%- elsif qr_primary_document_url != blank -%}
+                <a class="sn-pdp-qr-mobile__action sn-pdp-qr-mobile__action--primary" href="{{ qr_primary_document_url }}" target="_blank" rel="noopener">
+                  <span>{% if template.suffix contains 'home-' %}View product specification{% else %}Download user manual{% endif %}</span>
+                  <small>{% if template.suffix contains 'home-' %}Current product data{% else %}Open the model-matched guide{% endif %}</small>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              {%- endif -%}
+            </div>
+
+            <div class="sn-pdp-qr-mobile__facts" aria-label="{{ qr_support_model | escape }} key specifications">
+              <div><strong>{{ qr_support_fact_one_value }}</strong><span>{{ qr_support_fact_one_label }}</span></div>
+              <div><strong>{{ qr_support_fact_two_value }}</strong><span>{{ qr_support_fact_two_label }}</span></div>
+              <div><strong>{{ qr_support_fact_three_value }}</strong><span>{{ qr_support_fact_three_label }}</span></div>
+              <div><strong>{{ qr_support_fact_four_value }}</strong><span>{{ qr_support_fact_four_label }}</span></div>
+            </div>
+
+            <details class="sn-pdp-qr-mobile__details">
+              <summary><span>Before installation</span><span aria-hidden="true">＋</span></summary>
+              <ul>
+                <li>{{ qr_support_install_intro }}</li>
+                <li>Use the product document as the source of truth for wiring, operating limits and the complete safety sequence.</li>
+                <li>Pause and contact support if the product label, equipment or installation differs from the documented configuration.</li>
+              </ul>
+            </details>
+
+            {%- if manual_count > 1 -%}
+              <details id="qr-product-documents" class="sn-pdp-qr-mobile__details sn-pdp-qr-mobile__details--documents">
+                <summary><span>Product guides</span><span aria-hidden="true">＋</span></summary>
+                <div class="sn-pdp-qr-mobile__document-list">
+                  {%- for block in download_blocks -%}
+                    {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
+                    {%- if document_group != 'compliance' -%}
+                      {%- if block.settings.link != blank -%}
+                        <a href="{{ block.settings.link }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %}>{{ block.settings.label }} <span aria-hidden="true">↗</span></a>
+                      {%- elsif block.settings.asset_name != blank -%}
+                        <a href="{{ block.settings.asset_name | asset_url }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %}>{{ block.settings.label }} <span aria-hidden="true">↗</span></a>
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </details>
+            {%- endif -%}
+
+            {%- if compliance_count > 0 -%}
+              <details class="sn-pdp-qr-mobile__details sn-pdp-qr-mobile__details--documents">
+                <summary><span>Documents & compliance</span><span aria-hidden="true">＋</span></summary>
+                <div class="sn-pdp-qr-mobile__chips" aria-label="{{ qr_support_model | escape }} document topics">
+                  {%- assign qr_standards_seen = '|' -%}
+                  {%- for block in download_blocks -%}
+                    {%- if block.settings.document_group == 'compliance' -%}
+                      {%- assign qr_standard = block.settings.standard | default: block.settings.label -%}
+                      {%- assign qr_standard_lower = qr_standard | downcase -%}
+                      {%- assign qr_standard_token = '|' | append: qr_standard_lower | append: '|' -%}
+                      {%- unless qr_standards_seen contains qr_standard_token -%}
+                        <span>{{ qr_standard }}</span>
+                        {%- assign qr_standards_seen = qr_standards_seen | append: qr_standard_lower | append: '|' -%}
+                      {%- endunless -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+                <p>Use only documents that match the product label. Public technical documents are available from the product page or technology center where shown.</p>
+              </details>
+            {%- endif -%}
+
+            <a class="sn-pdp-qr-mobile__product-link" href="/pages/contact-us">Need help with {{ qr_support_model }}? <span>Contact support <span aria-hidden="true">→</span></span></a>
+          </div>
+        {%- endif -%}
 
         {%- if manual_count > 0 -%}
           <section class="sn-pdp-doc-group" aria-labelledby="{{ section.id }}-manuals-heading">
