@@ -140,7 +140,7 @@
             data-media-type="{{ media.media_type }}"
             data-media-id="{{ media.id }}"
             {% if media.media_type == 'image' %}
-              data-full-src="{{ media.preview_image.src | escape }}"
+              data-full-src="{{ media | image_url: width: media.preview_image.width | escape }}"
               data-full-width="{{ media.preview_image.width }}"
               data-full-height="{{ media.preview_image.height }}"
             {% endif %}
