@@ -137,15 +137,15 @@
                       # The store's saved menu currently resolves both labels to
                       # /collections. Keep All Products on Shopify's canonical
                       # all-products route.
-                      assign rendered_link_url = '/collections/all'
+                      assign rendered_link_url = routes.all_products_collection_url
                       assign primary_menu_key = 'all-products'
                     elsif link_title_downcase == 'product series'
                       assign is_product_series_menu = true
                     elsif link_title_downcase == 'help me choose' or link.url contains '/pages/power-calculator'
-                      assign rendered_link_url = '/pages/power-calculator'
+                      assign rendered_link_url = pages['power-calculator'].url | default: '/pages/power-calculator'
                       assign is_direct_primary_link = true
                     elsif link_title_downcase == 'journal' or link.url contains '/blogs/news'
-                      assign rendered_link_url = '/blogs/news'
+                      assign rendered_link_url = blogs['news'].url | default: '/blogs/news'
                       assign is_direct_primary_link = true
                     endif
 

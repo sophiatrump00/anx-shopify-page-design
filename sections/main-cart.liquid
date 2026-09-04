@@ -1,6 +1,8 @@
 <div class="container">
   {%- if cart.item_count == 0 -%}
     <div class="empty-state">
+      <h1 class="h2">{{ 'cart.general.title' | t }}</h1>
+
       <div class="empty-state__icon-wrapper">
         {%- render 'icon' with 'cart', width: 32, height: 32, stroke_width: 1 -%}
         <span class="count-bubble count-bubble--lg">0</span>

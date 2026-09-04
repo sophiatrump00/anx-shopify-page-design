@@ -15,7 +15,7 @@
       </div>
 
       <div class="sn-support__route-grid">
-        <a class="sn-support__route-card" href="/pages/technology">
+        <a class="sn-support__route-card" href="{{ pages['technology'].url | default: '/pages/technology' }}">
           <span class="sn-support__route-number" aria-hidden="true">01</span>
           <span class="sn-support__route-label">PRODUCT RESOURCES</span>
           <strong>Model documents</strong>
@@ -23,7 +23,7 @@
           <span class="sn-support__route-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a class="sn-support__route-card" href="/pages/shipping-policy">
+        <a class="sn-support__route-card" href="{{ pages['shipping-policy'].url | default: '/pages/shipping-policy' }}">
           <span class="sn-support__route-number" aria-hidden="true">02</span>
           <span class="sn-support__route-label">ORDER HELP</span>
           <strong>Shipping information</strong>
@@ -31,7 +31,7 @@
           <span class="sn-support__route-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a class="sn-support__route-card" href="/pages/return-policy">
+        <a class="sn-support__route-card" href="{{ pages['return-policy'].url | default: '/pages/return-policy' }}">
           <span class="sn-support__route-number" aria-hidden="true">03</span>
           <span class="sn-support__route-label">AFTER PURCHASE</span>
           <strong>Returns</strong>
@@ -39,7 +39,7 @@
           <span class="sn-support__route-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a class="sn-support__route-card" href="/pages/contact-us">
+        <a class="sn-support__route-card" href="{{ pages['contact-us'].url | default: '/pages/contact-us' }}">
           <span class="sn-support__route-number" aria-hidden="true">04</span>
           <span class="sn-support__route-label">CONTACT</span>
           <strong>Talk with support</strong>

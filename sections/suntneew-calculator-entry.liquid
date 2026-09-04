@@ -12,7 +12,7 @@
         <a class="sn-power-calculator-entry__button sn-power-calculator-entry__button--secondary" href="{{ section.settings.output_link | default: '/products/suntneew-12-8v-230ah-lifepo4-rv-battery' }}">Higher output: 230Ah</a>
         <a class="sn-power-calculator-entry__button sn-power-calculator-entry__button--secondary" href="{{ section.settings.reserve_link | default: '/products/suntneew-12-8v-314ah-lifepo4-rv-battery' }}">Longer reserve: 314Ah</a>
       {%- endif -%}
-      <a class="sn-power-calculator-entry__button" href="{{ section.settings.link | default: '/pages/power-calculator' }}">{{ section.settings.button_label | escape }} <span aria-hidden="true">&#8594;</span></a>
+      <a class="sn-power-calculator-entry__button" href="{{ section.settings.link | default: pages['power-calculator'].url | default: '/pages/power-calculator' }}">{{ section.settings.button_label | escape }} <span aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
 </section>

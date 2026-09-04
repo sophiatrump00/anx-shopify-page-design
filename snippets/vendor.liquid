@@ -19,10 +19,8 @@
   {%- assign collection_for_vendor = collections[collection_handle] -%}
 
   {%- if collection_for_vendor != blank -%}
-    {%- assign url = collection_for_vendor.url -%}
+    <a href="{{ collection_for_vendor.url }}" class="{{ class }} link-faded">{{- vendor -}}</a>
   {%- else -%}
-    {%- assign url = vendor | url_for_vendor -%}
+    <span class="{{ class }}">{{- vendor -}}</span>
   {%- endif -%}
-
-  <a href="{{ url }}" class="{{ class }} link-faded">{{- vendor -}}</a>
 {%- endif -%}

@@ -93,16 +93,18 @@
                     {%- endfor -%}
                     <ul class="v-stack gap-3" role="list">
                       {%- if footer_menu_title_downcase == 'support' and footer_has_calculator_link == false -%}
-                        <li><a href="/pages/power-calculator" class="inline-block link-faded break-all">Help Me Choose</a></li>
+                        <li><a href="{{ pages['power-calculator'].url | default: '/pages/power-calculator' }}" class="inline-block link-faded break-all">Help Me Choose</a></li>
                       {%- endif -%}
                       {%- for link in block.settings.menu.links -%}
                         {%- assign footer_link_title = link.title | strip | downcase -%}
                         {%- unless footer_link_title == 'technology' or link.url contains '/pages/technology' or footer_link_title == 'for business' or link.url contains '/pages/for-business' -%}
                           {%- assign footer_link_url = link.url -%}
                           {%- if footer_link_title == 'all products' -%}
-                            {%- assign footer_link_url = '/collections/all' -%}
+                            {%- assign footer_link_url = routes.all_products_collection_url -%}
                           {%- elsif footer_link_title == 'product series' -%}
                             {%- assign footer_link_url = routes.collections_url -%}
+                          {%- elsif footer_link_title == 'help me choose' or link.url contains '/pages/power-calculator' -%}
+                            {%- assign footer_link_url = pages['power-calculator'].url | default: '/pages/power-calculator' -%}
                           {%- endif -%}
                           <li>
                             <a href="{{ footer_link_url }}" class="inline-block link-faded break-all">{{ link.title }}</a>

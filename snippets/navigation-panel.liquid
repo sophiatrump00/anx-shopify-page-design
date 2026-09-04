@@ -65,7 +65,7 @@
               elsif mobile_link_title_downcase == 'product series'
                 assign is_product_series_mobile_menu = true
               elsif mobile_link_title_downcase == 'help me choose' or link.url contains '/pages/power-calculator'
-                assign mobile_rendered_link_url = '/pages/power-calculator'
+                assign mobile_rendered_link_url = pages['power-calculator'].url | default: '/pages/power-calculator'
                 assign is_direct_primary_mobile_link = true
               elsif mobile_link_title_downcase == 'journal' or link.url contains '/blogs/news'
                 assign mobile_rendered_link_url = '/blogs/news'
@@ -258,7 +258,7 @@
 
           {%- if is_mega_menu == false and suntneew_mobile_has_support == false -%}
             <li class="h3 sm:h4">
-              <a href="/pages/support" class="group block w-full"><span><span class="reversed-link">Support</span></span></a>
+              <a href="{{ pages['support'].url | default: '/pages/support' }}" class="group block w-full"><span><span class="reversed-link">Support</span></span></a>
             </li>
           {%- endif -%}
         </ul>

@@ -1,0 +1,106 @@
+{%- liquid
+  assign seo_title = page_title | strip_html | strip
+  assign seo_description = page_description | strip_html | strip_newlines | strip
+  assign seo_robots = blank
+  assign seo_path = request.path | downcase
+  assign seo_title_suffix = ' | SuntNeew Portable Power'
+  assign seo_default_title = 'SuntNeew | Dependable Portable Power'
+  assign seo_default_description = 'Explore SuntNeew RV batteries, portable jump starters and home energy storage for dependable power on the road and at home.'
+
+  if request.page_type == 'cart'
+    assign seo_title = 'Your SuntNeew Cart | Review Your Order'
+    assign seo_description = 'Review the SuntNeew products in your cart and complete your order securely.'
+    assign seo_robots = 'noindex,follow'
+  elsif request.page_type == 'search'
+    assign seo_title = 'Search SuntNeew | Find Portable Power Products'
+    assign seo_description = 'Search SuntNeew products, support resources and practical power guidance.'
+    assign seo_robots = 'noindex,follow'
+  elsif seo_path contains '/collections/vendors'
+    assign seo_title = 'SuntNeew Products'
+    assign seo_description = 'Explore SuntNeew portable power products and product support resources.'
+    assign seo_robots = 'noindex,follow'
+  elsif template.name == 'list-collections'
+    assign seo_title = 'Shop SuntNeew Collections | Find Your Power Solution'
+    assign seo_description = 'Browse SuntNeew collections for RV batteries, jump starters and home energy storage.'
+    assign seo_robots = 'noindex,follow'
+  elsif page.handle == 'quotes-history'
+    assign seo_title = 'SuntNeew Quote History'
+    assign seo_description = 'Review your SuntNeew quote history and contact support for help with a product or order.'
+    assign seo_robots = 'noindex,follow'
+  elsif request.page_type == 'collection'
+    case collection.handle
+      when 'all'
+        assign seo_description = 'Shop SuntNeew RV batteries, portable jump starters and home energy storage for travel, emergencies and reliable backup power.'
+      when 'rv-batteries'
+        assign seo_description = 'Shop SuntNeew LiFePO4 RV batteries for dependable deep-cycle power on the road, at camp and off the grid.'
+      when 'jump-starters'
+        assign seo_description = 'Shop SuntNeew portable jump starters for dependable vehicle emergency power, lighting and device charging.'
+      when 'home-energy-storage'
+        assign seo_description = 'Explore SuntNeew home energy storage systems for practical backup power, capacity planning and resilient essential loads.'
+    endcase
+  elsif request.page_type == 'blog'
+    assign seo_description = 'Read SuntNeew Journal guides for RV power, vehicle readiness and practical home energy planning.'
+  elsif request.page_type == 'policy'
+    if seo_path contains '/shipping-policy'
+      assign seo_description = 'Review SuntNeew shipping methods, processing times, delivery information and support options.'
+    endif
+  elsif request.page_type == 'page'
+    case page.handle
+      when 'power-calculator'
+        assign seo_title = 'Power Calculator & Product Finder | SuntNeew'
+        assign seo_description = 'Use the SuntNeew Power Calculator to match RV, vehicle and home backup needs with a practical product starting point.'
+      when 'technology'
+        assign seo_description = 'Explore SuntNeew product documentation, model-specific manuals, safety resources and compliance information.'
+      when 'about-us'
+        assign seo_description = 'Learn about SuntNeew and our approach to dependable portable power for travel, vehicle readiness and home backup.'
+      when 'support'
+        assign seo_description = 'Find SuntNeew product resources, manuals, shipping and return guidance, and practical support for your order or setup.'
+      when 'contact-us'
+        assign seo_description = 'Contact SuntNeew for product, order, shipping, return or technical-support questions.'
+      when 'patent'
+        assign seo_description = 'Explore SuntNeew patents and product innovation information for our portable power solutions.'
+      when 'for-business'
+        assign seo_description = 'Partner with SuntNeew for wholesale and business opportunities in portable power, RV energy and vehicle emergency solutions.'
+      when 'qr-support'
+        assign seo_description = 'Find product-specific SuntNeew support resources using the QR code supplied with your product.'
+      when 'shipping-policy'
+        assign seo_description = 'Review SuntNeew shipping methods, processing times, delivery information and support options.'
+      when 'return-policy'
+        assign seo_description = 'Review SuntNeew return eligibility, cancellation guidance and the steps for requesting a return.'
+      when 'privacy-policy'
+        assign seo_description = 'Read the SuntNeew Privacy Policy to understand how personal information is collected, used and protected.'
+      when 'terms-conditions'
+        assign seo_description = 'Read the SuntNeew Terms and Conditions for website use, orders, payment, delivery and customer rights.'
+      when 'impressum'
+        assign seo_description = 'Find SuntNeew company information, contact details and legal provider information.'
+    endcase
+  endif
+
+  assign seo_title = seo_title | strip
+  if seo_title == blank
+    assign seo_title = seo_default_title
+  endif
+
+  assign seo_title_size = seo_title | size
+  if seo_title_size < 30
+    assign seo_title = seo_title | append: seo_title_suffix
+  endif
+
+  assign seo_description = seo_description | strip
+  assign seo_description_size = seo_description | size
+  if seo_description == blank or seo_description_size < 90
+    assign seo_description = seo_default_description
+  endif
+
+  assign seo_description_size = seo_description | size
+  if seo_description_size > 155
+    assign seo_description = seo_description | truncate: 155, ''
+  endif
+-%}
+
+<title>{{ seo_title | escape }}{% if current_page != 1 %} - {{ 'general.page' | t: page: current_page }}{% endif %}</title>
+<meta name="description" content="{{ seo_description | escape }}">
+<link rel="canonical" href="{{ canonical_url }}">
+{%- if seo_robots != blank -%}
+  <meta name="robots" content="{{ seo_robots }}">
+{%- endif -%}

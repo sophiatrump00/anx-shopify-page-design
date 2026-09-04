@@ -4,15 +4,15 @@
 {%- endcomment -%}
 
 <li class="h6 text-subdued">Support</li>
-<li class="h3 sm:h4"><a class="group block w-full" href="/pages/support"><span><span class="reversed-link">Support Center</span></span></a></li>
-<li class="h3 sm:h4"><a class="group block w-full" href="/pages/contact-us"><span><span class="reversed-link">Contact support</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ pages['support'].url | default: '/pages/support' }}"><span><span class="reversed-link">Support Center</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ pages['contact-us'].url | default: '/pages/contact-us' }}"><span><span class="reversed-link">Contact support</span></span></a></li>
 
 <li class="h6 text-subdued">Product Resources</li>
-<li class="h3 sm:h4"><a class="group block w-full" href="/pages/technology"><span><span class="reversed-link">Model documents &amp; compliance</span></span></a></li>
-<li class="h3 sm:h4"><a class="group block w-full" href="/pages/return-policy"><span><span class="reversed-link">Returns</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ pages['technology'].url | default: '/pages/technology' }}"><span><span class="reversed-link">Model documents &amp; compliance</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ pages['return-policy'].url | default: '/pages/return-policy' }}"><span><span class="reversed-link">Returns</span></span></a></li>
 
 <li class="h6 text-subdued">Policies</li>
-<li class="h3 sm:h4"><a class="group block w-full" href="/pages/shipping-policy"><span><span class="reversed-link">Shipping Policy</span></span></a></li>
-<li class="h3 sm:h4"><a class="group block w-full" href="/pages/return-policy"><span><span class="reversed-link">Return Policy</span></span></a></li>
-<li class="h3 sm:h4"><a class="group block w-full" href="/pages/privacy-policy"><span><span class="reversed-link">Privacy Policy</span></span></a></li>
-<li class="h3 sm:h4"><a class="group block w-full" href="/pages/terms-conditions"><span><span class="reversed-link">Terms &amp; Conditions</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ pages['shipping-policy'].url | default: '/pages/shipping-policy' }}"><span><span class="reversed-link">Shipping Policy</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ pages['return-policy'].url | default: '/pages/return-policy' }}"><span><span class="reversed-link">Return Policy</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ pages['privacy-policy'].url | default: '/pages/privacy-policy' }}"><span><span class="reversed-link">Privacy Policy</span></span></a></li>
+<li class="h3 sm:h4"><a class="group block w-full" href="{{ pages['terms-conditions'].url | default: '/pages/terms-conditions' }}"><span><span class="reversed-link">Terms &amp; Conditions</span></span></a></li>

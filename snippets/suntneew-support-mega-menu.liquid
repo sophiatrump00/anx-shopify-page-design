@@ -8,26 +8,26 @@
     <section class="suntneew-support-mega-menu__column" aria-labelledby="support-menu-service">
       <p class="suntneew-support-mega-menu__heading" id="support-menu-service">Support</p>
       <ul class="suntneew-support-mega-menu__links" role="list">
-        <li><a href="/pages/support">Support Center</a></li>
-        <li><a href="/pages/contact-us">Contact support</a></li>
+        <li><a href="{{ pages['support'].url | default: '/pages/support' }}">Support Center</a></li>
+        <li><a href="{{ pages['contact-us'].url | default: '/pages/contact-us' }}">Contact support</a></li>
       </ul>
     </section>
 
     <section class="suntneew-support-mega-menu__column" aria-labelledby="support-menu-resources">
       <p class="suntneew-support-mega-menu__heading" id="support-menu-resources">Product Resources</p>
       <ul class="suntneew-support-mega-menu__links" role="list">
-        <li><a href="/pages/technology">Model documents &amp; compliance</a></li>
-        <li><a href="/pages/return-policy">Returns</a></li>
+        <li><a href="{{ pages['technology'].url | default: '/pages/technology' }}">Model documents &amp; compliance</a></li>
+        <li><a href="{{ pages['return-policy'].url | default: '/pages/return-policy' }}">Returns</a></li>
       </ul>
     </section>
 
     <section class="suntneew-support-mega-menu__column" aria-labelledby="support-menu-policy">
       <p class="suntneew-support-mega-menu__heading" id="support-menu-policy">Policies</p>
       <ul class="suntneew-support-mega-menu__links" role="list">
-        <li><a href="/pages/shipping-policy">Shipping Policy</a></li>
-        <li><a href="/pages/return-policy">Return Policy</a></li>
-        <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/pages/terms-conditions">Terms &amp; Conditions</a></li>
+        <li><a href="{{ pages['shipping-policy'].url | default: '/pages/shipping-policy' }}">Shipping Policy</a></li>
+        <li><a href="{{ pages['return-policy'].url | default: '/pages/return-policy' }}">Return Policy</a></li>
+        <li><a href="{{ pages['privacy-policy'].url | default: '/pages/privacy-policy' }}">Privacy Policy</a></li>
+        <li><a href="{{ pages['terms-conditions'].url | default: '/pages/terms-conditions' }}">Terms &amp; Conditions</a></li>
       </ul>
     </section>
   </div>

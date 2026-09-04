@@ -349,7 +349,7 @@
                 assign compliance_library_anchor = 'rv-230-314'
             endcase
 
-            assign compliance_library_url = '/pages/technology'
+            assign compliance_library_url = pages['technology'].url | default: '/pages/technology'
             if compliance_library_anchor != blank
               assign compliance_library_url = compliance_library_url | append: '#' | append: compliance_library_anchor
             endif

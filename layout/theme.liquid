@@ -19,24 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="theme-color" content="{{ settings.header_background }}">
 
-    {%- if template.name == 'page' and template.suffix == 'power-calculator' -%}
-      <title>Power Calculator &amp; Product Finder | SuntNeew</title>
-    {%- else -%}
-      <title>
-        {% if page_title == blank -%}
-          SuntNeew
-        {%- else -%}
-          {{- page_title -}}
-          {%- if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif -%}
-        {%- endif %}
-      </title>
-    {%- endif -%}
-
-    {%- if page_description -%}
-      <meta name="description" content="{{ page_description | escape }}">
-    {%- endif -%}
-
-    <link rel="canonical" href="{{ canonical_url }}">
+    {%- render 'suntneew-seo-head' -%}
 
     {%- if settings.favicon -%}
       <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 96 }}">
