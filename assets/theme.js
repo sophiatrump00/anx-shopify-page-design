@@ -3110,16 +3110,20 @@ var ProductGallery = class extends HTMLElement {
    */
   openZoom(index = 0) {
     const dataSource = Array.from(this.querySelectorAll('.product-gallery__media[data-media-type="image"]:not([hidden]) > img')).map((image) => {
-      return {
+      const galleryMedia = image.closest('.product-gallery__media');
+      const item = {
         thumbnailElement: image,
-        src: image.src,
-        srcset: image.srcset,
+        src: galleryMedia?.dataset.fullSrc || image.src,
         msrc: image.currentSrc || image.src,
-        width: parseInt(image.getAttribute("width")),
-        height: parseInt(image.getAttribute("height")),
+        width: parseInt(galleryMedia?.dataset.fullWidth || image.getAttribute("width")),
+        height: parseInt(galleryMedia?.dataset.fullHeight || image.getAttribute("height")),
         alt: image.alt,
         thumbCropped: true
       };
+      if (!galleryMedia?.dataset.fullSrc) {
+        item.srcset = image.srcset;
+      }
+      return item;
     });
     this.photoswipe.loadAndOpen(index, dataSource);
   }

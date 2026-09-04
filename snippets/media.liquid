@@ -30,16 +30,19 @@
   {%- assign fetchpriority = 'auto' -%}
 {%- endif -%}
 
+{%- assign media_display_width = media.preview_image.width | at_most: 1200 -%}
+{%- assign media_display_widths = '200,300,400,500,600,700,800,1000,1200,1400,1600,1800,2000' -%}
+
 {%- case media.media_type -%}
   {%- when 'image' -%}
     {{-
       media
-      | image_url: width: media.preview_image.width
+      | image_url: width: media_display_width
       | image_tag:
         loading: loading,
         fetchpriority: fetchpriority,
         sizes: sizes,
-        widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+        widths: media_display_widths,
         class: 'rounded'
     -}}
 
@@ -58,12 +61,12 @@
     >
       {{-
         media
-        | image_url: width: media.preview_image.width
+        | image_url: width: media_display_width
         | image_tag:
           loading: loading,
           fetchpriority: fetchpriority,
           sizes: sizes,
-          widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+          widths: media_display_widths,
           class: 'rounded'
       -}}
 

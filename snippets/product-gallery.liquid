@@ -139,6 +139,11 @@
             class="product-gallery__media {% if media.alt contains '@expand' %}product-gallery__media--expand{% endif %} {% if section.settings.mobile_carousel_control != 'free_scroll' %}snap-center{% endif %}"
             data-media-type="{{ media.media_type }}"
             data-media-id="{{ media.id }}"
+            {% if media.media_type == 'image' %}
+              data-full-src="{{ media.preview_image.src | escape }}"
+              data-full-width="{{ media.preview_image.width }}"
+              data-full-height="{{ media.preview_image.height }}"
+            {% endif %}
             {% if filtered_indexes contains media.position %}
               hidden
             {% endif %}
@@ -264,7 +269,7 @@
             >
               {{-
                 media
-                | image_url: width: media.preview_image.width
+                | image_url: width: 192
                 | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 56px, 64px', widths: '56,64,112,128,168,192', class: 'object-contain rounded-sm'
               -}}
 
