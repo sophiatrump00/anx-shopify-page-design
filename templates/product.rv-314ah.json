@@ -54,17 +54,176 @@
       "settings":{}
     },
     "features": {
-      "type":"suntneew-rv-experience",
+      "type": "suntneew-rv-experience",
       "blocks": {
-        "lifestyle":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-new-lifestyle.jpg","mobile_image_asset":"suntneew-rv-314ah-new-lifestyle.jpg","image_alt":"314Ah LiFePO4 battery supporting extended RV living beside a motorhome","eyebrow":"LONGER RESERVE, SAME FOOTPRINT","heading":"Choose 314Ah for the hours.","body":"<p>When the next useful charge may be tomorrow rather than today, 4,019.2Wh keeps more energy behind refrigeration, work, network and overnight essentials.</p>","metric_1_value":"4,019.2Wh","metric_1_label":"Rated energy","metric_2_value":"+1,075.2Wh","metric_2_label":"Versus 230Ah","metric_3_value":"+36.5%","metric_3_label":"More rated energy","metric_4_value":"26kg","metric_4_label":"Battery weight","variant_match":""}},
-        "footprint":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-new-weight-compare.jpg","mobile_image_asset":"suntneew-rv-314ah-new-weight-compare.jpg","image_alt":"314Ah LiFePO4 battery capacity and weight comparison visual","eyebrow":"SAME BAY. MORE TIME BETWEEN CHARGES.","heading":"Make the same enclosure carry 36.5% more energy.","body":"<p>230Ah and 314Ah share the stated 522 × 268 × 220mm outer dimensions. Choose 314Ah when the bay cannot grow but the reserve needs to.</p>","metric_1_value":"Same size","metric_1_label":"As 230Ah","metric_2_value":"4,019.2Wh","metric_2_label":"Rated energy","metric_3_value":"1,075.2Wh","metric_3_label":"Additional reserve","metric_4_value":"36.5%","metric_4_label":"More energy","variant_match":""}},
-        "output":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-new-protection.jpg","mobile_image_asset":"suntneew-rv-314ah-new-protection.jpg","image_alt":"314Ah LiFePO4 battery charging and protection visual","eyebrow":"KNOW THE TRADEOFF","heading":"More energy, with a 2,010W continuous-output ceiling.","body":"<p>314Ah is the reserve-first model, not the higher-output model. Choose it when <strong>2,010W / 157A</strong> covers the simultaneous load; <strong>200A</strong> remains a BMS protection threshold, not a continuous operating rating.</p>","metric_1_value":"157A","metric_1_label":"Max continuous discharge","metric_2_value":"2,010W","metric_2_label":"Max continuous output","metric_3_value":"200A","metric_3_label":"BMS protection","metric_4_value":"63A","metric_4_label":"Recommended charge current","variant_match":""}},
-        "monitoring":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-new-monitoring-wide.jpg","mobile_image_asset":"suntneew-rv-314ah-new-monitoring.jpg","image_alt":"314Ah LiFePO4 battery monitored by Bluetooth app beside an RV","eyebrow":"BLUETOOTH 5.0 MONITORING","heading":"Keep a 4kWh-class reserve easy to read.","body":"<p>Review state of charge, voltage, current and temperature from the supported app before you change loads or charging plans.</p>","metric_1_value":"Bluetooth 5.0","metric_1_label":"Wireless connection","metric_2_value":"SOC","metric_2_label":"State-of-charge view","metric_3_value":"V / A","metric_3_label":"Voltage and current","metric_4_value":"Temperature","metric_4_label":"Battery condition view","variant_match":""}},
-        "expansion":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-new-expansion.jpg","mobile_image_asset":"suntneew-rv-314ah-new-expansion.jpg","image_alt":"314Ah LiFePO4 battery bank expansion concept for an RV system","eyebrow":"HIGH-RESERVE BANK PLANNING","heading":"A substantial single battery with room for a larger bank.","body":"<p>Series and parallel support lets a 314Ah installation grow when the enclosure, restraint, conductors and protection devices are designed together.</p>","metric_1_value":"4S","metric_1_label":"Maximum series layout","metric_2_value":"4P","metric_2_label":"Maximum parallel layout","metric_3_value":"51.2V","metric_3_label":"Four-battery series voltage","metric_4_value":"16","metric_4_label":"Batteries in a 4P4S bank","variant_match":""}},
-        "temperature":{"type":"feature","settings":{"image_asset":"suntneew-rv-314ah-new-temperature-wide.jpg","mobile_image_asset":"suntneew-rv-314ah-new-temperature.jpg","image_alt":"314Ah LiFePO4 battery in a cold-weather RV setting","eyebrow":"COLD-WEATHER PROTECTION","heading":"Protect the larger reserve when cold mornings arrive.","body":"<p>Low-temperature charging protection pauses charging below the documented limit and resumes after the battery returns to a suitable temperature.</p>","metric_1_value":"0°C","metric_1_label":"Charging stops below","metric_2_value":"5°C","metric_2_label":"Charging resumes above","metric_3_value":"-20–60°C","metric_3_label":"Discharge range","metric_4_value":"IP65","metric_4_label":"Enclosure protection","variant_match":""}}
+        "low_solar": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-314ah-feature-low-solar-output.jpeg",
+            "mobile_image_asset": "suntneew-rv-314ah-feature-low-solar-output.jpeg",
+            "image_alt": "SuntNeew 314Ah LiFePO4 RV battery installed in an RV service bay during overcast low-solar conditions",
+            "eyebrow": "1. KEEP MORE RESERVE WHEN SUNLIGHT IS LIMITED",
+            "heading": "Longer reserve buys time between uncertain charging windows.",
+            "body": "<p>When cloud cover reduces solar harvest and the next useful charge may be later, 4,019.2Wh keeps more reserve behind refrigeration, networking and overnight essentials. Pair the battery with a LiFePO4-compatible charger and correctly sized MPPT system.</p>",
+            "metric_1_value": "4,019.2Wh",
+            "metric_1_label": "Rated energy",
+            "metric_2_value": "+36.5%",
+            "metric_2_label": "Versus 230Ah",
+            "metric_3_value": "63A",
+            "metric_3_label": "Recommended charge",
+            "metric_4_value": "157A",
+            "metric_4_label": "Max continuous discharge",
+            "variant_match": "",
+            "card_size": "wide",
+            "media_style": "contain_light"
+          }
+        },
+        "family_overnight": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-314ah-feature-family-overnight-output.jpeg",
+            "mobile_image_asset": "suntneew-rv-314ah-feature-family-overnight-output.jpeg",
+            "image_alt": "SuntNeew 314Ah LiFePO4 RV battery supporting family RV living from evening to next morning",
+            "eyebrow": "2. NIGHT TO NEXT MORNING",
+            "heading": "A larger 12V reserve for the hours after camp goes quiet.",
+            "body": "<p>Keep the fridge, lights, network and planned overnight loads running longer in the same 522 × 268 × 220mm enclosure used by the 230Ah model. Check your real load profile before sizing the inverter and wiring.</p>",
+            "metric_1_value": "4,019.2Wh",
+            "metric_1_label": "Rated energy",
+            "metric_2_value": "12.8V",
+            "metric_2_label": "System voltage",
+            "metric_3_value": "522 × 268 × 220mm",
+            "metric_3_label": "Same stated footprint",
+            "metric_4_value": "26kg",
+            "metric_4_label": "Battery weight",
+            "variant_match": "",
+            "card_size": "tile"
+          }
+        },
+        "remote_work": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-314ah-feature-remote-work-output.png",
+            "mobile_image_asset": "suntneew-rv-314ah-feature-remote-work-output.png",
+            "image_alt": "SuntNeew 314Ah LiFePO4 RV battery powering remote work inside a motorhome",
+            "eyebrow": "3. WORK OFF GRID",
+            "heading": "A 4kWh-class reserve for remote work on the road.",
+            "body": "<p>Support a laptop, monitor, network gear and other planned 12V loads while you work from an RV. The 314Ah model prioritizes reserve; keep simultaneous demand within its 2,010W / 157A continuous limit.</p>",
+            "metric_1_value": "4,019.2Wh",
+            "metric_1_label": "Rated energy",
+            "metric_2_value": "2,010W",
+            "metric_2_label": "Max continuous output",
+            "metric_3_value": "157A",
+            "metric_3_label": "Max continuous discharge",
+            "metric_4_value": "Bluetooth 5.0",
+            "metric_4_label": "Monitoring",
+            "variant_match": "",
+            "card_size": "tile",
+            "media_style": "contain_dark"
+          }
+        },
+        "bluetooth": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-314ah-feature-bluetooth-output.png",
+            "mobile_image_asset": "suntneew-rv-314ah-feature-bluetooth-output.png",
+            "image_alt": "Phone displaying Bluetooth 5.0 battery status beside SuntNeew 314Ah LiFePO4 battery in an RV",
+            "eyebrow": "4. CHECK STATUS BEFORE YOU CHANGE THE LOAD",
+            "heading": "Bluetooth 5.0 keeps the 314Ah reserve easy to read.",
+            "body": "<p>Review state of charge, voltage, current and temperature in the supported app before you adjust loads or charging sources. Use the battery manual and app instructions for available functions.</p>",
+            "metric_1_value": "Bluetooth 5.0",
+            "metric_1_label": "Wireless monitoring",
+            "metric_2_value": "SOC",
+            "metric_2_label": "State of charge",
+            "metric_3_value": "V / A",
+            "metric_3_label": "Voltage and current",
+            "metric_4_value": "Temperature",
+            "metric_4_label": "Battery condition",
+            "variant_match": "",
+            "card_size": "tile"
+          }
+        },
+        "installation": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-314ah-feature-installation-output.png",
+            "mobile_image_asset": "suntneew-rv-314ah-feature-installation-output.png",
+            "image_alt": "SuntNeew 314Ah LiFePO4 RV battery secured in a professional service-bay installation",
+            "eyebrow": "5. SECURE A 26KG BATTERY",
+            "heading": "Plan the tray, restraint and cable path before the battery arrives.",
+            "body": "<p>The 522 × 268 × 220mm enclosure fits the same stated footprint as 230Ah, but the 314Ah battery weighs 26kg. Confirm support structure, hold-downs, terminal access, conductor sizing and fuse placement for the complete system.</p>",
+            "metric_1_value": "26kg",
+            "metric_1_label": "Battery weight",
+            "metric_2_value": "522 × 268 × 220mm",
+            "metric_2_label": "Stated dimensions",
+            "metric_3_value": "12–14N·m",
+            "metric_3_label": "Terminal torque",
+            "metric_4_value": "ABS",
+            "metric_4_label": "Housing material",
+            "variant_match": "",
+            "card_size": "wide-short"
+          }
+        },
+        "expansion": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-314ah-feature-expansion-4s4p-output.png",
+            "mobile_image_asset": "suntneew-rv-314ah-feature-expansion-4s4p-output.png",
+            "image_alt": "Sixteen matched SuntNeew 314Ah LiFePO4 batteries arranged in a 4S4P RV energy bank",
+            "eyebrow": "6. SCALE A MATCHED BANK",
+            "heading": "Build up to 4S4P when the system design calls for it.",
+            "body": "<p>Use matched 314Ah batteries with the same model, state of charge and installation plan. The documented 4S4P layout reaches 16 batteries and 64.3kWh rated energy; design conductors, over-current protection and restraint together.</p>",
+            "metric_1_value": "4S",
+            "metric_1_label": "Series layout",
+            "metric_2_value": "4P",
+            "metric_2_label": "Parallel layout",
+            "metric_3_value": "16",
+            "metric_3_label": "Matched batteries",
+            "metric_4_value": "64.3kWh",
+            "metric_4_label": "Rated energy at 4S4P",
+            "variant_match": "",
+            "card_size": "wide",
+            "media_style": "contain_dark"
+          }
+        },
+        "documents_support": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-rv-314ah-feature-documents-support-output.png",
+            "mobile_image_asset": "suntneew-rv-314ah-feature-documents-support-output.png",
+            "image_alt": "314Ah LiFePO4 RV battery with user manual, compliance documents and service support",
+            "eyebrow": "7. DOCUMENTED SUPPORT",
+            "heading": "Know what is included before installation and the first trip.",
+            "body": "<p>Use the current English manual for operating limits, charging sequence and safety steps. Keep model-matched compliance documents with your installation records, and confirm service terms for the 314Ah model before purchase.</p>",
+            "metric_1_value": "Manual",
+            "metric_1_label": "Operating guidance",
+            "metric_2_value": "Certificates",
+            "metric_2_label": "Compliance records",
+            "metric_3_value": "Service terms",
+            "metric_3_label": "Model-specific review",
+            "metric_4_value": "Support",
+            "metric_4_label": "Before and after purchase",
+            "variant_match": "",
+            "card_size": "tile",
+            "media_style": "contain_dark"
+          }
+        }
       },
-      "block_order":["lifestyle","footprint","output","monitoring","expansion","temperature"],
-      "settings":{"anchor_id":"features","eyebrow":"314AH FEATURES","heading":"Longer reserve for trips that cannot count on the next charge.","lede":"<p>Choose 314Ah for the hours: it puts 1,075.2Wh / 36.5% more energy than 230Ah in the same enclosure, while its 2,010W continuous limit defines which loads it is built to serve.</p>"}
+      "block_order": [
+        "low_solar",
+        "family_overnight",
+        "remote_work",
+        "bluetooth",
+        "installation",
+        "expansion",
+        "documents_support"
+      ],
+      "settings": {
+        "anchor_id": "features",
+        "eyebrow": "314AH FEATURES",
+        "heading": "Longer reserve for trips that cannot count on the next charge.",
+        "lede": "<p>Choose 314Ah for the hours: it puts 1,075.2Wh / 36.5% more energy than 230Ah in the same enclosure, while its 2,010W continuous limit defines which loads it is built to serve.</p>",
+        "layout_mode": "editorial_grid"
+      }
     },
     "details": {
       "type":"suntneew-pdp-details",

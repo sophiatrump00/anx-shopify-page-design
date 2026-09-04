@@ -22,6 +22,18 @@
             {%- if desktop_asset contains 'g31-amazon-aplus' -%}
               {%- assign bundled_asset_width = 1464 -%}
               {%- assign bundled_asset_height = 600 -%}
+            {%- elsif desktop_asset contains '314ah-feature-low-solar-output' -%}
+              {%- assign bundled_asset_width = 1024 -%}
+              {%- assign bundled_asset_height = 1024 -%}
+            {%- elsif desktop_asset contains '314ah-feature-remote-work-output' -%}
+              {%- assign bundled_asset_width = 1448 -%}
+              {%- assign bundled_asset_height = 1086 -%}
+            {%- elsif desktop_asset contains '314ah-feature-family-overnight-output' -%}
+              {%- assign bundled_asset_width = 1024 -%}
+              {%- assign bundled_asset_height = 687 -%}
+            {%- elsif desktop_asset contains '314ah-feature-bluetooth-output' or desktop_asset contains '314ah-feature-installation-output' or desktop_asset contains '314ah-feature-expansion-4s4p-output' or desktop_asset contains '314ah-feature-documents-support-output' -%}
+              {%- assign bundled_asset_width = 1536 -%}
+              {%- assign bundled_asset_height = 1024 -%}
             {%- endif -%}
             <picture style="display: block">
               {%- if block.settings.mobile_image_asset != blank -%}
