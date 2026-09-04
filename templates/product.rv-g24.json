@@ -77,8 +77,8 @@
         "fit": {
           "type": "feature",
           "settings": {
-            "image_asset": "suntneew-rv-g24-g31-fit-comparison.png",
-            "mobile_image_asset": "suntneew-rv-g24-g31-fit-comparison.png",
+            "image_asset": "suntneew-rv-g24-g31-fit-comparison.webp",
+            "mobile_image_asset": "suntneew-rv-g24-g31-fit-comparison.webp",
             "image_alt": "Group 24 and Group 31 100Ah LiFePO4 batteries compared in RV battery bays",
             "eyebrow": "CHOOSE BY FIT FIRST",
             "heading": "The same 100Ah capacity in the Group 24 footprint.",

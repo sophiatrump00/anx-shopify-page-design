@@ -57,8 +57,8 @@
         "home_slide": {
           "type": "image",
           "settings": {
-            "image_asset": "suntneew-home-hero-v2.png",
-            "mobile_image_asset": "suntneew-home-hero-v2.png",
+            "image_asset": "suntneew-home-hero-v2.webp",
+            "mobile_image_asset": "suntneew-home-hero-v2.webp",
             "content_max_width": 620,
             "mobile_text_position": "place-self-end-start text-start",
             "desktop_text_position": "sm:place-self-center-start sm:text-start",
@@ -193,7 +193,7 @@
         "anchor_id": "rv-long-life-power",
         "desktop_background_asset": "suntneew-rv-tech-bg-desktop.jpg",
         "mobile_background_asset": "suntneew-rv-tech-bg-mobile.jpg",
-        "product_asset": "suntneew-rv-g31-cutout.png",
+        "product_asset": "suntneew-rv-g31-cutout.webp",
         "product_alt": "SuntNeew Group 31 100Ah LiFePO4 RV battery",
         "eyebrow": "LONG-LIFE SMART RV POWER",
         "heading": "Power you can see. Protection you can trust.",
@@ -243,7 +243,7 @@
         "eyebrow": "HOME ENERGY STORAGE",
         "heading": "Power at home, built around real needs.",
         "body": "Choose a usable starting capacity first, then match the system architecture and inverter requirements to the way your home uses power.",
-        "image_asset": "suntneew-home-hero-v2.png",
+        "image_asset": "suntneew-home-hero-v2.webp",
         "image_alt": "SuntNeew home energy storage system beside a modern solar home",
         "button_label": "Explore home energy products",
         "button_link": "shopify://collections/home-energy-storage",
