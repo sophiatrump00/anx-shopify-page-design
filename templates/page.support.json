@@ -11,34 +11,15 @@
   "sections": {
     "main": {
       "type": "suntneew-support-center",
-      "blocks": {
-        "kb700": {
-          "type": "product_resource",
-          "settings": {
-            "family": "JUMP STARTERS",
-            "model": "KB700 / KP-700",
-            "title": "KB700 Fan Jump Starter",
-            "description": "Setup, vehicle starting, air-duster operation, charging, safety and model-matched compliance resources.",
-            "asset_name": "suntneew-kb700-2026-gallery-01-main.jpg",
-            "image_alt": "SuntNeew KB700 fan jump starter with smart clamp, air nozzle and USB cable",
-            "page_handle": "support-kb700",
-            "online_label": "Online manual",
-            "pdf_label": "English PDF",
-            "certifications_label": "Certifications",
-            "cta_label": "Open KB700 support"
-          }
-        }
-      },
-      "block_order": ["kb700"],
       "settings": {
         "eyebrow": "SUPPORT CENTER",
         "heading": "Support Center",
         "intro": "Find the right resources for your SuntNeew product, order or technical question.",
         "routes_eyebrow": "CHOOSE A ROUTE",
         "routes_heading": "Get to the right answer faster.",
-        "resources_eyebrow": "PRODUCT RESOURCES",
-        "resources_heading": "Choose your product.",
-        "resources_intro": "Open a model-specific support page for the online manual, original PDF and compliance information."
+        "resources_route_label": "PRODUCT RESOURCES",
+        "resources_route_title": "Manuals & Certifications",
+        "resources_route_description": "Search model-specific online manuals, downloadable files and compliance information."
       }
     }
   },

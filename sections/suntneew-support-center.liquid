@@ -1,5 +1,7 @@
 {{ 'suntneew-support.css' | asset_url | stylesheet_tag }}
 
+{%- assign resources_url = pages['manuals-certifications'].url | default: '/pages/manuals-certifications' -%}
+
 <section class="sn-support" aria-labelledby="sn-support-heading">
   <div class="sn-support__shell">
     <header class="sn-support__hero">
@@ -15,11 +17,11 @@
       </div>
 
       <div class="sn-support__route-grid">
-        <a class="sn-support__route-card" href="#product-resources">
+        <a id="product-resources" class="sn-support__route-card" href="{{ resources_url }}">
           <span class="sn-support__route-number" aria-hidden="true">01</span>
-          <span class="sn-support__route-label">PRODUCT RESOURCES</span>
-          <strong>Model manuals</strong>
-          <span>Find online manuals, downloadable files and compliance information by product.</span>
+          <span class="sn-support__route-label">{{ section.settings.resources_route_label }}</span>
+          <strong>{{ section.settings.resources_route_title }}</strong>
+          <span>{{ section.settings.resources_route_description }}</span>
           <span class="sn-support__route-arrow" aria-hidden="true">&rarr;</span>
         </a>
 
@@ -49,46 +51,6 @@
       </div>
     </section>
 
-    <section id="product-resources" class="sn-support__directory" aria-labelledby="sn-support-directory-heading">
-      <header class="sn-support__directory-heading">
-        <div>
-          <p class="sn-support__eyebrow">{{ section.settings.resources_eyebrow }}</p>
-          <h2 id="sn-support-directory-heading">{{ section.settings.resources_heading }}</h2>
-        </div>
-        <p>{{ section.settings.resources_intro }}</p>
-      </header>
-
-      <div class="sn-support__product-grid">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'product_resource' -%}
-            {%- liquid
-              assign resource_fallback = '/pages/' | append: block.settings.page_handle
-              assign resource_url = pages[block.settings.page_handle].url | default: resource_fallback
-            -%}
-            <article class="sn-support__product-card" {{ block.shopify_attributes }}>
-              <a class="sn-support__product-media" href="{{ resource_url }}" aria-label="{{ block.settings.cta_label | escape }}: {{ block.settings.title | escape }}">
-                {%- if block.settings.asset_name != blank -%}
-                  <img src="{{ block.settings.asset_name | asset_url }}" alt="{{ block.settings.image_alt | escape }}" loading="lazy" width="2000" height="2000">
-                {%- endif -%}
-              </a>
-              <div class="sn-support__product-copy">
-                <p class="sn-support__product-family">{{ block.settings.family }}</p>
-                <p class="sn-support__product-model">{{ block.settings.model }}</p>
-                <h3><a href="{{ resource_url }}">{{ block.settings.title }}</a></h3>
-                <p>{{ block.settings.description }}</p>
-                <ul class="sn-support__availability" role="list" aria-label="Available resources">
-                  <li>{{ block.settings.online_label }}</li>
-                  <li>{{ block.settings.pdf_label }}</li>
-                  <li>{{ block.settings.certifications_label }}</li>
-                </ul>
-                <a class="sn-support__text-link" href="{{ resource_url }}">{{ block.settings.cta_label }} <span aria-hidden="true">&rarr;</span></a>
-              </div>
-            </article>
-          {%- endif -%}
-        {%- endfor -%}
-      </div>
-    </section>
-
     <section class="sn-support__prepare" aria-labelledby="sn-support-prepare-heading">
       <div>
         <p class="sn-support__eyebrow">BEFORE YOU CONTACT US</p>
@@ -114,30 +76,9 @@
     {"type": "textarea", "id": "intro", "label": "Introduction", "default": "Find the right resources for your SuntNeew product, order or technical question."},
     {"type": "text", "id": "routes_eyebrow", "label": "Routes eyebrow", "default": "CHOOSE A ROUTE"},
     {"type": "text", "id": "routes_heading", "label": "Routes heading", "default": "Get to the right answer faster."},
-    {"type": "header", "content": "Product resources directory"},
-    {"type": "text", "id": "resources_eyebrow", "label": "Resources eyebrow", "default": "PRODUCT RESOURCES"},
-    {"type": "text", "id": "resources_heading", "label": "Resources heading", "default": "Choose your product."},
-    {"type": "textarea", "id": "resources_intro", "label": "Resources introduction", "default": "Open a model-specific support page for the online manual, original PDF and compliance information."}
-  ],
-  "blocks": [
-    {
-      "type": "product_resource",
-      "name": "Product resource",
-      "settings": [
-        {"type": "text", "id": "family", "label": "Product family", "default": "JUMP STARTERS"},
-        {"type": "text", "id": "model", "label": "Model", "default": "KB700 / KP-700"},
-        {"type": "text", "id": "title", "label": "Product title", "default": "KB700 Fan Jump Starter"},
-        {"type": "textarea", "id": "description", "label": "Description", "default": "Setup, vehicle starting, air-duster operation, charging, safety and model-matched compliance resources."},
-        {"type": "text", "id": "asset_name", "label": "Theme image filename", "default": "suntneew-kb700-2026-gallery-01-main.jpg"},
-        {"type": "text", "id": "image_alt", "label": "Image alt text", "default": "SuntNeew KB700 fan jump starter with smart clamp, air nozzle and USB cable"},
-        {"type": "text", "id": "page_handle", "label": "Support page handle", "default": "support-kb700"},
-        {"type": "text", "id": "online_label", "label": "Online resource label", "default": "Online manual"},
-        {"type": "text", "id": "pdf_label", "label": "PDF resource label", "default": "English PDF"},
-        {"type": "text", "id": "certifications_label", "label": "Compliance resource label", "default": "Certifications"},
-        {"type": "text", "id": "cta_label", "label": "Link label", "default": "Open KB700 support"}
-      ]
-    }
-  ],
-  "max_blocks": 24
+    {"type": "text", "id": "resources_route_label", "label": "Product resources label", "default": "PRODUCT RESOURCES"},
+    {"type": "text", "id": "resources_route_title", "label": "Product resources title", "default": "Manuals & Certifications"},
+    {"type": "textarea", "id": "resources_route_description", "label": "Product resources description", "default": "Search model-specific online manuals, downloadable files and compliance information."}
+  ]
 }
 {% endschema %}

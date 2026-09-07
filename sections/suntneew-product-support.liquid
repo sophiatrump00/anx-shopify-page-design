@@ -1,13 +1,14 @@
 {{ 'suntneew-support.css' | asset_url | stylesheet_tag }}
 
 {%- assign support_url = pages['support'].url | default: '/pages/support' -%}
+{%- assign resources_url = pages['manuals-certifications'].url | default: '/pages/manuals-certifications' -%}
 
 <section class="sn-support sn-product-support" aria-labelledby="sn-product-support-heading">
   <div class="sn-support__shell sn-product-support__shell">
     <nav class="sn-product-support__breadcrumb" aria-label="Breadcrumb">
       <a href="{{ support_url }}">{{ section.settings.support_label }}</a>
       <span aria-hidden="true">/</span>
-      <a href="{{ support_url }}#product-resources">{{ section.settings.resources_label }}</a>
+      <a href="{{ resources_url }}">{{ section.settings.resources_label }}</a>
       <span aria-hidden="true">/</span>
       <span aria-current="page">{{ section.settings.model }}</span>
     </nav>

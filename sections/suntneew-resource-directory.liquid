@@ -1,0 +1,183 @@
+{{ 'suntneew-support.css' | asset_url | stylesheet_tag }}
+
+{%- assign support_url = pages['support'].url | default: '/pages/support' -%}
+
+<section class="sn-support sn-resource-directory" data-resource-directory="{{ section.id }}" aria-labelledby="sn-resource-directory-heading">
+  <div class="sn-support__shell sn-resource-directory__shell">
+    <nav class="sn-resource-directory__breadcrumb" aria-label="{{ section.settings.breadcrumb_label | escape }}">
+      <a href="{{ support_url }}">{{ section.settings.support_label }}</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ section.settings.breadcrumb_current }}</span>
+    </nav>
+
+    <header class="sn-resource-directory__hero">
+      <p class="sn-support__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1 id="sn-resource-directory-heading">{{ section.settings.heading }}</h1>
+      <p>{{ section.settings.intro }}</p>
+    </header>
+
+    <div class="sn-resource-directory__tools" role="search" aria-label="{{ section.settings.search_region_label | escape }}">
+      <div class="sn-resource-directory__search">
+        <label for="{{ section.id }}-search">{{ section.settings.search_label }}</label>
+        <input id="{{ section.id }}-search" type="search" data-resource-search placeholder="{{ section.settings.search_placeholder | escape }}" autocomplete="off">
+      </div>
+      <div class="sn-resource-directory__filter">
+        <label for="{{ section.id }}-category">{{ section.settings.filter_label }}</label>
+        <select id="{{ section.id }}-category" data-resource-category>
+          <option value="">{{ section.settings.all_label }}</option>
+          <option value="jump-starters">{{ section.settings.jump_starters_label }}</option>
+          <option value="rv-batteries">{{ section.settings.rv_batteries_label }}</option>
+          <option value="home-energy-storage">{{ section.settings.home_energy_label }}</option>
+        </select>
+      </div>
+      <div class="sn-resource-directory__result" data-resource-count aria-live="polite"></div>
+      <button class="sn-resource-directory__clear" type="button" data-resource-clear hidden>{{ section.settings.clear_label }}</button>
+    </div>
+
+    <div class="sn-resource-directory__product-grid" data-resource-grid>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'product_resource' -%}
+          {%- liquid
+            assign resource_fallback = '/pages/' | append: block.settings.page_handle
+            assign resource_url = pages[block.settings.page_handle].url | default: resource_fallback
+            assign searchable_text = block.settings.model | append: ' ' | append: block.settings.title | append: ' ' | append: block.settings.family
+          -%}
+          <article class="sn-resource-directory__card" data-resource-card data-resource-category="{{ block.settings.category }}" data-resource-query="{{ searchable_text | escape }}" {{ block.shopify_attributes }}>
+            <a class="sn-resource-directory__media" href="{{ resource_url }}" aria-label="{{ block.settings.cta_label | escape }}: {{ block.settings.title | escape }}">
+              {%- if block.settings.asset_name != blank -%}
+                <img src="{{ block.settings.asset_name | asset_url }}" alt="{{ block.settings.image_alt | escape }}" loading="lazy" width="900" height="900">
+              {%- endif -%}
+            </a>
+            <div class="sn-resource-directory__copy">
+              <p class="sn-resource-directory__family">{{ block.settings.family }}</p>
+              <p class="sn-resource-directory__model">{{ block.settings.model }}</p>
+              <h2><a href="{{ resource_url }}">{{ block.settings.title }}</a></h2>
+              <p class="sn-resource-directory__description">{{ block.settings.description }}</p>
+              <ul class="sn-resource-directory__availability" role="list" aria-label="{{ section.settings.available_resources_label | escape }}">
+                <li>{{ block.settings.online_label }}</li>
+                <li>{{ block.settings.pdf_label }}</li>
+                <li>{{ block.settings.certifications_label }}</li>
+              </ul>
+              <a class="sn-support__text-link" href="{{ resource_url }}">{{ block.settings.cta_label }} <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="sn-resource-directory__empty" data-resource-empty hidden>
+      <h2>{{ section.settings.empty_heading }}</h2>
+      <p>{{ section.settings.empty_description }}</p>
+      <div>
+        <button class="sn-support__button" type="button" data-resource-clear>{{ section.settings.clear_label }}</button>
+        <a class="sn-support__text-link" href="{{ pages['contact-us'].url | default: '/pages/contact-us' }}">{{ section.settings.contact_label }} <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+
+    <p class="sn-resource-directory__footer">{{ section.settings.footer_note }}</p>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const root = document.querySelector('[data-resource-directory="{{ section.id }}"]');
+    if (!root) return;
+
+    const search = root.querySelector('[data-resource-search]');
+    const category = root.querySelector('[data-resource-category]');
+    const cards = Array.from(root.querySelectorAll('[data-resource-card]'));
+    const result = root.querySelector('[data-resource-count]');
+    const empty = root.querySelector('[data-resource-empty]');
+    const clearButtons = root.querySelectorAll('[data-resource-clear]');
+    const countLabel = {{ section.settings.count_label | json }};
+
+    const normalize = (value) => (value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const applyFilters = () => {
+      const query = normalize(search.value);
+      const selectedCategory = category.value;
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const matchesQuery = !query || normalize(card.dataset.resourceQuery).includes(query);
+        const matchesCategory = !selectedCategory || card.dataset.resourceCategory === selectedCategory;
+        const visible = matchesQuery && matchesCategory;
+        card.hidden = !visible;
+        if (visible) visibleCount += 1;
+      });
+
+      result.textContent = visibleCount + ' ' + countLabel;
+      empty.hidden = visibleCount !== 0;
+      root.querySelectorAll('[data-resource-clear]').forEach((button) => {
+        button.hidden = !search.value && !category.value;
+      });
+    };
+
+    search.addEventListener('input', applyFilters);
+    category.addEventListener('change', applyFilters);
+    clearButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        search.value = '';
+        category.value = '';
+        search.focus();
+        applyFilters();
+      });
+    });
+    applyFilters();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "SuntNeew resources",
+  "class": "shopify-section--suntneew-resource-directory",
+  "tag": "section",
+  "settings": [
+    {"type": "text", "id": "breadcrumb_label", "label": "Breadcrumb aria label", "default": "Breadcrumb"},
+    {"type": "text", "id": "support_label", "label": "Support breadcrumb label", "default": "Support"},
+    {"type": "text", "id": "breadcrumb_current", "label": "Current breadcrumb label", "default": "Product Resources"},
+    {"type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "PRODUCT RESOURCES"},
+    {"type": "text", "id": "heading", "label": "Fallback heading", "default": "Manuals & Certifications"},
+    {"type": "textarea", "id": "intro", "label": "Introduction", "default": "Search by model or browse by product type to find online manuals, original downloads and compliance information."},
+    {"type": "text", "id": "search_region_label", "label": "Search region label", "default": "Find product resources"},
+    {"type": "text", "id": "search_label", "label": "Search label", "default": "Search by model or product"},
+    {"type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "e.g. KB700 or fan jump starter"},
+    {"type": "text", "id": "filter_label", "label": "Filter label", "default": "Product type"},
+    {"type": "text", "id": "all_label", "label": "All products", "default": "All products"},
+    {"type": "text", "id": "jump_starters_label", "label": "Jump starters filter label", "default": "Jump Starters"},
+    {"type": "text", "id": "rv_batteries_label", "label": "RV batteries filter label", "default": "RV Batteries"},
+    {"type": "text", "id": "home_energy_label", "label": "Home energy filter label", "default": "Home Energy Storage"},
+    {"type": "text", "id": "clear_label", "label": "Clear filters label", "default": "Clear filters"},
+    {"type": "text", "id": "count_label", "label": "Result count suffix", "default": "products"},
+    {"type": "text", "id": "available_resources_label", "label": "Available resources aria label", "default": "Available resources"},
+    {"type": "text", "id": "empty_heading", "label": "Empty state heading", "default": "No matching product resources"},
+    {"type": "textarea", "id": "empty_description", "label": "Empty state description", "default": "Try another model or product type. If you still cannot find the right guide, our support team can help identify it."},
+    {"type": "text", "id": "contact_label", "label": "Contact link label", "default": "Contact support"},
+    {"type": "textarea", "id": "footer_note", "label": "Footer note", "default": "New product guides are added to this directory as each model's support page is published."}
+  ],
+  "blocks": [
+    {
+      "type": "product_resource",
+      "name": "Product resource",
+      "settings": [
+        {"type": "select", "id": "category", "label": "Product type", "default": "jump-starters", "options": [
+          {"value": "jump-starters", "label": "Jump Starters"},
+          {"value": "rv-batteries", "label": "RV Batteries"},
+          {"value": "home-energy-storage", "label": "Home Energy Storage"}
+        ]},
+        {"type": "text", "id": "family", "label": "Product family", "default": "JUMP STARTERS"},
+        {"type": "text", "id": "model", "label": "Model", "default": "KB700 / KP-700"},
+        {"type": "text", "id": "title", "label": "Product title", "default": "KB700 Fan Jump Starter"},
+        {"type": "textarea", "id": "description", "label": "Description", "default": "Setup, vehicle starting, air-duster operation, charging, safety and model-matched compliance resources."},
+        {"type": "text", "id": "asset_name", "label": "Theme image filename", "default": "suntneew-kb700-2026-gallery-01-main.jpg"},
+        {"type": "text", "id": "image_alt", "label": "Image alt text", "default": "SuntNeew KB700 fan jump starter with smart clamp, air nozzle and USB cable"},
+        {"type": "text", "id": "page_handle", "label": "Support page handle", "default": "support-kb700"},
+        {"type": "text", "id": "online_label", "label": "Online resource label", "default": "Online HTML manual"},
+        {"type": "text", "id": "pdf_label", "label": "PDF resource label", "default": "English PDF"},
+        {"type": "text", "id": "certifications_label", "label": "Compliance resource label", "default": "Certifications"},
+        {"type": "text", "id": "cta_label", "label": "Link label", "default": "Open KB700 support"}
+      ]
+    }
+  ],
+  "max_blocks": 24
+}
+{% endschema %}
