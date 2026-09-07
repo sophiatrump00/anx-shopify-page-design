@@ -209,11 +209,11 @@
     {%- endfor -%}
 
     {%- if download_blocks.size > 0 -%}
-      <div id="manuals" class="sn-pdp-details__panel" role="tabpanel" data-pdp-panel="manuals"{% if qr_support_enabled %} data-qr-mobile="{{ template.suffix }}"{% endif %}>
+      <div id="manuals" class="sn-pdp-details__panel" role="tabpanel" data-pdp-panel="manuals"{% if qr_support_enabled and template.suffix != 'kb700' %} data-qr-mobile="{{ template.suffix }}"{% endif %}>
         <p class="sn-pdp__eyebrow">{{ section.settings.download_eyebrow }}</p>
         <h2 class="sn-pdp__heading">{{ section.settings.download_heading }}</h2>
 
-        {%- if qr_support_enabled -%}
+        {%- if qr_support_enabled and template.suffix != 'kb700' -%}
           <div class="sn-pdp-qr-mobile" aria-label="{{ qr_support_model | escape }} support">
             <div class="sn-pdp-qr-mobile__intro">
               <div class="sn-pdp-qr-mobile__image">
@@ -303,6 +303,69 @@
           </div>
         {%- endif -%}
 
+        {%- if template.suffix == 'kb700' -%}
+          {%- liquid
+            assign support_page_url = pages['support'].url | default: '/pages/support'
+            assign online_manual_url = support_page_url | append: '?product=KB700#kb700-manual'
+            assign certifications_url = support_page_url | append: '?product=KB700#kb700-certifications'
+          -%}
+
+          <div class="sn-pdp-resource-grid" aria-label="{{ section.settings.download_heading | escape }}">
+            {%- for block in download_blocks -%}
+              {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
+              {%- if document_group != 'compliance' -%}
+                {%- assign manual_document_url = '' -%}
+                {%- if block.settings.link != blank -%}
+                  {%- assign manual_document_url = block.settings.link -%}
+                {%- elsif block.settings.asset_name != blank -%}
+                  {%- assign manual_document_url = block.settings.asset_name | asset_url -%}
+                {%- endif -%}
+                {%- if manual_document_url != blank -%}
+                  <a class="sn-pdp-resource-card" href="{{ manual_document_url }}" target="_blank" rel="noopener" {{ block.shopify_attributes }}>
+                    <span class="sn-pdp-resource-card__eyebrow">{{ section.settings.pdf_card_eyebrow }}</span>
+                    <strong>{{ block.settings.label }}</strong>
+                    <span>{{ section.settings.pdf_card_description }}</span>
+                    <small>{{ section.settings.pdf_card_action }} <span aria-hidden="true">&darr;</span></small>
+                  </a>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            <a class="sn-pdp-resource-card sn-pdp-resource-card--primary" href="{{ online_manual_url }}">
+              <span class="sn-pdp-resource-card__eyebrow">{{ section.settings.online_manual_eyebrow }}</span>
+              <strong>{{ section.settings.online_manual_label }}</strong>
+              <span>{{ section.settings.online_manual_description }}</span>
+              <small>{{ section.settings.online_manual_action }} <span aria-hidden="true">&rarr;</span></small>
+            </a>
+
+            <a class="sn-pdp-resource-card sn-pdp-resource-card--compliance" href="{{ certifications_url }}">
+              <span class="sn-pdp-resource-card__eyebrow">{{ section.settings.certifications_eyebrow }}</span>
+              <strong>{{ section.settings.certifications_label }}</strong>
+              <span>{{ section.settings.certifications_description }}</span>
+              <small>{{ section.settings.certifications_action }} <span aria-hidden="true">&rarr;</span></small>
+            </a>
+          </div>
+
+          <section class="sn-pdp-evidence" aria-labelledby="{{ section.id }}-compliance-heading">
+            <div class="sn-pdp-evidence__heading">
+              <div>
+                <p class="sn-pdp__eyebrow">{{ section.settings.compliance_eyebrow }}</p>
+                <h3 id="{{ section.id }}-compliance-heading">{{ section.settings.compliance_group_heading }}</h3>
+              </div>
+              {%- if section.settings.compliance_note != blank -%}<p>{{ section.settings.compliance_note }}</p>{%- endif -%}
+            </div>
+            <div class="sn-pdp-evidence__grid">
+              {%- for block in download_blocks -%}
+                {%- if block.settings.document_group == 'compliance' -%}
+                  <div class="sn-pdp-evidence__item" {{ block.shopify_attributes }}>
+                    <strong>{{ block.settings.standard | default: block.settings.label }}</strong>
+                    {%- if block.settings.description != blank -%}<span>{{ block.settings.description }}</span>{%- endif -%}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </section>
+        {%- else -%}
         {%- if manual_count > 0 -%}
           <section class="sn-pdp-doc-group" aria-labelledby="{{ section.id }}-manuals-heading">
             <h3 id="{{ section.id }}-manuals-heading" class="sn-pdp-doc-group__heading">{{ section.settings.manuals_group_heading }}</h3>
@@ -426,6 +489,7 @@
             {%- endif -%}
           </section>
         {%- endif -%}
+        {%- endif -%}
       </div>
     {%- endif -%}
   </div>
@@ -449,6 +513,18 @@
     {"type":"text","id":"manuals_group_heading","label":"Manuals group heading","default":"User Manuals"},
     {"type":"text","id":"compliance_group_heading","label":"Compliance group heading","default":"Safety & Compliance"},
     {"type":"text","id":"compliance_library_label","label":"Compliance library link label","default":"View public documents"},
+    {"type":"text","id":"pdf_card_eyebrow","label":"PDF card eyebrow","default":"ORIGINAL FILE"},
+    {"type":"textarea","id":"pdf_card_description","label":"PDF card description","default":"Keep the original English document for download, printing or offline reference."},
+    {"type":"text","id":"pdf_card_action","label":"PDF card action","default":"Download PDF"},
+    {"type":"text","id":"online_manual_eyebrow","label":"Online manual eyebrow","default":"MOBILE & MULTILINGUAL"},
+    {"type":"text","id":"online_manual_label","label":"Online manual label","default":"Read the online manual"},
+    {"type":"textarea","id":"online_manual_description","label":"Online manual description","default":"Responsive instructions that follow the language selected on the store."},
+    {"type":"text","id":"online_manual_action","label":"Online manual action","default":"Open in Support"},
+    {"type":"text","id":"certifications_eyebrow","label":"Certifications eyebrow","default":"MODEL-MATCHED EVIDENCE"},
+    {"type":"text","id":"certifications_label","label":"Certifications label","default":"View certifications"},
+    {"type":"textarea","id":"certifications_description","label":"Certifications description","default":"See the standards, document purpose and KB700 / KP-700 model scope in Support."},
+    {"type":"text","id":"certifications_action","label":"Certifications action","default":"Review documents"},
+    {"type":"text","id":"compliance_eyebrow","label":"Compliance eyebrow","default":"WHAT THE DOCUMENTS COVER"},
     {"type":"textarea","id":"compliance_note","label":"Compliance note","default":"Only model-matched public copies should be uploaded here. Check the model, report number and scope before relying on a document."},
     {"type":"text","id":"compliance_scope_label","label":"Compliance scope label","default":"View scope and document status"},
     {"type":"text","id":"compliance_link_label","label":"Compliance link label","default":"View public copy"},

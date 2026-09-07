@@ -588,6 +588,141 @@
 
 .sn-pdp-downloads { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
 
+.sn-pdp-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.sn-pdp-resource-card {
+  display: flex;
+  min-height: 230px;
+  flex-direction: column;
+  padding: clamp(22px, 2.5vw, 30px);
+  border: 1px solid var(--sn-pdp-line);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--sn-pdp-ink);
+  text-decoration: none;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.sn-pdp-resource-card--primary {
+  border-color: #172331;
+  background: #172331;
+  color: #fff;
+}
+
+.sn-pdp-resource-card--compliance {
+  border-color: #f0c4b2;
+  background: #fff7f3;
+}
+
+.sn-pdp-resource-card__eyebrow {
+  color: var(--sn-pdp-blue);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: .12em;
+}
+
+.sn-pdp-resource-card--primary .sn-pdp-resource-card__eyebrow { color: #86a8ff; }
+.sn-pdp-resource-card--compliance .sn-pdp-resource-card__eyebrow { color: #b84b22; }
+
+.sn-pdp-resource-card > strong {
+  margin-top: 20px;
+  font-size: clamp(20px, 2vw, 27px);
+  line-height: 1.08;
+}
+
+.sn-pdp-resource-card > span:not(.sn-pdp-resource-card__eyebrow) {
+  margin-top: 12px;
+  color: var(--sn-pdp-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.sn-pdp-resource-card--primary > span:not(.sn-pdp-resource-card__eyebrow) { color: rgb(255 255 255 / .72); }
+
+.sn-pdp-resource-card small {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 22px;
+  color: currentColor;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sn-pdp-resource-card:hover,
+.sn-pdp-resource-card:focus-visible {
+  border-color: #8391a0;
+  box-shadow: 0 14px 32px rgb(23 35 49 / .1);
+  outline: none;
+  transform: translateY(-3px);
+}
+
+.sn-pdp-resource-card--primary:hover,
+.sn-pdp-resource-card--primary:focus-visible { border-color: #5979d8; }
+
+.sn-pdp-evidence {
+  margin-top: clamp(42px, 6vw, 72px);
+  padding-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--sn-pdp-line);
+}
+
+.sn-pdp-evidence__heading {
+  display: grid;
+  grid-template-columns: minmax(240px, .75fr) minmax(0, 1fr);
+  gap: clamp(24px, 6vw, 84px);
+  align-items: end;
+}
+
+.sn-pdp-evidence__heading h3 {
+  margin: 0;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.08;
+}
+
+.sn-pdp-evidence__heading > p {
+  margin: 0;
+  color: var(--sn-pdp-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.sn-pdp-evidence__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 24px;
+  border: 1px solid var(--sn-pdp-line);
+  background: var(--sn-pdp-line);
+}
+
+.sn-pdp-evidence__item {
+  display: grid;
+  min-height: 152px;
+  align-content: start;
+  gap: 12px;
+  padding: 22px;
+  background: #fff;
+}
+
+.sn-pdp-evidence__item strong {
+  color: var(--sn-pdp-blue);
+  font-size: 13px;
+}
+
+.sn-pdp-evidence__item:first-child strong { color: #b84b22; }
+
+.sn-pdp-evidence__item span {
+  color: var(--sn-pdp-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
 .sn-pdp-doc-group + .sn-pdp-doc-group {
   margin-top: clamp(38px, 5vw, 64px);
   padding-top: clamp(30px, 4vw, 48px);
@@ -754,6 +889,9 @@
   .sn-pdp-specs { grid-template-columns: 1fr; }
   .sn-pdp-compliance-overview { align-items: flex-start; flex-direction: column; }
   .sn-pdp-compliance-docs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sn-pdp-resource-grid { grid-template-columns: 1fr; }
+  .sn-pdp-resource-card { min-height: 200px; }
+  .sn-pdp-evidence__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 }
 
@@ -767,6 +905,8 @@
   .sn-pdp-spec-group__count { display: none; }
   .sn-pdp-compliance-library-link { width: 100%; }
   .sn-pdp-compliance-docs { grid-template-columns: 1fr; }
+  .sn-pdp-evidence__heading { grid-template-columns: 1fr; }
+  .sn-pdp-evidence__grid { grid-template-columns: 1fr; }
 
 }
 
@@ -779,4 +919,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .sn-pdp-nav__tab::after { transition: none; }
+  .sn-pdp-resource-card { transition: none; }
+  .sn-pdp-resource-card:hover,
+  .sn-pdp-resource-card:focus-visible { transform: none; }
 }

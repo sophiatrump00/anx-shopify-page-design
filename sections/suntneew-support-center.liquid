@@ -15,7 +15,7 @@
       </div>
 
       <div class="sn-support__route-grid">
-        <a class="sn-support__route-card" href="{{ pages['technology'].url | default: '/pages/technology' }}">
+        <a class="sn-support__route-card" href="#product-resources">
           <span class="sn-support__route-number" aria-hidden="true">01</span>
           <span class="sn-support__route-label">PRODUCT RESOURCES</span>
           <strong>Model documents</strong>
@@ -49,6 +49,107 @@
       </div>
     </section>
 
+    <section id="product-resources" class="sn-support__resources" aria-labelledby="sn-support-resources-heading">
+      <header class="sn-support__resource-hero">
+        <div>
+          <p class="sn-support__eyebrow">{{ section.settings.resources_eyebrow }}</p>
+          <p class="sn-support__model">{{ section.settings.resources_model }}</p>
+          <h2 id="sn-support-resources-heading">{{ section.settings.resources_heading }}</h2>
+          <p>{{ section.settings.resources_intro }}</p>
+        </div>
+        <div class="sn-support__resource-actions">
+          <a class="sn-support__button sn-support__button--primary" href="#kb700-manual">{{ section.settings.online_manual_label }}</a>
+          <a class="sn-support__button" href="#kb700-certifications">{{ section.settings.certifications_label }}</a>
+        </div>
+      </header>
+
+      <dl class="sn-support__facts" aria-label="{{ section.settings.resources_model | escape }} key specifications">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'quick_fact' -%}
+            <div {{ block.shopify_attributes }}>
+              <dt>{{ block.settings.label }}</dt>
+              <dd>{{ block.settings.value }}</dd>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </dl>
+
+      <article id="kb700-manual" class="sn-support__manual" aria-labelledby="kb700-manual-heading">
+        <header class="sn-support__manual-header">
+          <div>
+            <p class="sn-support__eyebrow">{{ section.settings.manual_eyebrow }}</p>
+            <h2 id="kb700-manual-heading">{{ section.settings.manual_heading }}</h2>
+            <p>{{ section.settings.manual_intro }}</p>
+            <small>{{ section.settings.manual_version }}</small>
+          </div>
+          <div class="sn-support__manual-actions">
+            {%- if section.settings.manual_asset_name != blank -%}
+              <a class="sn-support__button" href="{{ section.settings.manual_asset_name | asset_url }}" target="_blank" rel="noopener">{{ section.settings.pdf_label }}</a>
+            {%- endif -%}
+            {%- if section.settings.product_url != blank -%}
+              <a class="sn-support__text-link" href="{{ section.settings.product_url }}">{{ section.settings.product_label }} <span aria-hidden="true">&rarr;</span></a>
+            {%- endif -%}
+          </div>
+        </header>
+
+        <nav class="sn-support__manual-nav" aria-label="{{ section.settings.manual_heading | escape }}">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'manual_section' -%}
+              <a href="#kb700-manual-{{ block.id }}">{{ block.settings.title }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </nav>
+
+        <div class="sn-support__manual-sections">
+          {%- assign manual_section_number = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'manual_section' -%}
+              {%- assign manual_section_number = manual_section_number | plus: 1 -%}
+              <section id="kb700-manual-{{ block.id }}" class="sn-support__manual-section{% if block.settings.asset_name == blank %} sn-support__manual-section--text{% endif %}" aria-labelledby="kb700-manual-title-{{ block.id }}" {{ block.shopify_attributes }}>
+                <div class="sn-support__manual-copy">
+                  <span class="sn-support__section-number" aria-hidden="true">{{ manual_section_number | prepend: '0' | slice: -2, 2 }}</span>
+                  <h3 id="kb700-manual-title-{{ block.id }}">{{ block.settings.title }}</h3>
+                  <div class="sn-support__rte">{{ block.settings.body }}</div>
+                </div>
+                {%- if block.settings.asset_name != blank -%}
+                  <figure class="sn-support__manual-figure">
+                    <img src="{{ block.settings.asset_name | asset_url }}" alt="{{ block.settings.image_alt | escape }}" loading="lazy" width="1464" height="600">
+                    {%- if block.settings.image_caption != blank -%}<figcaption>{{ block.settings.image_caption }}</figcaption>{%- endif -%}
+                  </figure>
+                {%- endif -%}
+              </section>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </article>
+
+      <section id="kb700-certifications" class="sn-support__compliance" aria-labelledby="kb700-certifications-heading">
+        <header>
+          <p class="sn-support__eyebrow">{{ section.settings.compliance_eyebrow }}</p>
+          <h2 id="kb700-certifications-heading">{{ section.settings.compliance_heading }}</h2>
+          <p>{{ section.settings.compliance_intro }}</p>
+        </header>
+
+        <div class="sn-support__compliance-grid">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'compliance_item' -%}
+              <article class="sn-support__compliance-card" {{ block.shopify_attributes }}>
+                <span>{{ block.settings.standard }}</span>
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.description }}</p>
+                <small>{{ block.settings.status }}</small>
+              </article>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div class="sn-support__compliance-note">
+          <p>{{ section.settings.compliance_note }}</p>
+          <a class="sn-support__text-link" href="{{ pages['contact-us'].url | default: '/pages/contact-us' }}">{{ section.settings.compliance_contact_label }} <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </section>
+    </section>
+
     <section class="sn-support__prepare" aria-labelledby="sn-support-prepare-heading">
       <div>
         <p class="sn-support__eyebrow">BEFORE YOU CONTACT US</p>
@@ -80,7 +181,164 @@
       "id": "intro",
       "label": "Introduction",
       "default": "Find the right resources for your SuntNeew product, order or technical question."
+    },
+    {
+      "type": "header",
+      "content": "Product resources pilot"
+    },
+    {
+      "type": "text",
+      "id": "resources_eyebrow",
+      "label": "Resources eyebrow",
+      "default": "PRODUCT RESOURCES"
+    },
+    {
+      "type": "text",
+      "id": "resources_model",
+      "label": "Product model",
+      "default": "KB700 / KP-700"
+    },
+    {
+      "type": "text",
+      "id": "resources_heading",
+      "label": "Resources heading",
+      "default": "Support built around your product."
+    },
+    {
+      "type": "textarea",
+      "id": "resources_intro",
+      "label": "Resources introduction",
+      "default": "Read the mobile-friendly manual online, keep the original PDF, or review model-matched safety and compliance information."
+    },
+    {
+      "type": "text",
+      "id": "online_manual_label",
+      "label": "Online manual link",
+      "default": "Read online manual"
+    },
+    {
+      "type": "text",
+      "id": "certifications_label",
+      "label": "Certifications link",
+      "default": "View certifications"
+    },
+    {
+      "type": "header",
+      "content": "Online manual"
+    },
+    {
+      "type": "text",
+      "id": "manual_eyebrow",
+      "label": "Manual eyebrow",
+      "default": "ONLINE USER MANUAL"
+    },
+    {
+      "type": "text",
+      "id": "manual_heading",
+      "label": "Manual heading",
+      "default": "KB700 Fan Jump Starter"
+    },
+    {
+      "type": "textarea",
+      "id": "manual_intro",
+      "label": "Manual introduction",
+      "default": "Use this online guide for setup, vehicle starting, air-duster operation, charging and safety."
+    },
+    {
+      "type": "text",
+      "id": "manual_version",
+      "label": "Manual version note",
+      "default": "Online edition based on the English manual dated May 7, 2026."
+    },
+    {
+      "type": "text",
+      "id": "manual_asset_name",
+      "label": "PDF asset filename",
+      "default": "suntneew-kb700-user-manual-en.pdf"
+    },
+    {
+      "type": "text",
+      "id": "pdf_label",
+      "label": "PDF link label",
+      "default": "Download English PDF"
+    },
+    {
+      "type": "text",
+      "id": "product_label",
+      "label": "Product link label",
+      "default": "View KB700 product"
+    },
+    {
+      "type": "url",
+      "id": "product_url",
+      "label": "Product page"
+    },
+    {
+      "type": "header",
+      "content": "Compliance"
+    },
+    {
+      "type": "text",
+      "id": "compliance_eyebrow",
+      "label": "Compliance eyebrow",
+      "default": "MODEL-MATCHED INFORMATION"
+    },
+    {
+      "type": "text",
+      "id": "compliance_heading",
+      "label": "Compliance heading",
+      "default": "Safety & Compliance"
+    },
+    {
+      "type": "textarea",
+      "id": "compliance_intro",
+      "label": "Compliance introduction",
+      "default": "These labels describe the four safety and compliance categories associated with KB700 / KP-700."
+    },
+    {
+      "type": "textarea",
+      "id": "compliance_note",
+      "label": "Compliance note",
+      "default": "Safety testing, transport records and safety data serve different purposes. They are not interchangeable product certifications. Match every document to the model printed on the product label."
+    },
+    {
+      "type": "text",
+      "id": "compliance_contact_label",
+      "label": "Compliance contact label",
+      "default": "Request a model-matched copy"
     }
-  ]
+  ],
+  "blocks": [
+    {
+      "type": "quick_fact",
+      "name": "Quick fact",
+      "settings": [
+        {"type": "text", "id": "label", "label": "Label", "default": "Rated capacity"},
+        {"type": "text", "id": "value", "label": "Value", "default": "7,200mAh"}
+      ]
+    },
+    {
+      "type": "manual_section",
+      "name": "Manual section",
+      "settings": [
+        {"type": "text", "id": "title", "label": "Section title", "default": "Before you begin"},
+        {"type": "richtext", "id": "body", "label": "Section content", "default": "<p>Read the complete safety information before using the product.</p>"},
+        {"type": "text", "id": "asset_name", "label": "Optional theme image filename"},
+        {"type": "text", "id": "image_alt", "label": "Image alt text"},
+        {"type": "text", "id": "image_caption", "label": "Image caption"}
+      ]
+    },
+    {
+      "type": "compliance_item",
+      "name": "Compliance item",
+      "settings": [
+        {"type": "text", "id": "standard", "label": "Standard", "default": "FCC"},
+        {"type": "text", "id": "title", "label": "Title", "default": "Model-matched document"},
+        {"type": "textarea", "id": "description", "label": "Description"},
+        {"type": "text", "id": "status", "label": "Evidence type", "default": "Product information"}
+      ]
+    }
+  ],
+  "max_blocks": 24
 }
 {% endschema %}
