@@ -184,6 +184,16 @@
     text-underline-offset: 4px;
   }
 
+  #suntneew-support-mega-menu .suntneew-support-mega-menu__child {
+    padding-inline-start: 14px;
+    border-inline-start: 1px solid rgb(24 35 48 / .18);
+  }
+
+  #suntneew-support-mega-menu .suntneew-support-mega-menu__child a {
+    color: #667482;
+    font-size: .8125rem;
+  }
+
   .suntneew-primary-mega-menu {
     --mega-menu-justify-content: stretch;
     --mega-menu-gap: 0;
@@ -244,6 +254,13 @@
     text-decoration-thickness: 1px;
     text-underline-offset: 4px;
   }
+}
+
+.suntneew-support-mobile__child {
+  padding-inline-start: 18px;
+  border-inline-start: 1px solid rgb(24 35 48 / .18);
+  color: #667482;
+  font-size: .88em;
 }
 
 .suntneew-language-selector__trigger {

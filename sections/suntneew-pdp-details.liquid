@@ -305,9 +305,9 @@
 
         {%- if template.suffix == 'kb700' -%}
           {%- liquid
-            assign support_page_url = pages['support'].url | default: '/pages/support'
-            assign online_manual_url = support_page_url | append: '?product=KB700#kb700-manual'
-            assign certifications_url = support_page_url | append: '?product=KB700#kb700-certifications'
+            assign support_product_url = pages['support-kb700'].url | default: '/pages/support-kb700'
+            assign online_manual_url = support_product_url | append: '#manual'
+            assign certifications_url = support_product_url | append: '#certifications'
           -%}
 
           <div class="sn-pdp-resource-grid" aria-label="{{ section.settings.download_heading | escape }}">

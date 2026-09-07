@@ -12,79 +12,33 @@
     "main": {
       "type": "suntneew-support-center",
       "blocks": {
-        "fact_capacity": {"type": "quick_fact", "settings": {"label": "Rated capacity", "value": "7,200mAh / 26.64Wh"}},
-        "fact_starting": {"type": "quick_fact", "settings": {"label": "Starting / peak current", "value": "500A / 1,000A"}},
-        "fact_vehicle": {"type": "quick_fact", "settings": {"label": "Compatible vehicle system", "value": "12V"}},
-        "fact_fan": {"type": "quick_fact", "settings": {"label": "Maximum fan speed", "value": "105,000 RPM"}},
-        "manual_overview": {
-          "type": "manual_section",
+        "kb700": {
+          "type": "product_resource",
           "settings": {
-            "title": "Product overview",
-            "body": "<p>KB700 is a multifunctional emergency power unit for compatible 12V vehicle batteries. It combines vehicle jump starting, a three-speed air duster, a 2W emergency light and 5V/2A USB device charging.</p><p><strong>Model:</strong> KP-700<br><strong>Cell capacity:</strong> 7,200mAh / 26.64Wh<br><strong>Vehicle reference:</strong> up to 6.0L gasoline or 4.0L diesel<br><strong>Starting current:</strong> 500A<br><strong>Peak current:</strong> 1,000A<br><strong>Input:</strong> Type-C 5V/2A<br><strong>Output:</strong> USB-A 5V/2A<br><strong>Typical charging time:</strong> about 4 hours<br><strong>High-speed fan power:</strong> 360W<br><strong>Wind pressure:</strong> 550g<br><strong>Product size:</strong> 203 × 85 × 36mm</p><p>The printed manual identifies the product unit, instructions, charging cable, smart clamps and air-nozzle accessory as the core supplied items. Check the product listing and your package for the complete current bundle.</p>",
-            "asset_name": "suntneew-kb700-2026-pdp-07-controls.jpg",
-            "image_alt": "KB700 controls and ports including USB-A output, Type-C input, EC5 clamp port, light and fan controls",
-            "image_caption": "Controls and connection points on the KB700 / KP-700."
+            "family": "JUMP STARTERS",
+            "model": "KB700 / KP-700",
+            "title": "KB700 Fan Jump Starter",
+            "description": "Setup, vehicle starting, air-duster operation, charging, safety and model-matched compliance resources.",
+            "asset_name": "suntneew-kb700-2026-gallery-01-main.jpg",
+            "image_alt": "SuntNeew KB700 fan jump starter with smart clamp, air nozzle and USB cable",
+            "page_handle": "support-kb700",
+            "online_label": "Online manual",
+            "pdf_label": "English PDF",
+            "certifications_label": "Certifications",
+            "cta_label": "Open KB700 support"
           }
-        },
-        "manual_start": {
-          "type": "manual_section",
-          "settings": {
-            "title": "Jump-start a vehicle",
-            "body": "<p><strong>Use only with a compatible 12V vehicle battery.</strong> Charge KB700 to at least 50% before attempting a jump start.</p><ol><li>Turn off the vehicle and all electrical loads.</li><li>Insert the smart-clamp plug fully into the EC5 startup port.</li><li>Connect the red clamp to the positive battery terminal, then connect the black clamp to the negative terminal.</li><li>Confirm the smart-clamp indicator shows the ready condition, then start the vehicle.</li><li>After the engine starts, disconnect the clamp assembly from KB700 and remove both clamps from the battery terminals within 30 seconds.</li><li>Leave the vehicle engine running.</li></ol><p>If the engine does not start, wait at least one minute before another attempt. Do not make more than three consecutive attempts. Check the clamp connection, clean dirt or corrosion from the battery-terminal contact area, and investigate other possible vehicle faults.</p>",
-            "asset_name": "suntneew-kb700-2026-pdp-09-steps.jpg",
-            "image_alt": "Four illustrated KB700 jump-start steps: insert the plug, connect the clamps, confirm the green light and start the vehicle",
-            "image_caption": "Follow the smart-clamp sequence and remove the clamps within 30 seconds after the engine starts."
-          }
-        },
-        "manual_functions": {
-          "type": "manual_section",
-          "settings": {
-            "title": "Fan, light and device charging",
-            "body": "<p><strong>Air duster:</strong> Press and hold the power button until the battery indicator illuminates. Use the fan control to start airflow, then select one of the three speed levels. Keep loose hair, clothing, fingers and objects away from the inlet and fan blades.</p><p><strong>Emergency light:</strong> Turn on the main power. Press and hold the light button for about two seconds to turn on the 2W LED. Press again to cycle through Steady, Flashing and SOS modes.</p><p><strong>Device charging:</strong> Connect a compatible phone or tablet to the USB-A 5V/2A output. This is intended as emergency device power and should not exceed the rated output current.</p><p><strong>Recharge KB700:</strong> Connect a 5V/2A power source to the Type-C input. Typical charging time is about four hours. Do not cover the product while charging.</p>"
-          }
-        },
-        "manual_safety": {
-          "type": "manual_section",
-          "settings": {
-            "title": "Safety and care",
-            "body": "<ol><li>Check the battery level before use. Do not jump-start a vehicle when the remaining charge is below 50%.</li><li>Insert the EC5 smart-clamp plug completely. A loose connection can reduce starting performance and overheat or damage the connector.</li><li>Do not make repeated high-frequency starting attempts. Wait at least 30 seconds between ignition attempts and at least one minute after a failed start.</li><li>Once the smart clamps are connected and show the ready condition, start the vehicle without unnecessary delay.</li><li>If the vehicle does not start, check the clamp connection and battery terminals. Stop after three consecutive attempts and investigate the vehicle fault.</li><li>Do not store or use the product in high temperatures, direct strong sunlight, strong magnetic fields or near fire. If it becomes wet, stop using it and allow it to dry naturally.</li><li>Use the product only for its documented functions and within its ratings.</li><li>Do not disassemble, puncture, modify or attempt an unqualified repair.</li><li>Do not connect appliances or loads that exceed the rated USB output current.</li><li>Avoid impact, throwing, crushing, trampling or squeezing the product.</li><li>This product is not a toy. Keep it away from children; the printed manual recommends users be over 16 years old.</li><li>If stored for a long period, recharge it at least once every three months.</li><li>Do not insert branches or other objects into the air inlet or fan blades.</li><li>Use in a clean, dry environment. KB700 is not marketed as waterproof; do not rinse or submerge it.</li></ol>"
-          }
-        },
-        "manual_fcc": {
-          "type": "manual_section",
-          "settings": {
-            "title": "FCC notice",
-            "body": "<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>"
-          }
-        },
-        "compliance_ul": {"type": "compliance_item", "settings": {"standard": "Safety tested to UL 2743", "title": "Product safety testing", "description": "Product-level safety-test scope shown for the KB700 / KP-700 model family.", "status": "Product safety evidence"}},
-        "compliance_fcc": {"type": "compliance_item", "settings": {"standard": "FCC", "title": "Electromagnetic compatibility", "description": "FCC information associated with the KB700 / KP-700 model, including the Part 15 notice in the manual.", "status": "U.S. market information"}},
-        "compliance_un38": {"type": "compliance_item", "settings": {"standard": "UN38.3", "title": "Battery transport testing", "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack.", "status": "Transport evidence"}},
-        "compliance_sds": {"type": "compliance_item", "settings": {"standard": "SDS", "title": "Safety and handling information", "description": "Safety Data Sheet information for battery handling, storage and response guidance.", "status": "Safety information"}}
+        }
       },
-      "block_order": ["fact_capacity", "fact_starting", "fact_vehicle", "fact_fan", "manual_overview", "manual_start", "manual_functions", "manual_safety", "manual_fcc", "compliance_ul", "compliance_fcc", "compliance_un38", "compliance_sds"],
+      "block_order": ["kb700"],
       "settings": {
+        "eyebrow": "SUPPORT CENTER",
         "heading": "Support Center",
         "intro": "Find the right resources for your SuntNeew product, order or technical question.",
-        "resources_eyebrow": "PRODUCT RESOURCES · KB700 PILOT",
-        "resources_model": "KB700 / KP-700",
-        "resources_heading": "Support built around your product.",
-        "resources_intro": "Read the mobile-friendly manual online, keep the original PDF, or review model-matched safety and compliance information.",
-        "online_manual_label": "Read online manual",
-        "certifications_label": "View certifications",
-        "manual_eyebrow": "ONLINE USER MANUAL",
-        "manual_heading": "KB700 Fan Jump Starter",
-        "manual_intro": "Use this online guide for setup, vehicle starting, air-duster operation, charging and safety.",
-        "manual_version": "Online edition based on the English manual dated May 7, 2026.",
-        "manual_asset_name": "suntneew-kb700-user-manual-en.pdf",
-        "pdf_label": "Download English PDF",
-        "product_label": "View KB700 product",
-        "product_url": "shopify://products/suntneew-kb700-fan-jump-starter-7-200mah",
-        "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
-        "compliance_heading": "Safety & Compliance",
-        "compliance_intro": "The four document categories currently shown for KB700 / KP-700 are collected here with a plain-language explanation of what each one covers.",
-        "compliance_note": "Match every document to the model printed on the product label. Safety testing, transport records and safety data serve different purposes.",
-        "compliance_contact_label": "Contact product support"
+        "routes_eyebrow": "CHOOSE A ROUTE",
+        "routes_heading": "Get to the right answer faster.",
+        "resources_eyebrow": "PRODUCT RESOURCES",
+        "resources_heading": "Choose your product.",
+        "resources_intro": "Open a model-specific support page for the online manual, original PDF and compliance information."
       }
     }
   },
