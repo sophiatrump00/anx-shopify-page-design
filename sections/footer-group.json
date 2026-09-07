@@ -62,6 +62,7 @@
       "settings": {
         "show_social_media": false,
         "show_payment_icons": true,
+        "show_extended_payment_icons": true,
         "show_country_selector": false,
         "show_country_flag": true,
         "show_country_name": true,

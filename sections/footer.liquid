@@ -224,12 +224,22 @@
         {%- endcomment -%}
 
         <div class="footer__aside-bottom">
-          {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
-            <ul class="footer__payment-icons h-stack wrap gap-2">
-              {%- for type in shop.enabled_payment_types -%}
+          {%- if section.settings.show_payment_icons -%}
+            {%- assign footer_payment_types = shop.enabled_payment_types -%}
+            {%- if section.settings.show_extended_payment_icons -%}
+              {%- comment -%}
+                Oceanpayment exposes these additional brands through its storefront logo script,
+                while Shopify's enabled_payment_types only contains the native payment list.
+              {%- endcomment -%}
+              {%- assign footer_payment_types = 'paypal,visa,visa_electron,master,maestro,jcb,american_express,diners_club,discover,unionpay,klarna,afterpay,apple_pay,google_pay' | split: ',' -%}
+            {%- endif -%}
+            {%- if footer_payment_types.size > 0 -%}
+              <ul class="footer__payment-icons h-stack wrap gap-2">
+              {%- for type in footer_payment_types -%}
                 <li class="contents">{{ type | payment_type_svg_tag }}</li>
               {%- endfor -%}
-            </ul>
+              </ul>
+            {%- endif -%}
           {%- endif -%}
 
           <div class="footer__copyright v-stack gap-1">
@@ -272,6 +282,14 @@
       "id": "show_payment_icons",
       "label": "Show payment icons",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_extended_payment_icons",
+      "label": "Show expanded payment icons",
+      "info": "Use the extended Oceanpayment brand list in the footer.",
+      "default": true,
+      "visible_if": "{{ section.settings.show_payment_icons }}"
     },
     {
       "type": "checkbox",

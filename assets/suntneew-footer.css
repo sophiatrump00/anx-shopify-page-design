@@ -142,6 +142,11 @@
   height: 1.7rem;
 }
 
+/* Oceanpayment appends the same logo set in a separate white bar after the footer. */
+footer.shopify-section--footer + div[style*="justify-content:center"][style*="text-align"] {
+  display: none !important;
+}
+
 @media screen and (max-width: 1199px) {
   .shopify-section--footer .sn-footer .footer__block-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
