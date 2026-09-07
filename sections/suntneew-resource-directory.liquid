@@ -89,7 +89,8 @@
     const result = root.querySelector('[data-resource-count]');
     const empty = root.querySelector('[data-resource-empty]');
     const clearButtons = root.querySelectorAll('[data-resource-clear]');
-    const countLabel = {{ section.settings.count_label | json }};
+    const singleCountLabel = {{ section.settings.single_count_label | json }};
+    const multipleCountLabel = {{ section.settings.multiple_count_label | json }};
 
     const normalize = (value) => (value || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
     const applyFilters = () => {
@@ -105,7 +106,7 @@
         if (visible) visibleCount += 1;
       });
 
-      result.textContent = visibleCount + ' ' + countLabel;
+      result.textContent = visibleCount + ' ' + (visibleCount === 1 ? singleCountLabel : multipleCountLabel);
       empty.hidden = visibleCount !== 0;
       root.querySelectorAll('[data-resource-clear]').forEach((button) => {
         button.hidden = !search.value && !category.value;
@@ -147,7 +148,8 @@
     {"type": "text", "id": "rv_batteries_label", "label": "RV batteries filter label", "default": "RV Batteries"},
     {"type": "text", "id": "home_energy_label", "label": "Home energy filter label", "default": "Home Energy Storage"},
     {"type": "text", "id": "clear_label", "label": "Clear filters label", "default": "Clear filters"},
-    {"type": "text", "id": "count_label", "label": "Result count suffix", "default": "products"},
+    {"type": "text", "id": "single_count_label", "label": "Single result suffix", "default": "product"},
+    {"type": "text", "id": "multiple_count_label", "label": "Multiple results suffix", "default": "products"},
     {"type": "text", "id": "available_resources_label", "label": "Available resources aria label", "default": "Available resources"},
     {"type": "text", "id": "empty_heading", "label": "Empty state heading", "default": "No matching product resources"},
     {"type": "textarea", "id": "empty_description", "label": "Empty state description", "default": "Try another model or product type. If you still cannot find the right guide, our support team can help identify it."},

@@ -47,7 +47,8 @@
         "rv_batteries_label": "RV Batteries",
         "home_energy_label": "Home Energy Storage",
         "clear_label": "Clear filters",
-        "count_label": "products",
+        "single_count_label": "product",
+        "multiple_count_label": "products",
         "available_resources_label": "Available resources",
         "empty_heading": "No matching product resources",
         "empty_description": "Try another model or product type. If you still cannot find the right guide, our support team can help identify it.",
@@ -58,4 +59,3 @@
   },
   "order": ["main"]
 }
-
