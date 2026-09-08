@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "page": "Página {{ page }}",
@@ -87,7 +96,7 @@
       "view_in_space": "Ver en tu espacio",
       "taxes_included": "Impuestos incluidos.",
       "taxes_excluded": "Impuestos excluidos.",
-      "shipping_policy_html": "Los <a href=\"{{ link }}\" class=\"link\">gastos de envío<\/a> se calculan al finalizar la compra",
+      "shipping_policy_html": "Los <a href=\"{{ link }}\" class=\"link\">gastos de envío</a> se calculan al finalizar la compra",
       "size_chart": "Guía de tallas",
       "available_colors_count": {
         "one": "{{ count }} color disponible",
@@ -326,7 +335,8 @@
       "empty": "La cesta está vacía",
       "item_count": {
         "one": "{{ count }} artículo",
-        "other": "{{ count }} artículos"
+        "other": "{{ count }} artículos",
+        "zero": "{{ count }} elementos"
       },
       "continue_shopping": "Seguir comprando",
       "weight": "Peso",
