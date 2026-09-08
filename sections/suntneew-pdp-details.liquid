@@ -419,7 +419,7 @@
           -%}
           <section class="sn-pdp-doc-group" aria-labelledby="{{ section.id }}-compliance-heading">
             <h3 id="{{ section.id }}-compliance-heading" class="sn-pdp-doc-group__heading">{{ section.settings.compliance_group_heading }}</h3>
-            {%- if template.suffix == 'rv-230ah' -%}
+            {%- if template.suffix == 'rv-230ah' or template.suffix == 'oj02' -%}
               {%- if section.settings.compliance_note != blank -%}<p class="sn-pdp-doc-group__note">{{ section.settings.compliance_note | escape }}</p>{%- endif -%}
               <div class="sn-pdp-compliance-docs" aria-label="{{ section.settings.compliance_group_heading | escape }}">
                 {%- for block in download_blocks -%}
@@ -442,22 +442,26 @@
                       <a class="sn-pdp-compliance-doc" href="{{ compliance_document_url }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
                         <strong>{{ compliance_standard }}</strong>
                         <span>{{ block.settings.label }}</span>
+                        {%- if block.settings.description != blank -%}<small>{{ block.settings.description | escape }}</small>{%- endif -%}
                         <small>{{ section.settings.compliance_link_label }}</small>
                       </a>
                     {%- else -%}
                       <span class="sn-pdp-compliance-doc sn-pdp-compliance-doc--pending" aria-disabled="true" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %} {{ block.shopify_attributes }}>
                         <strong>{{ compliance_standard }}</strong>
                         <span>{{ block.settings.label }}</span>
+                        {%- if block.settings.description != blank -%}<small>{{ block.settings.description | escape }}</small>{%- endif -%}
                         <small>{{ section.settings.compliance_pending_label }}</small>
                       </span>
                     {%- endif -%}
                   {%- endif -%}
                 {%- endfor -%}
               </div>
-              <a class="sn-pdp-compliance-library-link" href="{{ compliance_library_url }}">
-                <span>{{ section.settings.compliance_library_label }}</span>
-                <span aria-hidden="true">→</span>
-              </a>
+              {%- unless template.suffix == 'oj02' -%}
+                <a class="sn-pdp-compliance-library-link" href="{{ compliance_library_url }}">
+                  <span>{{ section.settings.compliance_library_label }}</span>
+                  <span aria-hidden="true">→</span>
+                </a>
+              {%- endunless -%}
             {%- else -%}
               <div class="sn-pdp-compliance-overview">
                 <div class="sn-pdp-compliance-badges" aria-label="{{ section.settings.compliance_group_heading | escape }}">
