@@ -1,0 +1,27 @@
+{
+  "id": "gid://shopify/Product/10030316585255",
+  "title": "SP-AD19",
+  "handle": "ad19",
+  "status": "ARCHIVED",
+  "onlineStoreUrl": null,
+  "featuredMedia": {
+    "preview": {
+      "image": {
+        "url": "https://cdn.shopify.com/s/files/1/0903/4815/9271/files/AD19.jpg?v=1764750912",
+        "altText": ""
+      }
+    }
+  },
+  "variants": {
+    "nodes": [
+      {
+        "id": "gid://shopify/ProductVariant/50860787204391",
+        "title": "Black",
+        "price": "119.99",
+        "compareAtPrice": "129.99",
+        "availableForSale": true,
+        "inventoryQuantity": 9
+      }
+    ]
+  }
+}

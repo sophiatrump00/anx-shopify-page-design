@@ -1,0 +1,17 @@
+{
+  "name": "suntneew-member-drops-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preview": "node preview.mjs",
+    "test": "node --test ../../tests/member-drops/core.test.cjs function.test.mjs plan.test.mjs native/native.test.mjs",
+    "test:browser": "playwright test --config playwright.config.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "liquidjs": "10.29.0"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.6"
+  }
+}

@@ -1,0 +1,21 @@
+api_version = "2026-07"
+
+[[extensions]]
+name = "SuntNeew Member Drops"
+handle = "suntneew-member-drops"
+type = "function"
+description = "Authenticated member prices with scheduled reveals and mutually exclusive discounts."
+
+  [[extensions.targeting]]
+  target = "cart.lines.discounts.generate"
+  input_query = "src/run.graphql"
+  export = "run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+  watch = ["src/**/*.js"]
+
+  [extensions.input.variables]
+  namespace = "suntneew"
+  key = "member_drops"

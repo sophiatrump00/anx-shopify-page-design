@@ -1,0 +1,21 @@
+query Input($currentStartsLocal: DateTimeWithoutTimezone!, $currentEndsLocal: DateTimeWithoutTimezone!, $nextStartsLocal: DateTimeWithoutTimezone!, $nextEndsLocal: DateTimeWithoutTimezone!) {
+  cart {
+    buyerIdentity { isAuthenticated customer { id } }
+    lines {
+      id
+      quantity
+      sellingPlanAllocation { sellingPlan { id } }
+      cost { amountPerQuantity { amount currencyCode } }
+      merchandise { __typename ... on ProductVariant { id } }
+    }
+  }
+  discount { configuration: metafield(namespace: "suntneew", key: "member_drops") { jsonValue } }
+  shop {
+    localTime {
+      currentStarted: dateTimeAfter(dateTime: $currentStartsLocal)
+      currentEnded: dateTimeAfter(dateTime: $currentEndsLocal)
+      nextStarted: dateTimeAfter(dateTime: $nextStartsLocal)
+      nextEnded: dateTimeAfter(dateTime: $nextEndsLocal)
+    }
+  }
+}

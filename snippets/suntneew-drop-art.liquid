@@ -1,0 +1,22 @@
+{% comment %}Decorative vector artwork; never used as a product specification or photo.{% endcomment %}
+{%- case kind -%}
+  {%- when 'orbit' -%}
+    <svg class="sn-drops__orbit" viewBox="0 0 500 500" aria-hidden="true" focusable="false">
+      <circle cx="250" cy="250" r="214"/><circle cx="250" cy="250" r="195" stroke-dasharray="1 14"/>
+      <path d="M250 16v16m0 436v16M16 250h16m436 0h16M86 86l11 11m306 306 11 11M86 414l11-11m306-306 11-11"/>
+      <circle class="sn-drops__orbit-active" cx="250" cy="250" r="214"/>
+      <path d="M46 198v-28h28m352 160h28v-28" stroke="var(--drop-accent)" opacity=".55"/>
+    </svg>
+  {%- when 'mystery' -%}
+    <svg class="sn-drops__mystery" viewBox="0 0 240 240" aria-hidden="true" focusable="false">
+      <path d="m120 23 84 47v104l-84 48-84-48V70z"/><path d="m36 70 84 48 84-48M120 118v104M78 47l84 48v44" fill="none"/>
+      <path class="sn-drops__mystery-light" d="m36 102 0-32 28-16M176 190l28-16v-32" fill="none"/>
+      <text class="sn-drops__mystery-question" x="68" y="149" text-anchor="middle" transform="skewY(29)">?</text>
+    </svg>
+  {%- when 'spark' -%}
+    <svg class="sn-drops__spark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 1 3 14h8l-1 9 11-14h-8z"/></svg>
+  {%- when 'lock' -%}
+    <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="4" y="8" width="12" height="10" rx="2"/><path d="M6.5 8V5a3.5 3.5 0 0 1 7 0v3M10 12v3"/></svg>
+  {%- when 'arrow' -%}
+    <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3 10h14m-5-5 5 5-5 5"/></svg>
+{%- endcase -%}

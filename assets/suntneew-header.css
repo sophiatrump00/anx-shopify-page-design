@@ -1,3 +1,10 @@
+/* Member drop entry uses a dedicated mobile row to keep account/cart controls usable. */
+.sn-drop-entry{display:inline-flex;align-items:center;justify-content:center;gap:7px;color:#ab4218;background:#fff1e9;border:1px solid #e6bda8;border-radius:3px;padding:7px 9px;font-size:11px;font-weight:750;line-height:1.2;white-space:nowrap;text-decoration:none}
+.sn-drop-entry:hover{background:#ffdfcd;color:#813311}
+.sn-drop-entry:focus-visible{outline:2px solid #e9653b;outline-offset:3px}
+.sn-drop-entry--mobile{display:none}
+@media(max-width:1149px){.sn-drop-entry-desktop{display:none!important}.sn-drop-entry--mobile{display:flex;border-radius:0;border-width:1px 0 0;padding:9px 18px;min-height:36px}.sn-drop-entry__note{font-size:10px;font-weight:400;margin-inline-start:8px}}
+
 /*
  * SuntNeew desktop header alignment
  *

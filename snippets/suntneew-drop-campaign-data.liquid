@@ -1,0 +1,60 @@
+{%- liquid
+  assign campaign_now = 'now' | date: '%s' | plus: 0
+  assign campaign_start = starts_at | date: '%s' | plus: 0
+  assign conceal = false
+  if campaign_now < campaign_start and reveal != 'full' and request.design_mode == false
+    assign conceal = true
+  endif
+  assign campaign_blocks = section.blocks | where: 'type', block_type
+-%}
+{
+  "key": {{ campaign_key | json }}, "enabled": {{ enabled | json }},
+  "title": {{ title | json }}, "number": {{ number | json }},
+  "startsAt": {{ starts_at | json }}, "endsAt": {{ ends_at | json }},
+  "showTime": {{ show_time | json }}, "reveal": {{ reveal | json }},
+  "products": [
+    {%- assign emitted = false -%}
+    {%- for block in campaign_blocks -%}
+      {%- assign drop_product = block.settings.product -%}
+      {%- if drop_product != blank -%}
+        {%- if enabled or request.design_mode -%}
+        {%- if emitted -%},{%- endif -%}
+        {%- assign emitted = true -%}
+        {%- liquid
+          assign drop_image = block.settings.image | default: drop_product.featured_image
+          assign image_url = ''
+          if drop_image != blank
+            assign image_url = drop_image | image_url: width: 900
+          endif
+        -%}
+        {
+          "id": {{ block.id | json }}, "locked": {{ conceal | json }},
+          "image": {% if conceal and reveal == 'mystery' %}""{% else %}{{ image_url | json }}{% endif %},
+          "cutout": {{ block.settings.cutout | json }},
+          "tag": {{ block.settings.tag | json }}
+          {%- unless conceal -%},
+            "title": {{ drop_product.title | json }}, "url": {{ drop_product.url | json }},
+            "rule": {{ block.settings.offer_type | json }}, "value": {{ block.settings.offer_value | json }},
+            "variants": [
+              {%- assign variant_emitted = false -%}
+              {%- assign requested_variant = block.settings.variant_id | strip -%}
+              {%- for variant in drop_product.variants -%}
+                {%- assign variant_id_text = variant.id | append: '' -%}
+                {%- if requested_variant == blank or requested_variant == variant_id_text -%}
+                  {%- if variant_emitted -%},{%- endif -%}
+                  {%- assign variant_emitted = true -%}
+                  { "id": {{ variant_id_text | json }}, "title": {{ variant.title | json }},
+                    "price": {{ variant.price | json }}, "compareAt": {{ variant.compare_at_price | default: 0 | json }},
+                    "available": {{ variant.available | json }},
+                    "image": {% if variant.featured_image != blank %}{{ variant.featured_image | image_url: width: 900 | json }}{% else %}{{ image_url | json }}{% endif %}
+                  }
+                {%- endif -%}
+              {%- endfor -%}
+            ]
+          {%- endunless -%}
+        }
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}

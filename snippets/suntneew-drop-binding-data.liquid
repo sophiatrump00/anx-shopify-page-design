@@ -1,0 +1,25 @@
+{%- assign binding = page.metafields.suntneew.member_drops_binding.value -%}
+{%- if binding.version == 1 -%}
+  { "version": 1, "engine": {{ binding.engine | json }}, "currency": {{ binding.currency | json }}, "campaigns": [
+    {%- for campaign in binding.campaigns -%}
+      {%- liquid
+        assign current_time = 'now' | date: '%s' | plus: 0
+        assign start_time = campaign.startsAt | date: '%s' | plus: 0
+        assign reveal_mode = section.settings.reveal
+        assign campaign_enabled = section.settings.enabled
+        if campaign.key == 'next'
+          assign reveal_mode = section.settings.next_reveal
+          assign campaign_enabled = section.settings.next_enabled
+        endif
+        assign expose_rules = false
+        if campaign_enabled and current_time >= start_time or campaign_enabled and reveal_mode == 'full' or request.design_mode
+          assign expose_rules = true
+        endif
+      -%}
+      { "key": {{ campaign.key | json }}, "enabled": {{ campaign.enabled | json }},
+        "startsAt": {{ campaign.startsAt | json }}, "endsAt": {{ campaign.endsAt | json }},
+        "rules": {% if expose_rules %}{{ campaign.rules | json }}{% else %}[]{% endif %}
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ] }
+{%- else -%}null{%- endif -%}

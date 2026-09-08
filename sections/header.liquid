@@ -133,13 +133,19 @@
                     # The header deliberately retains one product menu only:
                     # All Products. Product Series remains nested inside that
                     # menu rather than becoming a competing top-level item.
-                    if link_title_downcase == 'all products'
+                    if link_title_downcase == 'all products' or link.url == routes.all_products_collection_url
+                      assign primary_menu_key = 'all-products'
+                    elsif link.url == routes.collections_url and link.levels == 0
+                      assign primary_menu_key = 'all-products'
+                    endif
+
+                    if primary_menu_key == 'all-products'
                       # The store's saved menu currently resolves both labels to
                       # /collections. Keep All Products on Shopify's canonical
                       # all-products route.
                       assign rendered_link_url = routes.all_products_collection_url
                       assign primary_menu_key = 'all-products'
-                    elsif link_title_downcase == 'product series'
+                    elsif link_title_downcase == 'product series' or link.url == routes.collections_url
                       assign is_product_series_menu = true
                     elsif link_title_downcase == 'help me choose' or link.url contains '/pages/power-calculator'
                       assign rendered_link_url = pages['power-calculator'].url | default: '/pages/power-calculator'
@@ -153,7 +159,7 @@
                       assign is_technology_menu = true
                     endif
 
-                    if link_title_downcase == 'support'
+                    if link_title_downcase == 'support' or link.url == pages['support'].url
                       assign is_support_menu = true
                       assign header_has_support_menu = true
                     endif
@@ -403,8 +409,11 @@
         {%- endif -%}
 
         <ul class="header__icon-list">
+          {%- if section.settings.member_drops_entry and section.settings.member_drops_page != blank -%}
+            <li class="sn-drop-entry-desktop">{% render 'suntneew-drop-header-link', placement: 'desktop' %}</li>
+          {%- endif -%}
           {%- if section.settings.show_locale_selector and localization.available_languages.size > 1 -%}
-            <li class="hidden md:block shrink-0">
+            <li class="shrink-0">
               {%- render 'suntneew-language-selector', popover_vertical_position: 'end' -%}
             </li>
           {%- endif -%}
@@ -450,6 +459,7 @@
         </ul>
       </div>
     </div>
+    {% render 'suntneew-drop-header-link', placement: 'mobile' %}
   </store-header>
 </height-observer>
 
@@ -507,6 +517,28 @@
   "class": "shopify-section--header",
   "tag": "header",
   "settings": [
+    {
+      "type": "header",
+      "content": "会员限时特惠入口"
+    },
+    {
+      "type": "checkbox",
+      "id": "member_drops_entry",
+      "label": "显示会员活动入口",
+      "default": false
+    },
+    {
+      "type": "page",
+      "id": "member_drops_page",
+      "label": "活动页面",
+      "info": "选择使用 member-drops 模板的页面。手机端显示为 Header 内的独立窄条。"
+    },
+    {
+      "type": "text",
+      "id": "member_drops_label",
+      "label": "入口文案",
+      "default": "Member Drops"
+    },
     {
       "type": "checkbox",
       "id": "enable_sticky",

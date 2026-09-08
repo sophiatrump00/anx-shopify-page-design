@@ -1,0 +1,533 @@
+{{ 'suntneew-member-drops.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'suntneew-member-drops-core.js' | asset_url }}" defer></script>
+<script src="{{ 'suntneew-member-drops.js' | asset_url }}" defer></script>
+
+{%- liquid
+  assign return_path = request.path | url_encode
+  assign drop_login_url = routes.account_login_url | append: '?return_url=' | append: return_path
+  if routes.storefront_login_url != blank
+    assign drop_login_url = routes.storefront_login_url
+  endif
+  assign drop_customer = false
+  if customer != blank
+    assign drop_customer = true
+  endif
+-%}
+<suntneew-member-drops class="sn-drops" data-phase="disabled" data-section-id="{{ section.id }}" style="--drop-accent:{{ section.settings.accent }}">
+  {% if request.design_mode %}
+    <aside class="sn-drops__editor" data-editor-notice>
+      <strong>会员活动预览 · 此处不会发起购买或创建真实优惠</strong>
+      在左侧添加本期／下期商品，选择优惠方式并填写数值。活动时间需带时区，例如 2026-10-01T10:00:00+08:00。原生专属码模式：填写邮箱和手机号、验证邮箱后领取。需连接顾客／折扣后台服务；配置修改后需同步，正式启用时再填写起止时间。
+      <div data-editor-issues></div>
+    </aside>
+  {% endif %}
+  <div class="sn-drops__loading" data-loading>{{ 'suntneew_drops.loading' | t }}</div>
+  <div data-content hidden>
+    <div class="sn-drops__shell">
+      <div class="sn-drops__masthead">
+        <span class="sn-drops__wordmark">{% render 'suntneew-drop-art', kind: 'spark' %}{{ section.settings.heading | escape }}</span>
+        <span class="sn-drops__membership">{% render 'suntneew-drop-art', kind: 'lock' %}<span data-member-label></span></span>
+      </div>
+      <div class="sn-drops__hero">
+        <div class="sn-drops__copy">
+          <div class="sn-drops__eyebrow"><span class="sn-drops__status" data-status></span><span class="sn-drops__number" data-number></span></div>
+          <h1 class="sn-drops__title" data-hero-title></h1>
+          <p class="sn-drops__intro" data-intro></p>
+          <div data-clock-wrap hidden>
+            <p class="sn-drops__count-label" data-clock-label></p>
+            <div class="sn-drops__clock" role="timer" aria-label="{{ 'suntneew_drops.countdown' | t | escape }}">
+              <div class="sn-drops__clock-unit"><span class="sn-drops__clock-value" data-clock-part>00</span><small>{{ 'suntneew_drops.days' | t }}</small></div>
+              <div class="sn-drops__clock-unit"><span class="sn-drops__clock-value" data-clock-part>00</span><small>{{ 'suntneew_drops.hours' | t }}</small></div>
+              <div class="sn-drops__clock-unit"><span class="sn-drops__clock-value" data-clock-part>00</span><small>{{ 'suntneew_drops.minutes' | t }}</small></div>
+              <div class="sn-drops__clock-unit"><span class="sn-drops__clock-value" data-clock-part>00</span><small>{{ 'suntneew_drops.seconds' | t }}</small></div>
+            </div>
+          </div>
+          <div class="sn-drops__actions"><a class="sn-drops__button" data-hero-action href="{{ drop_login_url }}"><span data-hero-action-label></span>{% render 'suntneew-drop-art', kind: 'arrow' %}</a><a class="sn-drops__link" href="#DropRules-{{ section.id }}">{{ 'suntneew_drops.how_it_works' | t }}</a></div>
+        </div>
+        <div class="sn-drops__stage" aria-hidden="true">
+          <div class="sn-drops__grid"></div><span class="sn-drops__stage-code" data-stage-number>01</span>
+          {% render 'suntneew-drop-art', kind: 'orbit' %}
+          <img class="sn-drops__stage-image" data-stage-image alt="" width="700" height="700" hidden>
+          <div data-stage-mystery>{% render 'suntneew-drop-art', kind: 'mystery' %}</div>
+          <div class="sn-drops__stage-caption"><span>{{ section.settings.stage_caption | escape }}</span><span data-stage-caption></span></div>
+        </div>
+      </div>
+      <div class="sn-drops__benefits"><span>{{ 'suntneew_drops.free_membership' | t }}</span><span>{{ 'suntneew_drops.no_stacking' | t }}</span><span>{{ 'suntneew_drops.while_available' | t }}</span></div>
+    </div>
+    <section class="sn-drops__catalog" id="DropProducts-{{ section.id }}" aria-labelledby="DropProductsHeading-{{ section.id }}">
+      <div class="sn-drops__shell">
+        <div class="sn-drops__section-head"><div><span class="sn-drops__kicker" data-catalog-kicker></span><h2 class="sn-drops__section-title" id="DropProductsHeading-{{ section.id }}" data-catalog-title></h2></div><span class="sn-drops__count" data-product-count></span></div>
+        <p class="sn-drops__notice" data-notice hidden></p>
+        <div class="sn-drops__products" data-products></div>
+        <p class="sn-drops__empty" data-empty hidden>{{ 'suntneew_drops.empty' | t }}</p>
+      </div>
+    </section>
+    <section class="sn-drops__next" data-next hidden><div class="sn-drops__shell sn-drops__next-inner"><div><span class="sn-drops__kicker">{{ 'suntneew_drops.next_drop' | t }}</span><h2 class="sn-drops__section-title" data-next-title></h2><p class="sn-drops__next-date" data-next-date></p></div><div class="sn-drops__next-stack" data-next-stack aria-hidden="true"></div></div></section>
+    <section class="sn-drops__rules" id="DropRules-{{ section.id }}"><div class="sn-drops__shell"><div class="sn-drops__rules-grid"><h2>{{ 'suntneew_drops.how_it_works' | t }}</h2><ol><li>{% if section.settings.claim_mode == 'native-codes' %}{{ 'suntneew_drops.claim_rule' | t }}{% else %}{{ 'suntneew_drops.rule_join' | t }}{% endif %}</li><li>{% if section.settings.claim_mode == 'native-codes' %}{{ 'suntneew_drops.claim_buy_rule' | t }}{% else %}{{ 'suntneew_drops.rule_buy' | t }}{% endif %}</li><li>{{ 'suntneew_drops.rule_return' | t }}</li></ol></div><div class="sn-drops__terms">{{ 'suntneew_drops.terms' | t }}{% if section.settings.extra_terms != blank %} {{ section.settings.extra_terms | escape }}{% endif %}</div></div></section>
+  </div>
+  <dialog class="sn-drops__claim" data-claim-dialog aria-labelledby="DropClaimTitle-{{ section.id }}">
+    <button class="sn-drops__claim-close" type="button" data-claim-close aria-label="{{ 'suntneew_drops.claim_close' | t | escape }}">×</button>
+    <span class="sn-drops__kicker">MEMBER DROPS / 01</span>
+    <h2 id="DropClaimTitle-{{ section.id }}">{{ 'suntneew_drops.claim_title' | t }}</h2>
+    <p data-claim-product></p>
+    <form data-claim-contact action="/contact" method="post">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="hidden" name="contact[tags]" value="member-drops,member-drops-ad19">
+      <label for="DropEmail-{{ section.id }}">{{ 'suntneew_drops.claim_email' | t }}</label>
+      <input id="DropEmail-{{ section.id }}" name="email" type="email" autocomplete="email" maxlength="254" required>
+      <label for="DropPhone-{{ section.id }}">{{ 'suntneew_drops.claim_phone' | t }}</label>
+      <input id="DropPhone-{{ section.id }}" name="phone" type="tel" autocomplete="tel" placeholder="+1 202 555 0123" maxlength="30" required>
+      <p class="sn-drops__claim-help">{{ 'suntneew_drops.claim_privacy' | t }} <a href="{{ shop.privacy_policy.url }}">{{ 'suntneew_drops.claim_privacy_link' | t }}</a></p>
+      <button class="sn-drops__button" type="submit">{{ 'suntneew_drops.claim_send' | t }}</button>
+    </form>
+    <form data-claim-verify hidden>
+      <label for="DropCode-{{ section.id }}">{{ 'suntneew_drops.claim_code' | t }}</label>
+      <input id="DropCode-{{ section.id }}" name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required>
+      <p class="sn-drops__claim-help">{{ 'suntneew_drops.claim_sent' | t }}</p>
+      <button class="sn-drops__button" type="submit">{{ 'suntneew_drops.claim_verify' | t }}</button>
+      <button class="sn-drops__link" type="button" data-claim-restart>{{ 'suntneew_drops.claim_restart' | t }}</button>
+    </form>
+    <div data-claim-success hidden><p>{{ 'suntneew_drops.claim_checkout_note' | t }}</p><p class="sn-drops__discount-code"><strong data-fixed-code>{{ section.settings.fixed_discount_code | escape }}</strong></p><button class="sn-drops__button" type="button" data-claim-checkout>{{ 'suntneew_drops.claim_checkout' | t }}</button></div>
+    <p class="sn-drops__claim-feedback" data-claim-feedback role="status" aria-live="polite"></p>
+  </dialog>
+  <template data-card-template>
+    <article class="sn-drops__card">
+      <div class="sn-drops__card-media"><span class="sn-drops__card-tag" data-card-tag></span><img class="sn-drops__card-image" data-card-image alt="" width="640" height="500" loading="lazy" hidden><div data-card-mystery>{% render 'suntneew-drop-art', kind: 'mystery' %}</div></div>
+      <div class="sn-drops__card-body"><h3 class="sn-drops__card-title" data-card-title></h3><select class="sn-drops__variant" data-variant aria-label="{{ 'suntneew_drops.choose_variant' | t | escape }}" hidden></select>
+        <div data-price-wrap hidden><span class="sn-drops__price-label">{{ 'suntneew_drops.member_price' | t }}</span><div class="sn-drops__price-row"><strong class="sn-drops__price" data-price></strong><s class="sn-drops__compare" data-compare></s><span class="sn-drops__saving" data-saving></span></div></div>
+        <div class="sn-drops__card-action"><p class="sn-drops__card-note" data-card-note></p><button class="sn-drops__button" data-buy type="button" disabled></button><a class="sn-drops__button" data-login href="{{ drop_login_url }}" hidden>{{ 'suntneew_drops.join_buy' | t }}</a><a class="sn-drops__card-details" data-details hidden>{{ 'suntneew_drops.product_details' | t }}</a><p class="sn-drops__feedback" data-feedback role="status" aria-live="polite" hidden></p></div>
+      </div>
+    </article>
+  </template>
+  <noscript><div class="sn-drops__shell sn-drops__editor">{{ 'suntneew_drops.javascript' | t }} <a href="{{ routes.all_products_collection_url }}">{{ 'suntneew_drops.browse_products' | t }}</a></div></noscript>
+  {%- capture drop_config -%}
+  {
+    "sectionId": {{ section.id | json }}, "serverNow": {{ 'now' | date: '%s' | times: 1000 }},
+    "pageUrl": {{ request.path | json }}, "rootUrl": {{ routes.root_url | json }}, "loginUrl": {{ drop_login_url | json }},
+    "claimMode": {{ section.settings.claim_mode | default: 'native-codes' | json }},
+    "claimEndpoint": {{ section.settings.claim_endpoint | default: '/apps/member-drops' | json }},
+    "member": {{ drop_customer | json }}, "accountsEnabled": {{ shop.customer_accounts_enabled | json }},
+    "currency": {{ cart.currency.iso_code | default: shop.currency | json }}, "locale": {{ request.locale.iso_code | json }},
+    "designMode": {{ request.design_mode | json }}, "previewState": {{ section.settings.preview_state | json }},
+    "demoImage": {{ 'suntneew-drops-demo-a3.png' | asset_url | json }},
+    "showCompare": {{ section.settings.show_compare | json }}, "savingsDisplay": {{ section.settings.savings_display | json }},
+    "showNext": {{ section.settings.show_next | json }},
+    "binding": {% render 'suntneew-drop-binding-data', section: section %},
+    "text": {% render 'suntneew-drop-translations' %},
+    "campaigns": [
+      {% render 'suntneew-drop-campaign-data', section: section, block_type: 'current_product', campaign_key: 'current', enabled: section.settings.enabled, title: section.settings.title, number: section.settings.number, starts_at: section.settings.starts_at, ends_at: section.settings.ends_at, show_time: section.settings.show_time, reveal: section.settings.reveal %},
+      {% render 'suntneew-drop-campaign-data', section: section, block_type: 'next_product', campaign_key: 'next', enabled: section.settings.next_enabled, title: section.settings.next_title, number: section.settings.next_number, starts_at: section.settings.next_starts_at, ends_at: section.settings.next_ends_at, show_time: section.settings.next_show_time, reveal: section.settings.next_reveal %}
+    ]
+  }
+  {%- endcapture -%}
+  <script type="application/json" data-drop-config>{{ drop_config | replace: '<', '\u003c' }}</script>
+</suntneew-member-drops>
+
+{% schema %}
+{
+  "name": "会员限时特惠",
+  "tag": "section",
+  "class": "shopify-section--member-drops",
+  "enabled_on": {
+    "templates": [
+      "page"
+    ]
+  },
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "领取方式"
+    },
+    {
+      "type": "select",
+      "id": "claim_mode",
+      "label": "优惠领取方式",
+      "options": [
+        {
+          "value": "native-codes",
+          "label": "邮箱＋手机号，验证邮箱领取专属码"
+        },
+        {
+          "value": "shopify-function",
+          "label": "旧版：登录账号＋折扣 Function"
+        }
+      ],
+      "default": "native-codes"
+    },
+    {
+      "type": "text",
+      "id": "claim_endpoint",
+      "label": "已部署的应用代理路径",
+      "default": "/apps/member-drops",
+      "info": "后台服务未连接时不会发邮件、创建顾客或发放真实折扣。"
+    },
+    {
+      "type": "text",
+      "id": "fixed_discount_code",
+      "label": "固定优惠码",
+      "default": "AD19-MEMBER85",
+      "info": "请先在 Shopify 折扣后台创建同名码；留空则不显示。"
+    },
+    {
+      "type": "range",
+      "id": "duration_days",
+      "label": "首次启用时的活动天数",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 7,
+      "info": "用于首次排期；启用后以开始／结束时间为准。"
+    },
+    {
+      "type": "header",
+      "content": "页面展示"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "页面栏目名",
+      "default": "Member Drops"
+    },
+    {
+      "type": "text",
+      "id": "stage_caption",
+      "label": "商品舞台标注",
+      "default": "SuntNeew / Member edition"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "强调色",
+      "default": "#ff6b25"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_compare",
+      "label": "显示正常售价划线价",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "savings_display",
+      "label": "优惠力度展示",
+      "options": [
+        {
+          "value": "percent",
+          "label": "节省百分比"
+        },
+        {
+          "value": "amount",
+          "label": "节省金额"
+        },
+        {
+          "value": "both",
+          "label": "百分比与金额"
+        },
+        {
+          "value": "hidden",
+          "label": "隐藏"
+        }
+      ],
+      "default": "percent"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_next",
+      "label": "显示下期预告区域",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "extra_terms",
+      "label": "补充活动规则（可选）"
+    },
+    {
+      "type": "header",
+      "content": "本期活动"
+    },
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "启用这一期",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "本期标题（留空使用自动文案）"
+    },
+    {
+      "type": "text",
+      "id": "number",
+      "label": "期数标识",
+      "default": "001"
+    },
+    {
+      "type": "text",
+      "id": "starts_at",
+      "label": "开始时间（含时区）",
+      "info": "例如 2026-10-01T10:00:00+08:00，+08:00 为上海时间。"
+    },
+    {
+      "type": "text",
+      "id": "ends_at",
+      "label": "结束时间（含时区）",
+      "info": "必须晚于开始时间；两期不可重叠。周期不限。"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_time",
+      "label": "显示开始时间／倒计时",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "reveal",
+      "label": "开售前展示方式",
+      "options": [
+        {
+          "value": "mystery",
+          "label": "神秘图形（不传出商品资料）"
+        },
+        {
+          "value": "silhouette",
+          "label": "商品暗影（图片可提前查看）"
+        },
+        {
+          "value": "full",
+          "label": "公开商品及预告价"
+        }
+      ],
+      "default": "silhouette"
+    },
+    {
+      "type": "header",
+      "content": "下一期活动"
+    },
+    {
+      "type": "checkbox",
+      "id": "next_enabled",
+      "label": "启用这一期",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "next_title",
+      "label": "本期标题（留空使用自动文案）"
+    },
+    {
+      "type": "text",
+      "id": "next_number",
+      "label": "期数标识",
+      "default": "002"
+    },
+    {
+      "type": "text",
+      "id": "next_starts_at",
+      "label": "开始时间（含时区）",
+      "info": "例如 2026-10-01T10:00:00+08:00，+08:00 为上海时间。"
+    },
+    {
+      "type": "text",
+      "id": "next_ends_at",
+      "label": "结束时间（含时区）",
+      "info": "必须晚于开始时间；两期不可重叠。周期不限。"
+    },
+    {
+      "type": "checkbox",
+      "id": "next_show_time",
+      "label": "显示开始时间／倒计时",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "next_reveal",
+      "label": "开售前展示方式",
+      "options": [
+        {
+          "value": "mystery",
+          "label": "神秘图形（不传出商品资料）"
+        },
+        {
+          "value": "silhouette",
+          "label": "商品暗影（图片可提前查看）"
+        },
+        {
+          "value": "full",
+          "label": "公开商品及预告价"
+        }
+      ],
+      "default": "silhouette"
+    },
+    {
+      "type": "header",
+      "content": "仅限主题编辑器预览"
+    },
+    {
+      "type": "select",
+      "id": "preview_state",
+      "label": "预览状态（不会启用真实优惠）",
+      "options": [
+        {
+          "value": "auto",
+          "label": "按真实配置"
+        },
+        {
+          "value": "preview",
+          "label": "预告状态演示"
+        },
+        {
+          "value": "live",
+          "label": "开售状态演示"
+        },
+        {
+          "value": "ended",
+          "label": "结束状态演示"
+        }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "paragraph",
+      "content": "无商品时，状态演示会使用示例商品。只有经过折扣后端同步的配置才可在正式页面购买。注册资格及不叠加由 Shopify 折扣 Function 执行；本模块不修改商品原价。"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "current_product",
+      "name": "本期商品",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "选择商品"
+        },
+        {
+          "type": "text",
+          "id": "variant_id",
+          "label": "指定规格 ID（留空包含全部规格）",
+          "info": "复制 Shopify 规格编辑网址末尾的数字 ID。价格规则只作用于这些规格。"
+        },
+        {
+          "type": "select",
+          "id": "offer_type",
+          "label": "优惠方式",
+          "options": [
+            {
+              "value": "percentage",
+              "label": "减价百分比"
+            },
+            {
+              "value": "fixed_price",
+              "label": "直接指定会员价（USD）"
+            },
+            {
+              "value": "amount_off",
+              "label": "每件减固定金额（USD）"
+            }
+          ],
+          "default": "percentage"
+        },
+        {
+          "type": "text",
+          "id": "offer_value",
+          "label": "优惠数值",
+          "info": "百分比填 20 表示减 20%；会员价填 39.99；固定减额填 10。支持两位小数。",
+          "default": "20"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "展示图片（留空使用商品图）"
+        },
+        {
+          "type": "checkbox",
+          "id": "cutout",
+          "label": "图片为透明底商品图",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "卡片标签（可选）"
+        }
+      ]
+    },
+    {
+      "type": "next_product",
+      "name": "下期商品",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "选择商品"
+        },
+        {
+          "type": "text",
+          "id": "variant_id",
+          "label": "指定规格 ID（留空包含全部规格）",
+          "info": "复制 Shopify 规格编辑网址末尾的数字 ID。价格规则只作用于这些规格。"
+        },
+        {
+          "type": "select",
+          "id": "offer_type",
+          "label": "优惠方式",
+          "options": [
+            {
+              "value": "percentage",
+              "label": "减价百分比"
+            },
+            {
+              "value": "fixed_price",
+              "label": "直接指定会员价（USD）"
+            },
+            {
+              "value": "amount_off",
+              "label": "每件减固定金额（USD）"
+            }
+          ],
+          "default": "percentage"
+        },
+        {
+          "type": "text",
+          "id": "offer_value",
+          "label": "优惠数值",
+          "info": "百分比填 20 表示减 20%；会员价填 39.99；固定减额填 10。支持两位小数。",
+          "default": "20"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "展示图片（留空使用商品图）"
+        },
+        {
+          "type": "checkbox",
+          "id": "cutout",
+          "label": "图片为透明底商品图",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "卡片标签（可选）"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "会员限时特惠",
+      "blocks": [
+        {
+          "type": "current_product"
+        },
+        {
+          "type": "next_product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

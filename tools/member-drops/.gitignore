@@ -1,0 +1,11 @@
+node_modules/
+function/node_modules/
+function/dist/
+function/generated/
+function/schema.graphql
+.env*
+test-results/
+playwright-report/
+native/.env
+native/*.sqlite*
+!native/.env.example

@@ -1,0 +1,7 @@
+{%- if section.settings.member_drops_entry and section.settings.member_drops_page != blank -%}
+  <a class="sn-drop-entry sn-drop-entry--{{ placement }}" href="{{ section.settings.member_drops_page.url }}"{% if request.path == section.settings.member_drops_page.url %} aria-current="page"{% endif %}>
+    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14 1 3 14h8l-1 9 11-14h-8z"/></svg>
+    <span>{{ section.settings.member_drops_label | default: 'Member Drops' | escape }}</span>
+    {% if placement == 'mobile' %}<span class="sn-drop-entry__note">{{ 'suntneew_drops.members_only' | t }}</span><span aria-hidden="true">↗</span>{% endif %}
+  </a>
+{%- endif -%}

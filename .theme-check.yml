@@ -1,0 +1,25 @@
+# Only the eight published storefront languages carry custom SuntNeew copy.
+# Keep vendor locales available without requiring unsupported language work.
+extends: theme-check:recommended
+MatchingTranslations:
+  ignore:
+    - locales/cs.json
+    - locales/da.json
+    - locales/el.json
+    - locales/fi.json
+    - locales/he.json
+    - locales/ko.json
+    - locales/lt.json
+    - locales/lv.json
+    - locales/nb.json
+    - locales/nl.json
+    - locales/pl.json
+    - locales/ro.json
+    - locales/ru.json
+    - locales/sk.json
+    - locales/sl.json
+    - locales/sv.json
+    - locales/tr.json
+    - locales/uk.json
+    - locales/zh-CN.json
+    - locales/zh-TW.json

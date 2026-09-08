@@ -1,0 +1,9 @@
+{
+  "name": "suntneew-member-drops-function",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test ../function.test.mjs"
+  }
+}
