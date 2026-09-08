@@ -2758,7 +2758,133 @@
         "open": "عرض ملخص الطلب",
         "closed": "إخفاء ملخص الطلب"
       },
-      "no_data": "لا أحد"
+      "no_data": "لا أحد",
+      "shop_pay": {
+        "usdc_rewards_terms": "عرض شروط مكافآت USDC"
+      },
+      "taxes": "الضرائب",
+      "taxes_included": "مشتمل {{amount}} في الضرائب",
+      "duties_and_taxes_included": "الإجمالي يشمل الرسوم والضرائب. لا توجد رسوم إضافية عند التسليم.",
+      "duties": "الواجبات",
+      "ok_duties_tooltip": "يتم شحن هذا الطلب من دولة أخرى، لذا تمت إضافة الرسوم الجمركية إلى إجمالي طلبك.",
+      "error_duties_tooltip": "يتم شحن هذا الطلب من دولة أخرى، لذلك قد يتم فرض رسوم وضرائب عند التسليم.",
+      "zero_duties_tooltip": "يتم شحن هذا الطلب من بلد آخر. لا يتم فرض رسوم على أوامر بهذه القيمة.",
+      "tip": "نصيحة",
+      "title": "طلب {{name}}",
+      "total": "المجموع",
+      "pagination": {
+        "load_more": "عرض المزيد",
+        "load_more_accessibility_label": "عرض المزيد من العناصر",
+        "loading_accessibility_label": "جارٍ تحميل العناصر"
+      },
+      "login_to_view_all_order_details": "قم بتسجيل الدخول لعرض كافة تفاصيل الطلب.",
+      "log_in": "تسجيل الدخول",
+      "logged_in_account_no_permission_to_order": "لقد قمت بتسجيل الدخول كـ {{email}}. هذا الحساب ليس لديه إذن لإدارة هذا الطلب.",
+      "log_in_to_a_different_account": "قم بتسجيل الدخول إلى حساب مختلف",
+      "fees": {
+        "restocking_fee": "رسوم إعادة تخزين",
+        "return_shipping_fee": "إعادة الشحن"
+      },
+      "vat_invoices": {
+        "label": "ضريبة القيمة المضافة"
+      },
+      "link_sent": "تم إرسال الرابط",
+      "cash_rounding": "التقريب النقدي",
+      "adjusted_payment": "الدفع المعدل",
+      "adjusted_total": "المجموع المعدل",
+      "due_on_date": "حق {{date}}",
+      "due_on_fulfillment": "مستحق عند الوفاء",
+      "due_on_receipt": "مستحق عند الاستلام"
+    },
+    "addresses": {
+      "add_button": "أضف عنوانًا",
+      "add_button_text": "يضيف",
+      "add_button_accessibility_label": "أضف عنوانًا",
+      "back_button": "خلف",
+      "back_button_accessibility_label": "العودة إلى عنوان التحرير {{address}}",
+      "add_address_banner": "أضف عناوين لاستخدامها عند الخروج",
+      "no_addresses_banner": "لم تتم إضافة أي عناوين",
+      "address_deleted_notification": "تم حذف العنوان",
+      "cancel_adding_address_accessibility_label": "إلغاء إضافة العنوان",
+      "cancel_deletion_button": "يلغي",
+      "cancel_deletion_button_accessibility_label": "إلغاء الحذف {{address}}",
+      "default_address": {
+        "badge_label": "تقصير",
+        "title": "العنوان الافتراضي",
+        "title_accessibility_label": "العنوان الافتراضي: {{address}}"
+      },
+      "delete_button": "يمسح",
+      "delete_button_accessibility_label": "يمسح {{address}}",
+      "delete_confirmation_button": "حذف العنوان",
+      "delete_confirmation_button_accessibility_label": "يمسح {{address}}",
+      "delete_confirmation_message": "هل تريد حذف العنوان؟ لا تتأثر الطلبات الحالية.",
+      "delete_confirmation_title": "هل تريد حذف العنوان؟",
+      "delete_confirmation_description": "لا تتأثر الطلبات الحالية.",
+      "edit_button": "يحرر",
+      "edit_button_accessibility_label": "يحرر {{address}}",
+      "edit_section_accessibility_label": "يحرر {{address}}",
+      "edit_modal_title": {
+        "default": "تحرير العنوان",
+        "billing": "تعديل عنوان إرسال الفواتير",
+        "shipping": "تحرير عنوان الشحن"
+      },
+      "loading_accessibility_message": "عنوان التحميل",
+      "loading_addresses_accessibility_message": "جارٍ تحميل العناوين",
+      "loading_billing_accessibility_message": "جارٍ تحميل عنوان إرسال الفواتير",
+      "loading_finished_accessibility_message": "تم تحميل صفحة جديدة من العناوين",
+      "loading_shipping_accessibility_message": "جارٍ تحميل عنوان الشحن",
+      "pagination": {
+        "load_more": "عرض المزيد",
+        "load_more_accessibility_label": "عرض المزيد من العناوين"
+      },
+      "save_new_address_accessibility_label": "حفظ العنوان",
+      "title": "العناوين",
+      "billing_address_dropdown_placeholder": "عنوان إرسال الفواتير"
+    },
+    "address_form": {
+      "attention": "انتباه",
+      "attention_company": "الشركة / الاهتمام",
+      "attention_help_text": "اسم الشخص أو القسم",
+      "auto_complete_close_accessibility_label": "إغلاق الاقتراحات",
+      "auto_complete_title": "اقتراحات",
+      "billing_address": "استخدم كعنوان إرسال الفواتير",
+      "cancel": "يلغي",
+      "cancel_accessibility_label": "إلغاء عنوان التحرير {{address}}",
+      "creation_success_notification": "تمت إضافة العنوان",
+      "default_address": "هذا هو عنواني الافتراضي",
+      "default_address_creation_success_notification": "تمت إضافة العنوان الافتراضي",
+      "default_address_update_success_notification": "تم تحديث العنوان الافتراضي",
+      "loading_add_form_accessibility_message": "تحميل نموذج العنوان الجديد",
+      "loading_edit_form_accessibility_message": "جارٍ تحميل نموذج عنوان التحرير",
+      "loading_form_accessibility_message": "تحميل نموذج العنوان",
+      "loading_finished_accessibility_message": "تم تحميل نموذج العنوان",
+      "save": "يحفظ",
+      "save_accessibility_label": "حفظ العنوان {{address}}",
+      "section_title_accessibility_label": "أضف عنوانًا",
+      "update_success_notification": "تم تحديث العنوان"
+    },
+    "account_menu": {
+      "signed_out_state": {
+        "sheet_title": "تسجيل الدخول أو إنشاء حساب",
+        "section_divider": "المزيد من الطرق لتسجيل الدخول",
+        "alternate_divider": "أو",
+        "use_email_button": "استخدم البريد الإلكتروني بدلاً من ذلك",
+        "email_field_label": "بريد إلكتروني",
+        "orders_button": "طلبات",
+        "profile_button": "حساب تعريفي",
+        "shop_login_button": "تسجيل الدخول مع متجر",
+        "continue_with_google": "تواصل مع جوجل",
+        "continue_with_facebook": "تواصل مع الفيسبوك"
+      },
+      "signed_in_state": {
+        "greeting_with_name": "أهلاً، {{first_name}}",
+        "greeting_without_name": "حساب",
+        "orders_button": "طلبات",
+        "profile_button": "حساب تعريفي"
+      },
+      "location_picker": {
+        "sheet_title": "المواقع"
+      }
     }
   }
 }
