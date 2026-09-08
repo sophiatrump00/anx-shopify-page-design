@@ -255,4 +255,12 @@ assert.equal(futureMeasuredLimits.measuredSpaceLimits.minShortSideMm, 300);
 core.resetCatalog();
 assert.equal(core.getCatalog().rv.length, 4);
 
+for (const [fuel, limit] of [['gasoline', 6], ['diesel', 3]]) {
+  const input = { voltage: '12v', fuel, engineLiters: limit, environment: 'standard', priority: 'charging' };
+  assert.equal(core.recommendJump(input).productKey, 'jump-oj02');
+  assert.notEqual(core.recommendJump({ ...input, engineLiters: limit + 0.1 }).productKey, 'jump-oj02');
+  assert.notEqual(core.recommendJump({ ...input, environment: 'cold' }).productKey, 'jump-oj02');
+  assert.notEqual(core.recommendJump({ ...input, voltage: '24v' }).productKey, 'jump-oj02');
+}
+
 console.log('SuntNeew calculator core tests passed.');

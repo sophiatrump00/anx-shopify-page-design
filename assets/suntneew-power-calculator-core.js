@@ -24,6 +24,7 @@
   var MAX_SPACE_HEIGHT_MM = 500;
 
   var DEFAULT_CATALOG = [
+    { scenario: 'jump', key: 'jump-oj02', id: 'oj02-8000', model: 'OJ02 OBD2 Jump Starter', variant: '8,000mAh / 1,500A peak', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 3, display: 2, charging: 0, reserve: 5 } },
     { scenario: 'rv', key: 'rv-g31', id: 'g31-100ah', model: 'Group 31 100Ah', fit: 'group31', lengthMm: 339, widthMm: 185, heightMm: 218, capacityWh: 1280, outputW: 1280, maxSeries: 4, maxParallel: 4 },
     { scenario: 'rv', key: 'rv-g24', id: 'g24-100ah', model: 'Group 24 100Ah', fit: 'group24', lengthMm: 260, widthMm: 170, heightMm: 212, capacityWh: 1280, outputW: 1280, maxSeries: 4, maxParallel: 4 },
     { scenario: 'rv', key: 'rv-230', id: '230ah', model: '230Ah', fit: 'flexible', lengthMm: 522, widthMm: 268, heightMm: 220, capacityWh: 2944, outputW: 2560, maxSeries: 4, maxParallel: 4 },
