@@ -3014,6 +3014,142 @@
           "invalid_code": "أدخل رمز 6-digit الصحيح"
         }
       }
+    },
+    "payment_methods": {
+      "payment_details": {
+        "edit_payment_method_button_accessibility_label": "تعديل طريقة الدفع التي تنتهي بـ {{lastDigits}}",
+        "loading_shop_pay": "تحميل متجر الدفع",
+        "invalid_payment_method": "طريقة الدفع غير صالحة",
+        "invalid_payment_method_message": "استخدم بطاقة ائتمان جديدة لمواصلة تلقي الطلبات القادمة.",
+        "replace_payment_method": "استبدال طريقة الدفع",
+        "checkout_card_banner": "لا يمكن استخدام طريقة الدفع هذه إلا للمدفوعات المصرح بها مسبقًا. لن يظهر عند الخروج إذا قمت بتسجيل الدخول إلى هذا المتجر. ",
+        "default_checkbox": "تعيين كافتراضي",
+        "default_checkbox_accessibility_label": "قم بتعيين طريقة الدفع هذه كطريقة افتراضية",
+        "replace_payment_method_button": "يستبدل"
+      },
+      "edit_payment_method": {
+        "title": "تعديل طريقة الدفع",
+        "save_payment_method_button": "يحفظ",
+        "cancel_edit_payment_method_button": "يلغي",
+        "payment_method_updated_toast": "تم تحديث طريقة الدفع",
+        "billing_address": "عنوان إرسال الفواتير",
+        "billing_address_add_new": "أضف جديدا",
+        "billing_address_choose_from_list": "اختر من القائمة",
+        "future_purchases_notice": "سيتم حفظ طريقة الدفع هذه لعمليات الشراء المستقبلية.",
+        "generic_error": "حدثت مشكلة أثناء التحديث. يرجى المحاولة مرة أخرى."
+      },
+      "update_payment_method": {
+        "title": "تحديث طريقة الدفع",
+        "button_title": "تحديث",
+        "billing_address": "عنوان إرسال الفواتير",
+        "disclaimer": "سيتم حفظ طريقة الدفع هذه لعمليات الشراء المستقبلية ويمكن استخدامها لأي عملية شراء متكررة أو مؤجلة.",
+        "error_message": "غير قادر على تحديث طريقة الدفع",
+        "current": "حاضِر",
+        "subscriptions_title": "الاشتراكات",
+        "subscriptions_list_accessibility_label": "قائمة منتجات الاشتراك",
+        "pre_orders_title": "القادمة",
+        "pre_orders_list_accessibility_label": "قائمة منتجات الطلبات المعلقة",
+        "resources_list_accessibility_label": "منتجات الاشتراك ومنتجات الطلبات المعلقة باستخدام طريقة الدفع هذه",
+        "resources_card_scroll": "قم بالتمرير لمزيد من العناصر",
+        "resources_card_show_more": "عرض المزيد",
+        "resources_card_show_less": "عرض أقل",
+        "loading_form_accessibility_message": "جارٍ تحميل نموذج تحديث طريقة الدفع",
+        "loading_current_payment_method": "جارٍ تحميل طريقة الدفع الحالية",
+        "loading_digital_wallets": "جارٍ تحميل خيارات المحفظة الرقمية",
+        "loading_card_fields": "جارٍ تحميل حقول بطاقة الائتمان",
+        "loading_resources": "تحميل الاشتراكات والأوامر القادمة"
+      },
+      "link_expired": {
+        "message": "لقد انتهت صلاحية هذا الرابط لتحديث طريقة الدفع الخاصة بك.",
+        "update_message": "لقد انتهت صلاحية هذا الرابط لتحديث طريقة الدفع الخاصة بك.",
+        "add_message": "لقد انتهت صلاحية هذا الرابط لإضافة طريقة الدفع الخاصة بك.",
+        "return_home_button": "العودة إلى الصفحة الرئيسية"
+      },
+      "update_success": {
+        "title": "تم تحديث طريقة الدفع",
+        "done_button": "مواصلة التسوق"
+      },
+      "add_success": {
+        "title": "تمت إضافة طريقة الدفع",
+        "done_button": "مواصلة التسوق"
+      },
+      "card_fields": {
+        "card_number_label": "رقم البطاقة",
+        "card_number_placeholder": "رقم البطاقة",
+        "name_on_card_label": "الاسم على البطاقة",
+        "name_on_card_placeholder": "الاسم على البطاقة",
+        "card_expiry_label": "تاريخ انتهاء الصلاحية (شهر / سنة)",
+        "card_expiry_placeholder": "تاريخ انتهاء الصلاحية (شهر / سنة)",
+        "card_verification_value_label": "رمز الأمان",
+        "card_verification_value_placeholder": "رمز الأمان",
+        "card_start_label": "تاريخ الإصدار (شهر / سنة)",
+        "card_start_placeholder": "تاريخ الإصدار (شهر / سنة)",
+        "tooltip": {
+          "tooltip_accessibility_label": "مزيد من المعلومات",
+          "card_verification_value_explanation_amex": "رمز الحماية 4-digit الموجود على مقدمة بطاقتك",
+          "card_verification_value_explanation_other": "رمز الحماية 3-digit الموجود على ظهر بطاقتك",
+          "card_verification_value_explanation": "عادةً ما يوجد رمز الحماية 3-digit على ظهر بطاقتك. تحتوي بطاقات أمريكان إكسبريس على رمز 4-digit الموجود في المقدمة.",
+          "card_security_notice": "جميع المعاملات آمنة ومشفرة."
+        },
+        "field_errors": {
+          "credit_card_name_invalid": "أدخل اسمك تمامًا كما هو مكتوب على بطاقتك",
+          "credit_card_number_invalid": "أدخل رقم بطاقة صالح",
+          "credit_card_expiry_invalid": "أدخل تاريخ انتهاء صالح للبطاقة",
+          "credit_card_verification_value_blank": "أدخل رمز CVV أو رمز الأمان الموجود على بطاقتك"
+        },
+        "unavailable": {
+          "text": "الدفعات ببطاقات الائتمان والخصم غير متاحة حاليًا.",
+          "link_text": "قم بتحديث هذه الصفحة",
+          "suffix": "أو حاول مرة أخرى لاحقًا."
+        }
+      },
+      "payment_delete": {
+        "title": "حذف طريقة الدفع",
+        "description_without_replacement": "لن تكون طريقة الدفع هذه متاحة لعمليات الشراء المستقبلية.",
+        "description_with_replacement": "سيؤثر حذف طريقة الدفع هذه على المدفوعات المصرح بها مسبقًا. يمكنك اختياريًا استبدالها بطريقة دفع أخرى لمواصلة تلقي الطلبات القادمة.",
+        "warning_message_with_replacement": {
+          "with_pending_orders_and_subscriptions": "سيؤثر حذف طريقة الدفع هذه على المدفوعات المصرح بها مسبقًا. ما لم تقم بتحديد طريقة دفع بديلة، فسيتم فرض رسوم على طريقة الدفع هذه مقابل أي أرصدة مستحقة على الطلبات الحالية. سيسمح لك تحديد طريقة دفع بديلة بتلقي طلبات الاشتراك القادمة دون انقطاع.",
+          "with_pending_orders": "سيؤدي حذف طريقة الدفع هذه إلى إزالتها من حسابك ولن تكون متاحة لعمليات الشراء المستقبلية. ما لم تقم بتحديد طريقة دفع بديلة، فسيتم فرض رسوم على أي أرصدة مستحقة على الطلبات الحالية.",
+          "with_subscriptions": "سيؤثر حذف طريقة الدفع هذه على المدفوعات المصرح بها مسبقًا. استبدلها بطريقة دفع بديلة لمواصلة تلقي الطلبات القادمة."
+        },
+        "warning_message_without_replacement": {
+          "with_pending_orders_and_subscriptions": "سيؤثر حذف طريقة الدفع هذه على المدفوعات المصرح بها مسبقًا. سيتم الاستمرار في تحصيل رسوم من طريقة الدفع هذه مقابل أي أرصدة مستحقة على الطلبات الحالية، لكنك لن تتلقى طلبات الاشتراك القادمة. أضف طريقة دفع بديلة لمواصلة تلقي طلبات الاشتراك.",
+          "with_pending_orders": "سيؤدي حذف طريقة الدفع هذه إلى إزالتها من حسابك ولن تكون متاحة لعمليات الشراء المستقبلية. سيتم تحصيل الرسوم من أي أرصدة مستحقة على الطلبات الحالية.",
+          "with_subscriptions": "سيؤثر حذف طريقة الدفع هذه على المدفوعات المصرح بها مسبقًا. أضف طريقة دفع بديلة لمواصلة تلقي الطلبات القادمة."
+        },
+        "payment_method_selector_placeholder": "حدد طريقة دفع بديلة (اختياري)",
+        "payment_method_selector_no_alternative_payment": "لا توجد طريقة بديلة",
+        "replace_method_with_new_method_description": "لك {{currentPaymentMethodName}} سيتم حذفه واستبداله بـ {{newPaymentMethodName}}.",
+        "error_when_deleting": "نعتذر ولكن حدث خطأ ما ولم نتمكن من حذف طريقة الدفع هذه. يرجى المحاولة مرة أخرى لاحقًا أو تحديث الصفحة.",
+        "delete_and_replace_button": "حذف واستبدال",
+        "delete_and_replace_button_accessibility_label": "يمسح {{currentPaymentMethodName}} واستبدال ب {{newPaymentMethodName}}.",
+        "deleted_successfully": "تم حذف طريقة الدفع بنجاح.",
+        "loading_available_payment_methods_accessibility_label": "جارٍ تحميل طرق الدفع المتاحة"
+      },
+      "add_payment_method": {
+        "title": "أضف طريقة الدفع",
+        "button_title": "يضيف",
+        "payment_method_added_confirmation": "تمت إضافة طريقة الدفع",
+        "missing_customer_error": "حدث خطأ ما. يرجى المحاولة مرة أخرى أو الاتصال بالدعم.",
+        "replace_mode_warning": "سيؤثر حذف طريقة الدفع هذه على الاشتراكات أو الطلبات المسبقة. استبدلها بطريقة دفع بديلة لمواصلة تلقي الطلبات القادمة.",
+        "choose_from_list": "اختر من القائمة",
+        "add_new_button": "أضف جديدا",
+        "billing_address": {
+          "title": "عنوان إرسال الفواتير",
+          "add_billing_address_button": "أضف جديدا",
+          "add_billing_address_button_accessibility_label": "أضف عنوان إرسال الفواتير الجديد",
+          "choose_billing_address_from_list_button": "اختر من القائمة",
+          "choose_billing_address_from_list_button_accessibility_label": "اختر عنوان إرسال الفواتير من القائمة",
+          "missing_billing_address_error_message": "يرجى تحديد عنوان إرسال الفواتير",
+          "default_checkbox": "تعيين كطريقة الدفع الافتراضية"
+        },
+        "subscription_contracts": {
+          "title": "استخدم طريقة الدفع للطلبات المتكررة",
+          "more_items": {
+            "one": "{{count}} المزيد من المنتج"
+          }
+        }
+      }
     }
   }
 }
