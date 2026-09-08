@@ -878,6 +878,274 @@
         "gift_card_has_been_removed": "تمت إزالة بطاقة الهدايا",
         "gift_card_subscriptions_notice": "سيتم تطبيق بطاقات الهدايا فقط على دفعتك الأولى",
         "discount_already_applied": "تم تطبيق خصم على هذا الطلب. لا يمكنك إضافة خصم آخر."
+      },
+      "shipping": {
+        "subscription_delivery_description": {
+          "free_shipping_cycles_delivery_not_included": {
+            "other": "شحن مجاني لعمليات التسليم %{count}"
+          },
+          "first_n_order_free_with_cycle": {
+            "one": "شحن مجاني لمزيد من التسليم %{count}، ثم %{recurring_order_shipping_price}",
+            "other": "شحن مجاني لمزيد من عمليات التسليم %{count}، ثم %{recurring_order_shipping_price}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "one": "شحن مجاني للتسليم %{count}، ثم %{recurring_order_shipping_price}",
+            "other": "شحن مجاني لعمليات التسليم %{count}، ثم %{recurring_order_shipping_price}"
+          },
+          "max_cycles_base_shipping": {
+            "one": "%{count} المزيد من التسليم لـ %{shipping_price}",
+            "other": "%{count} المزيد من عمليات التسليم لكل %{shipping_price}"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "one": "تسليم %{count} لـ %{shipping_price}",
+            "other": "%{count} المزيد من عمليات التسليم لكل %{shipping_price}"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "one": "شحن مجاني لأول %{cycle}، يليه %{recurring_order_shipping_price}",
+            "other": "شحن مجاني لأول %{cycle}، يليه %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_one_cycle": {
+            "one": "%{shipping_price} لـ %{count} المزيد من التسليم",
+            "other": "%{shipping_price} لمزيد من عمليات التسليم %{count} (%{per_delivery_cost})"
+          },
+          "prepaid_order_one_cycle_delivery_not_included": {
+            "one": "%{shipping_price} للتسليم %{count}",
+            "other": "%{shipping_price} لعمليات التسليم %{count} (%{per_delivery_cost})"
+          },
+          "prepaid_order_no_cycle": {
+            "one": "%{shipping_price} لمزيد من التسليم %{count}، يليه %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} لعمليات التسليم الإضافية %{count} (%{per_delivery_cost})، متبوعة بـ %{recurring_order_shipping_price}"
+          },
+          "prepaid_order_no_cycle_delivery_not_included": {
+            "one": "%{shipping_price} للتسليم %{count}، متبوعًا بـ %{recurring_order_shipping_price}",
+            "other": "%{shipping_price} لعمليات التسليم %{count} (%{per_delivery_cost})، متبوعة بـ %{recurring_order_shipping_price}"
+          },
+          "subscription_free_with_frequency_label": "شحن مجاني %{delivery_frequency}",
+          "prepaid_delivery_frequency": {
+            "one": "للتسليم %{count}",
+            "other": "لعمليات التسليم %{count}"
+          },
+          "subscription_delivery_frequency": {
+            "day": {
+              "one": "كل يوم",
+              "other": "كل أيام %{count}"
+            },
+            "week": {
+              "one": "كل أسبوع",
+              "other": "كل أسابيع %{count}"
+            },
+            "month": {
+              "one": "كل شهر",
+              "other": "كل أشهر %{count}"
+            },
+            "year": {
+              "one": "كل عام",
+              "other": "كل %{count} سنة"
+            }
+          },
+          "multiple_subscriptions_shipping_price_label": "%{shipping_price} لكل تسليم",
+          "prepaid_shipping_price_label": "%{shipping_price} لكل تسليم × %{delivery_interval_count}",
+          "initial_order_discounted": "تكلفة الشحن الأولى %{discounted_shipping_cost}، ثم %{frequency_description}",
+          "prepaid_initial_order_discounted": "تكلفة الشحن الأولى %{discounted_shipping_price} %{prepaid_delivery_frequency}",
+          "prepaid_initial_order_discounted_with_per_delivery_price": "تكلفة الشحن الأولى %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})",
+          "prepaid_initial_order_discounted_with_renewal": "تكلفة الشحن الأولى %{discounted_shipping_price} %{prepaid_delivery_frequency} ثم %{shipping_price} %{billing_cycle}",
+          "prepaid_initial_order_discounted_with_per_delivery_price_and_renewal": "تكلفة الشحن الأولى %{discounted_shipping_price} %{prepaid_delivery_frequency} (%{discounted_cost_per_delivery})، ثم %{shipping_price} %{billing_cycle}",
+          "shipping_price_included": "متضمنة",
+          "recurring_order_shipping_price": "تليها %{recurring_order_shipping_price}",
+          "first_order_shipping_price_included": "تم تضمين الطلب الأول، متبوعًا بـ %{recurring_order_shipping_price}",
+          "first_order_different_shipping_price": "%{first_order_shipping_price} (%{per_delivery_price} لكل تسليم)، متبوعًا بـ %{recurring_order_shipping_price}",
+          "first_n_order_free": {
+            "one": "الطلب الأول مجاني",
+            "other": "أول طلبات %{count} مجانية"
+          },
+          "free_for_first_n_order": {
+            "one": "للطلب الأول",
+            "other": "لأوامر %{count} الأولى"
+          }
+        },
+        "one_time_purchase_shipping": "الشحن لمرة واحدة",
+        "duties_and_taxes_title": "الرسوم والضرائب",
+        "shipping_information_required_notice": "معلومات الشحن مطلوبة. {{link}}.",
+        "shipping_information_redirect_link": "أدخل المعلومات الخاصة بك هنا",
+        "loading_progressive_rates": "جارٍ البحث عن المزيد من الأسعار...",
+        "no_other_methods_available": "لا توجد طرق أخرى متاحة",
+        "duties_and_taxes_options": {
+          "ddu_title": "الدفع عند التسليم",
+          "ddu_caption": "قد يتم تطبيق رسوم إضافية",
+          "ddp_title": "ادفع الآن",
+          "ddp_caption": "لا توجد رسوم إضافية عند التسليم"
+        },
+        "shipping_method_combinations": {
+          "combination": "%{rest} و%{current}"
+        },
+        "shipping_used_as_billing_notice": "سيتم استخدام هذا أيضًا كعنوان إرسال الفواتير لهذا الطلب.",
+        "address_update": "تحديث العنوان",
+        "shipping_address_title": "سافر على متن سفينة لِـ",
+        "shipping_address_rollup_accessibility_label": "الشحن إلى خيارات العنوان",
+        "third_party_address_timeout": "غير قادر على تحميل العناوين. أعد المحاولة أو استخدم عنوانًا مختلفًا.",
+        "third_party_address_error": "حدث خطأ أثناء تحميل اختيار العنوان. أدخل عنوانك يدويا أدناه.",
+        "third_party_payment_timeout": "غير قادر على تحميل طرق الدفع. أعد المحاولة أو استخدم طريقة دفع مختلفة.",
+        "third_party_payment_error": "حدث خطأ أثناء تحميل اختيار الدفع. استخدم طريقة دفع مختلفة.",
+        "add_address": "استخدم عنوانًا مختلفًا",
+        "add_delivery_instructions": "إضافة تعليمات التسليم",
+        "edit": "يحرر",
+        "delete": "يمسح",
+        "back": "خلف",
+        "address_more": "المزيد من الإجراءات لهذا العنوان",
+        "address_edit": "تحرير العنوان",
+        "address_delete": "حذف العنوان",
+        "address_confirm": "هل أنت متأكد أنك تريد حذف هذا العنوان من حسابك؟",
+        "address_default": "تعيين كافتراضي",
+        "address_form": {
+          "add_address": "أضف عنوانًا",
+          "save": "يحفظ",
+          "cancel": "يلغي",
+          "edit": "تحرير العنوان",
+          "update": "حفظ التغييرات",
+          "generic_error": "حدثت مشكلة في حفظ عنوانك. حاول ثانية.",
+          "one_time_address_subtitle": "استخدم عنوانًا لمرة واحدة لهذا الطلب"
+        },
+        "different_shipping_method_summary": "أدخل عنوان شحن مختلفًا لعرض طرق الشحن المتاحة",
+        "invalid_shipping_method_summary": "أدخل عنوان شحن صالحًا لعرض طرق الشحن المتاحة",
+        "invalid_shipping_method_summary_selected": "حدد عنوان شحن مختلفًا لعرض طرق الشحن المتاحة",
+        "method_summary": {
+          "incomplete_address_entered": "أدخل عنوان الشحن كاملاً لعرض طرق الشحن المتاحة",
+          "incomplete_address_selected": "حدد عنوان الشحن الكامل لعرض طرق الشحن المتاحة"
+        },
+        "local_pickup": {
+          "search_address": "البحث عن العنوان",
+          "rollup_title": "موقع الالتقاط",
+          "rollup_accessibility_label": "خيارات موقع الالتقاط"
+        },
+        "missing_shipping_address": "عنوان الشحن مفقود",
+        "split_shipping_merchandise_quantity_label_standard": "عناصر %{quantity}",
+        "split_shipping_merchandise_quantity_label_additional": "+%{quantity} المزيد",
+        "split_shipping_merchandise_shipment_number": "شحنة %{number} من %{total}",
+        "pre_order_ships_now": "السفن الآن",
+        "pre_order_ships_later": "السفن في وقت لاحق",
+        "pre_order_ships_date": "السفن %{date}",
+        "split_shipping_shipped_by_shop": "يتم الشحن بواسطة %{shop_name}",
+        "split_shipping_multiple_shipment_label": "شحنات متعددة",
+        "split_shipping_shipping_label": "طريقة",
+        "split_shipping_shipment_notice": "سيصل طلبك إلى %{quantity_shipments}",
+        "split_shipping_first_shipment_notice": "سيصل طلبك الأول إلى %{quantity_shipments}",
+        "split_shipping_multiple_shipment_quantity_label": "شحنات %{quantity}",
+        "split_shipping_multiple_shipment_notice": "سوف يصل طلبك في شحنات متعددة",
+        "split_shipping_multiple_shipment_notice_one_time_purchase": "سوف يصل طلبك في شحنات %{quantity}",
+        "split_shipping_shipment_count_notice_one_time_purchase": {
+          "one": "سوف يصل طلبك في شحنة %{count}",
+          "other": "سوف يصل طلبك في شحنات %{count}"
+        },
+        "split_shipping_more_shipping_options": "المزيد من خيارات الشحن",
+        "split_shipping_shipment_number": "شحنة %{number}",
+        "split_shipping_option_free": "ًالشحن مجانا",
+        "split_shipping_option_lowest_price": "أدنى سعر",
+        "split_shipping_option_fastest": "الأسرع",
+        "split_shipping_option_recommended": "مُستَحسَن",
+        "split_shipping_option_custom": "مخصص",
+        "add_shipping_address": "أضف عنوان الشحن",
+        "add_new_delivery_address": "إضافة عنوان تسليم جديد",
+        "choose_new_address": "اختر عنوانًا جديدًا"
+      },
+      "localized_fields": {
+        "additional_information": {
+          "title": "معلومات إضافية",
+          "shipping_credential_kr": "قانون الجمارك الشخصية",
+          "shipping_credential_cn": "رقم هوية المقيم",
+          "tax_credential_it": "الكوديس المالي (اختياري)",
+          "tax_email_it": "بيك (اختياري)",
+          "tax_credential_cl": "شبق",
+          "shipping_credential_cl": "شبق",
+          "tax_credential_co": "سيدولا/إيفا",
+          "tax_credential_type_co": "تيبو سيدولا",
+          "shipping_credential_co": "سيدولا/إيفا",
+          "shipping_credential_type_co": "تيبو سيدولا",
+          "tax_credential_cr": "رقم التعريف/RUT",
+          "shipping_credential_cr": "رقم التعريف/RUT",
+          "tax_credential_ec": "سي آي/آر يو سي/إيفا",
+          "shipping_credential_ec": "سي آي/آر يو سي/إيفا",
+          "tax_credential_gt": "نيت/إيفا",
+          "shipping_credential_gt": "نيت/إيفا",
+          "tax_credential_my": "رقم التعريف الضريبي/رقم التسجيل",
+          "shipping_credential_my": "رقم التعريف الضريبي/رقم التسجيل",
+          "tax_credential_type_mx": "النظام المالي",
+          "tax_credential_use_mx": "استخدام CFDI",
+          "tax_credential_py": "سي آي/آر يو سي/إيفا",
+          "shipping_credential_py": "سي آي/آر يو سي/إيفا",
+          "tax_credential_pt": "نيف/إيفا",
+          "shipping_credential_pt": "نيف/إيفا",
+          "shipping_credential_tw": "رقم الهوية الوطنية/ضريبة القيمة المضافة"
+        }
+      },
+      "payment": {
+        "network_card_payment_options": "اختر شبكة البطاقة",
+        "network_card_persistence_description": "سيتم حفظ الشبكة المحددة بطريقة الدفع الخاصة بك للمعاملات المستقبلية.",
+        "amazon_payments_label": "أمازون الدفع",
+        "amazon_payments_login_hint": "سيُطلب منك تسجيل الدخول باستخدام أمازون.",
+        "amazon_payments_logout": "تسجيل الخروج من أمازون باي",
+        "amazon_payments_failed_mfa_challenge": "لا يمكن استخدام طريقة الدفع المحددة. حدد طريقة مختلفة أو اتصل بالبنك أو جهة إصدار البطاقة.",
+        "amazon_payments_abandoned_mfa_challenge": "لا يمكن إكمال دفعتك. جرّب طريقة دفع مختلفة أو اتصل بالبنك أو جهة إصدار البطاقة.",
+        "amazon_payments_could_not_enqueue_authorize": "حدثت مشكلة أثناء معالجة دفعتك. حاول مرة أخرى أو استخدم طريقة دفع مختلفة.",
+        "title": "قسط",
+        "amount_left_to_pay_label": "الدفع المستحق:",
+        "discount_button_action_label": "تطبيق رمز الخصم",
+        "discount_codes_removed_summary": {
+          "one": "تمت إزالة رمز الخصم %{count}",
+          "other": "تمت إزالة رموز الخصم %{count}"
+        },
+        "discount_codes_modified_summary": {
+          "one": "تم تعديل كود الخصم %{count}",
+          "other": "تم تعديل أكواد الخصم %{count}"
+        },
+        "discount_codes_removed_or_modified_summary": {
+          "one": "تمت إزالة رمز الخصم %{count} أو تعديله",
+          "other": "تمت إزالة أو تعديل رموز الخصم %{count}"
+        },
+        "discount_show_more_warnings": {
+          "one": "عرض %{count} المزيد",
+          "other": "عرض %{count} المزيد"
+        },
+        "gift_card_code_label": "رمز بطاقة الهدايا",
+        "apply_gift_card_button_label": "يتقدم",
+        "gift_card_balance_label": "توازن:",
+        "supported_card_brands_more_label": "وأكثر…",
+        "detected_card_brand": "العلامة التجارية للبطاقة التي تم اكتشافها: {brand}",
+        "credit_card_vaulting_sign_in_banner_title": "احفظ بطاقتك الائتمانية",
+        "credit_card_vaulting_sign_in_banner_info": "قم بتسجيل الدخول أو إنشاء حساب لحفظ بطاقتك الائتمانية لعمليات الشراء المستقبلية.",
+        "credit_card_vaulting_sign_in_banner_button_label": "تسجيل الدخول",
+        "ftd_vault_credit_card_label": "احفظ بطاقة الائتمان هذه في حسابي لإجراء عملية دفع أسرع",
+        "card_number_label": "رقم البطاقة",
+        "card_number_placeholder": "رقم البطاقة",
+        "bogus_test_checkout": {
+          "title": "تعليمات الاختبار",
+          "intro": "استخدم هذه القيم لاختبار الخروج الخاص بك:",
+          "approved_transaction": "{{card_number}} لمحاكاة معاملة تمت الموافقة عليها",
+          "declined_transaction": "{{card_number}} لمحاكاة معاملة مرفوضة",
+          "gateway_failure": "{{card_number}} لمحاكاة فشل البوابة",
+          "additional_instructions": "استخدم أي تاريخ انتهاء صلاحية مستقبلي وأي رمز أمان 3-digit.",
+          "support_link": "احصل على الدعم"
+        },
+        "card_pay_with": "الدفع باستخدام:",
+        "card_security_notice": "جميع المعاملات آمنة ومشفرة.",
+        "card_security_vault_notice": "نحن بحاجة إلى التفاصيل الخاصة بك للمدفوعات المستقبلية. جميع المعاملات آمنة ومشفرة.",
+        "card_information_notice": "جميع المعاملات آمنة ومشفرة. لا يتم تخزين معلومات بطاقة الائتمان أبدًا.",
+        "name_on_card_label": "الاسم على البطاقة",
+        "name_on_card_placeholder": "الاسم على البطاقة",
+        "card_nickname_label": "اللقب (اختياري)",
+        "card_expired": "منتهي الصلاحية",
+        "card_expiry_label": "تاريخ انتهاء الصلاحية (شهر / سنة)",
+        "card_expiry_placeholder": "تاريخ انتهاء الصلاحية (شهر / سنة)",
+        "credit_card_start_month": "بداية الشهر",
+        "credit_card_start_year": "بداية السنة",
+        "delete_customer_mandate_modal_title": "هل تريد إزالة بطاقة الدفع هذه؟",
+        "delete_customer_mandate_modal_body": "إذا قمت بإزالة هذه البطاقة، فسوف تحتاج إلى إضافتها مرة أخرى قبل استخدامها لإجراء الدفعات.",
+        "delete_customer_mandate_modal_confirm": "قم بإزالة البطاقة",
+        "delete_customer_mandate_modal_cancel": "يلغي",
+        "card_verification_value_label": "رمز الأمان",
+        "card_verification_value_placeholder": "رمز الأمان",
+        "card_verification_confirm": "لأغراض التحقق، أدخل رمز الأمان الخاص ببطاقتك.",
+        "card_expiry_date_explanation": "تاريخ انتهاء البطاقة بالتنسيق: شهر، شهر، سنة، سنة",
+        "card_expiration_month_label": "شهر انتهاء الصلاحية"
       }
     }
   }
