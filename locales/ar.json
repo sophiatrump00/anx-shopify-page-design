@@ -1655,7 +1655,21 @@
             "other": "استلمها في المتجر"
           },
           "remove_items_or_ship": "%{ship_separately_link} أو %{remove_items_link}",
-          "remove_items_or_pickup": "%{pickup_in_store_link} أو %{remove_items_link}"
+          "remove_items_or_pickup": "%{pickup_in_store_link} أو %{remove_items_link}",
+          "heading": {
+            "cannot_be_picked_up": {
+              "one": "لا يمكن التقاط العنصر %{count}",
+              "other": "لا يمكن التقاط عناصر %{count}"
+            },
+            "cannot_be_shipped": {
+              "one": "لا يمكن شحن السلعة %{count}",
+              "other": "لا يمكن شحن عناصر %{count}"
+            }
+          },
+          "remove_item": {
+            "one": "إزالة العنصر",
+            "other": "إزالة العناصر"
+          }
         },
         "cross_border": {
           "modal": {
@@ -1665,7 +1679,20 @@
             "change_country": "تغيير البلد"
           },
           "banner": "تم تحديث طريقة التسليم الخاصة بك"
-        }
+        },
+        "accessibility": {
+          "status": {
+            "ship_separately": "سيتم شحن %{items} بشكل منفصل.",
+            "pickup_in_store": "سيتم استلام %{items} من المتجر.",
+            "remove_items": "تمت إزالة %{items} من سلة التسوق."
+          }
+        },
+        "pickup_all_items": "التقاط كافة العناصر",
+        "items_for_pickup": "عناصر للاستلام",
+        "items_for_shipping": "العناصر للشحن",
+        "items_moved_to_shipping_toast": "تم نقل العناصر التي لا يمكن التقاطها إلى الشحن",
+        "delivery_method": "طريقة التسليم المقسمة",
+        "delivery_method_menu": "تقسيم قائمة طريقة التسليم"
       },
       "captcha": {
         "title": "أكمل اختبار CAPTCHA للمتابعة",
@@ -1910,6 +1937,291 @@
       },
       "order_payment_collection": {
         "custom_line_item_description": "المبلغ الواجب دفعه مقابل الطلب %{order_name}"
+      },
+      "taxes": {
+        "vat_number": {
+          "status": {
+            "invalid_number": {
+              "gb": "أدخل رقمًا صالحًا لضريبة القيمة المضافة في المملكة المتحدة"
+            },
+            "service_unavailable": "خدمة التحقق غير متوفرة",
+            "service_error": "خدمة التحقق غير متوفرة"
+          },
+          "accessibility": {
+            "status": {
+              "validating": "التحقق من صحة رقم ضريبة القيمة المضافة قيد التقدم",
+              "valid": "رقم ضريبة القيمة المضافة صالح",
+              "applied": "تم تطبيق الإعفاء من ضريبة القيمة المضافة",
+              "domestic": "لم يتم تطبيق الإعفاء من ضريبة القيمة المضافة",
+              "invalid_number": "فشل الإعفاء من ضريبة القيمة المضافة",
+              "service_unavailable": "غير قادر على التحقق من الإعفاء من ضريبة القيمة المضافة",
+              "service_error": "غير قادر على التحقق من الإعفاء من ضريبة القيمة المضافة"
+            }
+          }
+        }
+      },
+      "address_management": {
+        "saved_with_store": "تم الحفظ مع هذا المتجر"
+      },
+      "review_address_modal": {
+        "subtitle": {
+          "one": "سيتم شحن هذا الطلب إلى العنوان المقدم من قبل {{merchant}}.",
+          "other": "سيتم شحن هذا الطلب إلى العنوان المقدم من قبل {{merchant}}. حدد عنوان الشحن."
+        },
+        "subtitle_no_match": "لا يتطابق هذا العنوان مع أي من عناوينك المحفوظة.",
+        "subtitle_must_use": "سيتم شحن طلبك إلى هذا العنوان.",
+        "continue": "تواصل مع هذا العنوان",
+        "use_saved_address": "استخدم عنوانًا مختلفًا",
+        "return_to_cart": "العودة إلى السلة"
+      },
+      "marketplaces": {
+        "legal_notice": {
+          "legal_text": "مراجعة",
+          "link_label": "{{partnerDisplayName}} الشروط والأحكام"
+        }
+      },
+      "online_store_chat": {
+        "title": "أسئلة؟ الدردشة معنا"
+      },
+      "local_pickup": {
+        "title": "موقع",
+        "location_address_search_label": "عنوان",
+        "location_address_search_placeholder": "%{postal_code_label} أو العنوان",
+        "location_closest": "أقرب موقع مع العنصر الخاص بك",
+        "location_closest_one_item": "أقرب موقع مع العنصر الخاص بك",
+        "location_closest_other_items": "أقرب موقع مع العناصر الخاصة بك",
+        "location_selected": "موقعك المحدد",
+        "location_information": {
+          "one": "يوجد موقع %{count} مع مخزون قريب منك",
+          "other": "توجد مواقع %{count} بها مخزون قريب منك"
+        },
+        "location_information_far_away": {
+          "one": "يوجد موقع %{count} مع العنصر الخاص بك",
+          "other": "هناك مواقع %{count} مع العنصر الخاص بك"
+        },
+        "location_information_far_away_one_item": {
+          "one": "يوجد موقع %{count} مع العنصر الخاص بك",
+          "other": "هناك مواقع %{count} مع العنصر الخاص بك"
+        },
+        "location_information_far_away_other_items": {
+          "one": "يوجد موقع %{count} مع العناصر الخاصة بك",
+          "other": "هناك مواقع %{count} مع العناصر الخاصة بك"
+        },
+        "location_nearby": {
+          "one": "يوجد موقع %{count} قريب مع العنصر الخاص بك",
+          "other": "هناك مواقع %{count} قريبة مع العنصر الخاص بك"
+        },
+        "location_nearby_one_item": {
+          "one": "يوجد موقع %{count} قريب مع العنصر الخاص بك",
+          "other": "هناك مواقع %{count} قريبة مع العنصر الخاص بك"
+        },
+        "location_nearby_other_items": {
+          "one": "يوجد موقع %{count} قريب به العناصر الخاصة بك",
+          "other": "هناك مواقع %{count} قريبة مع العناصر الخاصة بك"
+        },
+        "location_nearby_short": {
+          "one": "%{count} موقع قريب مع العنصر الخاص بك",
+          "other": "%{count} المواقع القريبة مع العنصر الخاص بك"
+        },
+        "location_nearby_short_one_item": {
+          "one": "%{count} موقع قريب مع العنصر الخاص بك",
+          "other": "%{count} المواقع القريبة مع العنصر الخاص بك"
+        },
+        "location_nearby_short_other_items": {
+          "one": "%{count} موقع قريب مع العناصر الخاصة بك",
+          "other": "%{count} المواقع القريبة مع العناصر الخاصة بك"
+        },
+        "location_far_away": {
+          "one": "موقع %{count} مع العنصر الخاص بك",
+          "other": "مواقع %{count} مع العنصر الخاص بك"
+        },
+        "location_far_away_one_item": {
+          "one": "موقع %{count} مع العنصر الخاص بك",
+          "other": "مواقع %{count} مع العنصر الخاص بك"
+        },
+        "location_far_away_other_items": {
+          "one": "موقع %{count} مع العناصر الخاصة بك",
+          "other": "مواقع %{count} مع العناصر الخاصة بك"
+        },
+        "toggle_location": "تغيير الموقع",
+        "toggle_more_locations": {
+          "one": "%{count} المزيد من الموقع",
+          "other": "%{count} المزيد من المواقع"
+        },
+        "toggle_multiple_locations": "%{count}+ المزيد من المواقع",
+        "pick_up_location": "موقع الالتقاط",
+        "or": "أو",
+        "cancel": "يلغي",
+        "your_location": "موقعك",
+        "search_button": "البحث عن المتاجر",
+        "no_stores_found": "لم يتم العثور على متاجر",
+        "all_stores_far_away": {
+          "title": "أقرب المواقع تبعد أكثر من %{distance}",
+          "title_with_item": {
+            "one": "أقرب موقع للعنصر الخاص بك هو أكثر من %{distance} من %{location}",
+            "other": "أقرب موقع مع العناصر الخاصة بك هو أكثر من %{distance} من %{location}"
+          },
+          "title_with_location": "أقرب موقع هو أكثر من %{distance} من %{location}",
+          "title_with_specific_location": "أقرب موقع للعنصر الخاص بك هو أكثر من %{distance} بعيدًا عن %{location}",
+          "description": "حدد موقعًا أو %{ship_to_address_link}",
+          "description_with_location": "%{change_location_link} أو %{ship_to_address_link}",
+          "ship_to_address_link": "السفينة إلى العنوان",
+          "change_location_link": "قم بتغيير موقعك"
+        },
+        "selected_pickup_option_no_longer_available": {
+          "title": "موقعك الذي حددته مسبقًا لم يعد متاحًا",
+          "description": "لقد اخترنا أقرب موقع به العناصر الموجودة في المخزون"
+        },
+        "could_not_resolve_address": "لا يمكن تحديد موقع عنوانك. حاول مرة أخرى أو استخدم عنوانًا مختلفًا",
+        "paginator": {
+          "accessibility_label": "صفحة الالتقاط المحلية",
+          "previous": "الصفحة السابقة",
+          "next": "الصفحة التالية",
+          "label": {
+            "one": "%{first} - %{last} من متجر %{count}",
+            "other": "%{first} - %{last} من متاجر %{count}"
+          }
+        },
+        "reveal_more_label": {
+          "one": "إظهار المزيد من الموقع %{count}",
+          "other": "عرض %{count} المزيد من المواقع"
+        },
+        "no_pickup_locations_found": "لم يتم العثور على مواقع الالتقاط",
+        "pickup_unavailable_banner_title": {
+          "one": "لا توجد مواقع مع العنصر الخاص بك",
+          "other": "لا توجد مواقع مع العناصر الخاصة بك"
+        },
+        "pickup_unavailable_banner_title_with_country": {
+          "one": "لا توجد مواقع في %{country} مع العنصر الخاص بك",
+          "other": "لا توجد مواقع في %{country} مع العناصر الخاصة بك"
+        },
+        "pickup_unavailable_banner_body": {
+          "try_different_location": "جرب موقعًا مختلفًا",
+          "ship_to_address": "السفينة إلى العنوان",
+          "there_are_no_stores": "لا توجد متاجر بالقرب من عنوانك، أو أن العناصر الخاصة بك غير متاحة للاستلام.",
+          "ship_items": "شحن العناصر الخاصة بك",
+          "search_elsewhere": "البحث في مكان آخر",
+          "search_elsewhere_standalone": "البحث في مكان آخر",
+          "ship_items_or_search_elsewhere": "%{ship_items} أو %{search_elsewhere}"
+        },
+        "geolocation": {
+          "permission_not_allowed": "السماح بمشاركة الموقع أو البحث بدلاً من ذلك."
+        }
+      }
+    },
+    "pagination": {
+      "previous": "سابق",
+      "next": "التالي"
+    },
+    "links": {
+      "powered_by_shopify": "مدعوم من شوبيفاي",
+      "learn_more": "يتعلم أكثر"
+    },
+    "feed": {
+      "more": "أكثر"
+    },
+    "attributes": {
+      "email": "بريد إلكتروني",
+      "password": "كلمة المرور",
+      "password_confirmation": "تأكيد كلمة المرور",
+      "first_name": "الاسم الأول",
+      "last_name": "اسم العائلة",
+      "body": "جسم",
+      "signature": "عنوان"
+    },
+    "addresses": {
+      "zip_code": "الرمز البريدي",
+      "postal_code": "رمز بريدي",
+      "postcode": "شفرة البريد",
+      "pincode": "الرمز السري",
+      "region": "منطقة",
+      "prefecture": "المحافظة",
+      "province": "مقاطعة",
+      "state": "ولاية",
+      "state_and_territory": "الولاية/الإقليم",
+      "county": "مقاطعة",
+      "emirate": "الإمارة",
+      "governorate": "محافظة",
+      "confirm": "هل أنت متأكد من رغبتك في حذف هذا العنوان؟"
+    },
+    "collections": {
+      "sorting": {
+        "manual": "مميز",
+        "best_selling": "الأكثر مبيعا",
+        "az": "أبجديًا، من الألف إلى الياء",
+        "za": "أبجديًا، Z-A",
+        "price_ascending": "السعر، من الأقل إلى الأعلى",
+        "price_descending": "السعر، من الأعلى إلى الأدنى",
+        "date_ascending": "التاريخ، من القديم إلى الجديد",
+        "date_descending": "التاريخ، الجديد إلى القديم",
+        "most_relevant": "الأكثر صلة"
+      }
+    },
+    "errors": {
+      "blank": "لا يمكن أن تكون فارغة",
+      "blocked_address": "هذا الموقع غير مدعوم",
+      "credit_card_session_expired": "لقد انتهت صلاحية ترخيص بطاقة الائتمان، يرجى إدخال معلومات الدفع الخاصة بك مرة أخرى. لم يتم شحن بطاقتك.",
+      "empty": "لا يمكن أن تكون فارغة",
+      "invalid_email": "يجب أن يكون عنوان بريد إلكتروني صالحًا",
+      "discount_disabled": "لقد تم تعطيل هذا الخصم",
+      "discount_expired": "هذا الخصم لم يعد صالحا بعد الآن",
+      "discount_limit_reached": "لقد وصل هذا الخصم إلى الحد الأقصى للاستخدام",
+      "discount_not_found": "تعذر العثور على خصم صالح مطابق للكود الذي تم إدخاله",
+      "customer_already_used_once_per_customer_discount_notice": "لقد وصل هذا الخصم إلى الحد الأقصى للاستخدام",
+      "gift_card_already_applied": "لقد تم بالفعل تطبيق الرمز على الخروج الخاص بك",
+      "gift_card_code_invalid": "الرمز غير صالح",
+      "gift_card_currency_mismatch": "لا يمكن استخدام بطاقة الهدايا هذه في عملية الشراء هذه. اتصل بـ %{shop_name} لإعادة إصداره.",
+      "gift_card_depleted": "لا توجد أموال متبقية في بطاقة الهدايا هذه",
+      "gift_card_disabled": "تم تعطيل بطاقة الهدايا",
+      "gift_card_expired": "انتهت صلاحية بطاقة الهدايا",
+      "invalid": "غير صالح",
+      "bad_domain": "يحتوي على اسم مجال غير صالح",
+      "taken": "لقد اتخذت بالفعل",
+      "contains_html_tags": "لا يمكن أن تحتوي على علامات HTML",
+      "too_short": "قصير جدًا (الحد الأدنى هو %{count})",
+      "too_long": "طويل جدًا (الحد الأقصى هو %{count})",
+      "password_mismatch": "يجب أن تتطابق مع كلمة المرور المقدمة",
+      "contains_spaces": "يبدأ أو ينتهي بمسافات.",
+      "invalid_for_country": "غير صالح لـ %{country}",
+      "invalid_for_country_and_province": "غير صالح لـ %{province} و%{country}",
+      "invalid_province_in_country": "ليست مقاطعة صالحة في %{country}",
+      "invalid_state_in_country": "ليست حالة صالحة في %{country}",
+      "invalid_region_in_country": "ليست منطقة صالحة في %{country}",
+      "less_than_or_equal_to": "يجب أن يكون أقل من أو يساوي %{count}",
+      "not_supported": "غير معتمد",
+      "full_name_required": "أدخل الاسم الأول واسم العائلة",
+      "invalid_for_card_type": "غير صالح",
+      "invalid_type": "آسف، نحن لا نقبل بطاقات من هذا النوع",
+      "invalid_format": "التنسيق غير صالح",
+      "expired": "انتهت صلاحيتها",
+      "invalid_start_date_or_issue_number_for_debit": "مطلوب تاريخ بدء صالح أو رقم الإصدار",
+      "invalid_expiry_year": "ليست سنة انتهاء صالحة",
+      "reset_password_html": "عنوان البريد الإلكتروني هذا مرتبط بالفعل بحساب. إذا كان هذا الحساب ملكك، فيمكنك ذلك <a href=\"/account/login#recover\">إعادة تعيين كلمة المرور الخاصة بك</a>",
+      "verify_email": "لقد أرسلنا بريدًا إلكترونيًا إلى %{customer_email}، برجاء النقر فوق الرابط المتضمن للتحقق من عنوان بريدك الإلكتروني.",
+      "product_not_available": "لم يتم نشر المنتج لهذا العميل.",
+      "shop_404": {
+        "title": "إنشاء موقع للتجارة الإلكترونية والبيع عبر الإنترنت! برامج التجارة الإلكترونية من Shopify",
+        "title_unavailable": "المتجر غير متاح",
+        "heros": {
+          "store_will_be_right_back": "سوف يعود هذا المتجر فورًا",
+          "store_unavailable": "هذا المتجر غير متوفر حاليا.",
+          "store_not_exist": "هذا المتجر غير موجود.",
+          "no_storefront": "هذا المتجر ليس لديه موقع على شبكة الانترنت حتى الآن."
+        },
+        "subtitles": {
+          "store_will_be_right_back": "يعمل Shopify على إعادته إلى الإنترنت في أقرب وقت ممكن."
+        },
+        "links": {
+          "refresh_page": "قم بتحديث الصفحة",
+          "explore_other_stores": "اكتشف المتاجر الأخرى",
+          "start_free_trial": "ابدأ نسخة تجريبية مجانية"
+        },
+        "status_card": {
+          "eyebrow": "مساعدة لأصحاب المحلات",
+          "header": "تحقق من حالة Shopify",
+          "caption": "اكتشف ما إذا كان هناك انقطاع يؤثر على أكثر من مجرد هذا المتجر على Shopify.",
+          "link_text": "عرض حالة أنظمة Shopify"
+        }
       }
     }
   },
