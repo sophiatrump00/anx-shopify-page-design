@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "page": "Pagina {{ page }}",
@@ -36,7 +45,7 @@
       "subscribed_successfully": "Ti sei iscritto alla nostra newsletter."
     },
     "localization": {
-      "country": "Paese\/Area geografica",
+      "country": "Paese/Area geografica",
       "language": "Lingua",
       "change_country_accessibility_text": "Cambia paese o valuta",
       "change_language_accessibility_text": "Cambia lingua"
@@ -87,7 +96,7 @@
       "view_in_space": "Visualizza nel tuo spazio",
       "taxes_included": "Tasse incluse.",
       "taxes_excluded": "Tasse escluse.",
-      "shipping_policy_html": "<a href=\"{{ link }}\" class=\"link\">Spedizione calcolata<\/a> al checkout",
+      "shipping_policy_html": "<a href=\"{{ link }}\" class=\"link\">Spedizione calcolata</a> al checkout",
       "size_chart": "Tabella taglie",
       "available_colors_count": {
         "one": "{{ count }} colore disponibile",
@@ -326,7 +335,8 @@
       "empty": "Il tuo carrello è vuoto",
       "item_count": {
         "one": "{{ count }} articolo",
-        "other": "{{ count }} articoli"
+        "other": "{{ count }} articoli",
+        "zero": "{{ count }} elementi"
       },
       "continue_shopping": "Continua gli acquisti",
       "weight": "Peso",
