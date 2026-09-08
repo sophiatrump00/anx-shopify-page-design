@@ -1599,6 +1599,45 @@
           "title": "الاشتراك",
           "description": "تابع إلى حسابك لعرض اشتراكاتك وإدارتها.",
           "button_label": "إدارة اشتراكك"
+        },
+        "manage_order_label": "إدارة طلبك",
+        "gift_card_confirmation_by_text_typ": {
+          "one": "ستتلقى رسالة نصية تحتوي على بطاقة الهدايا الخاصة بك خلال بضع دقائق.",
+          "other": "ستتلقى رسالة نصية تتضمن بطاقات الهدايا الخاصة بك خلال بضع دقائق."
+        },
+        "gift_card_confirmation_by_email_typ": {
+          "one": "ستتلقى بريدًا إلكترونيًا يتضمن بطاقة الهدايا الخاصة بك خلال بضع دقائق.",
+          "other": "ستتلقى بريدًا إلكترونيًا يتضمن بطاقات الهدايا الخاصة بك خلال بضع دقائق."
+        },
+        "gift_card_email_title": {
+          "one": "تم إرسال بطاقة الهدايا عبر البريد الإلكتروني",
+          "other": "تم إرسال بطاقات الهدايا عبر البريد الإلكتروني"
+        },
+        "gift_card_text_title": {
+          "one": "تم إرسال بطاقة الهدية عبر رسالة نصية",
+          "other": "تم إرسال بطاقات الهدايا عن طريق رسالة نصية"
+        },
+        "resend_gift_cards_by_email": "إعادة إرسال البريد الإلكتروني",
+        "resend_gift_cards_by_text": "إعادة إرسال رسالة نصية",
+        "gift_card_resent_confirmation": {
+          "one": "تمت إعادة إرسال بطاقة الهدايا.",
+          "other": "تم إعادة إرسال بطاقات الهدايا."
+        },
+        "gift_card_resend_failure": {
+          "one": "حدثت مشكلة أثناء إعادة إرسال بطاقة الهدايا. حاول مرة أخرى أو اتصل بنا.",
+          "other": "حدثت مشكلة أثناء إعادة إرسال بطاقات الهدايا. حاول مرة أخرى أو اتصل بنا."
+        },
+        "vat_invoices": {
+          "title": "فواتير ضريبة القيمة المضافة"
+        },
+        "verify_shop_account_title": "التحقق من حساب المتجر الخاص بك",
+        "verify_shop_account_message": "تم حفظ معلوماتك في المتجر، قم بتأكيد حسابك لاستخدامها تلقائيًا في ملايين المتاجر.",
+        "verify_shop_account_cta": "التحقق من حسابك",
+        "verify_shop_account_confirmation": "تم حفظ تفاصيل الخروج",
+        "announcement": {
+          "close": "يغلق",
+          "expand": "يوسع",
+          "collapse": "ينهار"
         }
       },
       "split_delivery": {
@@ -1756,6 +1795,121 @@
       },
       "offsite_payment_failed": {
         "title": "فشل الدفع خارج الموقع"
+      },
+      "vaulted": {
+        "change_button": "يتغير",
+        "loading_section": "تحميل {{section}}…"
+      },
+      "review": {
+        "title": "مراجعة",
+        "review_title": "أكمل طلبك",
+        "review_and_confirm_title": "المراجعة والتأكيد",
+        "checkout_as_guest": "تسجيل الخروج كضيف",
+        "account_more_actions": "المزيد من الإجراءات لهذا الحساب",
+        "checkout_a_different_way": "تحقق من طريقة مختلفة",
+        "blocks": {
+          "contact_method_title": "اتصال",
+          "billing_address_title": "الفواتير",
+          "shipping_address_title": "سافر على متن سفينة لِـ",
+          "shipping_method_title": "طريقة الشحن",
+          "payment_method_title": "طريقة الدفع",
+          "change_link_label": "يتغير",
+          "change_contact_method_link_label": "تغيير معلومات الاتصال",
+          "change_billing_address_link_label": "تغيير عنوان إرسال الفواتير",
+          "change_company_location_link_label": "تغيير موقع الشركة",
+          "change_shipping_address_link_label": "تغيير عنوان الشحن",
+          "change_shipping_method_link_label": "تغيير طريقة الشحن",
+          "change_payment_method_link_label": "تغيير طريقة الدفع",
+          "pick_up_in_store_shipping_method_html": "الاستلام من المتجر · %{location_name}",
+          "purchase_order_number_title": "رقم أمر الشراء",
+          "change_purchase_order_number_label": "تغيير رقم أمر الشراء",
+          "change_delivery_method_link_label": "تغيير طريقة التسليم",
+          "no_address": "(لا يوجد عنوان)",
+          "no_purchase_order_number": "(لا يوجد رقم أمر الشراء)",
+          "no_purchase_order_number_long": "لا يوجد رقم أمر الشراء",
+          "due_after_order_reviewed_html": "مستحق بعد مراجعة الطلب",
+          "review_title_free_order": "قم بمراجعة وإكمال طلبك",
+          "payment_method_saved_company_location": "حفظ البطاقة لهذا الموقع",
+          "company_location": "موقع الشركة",
+          "pickup_items_at": {
+            "one": "بيك اب البند %{count} في",
+            "other": "بيك اب العناصر %{count} في"
+          },
+          "ship_items_to": {
+            "one": "قم بشحن العنصر %{count} إلى",
+            "other": "شحن عناصر %{count} إلى"
+          }
+        },
+        "block_title": "قم بمراجعة معلوماتك",
+        "item_header": {
+          "change_value": "تغيير القيمة",
+          "section": "قسم",
+          "value": "قيمة"
+        }
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "أرسل لي الأخبار والعروض",
+        "post_accept_marketing_checkbox_label": "أنت مشترك لتلقي الأخبار والعروض عبر البريد الإلكتروني",
+        "pending_accept_marketing_checkbox_label": "تحقق من بريدك الإلكتروني لتأكيد اشتراكك في الأخبار والعروض",
+        "accept_sms_checkbox_label": "أرسل لي رسالة نصية تحتوي على الأخبار والعروض",
+        "accept_whatsapp_marketing_checkbox_label": "راسلني على الواتس اب بالأخبار والعروض",
+        "disclaimer": {
+          "privacy_policy": "سياسة الخصوصية",
+          "terms_of_service": "شروط الخدمة"
+        },
+        "sms": {
+          "disclaimer": {
+            "privacy_policy": "سياسة الخصوصية",
+            "terms_of_service": "شروط الخدمة",
+            "description_html": "من خلال التسجيل عبر الرسائل النصية، فإنك توافق على تلقي رسائل تسويقية آلية متكررة، بما في ذلك تذكيرات سلة التسوق، على رقم الهاتف المقدم. الموافقة ليست شرطا للشراء. قم بالرد بـ STOP لإلغاء الاشتراك. الرد على مساعدة للحصول على المساعدة. يختلف تردد الرسالة. قد يتم تطبيق أسعار الرسائل والبيانات. شاهد %{privacy_policy_link} و%{terms_of_service_link}.",
+            "description_transactional_html": "قد تتلقى رسائل نصية تتعلق بتأكيد الطلب وتحديثات الشحن. قم بالرد بـ STOP لإلغاء الاشتراك. الرد على مساعدة للحصول على المساعدة. يختلف تردد الرسالة. قد يتم تطبيق أسعار الرسائل والبيانات. شاهد %{privacy_policy_modal_link} و%{terms_of_service_modal_link}."
+          },
+          "mobile_phone_number": "رقم الهاتف المحمول",
+          "get_offers_by_text": "الحصول على العروض عن طريق النص"
+        },
+        "whatsapp": {
+          "disclaimer": {
+            "description_html": "من خلال التسجيل عبر WhatsApp، فإنك توافق على تلقي رسائل WhatsApp التسويقية على رقم الهاتف المقدم. الموافقة ليست شرطا للشراء. قم بالرد بـ STOP لإلغاء الاشتراك. يختلف تردد الرسالة. قد يتم تطبيق أسعار الرسائل والبيانات. شاهد %{privacy_policy_link} و%{terms_of_service_link}."
+          }
+        },
+        "unsubscribe": {
+          "title": "لقد قمت بإلغاء الاشتراك",
+          "description": "لن تتلقى أي تذكيرات أخرى لعربة التسوق منا."
+        },
+        "accept_shop_pay_marketing_checkbox_label": "سجلني للحصول على الأخبار والعروض من هذا المتجر"
+      },
+      "shop_policies": {
+        "policy_label": "سياسة",
+        "policies_label": "السياسات",
+        "select_policy_label": "حدد سياسة",
+        "refund_policy": "سياسة استرداد الأموال",
+        "privacy_policy": "سياسة الخصوصية",
+        "terms_of_service": "شروط الخدمة",
+        "legal_notice": "إشعار قانوني",
+        "shipping_policy": "شحن",
+        "terms_of_sale": "شروط البيع",
+        "subscription_policy": "الإلغاءات",
+        "purchase_options_policy": "سياسة خيارات الشراء",
+        "contact_information": "اتصال",
+        "purchase_options_cancellation_policy": "الإلغاءات",
+        "cookie_preferences": "ملفات تعريف الارتباط",
+        "terms_and_policies": "الشروط والسياسات"
+      },
+      "remote_policies": {
+        "unavailable_policy": "لم يتم توفير %{policy_name} لهذا المتجر. لمزيد من المعلومات، اتصل بـ %{shop_name} مباشرة."
+      },
+      "mor_policies": {
+        "terms_and_conditions": "شروط وأحكام تاجر السجل",
+        "privacy_policy": "سياسة خصوصية تاجر السجل"
+      },
+      "markets": {
+        "invalid_market_manager_error": "قم بمراجعة معلومات الاتصال الخاصة بك قبل إتمام عملية الدفع"
+      },
+      "notifications": {
+        "title": "إشعارات"
+      },
+      "order_payment_collection": {
+        "custom_line_item_description": "المبلغ الواجب دفعه مقابل الطلب %{order_name}"
       }
     }
   },
