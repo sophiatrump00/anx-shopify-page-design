@@ -49,7 +49,7 @@
           {%- render 'product-gallery', product: section.settings.product, product_form_id: product_form_id -%}
         {%- endif -%}
 
-        {%- render 'product-info', product: section.settings.product, product_form_id: product_form_id, update_url: false, context: 'featured_product' -%}
+        {%- render 'product-info', section: section, recommendations: recommendations, product: section.settings.product, product_form_id: product_form_id, update_url: false, context: 'featured_product' -%}
       {%- else -%}
         <product-gallery
           form="placeholder-{{ section.id }}"
