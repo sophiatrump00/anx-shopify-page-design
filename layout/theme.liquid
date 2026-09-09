@@ -62,11 +62,8 @@
       }
     </script>
 
-    {%- if shogun_content_for_header != blank -%}
-      {{ shogun_content_for_header }}
-    {%- else -%}
-      {{ content_for_header }}
-    {%- endif -%}
+    {{ content_for_header }}
+    {{ shogun_content_for_header }}
 
     {{- 'theme-bundle-1.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'theme-bundle-2.css' | asset_url | stylesheet_tag: preload: true -}}
