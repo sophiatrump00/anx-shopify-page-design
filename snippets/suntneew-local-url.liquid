@@ -1,0 +1,15 @@
+{%- comment -%}
+  Keep internal page/policy links in the current Shopify language. Preserve
+  external, download, fragment and already-localized URLs without rewriting.
+{%- endcomment -%}
+{%- liquid
+  assign local_url = url | default: '/pages/contact-us'
+  assign page_prefix = local_url | slice: 0, 7
+  assign policy_prefix = local_url | slice: 0, 10
+  if routes.root_url != '/' and routes.root_url != blank
+    if page_prefix == '/pages/' or policy_prefix == '/policies/'
+      assign local_url = routes.root_url | append: local_url
+    endif
+  endif
+-%}
+{{- local_url | escape -}}

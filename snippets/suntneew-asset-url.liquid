@@ -1,0 +1,10 @@
+{%- comment -%}Full-resolution optimized URL, with safe fallback for new assets.{%- endcomment -%}
+{%- capture asset_metadata -%}{%- render 'suntneew-asset-metadata', asset_name: asset_name -%}{%- endcapture -%}
+{%- assign asset_metadata = asset_metadata | strip -%}
+{%- if asset_metadata != blank -%}
+  {%- assign parts = asset_metadata | split: '|' -%}
+  {%- assign optimized_name = parts[0] | append: '-' | append: parts[1] | append: '.webp' -%}
+  {{- optimized_name | asset_url -}}
+{%- else -%}
+  {{- asset_name | asset_url -}}
+{%- endif -%}

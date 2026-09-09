@@ -110,7 +110,7 @@
                   </span>
                 </summary>
                 <div class="sn-qr-support__compliance-body">
-                  <a class="sn-qr-support__resource-link" href="{{ block.settings.link }}" target="_blank" rel="noopener">{{ block.settings.link_label }}</a>
+                  <a class="sn-qr-support__resource-link" href="{% render 'suntneew-local-url', url: block.settings.link %}" target="_blank" rel="noopener">{{ block.settings.link_label }}</a>
                 </div>
               </details>
             {%- else -%}
@@ -176,7 +176,7 @@
                 <article class="sn-qr-support__resource" {{ block.shopify_attributes }}>
                   <h3>{{ block.settings.title }}</h3>
                   {%- if block.settings.body != blank -%}<p>{{ block.settings.body }}</p>{%- endif -%}
-                  {%- if block.settings.link != blank -%}<a class="sn-qr-support__resource-link" href="{{ block.settings.link }}"{% if block.settings.external %} target="_blank" rel="noopener"{% endif %}>{{ block.settings.link_label }}</a>{%- endif -%}
+                  {%- if block.settings.link != blank -%}<a class="sn-qr-support__resource-link" href="{% render 'suntneew-local-url', url: block.settings.link %}"{% if block.settings.external %} target="_blank" rel="noopener"{% endif %}>{{ block.settings.link_label }}</a>{%- endif -%}
                 </article>
               {%- endif -%}
             {%- endfor -%}

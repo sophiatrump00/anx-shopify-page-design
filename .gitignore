@@ -9,3 +9,5 @@ Thumbs.db
 .theme-check.yml.cache
 /output/
 /tmp/
+node_modules/
+__pycache__/

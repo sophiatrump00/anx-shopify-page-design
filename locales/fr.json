@@ -1103,5 +1103,12 @@
     "claim_intro": "Votre prochaine découverte à prix exclusif. Indiquez e-mail et téléphone, puis vérifiez votre e-mail.",
     "claim_rule": "Indiquez e-mail et téléphone. Vérifiez votre e-mail pour obtenir une offre personnelle. Aucun mot de passe requis.",
     "claim_buy_rule": "Obtenez l’offre pendant la promotion. Utilisez votre e-mail vérifié au paiement. Chaque code vaut pour une commande et n’est pas cumulable."
+  },
+  "suntneew_seo": {
+    "journal": "Consultez les guides SuntNeew sur les batteries de camping-car, les boosters et le secours électrique à domicile, avec conseils et assistance.",
+    "shipping": "Consultez les modes de livraison, délais de préparation et informations de transport SuntNeew. Préparez votre commande ou contactez notre assistance.",
+    "patent": "Découvrez les informations sur les brevets et innovations SuntNeew, ainsi que les documents et ressources utiles pour nos solutions électriques.",
+    "qr_support": "Trouvez les notices, documents et ressources pour votre modèle SuntNeew. Scannez le code QR fourni avec le produit pour accéder à son assistance.",
+    "returns": "Consultez les conditions de retour, annulation et remboursement SuntNeew. Découvrez comment demander un retour ou contacter notre assistance."
   }
 }

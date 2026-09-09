@@ -2,6 +2,7 @@
   assign seo_title = page_title | strip_html | strip
   assign seo_description = page_description | strip_html | strip_newlines | strip
   assign seo_robots = blank
+  assign seo_description_key = blank
   assign seo_path = request.path | downcase
   assign seo_title_suffix = ' | SuntNeew Portable Power'
   assign seo_default_title = 'SuntNeew | Dependable Portable Power'
@@ -39,9 +40,11 @@
         assign seo_description = 'Explore SuntNeew home energy storage systems for practical backup power, capacity planning and resilient essential loads.'
     endcase
   elsif request.page_type == 'blog'
+    assign seo_description_key = 'journal'
     assign seo_description = 'Read SuntNeew Journal guides for RV power, vehicle readiness and practical home energy planning.'
   elsif request.page_type == 'policy'
     if seo_path contains '/shipping-policy'
+      assign seo_description_key = 'shipping'
       assign seo_description = 'Review SuntNeew shipping methods, processing times, delivery information and support options.'
     endif
   elsif request.page_type == 'page'
@@ -58,14 +61,18 @@
       when 'contact-us'
         assign seo_description = 'Contact SuntNeew for product, order, shipping, return or technical-support questions.'
       when 'patent'
+        assign seo_description_key = 'patent'
         assign seo_description = 'Explore SuntNeew patents and product innovation information for our portable power solutions.'
       when 'for-business'
         assign seo_description = 'Partner with SuntNeew for wholesale and business opportunities in portable power, RV energy and vehicle emergency solutions.'
       when 'qr-support'
+        assign seo_description_key = 'qr_support'
         assign seo_description = 'Find product-specific SuntNeew support resources using the QR code supplied with your product.'
       when 'shipping-policy'
+        assign seo_description_key = 'shipping'
         assign seo_description = 'Review SuntNeew shipping methods, processing times, delivery information and support options.'
       when 'return-policy'
+        assign seo_description_key = 'returns'
         assign seo_description = 'Review SuntNeew return eligibility, cancellation guidance and the steps for requesting a return.'
       when 'privacy-policy'
         assign seo_description = 'Read the SuntNeew Privacy Policy to understand how personal information is collected, used and protected.'
@@ -86,15 +93,20 @@
     assign seo_title = seo_title | append: seo_title_suffix
   endif
 
-  assign seo_description = seo_description | strip
-  assign seo_description_size = seo_description | size
-  if seo_description == blank or seo_description_size < 90
-    assign seo_description = seo_default_description
+  comment
+    Native SEO fields (including their translations) take precedence. Character
+    counts are not language-independent: short Japanese copy is not an error.
+  endcomment
+  if page_description != blank
+    assign seo_description = page_description | strip_html | strip_newlines | strip
+  elsif seo_description_key != blank
+    assign seo_translation_key = 'suntneew_seo.' | append: seo_description_key
+    assign seo_description = seo_translation_key | t
   endif
 
-  assign seo_description_size = seo_description | size
-  if seo_description_size > 155
-    assign seo_description = seo_description | truncate: 155, ''
+  assign seo_description = seo_description | strip
+  if seo_description == blank
+    assign seo_description = seo_default_description
   endif
 -%}
 

@@ -1,0 +1,29 @@
+{%- comment -%}
+  Responsive variants for reviewed bundled assets. Unknown filenames retain their
+  original URL. Original dimensions prevent layout shifts; full WebP remains
+  available separately for the gallery's existing zoom control.
+  Inputs: asset_name, alt, sizes, loading, fetchpriority, class, width, height,
+  thumbnail (160/320px only).
+{%- endcomment -%}
+{%- capture asset_metadata -%}{%- render 'suntneew-asset-metadata', asset_name: asset_name -%}{%- endcapture -%}
+{%- assign asset_metadata = asset_metadata | strip -%}
+{%- if asset_metadata != blank -%}
+  {%- liquid
+    assign parts = asset_metadata | split: '|'
+    assign image_width = parts[1] | plus: 0
+    assign candidates = parts[3] | split: ','
+    assign default_width = 960 | at_most: image_width
+    if thumbnail
+      assign default_width = 160 | at_most: image_width
+      assign sizes = '64px'
+    endif
+    assign image_name = parts[0] | append: '-' | append: default_width | append: '.webp'
+  -%}
+  <img src="{{ image_name | asset_url }}"
+    srcset="{%- for candidate in candidates -%}{%- assign candidate_width = candidate | plus: 0 -%}{%- if thumbnail and candidate_width > 320 -%}{%- break -%}{%- endif -%}{%- assign candidate_name = parts[0] | append: '-' | append: candidate | append: '.webp' -%}{% unless forloop.first %}, {% endunless %}{{ candidate_name | asset_url }} {{ candidate }}w{%- endfor -%}"
+    sizes="{{ sizes | default: '(max-width: 699px) calc(100vw - 32px), 50vw' }}"
+    alt="{{ alt | escape }}" width="{{ parts[1] }}" height="{{ parts[2] }}"
+    loading="{{ loading | default: 'lazy' }}"{% if fetchpriority %} fetchpriority="{{ fetchpriority }}"{% endif %}{% if class %} class="{{ class | escape }}"{% endif %}>
+{%- else -%}
+  <img src="{{ asset_name | asset_url }}" alt="{{ alt | escape }}" width="{{ width | default: 1600 }}" height="{{ height | default: 1600 }}" loading="{{ loading | default: 'lazy' }}"{% if fetchpriority %} fetchpriority="{{ fetchpriority }}"{% endif %}{% if class %} class="{{ class | escape }}"{% endif %}>
+{%- endif -%}

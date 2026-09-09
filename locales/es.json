@@ -1103,5 +1103,12 @@
     "claim_intro": "Tu próximo descubrimiento, a precio exclusivo. Introduce correo y teléfono y verifica tu correo.",
     "claim_rule": "Introduce correo y teléfono. Verifica tu correo para obtener una oferta personal. Sin contraseña.",
     "claim_buy_rule": "Obtén la oferta durante la promoción. Usa tu correo verificado al pagar. Cada código sirve para un pedido y no se combina con otros descuentos."
+  },
+  "suntneew_seo": {
+    "journal": "Lee las guías SuntNeew sobre baterías para autocaravanas, arrancadores y energía de respaldo para el hogar, con consejos y recursos de soporte.",
+    "shipping": "Consulta los métodos de envío, plazos de preparación y entregas de SuntNeew. Encuentra información antes de comprar y contacta con soporte.",
+    "patent": "Explora información sobre patentes e innovación de SuntNeew, con documentación y recursos de soporte para nuestras soluciones de energía portátil.",
+    "qr_support": "Encuentra manuales, documentos y asistencia para tu modelo SuntNeew. Usa el código QR incluido con el producto para acceder a los recursos adecuados.",
+    "returns": "Consulta las condiciones de devolución, cancelación y reembolso de SuntNeew. Descubre cómo solicitar una devolución y contactar con soporte."
   }
 }

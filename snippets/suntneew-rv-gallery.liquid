@@ -89,14 +89,14 @@
               {%- assign gallery_media_class = gallery_media_class | append: ' suntneew-rv-gallery__media--fact-sheet' -%}
             {%- endif -%}
           {%- endif -%}
-          <div class="product-gallery__media snap-center{{ gallery_media_class }}" data-media-type="image" data-media-id="{{ gallery_instance_id }}-rv-{{ forloop.index }}">
-            <img
-              src="{{ asset_name | asset_url }}"
-              alt="{{ gallery_alts[forloop.index0] | escape }}"
-              width="{{ gallery_width }}"
-              height="{{ gallery_height }}"
-              {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
-            >
+          <div class="product-gallery__media snap-center{{ gallery_media_class }}" data-full-src="{% render 'suntneew-asset-url', asset_name: asset_name %}" data-media-type="image" data-media-id="{{ gallery_instance_id }}-rv-{{ forloop.index }}">
+            {%- assign gallery_loading = 'lazy' -%}
+            {%- assign gallery_priority = 'auto' -%}
+            {%- if forloop.first -%}
+              {%- assign gallery_loading = 'eager' -%}
+              {%- assign gallery_priority = 'high' -%}
+            {%- endif -%}
+            {%- render 'suntneew-asset-image', asset_name: asset_name, alt: gallery_alts[forloop.index0], width: gallery_width, height: gallery_height, loading: gallery_loading, fetchpriority: gallery_priority, sizes: '(max-width: 699px) calc(100vw - 32px), (max-width: 999px) 60vw, 50vw' -%}
           </div>
         {%- endfor -%}
       </media-carousel>
@@ -138,7 +138,7 @@
           data-media-id="{{ gallery_instance_id }}-rv-{{ forloop.index }}"
           data-media-type="image"
         >
-          <img src="{{ asset_name | asset_url }}" alt="" width="128" height="128" loading="lazy" class="object-contain rounded-sm">
+          {%- render 'suntneew-asset-image', asset_name: asset_name, alt: '', thumbnail: true, width: 128, height: 128, class: 'object-contain rounded-sm' -%}
         </button>
       {%- endfor -%}
     </page-dots>

@@ -37,9 +37,9 @@
             {%- endif -%}
             <picture style="display: block">
               {%- if block.settings.mobile_image_asset != blank -%}
-                <source media="(max-width: 599px)" srcset="{{ block.settings.mobile_image_asset | asset_url }}">
+                <source media="(max-width: 599px)" srcset="{% render 'suntneew-asset-url', asset_name: block.settings.mobile_image_asset %}">
               {%- endif -%}
-              <img src="{{ desktop_asset | asset_url }}" alt="{{ block.settings.image_alt | escape }}" width="{{ bundled_asset_width }}" height="{{ bundled_asset_height }}" loading="lazy">
+              {%- render 'suntneew-asset-image', asset_name: desktop_asset, alt: block.settings.image_alt, width: bundled_asset_width, height: bundled_asset_height, sizes: '(max-width: 599px) calc(100vw - 28px), (max-width: 999px) 90vw, 1240px' -%}
             </picture>
           {%- endif -%}
 

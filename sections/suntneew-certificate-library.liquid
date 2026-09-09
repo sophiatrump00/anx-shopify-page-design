@@ -112,7 +112,7 @@
                 </ul>
               </details>
             {%- elsif group.settings.support_url != blank -%}
-              <a class="sn-cert-library__support-link" href="{{ group.settings.support_url }}">{{ group.settings.support_label | default: section.settings.support_label }} <span aria-hidden="true">→</span></a>
+              <a class="sn-cert-library__support-link" href="{% render 'suntneew-local-url', url: group.settings.support_url %}">{{ group.settings.support_label | default: section.settings.support_label }} <span aria-hidden="true">→</span></a>
             {%- endif -%}
           </div>
         </article>
