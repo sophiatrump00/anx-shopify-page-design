@@ -14,6 +14,9 @@
     "header": {
       "type": "header",
       "settings": {
+        "member_drops_entry": true,
+        "member_drops_page": "member-drops",
+        "member_drops_label": "Member Drops",
         "enable_sticky": true,
         "hide_on_scroll": true,
         "logo": "{{shop.brand.logo}}",
