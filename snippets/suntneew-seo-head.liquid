@@ -2,7 +2,7 @@
   assign seo_title = page_title | strip_html | strip
   assign seo_description = page_description | strip_html | strip_newlines | strip
   assign seo_robots = blank
-  assign seo_description_key = blank
+  assign seo_description_key = ''
   assign seo_path = request.path | downcase
   assign seo_title_suffix = ' | SuntNeew Portable Power'
   assign seo_default_title = 'SuntNeew | Dependable Portable Power'
@@ -94,10 +94,24 @@
   endif
 
   comment
-    Native SEO fields (including their translations) take precedence. Character
-    counts are not language-independent: short Japanese copy is not an error.
+    page_description can be an automatic body excerpt. Only an explicitly set
+    SEO metafield should override the curated localized descriptions below.
   endcomment
-  if page_description != blank
+  assign explicit_description = ''
+  case request.page_type
+    when 'page'
+      assign explicit_description = page.metafields.global.description_tag
+    when 'product'
+      assign explicit_description = product.metafields.global.description_tag
+    when 'collection'
+      assign explicit_description = collection.metafields.global.description_tag
+    when 'blog'
+      assign explicit_description = blog.metafields.global.description_tag
+    when 'article'
+      assign explicit_description = article.metafields.global.description_tag
+  endcase
+
+  if explicit_description != blank and page_description != blank
     assign seo_description = page_description | strip_html | strip_newlines | strip
   elsif seo_description_key != blank
     assign seo_translation_key = 'suntneew_seo.' | append: seo_description_key
@@ -105,6 +119,17 @@
   endif
 
   assign seo_description = seo_description | strip
+  assign seo_description_size = seo_description | size
+  if explicit_description == blank and seo_description_size > 180
+    assign description_sentences = seo_description | split: '. '
+    assign first_sentence = description_sentences | first
+    assign first_sentence_size = first_sentence | size
+    if first_sentence_size >= 100 and first_sentence_size <= 179
+      assign seo_description = first_sentence | append: '.'
+    else
+      assign seo_description = seo_description | truncatewords: 24
+    endif
+  endif
   if seo_description == blank
     assign seo_description = seo_default_description
   endif

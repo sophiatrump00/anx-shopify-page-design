@@ -61,11 +61,16 @@ test('local links preserve languages, queries and external destinations without 
 
 test('SEO descriptions render in eight languages and preserve native Japanese SEO', async () => {
   for (const test_locale of locales) {
-    const html = await engine.renderFile('suntneew-seo-head', { test_locale, page_title: 'Shipping Policy', current_page: 1, request: { page_type: 'page', path: '/pages/shipping-policy' }, page: { handle: 'shipping-policy' } });
+    const html = await engine.renderFile('suntneew-seo-head', { test_locale, page_title: 'Shipping Policy', page_description: 'Automatic body excerpt '.repeat(20), current_page: 1, request: { page_type: 'page', path: '/pages/shipping-policy' }, page: { handle: 'shipping-policy' } });
     assert.ok(html.includes(descriptions[test_locale].shipping), test_locale);
     assert.equal((html.match(/name="description"/g) || []).length, 1);
   }
   const native = '製品の仕様と対応機器をご確認ください。';
-  const html = await engine.renderFile('suntneew-seo-head', { page_title: 'Battery', page_description: native, current_page: 1, request: { page_type: 'product', path: '/ja/products/battery' } });
+  const html = await engine.renderFile('suntneew-seo-head', { page_title: 'Battery', page_description: native, product: { metafields: { global: { description_tag: native } } }, current_page: 1, request: { page_type: 'product', path: '/ja/products/battery' } });
   assert.ok(html.includes(native));
+  const excerpt = 'Compact power for RVs. ' + 'Product support and detailed specifications for planning your battery installation. '.repeat(5);
+  const generated = await engine.renderFile('suntneew-seo-head', { page_title: 'Battery', page_description: excerpt, current_page: 1, request: { page_type: 'product', path: '/products/battery' } });
+  const description = generated.match(/name="description" content="([^"]*)"/)[1];
+  assert.ok(description.length > 100, 'Do not turn long body excerpts into a tiny first-sentence description');
+  assert.ok(description.length < excerpt.length);
 });
