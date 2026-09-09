@@ -41,7 +41,7 @@
         {%- unless is_mega_menu -%}
           {%- for main_menu_link in main_menu.links -%}
             {%- assign main_menu_link_title = main_menu_link.title | strip | downcase -%}
-            {%- if main_menu_link_title == 'support' -%}
+            {%- if main_menu_link_title == 'support' or main_menu_link.url == pages['support'].url -%}
               {%- assign suntneew_mobile_has_support = true -%}
               {%- break -%}
             {%- endif -%}
@@ -59,16 +59,22 @@
               assign is_product_series_mobile_menu = false
               assign is_direct_primary_mobile_link = false
 
-              if mobile_link_title_downcase == 'all products'
+              if mobile_link_title_downcase == 'all products' or link.url == routes.all_products_collection_url
+                assign is_all_products_mobile_menu = true
+              elsif link.url == routes.collections_url and link.levels == 0
+                assign is_all_products_mobile_menu = true
+              endif
+
+              if is_all_products_mobile_menu
                 assign mobile_rendered_link_url = routes.all_products_collection_url
                 assign is_all_products_mobile_menu = true
-              elsif mobile_link_title_downcase == 'product series'
+              elsif mobile_link_title_downcase == 'product series' or link.url == routes.collections_url
                 assign is_product_series_mobile_menu = true
               elsif mobile_link_title_downcase == 'help me choose' or link.url contains '/pages/power-calculator'
                 assign mobile_rendered_link_url = pages['power-calculator'].url | default: '/pages/power-calculator'
                 assign is_direct_primary_mobile_link = true
               elsif mobile_link_title_downcase == 'journal' or link.url contains '/blogs/news'
-                assign mobile_rendered_link_url = '/blogs/news'
+                assign mobile_rendered_link_url = blogs['news'].url
                 assign is_direct_primary_mobile_link = true
               endif
 
@@ -77,7 +83,7 @@
               endif
 
               if is_mega_menu == false
-                if mobile_link_title_downcase == 'support'
+                if mobile_link_title_downcase == 'support' or link.url == pages['support'].url
                   assign is_support_mobile_menu = true
                 endif
               endif

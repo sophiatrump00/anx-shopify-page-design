@@ -3,13 +3,13 @@
     <header class="sn-heading"><div><p class="sn-heading__eyebrow">{{ section.settings.eyebrow }}</p><h2>{{ section.settings.heading }}</h2></div><p class="sn-heading__text">{{ section.settings.body }}</p></header>
     <div class="sn-compare-wrap">
       <div class="sn-compare" style="--sn-columns: {{ section.blocks.size }}">
-        <div class="sn-compare__cell sn-compare__label">Model</div>
-        {%- for block in section.blocks -%}<div class="sn-compare__cell sn-compare__head">{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 360 | image_tag: loading: 'lazy', alt: block.settings.title }}{% else %}<img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.title | escape }}" width="2048" height="2048" loading="lazy">{% endif %}<strong>{{ block.settings.title }}</strong><a class="sn-link" href="{{ block.settings.link | default: '#' }}">View</a></div>{%- endfor -%}
-        <div class="sn-compare__cell sn-compare__label">Best for</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.best_for }}</div>{%- endfor -%}
-        <div class="sn-compare__cell sn-compare__label">Energy</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.energy }}</div>{%- endfor -%}
-        <div class="sn-compare__cell sn-compare__label">Continuous output</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.output }}</div>{%- endfor -%}
-        <div class="sn-compare__cell sn-compare__label">Dimensions</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.dimensions }}</div>{%- endfor -%}
-        <div class="sn-compare__cell sn-compare__label">Weight</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.weight }}</div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">{{ 'suntneew_auto.s5e2c614c23f0' | t }}</div>
+        {%- for block in section.blocks -%}<div class="sn-compare__cell sn-compare__head">{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 360 | image_tag: loading: 'lazy', alt: block.settings.title }}{% else %}<img src="{{ block.settings.fallback_asset | asset_url }}" alt="{{ block.settings.title | escape }}" width="2048" height="2048" loading="lazy">{% endif %}<strong>{{ block.settings.title }}</strong><a class="sn-link" href="{{ block.settings.link | default: '#' }}">{{ 'suntneew_auto.sdcc839a4015c' | t }}</a></div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">{{ 'suntneew_auto.s15582071ab2c' | t }}</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.best_for }}</div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">{{ 'suntneew_auto.sf2fcd3f7dcca' | t }}</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.energy }}</div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">{{ 'suntneew_auto.sbd604bb76476' | t }}</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.output }}</div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">{{ 'suntneew_auto.s914182d5e25f' | t }}</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.dimensions }}</div>{%- endfor -%}
+        <div class="sn-compare__cell sn-compare__label">{{ 'suntneew_auto.s81d27ef6d503' | t }}</div>{%- for block in section.blocks -%}<div class="sn-compare__cell">{{ block.settings.weight }}</div>{%- endfor -%}
       </div>
     </div>
   </div>

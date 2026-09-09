@@ -130,11 +130,11 @@
           <x-listbox class="popover-listbox popover-listbox--sm" role="listbox">
             {%- for language in localization.available_languages -%}
               {%- assign language_prefix = language.iso_code | downcase | slice: 0, 2 -%}
-              {%- unless language_prefix == 'zh' -%}
+              {%- unless language_prefix == 'zh' or language_prefix == 'ko' -%}
                 <button
                   type="submit"
                   class="popover-listbox__option"
-                  name="locale_code"
+                  name="language_code"
                   role="option"
                   value="{{ language.iso_code }}"
                   {% if language.iso_code == localization.language.iso_code %}

@@ -58,19 +58,26 @@
           }
         }
       },
-      "block_order": ["products", "explore", "support", "company", "brand"],
+      "block_order": [
+        "products",
+        "explore",
+        "support",
+        "company",
+        "brand"
+      ],
       "settings": {
         "show_social_media": false,
         "show_payment_icons": true,
-        "show_extended_payment_icons": true,
+        "show_powered_by_shopify": false,
+        "show_policy_links": false,
         "show_country_selector": false,
         "show_country_flag": true,
         "show_country_name": true,
-        "show_locale_selector": false,
-        "show_policy_links": false,
-        "show_powered_by_shopify": false
+        "show_locale_selector": false
       }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }

@@ -1,7 +1,7 @@
 <div class="suntneew-purchase-panel" aria-label="Payment and purchase support">
   {%- if shop.enabled_payment_types.size > 0 -%}
     <div class="suntneew-purchase-panel__payments">
-      <p>Pay securely with</p>
+      <p>{{ 'suntneew_auto.s19ad36cd8256' | t }}</p>
 
       <ul role="list" aria-label="Accepted payment methods">
         {%- for payment_type in shop.enabled_payment_types -%}
@@ -20,12 +20,12 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 20 6v5c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg>
         </span>
         <span>
-          <strong>Model-Matched Warranty</strong>
-          <small>Coverage and documents follow the exact product model.</small>
+          <strong>{{ 'suntneew_auto.s6acb38f4b26e' | t }}</strong>
+          <small>{{ 'suntneew_auto.s494b99afbc10' | t }}</small>
         </span>
         <span class="suntneew-purchase-panel__chevron" aria-hidden="true"></span>
       </summary>
-      <p>Check the model page and documentation before relying on a warranty term. <a href="/pages/contact-us">Ask support</a> if you need confirmation.</p>
+      <p>{{ 'suntneew_auto.sf4681dc9b69f' | t }} <a href="{{ pages['contact-us'].url }}">{{ 'suntneew_auto.scc9765615167' | t }}</a> {{ 'suntneew_auto.s8ccd2f7ff579' | t }}</p>
     </details>
 
     <details>
@@ -34,12 +34,12 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16v12H4z"/><path d="m4 10 8 4 8-4M8 5h8"/></svg>
         </span>
         <span>
-          <strong>14-Day Returns</strong>
-          <small>Request an eligible return within 14 days after delivery.</small>
+          <strong>{{ 'suntneew_auto.seb5d6dcaea71' | t }}</strong>
+          <small>{{ 'suntneew_auto.s9b35ac5e37ec' | t }}</small>
         </span>
         <span class="suntneew-purchase-panel__chevron" aria-hidden="true"></span>
       </summary>
-      <p>Returns require prior approval and the correct warehouse instructions. <a href="/pages/return-policy">Read the return policy</a>.</p>
+      <p>{{ 'suntneew_auto.see8fd77a1038' | t }} <a href="{{ pages['return-policy'].url }}">{{ 'suntneew_auto.se2efa887c446' | t }}</a>.</p>
     </details>
 
     <details>
@@ -48,12 +48,12 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
         </span>
         <span>
-          <strong>U.S. Warehouse Delivery</strong>
-          <small>Eligible stocked products ship domestically for faster delivery.</small>
+          <strong>{{ 'suntneew_auto.s428a3ab7e1ba' | t }}</strong>
+          <small>{{ 'suntneew_auto.s1a68eeaa99cd' | t }}</small>
         </span>
         <span class="suntneew-purchase-panel__chevron" aria-hidden="true"></span>
       </summary>
-      <p>Delivery timing depends on stock, destination, carrier and product restrictions. <a href="/pages/shipping-policy">Review shipping details</a>.</p>
+      <p>{{ 'suntneew_auto.s1f526316f256' | t }} <a href="{{ pages['shipping-policy'].url }}">{{ 'suntneew_auto.s19395f8897f6' | t }}</a>.</p>
     </details>
 
     <details>
@@ -62,12 +62,12 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h18M12 3v18"/><path d="m6 6 12 12M18 6 6 18"/></svg>
         </span>
         <span>
-          <strong>Free U.S. Shipping</strong>
-          <small>Free standard shipping on eligible contiguous-U.S. orders.</small>
+          <strong>{{ 'suntneew_auto.sdded2d61be13' | t }}</strong>
+          <small>{{ 'suntneew_auto.s3c2377995930' | t }}</small>
         </span>
         <span class="suntneew-purchase-panel__chevron" aria-hidden="true"></span>
       </summary>
-      <p>Some destinations, oversized items or special delivery services can have different terms. <a href="/pages/shipping-policy">See eligibility</a>.</p>
+      <p>{{ 'suntneew_auto.sc5d249b0a8b1' | t }} <a href="{{ pages['shipping-policy'].url }}">{{ 'suntneew_auto.s39faf044dc50' | t }}</a>.</p>
     </details>
 
     <details>
@@ -76,12 +76,12 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v12H8l-4 4z"/><path d="M8 9h8M8 13h5"/></svg>
         </span>
         <span>
-          <strong>Product Support</strong>
-          <small>Ask fit, setup or product questions before or after purchase.</small>
+          <strong>{{ 'suntneew_auto.scf9af6a8ac35' | t }}</strong>
+          <small>{{ 'suntneew_auto.s31712dc58c31' | t }}</small>
         </span>
         <span class="suntneew-purchase-panel__chevron" aria-hidden="true"></span>
       </summary>
-      <p>Send the model name and your use case so the support team can give a more precise answer. <a href="/pages/contact-us">Contact support</a>.</p>
+      <p>{{ 'suntneew_auto.sc9f555dc1e75' | t }} <a href="{{ pages['contact-us'].url }}">{{ 'suntneew_auto.s814f4ed2d5bd' | t }}</a>.</p>
     </details>
   </div>
 </div>

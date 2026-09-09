@@ -34,8 +34,8 @@
             <li class="sn-tech-center__resource">
               <span class="sn-tech-center__resource-index">01</span>
               <div>
-                <strong>Use the exact model guide</strong>
-                <p>Confirm the model label, vehicle voltage, clamp polarity and the starting procedure before use.</p>
+                <strong>{{ 'suntneew_auto.s6bed85c4f6ec' | t }}</strong>
+                <p>{{ 'suntneew_auto.sbd54f2c07098' | t }}</p>
               </div>
             </li>
             {%- if block.settings.manual_asset != blank -%}
@@ -44,7 +44,7 @@
                 <div>
                   <a href="{{ block.settings.manual_asset | asset_url }}" target="_blank" rel="noopener">
                     <strong>{{ block.settings.manual_label }}</strong>
-                    <p>Open the source manual for the model-specific operating and safety instructions.</p>
+                    <p>{{ 'suntneew_auto.s6de62ea9eeaf' | t }}</p>
                   </a>
                 </div>
               </li>
@@ -54,7 +54,7 @@
           {%- if model_product != blank and model_product.available -%}
             <a href="{{ model_product.url }}" class="sn-tech-center__link">{{ block.settings.product_link_label }}</a>
           {%- else -%}
-            <span class="sn-tech-center__link" aria-disabled="true">Model page held for final checks</span>
+            <span class="sn-tech-center__link" aria-disabled="true">{{ 'suntneew_auto.s3166689ce509' | t }}</span>
           {%- endif -%}
         </article>
       {%- endfor -%}

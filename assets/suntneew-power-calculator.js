@@ -1,6 +1,11 @@
 (function () {
   'use strict';
 
+  function snTranslate(text) {
+    var messages = typeof window !== 'undefined' && window.SuntNeewPlannerTranslations;
+    return messages && Object.prototype.hasOwnProperty.call(messages, text) ? messages[text] : text;
+  }
+
   function boot() {
     var root = document.querySelector('[data-suntneew-calculator]');
     var core = window.SuntNeewPowerCalculatorCore;
@@ -192,12 +197,12 @@
 
     function formatEnergyBand(value) {
       var labels = {
-        under_1_kwh: 'Under 1kWh',
-        '1_to_3_kwh': '1 to 3kWh',
-        '3_to_6_kwh': '3 to 6kWh',
-        '6_to_10_kwh': '6 to 10kWh',
-        over_10_kwh: 'Over 10kWh',
-        not_applicable: 'Not applicable'
+        under_1_kwh: snTranslate('Under 1kWh'),
+        '1_to_3_kwh': snTranslate('1 to 3kWh'),
+        '3_to_6_kwh': snTranslate('3 to 6kWh'),
+        '6_to_10_kwh': snTranslate('6 to 10kWh'),
+        over_10_kwh: snTranslate('Over 10kWh'),
+        not_applicable: snTranslate('Not applicable')
       };
       return labels[value] || 'Review';
     }
@@ -294,7 +299,7 @@
     function loadName(row) {
       var customName = row.querySelector('[data-load-name]');
       var title = row.querySelector('[data-load-title]');
-      return customName && customName.value.trim() ? customName.value.trim() : title ? title.textContent.trim() : 'Custom load';
+      return customName && customName.value.trim() ? customName.value.trim() : title ? title.textContent.trim() : snTranslate('Custom load');
     }
 
     function updateLoadPreview(row) {
@@ -302,7 +307,7 @@
       var watts = row.querySelector('[data-load-watts]');
       var hours = row.querySelector('[data-load-hours]');
       var title = row.querySelector('[data-load-title]');
-      if (preview && watts && hours) preview.textContent = formatDecimal(watts.value, 1) + 'W / ' + formatDecimal(hours.value, 1) + 'h per day';
+      if (preview && watts && hours) preview.textContent = formatDecimal(watts.value, 1) + 'W / ' + formatDecimal(hours.value, 1) + snTranslate('h per day');
       if (title && row.classList.contains('is-custom')) title.textContent = loadName(row);
     }
 
@@ -402,7 +407,7 @@
 
     function setLimitNote(form, message, clamped) {
       Array.prototype.forEach.call(form.querySelectorAll('[data-limit-note]'), function (note) {
-        note.textContent = (clamped ? 'A value was adjusted to stay inside the current verified product range. ' : '') + message;
+        note.textContent = (clamped ? snTranslate('A value was adjusted to stay inside the current verified product range. ') : '') + message;
         note.classList.toggle('is-adjusted', clamped);
       });
     }
@@ -435,7 +440,7 @@
         input = collectScenarioInput(form, 'rv');
       }
       limits = core.getRvInputLimits(input);
-      clamped = setRangeControlBounds(form.querySelector('[data-rv-backup-days]').closest('[data-range-control]'), limits.minBackupDays, limits.maxBackupDays, ' days', true) || clamped;
+      clamped = setRangeControlBounds(form.querySelector('[data-rv-backup-days]').closest('[data-range-control]'), limits.minBackupDays, limits.maxBackupDays, snTranslate(' days'), true) || clamped;
       input = collectScenarioInput(form, 'rv');
       limits = core.getRvInputLimits(input);
 
@@ -443,9 +448,9 @@
       if (measured) measured.hidden = input.spaceMode !== 'measured';
       var spaceNote = form.querySelector('[data-space-note]');
       if (spaceNote) {
-        spaceNote.textContent = limits.spaceMatchCount + ' current battery enclosure' + (limits.spaceMatchCount === 1 ? '' : 's') + ' fit these usable dimensions. Bank layout and service clearance are checked separately.';
+        spaceNote.textContent = limits.spaceMatchCount + snTranslate(' current battery enclosure') + (limits.spaceMatchCount === 1 ? '' : 's') + snTranslate(' fit these usable dimensions. Bank layout and service clearance are checked separately.');
       }
-      setLimitNote(form, 'Current range: up to ' + limits.maximumBatteryCount + ' batteries (' + limits.seriesCount + 'S' + limits.maximumParallelStrings + 'P), ' + formatWh(limits.maxStoredEnergyWh) + ' stored energy and ' + formatW(limits.maxPeakW) + ' peak.', clamped);
+      setLimitNote(form, snTranslate('Current range: up to ') + limits.maximumBatteryCount + snTranslate(' batteries (') + limits.seriesCount + 'S' + limits.maximumParallelStrings + 'P), ' + formatWh(limits.maxStoredEnergyWh) + snTranslate(' stored energy and ') + formatW(limits.maxPeakW) + snTranslate(' peak.'), clamped);
       updateLiveSummary(form, limits);
       return limits;
     }
@@ -459,7 +464,7 @@
       clamped = setRangeControlBounds(form.querySelector('[data-jump-engine]').closest('[data-range-control]'), limits.minEngineLiters, limits.maxEngineLiters, 'L', false) || clamped;
       input = collectScenarioInput(form, 'jump');
       limits = core.getJumpInputLimits(input);
-      setLimitNote(form, 'Verified ' + input.voltage.toUpperCase() + ' range for these conditions: up to ' + formatDecimal(limits.maxEngineLiters, 1) + 'L ' + input.fuel + '.', clamped);
+      setLimitNote(form, snTranslate('Verified ') + input.voltage.toUpperCase() + snTranslate(' range for these conditions: up to ') + formatDecimal(limits.maxEngineLiters, 1) + 'L ' + input.fuel + '.', clamped);
       updateLiveSummary(form, limits);
       return limits;
     }
@@ -482,7 +487,7 @@
       input = collectScenarioInput(form, 'home');
       limits = core.getHomeInputLimits(input);
       var architectureLabel = limits.architecture === 'low' ? 'low-voltage' : limits.architecture === 'high' ? 'high-voltage' : 'all-architecture';
-      setLimitNote(form, 'Current ' + architectureLabel + ' range: up to ' + formatWh(limits.maxStoredEnergyWh) + ' stored energy and ' + formatW(limits.maxPeakW) + ' peak.', clamped);
+      setLimitNote(form, snTranslate('Current ') + architectureLabel + snTranslate(' range: up to ') + formatWh(limits.maxStoredEnergyWh) + snTranslate(' stored energy and ') + formatW(limits.maxPeakW) + snTranslate(' peak.'), clamped);
       updateLiveSummary(form, limits);
       return limits;
     }
@@ -535,12 +540,12 @@
       var progressBar = summary.querySelector('[data-summary-progress]');
       if (progressBar) progressBar.style.width = progress + '%';
       var capacity = summary.querySelector('[data-summary-capacity]');
-      if (capacity) capacity.textContent = formatWh(metrics.dailyWh) + ' of ' + formatWh(budget) + ' current daily range';
+      if (capacity) capacity.textContent = formatWh(metrics.dailyWh) + ' of ' + formatWh(budget) + snTranslate(' current daily range');
       var peak = summary.querySelector('[data-summary-peak]');
       if (peak) peak.textContent = formatW(metrics.peakW);
       var count = summary.querySelector('[data-summary-count]');
       if (count) count.textContent = String(metrics.activeCount);
-      setSummaryList(summary, simultaneousNames, 'No simultaneous loads selected');
+      setSummaryList(summary, simultaneousNames, snTranslate('No simultaneous loads selected'));
       mobile.querySelector('[data-mobile-primary]').textContent = dailyKwh.toFixed(2) + 'kWh';
       mobile.querySelector('[data-mobile-secondary]').textContent = formatW(metrics.peakW);
       setSummarySubmitState(form, selectedNames.length === 0);
@@ -551,14 +556,14 @@
       var mobile = form.querySelector('[data-mobile-summary]');
       if (!summary || !mobile) return;
       var input = collectScenarioInput(form, 'jump');
-      var environmentLabels = { standard: 'Standard conditions', cold: 'Cold-weather reserve', demanding: 'Demanding-use reserve' };
-      var priorityLabels = { compact: 'Compact size priority', display: 'Clear display priority', charging: 'Charging utility priority', reserve: 'Reserve capacity priority' };
+      var environmentLabels = { standard: snTranslate('Standard conditions'), cold: snTranslate('Cold-weather reserve'), demanding: snTranslate('Demanding-use reserve') };
+      var priorityLabels = { compact: snTranslate('Compact size priority'), display: snTranslate('Clear display priority'), charging: snTranslate('Charging utility priority'), reserve: snTranslate('Reserve capacity priority') };
       var fuel = input.fuel === 'diesel' ? 'Diesel' : 'Gasoline';
       var primary = summary.querySelector('[data-summary-primary]');
       if (primary) primary.innerHTML = formatDecimal(input.engineLiters, 1) + '<small>L</small>';
       summary.querySelector('[data-summary-peak]').textContent = fuel;
       summary.querySelector('[data-summary-count]').textContent = input.voltage.toUpperCase();
-      setSummaryList(summary, [environmentLabels[input.environment], priorityLabels[input.priority]], 'Standard conditions');
+      setSummaryList(summary, [environmentLabels[input.environment], priorityLabels[input.priority]], snTranslate('Standard conditions'));
       mobile.querySelector('[data-mobile-primary]').textContent = formatDecimal(input.engineLiters, 1) + 'L';
       mobile.querySelector('[data-mobile-secondary]').textContent = fuel;
       setSummarySubmitState(form, false);
@@ -716,17 +721,17 @@
       var metrics;
       if (result.scenario === 'jump') {
         metrics = [
-          { value: result.fuel === 'diesel' ? 'Diesel' : 'Gasoline', label: 'Fuel reference' },
-          { value: Number.isFinite(Number(result.engineLiters)) ? result.engineLiters + 'L' : 'Review', label: 'Engine input' },
-          { value: Number.isFinite(Number(result.coverageLiters)) ? result.coverageLiters + 'L' : '12V only', label: 'Verified coverage' },
-          { value: !result.environment || result.environment === 'standard' ? 'Standard' : 'Reserve', label: 'Condition factor' }
+          { value: result.fuel === 'diesel' ? 'Diesel' : 'Gasoline', label: snTranslate('Fuel reference') },
+          { value: Number.isFinite(Number(result.engineLiters)) ? result.engineLiters + 'L' : 'Review', label: snTranslate('Engine input') },
+          { value: Number.isFinite(Number(result.coverageLiters)) ? result.coverageLiters + 'L' : snTranslate('12V only'), label: snTranslate('Verified coverage') },
+          { value: !result.environment || result.environment === 'standard' ? 'Standard' : 'Reserve', label: snTranslate('Condition factor') }
         ];
       } else {
         metrics = [
-          { value: formatWh(result.dailyWh), label: result.scenario === 'home' ? 'Daily essential energy' : 'Daily RV energy' },
-          { value: formatW(result.peakW), label: 'Simultaneous peak' },
-          { value: formatWh(result.requiredWh), label: 'Planned stored energy' },
-          { value: formatEnergyBand(result.energyBand), label: 'Energy band' }
+          { value: formatWh(result.dailyWh), label: result.scenario === 'home' ? snTranslate('Daily essential energy') : snTranslate('Daily RV energy') },
+          { value: formatW(result.peakW), label: snTranslate('Simultaneous peak') },
+          { value: formatWh(result.requiredWh), label: snTranslate('Planned stored energy') },
+          { value: formatEnergyBand(result.energyBand), label: snTranslate('Energy band') }
         ];
       }
       resultMetrics.innerHTML = metrics.map(function (metric) {
@@ -750,29 +755,29 @@
       resultProduct.hidden = false;
       resultProductImage.src = record.image;
       resultProductImage.alt = record.model;
-      resultProductLabel.textContent = result.status === 'support' ? 'CLOSEST VERIFIED REFERENCE' : 'RECOMMENDED STARTING POINT';
+      resultProductLabel.textContent = result.status === 'support' ? snTranslate('CLOSEST VERIFIED REFERENCE') : snTranslate('RECOMMENDED STARTING POINT');
       resultProductTitle.textContent = result.model || record.model;
       resultProductCopy.textContent = record.description;
       resultProductNote.textContent = result.productCaveat || '';
       resultProductNote.hidden = !result.productCaveat;
       resultProductLink.href = record.url;
       resultProductLink.dataset.productId = state.productId;
-      resultProductLink.textContent = result.status === 'support' ? 'View reference product' : 'Open product details';
+      resultProductLink.textContent = result.status === 'support' ? snTranslate('View reference product') : snTranslate('Open product details');
 
       var specs = [];
       if (result.scenario === 'rv') {
         specs = [
-          result.quantity > 1 ? result.quantity + ' units' : '1 unit',
+          result.quantity > 1 ? result.quantity + snTranslate(' units') : snTranslate('1 unit'),
           result.seriesCount + 'S' + result.parallelCount + 'P / ' + formatDecimal(result.nominalSystemVoltage, 1) + 'V',
-          formatWh(result.combinedWh) + ' combined'
+          formatWh(result.combinedWh) + snTranslate(' combined')
         ];
-        if (result.unitDimensions) specs.push(result.unitDimensions.longSideMm + ' x ' + result.unitDimensions.shortSideMm + ' x ' + result.unitDimensions.heightMm + 'mm each');
+        if (result.unitDimensions) specs.push(result.unitDimensions.longSideMm + ' x ' + result.unitDimensions.shortSideMm + ' x ' + result.unitDimensions.heightMm + snTranslate('mm each'));
       } else if (result.scenario === 'jump') {
-        specs = [result.variant || 'Model variant', result.coverageLiters + 'L ' + result.fuel, '12V vehicle use'];
+        specs = [result.variant || snTranslate('Model variant'), result.coverageLiters + 'L ' + result.fuel, snTranslate('12V vehicle use')];
       } else if (result.quantity > 1) {
-        specs = [result.quantity + ' units', formatWh(result.nominalWh) + ' each', formatWh(result.combinedWh) + ' nominal'];
+        specs = [result.quantity + snTranslate(' units'), formatWh(result.nominalWh) + snTranslate(' each'), formatWh(result.combinedWh) + snTranslate(' nominal')];
       } else {
-        specs = [formatWh(result.nominalWh), result.architecture === 'high_voltage' ? 'High voltage' : 'Low voltage', 'System starting point'];
+        specs = [formatWh(result.nominalWh), result.architecture === 'high_voltage' ? snTranslate('High voltage') : snTranslate('Low voltage'), snTranslate('System starting point')];
       }
       resultProductSpecs.innerHTML = specs.map(function (spec) { return '<span>' + escapeHtml(spec) + '</span>'; }).join('');
 
@@ -780,7 +785,7 @@
       if (alternateRecord) {
         resultSecondaryLink.hidden = false;
         resultSecondaryLink.href = alternateRecord.url;
-        resultSecondaryLink.textContent = result.alternateModel ? 'Compare ' + result.alternateModel : 'Compare another option';
+        resultSecondaryLink.textContent = result.alternateModel ? snTranslate('Compare ') + result.alternateModel : snTranslate('Compare another option');
         resultSecondaryLink.dataset.productId = result.alternateId || alternateRecord.id;
       } else {
         resultSecondaryLink.hidden = true;
@@ -808,19 +813,19 @@
       resultSecondaryLink.hidden = true;
 
       if (result.status === 'match') {
-        resultKicker.textContent = result.resultType === 'multi_battery_starting_point' ? 'SYSTEM STARTING POINT' : 'PRODUCT STARTING POINT';
-        resultTitle.textContent = result.model || 'A SuntNeew starting point';
+        resultKicker.textContent = result.resultType === 'multi_battery_starting_point' ? snTranslate('SYSTEM STARTING POINT') : snTranslate('PRODUCT STARTING POINT');
+        resultTitle.textContent = result.model || snTranslate('A SuntNeew starting point');
         resultSummary.textContent = result.scenario === 'rv'
-          ? (result.needsSystemReview ? 'This multi-battery configuration is a planning starting point. Confirm the complete bank and electrical design before installation.' : 'This is the closest current RV battery match to the energy, peak-load and space values entered.')
+          ? (result.needsSystemReview ? snTranslate('This multi-battery configuration is a planning starting point. Confirm the complete bank and electrical design before installation.') : snTranslate('This is the closest current RV battery match to the energy, peak-load and space values entered.'))
           : result.scenario === 'jump'
-            ? 'This is the closest verified starting reference for the vehicle details entered. Confirm exact vehicle fit on the product page.'
-            : 'This capacity is a starting point for the selected architecture and essential loads.';
+            ? snTranslate('This is the closest verified starting reference for the vehicle details entered. Confirm exact vehicle fit on the product page.')
+            : snTranslate('This capacity is a starting point for the selected architecture and essential loads.');
         renderMetrics(result);
         renderProduct(result);
         track('recommendation_viewed', { scenario: result.scenario, resultType: result.resultType, energyBand: result.energyBand, peakBand: result.peakBand, productId: result.productId });
       } else {
-        resultKicker.textContent = hasProduct ? 'REVIEW + REFERENCE' : 'TECHNICAL REVIEW';
-        resultTitle.textContent = result.title || 'This needs a project-specific check.';
+        resultKicker.textContent = hasProduct ? snTranslate('REVIEW + REFERENCE') : snTranslate('TECHNICAL REVIEW');
+        resultTitle.textContent = result.title || snTranslate('This needs a project-specific check.');
         resultSummary.textContent = [result.reason, result.guidance].filter(Boolean).join(' ');
         renderMetrics(result);
         if (hasProduct) renderProduct(result);

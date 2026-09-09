@@ -1,7 +1,6 @@
 {%- comment -%}
   One language selector that uses a country flag as the visual trigger.
-  It changes locale_code only: market, currency and delivery country remain
-  deliberately separate Shopify controls.
+  Changes language only; the shop continues to use USD checkout.
 {%- endcomment -%}
 
 {%- capture localization_form_id -%}suntneew-language-form-{{ popover_vertical_position }}-{{ section.id }}{%- endcapture -%}
@@ -39,6 +38,7 @@
     type="button"
     class="suntneew-language-selector__trigger tap-area"
     aria-label="{{ 'general.localization.change_language_accessibility_text' | t | escape }}"
+    title="{{ localization.language.endonym_name | escape }}"
     aria-controls="{{ localization_popover_id }}"
     aria-expanded="false"
   >
@@ -55,11 +55,13 @@
   >
     <p class="h5" slot="title">{{ 'general.localization.language' | t }}</p>
 
-    {%- form 'localization', id: localization_form_id -%}
+    {%- form 'localization', id: localization_form_id, class: 'suntneew-localization-form' -%}
+      <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
       <x-listbox class="popover-listbox popover-listbox--sm suntneew-language-selector__list" role="listbox">
         {%- for language in localization.available_languages -%}
           {%- assign language_prefix = language.iso_code | downcase | slice: 0, 2 -%}
-          {%- unless language_prefix == 'zh' -%}
+          {%- assign supported_languages = 'en,de,es,fr,it,pt,ja,ar' | split: ',' -%}
+          {%- if supported_languages contains language_prefix -%}
             {%- capture language_flag_code -%}
               {%- case language.iso_code -%}
                 {%- when 'en', 'en-US', 'en-GB', 'en-CA', 'en-AU' -%}US
@@ -85,7 +87,8 @@
             <button
               type="submit"
               class="popover-listbox__option suntneew-language-selector__option"
-              name="locale_code"
+              name="language_code"
+              lang="{{ language.iso_code }}"
               role="option"
               value="{{ language.iso_code }}"
               {% if language.iso_code == localization.language.iso_code %}
@@ -95,9 +98,10 @@
               <span class="country-flags country-flags--{{ language_flag_code | strip }}" aria-hidden="true"></span>
               <span>{{- language.endonym_name | capitalize -}}</span>
             </button>
-          {%- endunless -%}
+          {%- endif -%}
         {%- endfor -%}
       </x-listbox>
     {%- endform -%}
+
   </x-popover>
 </div>

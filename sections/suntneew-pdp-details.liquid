@@ -151,7 +151,7 @@
             <details class="sn-pdp-spec-group"{% if forloop.first %} open{% endif %}>
               <summary>
                 <span>{{ group_heading }}</span>
-                <span class="sn-pdp-spec-group__count">View details</span>
+                <span class="sn-pdp-spec-group__count">{{ 'suntneew_auto.sd1bf045bb524' | t }}</span>
               </summary>
               <dl class="sn-pdp-specs">
                 {%- for block in section.blocks -%}
@@ -231,8 +231,8 @@
             <div class="sn-pdp-qr-mobile__actions" aria-label="{{ qr_support_model | escape }} support actions">
               {%- if manual_count > 1 -%}
                 <a class="sn-pdp-qr-mobile__action sn-pdp-qr-mobile__action--primary" href="#qr-product-documents">
-                  <span>Choose your product guide</span>
-                  <small>Match the guide to your capacity or model</small>
+                  <span>{{ 'suntneew_auto.s1e67508276ac' | t }}</span>
+                  <small>{{ 'suntneew_auto.s5cfe9ae02374' | t }}</small>
                   <span aria-hidden="true">↓</span>
                 </a>
                 {%- elsif qr_primary_document_url != blank -%}
@@ -252,17 +252,17 @@
             </div>
 
             <details class="sn-pdp-qr-mobile__details">
-              <summary><span>Before installation</span><span aria-hidden="true">＋</span></summary>
+              <summary><span>{{ 'suntneew_auto.sa30f9b261ef3' | t }}</span><span aria-hidden="true">＋</span></summary>
               <ul>
                 <li>{{ qr_support_install_intro }}</li>
-                <li>Use the product document as the source of truth for wiring, operating limits and the complete safety sequence.</li>
-                <li>Pause and contact support if the product label, equipment or installation differs from the documented configuration.</li>
+                <li>{{ 'suntneew_auto.s64d0c4b2a9c8' | t }}</li>
+                <li>{{ 'suntneew_auto.scb552285b905' | t }}</li>
               </ul>
             </details>
 
             {%- if manual_count > 1 -%}
               <details id="qr-product-documents" class="sn-pdp-qr-mobile__details sn-pdp-qr-mobile__details--documents">
-                <summary><span>Product guides</span><span aria-hidden="true">＋</span></summary>
+                <summary><span>{{ 'suntneew_auto.s19a53de5ce40' | t }}</span><span aria-hidden="true">＋</span></summary>
                 <div class="sn-pdp-qr-mobile__document-list">
                   {%- for block in download_blocks -%}
                     {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
@@ -280,7 +280,7 @@
 
             {%- if compliance_count > 0 -%}
               <details class="sn-pdp-qr-mobile__details sn-pdp-qr-mobile__details--documents">
-                <summary><span>Documents & compliance</span><span aria-hidden="true">＋</span></summary>
+                <summary><span>{{ 'suntneew_auto.s534a98b0129e' | t }}</span><span aria-hidden="true">＋</span></summary>
                 <div class="sn-pdp-qr-mobile__chips" aria-label="{{ qr_support_model | escape }} document topics">
                   {%- assign qr_standards_seen = '|' -%}
                   {%- for block in download_blocks -%}
@@ -295,11 +295,11 @@
                     {%- endif -%}
                   {%- endfor -%}
                 </div>
-                <p>Use only documents that match the product label. Public technical documents are available from the product page or technology center where shown.</p>
+                <p>{{ 'suntneew_auto.sc1741bf0ae43' | t }}</p>
               </details>
             {%- endif -%}
 
-            <a class="sn-pdp-qr-mobile__product-link" href="/pages/contact-us">Need help with {{ qr_support_model }}? <span>Contact support <span aria-hidden="true">→</span></span></a>
+            <a class="sn-pdp-qr-mobile__product-link" href="{{ pages['contact-us'].url }}">Need help with {{ qr_support_model }}? <span>{{ 'suntneew_auto.s814f4ed2d5bd' | t }} <span aria-hidden="true">→</span></span></a>
           </div>
         {%- endif -%}
 

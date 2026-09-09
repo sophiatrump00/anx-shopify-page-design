@@ -9,6 +9,11 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
 
+  function snTranslate(text) {
+    var messages = typeof window !== 'undefined' && window.SuntNeewPlannerTranslations;
+    return messages && Object.prototype.hasOwnProperty.call(messages, text) ? messages[text] : text;
+  }
+
   var PLANNING_FACTOR = 0.85;
   var MIN_LOAD_W = 1;
   var MAX_LOAD_W = 1000000;
@@ -262,8 +267,8 @@
       resultType: 'catalog_review',
       scenario: scenario,
       reason: reason,
-      title: 'Product data needs a technical review.',
-      guidance: 'The calculator could not find a complete verified catalog record for this scenario.'
+      title: snTranslate('Product data needs a technical review.'),
+      guidance: snTranslate('The calculator could not find a complete verified catalog record for this scenario.')
     };
   }
 
@@ -564,11 +569,11 @@
     var space = normalizeRvSpace(input || {});
     var products = rvProductsForFit(fit, seriesCount, space);
 
-    if (!products.length) return supportResult('rv', 'No verified RV product is configured for the selected footprint.');
-    if (!loadMetrics.activeCount) return invalidResult('rv', 'Select at least one appliance.');
-    if (!loadMetrics.valid) return invalidResult('rv', 'Use positive load values and run times from 0.1 to 24 hours.');
+    if (!products.length) return supportResult('rv', snTranslate('No verified RV product is configured for the selected footprint.'));
+    if (!loadMetrics.activeCount) return invalidResult('rv', snTranslate('Select at least one appliance.'));
+    if (!loadMetrics.valid) return invalidResult('rv', snTranslate('Use positive load values and run times from 0.1 to 24 hours.'));
     if (backupDays < MIN_RV_BACKUP_DAYS || backupDays > MAX_RV_BACKUP_DAYS) {
-      return invalidResult('rv', 'Choose a backup period within the available range.');
+      return invalidResult('rv', snTranslate('Choose a backup period within the available range.'));
     }
 
     var requiredWh = round((loadMetrics.dailyWh * backupDays) / PLANNING_FACTOR, 1);
@@ -581,7 +586,7 @@
     };
     var ranked = rankRvProducts(products, requiredWh, loadMetrics.peakW, seriesCount);
     if (!ranked.length) {
-      return invalidResult('rv', 'One or more values are above the verified range. Adjust the highlighted inputs.', Object.assign(metrics, {
+      return invalidResult('rv', snTranslate('One or more values are above the verified range. Adjust the highlighted inputs.'), Object.assign(metrics, {
         limits: getRvInputLimits(input)
       }));
     }
@@ -591,11 +596,11 @@
     var dimensions = productDimensions(match);
     var spaceCaveat = space && space.mode !== 'all'
       ? (match.quantity > 1
-        ? 'The selected space was checked for one battery enclosure only. The complete bank layout, restraint, terminals, cabling and service clearance are not verified.'
-        : 'The selected usable space was checked against one battery enclosure. Restraint, terminals, cabling and service clearance are not verified.')
+        ? snTranslate('The selected space was checked for one battery enclosure only. The complete bank layout, restraint, terminals, cabling and service clearance are not verified.')
+        : snTranslate('The selected usable space was checked against one battery enclosure. Restraint, terminals, cabling and service clearance are not verified.'))
       : null;
     var topologyCaveat = match.quantity > 1
-      ? 'Use only identical, supported batteries in balanced series/parallel strings. Confirm battery state of charge, busbars, conductors, protection, charging and inverter voltage before installation.'
+      ? snTranslate('Use only identical, supported batteries in balanced series/parallel strings. Confirm battery state of charge, busbars, conductors, protection, charging and inverter voltage before installation.')
       : null;
     return Object.assign(metrics, {
       status: 'match',
@@ -631,12 +636,12 @@
     var priority = input && input.priority ? input.priority : 'compact';
     var limits = getJumpInputLimits(input);
 
-    if (fuel !== 'gasoline' && fuel !== 'diesel') return invalidResult('jump', 'Choose gasoline or diesel.');
+    if (fuel !== 'gasoline' && fuel !== 'diesel') return invalidResult('jump', snTranslate('Choose gasoline or diesel.'));
     if (!limits.available) {
-      return invalidResult('jump', 'Choose a vehicle voltage with a verified SuntNeew product range.', { limits: limits });
+      return invalidResult('jump', snTranslate('Choose a vehicle voltage with a verified SuntNeew product range.'), { limits: limits });
     }
     if (engineLiters < MIN_JUMP_ENGINE_LITERS || engineLiters > limits.maxEngineLiters) {
-      return invalidResult('jump', 'Enter an engine size within the verified range shown above.', { limits: limits });
+      return invalidResult('jump', snTranslate('Enter an engine size within the verified range shown above.'), { limits: limits });
     }
 
     var factor = environmentFactor(environment);
@@ -652,7 +657,7 @@
       return a.score - b.score || a.coverageOverage - b.coverageOverage;
     });
 
-    if (!candidates.length) return supportResult('jump', 'The configured starting coverage table is incomplete.');
+    if (!candidates.length) return supportResult('jump', snTranslate('The configured starting coverage table is incomplete.'));
 
     var match = candidates[0];
     var alternate = candidates.find(function (candidate) { return candidate.id !== match.id; });
@@ -701,11 +706,11 @@
     if (architecture !== 'low' && architecture !== 'high') architecture = 'auto';
     var products = homeProductsForArchitecture(architecture);
 
-    if (!products.length) return supportResult('home', 'No verified home battery is configured for the selected architecture.');
-    if (!loadMetrics.activeCount) return invalidResult('home', 'Select at least one essential load.');
-    if (!loadMetrics.valid) return invalidResult('home', 'Use positive load values and run times from 0.1 to 24 hours.');
+    if (!products.length) return supportResult('home', snTranslate('No verified home battery is configured for the selected architecture.'));
+    if (!loadMetrics.activeCount) return invalidResult('home', snTranslate('Select at least one essential load.'));
+    if (!loadMetrics.valid) return invalidResult('home', snTranslate('Use positive load values and run times from 0.1 to 24 hours.'));
     if (backupHours < MIN_HOME_BACKUP_HOURS || backupHours > MAX_HOME_BACKUP_HOURS) {
-      return invalidResult('home', 'Choose a backup window within the available range.');
+      return invalidResult('home', snTranslate('Choose a backup window within the available range.'));
     }
 
     var requiredWh = round((loadMetrics.dailyWh * (backupHours / 24)) / PLANNING_FACTOR, 1);
@@ -718,7 +723,7 @@
     };
     var ranked = rankHomeProducts(products, requiredWh, loadMetrics.peakW);
     if (!ranked.length) {
-      return invalidResult('home', 'One or more values are above the verified range. Adjust the highlighted inputs.', Object.assign(metrics, {
+      return invalidResult('home', snTranslate('One or more values are above the verified range. Adjust the highlighted inputs.'), Object.assign(metrics, {
         limits: getHomeInputLimits(input)
       }));
     }
@@ -742,7 +747,7 @@
       alternateModel: alternate ? alternate.model : null,
       needsSystemReview: match.quantity > 1,
       productCaveat: match.quantity > 1
-        ? 'This quantity is a capacity starting point. Confirm the documented connection topology, inverter compatibility, current sharing, conductors, protection and communications before installation.'
+        ? snTranslate('This quantity is a capacity starting point. Confirm the documented connection topology, inverter compatibility, current sharing, conductors, protection and communications before installation.')
         : null
     });
   }

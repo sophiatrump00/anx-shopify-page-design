@@ -37,7 +37,7 @@ Renders an expandable appliance card for the SuntNeew calculator.
 
   <div id="{{ load_id }}-controls" class="sn-power-calculator__load-controls" data-load-controls{% unless selected %} hidden{% endunless %}>
     <div class="sn-power-calculator__power-control">
-      <label for="{{ load_id }}-watts">Power draw</label>
+      <label for="{{ load_id }}-watts">{{ 'suntneew_auto.s7be0fa9cd5a0' | t }}</label>
       <span class="sn-power-calculator__number-unit">
         <input id="{{ load_id }}-watts" type="number" min="1" max="{{ max_watts }}" step="{{ watts_step }}" value="{{ watts }}" inputmode="decimal" data-load-watts data-base-max="{{ max_watts }}">
         <span>W</span>
@@ -46,7 +46,7 @@ Renders an expandable appliance card for the SuntNeew calculator.
 
     <div class="sn-power-calculator__range-control" data-range-control>
       <div class="sn-power-calculator__range-head">
-        <label for="{{ load_id }}-hours">Daily run time</label>
+        <label for="{{ load_id }}-hours">{{ 'suntneew_auto.s866325cfb20b' | t }}</label>
         <span class="sn-power-calculator__number-unit sn-power-calculator__number-unit--time">
           <input id="{{ load_id }}-hours" type="number" min="0.1" max="{{ max_hours }}" step="{{ hours_step }}" value="{{ hours }}" inputmode="decimal" data-load-hours data-range-number>
           <span>h/day</span>
@@ -58,7 +58,7 @@ Renders an expandable appliance card for the SuntNeew calculator.
 
     <label class="sn-power-calculator__peak-choice">
       <input type="checkbox" data-load-simultaneous{% if simultaneous %} checked{% endif %}>
-      <span>May run with other selected loads</span>
+      <span>{{ 'suntneew_auto.sa8fa4190ac76' | t }}</span>
     </label>
   </div>
 </article>

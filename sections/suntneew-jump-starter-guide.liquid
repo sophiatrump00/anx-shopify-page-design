@@ -378,12 +378,12 @@
         <table class="suntneew-jump-guide__table">
           <thead>
             <tr>
-              <th scope="col">Capacity</th>
-              <th scope="col">Starting current</th>
-              <th scope="col">Peak current</th>
-              <th scope="col">Gasoline reference</th>
-              <th scope="col">Diesel reference</th>
-              <th scope="col">Compare</th>
+              <th scope="col">{{ 'suntneew_auto.sae65d096550f' | t }}</th>
+              <th scope="col">{{ 'suntneew_auto.s898a19870b47' | t }}</th>
+              <th scope="col">{{ 'suntneew_auto.s99c2d9b79422' | t }}</th>
+              <th scope="col">{{ 'suntneew_auto.sbdb79b335840' | t }}</th>
+              <th scope="col">{{ 'suntneew_auto.s751e05bd827e' | t }}</th>
+              <th scope="col">{{ 'suntneew_auto.se888155d8c7d' | t }}</th>
             </tr>
           </thead>
           <tbody>
@@ -447,10 +447,10 @@
                 <h4>{{ block.settings.title | default: family_product.title | escape }}</h4>
                 <p class="suntneew-jump-card__summary">{{ block.settings.summary | escape }}</p>
                 <ul class="suntneew-jump-card__specs" role="list">
-                  <li><strong>{{ block.settings.spec_capacity | escape }}</strong><span>Capacity</span></li>
-                  <li><strong>{{ block.settings.spec_start | escape }}</strong><span>Starting current</span></li>
-                  <li><strong>{{ block.settings.spec_peak | escape }}</strong><span>Peak current</span></li>
-                  <li><strong>{{ block.settings.spec_fit | escape }}</strong><span>Fit reference</span></li>
+                  <li><strong>{{ block.settings.spec_capacity | escape }}</strong><span>{{ 'suntneew_auto.sae65d096550f' | t }}</span></li>
+                  <li><strong>{{ block.settings.spec_start | escape }}</strong><span>{{ 'suntneew_auto.s898a19870b47' | t }}</span></li>
+                  <li><strong>{{ block.settings.spec_peak | escape }}</strong><span>{{ 'suntneew_auto.s99c2d9b79422' | t }}</span></li>
+                  <li><strong>{{ block.settings.spec_fit | escape }}</strong><span>{{ 'suntneew_auto.s971a534f406d' | t }}</span></li>
                 </ul>
                 {%- if family_product.options_with_values != blank -%}
                   <div class="suntneew-jump-card__variants" aria-label="Available variants">
