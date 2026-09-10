@@ -288,11 +288,11 @@ const homeStorageMedia = [
 });
 
 for (const group of homeStorageMedia) {
-  // Legacy home-storage media is intentionally retained. The closeout flow
-  // may add the new SuntNeew gallery, but it must never generate a deletion
-  // payload for the existing ENERGY STAR reference images.
-  if (group.legacyMediaIds.length === 0) {
-    console.warn(`No legacy media currently attached to ${group.productHandle}; continuing without deletion.`);
+  // Current brand policy forbids ENERGY STAR media on home-storage products.
+  // Stop payload generation if such media has been reattached so it cannot be
+  // silently preserved or carried into another closeout run.
+  if (group.legacyMediaIds.length > 0) {
+    throw new Error(`Forbidden ENERGY STAR media attached to ${group.productHandle}: ${group.legacyMediaIds.join(", ")}`);
   }
 }
 
@@ -354,7 +354,7 @@ await writeJson("manifest.json", {
     productHandle: group.productHandle,
     replacementCount: group.assets.length,
     legacyMediaCount: group.legacyMediaIds.length,
-    legacyMediaPolicy: "preserve",
+    legacyMediaPolicy: "forbid",
   })),
 });
 
