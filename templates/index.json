@@ -15,8 +15,8 @@
         "rv_slide": {
           "type": "image",
           "settings": {
-            "image_asset": "suntneew-rv-product-hero-desktop-v1.webp",
-            "mobile_image_asset": "suntneew-rv-product-hero-mobile-v1.webp",
+            "image_asset": "suntneew-rv-230ah-feature-lifestyle-desktop.jpg",
+            "mobile_image_asset": "suntneew-rv-230ah-feature-lifestyle-mobile.jpg",
             "content_max_width": 560,
             "mobile_text_position": "place-self-start text-start",
             "desktop_text_position": "sm:place-self-start sm:text-start",
