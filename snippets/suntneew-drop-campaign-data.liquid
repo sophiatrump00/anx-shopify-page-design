@@ -23,7 +23,10 @@
         {%- liquid
           assign drop_image = block.settings.image | default: drop_product.featured_image
           assign image_url = ''
-          if drop_image != blank
+          if block.settings.image == blank and drop_product.handle == 'ad19'
+            assign image_url = 'suntneew-ad19-transparent.png' | asset_url
+          endif
+          if drop_image != blank and image_url == blank
             assign image_url = drop_image | image_url: width: 900
           endif
         -%}
