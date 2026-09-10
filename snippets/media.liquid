@@ -30,8 +30,8 @@
   {%- assign fetchpriority = 'auto' -%}
 {%- endif -%}
 
-{%- assign media_display_width = media.preview_image.width | at_most: 1200 -%}
-{%- assign media_display_widths = '200,300,400,500,600,700,800,1000,1200,1400,1600,1800,2000' -%}
+{%- assign media_display_width = media.preview_image.width | at_most: 960 -%}
+{%- assign media_display_widths = '200,300,400,500,600,700,800,960' -%}
 
 {%- case media.media_type -%}
   {%- when 'image' -%}

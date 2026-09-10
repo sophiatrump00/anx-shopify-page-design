@@ -2,6 +2,7 @@
   assign seo_title = page_title | strip_html | strip
   assign seo_description = page_description | strip_html | strip_newlines | strip
   assign seo_robots = blank
+  assign seo_indexable = true
   assign seo_description_key = ''
   assign seo_path = request.path | downcase
   assign seo_title_suffix = ' | SuntNeew Portable Power'
@@ -12,22 +13,27 @@
     assign seo_title = 'Your SuntNeew Cart | Review Your Order'
     assign seo_description = 'Review the SuntNeew products in your cart and complete your order securely.'
     assign seo_robots = 'noindex,follow'
+    assign seo_indexable = false
   elsif request.page_type == 'search'
     assign seo_title = 'Search SuntNeew | Find Portable Power Products'
     assign seo_description = 'Search SuntNeew products, support resources and practical power guidance.'
     assign seo_robots = 'noindex,follow'
+    assign seo_indexable = false
   elsif seo_path contains '/collections/vendors'
     assign seo_title = 'SuntNeew Products'
     assign seo_description = 'Explore SuntNeew portable power products and product support resources.'
     assign seo_robots = 'noindex,follow'
+    assign seo_indexable = false
   elsif template.name == 'list-collections'
     assign seo_title = 'Shop SuntNeew Collections | Find Your Power Solution'
     assign seo_description = 'Browse SuntNeew collections for RV batteries, jump starters and home energy storage.'
     assign seo_robots = 'noindex,follow'
+    assign seo_indexable = false
   elsif page.handle == 'quotes-history'
     assign seo_title = 'SuntNeew Quote History'
     assign seo_description = 'Review your SuntNeew quote history and contact support for help with a product or order.'
     assign seo_robots = 'noindex,follow'
+    assign seo_indexable = false
   elsif request.page_type == 'collection'
     case collection.handle
       when 'all'
@@ -119,19 +125,49 @@
   endif
 
   assign seo_description = seo_description | strip
-  assign seo_description_size = seo_description | size
-  if explicit_description == blank and seo_description_size > 180
-    assign description_sentences = seo_description | split: '. '
-    assign first_sentence = description_sentences | first
-    assign first_sentence_size = first_sentence | size
-    if first_sentence_size >= 100 and first_sentence_size <= 179
-      assign seo_description = first_sentence | append: '.'
-    else
-      assign seo_description = seo_description | truncatewords: 24
-    endif
-  endif
   if seo_description == blank
     assign seo_description = seo_default_description
+  endif
+
+  comment
+    Keep indexable descriptions in a useful search-snippet range. Native
+    descriptions remain the source text; only short values receive a
+    page-type suffix and long values are shortened at the display boundary.
+    Noindex utility pages bypass this normalization.
+  endcomment
+  if seo_indexable
+    assign seo_description_size = seo_description | size
+    if seo_description_size < 110 and seo_description_key != blank
+      assign seo_translation_key = 'suntneew_seo.' | append: seo_description_key
+      assign seo_description = seo_translation_key | t
+      assign seo_description_size = seo_description | size
+    endif
+
+    if seo_description_size < 110
+      assign seo_suffix_key = 'product_suffix'
+      if request.page_type == 'index'
+        assign seo_suffix_key = 'home_suffix'
+      elsif request.page_type == 'blog'
+        assign seo_suffix_key = 'journal_suffix'
+      elsif request.page_type == 'page' or request.page_type == 'policy'
+        if seo_path contains '/contact-us'
+          assign seo_suffix_key = 'contact_suffix'
+        elsif seo_path contains '/impressum'
+          assign seo_suffix_key = 'legal_suffix'
+        elsif seo_path contains '/shipping-policy'
+          assign seo_suffix_key = 'shipping_suffix'
+        elsif seo_path contains '/return-policy'
+          assign seo_suffix_key = 'returns_suffix'
+        endif
+      endif
+      assign seo_suffix = 'suntneew_seo.' | append: seo_suffix_key | t
+      assign seo_description = seo_description | append: ' ' | append: seo_suffix
+    endif
+
+    assign seo_description_size = seo_description | size
+    if seo_description_size > 155
+      assign seo_description = seo_description | truncate: 155, '…'
+    endif
   endif
 -%}
 

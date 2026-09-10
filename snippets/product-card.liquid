@@ -90,23 +90,25 @@
         -%}
 
         {%- capture main_image_classes -%}product-card__image product-card__image--primary {% if settings.product_image_aspect_ratio contains 'crop' %}object-fill-safe{% endif %} aspect-{{ settings.product_image_aspect_ratio | split: '_' | first }}{%- endcapture -%}
+        {%- assign card_image_width = product.featured_media.width | at_most: 960 -%}
         {{-
           product.featured_media
-          | image_url: width: product.featured_media.width
-          | image_tag: loading: main_media_loading_strategy, sizes: sizes, widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800', class: main_image_classes
+          | image_url: width: card_image_width
+          | image_tag: loading: main_media_loading_strategy, sizes: sizes, widths: '200,300,400,500,600,700,800,960', class: main_image_classes
         -}}
 
         {%- if show_secondary_image and product.media.size > 1 -%}
           {%- assign next_media = product.media[product.featured_media.position] | default: product.media[1] -%}
+          {%- assign next_media_width = next_media.width | at_most: 960 -%}
           {{-
             next_media
-            | image_url: width: next_media.width
+            | image_url: width: next_media_width
             | image_tag:
               class: 'product-card__image product-card__image--secondary object-fill',
               loading: 'lazy',
               fetchpriority: 'low',
               sizes: sizes,
-              widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800',
+              widths: '200,300,400,500,600,700,800,960',
               aria-hidden: 'true'
           -}}
         {%- endif -%}

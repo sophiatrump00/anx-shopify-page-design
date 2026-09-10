@@ -31,7 +31,13 @@
       <div class="sn-drops__hero">
         <div class="sn-drops__copy">
           <div class="sn-drops__eyebrow"><span class="sn-drops__status" data-status></span><span class="sn-drops__number" data-number></span></div>
-          <h1 class="sn-drops__title" data-hero-title></h1>
+          {%- comment -%}
+            Keep a real heading in the initial HTML. The Member Drops script
+            replaces this text with the localized campaign state, but crawlers
+            and assistive technology must not depend on JavaScript to find the
+            page heading.
+          {%- endcomment -%}
+          <h1 class="sn-drops__title" data-hero-title>{{ section.settings.title | default: 'Member Drops' | escape }}</h1>
           <p class="sn-drops__intro" data-intro></p>
           <div data-clock-wrap hidden>
             <p class="sn-drops__count-label" data-clock-label></p>

@@ -140,9 +140,10 @@
             data-media-type="{{ media.media_type }}"
             data-media-id="{{ media.id }}"
             {% if media.media_type == 'image' %}
-              data-full-src="{{ media | image_url: width: media.preview_image.width | escape }}"
-              data-full-width="{{ media.preview_image.width }}"
-              data-full-height="{{ media.preview_image.height }}"
+              {%- assign zoom_image_width = media.preview_image.width | at_most: 960 -%}
+              data-full-src="{{ media | image_url: width: zoom_image_width | escape }}"
+              data-full-width="{{ zoom_image_width }}"
+              data-full-height="{{ media.preview_image.height | times: zoom_image_width | divided_by: media.preview_image.width }}"
             {% endif %}
             {% if filtered_indexes contains media.position %}
               hidden
