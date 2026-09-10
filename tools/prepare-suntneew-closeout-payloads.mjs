@@ -238,9 +238,9 @@ const homeStorageMedia = [
   {
     handle: "suntneew-wl5a-5-12-kwh-low-voltage-home-battery",
     assets: [
-      ["suntneew-wl5a-main-v2.jpg", "SuntNeew WL5A 5.12 kWh low-voltage home battery"],
-      ["suntneew-wl5a-install-v2.png", "SuntNeew WL5A installed in a home energy room"],
-      ["suntneew-wl5a-gallery-01-v2.jpg", "SuntNeew WL5A low-voltage home battery product view"],
+      ["suntneew-wl5a-main-v3.png", "SuntNeew WL5A 5.12 kWh low-voltage home battery"],
+      ["suntneew-wl5a-install-v3.png", "SuntNeew WL5A installed in a home energy room"],
+      ["suntneew-wl5a-gallery-01-v3.png", "SuntNeew WL5A low-voltage home battery product view"],
       ["suntneew-wl5a-gallery-04-v2.jpg", "SuntNeew WL5A installation and mounting detail"],
       ["suntneew-wl5a-gallery-05-v2.jpg", "SuntNeew WL5A home energy storage detail"],
       ["suntneew-wl5a-gallery-07-v2.jpg", "SuntNeew WL5A connection and service detail"],
@@ -250,9 +250,9 @@ const homeStorageMedia = [
   {
     handle: "suntneew-wl10b-10-24-kwh-low-voltage-home-battery",
     assets: [
-      ["suntneew-wl10b-main-v2.jpg", "SuntNeew WL10B 10.24 kWh low-voltage home battery"],
-      ["suntneew-wl10b-install-v2.png", "SuntNeew WL10B installed in a home energy room"],
-      ["suntneew-wl10b-gallery-01-v2.jpg", "SuntNeew WL10B low-voltage home battery product view"],
+      ["suntneew-wl10b-main-v3.png", "SuntNeew WL10B 10.24 kWh low-voltage home battery"],
+      ["suntneew-wl10b-install-v3.png", "SuntNeew WL10B installed in a home energy room"],
+      ["suntneew-wl10b-gallery-01-v3.png", "SuntNeew WL10B low-voltage home battery product view"],
       ["suntneew-wl10b-gallery-04-v2.jpg", "SuntNeew WL10B installation and mounting detail"],
       ["suntneew-wl10b-gallery-05-v2.jpg", "SuntNeew WL10B home energy storage detail"],
       ["suntneew-wl10b-gallery-07-v2.jpg", "SuntNeew WL10B connection and service detail"],
@@ -262,12 +262,12 @@ const homeStorageMedia = [
   {
     handle: "suntneew-vh-high-voltage-home-energy-storage-system",
     assets: [
-      ["suntneew-vh10-vh15-main-v2.jpg", "SuntNeew VH10A and VH15A high-voltage home energy storage systems"],
-      ["suntneew-vh-install-v2.png", "SuntNeew VH home energy storage system installed in a technical room"],
-      ["suntneew-vh10-gallery-01-v2.jpg", "SuntNeew VH modular high-voltage home energy storage system"],
+      ["suntneew-vh10-vh15-main-v3.png", "SuntNeew VH10A and VH15A high-voltage home energy storage systems"],
+      ["suntneew-vh-install-v3.png", "SuntNeew VH home energy storage system installed in a technical room"],
+      ["suntneew-vh10-gallery-01-v3.png", "SuntNeew VH modular high-voltage home energy storage system"],
       ["suntneew-vh10-gallery-02-v2.jpg", "SuntNeew VH high-voltage home energy storage product view"],
       ["suntneew-vh10-gallery-03-v2.jpg", "SuntNeew VH high-voltage home energy storage detail"],
-      ["suntneew-vh10-gallery-04-v2.jpg", "SuntNeew VH high-voltage home energy storage system detail"],
+      ["suntneew-vh10-gallery-04-v3.png", "SuntNeew VH high-voltage home energy storage system detail"],
       ["suntneew-vh10-vh15-spec-v2.jpg", "SuntNeew VH10A and VH15A configuration and dimensions"],
     ],
   },
