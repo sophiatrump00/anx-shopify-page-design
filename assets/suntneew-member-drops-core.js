@@ -51,10 +51,12 @@
     return match;
   }
   function isVerified(config, campaign, product, variant) {
-    const binding = matchingBinding(config, campaign, config.binding);
-    if (!binding || !variant || product.locked) return false;
-    const rule = binding.rules?.find(r => String(r.variantId) === String(variant.id));
+    if (!variant || product.locked) return false;
     const offer = price(variant.price, product.rule, product.value);
+    if (config.claimMode === 'native-codes') return !!(offer && variant.available);
+    const binding = matchingBinding(config, campaign, config.binding);
+    if (!binding) return false;
+    const rule = binding.rules?.find(r => String(r.variantId) === String(variant.id));
     return !!(offer && rule && rule.type === product.rule && Number(rule.value) === Number(product.value) && rule.base === variant.price && rule.final === offer.final);
   }
   function countdown(target, now) {

@@ -75,7 +75,7 @@
                     {%- capture image_class -%}testimonial__image {% if block.settings.round_avatar %}rounded-full{% endif %}{%- endcapture -%}
                     {{-
                       block.settings.image
-                      | image_url: width: block.settings.image.width
+                      | image_url: width: 1600
                       | image_tag: loading: loading_strategy, sizes: '(max-width: 699px) 40px, 56px', widths: '40,56,80,112,120,168', class: image_class
                     -}}
                   {%- endif -%}

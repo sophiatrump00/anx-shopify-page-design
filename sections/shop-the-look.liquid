@@ -32,7 +32,7 @@
       <div class="relative">
         {%- if section.settings.image != blank -%}
           {%- capture sizes -%}(max-width:700px) 100vw, min({{ settings.page_width | divided_by: 2 }}px, 50vw){%- endcapture -%}
-          {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: widths: '300,400,500,600,800,1000', class: 'rounded', sizes: sizes -}}
+          {{- section.settings.image | image_url: width: 1600 | image_tag: widths: '300,400,500,600,800,1000', class: 'rounded', sizes: sizes -}}
         {%- else -%}
           {{- 'image' | placeholder_svg_tag: 'placeholder rounded' -}}
         {%- endif -%}

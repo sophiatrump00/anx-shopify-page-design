@@ -30,7 +30,7 @@
       {%- if section.settings.image != blank -%}
         {%- capture sizes -%}min(calc(100vw - 16px), 445px){%- endcapture -%}
         {%- capture widths -%}{{ section.settings.image.width }}, {{ section.settings.image.width | times: 2 | at_most: section.settings.image.width }}{%- endcapture -%}
-        {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: loading: 'lazy', widths: widths, sizes: sizes -}}
+        {{- section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: widths, sizes: sizes -}}
       {%- endif -%}
 
       <div class="newsletter-drawer__content v-stack gap-4 text-center">

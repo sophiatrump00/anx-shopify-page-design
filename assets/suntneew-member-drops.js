@@ -96,7 +96,7 @@
       let notice = '';
       if (this.issues.length || conflict) notice = this.t('not_available');
       else if (this.config.claimMode !== 'native-codes' && !this.config.accountsEnabled && phase === 'live') notice = this.t('not_available');
-      else if (phase === 'live' && !this.config.designMode && !core.matchingBinding(this.config, campaign, this.config.binding)) notice = this.t('not_available');
+      else if (phase === 'live' && !this.config.designMode && this.config.claimMode !== 'native-codes' && !core.matchingBinding(this.config, campaign, this.config.binding)) notice = this.t('not_available');
       else if (this.stale && phase === 'live') notice = this.t('refreshing');
       this.text('[data-notice]', notice);
       this.$('[data-notice]').hidden = !notice;

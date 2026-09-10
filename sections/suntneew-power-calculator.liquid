@@ -24,7 +24,7 @@
 <section
   class="sn-power-calculator"
   data-suntneew-calculator
-  data-support-url="{% render 'suntneew-local-url', url: section.settings.support_url %}"
+  data-support-url="{{ section.settings.support_url | default: '/pages/contact-us' | escape }}"
   data-planner-step="scenario"
 >
   <header class="sn-power-calculator__hero">
@@ -262,7 +262,7 @@
           <div class="sn-power-calculator__product-media"><img data-result-image src="{{ 'suntneew-product-g31.jpg' | asset_url }}" alt="" width="600" height="600" loading="lazy"></div>
           <div class="sn-power-calculator__product-copy"><p class="sn-power-calculator__product-label" data-result-product-label>{{ 'suntneew_auto.sf6eaa5677783' | t }}</p><h3 data-result-product-title></h3><div class="sn-power-calculator__product-specs" data-result-product-specs></div><p data-result-product-copy></p><p class="sn-power-calculator__product-note" data-result-product-note hidden></p><div class="sn-power-calculator__result-actions"><a class="sn-power-calculator__result-link" data-result-product-link href="#">{{ 'suntneew_auto.s8918d6d120e5' | t }}</a><a class="sn-power-calculator__result-link sn-power-calculator__result-link--secondary" data-result-secondary-link href="#" hidden>{{ 'suntneew_auto.s7ef79754b550' | t }}</a></div></div>
         </div>
-        <div class="sn-power-calculator__result-actions" data-result-support-actions hidden><a class="sn-power-calculator__result-link" data-result-support-link href="{% render 'suntneew-local-url', url: section.settings.support_url %}">{{ 'suntneew_auto.s814f4ed2d5bd' | t }}</a><button type="button" class="sn-power-calculator__result-link sn-power-calculator__result-link--secondary" data-result-reset>{{ 'suntneew_auto.s962e64b76196' | t }}</button></div>
+        <div class="sn-power-calculator__result-actions" data-result-support-actions hidden><a class="sn-power-calculator__result-link" data-result-support-link href="{{ section.settings.support_url | default: '/pages/contact-us' }}">{{ 'suntneew_auto.s814f4ed2d5bd' | t }}</a><button type="button" class="sn-power-calculator__result-link sn-power-calculator__result-link--secondary" data-result-reset>{{ 'suntneew_auto.s962e64b76196' | t }}</button></div>
         <p class="sn-power-calculator__fine-print">{{ section.settings.disclaimer | escape }}</p>
         <div class="sn-power-calculator__result-navigation"><button type="button" class="sn-power-calculator__text-button" data-edit-answers>{{ 'suntneew_auto.sbf4399b6f894' | t }}</button><button type="button" class="sn-power-calculator__text-button" data-switch-scenario>{{ 'suntneew_auto.s598120e9cb9a' | t }}</button></div>
       </section>

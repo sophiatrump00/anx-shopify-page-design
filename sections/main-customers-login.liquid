@@ -8,7 +8,7 @@
     {%- if section.settings.image != blank -%}
       {{-
         section.settings.image
-        | image_url: width: section.settings.image.width
+        | image_url: width: 1600
         | image_tag: sizes: '50vw', widths: '300,400,500,600,700,800,1000,1200,1400', class: 'customer-form__image rounded'
       -}}
     {%- endif -%}

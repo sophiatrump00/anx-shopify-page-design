@@ -31,7 +31,7 @@
         {%- if block.settings.image != blank -%}
           {{-
             block.settings.image
-            | image_url: width: block.settings.image.width
+            | image_url: width: 1600
             | image_tag: loading: 'lazy', sizes: '(max-width: 740px) 100vw, 650px', widths: '200,300,400,600,800,1000,1200,1400,1600', class: 'rounded-sm'
           -}}
         {%- else -%}
@@ -133,7 +133,7 @@
         {%- if block.settings.image != blank -%}
           {{-
             block.settings.image
-            | image_url: width: block.settings.image.width
+            | image_url: width: 1600
             | image_tag: loading: 'lazy', sizes: '(max-width: 740px) 100vw, 650px', widths: '200,300,400,600,800,1000,1200,1400,1600', class: 'rounded-sm'
           -}}
         {%- else -%}

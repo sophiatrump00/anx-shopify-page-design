@@ -448,7 +448,7 @@
       if (measured) measured.hidden = input.spaceMode !== 'measured';
       var spaceNote = form.querySelector('[data-space-note]');
       if (spaceNote) {
-        spaceNote.textContent = limits.spaceMatchCount + snTranslate(' current battery enclosure') + (limits.spaceMatchCount !== 1 && document.documentElement.lang.toLowerCase().startsWith('en') ? 's' : '') + snTranslate(' fit these usable dimensions. Bank layout and service clearance are checked separately.');
+        spaceNote.textContent = limits.spaceMatchCount + snTranslate(' current battery enclosure') + (limits.spaceMatchCount === 1 ? '' : 's') + snTranslate(' fit these usable dimensions. Bank layout and service clearance are checked separately.');
       }
       setLimitNote(form, snTranslate('Current range: up to ') + limits.maximumBatteryCount + snTranslate(' batteries (') + limits.seriesCount + 'S' + limits.maximumParallelStrings + 'P), ' + formatWh(limits.maxStoredEnergyWh) + snTranslate(' stored energy and ') + formatW(limits.maxPeakW) + snTranslate(' peak.'), clamped);
       updateLiveSummary(form, limits);

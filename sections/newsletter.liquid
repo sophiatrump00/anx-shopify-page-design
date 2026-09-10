@@ -66,7 +66,7 @@
   {%- if section.settings.image != blank -%}
     <div class="newsletter">
       {%- capture sizes -%}(max-width: 999px) 100vw, min(50vw, {{ settings.page_width }}px / 2){%- endcapture -%}
-      {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: sizes: sizes, class: 'h-full object-cover' -}}
+      {{- section.settings.image | image_url: width: 1600 | image_tag: sizes: sizes, class: 'h-full object-cover' -}}
 
       <div
         {% render 'surface',

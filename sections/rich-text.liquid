@@ -60,7 +60,7 @@
                   {%- capture image_sizes_attribute -%}min(100vw, var(--page-width)){%- endcapture -%}
                 {%- endif -%}
 
-                {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: sizes: image_sizes_attribute, widths: '200,300,400,500,600,800,1000,1200,1400,1600', style: image_style_attribute -}}
+                {{- block.settings.image | image_url: width: 1600 | image_tag: sizes: image_sizes_attribute, widths: '200,300,400,500,600,800,1000,1200,1400,1600', style: image_style_attribute -}}
               </div>
             {%- endif -%}
 
