@@ -70,6 +70,21 @@ export function mergePdfs(inputs, outputPdf) {
   return pageCount(outputPdf);
 }
 
+// 统一页面尺寸：把每一页等比缩放并居中到 A4（交给 a4-normalize.py，用 pypdf 精确摆放）。
+// 供应商原件（小开本手册、80x120mm 插页）和生成的 A4 页混在一份文件里时，
+// 阅读器会不断跳尺寸，也影响打印；统一后每页都是 A4。
+export const A4_WIDTH = 595.28;
+export const A4_HEIGHT = 841.89;
+
+export function normalizeToA4(inputPdf, outputPdf) {
+  run('python3', [
+    resolve(repoRoot, 'tools', 'manual-build', 'a4-normalize.py'),
+    inputPdf,
+    outputPdf,
+  ]);
+  return pageCount(outputPdf);
+}
+
 // 把整张折页（多个面板排在一页上）按面板拆成多页。
 // left / width / height 单位为 pt；inset 让每条折线上的分隔线完整落在页面内。
 export function splitPanels(sourcePdf, outputPdf, { count, left, width, height, inset = 0 }) {
@@ -97,7 +112,8 @@ export function splitPanels(sourcePdf, outputPdf, { count, left, width, height, 
 // ---------------------------------------------------------------------------
 
 const CSS = `
-  @page { size: A4; margin: 0; }
+  /* 页边距交给 @page：正文分页后每一页都有同样的留白，不会被切到纸边 */
+  @page { size: A4; margin: 16mm 15mm 14mm; }
   * { box-sizing: border-box; }
   body {
     margin: 0;
@@ -107,13 +123,8 @@ const CSS = `
     line-height: 1.5;
   }
   .page {
-    width: 210mm;
-    min-height: 297mm;
-    padding: 18mm 17mm 16mm;
-    page-break-after: always;
-    position: relative;
+    page-break-after: auto;
   }
-  .page:last-child { page-break-after: auto; }
   h1, h2, h3, h4 { color: #172331; line-height: 1.2; margin: 0 0 .5em; }
   h1 { font-size: 21pt; }
   h2 {
@@ -154,7 +165,7 @@ const CSS = `
   .callout strong { color: #b8471f; }
   .cover {
     display: flex; flex-direction: column; justify-content: space-between;
-    height: 258mm; padding: 0 3mm; overflow: hidden;
+    min-height: 258mm; overflow: hidden;
   }
   .cover__brand { font-size: 15pt; font-weight: 700; letter-spacing: .04em; }
   .cover__brand span { color: #e9653b; }
@@ -168,11 +179,6 @@ const CSS = `
   .cover__languages b { font-weight: 700; }
   .cover__note { font-size: 9pt; color: #5b6b7d; }
   .cover__meta { font-size: 9.5pt; color: #5b6b7d; border-top: .6pt solid #d7dee6; padding-top: 10px; }
-  .page-footer {
-    position: absolute; left: 17mm; right: 17mm; bottom: 9mm;
-    border-top: .6pt solid #d7dee6; padding-top: 4px;
-    font-size: 8pt; color: #7a8899; display: flex; justify-content: space-between;
-  }
   .doc-list { list-style: none; padding: 0; }
   .doc-list li { border-bottom: .6pt solid #e4e9ee; padding: 5px 0; }
   .two-col { column-count: 2; column-gap: 9mm; }
@@ -184,13 +190,9 @@ export function renderDocument({ lang, html, title, model, footerLabel }) {
     .map((chunk) => chunk.trim())
     .filter(Boolean)
     .map(
-      (chunk, index, all) => `
+      (chunk) => `
       <section class="page">
         ${chunk}
-        <div class="page-footer">
-          <span>SuntNeew &middot; ${model}</span>
-          <span>${footerLabel} &middot; ${index + 1}/${all.length}</span>
-        </div>
       </section>`,
     )
     .join('\n');

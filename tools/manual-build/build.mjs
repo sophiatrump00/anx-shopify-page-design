@@ -6,7 +6,7 @@
 //   node tools/manual-build/build.mjs --only rv-g31   # 只生成一个型号
 
 import { copyFileSync, existsSync, mkdirSync, rmSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { basename, resolve } from 'node:path';
 
 import {
   assetsDir,
@@ -15,6 +15,7 @@ import {
   extractPages,
   htmlToPdf,
   mergePdfs,
+  normalizeToA4,
   pageCount,
   repoRoot,
   renderDocument,
@@ -59,12 +60,14 @@ for (const job of jobs) {
   }
 
   const englishPdf = resolve(buildDir, `${job.id}-en.pdf`);
+  const englishRaw = resolve(buildDir, `${job.id}-en-raw.pdf`);
   // 折页类原件（一页排多面板）先按面板拆页，其余按页抽取并去掉中文页
   if (job.spec.panels) {
-    splitPanels(sourcePath, englishPdf, job.spec.panels);
+    splitPanels(sourcePath, englishRaw, job.spec.panels);
   } else {
-    extractPages(sourcePath, englishPdf, job.keepPages);
+    extractPages(sourcePath, englishRaw, job.keepPages);
   }
+  normalizeToA4(englishRaw, englishPdf);
   const englishPages = pageCount(englishPdf);
 
   const languagePdfs = [];
@@ -82,8 +85,10 @@ for (const job of jobs) {
       model: job.spec.model,
       footerLabel: lang === 'fr' ? 'Français' : 'Deutsch',
     });
+    const pdfRaw = resolve(buildDir, `${job.id}-${lang}-raw.pdf`);
     const pdfPath = resolve(buildDir, `${job.id}-${lang}.pdf`);
-    const { pages } = htmlToPdf(html, pdfPath, `${job.id}-${lang}`);
+    htmlToPdf(html, pdfRaw, `${job.id}-${lang}`);
+    const pages = normalizeToA4(pdfRaw, pdfPath);
     languagePdfs.push(pdfPath);
     languagePages.push(pages);
     cursor += pages;
@@ -93,7 +98,12 @@ for (const job of jobs) {
   const deRange = `p. ${cursor - languagePages[1] + 1}–${cursor}`;
 
   // 随产品附带的插页（制造商信息 + 多语言警示）合并在手册末尾
-  const insertPdfs = (job.spec.inserts ?? []).map((file) => resolve(repoRoot, file));
+  const insertPdfs = (job.spec.inserts ?? []).map((file) => {
+    const source = resolve(repoRoot, file);
+    const target = resolve(buildDir, `${job.id}-insert-${basename(file)}`);
+    normalizeToA4(source, target);
+    return target;
+  });
   const insertPages = insertPdfs.reduce((sum, file) => sum + pageCount(file), 0);
   const insertRange = insertPages
     ? `p. ${cursor + 1}–${cursor + insertPages}`
@@ -120,8 +130,10 @@ for (const job of jobs) {
     model: job.spec.model,
     footerLabel: 'Languages',
   });
+  const coverRaw = resolve(buildDir, `${job.id}-cover-raw.pdf`);
   const coverPdf = resolve(buildDir, `${job.id}-cover.pdf`);
-  htmlToPdf(coverHtml, coverPdf, `${job.id}-cover`);
+  htmlToPdf(coverHtml, coverRaw, `${job.id}-cover`);
+  normalizeToA4(coverRaw, coverPdf);
 
   const outputPath = resolve(assetsDir, job.spec.asset);
   const total = mergePdfs([coverPdf, englishPdf, ...languagePdfs, ...insertPdfs], outputPath);

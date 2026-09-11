@@ -7,13 +7,13 @@
 
 | 型号 | 主题资产 | 页数（封面 / EN / FR / DE / 插页） |
 |---|---|---|
-| KB700 | `assets/suntneew-kb700-user-manual-en-fr-de.pdf` | 1 / 6 / 2 / 2 / 2 |
-| U23 | `assets/suntneew-u23-user-manual-en-fr-de.pdf` | 1 / 6 / 3 / 3 / 2 |
-| U32 | `assets/suntneew-u32-user-manual-en-fr-de.pdf` | 1 / 6 / 3 / 3 / 2 |
+| KB700 | `assets/suntneew-kb700-user-manual-en-fr-de.pdf` | 1 / 6 / 3 / 2 / 2 |
+| U23 | `assets/suntneew-u23-user-manual-en-fr-de.pdf` | 1 / 6 / 4 / 4 / 2 |
+| U32 | `assets/suntneew-u32-user-manual-en-fr-de.pdf` | 1 / 6 / 3 / 4 / 2 |
 | OJ02 | `assets/suntneew-oj02-user-manual-en-fr-de.pdf` | 1 / 16 / 3 / 3 / 2 |
 | A20 | `assets/suntneew-a20-user-manual-en-fr-de.pdf` | 1 / 8 / 2 / 2 / 2 |
 | A3 | `assets/suntneew-a3-user-manual-en-fr-de.pdf` | 1 / 8（折页面板）/ 2 / 2 / 2 |
-| Group 31 / Group 24 / 230Ah / 314Ah | `assets/suntneew-rv-<型号>-manual-en-fr-de.pdf` | 1 / 22 / 7 / 7 / 2 |
+| Group 31 / Group 24 / 230Ah / 314Ah | `assets/suntneew-rv-<型号>-manual-en-fr-de.pdf` | 1 / 22 / 8 / 8 / 2 |
 
 ## 结构
 
@@ -55,3 +55,6 @@ python3 tools/manual-build/build-inserts.py kb700  # 只生成一个型号
 - 英文原件保存在 `sources/`，主题 `assets/` 只保留合并后的三语文件。
 - 旧的英文单语文件名（`*-manual-en.pdf`、`*-user-manual-en.pdf`）会同步一份三语内容。
   Shopify CDN 对这些路径仍有旧缓存，保留覆盖可以让历史链接也拿到不含中文页的最新文件。
+- 每份手册的每一页都会等比缩放并居中到 A4（`a4-normalize.py`，依赖 pypdf）：
+  供应商原件是小开本手册或 80x120mm 插页，生成页是 A4，混在一起会跳尺寸、也不方便打印。
+  法德文正文用 `@page` 留边距，分页后每页都有同样的留白。
