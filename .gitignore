@@ -11,3 +11,7 @@ Thumbs.db
 /tmp/
 node_modules/
 __pycache__/
+
+# 手册与插页生成的中间文件
+tools/manual-build/.build/
+tools/manual-build/inserts/.build/

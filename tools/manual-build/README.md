@@ -7,10 +7,10 @@
 
 | 型号 | 主题资产 | 页数（封面 / EN / FR / DE / 插页） |
 |---|---|---|
-| KB700 | `assets/suntneew-kb700-user-manual-en-fr-de.pdf` | 1 / 6 / 2 / 2 / — |
+| KB700 | `assets/suntneew-kb700-user-manual-en-fr-de.pdf` | 1 / 6 / 2 / 2 / 2 |
 | U23 | `assets/suntneew-u23-user-manual-en-fr-de.pdf` | 1 / 6 / 3 / 3 / 2 |
-| U32 | `assets/suntneew-u32-user-manual-en-fr-de.pdf` | 1 / 6 / 3 / 3 / — |
-| OJ02 | `assets/suntneew-oj02-user-manual-en-fr-de.pdf` | 1 / 16 / 3 / 3 / — |
+| U32 | `assets/suntneew-u32-user-manual-en-fr-de.pdf` | 1 / 6 / 3 / 3 / 2 |
+| OJ02 | `assets/suntneew-oj02-user-manual-en-fr-de.pdf` | 1 / 16 / 3 / 3 / 2 |
 | A20 | `assets/suntneew-a20-user-manual-en-fr-de.pdf` | 1 / 8 / 2 / 2 / 2 |
 | A3 | `assets/suntneew-a3-user-manual-en-fr-de.pdf` | 1 / 8（折页面板）/ 2 / 2 / 2 |
 | Group 31 / Group 24 / 230Ah / 314Ah | `assets/suntneew-rv-<型号>-manual-en-fr-de.pdf` | 1 / 22 / 7 / 7 / 2 |
@@ -25,6 +25,7 @@ tools/manual-build/
 ├── content/
 │   ├── rv-battery.mjs     房车电池手册（四种型号共用正文，按型号替换参数）
 │   └── jump-starters.mjs  启动电源手册（KB700 / U23 / U32 / OJ02 / A20 / A3）
+├── build-inserts.py       生成 KB700 / U32 / OJ02 / C2 的产品插页 PDF
 ├── inserts/               随产品附带的插页（制造商信息 + 多语言警示），合并在手册末尾
 └── sources/               英文原件（构建输入，不对外发布）
 ```
@@ -35,6 +36,9 @@ tools/manual-build/
 node tools/manual-build/build.mjs                  # 全部重新生成
 node tools/manual-build/build.mjs --only rv-g31    # 只生成一个型号
 node tools/manual-build/build.mjs --keep-temp      # 保留 .build/ 中间文件
+
+python3 tools/manual-build/build-inserts.py        # 生成插页（依赖 pypdf）
+python3 tools/manual-build/build-inserts.py kb700  # 只生成一个型号
 ```
 
 依赖：`google-chrome`（`--headless=new --print-to-pdf`）、`pdfunite`、`pdfinfo`、`gs`。
@@ -44,6 +48,8 @@ node tools/manual-build/build.mjs --keep-temp      # 保留 .build/ 中间文件
 - 英文原件按 `keepPages` 抽取，`drop` 用来移除中文印制说明页（KB700/U23/U32 第 7 页、OJ02 第 1 页）。
 - A3 原厂文件是 8 面板风琴折页排在一张长图上，用 `panels` 按折线拆成 8 页（面板宽 232.5pt，起点 16.2pt）。
 - `inserts` 里的插页接在手册最后：内容为制造商/进口商信息与多语言废弃提示，站内不单独展示。
+- `build-inserts.py` 以现有插页为底版，只在需要替换的字段上覆盖重写（型号、制造商与地址、
+  E-mail/Tel、Distributor），其余版式、图标与警示文字保持原样；`C2` 只生成 PDF，不进入任何网页。
 - 封面列出三种语言所在的页码，页码由实际生成页数计算，改动正文后重新生成即可。
 - 法语、德语正文的结构与英文原件一一对应；图形仍以英文原件页为准。
 - 英文原件保存在 `sources/`，主题 `assets/` 只保留合并后的三语文件。

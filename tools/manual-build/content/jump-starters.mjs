@@ -43,6 +43,8 @@ export const jumpStarters = [
     model: 'KB700 / KP-700',
     title: 'KB700 Fan Jump Starter — 7,200mAh',
     keepPages: { first: 1, last: 7, drop: [7] },
+    inserts: ['tools/manual-build/inserts/kb700-insert.pdf'],
+    insertLabel: 'Manufacturer / disposal insert',
     coverEyebrow: 'User manual · Manuel d’utilisation · Bedienungsanleitung',
     coverNote:
       'The English pages are the original printed booklet. The French and German sections reproduce the same instructions in typeset form.',
@@ -378,6 +380,8 @@ export const jumpStarters = [
     model: 'U32',
     title: 'U32 Portable Car Jump Starter — 10,000mAh',
     keepPages: { first: 1, last: 7, drop: [7] },
+    inserts: ['tools/manual-build/inserts/u32-insert.pdf'],
+    insertLabel: 'Manufacturer / disposal insert',
     coverEyebrow: 'User manual · Manuel d’utilisation · Bedienungsanleitung',
     coverNote:
       'The English pages are the original printed booklet. The French and German sections reproduce the same instructions in typeset form.',
@@ -525,6 +529,8 @@ export const jumpStarters = [
     model: 'OJ02',
     title: 'OJ02 OBD2 Jump Starter — 8,000mAh',
     keepPages: { first: 1, last: 17, drop: [1] },
+    inserts: ['tools/manual-build/inserts/oj02-insert.pdf'],
+    insertLabel: 'Manufacturer / disposal insert',
     coverEyebrow: 'User manual · Manuel d’utilisation · Bedienungsanleitung',
     coverNote:
       'The English pages are the original printed booklet without the production sheet. The French and German sections reproduce the same instructions in typeset form.',
