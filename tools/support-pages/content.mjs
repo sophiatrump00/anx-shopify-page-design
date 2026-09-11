@@ -421,18 +421,19 @@ PRODUCTS.push(
     cardImageAlt: 'SuntNeew A3 jump starter with intelligent jumper clamps and carry case',
     heading: 'A3 Support & Manuals',
     intro:
-      'Read the mobile-friendly guide online, or review the safety and compliance categories recorded for the CY-A3 model. The illustrated quick-start sheet is available from the A3 product page.',
+      'Read the mobile-friendly guide online, download the illustrated quick-start manual with the French and German sections in one PDF, or review the safety and compliance categories recorded for the CY-A3 model.',
     productUrl: 'shopify://products/suntneew-a3-jump-starter-16000mah',
     productLabel: 'View A3 product',
     resourceNavLabel: 'A3 manuals and compliance',
-    manualAsset: '',
-    pdfCardEyebrow: '',
-    pdfCardDescription: '',
+    manualAsset: 'suntneew-a3-user-manual-en-fr-de.pdf',
+    pdfCardEyebrow: 'ENGLISH · FRANÇAIS · DEUTSCH',
+    pdfCardDescription:
+      'One file with the eight-panel illustrated quick guide plus the French and German sections for offline use.',
     manualHeading: 'A3 Jump Starter — 16,000mAh',
     manualIntro:
       'Use this online guide for 12V starting, PD 60W charging, safety and protection functions.',
     manualVersion:
-      'Online edition based on the published A3 product data; the printed quick-start sheet stays the controlling original.',
+      'Online edition based on the illustrated quick-start sheet dated July 9, 2026. The download also contains the French and German sections.',
     certificationsCardDescription:
       'Review the safety and compliance categories recorded for the CY-A3 model.',
     facts: [
