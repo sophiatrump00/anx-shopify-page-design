@@ -80,3 +80,16 @@ The four RV templates (`product.rv-230ah.json`, `product.rv-314ah.json`, `produc
 - Group 31 already opened with its main view and keeps its order, so no asset is duplicated.
 
 When a main view changes, update the RV asset in `assets/`, add it to `tools/seo-asset-sources.json`, and run `python3 tools/optimize-storefront-assets.py` so the WebP variants and `snippets/suntneew-asset-metadata.liquid` stay in sync.
+
+### RV card hover media
+
+The theme shows the product's **second** Shopify media as the collection-card hover image (`snippets/product-card.liquid`, `product-card--show-secondary-media`). For all four RV products that second slot is now the package-contents image, so hovering a card shows what ships in the box instead of the install scene:
+
+| Product | Hover media (position 2) | install scene moved to |
+| --- | --- | --- |
+| Group 24 | `suntneew-rv-g24-pdp-in-box-desktop_…jpg` | position 3 |
+| Group 31 | `suntneew-rv-g31-pdp-in-box-desktop_…jpg` | position 3 |
+| 230Ah | `suntneew-rv-230ah-pdp-in-box-desktop_…jpg` | position 3 |
+| 314Ah | `suntneew-rv-314ah-pdp-in-box-desktop_…jpg` | position 3 |
+
+The product media order is the only source of truth here — no theme code depends on these filenames. To change a hover image later, drag that media into the second slot in Shopify Admin → Products → Media. `anx-store-automation/examples/rv/` keeps the snapshot and reorder queries used for this change (note that `productReorderMedia` positions are zero-based: `newPosition: "1"` = second slot).
