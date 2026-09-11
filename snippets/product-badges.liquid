@@ -44,6 +44,8 @@
         {%- if settings.show_discount -%}
           {%- liquid
             assign show_on_sale_badge = false
+            assign badge_compare_at_price = variant.compare_at_price
+            assign badge_price = variant.price
 
             if context == 'product'
               if variant.compare_at_price > variant.price
@@ -52,32 +54,22 @@
             elsif context == 'card'
               if product.compare_at_price > product.price
                 assign show_on_sale_badge = true
+                assign badge_compare_at_price = product.compare_at_price
+                assign badge_price = product.price
               endif
             endif
           -%}
 
-          {%- if product.compare_at_price > product.price -%}
+          {%- if show_on_sale_badge -%}
             {%- if settings.discount_mode == 'percentage' -%}
-              {%- assign savings = variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | round | append: '%' -%}
+              {%- assign savings = badge_compare_at_price | minus: badge_price | times: 100.0 | divided_by: badge_compare_at_price | round | append: '%' -%}
             {%- else -%}
-              {%- capture savings -%}{{ variant.compare_at_price | minus: variant.price | money }}{%- endcapture -%}
+              {%- capture savings -%}{{ badge_compare_at_price | minus: badge_price | money }}{%- endcapture -%}
             {%- endif -%}
 
-            {%- if show_on_sale_badge -%}
-              <on-sale-badge class="badge badge--on-sale">
-                {%- liquid
-                  if context == 'product'
-                    echo 'product.general.discount_badge_html' | t: savings: savings
-                  elsif context == 'card'
-                    if product.compare_at_price_varies or variant.compare_at_price == blank
-                      echo 'product.general.on_sale_badge' | t
-                    else
-                      echo 'product.general.discount_badge_html' | t: savings: savings
-                    endif
-                  endif
-                -%}
-              </on-sale-badge>
-            {%- endif -%}
+            <on-sale-badge class="badge badge--on-sale">
+              {{- 'product.general.discount_badge_html' | t: savings: savings -}}
+            </on-sale-badge>
           {%- endif -%}
         {%- endif -%}
     {%- endcase -%}

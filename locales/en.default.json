@@ -81,7 +81,7 @@
       "added_to_cart_with_title": "{{ product_title }} added to your cart",
       "sold_out_badge": "Sold out",
       "on_sale_badge": "On sale",
-      "discount_badge_html": "Save {{ savings }}",
+    "discount_badge_html": "{{ savings }} OFF",
       "sku": "SKU:",
       "variant": "Variant",
       "view_in_space": "View in your space",

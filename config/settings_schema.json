@@ -677,7 +677,7 @@
             "label": "Saving"
           }
         ],
-        "default": "saving"
+        "default": "percentage"
       },
       {
         "type": "select",
