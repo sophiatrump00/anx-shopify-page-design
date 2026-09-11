@@ -81,15 +81,24 @@ The four RV templates (`product.rv-230ah.json`, `product.rv-314ah.json`, `produc
 
 When a main view changes, update the RV asset in `assets/`, add it to `tools/seo-asset-sources.json`, and run `python3 tools/optimize-storefront-assets.py` so the WebP variants and `snippets/suntneew-asset-metadata.liquid` stay in sync.
 
-### RV card hover media
+### Card hover media
 
-The theme shows the product's **second** Shopify media as the collection-card hover image (`snippets/product-card.liquid`, `product-card--show-secondary-media`). For all four RV products that second slot is now the package-contents image, so hovering a card shows what ships in the box instead of the install scene:
+The theme shows the product's **second** Shopify media as the collection-card hover image (`snippets/product-card.liquid`, `product-card--show-secondary-media`). Every published product except the three home-storage systems now uses that slot for the package contents:
 
-| Product | Hover media (position 2) | install scene moved to |
-| --- | --- | --- |
-| Group 24 | `suntneew-rv-g24-pdp-in-box-desktop_…jpg` | position 3 |
-| Group 31 | `suntneew-rv-g31-pdp-in-box-desktop_…jpg` | position 3 |
-| 230Ah | `suntneew-rv-230ah-pdp-in-box-desktop_…jpg` | position 3 |
-| 314Ah | `suntneew-rv-314ah-pdp-in-box-desktop_…jpg` | position 3 |
+| Product line | Hover media (position 2) |
+| --- | --- |
+| RV Group 24 / 230Ah | the product's own `…-pdp-in-box-desktop_…jpg` |
+| RV Group 31 / 314Ah | the gallery's in-box image (`suntneew-rv-g31-final-gallery-in-box-v2.jpg`, `suntneew-rv-314ah-gallery-in-box-output.png`) |
+| A20 / U23 / KB700 | the product's own in-box / in-the-box media |
+| A3 | `a3-gallery-in-the-box_…jpg` (already second before the change) |
+| U32 | `suntneew-u32-2026-gallery-07-in-box.jpg`, taken from the U32 asset library (`主图7.jpg`, documented as 包装与配件) |
+| OJ02 | `suntneew-oj02-gallery-07-accessories.jpg` |
+| WL5A / WL10B / VH | unchanged install scene — the package-contents images do not exist yet |
+| AD19 | unchanged (member-drop product, hidden from `/collections/all`) |
 
-The product media order is the only source of truth here — no theme code depends on these filenames. To change a hover image later, drag that media into the second slot in Shopify Admin → Products → Media. `anx-store-automation/examples/rv/` keeps the snapshot and reorder queries used for this change (note that `productReorderMedia` positions are zero-based: `newPosition: "1"` = second slot).
+Two consequences to keep in mind:
+
+- **RV product pages are theme-driven**, so their PDP gallery order did not change. The jump-starter product pages render the Shopify media, so there the package-contents image is also the second gallery slide.
+- The product media order is the only source of truth — no theme code depends on these filenames. To change a hover image later, drag that media into the second slot in Shopify Admin → Products → Media.
+
+`anx-store-automation/examples/card-hover/` keeps the snapshot, reorder and media-creation queries used for this change (note that `productReorderMedia` positions are zero-based: `newPosition: "1"` = second slot).
