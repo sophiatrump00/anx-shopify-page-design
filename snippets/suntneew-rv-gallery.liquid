@@ -35,6 +35,31 @@
     assign gallery_heights = '2048|687|1600|687|687|1600|1600|1600|687'
   endif
 
+  comment
+    Every RV series product opens its gallery with the main product view (the `gallery-main`
+    asset, the same image that leads the product card). Models that already start with that
+    asset keep their current order.
+  endcomment
+  assign gallery_main_asset = 'suntneew-' | append: rv_model | append: '-gallery-main.jpg'
+  assign gallery_main_alt = 'SuntNeew 12.8V 230Ah LiFePO4 RV battery main product view'
+
+  if rv_model == 'rv-314ah'
+    assign gallery_main_alt = 'SuntNeew 12.8V 314Ah LiFePO4 RV battery main product view'
+  elsif rv_model == 'rv-g24'
+    assign gallery_main_alt = 'SuntNeew Group 24 100Ah LiFePO4 RV battery main product view'
+  elsif rv_model == 'rv-g31'
+    assign gallery_main_alt = 'SuntNeew Group 31 100Ah LiFePO4 RV battery main product view'
+  endif
+
+  assign gallery_first_asset = gallery_assets | split: '|' | first
+
+  if gallery_first_asset != gallery_main_asset
+    assign gallery_assets = gallery_main_asset | append: '|' | append: gallery_assets
+    assign gallery_alts = gallery_main_alt | append: '|' | append: gallery_alts
+    assign gallery_widths = '2048|' | append: gallery_widths
+    assign gallery_heights = '2048|' | append: gallery_heights
+  endif
+
   assign gallery_assets = gallery_assets | split: '|'
   assign gallery_alts = gallery_alts | split: '|'
   assign gallery_widths = gallery_widths | split: '|'

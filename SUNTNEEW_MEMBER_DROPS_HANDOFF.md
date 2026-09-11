@@ -15,6 +15,15 @@
 后台商品：https://admin.shopify.com/store/01dng7-ki/products/10030316585255
 后台页面：https://admin.shopify.com/store/01dng7-ki/pages/162847260967
 
+## All Products 可见性
+
+会员专属商品必须发布到 Online Store，member-drops 页面、购物车直链和结账才能使用它；副作用是它同时出现在虚拟集合 `/collections/all`。当前处理方式：
+
+- 会员专属商品统一打 `member-drop` 标签。AD19（`gid://shopify/Product/10030316585255`）已于 2026-09-10 打标。
+- 主题只在 `collection.handle == 'all'` 时跳过该标签的商品，并修正页面上显示的商品数量；其他集合、商品 URL、member-drops 页面、`/cart/<变体>:1` 直链和结账都不受影响。
+- 新增、替换会员专属商品时必须同样打标签，否则它会重新出现在 All Products。写标签走 `anx-store-automation` 的预览—确认通道，示例文件：`anx-store-automation/examples/member-drops/`。
+- 站点搜索、sitemap 和 Google & YouTube 渠道没有隐藏该商品，如需一并排除要单独处理。
+
 ## 预览
 
 ```sh

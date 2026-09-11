@@ -81,6 +81,33 @@
     </div>
   {%- else -%}
     {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- comment -%}
+        MEMBER DROP PRODUCTS
+
+        A Member Drop product has to stay published to the Online Store so the drop page can sell
+        it, which also makes it appear in the virtual "All products" collection. Tag the product
+        with `member-drop` to keep it out of /collections/all only: its own product URL, the drop
+        page, direct cart permalinks and checkout keep working. The count below is corrected with
+        the products hidden on the current page, which is exact while the catalog fits on one page.
+      {%- endcomment -%}
+      {%- assign hide_member_drop_products = false -%}
+
+      {%- if collection.handle == 'all' -%}
+        {%- assign hide_member_drop_products = true -%}
+      {%- endif -%}
+
+      {%- assign hidden_products_count = 0 -%}
+
+      {%- if hide_member_drop_products -%}
+        {%- for product in collection.products -%}
+          {%- if product.tags contains 'member-drop' -%}
+            {%- assign hidden_products_count = hidden_products_count | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- assign visible_products_count = collection.products_count | minus: hidden_products_count -%}
+
       <div class="collection {% if show_filters %}collection--filters-{{ section.settings.filter_layout | escape }}{% endif %}">
         {%- if show_filters or section.settings.show_sort_by -%}
           {%- comment -%}
@@ -134,7 +161,7 @@
         {%- endif -%}
 
         <div class="collection__results">
-          {%- if collection.products_count == 0 -%}
+          {%- if collection.products_count == 0 or visible_products_count <= 0 -%}
             <div class="empty-state">
               <div class="empty-state__icon-wrapper">
                 {%- render 'icon' with 'picto-stop', width: 32, height: 32, stroke_width: 1 -%}
@@ -152,13 +179,17 @@
             <div class="v-stack gap-6">
               <div class="v-stack gap-4 md:hidden">
                 {%- comment -%}We have to duplicate some information on mobile and tablet here{%- endcomment -%}
-                <p class="text-center">{{ 'collection.products_count' | t: count: collection.products_count }}</p>
+                <p class="text-center">{{ 'collection.products_count' | t: count: visible_products_count }}</p>
                 {%- render 'active-facets', results: collection -%}
               </div>
 
               <reveal-items selector=".product-list > *">
                 <product-list class="product-list" role="region" aria-live="polite">
                   {%- for product in collection.products -%}
+                    {%- if hide_member_drop_products and product.tags contains 'member-drop' -%}
+                      {%- continue -%}
+                    {%- endif -%}
+
                     {%- for block in section.blocks -%}
                       {%- liquid
                         if forloop.parentloop.index != block.settings.position

@@ -70,3 +70,13 @@ The current active rules cover A20, A3, U23 and U32 only. Their product pages us
 - Shopify Help: [Hiring a Shopify Partner to create 3D models](https://help.shopify.com/en/manual/products/product-media/expert-3d-model)
 - Shopify Help: [Amount off discounts](https://help.shopify.com/en/manual/discounts/discount-types/percentage-fixed-amount)
 - Shopify Help: [Combining discounts](https://help.shopify.com/en/manual/discounts/discount-combinations)
+
+## RV series gallery: main view first
+
+The four RV templates (`product.rv-230ah.json`, `product.rv-314ah.json`, `product.rv-g24.json`, `product.rv-g31.json`) render `snippets/suntneew-rv-gallery.liquid`. That snippet now guarantees the bundled `suntneew-rv-<model>-gallery-main.jpg` asset leads the gallery — the same main view used by the product card, the product's Shopify media and the Google & YouTube feed:
+
+- 230Ah and 314Ah previously opened on their dark premium hero; the main view now leads and the hero stays as the next slide.
+- Group 24 previously opened on `suntneew-rv-g24-gallery-new-hero.jpg`; the main view now leads there as well.
+- Group 31 already opened with its main view and keeps its order, so no asset is duplicated.
+
+When a main view changes, update the RV asset in `assets/`, add it to `tools/seo-asset-sources.json`, and run `python3 tools/optimize-storefront-assets.py` so the WebP variants and `snippets/suntneew-asset-metadata.liquid` stay in sync.
