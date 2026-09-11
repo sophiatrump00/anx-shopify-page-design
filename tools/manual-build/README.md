@@ -43,3 +43,5 @@ node tools/manual-build/build.mjs --keep-temp      # 保留 .build/ 中间文件
 - 封面列出三种语言所在的页码，页码由实际生成页数计算，改动正文后重新生成即可。
 - 法语、德语正文的结构与英文原件一一对应；图形仍以英文原件页为准。
 - 英文原件保存在 `sources/`，主题 `assets/` 只保留合并后的三语文件。
+- 旧的英文单语文件名（`*-manual-en.pdf`、`*-user-manual-en.pdf`）会同步一份三语内容。
+  Shopify CDN 对这些路径仍有旧缓存，保留覆盖可以让历史链接也拿到不含中文页的最新文件。

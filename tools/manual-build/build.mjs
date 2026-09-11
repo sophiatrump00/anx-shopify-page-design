@@ -5,7 +5,7 @@
 //   node tools/manual-build/build.mjs                 # 生成全部
 //   node tools/manual-build/build.mjs --only rv-g31   # 只生成一个型号
 
-import { existsSync, mkdirSync, rmSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import {
@@ -111,6 +111,13 @@ for (const job of jobs) {
 
   const outputPath = resolve(assetsDir, job.spec.asset);
   const total = mergePdfs([coverPdf, englishPdf, ...languagePdfs], outputPath);
+
+  // 旧版英文单语文件名在 CDN 上还有缓存。用同一份三语文件覆盖这些路径，
+  // 这样历史链接（搜索结果、旧书签）拿到的也是没有中文页的最新手册。
+  for (const alias of job.spec.legacyAliases ?? []) {
+    copyFileSync(outputPath, resolve(assetsDir, alias));
+  }
+
   results.push({ id: job.id, asset: job.spec.asset, pages: total, englishPages, french: languagePages[0], german: languagePages[1] });
   console.log(
     `✓ ${job.id.padEnd(10)} ${job.spec.asset}  共 ${total} 页（EN ${englishPages} / FR ${languagePages[0]} / DE ${languagePages[1]}）`,

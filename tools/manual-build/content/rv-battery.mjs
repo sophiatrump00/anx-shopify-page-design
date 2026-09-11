@@ -7,6 +7,7 @@ export const models = {
   'rv-g31': {
     handle: 'support-rv-g31',
     asset: 'suntneew-rv-g31-manual-en-fr-de.pdf',
+    legacyAliases: ['suntneew-rv-g31-manual-en.pdf'],
     source: 'tools/manual-build/sources/rv-g31-manual-en-source.pdf',
     model: 'ESS-12.8V100AH-B-G31',
     modelShort: 'G31 100Ah',
@@ -55,6 +56,7 @@ export const models = {
   'rv-g24': {
     handle: 'support-rv-g24',
     asset: 'suntneew-rv-g24-manual-en-fr-de.pdf',
+    legacyAliases: ['suntneew-rv-g24-manual-en.pdf'],
     source: 'tools/manual-build/sources/rv-g24-manual-en-source.pdf',
     model: 'ESS-LFP12100BG24',
     modelShort: 'Group 24 100Ah',
@@ -100,6 +102,7 @@ export const models = {
   'rv-230ah': {
     handle: 'support-rv-230ah',
     asset: 'suntneew-rv-230ah-manual-en-fr-de.pdf',
+    legacyAliases: ['suntneew-rv-230ah-manual-en.pdf'],
     source: 'tools/manual-build/sources/rv-230ah-manual-en-source.pdf',
     model: 'ESS-LFP12230B',
     modelShort: '230Ah',
@@ -145,6 +148,7 @@ export const models = {
   'rv-314ah': {
     handle: 'support-rv-314ah',
     asset: 'suntneew-rv-314ah-manual-en-fr-de.pdf',
+    legacyAliases: ['suntneew-rv-314ah-manual-en.pdf'],
     source: 'tools/manual-build/sources/rv-314ah-manual-en-source.pdf',
     model: 'ESS-LFP12314B',
     modelShort: '314Ah',
