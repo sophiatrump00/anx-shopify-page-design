@@ -18,6 +18,7 @@ import {
   pageCount,
   repoRoot,
   renderDocument,
+  splitPanels,
 } from './lib/render.mjs';
 import { models as rvModels, sections as rvSections } from './content/rv-battery.mjs';
 import { jumpStarters } from './content/jump-starters.mjs';
@@ -58,7 +59,12 @@ for (const job of jobs) {
   }
 
   const englishPdf = resolve(buildDir, `${job.id}-en.pdf`);
-  extractPages(sourcePath, englishPdf, job.keepPages);
+  // 折页类原件（一页排多面板）先按面板拆页，其余按页抽取并去掉中文页
+  if (job.spec.panels) {
+    splitPanels(sourcePath, englishPdf, job.spec.panels);
+  } else {
+    extractPages(sourcePath, englishPdf, job.keepPages);
+  }
   const englishPages = pageCount(englishPdf);
 
   const languagePdfs = [];
@@ -86,6 +92,13 @@ for (const job of jobs) {
   const frRange = `p. ${1 + englishPages + 1}–${1 + englishPages + languagePages[0]}`;
   const deRange = `p. ${cursor - languagePages[1] + 1}–${cursor}`;
 
+  // 随产品附带的插页（制造商信息 + 多语言警示）合并在手册末尾
+  const insertPdfs = (job.spec.inserts ?? []).map((file) => resolve(repoRoot, file));
+  const insertPages = insertPdfs.reduce((sum, file) => sum + pageCount(file), 0);
+  const insertRange = insertPages
+    ? `p. ${cursor + 1}–${cursor + insertPages}`
+    : null;
+
   const coverHtml = renderDocument({
     lang: 'en',
     html: coverPage({
@@ -95,6 +108,7 @@ for (const job of jobs) {
         { label: 'English', pages: `p. 2–${1 + englishPages}` },
         { label: 'Français', pages: frRange },
         { label: 'Deutsch', pages: deRange },
+        ...(insertRange ? [{ label: job.spec.insertLabel ?? 'Product insert', pages: insertRange }] : []),
       ],
       note: job.spec.coverNote,
       meta: {
@@ -110,7 +124,7 @@ for (const job of jobs) {
   htmlToPdf(coverHtml, coverPdf, `${job.id}-cover`);
 
   const outputPath = resolve(assetsDir, job.spec.asset);
-  const total = mergePdfs([coverPdf, englishPdf, ...languagePdfs], outputPath);
+  const total = mergePdfs([coverPdf, englishPdf, ...languagePdfs, ...insertPdfs], outputPath);
 
   // 旧版英文单语文件名在 CDN 上还有缓存。用同一份三语文件覆盖这些路径，
   // 这样历史链接（搜索结果、旧书签）拿到的也是没有中文页的最新手册。
@@ -118,9 +132,17 @@ for (const job of jobs) {
     copyFileSync(outputPath, resolve(assetsDir, alias));
   }
 
-  results.push({ id: job.id, asset: job.spec.asset, pages: total, englishPages, french: languagePages[0], german: languagePages[1] });
+  results.push({
+    id: job.id,
+    asset: job.spec.asset,
+    pages: total,
+    englishPages,
+    french: languagePages[0],
+    german: languagePages[1],
+    inserts: insertPages,
+  });
   console.log(
-    `✓ ${job.id.padEnd(10)} ${job.spec.asset}  共 ${total} 页（EN ${englishPages} / FR ${languagePages[0]} / DE ${languagePages[1]}）`,
+    `✓ ${job.id.padEnd(10)} ${job.spec.asset}  共 ${total} 页（EN ${englishPages} / FR ${languagePages[0]} / DE ${languagePages[1]}${insertPages ? ` / 插页 ${insertPages}` : ''}）`,
   );
 }
 

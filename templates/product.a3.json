@@ -71,7 +71,7 @@
         "box3": {"type": "included", "settings": {"item": "PD 60W USB-C cable x1", "variant_match": ""}},
         "box4": {"type": "included", "settings": {"item": "EVA carry case x1", "variant_match": ""}},
         "box5": {"type": "included", "settings": {"item": "User manual x1", "variant_match": ""}},
-        "manual": {"type": "download", "settings": {"label": "A3 product pack (PDF)", "link": "https://cdn.shopify.com/s/files/1/0903/4815/9271/files/SUNTNEEW_CY-A3_English_Product_Pack.pdf?v=1786349789", "asset_name": "", "variant_match": ""}},
+        "manual": {"type": "download", "settings": {"label": "A3 user manual — EN · FR · DE (PDF)", "link": "", "asset_name": "suntneew-a3-user-manual-en-fr-de.pdf", "variant_match": "", "document_group": "manuals"}},
         "fcc": {"type": "download", "settings": {"label": "FCC SDoC — CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "FCC", "description": "Supplier's Declaration of Conformity for the CY-A3 model.", "public_copy_ready": true}},
         "un38": {"type": "download", "settings": {"label": "UN38.3 Summary — CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "UN38.3", "description": "Transport-test summary for the CY-A3 model.", "public_copy_ready": false}},
         "ul2743": {"type": "download", "settings": {"label": "Safety tested to UL 2743 — A3 / CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "Safety tested to UL 2743", "description": "Product-level safety test report for the selected A3 / CY-A3 model. This wording does not represent a UL Listing or certification.", "public_copy_ready": false}},

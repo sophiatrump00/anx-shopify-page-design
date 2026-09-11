@@ -195,6 +195,8 @@ export const jumpStarters = [
     model: 'U23',
     title: 'U23 Portable Car Jump Starter — 8,000mAh',
     keepPages: { first: 1, last: 7, drop: [7] },
+    inserts: ['tools/manual-build/inserts/u23-insert.pdf'],
+    insertLabel: 'Manufacturer / disposal insert',
     coverEyebrow: 'User manual · Manuel d’utilisation · Bedienungsanleitung',
     coverNote:
       'The English pages are the original printed booklet. The French and German sections reproduce the same instructions in typeset form.',
@@ -679,6 +681,8 @@ export const jumpStarters = [
     model: 'CY-A20 (8,000mAh)',
     title: 'A20 Jump Starter — 8,000mAh illustrated quick start',
     keepPages: { first: 1, last: 8 },
+    inserts: ['tools/manual-build/inserts/a20-insert.pdf'],
+    insertLabel: 'Manufacturer / disposal insert',
     coverEyebrow: 'Quick start · Démarrage rapide · Schnellstart',
     coverNote:
       'The English pages are the illustrated quick-start sheet supplied with the 8,000mAh A20. The French and German sections set out the same information as text.',
@@ -799,6 +803,157 @@ export const jumpStarters = [
         },
         {
           title: isFr ? '5. Avis FCC' : '5. FCC-Hinweis',
+          html: FCC.map((entry) => p(L(entry))).join(''),
+        },
+      ];
+    },
+  },
+  // -------------------------------------------------------------------------
+  // A3：原厂文件是 8 面板风琴折页排在一张长图上，按折线拆成 8 页使用
+  // -------------------------------------------------------------------------
+  {
+    id: 'a3',
+    source: 'tools/manual-build/sources/a3-manual-sheet.pdf',
+    asset: 'suntneew-a3-user-manual-en-fr-de.pdf',
+    model: 'CY-A3',
+    title: 'A3 Jump Starter — 16,000mAh quick-start manual',
+    panels: { count: 8, left: 16.2, width: 232.5, height: 404.2, inset: 1.5 },
+    inserts: ['tools/manual-build/inserts/a3-insert.pdf'],
+    insertLabel: 'Manufacturer / disposal insert',
+    coverEyebrow: 'Quick-start manual · Guide de démarrage · Schnellstart-Anleitung',
+    coverNote:
+      'The illustrated pages are the original eight-panel fold-out quick guide, split panel by panel. The French and German sections set out the same information as text.',
+    coverFooter:
+      'CY-A3 · 16,000mAh / 59.2Wh · 800A starting / 2,500A peak · PD 60W · Manual edition July 9, 2026 · suntneew.com',
+    sections: (lang) => {
+      const L = (entry) => pick(entry, lang);
+      const isFr = lang === 'fr';
+      return [
+        {
+          title: isFr ? '1. Présentation' : '1. Übersicht',
+          html:
+            p(
+              isFr
+                ? 'L’A3 est un démarreur de secours de 16 000mAh pour véhicules 12V compatibles. Il associe le démarrage d’urgence, la charge d’appareils en USB-C Power Delivery, un éclairage LED de 150 lm et une pince intelligente à huit protections.'
+                : 'Der A3 ist ein 16.000mAh-Starthilfe-Booster für kompatible 12V-Fahrzeuge. Er kombiniert Notstart, Geräteladung über USB-C Power Delivery, eine 150-lm-LED-Leuchte und eine intelligente Klemme mit acht Schutzfunktionen.',
+            ) +
+            table(
+              isFr ? ['Caractéristique', 'Valeur'] : ['Merkmal', 'Wert'],
+              [
+                [isFr ? 'Modèle' : 'Modell', 'CY-A3'],
+                [isFr ? 'Capacité / énergie' : 'Kapazität / Energie', '16 000mAh / 59,2Wh'],
+                [isFr ? 'Courant de démarrage' : 'Startstrom', '800A'],
+                [isFr ? 'Courant de crête' : 'Spitzenstrom', '2 500A'],
+                [
+                  isFr ? 'Véhicules compatibles' : 'Fahrzeugreferenz',
+                  isFr ? 'Jusqu’à 8,0 L essence / 6,5 L diesel' : 'Bis 8,0 L Benzin / 6,5 L Diesel',
+                ],
+                [isFr ? 'Démarrages par charge' : 'Starts pro Ladung', isFr ? 'jusqu’à 50+' : 'bis zu 50+'],
+                [isFr ? 'Entrée USB-C' : 'USB-C-Eingang', 'PD 60W (5/9/12/15/20V, 3A max.)'],
+                [isFr ? 'Sorties' : 'Ausgänge', 'USB-C PD60W, USB-A PD18W, USB-A 5V/2,4A'],
+                [isFr ? 'Éclairage' : 'Leuchte', isFr ? '150 lm : fixe, stroboscope, SOS' : '150 lm: Dauerlicht, Stroboskop, SOS'],
+                [isFr ? 'Protections' : 'Schutzfunktionen', isFr ? '8 fonctions' : '8 Funktionen'],
+                [isFr ? 'Poids' : 'Gewicht', '764g'],
+                [isFr ? 'Température de service' : 'Betriebstemperatur', '−20 °C à 60 °C'],
+              ],
+            ) +
+            h4(isFr ? 'Contenu de l’emballage' : 'Lieferumfang') +
+            ul(
+              isFr
+                ? [
+                    '1 × unité principale A3',
+                    '1 × pinces de démarrage intelligentes',
+                    '1 × câble USB-C PD 60W',
+                    '1 × étui de transport EVA',
+                    '1 × manuel d’utilisation',
+                  ]
+                : [
+                    '1 × A3-Hauptgerät',
+                    '1 × intelligente Starthilfeklemmen',
+                    '1 × USB-C-Kabel PD 60W',
+                    '1 × EVA-Tragetasche',
+                    '1 × Bedienungsanleitung',
+                  ],
+            ),
+        },
+        {
+          title: isFr ? '2. Démarrer un véhicule 12V' : '2. Ein 12V-Fahrzeug starten',
+          html:
+            p(
+              isFr
+                ? 'Chargez l’appareil à au moins 50 % avant chaque tentative. Utilisez uniquement une batterie de véhicule 12V compatible et respectez les instructions du constructeur du véhicule.'
+                : 'Laden Sie das Gerät vor jedem Startversuch auf mindestens 50 %. Verwenden Sie nur eine kompatible 12V-Fahrzeugbatterie und beachten Sie die Vorgaben des Fahrzeugherstellers.',
+            ) +
+            ol(
+              isFr
+                ? [
+                    'Branchez la pince intelligente : insérez complètement la fiche de la pince dans l’A3.',
+                    'Fixez les pinces : connectez la pince rouge à la borne positive et la pince noire à la borne négative de la batterie.',
+                    'Vérifiez le voyant vert : confirmez l’indication de fonctionnement de la pince avant de démarrer.',
+                    'Démarrez le véhicule, puis suivez le manuel pour la déconnexion.',
+                  ]
+                : [
+                    'Klemme anschließen: Stecken Sie den Stecker der intelligenten Klemme vollständig in den A3.',
+                    'Klemmen befestigen: Verbinden Sie die rote Klemme mit dem Pluspol und die schwarze Klemme mit dem Minuspol der Batterie.',
+                    'Grüne Anzeige prüfen: Bestätigen Sie die Betriebsanzeige der Klemme, bevor Sie starten.',
+                    'Fahrzeug starten und anschließend die im Handbuch beschriebene Reihenfolge zum Trennen befolgen.',
+                  ],
+            ) +
+            p(
+              isFr
+                ? 'Si le moteur ne démarre pas, attendez au moins une minute et n’enchaînez pas plus de trois tentatives. Retirez les pinces dans les 30 secondes suivant le démarrage et laissez le moteur tourner.'
+                : 'Wenn der Motor nicht startet, warten Sie mindestens eine Minute und führen Sie nicht mehr als drei Versuche hintereinander durch. Entfernen Sie die Klemmen innerhalb von 30 Sekunden nach dem Start und lassen Sie den Motor laufen.',
+            ),
+        },
+        {
+          title: isFr ? '3. Charge et alimentation d’appareils' : '3. Laden und Geräteversorgung',
+          html: p(
+            isFr
+              ? 'Le port USB-C prend en charge Power Delivery jusqu’à 60W en entrée comme en sortie (profils 5V, 9V, 12V, 15V et 20V jusqu’à 3A) : l’A3 peut donc aussi recharger un ordinateur portable ou une tablette compatible. Les sorties USB-A alimentent les appareils courants. Ne dépassez pas les valeurs de sortie indiquées et n’utilisez pas l’appareil pendant qu’il charge si la source est instable.'
+              : 'Der USB-C-Anschluss unterstützt Power Delivery bis 60W – sowohl als Eingang als auch als Ausgang (Profile 5V, 9V, 12V, 15V und 20V bis 3A). Damit lassen sich auch kompatible Notebooks und Tablets laden. Die USB-A-Ausgänge versorgen gängige Geräte. Überschreiten Sie die angegebenen Ausgangswerte nicht.',
+          ),
+        },
+        {
+          title: isFr ? '4. Éclairage d’urgence' : '4. Notleuchte',
+          html: p(
+            isFr
+              ? 'L’éclairage LED de 150 lm propose trois modes : fixe, stroboscope et SOS. Allumez l’appareil puis utilisez le bouton d’éclairage pour passer d’un mode à l’autre. Utilisez le mode stroboscope ou SOS uniquement pour signaler votre position en cas d’urgence routière.'
+              : 'Die 150-lm-LED bietet drei Modi: Dauerlicht, Stroboskop und SOS. Schalten Sie das Gerät ein und wechseln Sie mit der Lichttaste zwischen den Modi. Verwenden Sie Stroboskop oder SOS nur, um bei einer Panne auf sich aufmerksam zu machen.',
+          ),
+        },
+        {
+          title: isFr ? '5. Sécurité et entretien' : '5. Sicherheit und Pflege',
+          html: ol(
+            (isFr
+              ? [
+                  'Vérifiez la polarité avant chaque connexion ; n’inversez jamais le positif et le négatif.',
+                  'La pince intelligente couvre huit protections (notamment inversion de polarité, court-circuit, surtension, surintensité, surchauffe et surdécharge). Ne neutralisez aucune de ces protections.',
+                  'Ne laissez pas les pinces se toucher et ne provoquez pas de court-circuit.',
+                  'N’exposez pas l’appareil à l’eau, à une chaleur élevée, au feu ni à un champ magnétique puissant.',
+                  'Ne démontez pas, ne percez pas et ne modifiez pas l’appareil ; le boîtier en alliage d’aluminium ne doit pas être ouvert.',
+                  'Ne connectez pas de charges dépassant les sorties documentées.',
+                  'Évitez les chocs, les chutes, l’écrasement et la compression.',
+                  'Ce produit n’est pas un jouet ; tenez-le hors de portée des enfants.',
+                  'En cas de stockage prolongé, rechargez l’appareil au moins tous les trois mois.',
+                  'Utilisez l’appareil dans une plage de −20 °C à 60 °C et laissez-le revenir à température ambiante avant une charge rapide.',
+                ]
+              : [
+                  'Prüfen Sie vor jedem Anschluss die Polarität; Plus und Minus niemals vertauschen.',
+                  'Die intelligente Klemme bietet acht Schutzfunktionen (unter anderem Verpolung, Kurzschluss, Überspannung, Überstrom, Überhitzung und Tiefentladung). Deaktivieren Sie keinen dieser Schutzmechanismen.',
+                  'Lassen Sie die Klemmen sich nicht berühren und verursachen Sie keinen Kurzschluss.',
+                  'Setzen Sie das Gerät nicht Wasser, starker Hitze, Feuer oder starken Magnetfeldern aus.',
+                  'Zerlegen, durchstechen oder verändern Sie das Gerät nicht; das Aluminiumgehäuse darf nicht geöffnet werden.',
+                  'Schließen Sie keine Lasten an, die die dokumentierten Ausgänge überschreiten.',
+                  'Vermeiden Sie Stöße, Herunterfallen, Quetschen und Zusammendrücken.',
+                  'Dieses Produkt ist kein Spielzeug; halten Sie es von Kindern fern.',
+                  'Laden Sie das Gerät bei längerer Lagerung mindestens alle drei Monate nach.',
+                  'Betreiben Sie das Gerät im Bereich −20 °C bis 60 °C und lassen Sie es vor dem Schnellladen auf Raumtemperatur kommen.',
+                ]
+            ),
+          ),
+        },
+        {
+          title: isFr ? '6. Avis FCC' : '6. FCC-Hinweis',
           html: FCC.map((entry) => p(L(entry))).join(''),
         },
       ];

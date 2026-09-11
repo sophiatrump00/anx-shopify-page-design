@@ -70,6 +70,28 @@ export function mergePdfs(inputs, outputPdf) {
   return pageCount(outputPdf);
 }
 
+// 把整张折页（多个面板排在一页上）按面板拆成多页。
+// left / width / height 单位为 pt；inset 让每条折线上的分隔线完整落在页面内。
+export function splitPanels(sourcePdf, outputPdf, { count, left, width, height, inset = 0 }) {
+  const parts = [];
+  for (let index = 0; index < count; index += 1) {
+    const offset = left + width * index - inset;
+    const mediaWidth = width + inset * 2;
+    const part = resolve(buildDir, `panel-${index}.pdf`);
+    run('gs', [
+      '-q', '-dNOPAUSE', '-dBATCH', '-sDEVICE=pdfwrite', '-dFIXEDMEDIA',
+      `-dDEVICEWIDTHPOINTS=${mediaWidth}`, `-dDEVICEHEIGHTPOINTS=${height}`,
+      `-sOutputFile=${part}`,
+      '-c', `<</PageOffset [${-offset} 0]>> setpagedevice`,
+      '-f', sourcePdf,
+    ]);
+    parts.push(part);
+  }
+  run('pdfunite', [...parts, outputPdf]);
+  parts.forEach((part) => rmSync(part, { force: true }));
+  return { pageCount: count };
+}
+
 // ---------------------------------------------------------------------------
 // 排版
 // ---------------------------------------------------------------------------

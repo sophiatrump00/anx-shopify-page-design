@@ -206,6 +206,8 @@ Object.entries(models).forEach(([id, spec]) => {
   spec.coverNote =
     'The English pages are the original printed booklet. The French and German sections set out the same instructions in typeset form.';
   spec.coverFooter = `Model ${spec.model} · 12.8V ${spec.capacityNum}Ah LiFePO4 · Bluetooth BMS · Manual edition ${EDITION[id]} · suntneew.com`;
+  spec.inserts = [`tools/manual-build/inserts/${id}-insert.pdf`];
+  spec.insertLabel = 'Manufacturer / disposal insert';
 });
 
 // ---------------------------------------------------------------------------
