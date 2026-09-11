@@ -71,15 +71,19 @@ The current active rules cover A20, A3, U23 and U32 only. Their product pages us
 - Shopify Help: [Amount off discounts](https://help.shopify.com/en/manual/discounts/discount-types/percentage-fixed-amount)
 - Shopify Help: [Combining discounts](https://help.shopify.com/en/manual/discounts/discount-combinations)
 
-## RV series gallery: main view first
+## RV series media order
 
-The four RV templates (`product.rv-230ah.json`, `product.rv-314ah.json`, `product.rv-g24.json`, `product.rv-g31.json`) render `snippets/suntneew-rv-gallery.liquid`. That snippet now guarantees the bundled `suntneew-rv-<model>-gallery-main.jpg` asset leads the gallery — the same main view used by the product card, the product's Shopify media and the Google & YouTube feed:
+Two separate placements, changed through different systems:
 
-- 230Ah and 314Ah previously opened on their dark premium hero; the main view now leads and the hero stays as the next slide.
-- Group 24 previously opened on `suntneew-rv-g24-gallery-new-hero.jpg`; the main view now leads there as well.
-- Group 31 already opened with its main view and keeps its order, so no asset is duplicated.
+| Placement | Source of truth | Rule |
+| --- | --- | --- |
+| Collection card, first image | Shopify product media position 1 | the battery's **front view** |
+| Collection card, hover image | Shopify product media position 2 | the **package contents** |
+| Product page gallery | `snippets/suntneew-rv-gallery.liquid` | the approved slide order; do not reorder for card work |
 
-When a main view changes, update the RV asset in `assets/`, add it to `tools/seo-asset-sources.json`, and run `python3 tools/optimize-storefront-assets.py` so the WebP variants and `snippets/suntneew-asset-metadata.liquid` stay in sync.
+The product-page gallery keeps its own order on purpose. Changing the Shopify media order does not touch it, and changing the gallery snippet does not touch the card, so the two never need to be edited together.
+
+RV front views live in `assets/` as `suntneew-rv-<model>-gallery-front.jpg` (230Ah reuses the bundled `suntneew-rv-230ah-gallery-front-v2.jpg`). Group 24 / 230Ah / 314Ah front views come from the product asset library (`G24 4.jpg` render, `GALLERY_01_230Ah_front.jpg`, `ANCHOR_02_314Ah_正面_2000x2000.jpg`); Group 31 reuses the bundled `suntneew-rv-g31-gallery-front.jpg`. They are registered in `tools/seo-asset-sources.json`; after replacing one, run `python3 tools/optimize-storefront-assets.py` so the WebP variants and `snippets/suntneew-asset-metadata.liquid` stay in sync.
 
 ### Card hover media
 
