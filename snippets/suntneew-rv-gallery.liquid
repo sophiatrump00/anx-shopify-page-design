@@ -36,28 +36,35 @@
   endif
 
   comment
-    Every RV series product opens its gallery with the main product view (the `gallery-main`
-    asset, the same image that leads the product card). Models that already start with that
-    asset keep their current order.
+    Every RV series product opens its gallery with the front view (`gallery-front`), the image
+    the collection card leads with. The previous opening image stays as the next slide, so no
+    approved view is dropped.
   endcomment
-  assign gallery_main_asset = 'suntneew-' | append: rv_model | append: '-gallery-main.jpg'
-  assign gallery_main_alt = 'SuntNeew 12.8V 230Ah LiFePO4 RV battery main product view'
+  assign gallery_front_asset = 'suntneew-' | append: rv_model | append: '-gallery-front.jpg'
+  assign gallery_front_alt = 'SuntNeew 12.8V 230Ah LiFePO4 RV battery front view'
+  assign gallery_front_width = 2000
+  assign gallery_front_height = 2000
+
+  if rv_model == 'rv-230ah'
+    assign gallery_front_asset = 'suntneew-rv-230ah-gallery-front-v2.jpg'
+  endif
 
   if rv_model == 'rv-314ah'
-    assign gallery_main_alt = 'SuntNeew 12.8V 314Ah LiFePO4 RV battery main product view'
+    assign gallery_front_alt = 'SuntNeew 12.8V 314Ah LiFePO4 RV battery front view'
   elsif rv_model == 'rv-g24'
-    assign gallery_main_alt = 'SuntNeew Group 24 100Ah LiFePO4 RV battery main product view'
+    assign gallery_front_alt = 'SuntNeew Group 24 100Ah LiFePO4 RV battery front view'
   elsif rv_model == 'rv-g31'
-    assign gallery_main_alt = 'SuntNeew Group 31 100Ah LiFePO4 RV battery main product view'
+    assign gallery_front_alt = 'SuntNeew Group 31 100Ah LiFePO4 RV battery front view'
   endif
 
   assign gallery_first_asset = gallery_assets | split: '|' | first
 
-  if gallery_first_asset != gallery_main_asset
-    assign gallery_assets = gallery_main_asset | append: '|' | append: gallery_assets
-    assign gallery_alts = gallery_main_alt | append: '|' | append: gallery_alts
-    assign gallery_widths = '2048|' | append: gallery_widths
-    assign gallery_heights = '2048|' | append: gallery_heights
+  if gallery_first_asset != gallery_front_asset
+    assign gallery_assets = gallery_front_asset | append: '|' | append: gallery_assets
+    assign gallery_alts = gallery_front_alt | append: '|' | append: gallery_alts
+    assign front_size = gallery_front_width | append: '|'
+    assign gallery_widths = front_size | append: gallery_widths
+    assign gallery_heights = gallery_front_height | append: '|' | append: gallery_heights
   endif
 
   assign gallery_assets = gallery_assets | split: '|'
