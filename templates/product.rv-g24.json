@@ -239,7 +239,7 @@
         "box_caps": {"type": "included", "settings": {"item": "Insulating caps ×2", "variant_match": ""}},
         "box_washers": {"type": "included", "settings": {"item": "Washers ×2", "variant_match": ""}},
         "box_manual": {"type": "included", "settings": {"item": "English user manual ×1", "variant_match": ""}},
-        "manual": {"type": "download", "settings": {"label": "Group 24 product manual — English PDF", "link": "", "asset_name": "suntneew-rv-g24-manual-en.pdf", "variant_match": ""}},
+        "manual": {"type": "download", "settings": {"label": "Group 24 product manual — EN · FR · DE (PDF)", "link": "", "asset_name": "suntneew-rv-g24-manual-en-fr-de.pdf", "variant_match": ""}},
         "fcc_sdoc": {"type": "download", "settings": {"label": "FCC SDoC — G24 / G31 shared models", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "FCC", "description": "Shared FCC SDoC listing the G24 / G31 model family.", "public_copy_ready": true}},
         "emc": {"type": "download", "settings": {"label": "CE-EMC — G24 / G31 shared models", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "CE-EMC", "description": "Shared EMC documentation listing the G24 / G31 model family.", "public_copy_ready": true}},
         "rohs": {"type": "download", "settings": {"label": "RoHS — RV battery series", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "RoHS", "description": "Series-level RoHS report used as a supporting reference for the RV battery line.", "public_copy_ready": true}},

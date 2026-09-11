@@ -253,7 +253,7 @@
         "note2":{"type":"included","settings":{"item":"Use 63A as the recommended charge reference; keep continuous discharge within 157A and treat 200A as BMS protection only","variant_match":""}},
         "note3":{"type":"included","settings":{"item":"Protect terminals and size conductors and fuses for the confirmed system limits","variant_match":""}},
         "note4":{"type":"included","settings":{"item":"Keep service access, cable bend radius and restraint in the enclosure plan","variant_match":""}},
-        "manual":{"type":"download","settings":{"label":"314Ah user manual (EN PDF)","link":"","asset_name":"suntneew-rv-314ah-manual-en.pdf","variant_match":""}},
+        "manual":{"type":"download","settings":{"label":"314Ah user manual — EN · FR · DE (PDF)","link":"","asset_name":"suntneew-rv-314ah-manual-en-fr-de.pdf","variant_match":""}},
         "fcc_sdoc":{"type":"download","settings":{"label":"FCC SDoC — 230Ah / 314Ah listed models","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"FCC","description":"Shared FCC SDoC for the 230Ah / 314Ah model family.","public_copy_ready":true}},
         "emc":{"type":"download","settings":{"label":"CE-EMC — 230Ah / 314Ah listed models","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"CE-EMC","description":"Shared EMC documentation for the 230Ah / 314Ah model family.","public_copy_ready":true}},
         "rohs":{"type":"download","settings":{"label":"RoHS — RV battery series","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"RoHS","description":"Series-level RoHS report used as a supporting reference for the RV battery line.","public_copy_ready":true}},

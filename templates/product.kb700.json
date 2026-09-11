@@ -109,7 +109,7 @@
         "box5":{"type":"included","settings":{"item":"EVA storage case x1","variant_match":""}},
         "box6":{"type":"included","settings":{"item":"English user manual x1","variant_match":""}},
         "box7":{"type":"included","settings":{"item":"Color box x1","variant_match":""}},
-        "manual":{"type":"download","settings":{"label":"KB700 user manual (English PDF)","link":"","asset_name":"suntneew-kb700-user-manual-en.pdf","variant_match":""}},
+        "manual":{"type":"download","settings":{"label":"KB700 user manual — EN · FR · DE (PDF)","link":"","asset_name":"suntneew-kb700-user-manual-en-fr-de.pdf","variant_match":""}},
         "ul2743":{"type":"download","settings":{"label":"Safety tested to UL 2743 — KB700 / KP-700","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"Safety tested to UL 2743","description":"Product-level safety testing for the KB700 / KP-700 model family.","public_copy_ready":false}},
         "fcc":{"type":"download","settings":{"label":"FCC — KB700 / KP-700","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"FCC","description":"Electromagnetic compatibility information for KB700 / KP-700.","public_copy_ready":false}},
         "un38":{"type":"download","settings":{"label":"UN38.3 — KB700 / KP-700","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"UN38.3","description":"Battery transport-test information for the model-matched battery pack.","public_copy_ready":false}},

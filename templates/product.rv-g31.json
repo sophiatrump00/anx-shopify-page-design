@@ -266,7 +266,7 @@
         "box_manual": {"type":"included","settings":{"item":"English product manual ×1","variant_match":""}},
         "box_bolts": {"type":"included","settings":{"item":"M8 × 12mm terminal bolts ×2","variant_match":""}},
         "box_caps": {"type":"included","settings":{"item":"Red insulating cap ×1 and black insulating cap ×1","variant_match":""}},
-        "manual": {"type":"download","settings":{"label":"Group 31 product manual — English PDF","link":"","asset_name":"suntneew-rv-g31-manual-en.pdf","variant_match":""}},
+        "manual": {"type":"download","settings":{"label":"Group 31 product manual — EN · FR · DE (PDF)","link":"","asset_name":"suntneew-rv-g31-manual-en-fr-de.pdf","variant_match":""}},
         "ip65": {"type":"download","settings":{"label":"IP65 enclosure protection — RV battery family","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"IP65","description":"IP65 enclosure protection for the RV battery family.","public_copy_ready":true}},
         "fcc_grant": {"type":"download","settings":{"label":"FCC Equipment Authorization — FCC ID 2BQK7-12100BG31","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"FCC ID","description":"Equipment-authorization reference for the G31 Bluetooth design.","public_copy_ready":true}},
         "fcc_sdoc": {"type":"download","settings":{"label":"FCC SDoC — G31 listed model","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"FCC","description":"Supplier's Declaration of Conformity for the G31 listed model.","public_copy_ready":true}},

@@ -12,10 +12,34 @@
     "main": {
       "type": "suntneew-product-support",
       "blocks": {
-        "fact_capacity": {"type": "quick_fact", "settings": {"label": "Rated capacity", "value": "7,200mAh / 26.64Wh"}},
-        "fact_starting": {"type": "quick_fact", "settings": {"label": "Starting / peak current", "value": "500A / 1,000A"}},
-        "fact_vehicle": {"type": "quick_fact", "settings": {"label": "Compatible vehicle system", "value": "12V"}},
-        "fact_fan": {"type": "quick_fact", "settings": {"label": "Maximum fan speed", "value": "105,000 RPM"}},
+        "fact_capacity": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Rated capacity",
+            "value": "7,200mAh / 26.64Wh"
+          }
+        },
+        "fact_starting": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Starting / peak current",
+            "value": "500A / 1,000A"
+          }
+        },
+        "fact_vehicle": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Compatible vehicle system",
+            "value": "12V"
+          }
+        },
+        "fact_fan": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Maximum fan speed",
+            "value": "105,000 RPM"
+          }
+        },
         "manual_overview": {
           "type": "manual_section",
           "settings": {
@@ -57,12 +81,58 @@
             "body": "<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>"
           }
         },
-        "compliance_ul": {"type": "compliance_item", "settings": {"standard": "Safety tested to UL 2743", "title": "Product safety testing", "description": "Product-level safety-test scope shown for the KB700 / KP-700 model family.", "status": "Product safety evidence"}},
-        "compliance_fcc": {"type": "compliance_item", "settings": {"standard": "FCC", "title": "Electromagnetic compatibility", "description": "FCC information associated with the KB700 / KP-700 model, including the Part 15 notice in the manual.", "status": "U.S. market information"}},
-        "compliance_un38": {"type": "compliance_item", "settings": {"standard": "UN38.3", "title": "Battery transport testing", "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack.", "status": "Transport evidence"}},
-        "compliance_sds": {"type": "compliance_item", "settings": {"standard": "SDS", "title": "Safety and handling information", "description": "Safety Data Sheet information for battery handling, storage and response guidance.", "status": "Safety information"}}
+        "compliance_ul": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "Safety tested to UL 2743",
+            "title": "Product safety testing",
+            "description": "Product-level safety-test scope shown for the KB700 / KP-700 model family.",
+            "status": "Product safety evidence"
+          }
+        },
+        "compliance_fcc": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "FCC",
+            "title": "Electromagnetic compatibility",
+            "description": "FCC information associated with the KB700 / KP-700 model, including the Part 15 notice in the manual.",
+            "status": "U.S. market information"
+          }
+        },
+        "compliance_un38": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UN38.3",
+            "title": "Battery transport testing",
+            "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack.",
+            "status": "Transport evidence"
+          }
+        },
+        "compliance_sds": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "SDS",
+            "title": "Safety and handling information",
+            "description": "Safety Data Sheet information for battery handling, storage and response guidance.",
+            "status": "Safety information"
+          }
+        }
       },
-      "block_order": ["fact_capacity", "fact_starting", "fact_vehicle", "fact_fan", "manual_overview", "manual_start", "manual_functions", "manual_safety", "manual_fcc", "compliance_ul", "compliance_fcc", "compliance_un38", "compliance_sds"],
+      "block_order": [
+        "fact_capacity",
+        "fact_starting",
+        "fact_vehicle",
+        "fact_fan",
+        "manual_overview",
+        "manual_start",
+        "manual_functions",
+        "manual_safety",
+        "manual_fcc",
+        "compliance_ul",
+        "compliance_fcc",
+        "compliance_un38",
+        "compliance_sds"
+      ],
       "settings": {
         "support_label": "Support",
         "resources_label": "Product Resources",
@@ -75,10 +145,10 @@
         "online_card_label": "Read the online manual",
         "online_card_description": "Responsive instructions that follow the language selected on the store.",
         "online_card_action": "Start reading",
-        "manual_asset_name": "suntneew-kb700-user-manual-en.pdf",
-        "pdf_card_eyebrow": "ORIGINAL ENGLISH FILE",
-        "pdf_label": "Download English PDF",
-        "pdf_card_description": "Keep the original seven-page file for printing or offline reference.",
+        "manual_asset_name": "suntneew-kb700-user-manual-en-fr-de.pdf",
+        "pdf_card_eyebrow": "ENGLISH · FRANÇAIS · DEUTSCH",
+        "pdf_label": "Download manual — EN · FR · DE",
+        "pdf_card_description": "One file with the original English booklet plus the French and German sections for offline use.",
         "pdf_card_action": "Download PDF",
         "certifications_card_eyebrow": "MODEL-MATCHED INFORMATION",
         "certifications_label": "View certifications",
@@ -89,7 +159,7 @@
         "manual_eyebrow": "ONLINE USER MANUAL",
         "manual_heading": "KB700 Fan Jump Starter",
         "manual_intro": "Use this online guide for setup, vehicle starting, air-duster operation, charging and safety.",
-        "manual_version": "Online edition based on the English manual dated May 7, 2026.",
+        "manual_version": "Online edition based on the English manual dated May 7, 2026. The download also contains the French and German sections.",
         "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
         "compliance_heading": "Safety & Compliance",
         "compliance_intro": "The four safety and compliance categories currently shown for KB700 / KP-700 are collected here with a plain-language explanation of what each one covers.",
@@ -98,5 +168,7 @@
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

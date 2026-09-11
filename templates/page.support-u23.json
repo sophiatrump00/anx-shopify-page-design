@@ -1,0 +1,194 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-product-support",
+      "blocks": {
+        "fact_1": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Rated capacity",
+            "value": "8,000mAh / 29.6Wh"
+          }
+        },
+        "fact_2": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Starting / peak current",
+            "value": "700A / 1,500A"
+          }
+        },
+        "fact_3": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Engine reference",
+            "value": "6.0L gas / 3.0L diesel"
+          }
+        },
+        "fact_4": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Light output",
+            "value": "5W LED with SOS"
+          }
+        },
+        "manual_1": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Product overview",
+            "body": "<p>The U23 is a compact, portable car jump starter with a built-in high-intensity floodlight. It combines three core functions: emergency vehicle starting, emergency lighting and a portable power bank.</p>\n<p><strong>Battery:</strong> 8,000mAh / 29.6Wh<br><strong>Input:</strong> Type-C 5V 2A<br><strong>Output:</strong> USB 5V 2.4A<br><strong>EC5 output:</strong> 12V<br><strong>Recharge time:</strong> 3–4 hours<br><strong>Starting current:</strong> 700A<br><strong>Peak current:</strong> 1,500A<br><strong>Operating temperature:</strong> −20°C to 60°C</p>\n<p>The printed booklet lists the U23 jump starter, a USB cable, a smart clamp, the paper box, the user manual and a tool bag as the supplied items. Check your package for the complete current bundle.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_2": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Jump-start a vehicle",
+            "body": "<p><strong>Use only with a compatible 12V vehicle battery.</strong> Charge U23 to at least 50% before attempting a jump start.</p>\n<ol><li>Check that the remaining charge is not below 50%.</li><li>Connect the smart clamp to the battery: red to the positive terminal, black to the negative terminal.</li><li>Plug the jumper cable into the EC5 port of the jump starter.</li><li>Start the vehicle.</li><li>When the vehicle starts, remove the cable from the jump starter and disconnect both clamps within 30 seconds.</li><li>Leave the vehicle engine running.</li></ol>\n<p>If the engine does not start, wait at least one minute before another attempt and do not make more than three consecutive attempts. The unit is rated for gasoline engines up to 6 liters and diesel engines up to 3 liters.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_3": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Charging and device power",
+            "body": "<p>Recharge U23 through the Type-C input at 5V 2A; a full recharge takes about 3–4 hours. The USB output delivers 5V 2.4A for phones, tablets and other small devices. Avoid loads that exceed the rated output current.</p>\n<p>If the unit is stored for a long period, recharge it at least once every three months.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_4": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Light modes",
+            "body": "<p>Press and hold the power button for about two seconds, or double-click it, to switch the 5W LED on in steady mode. A short press cycles through Steady, Flashing and SOS. Hold for two seconds to switch the light off.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_5": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Safety and care",
+            "body": "<ol><li>Check the battery level before use and do not start a vehicle when the remaining charge is below 50% or the unit is hot.</li><li>Insert the EC5 plug fully; a loose connection reduces starting performance and can overheat the connector.</li><li>Keep at least 30 seconds between starting attempts and never make more than three consecutive attempts.</li><li>A red and green alternating flash on the clamp indicates normal circuit detection.</li><li>If the vehicle does not start, check the clamp connection and clean rust or dirt from the battery terminals.</li><li>Do not store the product in high temperatures, strong sunlight, strong magnetic fields or near fire. Let it dry naturally if water enters.</li><li>Do not disassemble the product or use it outside its documented ratings.</li><li>Avoid impact, throwing, trampling and squeezing.</li><li>This product is not a toy; the manual recommends users be over 16 years old.</li><li>Use the product in a dry, clean environment. It is not waterproof and must not be rinsed.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_6": {
+          "type": "manual_section",
+          "settings": {
+            "title": "FCC notice",
+            "body": "<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "compliance_1": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "Safety tested to UL 2743",
+            "title": "Product safety testing",
+            "description": "Product-level safety-test scope recorded for the U23 model family.",
+            "status": "Product safety evidence"
+          }
+        },
+        "compliance_2": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "FCC",
+            "title": "Electromagnetic compatibility",
+            "description": "FCC information associated with U23, including the Part 15 notice in the manual.",
+            "status": "U.S. market information"
+          }
+        },
+        "compliance_3": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UN38.3",
+            "title": "Battery transport testing",
+            "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in U23.",
+            "status": "Transport evidence"
+          }
+        },
+        "compliance_4": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "SDS",
+            "title": "Safety and handling information",
+            "description": "Safety Data Sheet information for handling, storage and response for the battery used in U23.",
+            "status": "Safety information"
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4",
+        "manual_1",
+        "manual_2",
+        "manual_3",
+        "manual_4",
+        "manual_5",
+        "manual_6",
+        "compliance_1",
+        "compliance_2",
+        "compliance_3",
+        "compliance_4"
+      ],
+      "settings": {
+        "support_label": "Support",
+        "resources_label": "Product Resources",
+        "eyebrow": "PRODUCT SUPPORT",
+        "model": "U23",
+        "heading": "U23 Support & Manuals",
+        "intro": "Read the mobile-friendly manual online, download the English, French and German manual in one PDF, or review model-matched safety and compliance information.",
+        "resource_nav_label": "U23 manuals and compliance",
+        "online_card_eyebrow": "MOBILE & MULTILINGUAL",
+        "online_card_label": "Read the online manual",
+        "online_card_description": "Responsive instructions that follow the language selected on the store.",
+        "online_card_action": "Start reading",
+        "manual_asset_name": "suntneew-u23-user-manual-en-fr-de.pdf",
+        "pdf_card_eyebrow": "ENGLISH · FRANÇAIS · DEUTSCH",
+        "pdf_label": "Download manual — EN · FR · DE",
+        "pdf_card_description": "One file with the original English booklet plus the French and German sections for offline use.",
+        "pdf_card_action": "Download PDF",
+        "certifications_card_eyebrow": "MODEL-MATCHED INFORMATION",
+        "certifications_label": "View certifications",
+        "certifications_card_description": "Review four safety and compliance categories associated with U23.",
+        "certifications_card_action": "View information",
+        "product_label": "View U23 product",
+        "product_url": "shopify://products/suntneew-u23-portable-car-jump-starter-8-000mah",
+        "manual_eyebrow": "ONLINE USER MANUAL",
+        "manual_heading": "U23 Portable Car Jump Starter",
+        "manual_intro": "Use this online guide for setup, 12V starting, lighting modes, charging and safety.",
+        "manual_version": "Online edition based on the English manual dated May 21, 2026.",
+        "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
+        "compliance_heading": "Safety & Compliance",
+        "compliance_intro": "The four safety and compliance categories currently recorded for U23 are collected here with a plain-language explanation of what each one covers.",
+        "compliance_note": "Match every document to the model printed on the product label. Safety testing, transport records and safety data serve different purposes.",
+        "compliance_contact_label": "Contact product support"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

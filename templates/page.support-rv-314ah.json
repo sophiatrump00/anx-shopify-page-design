@@ -1,0 +1,226 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-product-support",
+      "blocks": {
+        "fact_1": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Rated capacity",
+            "value": "314Ah / 4019.2Wh"
+          }
+        },
+        "fact_2": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Nominal voltage",
+            "value": "12.8V LiFePO4"
+          }
+        },
+        "fact_3": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Max continuous discharge",
+            "value": "157A"
+          }
+        },
+        "fact_4": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Monitoring",
+            "value": "Bluetooth 5.0 BMS"
+          }
+        },
+        "manual_1": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Product overview",
+            "body": "<p>The 314Ah is a 12.8V LiFePO4 battery with an integrated Bluetooth 5.0 battery management system for real-time monitoring in the mobile app.</p>\n<p><strong>Model:</strong> ESS-LFP12314B<br><strong>Rated capacity:</strong> 314Ah<br><strong>Energy:</strong> 4019.2Wh<br><strong>Charge voltage:</strong> 14.4V ± 0.2V<br><strong>Recommended charge current:</strong> 63A (0.2C)<br><strong>Max continuous charge current:</strong> 157A<br><strong>Max continuous discharge current:</strong> 157A<br><strong>Max continuous output power:</strong> 2010W<br><strong>Cycle life:</strong> ≥ 8000 cycles<br><strong>Dimensions:</strong> L522 × W268 × H220mm (L20.55 × W10.55 × H8.66in)<br><strong>Terminal bolts:</strong> M8 (14mm), torque 12–14 N·m<br><strong>Housing:</strong> ABS<br><strong>FCC ID:</strong> 2BWMM-ESSLFP1204</p>\n<p>Charge temperature 0°C to 55°C, discharge temperature −20°C to 60°C and storage temperature −10°C to 50°C. Low-temperature charge protection stops charging below 0°C and resumes above 5°C. The battery is not intended to start vehicles.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_2": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Before you begin",
+            "body": "<ol><li>Wear insulating gloves for installation and wiring.</li><li>The battery ships at about 50% ± 5% charge; charge it fully before first use.</li><li>Install the battery upright with the post bolts facing up; never mount it upside down.</li><li>Avoid direct contact between the positive and negative terminals and wrap cable terminals with insulating tape while wiring.</li><li>Do not connect batteries of different brands or specifications in series or parallel.</li><li>Confirm the battery power can meet the load demand before connecting the load.</li><li>For long-term storage, keep the battery between −20°C and 60°C at 50% charge and recharge every six months.</li><li>Keep the battery away from fire and never soak it in water.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_3": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Bluetooth app setup",
+            "body": "<p>Scan the QR code to download the app, then register and log in. Use the app to scan the QR code on top of the battery, or open the device list to find the Bluetooth address and connect. The app shows the battery state in real time, including state of charge and live operating data.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_4": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Charging the battery",
+            "body": "<p><strong>A. Controller:</strong> recommended charge current 63A (0.2C) at 14.4 ± 0.2V (LiFePO4). At 63A (0.2C) the battery reaches 100% in about 5 hours; at 157A (0.5C) it reaches about 97% in 2 hours.</p>\n<p><strong>B. Battery charger:</strong> use a 14.6V LiFePO4 charger to maximise capacity. Recommended charge voltage is between 14.2V and 14.6V. Disconnect the charger after the battery is fully charged.</p>\n<p><strong>C. Alternator or generator:</strong> with a DC output, add a DC-to-DC charger between battery and generator; with an AC output, add a suitable battery charger.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_5": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Series and parallel connection",
+            "body": "<p>Batteries connected together must have the same capacity (Ah) and BMS rating, come from the same brand and be purchased within about one month of each other.</p>\n<p><strong>Connection limit:</strong> up to 16 identical batteries — 4 in series as a 51.2V 314Ah system or 4 in parallel as a 12.8V 1256Ah system.</p>\n<p>Balance the batteries before connecting: charge each battery separately to 100% (rest voltage ≥ 13.6V), then connect them in parallel and leave them together for 12 to 24 hours. Use two copper bars for the total input and output connection so that each battery carries a balanced current. Rebalance the battery system every six months.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_6": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Safety instructions",
+            "body": "<ol><li>Keep the battery away from heat sources, sparks, flames and hazardous chemicals.</li><li>Install the battery where ventilation and heat dissipation are sufficient.</li><li>Size cables and connectors correctly: use high-strand copper connectors, heavy-gauge cables and identical cable lengths.</li><li>Tighten all cable connections; loose connections can melt terminals or cause a fire.</li><li>Do not puncture, drop, crush, burn, penetrate, shake or strike the battery.</li><li>Do not place heavy objects on the battery for long periods.</li><li>Do not immerse the battery in water, in use or on standby.</li><li>Do not open, dismantle or modify the battery.</li><li>Do not touch exposed electrolyte or powder if the casing is damaged; flush skin or eyes with clean water and seek medical attention.</li><li>Use correctly rated breakers, fuses or disconnects sized by a qualified installer. The built-in BMS protects the battery but not the whole system.</li><li>Installation must be carried out by trained, certified technicians.</li><li>Verify polarity with a multimeter before wiring; reverse polarity destroys the battery and other equipment.</li><li>The terminals are always live: do not place tools on them and do not short-circuit them.</li><li>Do not dispose of the battery as household waste; use local recycling channels.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_7": {
+          "type": "manual_section",
+          "settings": {
+            "title": "If the battery stops working",
+            "body": "<p>If the battery cannot work or charge, or the voltage is below 10V, the BMS has shut it off for protection.</p>\n<ol><li>Cut off all connections from the battery.</li><li>Leave the battery aside for 30 minutes.</li></ol>\n<p>It should recover to normal voltage (&gt;10V) and can be used after a full charge. If it does not recover, use a charger with a lithium activation function, or connect a controller that supports 12.8V LiFePO4 charging and charge for 3–10 seconds in sunny daytime. After activation, fully charge the battery before normal use.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_8": {
+          "type": "manual_section",
+          "settings": {
+            "title": "FCC notice",
+            "body": "<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation. Any changes or modifications not expressly approved by the party responsible for compliance could void the user's authority to operate the equipment.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "compliance_1": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "FCC",
+            "title": "Electromagnetic compatibility",
+            "description": "FCC information associated with the 314Ah battery family, including the model-matched FCC ID and Part 15 test report.",
+            "status": "U.S. market information"
+          }
+        },
+        "compliance_2": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "CE-EMC",
+            "title": "Electromagnetic compatibility (EU)",
+            "description": "Model-matched EMC documentation recorded for the 230Ah and 314Ah battery family.",
+            "status": "EU market information"
+          }
+        },
+        "compliance_3": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "RoHS",
+            "title": "Restricted substances",
+            "description": "RoHS documentation recorded for the the RV battery series model family.",
+            "status": "EU market information"
+          }
+        },
+        "compliance_4": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UN38.3",
+            "title": "Battery transport testing",
+            "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in the 314Ah battery.",
+            "status": "Transport evidence"
+          }
+        },
+        "compliance_5": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "SDS",
+            "title": "Safety and handling information",
+            "description": "Safety Data Sheet information for handling, storage and response for the battery used in the 314Ah battery.",
+            "status": "Safety information"
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4",
+        "manual_1",
+        "manual_2",
+        "manual_3",
+        "manual_4",
+        "manual_5",
+        "manual_6",
+        "manual_7",
+        "manual_8",
+        "compliance_1",
+        "compliance_2",
+        "compliance_3",
+        "compliance_4",
+        "compliance_5"
+      ],
+      "settings": {
+        "support_label": "Support",
+        "resources_label": "Product Resources",
+        "eyebrow": "PRODUCT SUPPORT",
+        "model": "12.8V 314Ah RV Battery",
+        "heading": "314Ah Support & Manuals",
+        "intro": "Read the mobile-friendly manual online, download the English, French and German manual in one PDF, or review the compliance categories recorded for this battery.",
+        "resource_nav_label": "314Ah manuals and compliance",
+        "online_card_eyebrow": "MOBILE & MULTILINGUAL",
+        "online_card_label": "Read the online manual",
+        "online_card_description": "Responsive instructions that follow the language selected on the store.",
+        "online_card_action": "Start reading",
+        "manual_asset_name": "suntneew-rv-314ah-manual-en-fr-de.pdf",
+        "pdf_card_eyebrow": "ENGLISH · FRANÇAIS · DEUTSCH",
+        "pdf_label": "Download manual — EN · FR · DE",
+        "pdf_card_description": "One file with the original English manual plus the French and German sections for offline use.",
+        "pdf_card_action": "Download PDF",
+        "certifications_card_eyebrow": "MODEL-MATCHED INFORMATION",
+        "certifications_label": "View certifications",
+        "certifications_card_description": "Review 5 safety and compliance categories associated with 314Ah.",
+        "certifications_card_action": "View information",
+        "product_label": "View 314Ah product",
+        "product_url": "shopify://products/suntneew-12-8v-314ah-lifepo4-rv-battery",
+        "manual_eyebrow": "ONLINE USER MANUAL",
+        "manual_heading": "12.8V 314Ah RV Battery",
+        "manual_intro": "Use this online guide for installation, Bluetooth setup, charging, series and parallel connection and safety.",
+        "manual_version": "Online edition based on the English manual dated June 16, 2026.",
+        "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
+        "compliance_heading": "Safety & Compliance",
+        "compliance_intro": "The safety and compliance categories recorded for 314Ah are collected here with a plain-language explanation of what each one covers.",
+        "compliance_note": "Match every document to the model printed on the product label. Safety testing, transport records and safety data serve different purposes.",
+        "compliance_contact_label": "Contact product support"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

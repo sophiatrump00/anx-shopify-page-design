@@ -88,7 +88,7 @@
         "box5":{"type":"included","settings":{"item":"User manual x1","variant_match":""}},
         "box6":{"type":"included","settings":{"item":"Carrying pouch x1","variant_match":""}},
         "box7":{"type":"included","settings":{"item":"Retail box x1","variant_match":""}},
-        "manual":{"type":"download","settings":{"label":"OJ02 user manual (English PDF)","link":"","asset_name":"suntneew-oj02-user-manual-en.pdf","variant_match":""}},
+        "manual":{"type":"download","settings":{"label":"OJ02 user manual — EN · FR · DE (PDF)","link":"","asset_name":"suntneew-oj02-user-manual-en-fr-de.pdf","variant_match":""}},
         "fcc":{"type":"download","settings":{"label":"FCC Supplier's Declaration of Conformity — OJ02","link":"","asset_name":"suntneew-oj02-fcc-sdoc.pdf","variant_match":"","document_group":"compliance","standard":"FCC","description":"Model-matched FCC Supplier's Declaration of Conformity identifying OJ02.","public_copy_ready":true}},
         "ce":{"type":"download","settings":{"label":"CE-EMC certificate — OJ02","link":"","asset_name":"suntneew-oj02-ce-emc-certificate.pdf","variant_match":"","document_group":"compliance","standard":"CE-EMC","description":"Model-matched CE-EMC certificate identifying OJ02.","public_copy_ready":true}},
         "rohs":{"type":"download","settings":{"label":"RoHS certificate — OJ02","link":"","asset_name":"suntneew-oj02-rohs-certificate.pdf","variant_match":"","document_group":"compliance","standard":"RoHS","description":"Model-matched RoHS certificate identifying OJ02.","public_copy_ready":true}},

@@ -1,0 +1,183 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-product-support",
+      "blocks": {
+        "fact_1": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Rated energy",
+            "value": "5.12kWh"
+          }
+        },
+        "fact_2": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Low-voltage LFP system",
+            "value": "51.2V / 100Ah"
+          }
+        },
+        "fact_3": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Maximum connection",
+            "value": "Up to 9 sets"
+          }
+        },
+        "fact_4": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Communication",
+            "value": "CAN / RS485 / Wi-Fi / BT"
+          }
+        },
+        "manual_1": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Configuration data",
+            "body": "<p><strong>Cell chemistry:</strong> LFP<br><strong>Rated voltage:</strong> 51.2V<br><strong>Rated capacity:</strong> 100Ah / 5.12kWh<br><strong>Max charging voltage:</strong> 57.6V<br><strong>Overdischarge voltage:</strong> 44.8V<br><strong>Max / peak charging current:</strong> 90A / 95A<br><strong>Max / peak discharging current:</strong> 100A / 110A<br><strong>Cycle life:</strong> 5,000 cycles<br><strong>Weight:</strong> 52kg<br><strong>Dimensions (H × W × D):</strong> 645 × 525 × 170mm<br><strong>Enclosure rating:</strong> IP54<br><strong>Installation:</strong> wall mounting or floor standing</p>\n<p>Communication interfaces include CAN, RS485, Wi-Fi and Bluetooth for monitoring through the battery or inverter interface.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_2": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Before installation",
+            "body": "<ol><li>Review the inverter communication and electrical specifications before installation.</li><li>Confirm the delivery destination and any local receiving requirements.</li><li>Use a qualified installer and follow local electrical requirements.</li><li>Confirm that the mounting surface, clearance and cable routing suit the selected wall or floor position.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_3": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Monitoring and communication",
+            "body": "<p>WL5A communicates over CAN and RS485 with the inverter or system controller, and additionally lists Wi-Fi and Bluetooth for monitoring. Up to nine sets can be connected in one system; confirm the exact configuration with your installer before purchase.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_4": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Safety and handling",
+            "body": "<ol><li>Installation and wiring must be carried out by a qualified installer.</li><li>Verify polarity and torque all connections before commissioning.</li><li>Keep the battery away from water, heat sources, sparks and open flames.</li><li>Do not open, modify or repair the battery enclosure.</li><li>Do not connect loads or chargers outside the ratings listed above.</li><li>Follow local electrical code for breakers, fuses and disconnects.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_5": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Documents and certification status",
+            "body": "<p>The model-matched installation manual, safety data sheet and certification documents for WL5A are in preparation. Their publication status is shown in the compliance section below, and the product page offers the SuntNeew specification sheet for configuration planning. Contact product support if you need a document for review before installation.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "compliance_1": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "Installation manual",
+            "title": "Model-matched user and installation manual",
+            "description": "The WL5A installation and operating manual is being prepared for publication.",
+            "status": "In preparation"
+          }
+        },
+        "compliance_2": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "Certification",
+            "title": "Product certification",
+            "description": "Model-matched certificates are published once the release is approved for the WL5A configuration.",
+            "status": "In preparation"
+          }
+        },
+        "compliance_3": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UN38.3",
+            "title": "Battery transport testing",
+            "description": "Transport-test documentation is published with the model-matched support pack.",
+            "status": "In preparation"
+          }
+        },
+        "compliance_4": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "SDS",
+            "title": "Safety and handling information",
+            "description": "Safety data sheet information for handling, storage and response is being prepared.",
+            "status": "In preparation"
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4",
+        "manual_1",
+        "manual_2",
+        "manual_3",
+        "manual_4",
+        "manual_5",
+        "compliance_1",
+        "compliance_2",
+        "compliance_3",
+        "compliance_4"
+      ],
+      "settings": {
+        "support_label": "Support",
+        "resources_label": "Product Resources",
+        "eyebrow": "PRODUCT SUPPORT",
+        "model": "WL5A",
+        "heading": "WL5A Support & Documents",
+        "intro": "Review the published configuration data, installation prerequisites and the document status for this model. The model-matched installation manual is published as soon as the support pack is released.",
+        "resource_nav_label": "WL5A product information",
+        "online_card_eyebrow": "MOBILE & MULTILINGUAL",
+        "online_card_label": "Read the online manual",
+        "online_card_description": "Responsive instructions that follow the language selected on the store.",
+        "online_card_action": "Start reading",
+        "manual_asset_name": "",
+        "pdf_card_eyebrow": "",
+        "pdf_label": "",
+        "pdf_card_description": "",
+        "pdf_card_action": "Download PDF",
+        "certifications_card_eyebrow": "MODEL-MATCHED INFORMATION",
+        "certifications_label": "View documents",
+        "certifications_card_description": "The documents recorded for this model and their current publication status.",
+        "certifications_card_action": "View information",
+        "product_label": "View WL5A product",
+        "product_url": "shopify://products/suntneew-wl5a-5-12-kwh-low-voltage-home-battery",
+        "manual_eyebrow": "ONLINE USER MANUAL",
+        "manual_heading": "WL5A 5.12kWh Low-Voltage Home Battery",
+        "manual_intro": "Use this guide for the published configuration data, the installation prerequisites and the monitoring interfaces of WL5A.",
+        "manual_version": "Online reference based on the published WL5A product data. The installation manual is published when the model-matched support pack is released.",
+        "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
+        "compliance_heading": "Documents & Compliance",
+        "compliance_intro": "WL5A is published with verified configuration data. The model-matched documents listed here are in preparation and replace this notice as each one is released.",
+        "compliance_note": "Match every document to the model printed on the product label. Safety testing, transport records and safety data serve different purposes.",
+        "compliance_contact_label": "Contact product support"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

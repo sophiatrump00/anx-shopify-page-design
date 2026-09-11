@@ -24,23 +24,241 @@
             "image_alt": "SuntNeew KB700 fan jump starter with smart clamp, air nozzle and USB cable",
             "page_handle": "support-kb700",
             "online_label": "Online HTML manual",
-            "pdf_label": "English PDF",
+            "pdf_label": "EN · FR · DE PDF",
             "certifications_label": "Certifications",
-            "cta_label": "Open KB700 support"
+            "cta_label": "Open KB700 / KP-700 support"
+          }
+        },
+        "u23": {
+          "type": "product_resource",
+          "settings": {
+            "category": "jump-starters",
+            "family": "JUMP STARTERS",
+            "model": "U23",
+            "title": "U23 Portable Car Jump Starter",
+            "description": "8,000mAh emergency starting, 5W lighting modes, device charging and model-matched compliance resources.",
+            "asset_name": "suntneew-u23-2026-gallery-01-main.jpg",
+            "image_alt": "SuntNeew U23 portable car jump starter with smart clamp and USB cable",
+            "page_handle": "support-u23",
+            "online_label": "Online HTML manual",
+            "pdf_label": "EN · FR · DE PDF",
+            "certifications_label": "Certifications",
+            "cta_label": "Open U23 support"
+          }
+        },
+        "u32": {
+          "type": "product_resource",
+          "settings": {
+            "category": "jump-starters",
+            "family": "JUMP STARTERS",
+            "model": "U32",
+            "title": "U32 Portable Car Jump Starter",
+            "description": "10,000mAh starting power with an HD display, dual USB outputs, LED modes and compliance resources.",
+            "asset_name": "suntneew-u32-2026-gallery-01-main.jpg",
+            "image_alt": "SuntNeew U32 portable car jump starter with HD display and smart clamp",
+            "page_handle": "support-u32",
+            "online_label": "Online HTML manual",
+            "pdf_label": "EN · FR · DE PDF",
+            "certifications_label": "Certifications",
+            "cta_label": "Open U32 support"
+          }
+        },
+        "oj02": {
+          "type": "product_resource",
+          "settings": {
+            "category": "jump-starters",
+            "family": "JUMP STARTERS",
+            "model": "OJ02",
+            "title": "OJ02 OBD2 Jump Starter",
+            "description": "12V emergency starting with OBD2 diagnostics, LED guidance, USB output and model-matched compliance files.",
+            "asset_name": "suntneew-oj02-gallery-01-main.jpg",
+            "image_alt": "SuntNeew OJ02 OBD2 jump starter with smart clamp and diagnostic cable",
+            "page_handle": "support-oj02",
+            "online_label": "Online HTML manual",
+            "pdf_label": "EN · FR · DE PDF",
+            "certifications_label": "Certifications",
+            "cta_label": "Open OJ02 support"
+          }
+        },
+        "a20": {
+          "type": "product_resource",
+          "settings": {
+            "category": "jump-starters",
+            "family": "JUMP STARTERS",
+            "model": "CY-A20",
+            "title": "A20 Jump Starter",
+            "description": "8,000mAh / 29.6Wh portable starting, USB-C and dual USB-A charging, safety guidance and tripack downloads.",
+            "asset_name": "suntneew-a20-2026-gallery-01-main.jpg",
+            "image_alt": "SuntNeew A20 jump starter with smart clamp and USB cable",
+            "page_handle": "support-a20",
+            "online_label": "Online HTML manual",
+            "pdf_label": "EN · FR · DE PDF",
+            "certifications_label": "Certifications",
+            "cta_label": "Open CY-A20 support"
+          }
+        },
+        "a3": {
+          "type": "product_resource",
+          "settings": {
+            "category": "jump-starters",
+            "family": "JUMP STARTERS",
+            "model": "CY-A3",
+            "title": "A3 Jump Starter",
+            "description": "16,000mAh starting power with PD 60W charging, 8 safeguards and the compliance categories recorded for CY-A3.",
+            "asset_name": "suntneew-a3-gallery-01.jpg",
+            "image_alt": "SuntNeew A3 jump starter with intelligent jumper clamps and carry case",
+            "page_handle": "support-a3",
+            "online_label": "Online guide",
+            "pdf_label": "Documents on product page",
+            "certifications_label": "Compliance",
+            "cta_label": "Open CY-A3 support"
+          }
+        },
+        "g31": {
+          "type": "product_resource",
+          "settings": {
+            "category": "rv-batteries",
+            "family": "RV BATTERIES",
+            "model": "Group 31 12.8V 100Ah RV Battery",
+            "title": "Group 31 12.8V 100Ah RV Battery",
+            "description": "100Ah LiFePO4 battery with Bluetooth monitoring, IP65 enclosure rating and up to 4S4P expansion.",
+            "asset_name": "suntneew-rv-g31-feature-product-desktop.jpg",
+            "image_alt": "SuntNeew Group 31 12.8V 100Ah LiFePO4 RV battery",
+            "page_handle": "support-rv-g31",
+            "online_label": "Online HTML manual",
+            "pdf_label": "EN · FR · DE PDF",
+            "certifications_label": "Certifications",
+            "cta_label": "Open Group 31 12.8V 100Ah RV Battery support"
+          }
+        },
+        "g24": {
+          "type": "product_resource",
+          "settings": {
+            "category": "rv-batteries",
+            "family": "RV BATTERIES",
+            "model": "Group 24 12.8V 100Ah RV Battery",
+            "title": "Group 24 12.8V 100Ah RV Battery",
+            "description": "Compact 100Ah LiFePO4 battery with Bluetooth monitoring and a lower profile for tighter battery bays.",
+            "asset_name": "sn-opt-suntneew-rv-g24-gallery-main-960.webp",
+            "image_alt": "SuntNeew Group 24 12.8V 100Ah LiFePO4 RV battery",
+            "page_handle": "support-rv-g24",
+            "online_label": "Online HTML manual",
+            "pdf_label": "EN · FR · DE PDF",
+            "certifications_label": "Certifications",
+            "cta_label": "Open Group 24 12.8V 100Ah RV Battery support"
+          }
+        },
+        "230ah": {
+          "type": "product_resource",
+          "settings": {
+            "category": "rv-batteries",
+            "family": "RV BATTERIES",
+            "model": "12.8V 230Ah RV Battery",
+            "title": "12.8V 230Ah RV Battery",
+            "description": "2,944Wh LiFePO4 battery with 200A continuous discharge, Bluetooth monitoring and 4S4P expansion.",
+            "asset_name": "sn-opt-suntneew-rv-230ah-gallery-main-960.webp",
+            "image_alt": "SuntNeew 12.8V 230Ah LiFePO4 RV battery",
+            "page_handle": "support-rv-230ah",
+            "online_label": "Online HTML manual",
+            "pdf_label": "EN · FR · DE PDF",
+            "certifications_label": "Certifications",
+            "cta_label": "Open 12.8V 230Ah RV Battery support"
+          }
+        },
+        "314ah": {
+          "type": "product_resource",
+          "settings": {
+            "category": "rv-batteries",
+            "family": "RV BATTERIES",
+            "model": "12.8V 314Ah RV Battery",
+            "title": "12.8V 314Ah RV Battery",
+            "description": "4,019.2Wh LiFePO4 battery with 157A continuous charge and discharge, Bluetooth monitoring and 4S4P expansion.",
+            "asset_name": "sn-opt-suntneew-rv-314ah-gallery-main-960.webp",
+            "image_alt": "SuntNeew 12.8V 314Ah LiFePO4 RV battery",
+            "page_handle": "support-rv-314ah",
+            "online_label": "Online HTML manual",
+            "pdf_label": "EN · FR · DE PDF",
+            "certifications_label": "Certifications",
+            "cta_label": "Open 12.8V 314Ah RV Battery support"
+          }
+        },
+        "wl5a": {
+          "type": "product_resource",
+          "settings": {
+            "category": "home-energy-storage",
+            "family": "HOME ENERGY STORAGE",
+            "model": "WL5A",
+            "title": "WL5A 5.12kWh Low-Voltage Home Battery",
+            "description": "51.2V 100Ah LFP battery for wall or floor installation, with CAN, RS485, Wi-Fi and Bluetooth monitoring.",
+            "asset_name": "suntneew-wl5a-gallery-01-v4.png",
+            "image_alt": "SuntNeew WL5A low-voltage home battery",
+            "page_handle": "support-wl5a",
+            "online_label": "Product information",
+            "pdf_label": "Documents in preparation",
+            "certifications_label": "Compliance status",
+            "cta_label": "Open WL5A support"
+          }
+        },
+        "wl10b": {
+          "type": "product_resource",
+          "settings": {
+            "category": "home-energy-storage",
+            "family": "HOME ENERGY STORAGE",
+            "model": "WL10B",
+            "title": "WL10B 10.24kWh Low-Voltage Home Battery",
+            "description": "51.2V 200Ah LFP battery for larger installations, with CAN, RS485, Wi-Fi and Bluetooth monitoring.",
+            "asset_name": "suntneew-wl10b-gallery-01-v4.png",
+            "image_alt": "SuntNeew WL10B low-voltage home battery",
+            "page_handle": "support-wl10b",
+            "online_label": "Product information",
+            "pdf_label": "Documents in preparation",
+            "certifications_label": "Compliance status",
+            "cta_label": "Open WL10B support"
+          }
+        },
+        "vh": {
+          "type": "product_resource",
+          "settings": {
+            "category": "home-energy-storage",
+            "family": "HOME ENERGY STORAGE",
+            "model": "VH",
+            "title": "VH High-Voltage Home Energy Storage System",
+            "description": "Stackable high-voltage LFP system with 10.24kWh or 15.36kWh usable capacity and CAN / RS485 communication.",
+            "asset_name": "suntneew-vh10-gallery-01-v4.png",
+            "image_alt": "SuntNeew VH high-voltage home energy storage system",
+            "page_handle": "support-vh",
+            "online_label": "Product information",
+            "pdf_label": "Documents in preparation",
+            "certifications_label": "Compliance status",
+            "cta_label": "Open VH support"
           }
         }
       },
-      "block_order": ["kb700"],
+      "block_order": [
+        "kb700",
+        "u23",
+        "u32",
+        "oj02",
+        "a20",
+        "a3",
+        "g31",
+        "g24",
+        "230ah",
+        "314ah",
+        "wl5a",
+        "wl10b",
+        "vh"
+      ],
       "settings": {
         "breadcrumb_label": "Breadcrumb",
         "support_label": "Support",
         "breadcrumb_current": "Product Resources",
         "eyebrow": "PRODUCT RESOURCES",
         "heading": "Manuals & Certifications",
-        "intro": "Search by model or browse by product type to find online manuals, original downloads and compliance information.",
+        "intro": "Search by model or browse by product type to find online manuals, multilingual downloads and compliance information.",
         "search_region_label": "Find product resources",
         "search_label": "Search by model or product",
-        "search_placeholder": "e.g. KB700 or fan jump starter",
+        "search_placeholder": "e.g. KB700, U23 or 230Ah battery",
         "filter_label": "Product type",
         "all_label": "All products",
         "jump_starters_label": "Jump Starters",
@@ -53,9 +271,11 @@
         "empty_heading": "No matching product resources",
         "empty_description": "Try another model or product type. If you still cannot find the right guide, our support team can help identify it.",
         "contact_label": "Contact support",
-        "footer_note": "New product guides are added to this directory as each model's support page is published."
+        "footer_note": "Every manual download contains the English original together with French and German sections in one PDF file."
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

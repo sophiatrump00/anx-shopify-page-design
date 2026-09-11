@@ -1,0 +1,214 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-product-support",
+      "blocks": {
+        "fact_1": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Rated capacity",
+            "value": "8,000mAh / 29.6Wh"
+          }
+        },
+        "fact_2": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Starting / peak current",
+            "value": "700A / 1,500A"
+          }
+        },
+        "fact_3": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "OBD2 diagnostics",
+            "value": "9 functions"
+          }
+        },
+        "fact_4": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "USB output",
+            "value": "36W max"
+          }
+        },
+        "manual_1": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Product overview",
+            "body": "<p>OJ02 combines a 12V jump starter with an OBD2 diagnostic reader. It starts vehicles with a depleted battery, charges devices over USB and reads vehicle data through the OBD2 connection.</p>\n<p><strong>Rated capacity:</strong> 8,000mAh<br><strong>Rated energy:</strong> 29.6Wh<br><strong>Starting current:</strong> 700A<br><strong>Peak current:</strong> 1,500A<br><strong>Engine reference:</strong> up to 6.0L gasoline / 3.0L diesel<br><strong>OBD2 functions:</strong> 9 diagnostic functions<br><strong>Protocols:</strong> 9 major protocols, 12 languages<br><strong>Type-C input:</strong> 5V/2A<br><strong>USB-A output:</strong> 5V/3A, 9V/3A, 12V/3A, 36W max<br><strong>Charge display:</strong> 1% increments<br><strong>Product size:</strong> 160 × 90 × 40mm<br><strong>Net weight:</strong> 450g</p>\n<p>The documented pack contains the OJ02 main unit, a 50cm EC5 smart clamp, an OBD connection cable, a USB charging cable, the user manual, a carrying pouch and the retail box.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_2": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Jump-start a vehicle",
+            "body": "<p>Make sure the power level of the unit is above 50% (at least two battery bars on) before starting.</p>\n<ol><li>Open the silicon cover of the ENGINE port and insert the EC5 connector of the jumper clamp into the corresponding hole.</li><li>Connect the red clamp to the positive terminal (+) and the black clamp to the negative terminal (−) of the battery.</li><li>Within 40 seconds, press the start button of your car or turn the ignition key to the start position.</li><li>After successful startup, disconnect the plug of the jumper cable from the product and remove both clamps from the battery terminals.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_3": {
+          "type": "manual_section",
+          "settings": {
+            "title": "OBD2 diagnostics",
+            "body": "<p>Connect the OBD cable between the product and the vehicle's OBD2 port, then follow the on-screen menu. The unit covers nine diagnostic functions across nine major vehicle protocols and twelve interface languages. Keep the engine and the diagnostic session within the conditions described in the manual, and do not drive while operating the diagnostic menu.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_4": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Clamp status lights",
+            "body": "<ul><li><strong>Green light blinking — connection is right:</strong> ready to connect the car battery.</li><li><strong>Green light blinking — reverse charging the battery:</strong> disconnect the output.</li><li><strong>Green light blinking — engine not started within 40 seconds:</strong> reconnect the clamp with the car battery.</li><li><strong>Green light bright — all connections correct:</strong> start the engine within 40 seconds.</li><li><strong>Red light bright — jump starter low battery:</strong> check the battery level and recharge the product.</li><li><strong>Red light bright — clamps reversed:</strong> correct the polarity.</li><li><strong>No light — jump cable over temperature:</strong> wait for the cable to cool down before the next start.</li><li><strong>No light — clamps short circuit:</strong> separate the positive and negative clamp.</li></ul>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_5": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Safety and care",
+            "body": "<ol><li>Use the jump starter only with a compatible 12V vehicle battery and within the documented engine limits.</li><li>Charge the unit above 50% before each starting attempt.</li><li>Verify polarity before connecting the clamps; a reversed connection can damage the unit and the vehicle.</li><li>Do not short-circuit the clamps or let them touch each other.</li><li>Do not start the engine later than 40 seconds after connecting the clamps; reconnect the clamp if needed.</li><li>Do not run starting attempts back to back and let the unit cool down between attempts.</li><li>Do not expose the unit to rain, moisture or heat sources and do not disassemble it.</li><li>Recharge the unit at least once every three months when stored for a long time.</li><li>This product is not a toy; keep it away from children.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_6": {
+          "type": "manual_section",
+          "settings": {
+            "title": "FCC notice",
+            "body": "<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "compliance_1": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "Safety tested to UL 2743",
+            "title": "Product safety testing",
+            "description": "Product-level safety-test scope recorded for the OJ02 model family.",
+            "status": "Product safety evidence"
+          }
+        },
+        "compliance_2": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "FCC",
+            "title": "Electromagnetic compatibility",
+            "description": "FCC information associated with OJ02, including the Part 15 notice in the manual.",
+            "status": "U.S. market information"
+          }
+        },
+        "compliance_3": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "CE-EMC",
+            "title": "Electromagnetic compatibility (EU)",
+            "description": "Model-matched EMC documentation recorded for OJ02.",
+            "status": "EU market information"
+          }
+        },
+        "compliance_4": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "RoHS",
+            "title": "Restricted substances",
+            "description": "RoHS documentation recorded for the OJ02 model family.",
+            "status": "EU market information"
+          }
+        },
+        "compliance_5": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UN38.3",
+            "title": "Battery transport testing",
+            "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in OJ02.",
+            "status": "Transport evidence"
+          }
+        },
+        "compliance_6": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "SDS",
+            "title": "Safety and handling information",
+            "description": "Safety Data Sheet information for handling, storage and response for the battery used in OJ02.",
+            "status": "Safety information"
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4",
+        "manual_1",
+        "manual_2",
+        "manual_3",
+        "manual_4",
+        "manual_5",
+        "manual_6",
+        "compliance_1",
+        "compliance_2",
+        "compliance_3",
+        "compliance_4",
+        "compliance_5",
+        "compliance_6"
+      ],
+      "settings": {
+        "support_label": "Support",
+        "resources_label": "Product Resources",
+        "eyebrow": "PRODUCT SUPPORT",
+        "model": "OJ02",
+        "heading": "OJ02 Support & Manuals",
+        "intro": "Read the mobile-friendly manual online, download the English, French and German manual in one PDF, or review the model-matched compliance files published for OJ02.",
+        "resource_nav_label": "OJ02 manuals and compliance",
+        "online_card_eyebrow": "MOBILE & MULTILINGUAL",
+        "online_card_label": "Read the online manual",
+        "online_card_description": "Responsive instructions that follow the language selected on the store.",
+        "online_card_action": "Start reading",
+        "manual_asset_name": "suntneew-oj02-user-manual-en-fr-de.pdf",
+        "pdf_card_eyebrow": "ENGLISH · FRANÇAIS · DEUTSCH",
+        "pdf_label": "Download manual — EN · FR · DE",
+        "pdf_card_description": "One file with the original English booklet plus the French and German sections for offline use.",
+        "pdf_card_action": "Download PDF",
+        "certifications_card_eyebrow": "MODEL-MATCHED INFORMATION",
+        "certifications_label": "View certifications",
+        "certifications_card_description": "Review the six safety and compliance categories recorded for OJ02.",
+        "certifications_card_action": "View information",
+        "product_label": "View OJ02 product",
+        "product_url": "shopify://products/suntneew-oj02-obd2-jump-starter",
+        "manual_eyebrow": "ONLINE USER MANUAL",
+        "manual_heading": "OJ02 OBD2 Jump Starter",
+        "manual_intro": "Use this online guide for 12V starting, OBD2 diagnostics, the LED status table and safety.",
+        "manual_version": "Online edition based on the English manual dated June 1, 2026.",
+        "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
+        "compliance_heading": "Safety & Compliance",
+        "compliance_intro": "OJ02 has model-matched documents filed for these six safety and compliance categories. Download buttons are available in the Documents section of the OJ02 product page.",
+        "compliance_note": "Match every document to the model printed on the product label. Safety testing, transport records and safety data serve different purposes.",
+        "compliance_contact_label": "Contact product support"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

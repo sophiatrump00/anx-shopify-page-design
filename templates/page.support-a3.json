@@ -1,0 +1,203 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-product-support",
+      "blocks": {
+        "fact_1": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Rated capacity",
+            "value": "16,000mAh / 59.2Wh"
+          }
+        },
+        "fact_2": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Starting / peak current",
+            "value": "800A / 2,500A"
+          }
+        },
+        "fact_3": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Vehicle capacity",
+            "value": "8.0L gas / 6.5L diesel"
+          }
+        },
+        "fact_4": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "USB-C PD",
+            "value": "60W input and output"
+          }
+        },
+        "manual_1": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Product overview",
+            "body": "<p>A3 is the independent-site product name; CY-A3 is the model name used in the product, certification and transport documents.</p>\n<p><strong>Rated capacity:</strong> 16,000mAh / 59.2Wh<br><strong>Starting current:</strong> 800A<br><strong>Peak current:</strong> 2,500A<br><strong>Vehicle capacity:</strong> up to 8.0L gasoline / 6.5L diesel<br><strong>Starts per full charge:</strong> up to 50+<br><strong>USB-C input:</strong> PD 60W, 5V/9V/12V/15V/20V up to 3A<br><strong>Outputs:</strong> USB-C PD60W, USB-A PD18W, USB-A 5V/2.4A<br><strong>Emergency light:</strong> 150 lm, steady, strobe and SOS<br><strong>Protection functions:</strong> 8 safeguards<br><strong>Product weight:</strong> 764g<br><strong>Working temperature:</strong> −20°C to 60°C</p>\n<p>The documented pack contains the A3 main unit, intelligent jumper clamps, a PD 60W USB-C cable, an EVA carry case and the user manual.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_2": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Jump-start a vehicle",
+            "body": "<p><strong>Use only with a compatible 12V vehicle battery.</strong> Charge the unit to at least 50% before attempting a jump start.</p>\n<ol><li>Turn off the vehicle and all electrical loads.</li><li>Insert the intelligent clamp connector fully into the jump-start port.</li><li>Connect the red clamp to the positive terminal and the black clamp to the negative terminal.</li><li>Confirm the ready indication on the clamp, then start the vehicle.</li><li>Remove both clamps within 30 seconds after the engine starts and leave the engine running.</li></ol>\n<p>After a failed attempt, wait at least one minute and stop after three consecutive attempts.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_3": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Charging and protection",
+            "body": "<p>The USB-C port supports Power Delivery input and output up to 60W with 5V, 9V, 12V, 15V and 20V profiles up to 3A, so the unit can also charge compatible laptops and tablets. Eight protection functions cover the clamp and battery conditions described in the product data. Do not connect loads that exceed the documented outputs.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_4": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Safety and care",
+            "body": "<ol><li>Verify polarity before connecting the clamps.</li><li>Do not short-circuit the clamps or let them touch each other.</li><li>Keep the unit away from water, high heat, fire and strong magnetic fields.</li><li>Do not disassemble, puncture or modify the unit.</li><li>Avoid impact, dropping, crushing and squeezing.</li><li>This product is not a toy; keep it away from children.</li><li>Recharge the unit at least once every three months when stored for a long time.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_5": {
+          "type": "manual_section",
+          "settings": {
+            "title": "FCC notice",
+            "body": "<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "compliance_1": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "FCC",
+            "title": "Electromagnetic compatibility",
+            "description": "FCC information associated with the CY-A3 model.",
+            "status": "U.S. market information"
+          }
+        },
+        "compliance_2": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "CE-EMC",
+            "title": "Electromagnetic compatibility (EU)",
+            "description": "Model-matched EMC documentation recorded for CY-A3.",
+            "status": "EU market information"
+          }
+        },
+        "compliance_3": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "RoHS",
+            "title": "Restricted substances",
+            "description": "RoHS documentation recorded for the CY-A3 model family.",
+            "status": "EU market information"
+          }
+        },
+        "compliance_4": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "Safety tested to UL 2743",
+            "title": "Product safety testing",
+            "description": "Product-level safety-test scope recorded for the A3 / CY-A3 model family.",
+            "status": "Product safety evidence"
+          }
+        },
+        "compliance_5": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UN38.3",
+            "title": "Battery transport testing",
+            "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in CY-A3.",
+            "status": "Transport evidence"
+          }
+        },
+        "compliance_6": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "SDS",
+            "title": "Safety and handling information",
+            "description": "Safety Data Sheet information for handling, storage and response for the battery used in the A3 battery pack.",
+            "status": "Safety information"
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4",
+        "manual_1",
+        "manual_2",
+        "manual_3",
+        "manual_4",
+        "manual_5",
+        "compliance_1",
+        "compliance_2",
+        "compliance_3",
+        "compliance_4",
+        "compliance_5",
+        "compliance_6"
+      ],
+      "settings": {
+        "support_label": "Support",
+        "resources_label": "Product Resources",
+        "eyebrow": "PRODUCT SUPPORT",
+        "model": "CY-A3",
+        "heading": "A3 Support & Manuals",
+        "intro": "Read the mobile-friendly guide online, or review the safety and compliance categories recorded for the CY-A3 model. The illustrated quick-start sheet is available from the A3 product page.",
+        "resource_nav_label": "A3 manuals and compliance",
+        "online_card_eyebrow": "MOBILE & MULTILINGUAL",
+        "online_card_label": "Read the online manual",
+        "online_card_description": "Responsive instructions that follow the language selected on the store.",
+        "online_card_action": "Start reading",
+        "manual_asset_name": "",
+        "pdf_card_eyebrow": "",
+        "pdf_label": "",
+        "pdf_card_description": "",
+        "pdf_card_action": "Download PDF",
+        "certifications_card_eyebrow": "MODEL-MATCHED INFORMATION",
+        "certifications_label": "View certifications",
+        "certifications_card_description": "Review the safety and compliance categories recorded for the CY-A3 model.",
+        "certifications_card_action": "View information",
+        "product_label": "View A3 product",
+        "product_url": "shopify://products/suntneew-a3-jump-starter-16000mah",
+        "manual_eyebrow": "ONLINE USER MANUAL",
+        "manual_heading": "A3 Jump Starter — 16,000mAh",
+        "manual_intro": "Use this online guide for 12V starting, PD 60W charging, safety and protection functions.",
+        "manual_version": "Online edition based on the published A3 product data; the printed quick-start sheet stays the controlling original.",
+        "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
+        "compliance_heading": "Safety & Compliance",
+        "compliance_intro": "The safety and compliance categories recorded for CY-A3 are collected here. Public copies of several documents are still being prepared before download links are published.",
+        "compliance_note": "Match every document to the model printed on the product label. Safety testing, transport records and safety data serve different purposes.",
+        "compliance_contact_label": "Contact product support"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

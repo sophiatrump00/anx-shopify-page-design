@@ -1,0 +1,183 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-product-support",
+      "blocks": {
+        "fact_1": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Rated capacity",
+            "value": "8,000mAh / 29.6Wh"
+          }
+        },
+        "fact_2": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Starting / peak current",
+            "value": "750A / 1,500A"
+          }
+        },
+        "fact_3": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Input / output",
+            "value": "USB-C + 2 × USB-A"
+          }
+        },
+        "fact_4": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Family variants",
+            "value": "8,000 / 12,000 / 16,000mAh"
+          }
+        },
+        "manual_1": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Product overview",
+            "body": "<p>A20 is a compact 12V jump starter family. The page covers four sellable combinations: 8,000mAh Orange, 8,000mAh Red, 12,000mAh Orange and 16,000mAh Orange.</p>\n<p><strong>8,000mAh:</strong> 29.6Wh, 750A starting, 1,500A peak, shipping weight 0.75kg<br><strong>12,000mAh:</strong> 44.4Wh, 1,500A starting, 3,000A peak, shipping weight 0.83kg<br><strong>16,000mAh:</strong> 59.2Wh, 2,000A starting, 4,000A peak, shipping weight 0.94kg</p>\n<p><strong>Input:</strong> USB-C 5V/2A or 9V/2A<br><strong>Output:</strong> 2 × USB-A 5V/2A (3A max)<br><strong>Cycle-life reference:</strong> 300 cycles<br><strong>Discharge temperature:</strong> −20°C to 60°C</p>\n<p>The documented pack contains the A20 main unit, a smart clamp, a USB cable, the colour box and the manual. Compare the capacity printed on your unit before comparing specifications.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_2": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Charging the unit",
+            "body": "<p><strong>Charge by Type-C:</strong> connect a USB-C cable to the input and a 5V/2A or 9V/2A source. Use the supplied cable.</p>\n<p><strong>Charge in the vehicle:</strong> the unit can also be recharged from the vehicle 12V socket with the appropriate cable.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_3": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Jump-start a vehicle",
+            "body": "<p>Charge the unit to at least 50% before starting and follow the vehicle manufacturer's instructions.</p>\n<ol><li>Turn off the vehicle and all electrical loads.</li><li>Insert the clamp plug fully into the jump-start port of the unit.</li><li>Connect the red clamp to the positive terminal, then the black clamp to the negative terminal.</li><li>Confirm the clamp shows the ready condition, then start the vehicle.</li><li>Remove the clamps within 30 seconds after the engine starts and leave the engine running.</li></ol>\n<p>After a failed attempt, wait at least one minute and do not make more than three consecutive attempts.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_4": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Safety and care",
+            "body": "<ol><li>Use the unit only with a compatible 12V vehicle battery.</li><li>Verify polarity before every connection; never reverse positive and negative.</li><li>Do not let the clamps touch each other and do not create a short circuit.</li><li>Do not expose the unit to water, high heat, fire or strong magnetic fields.</li><li>Do not disassemble, puncture or modify the unit.</li><li>Do not connect loads that exceed the documented USB outputs.</li><li>Avoid impact, dropping, crushing and squeezing.</li><li>This product is not a toy; keep it away from children.</li><li>Recharge the unit at least once every three months when stored for a long time.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_5": {
+          "type": "manual_section",
+          "settings": {
+            "title": "FCC notice",
+            "body": "<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "compliance_1": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "FCC",
+            "title": "Electromagnetic compatibility",
+            "description": "FCC information associated with the CY-A20 8,000mAh / 12,000mAh / 16,000mAh variants.",
+            "status": "U.S. market information"
+          }
+        },
+        "compliance_2": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "Safety tested to UL 2743",
+            "title": "Product safety testing",
+            "description": "Product-level safety-test scope recorded for the CY-A20 model family.",
+            "status": "Product safety evidence"
+          }
+        },
+        "compliance_3": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UN38.3",
+            "title": "Battery transport testing",
+            "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in the A20 family.",
+            "status": "Transport evidence"
+          }
+        },
+        "compliance_4": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "SDS",
+            "title": "Safety and handling information",
+            "description": "Safety Data Sheet information for handling, storage and response for the battery used in the A20 family.",
+            "status": "Safety information"
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4",
+        "manual_1",
+        "manual_2",
+        "manual_3",
+        "manual_4",
+        "manual_5",
+        "compliance_1",
+        "compliance_2",
+        "compliance_3",
+        "compliance_4"
+      ],
+      "settings": {
+        "support_label": "Support",
+        "resources_label": "Product Resources",
+        "eyebrow": "PRODUCT SUPPORT",
+        "model": "CY-A20",
+        "heading": "A20 Support & Manuals",
+        "intro": "Read the illustrated quick start online, download the English, French and German version in one PDF, or review the safety and compliance categories recorded for the A20 family.",
+        "resource_nav_label": "A20 manuals and compliance",
+        "online_card_eyebrow": "MOBILE & MULTILINGUAL",
+        "online_card_label": "Read the online manual",
+        "online_card_description": "Responsive instructions that follow the language selected on the store.",
+        "online_card_action": "Start reading",
+        "manual_asset_name": "suntneew-a20-user-manual-en-fr-de.pdf",
+        "pdf_card_eyebrow": "ENGLISH · FRANÇAIS · DEUTSCH",
+        "pdf_label": "Download manual — EN · FR · DE",
+        "pdf_card_description": "One file with the illustrated English quick start plus the French and German text sections.",
+        "pdf_card_action": "Download PDF",
+        "certifications_card_eyebrow": "MODEL-MATCHED INFORMATION",
+        "certifications_label": "View certifications",
+        "certifications_card_description": "Review four safety and compliance categories associated with the CY-A20 family.",
+        "certifications_card_action": "View information",
+        "product_label": "View A20 product",
+        "product_url": "shopify://products/suntneew-a20-jump-starter-8000mah",
+        "manual_eyebrow": "ONLINE USER MANUAL",
+        "manual_heading": "A20 Jump Starter — 8,000mAh",
+        "manual_intro": "Use this online guide for charging, 12V starting, safety and the A20 family variants.",
+        "manual_version": "Online edition based on the illustrated quick-start sheet dated July 9, 2026 for the 8,000mAh A20.",
+        "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
+        "compliance_heading": "Safety & Compliance",
+        "compliance_intro": "The four safety and compliance categories recorded for the A20 family are collected here. Match every document to the capacity printed on your unit.",
+        "compliance_note": "Match every document to the model printed on the product label. Safety testing, transport records and safety data serve different purposes.",
+        "compliance_contact_label": "Contact product support"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

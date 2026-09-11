@@ -104,7 +104,7 @@
         "box4":{"type":"included","settings":{"item":"User manual x1","variant_match":""}},
         "box5":{"type":"included","settings":{"item":"Color box x1","variant_match":""}},
         "box6":{"type":"included","settings":{"item":"Carrying pouch x1","variant_match":""}},
-        "manual":{"type":"download","settings":{"label":"U23 user manual (English PDF)","link":"","asset_name":"suntneew-u23-user-manual-en.pdf","variant_match":""}},
+        "manual":{"type":"download","settings":{"label":"U23 user manual — EN · FR · DE (PDF)","link":"","asset_name":"suntneew-u23-user-manual-en-fr-de.pdf","variant_match":""}},
         "ul2743":{"type":"download","settings":{"label":"Safety tested to UL 2743 — U23","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"Safety tested to UL 2743","description":"Product-level safety test report for the selected U23 model. This wording does not represent a UL Listing or certification.","public_copy_ready":false}},
         "fcc":{"type":"download","settings":{"label":"FCC SDoC — U23","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"FCC","description":"Model-matched FCC documentation for U23.","public_copy_ready":true}},
         "un38":{"type":"download","settings":{"label":"UN38.3 Summary — U23","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"UN38.3","description":"Transport-test summary for U23; upload only an approved public copy.","public_copy_ready":false}},
