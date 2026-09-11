@@ -22,7 +22,7 @@
         "quantity_selector":{"type":"quantity_selector","settings":{}},
         "bundle":{"type":"suntneew_bundle_selector","settings":{"enabled":true,"heading":"Build a VH multi-pack","body":"Choose 1, 2, 5 or 10 units, or use a custom quantity.","discount_percent":3}},
         "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}},
-        "shipping_note":{"type":"text","settings":{"text":"<p><strong>Shipping note:</strong> this is a bulky item (over 31.5 kg). Delivery is quoted separately after your order — our team will contact you with the shipping cost before dispatch, and checkout does not charge delivery for it.</p>"}}
+        "shipping_note":{"type":"suntneew_shipping_note","settings":{"heading":"Shipping note","text":"this is a bulky item (over 31.5 kg). Delivery is quoted separately after your order — our team will contact you with the shipping cost before dispatch, and checkout does not charge delivery for it."}}
       },
       "block_order":["vendor","title","sku","price","separator","intro","variant_picker","quantity_selector","bundle","buy_buttons","shipping_note"],
       "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":50,"desktop_media_layout":"carousel_thumbnails_bottom","mobile_media_size":"contained","mobile_carousel_control":"dots"}

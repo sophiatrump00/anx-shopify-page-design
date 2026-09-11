@@ -1,0 +1,16 @@
+{% doc %}
+Renders a small muted shipping or delivery note below the buy buttons.
+
+@param {block} block - Shipping note block with heading and text settings.
+{% enddoc %}
+
+{{ 'suntneew-shipping-note.css' | asset_url | stylesheet_tag }}
+
+{%- if block.settings.text != blank -%}
+  <div class="sn-shipping-note">
+    {%- if block.settings.heading != blank -%}
+      <span class="sn-shipping-note__label">{{ block.settings.heading }}:</span>
+    {%- endif -%}
+    <span class="sn-shipping-note__text">{{ block.settings.text }}</span>
+  </div>
+{%- endif -%}

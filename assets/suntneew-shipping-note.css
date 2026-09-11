@@ -1,0 +1,11 @@
+.sn-shipping-note {
+  margin-block-start: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgb(var(--text-color) / 0.62);
+}
+
+.sn-shipping-note__label {
+  font-weight: 600;
+  color: rgb(var(--text-color) / 0.78);
+}

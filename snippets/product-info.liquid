@@ -384,6 +384,9 @@ Renders the blocks that make up a product information panel.
             </div>
           {%- endif -%}
 
+        {%- when 'suntneew_shipping_note' -%}
+          {%- render 'suntneew-shipping-note', block: block -%}
+
         {%- when 'collapsible_text' -%}
           {%- if block.settings.title != blank and block.settings.content != blank or block.settings.page.content != blank -%}
             {%- capture accordion_content -%}<div class="prose">{{ block.settings.page.content | default: block.settings.content }}</div>{%- endcapture -%}
