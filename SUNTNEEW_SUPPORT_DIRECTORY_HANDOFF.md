@@ -1,0 +1,51 @@
+# 产品资源目录与三语说明书（2026-09-11）
+
+## 本次完成
+
+1. **Manuals & Certifications 目录补齐 13 个在售产品**（AD19 不在范围）。
+   每个卡片对应一个支持页，模板与 KB700 一致：关键参数、在线手册、说明书下载、合规信息。
+   - 启动电源：KB700、U23、U32、OJ02、A20、A3
+   - 房车电池：Group 31、Group 24、230Ah、314Ah
+   - 家庭储能：WL5A、WL10B、VH
+2. **说明书改为一份 PDF 内含英文 + 法文 + 德文**，支持页和产品页的下载按钮都指向新文件。
+3. **中文内容清理**：手册中的中文印制说明页已删除，主题里的 `-cn` 文件已删除，
+   旧文件名（`*-manual-en.pdf`）现在指向同一份三语文件。
+
+## 文件位置
+
+| 内容 | 位置 |
+|---|---|
+| 三语手册（9 份） | `assets/suntneew-*-manual-en-fr-de.pdf`、`assets/suntneew-*-user-manual-en-fr-de.pdf` |
+| 英文原件（构建输入） | `tools/manual-build/sources/` |
+| 手册生成工具 | `tools/manual-build/`（`node tools/manual-build/build.mjs`） |
+| 支持页/目录内容与模板生成 | `tools/support-pages/`（`node tools/support-pages/build.mjs`） |
+| Shopify 建页请求 | `anx-store-automation/examples/support-pages/` |
+
+新建的 Shopify 页面（handle = templateSuffix）：
+`support-u23`、`support-u32`、`support-oj02`、`support-a20`、`support-a3`、
+`support-rv-g31`、`support-rv-g24`、`support-rv-230ah`、`support-rv-314ah`、
+`support-wl5a`、`support-wl10b`、`support-vh`。
+
+## 手册构成
+
+| 型号 | 总页数 | 封面 | 英文 | 法文 | 德文 |
+|---|---:|---:|---:|---:|---:|
+| KB700 | 11 | 1 | 6 | 2 | 2 |
+| U23 / U32 | 13 | 1 | 6 | 3 | 3 |
+| OJ02 | 23 | 1 | 16 | 3 | 3 |
+| A20 | 13 | 1 | 8 | 2 | 2 |
+| 四款房车电池 | 37 | 1 | 22 | 7 | 7 |
+
+英文部分保留原始排版页（KB700/U23/U32 去掉第 7 页中文印制说明，OJ02 去掉第 1 页中文制作单）；
+法文、德文部分按同一顺序重排文字内容，图形仍以英文原件页为准。
+
+## 待办与判断点
+
+- **法文/德文译文需要母语复核**：翻译由本次工作生成，正式印刷前建议做一次语言与合规复核。
+- **A3 没有可发布的成品说明书**：库内只有 1 页客订稿，支持页因此不提供 PDF，仅给在线指南与合规类别。
+- **WL5A / WL10B / VH 没有安装手册与证书**：页面明确标注 “In preparation”，
+  只展示已核对的产品配置数据与规格书入口。
+- **OJ02 的 UN38.3 报告是中英双语实验室原件**（产品页 Documents 区），
+  第三方报告的版式不在本次改动范围内，需要时再决定是否替换为纯英文版本。
+- **Shopify CDN 缓存**：删除旧文件后，旧链接仍可能命中缓存（`max-age` 一年）。
+  已把三语文件重新发布到旧文件名，缓存刷新后这些链接会指向不含中文的最新手册。
