@@ -22,6 +22,7 @@
   * text_color: the text color to use for the product card (if none is passed then the one from the global setting is used)
   * text_alignment: can be "center". If nothing is set, the theme uses the default product card setting
   * shop_card: render the compact Shop-page feature highlights
+  * custom.shop_card_image: optional file-reference image used only by Shop cards
 {%- endcomment -%}
 
 {%- assign show_rating = show_rating | default: settings.show_product_rating, allow_false: true -%}
@@ -71,7 +72,12 @@
     --------------------------------------------------------------------------------------------------------------------
   {%- endcomment -%}
 
-  {%- if product.media.size > 0 -%}
+  {%- assign shop_card_media = product.featured_media -%}
+  {%- if shop_card and product.metafields.custom.shop_card_image.value != blank -%}
+    {%- assign shop_card_media = product.metafields.custom.shop_card_image.value -%}
+  {%- endif -%}
+
+  {%- if product.media.size > 0 or shop_card_media != blank -%}
     <div class="product-card__figure">
       <a href="{{ product.url }}" data-instant>
         {%- capture sizes -%}
@@ -91,9 +97,9 @@
         -%}
 
         {%- capture main_image_classes -%}product-card__image product-card__image--primary {% if settings.product_image_aspect_ratio contains 'crop' %}object-fill-safe{% endif %} aspect-{{ settings.product_image_aspect_ratio | split: '_' | first }}{%- endcapture -%}
-        {%- assign card_image_width = product.featured_media.width | at_most: 960 -%}
+        {%- assign card_image_width = shop_card_media.width | at_most: 960 -%}
         {{-
-          product.featured_media
+          shop_card_media
           | image_url: width: card_image_width
           | image_tag: loading: main_media_loading_strategy, sizes: sizes, widths: '200,300,400,500,600,700,800,960', class: main_image_classes
         -}}
@@ -206,11 +212,6 @@
           <span class="sr-only">{{ shop_highlight_three }}</span>
         </a>
       </div>
-      <ul class="sn-shop-card__selling-points">
-        <li>{{ shop_highlight_one }}</li>
-        <li>{{ shop_highlight_two }}</li>
-        <li>{{ shop_highlight_three }}</li>
-      </ul>
     {%- endif -%}
 
     {%- if show_vendor and product.vendor != blank -%}
@@ -246,6 +247,14 @@
 
       {%- render 'price-list', product: product, text_alignment: text_alignment -%}
     </div>
+
+    {%- if shop_card -%}
+      <ul class="sn-shop-card__selling-points">
+        <li>{{ shop_highlight_one }}</li>
+        <li>{{ shop_highlight_two }}</li>
+        <li>{{ shop_highlight_three }}</li>
+      </ul>
+    {%- endif -%}
 
     {%- if show_rating and mobile_reduced or text_alignment == 'center' -%}
       {%- capture rating_class -%}{% unless text_alignment == 'center' %}sm:hidden{% endunless %}{%- endcapture -%}

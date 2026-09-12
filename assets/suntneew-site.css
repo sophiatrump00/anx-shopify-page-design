@@ -43,6 +43,18 @@
   opacity: .68;
 }
 
+/* Shared scroll reveal: layout remains stable while content enters as it reaches the viewport. */
+.sn-motion-ready main .sn-scroll-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 520ms ease var(--sn-reveal-delay, 0ms), transform 520ms cubic-bezier(.2, .65, .25, 1) var(--sn-reveal-delay, 0ms);
+}
+
+.sn-motion-ready main .sn-scroll-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @media screen and (min-width: 1150px) {
   .header__wrapper {
     /* Keep the header on the same content rails as the hero instead of adding a second inset. */
@@ -76,6 +88,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .sn-motion-ready main .sn-scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .header * {
     scroll-behavior: auto;
   }

@@ -12,6 +12,7 @@ if (!customElements.get('suntneew-shop-navigation')) {
         this.abortController = new AbortController();
         this.resizeObserver = new ResizeObserver(() => this.measure());
         this.resizeObserver.observe(this.bar);
+        this.lastScrollY = window.scrollY;
 
         window.addEventListener('scroll', () => this.scheduleUpdate(), {
           passive: true,
@@ -51,6 +52,10 @@ if (!customElements.get('suntneew-shop-navigation')) {
 
         this.frameRequest = requestAnimationFrame(() => {
           this.frameRequest = null;
+          const currentScrollY = window.scrollY;
+          const scrollingUp = currentScrollY < this.lastScrollY;
+          this.classList.toggle('is-scroll-up', scrollingUp && currentScrollY > 8);
+          this.lastScrollY = currentScrollY;
           this.update();
         });
       }

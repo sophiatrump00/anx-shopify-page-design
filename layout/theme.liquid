@@ -70,6 +70,7 @@
     {{- 'theme-bundle-3.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'suntneew-site.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'suntneew-home.css' | asset_url | stylesheet_tag: preload: true -}}
+    <script src="{{ 'suntneew-motion.js' | asset_url }}" defer></script>
     {%- if request.page_type == 'index' -%}
       <script src="{{ 'suntneew-home.js' | asset_url }}" defer></script>
     {%- endif -%}

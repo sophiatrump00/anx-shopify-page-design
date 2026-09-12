@@ -87,7 +87,7 @@
 <height-observer variable="header">
   <store-header
     class="header"
-    {% if section.settings.hide_on_scroll and page.handle != 'shop' %}
+    {% if section.settings.hide_on_scroll %}
       hide-on-scroll="100"
     {% endif %}
     {% if section.settings.enable_sticky %}
