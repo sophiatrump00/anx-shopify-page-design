@@ -51,9 +51,17 @@
   transition: background-color 160ms ease, color 160ms ease;
 }
 
-.sn-shop-nav__bar a:first-child {
+.sn-shop-nav__current {
+  display: inline-flex;
+  min-width: max-content;
   margin-inline-end: auto;
+  padding: 0 34px;
   padding-inline-start: 0;
+  align-items: center;
+  justify-content: center;
+  color: #ff8350;
+  font-size: .9375rem;
+  line-height: 1.2;
   font-weight: 700;
 }
 
@@ -66,6 +74,61 @@
 .sn-shop-nav__tile:focus-visible {
   outline: 2px solid #ff8350;
   outline-offset: -3px;
+}
+
+.template-page-shop .sn-shop-loop-carousel {
+  position: relative;
+}
+
+.template-page-shop .sn-shop-loop-carousel > scroll-carousel {
+  scrollbar-width: none;
+}
+
+.template-page-shop .sn-shop-loop-carousel > scroll-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.sn-shop-loop-carousel__arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgb(37 39 41 / .72);
+  box-shadow: 0 5px 16px rgb(24 35 48 / .16);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.sn-shop-loop-carousel__arrow:hover,
+.sn-shop-loop-carousel__arrow:focus-visible {
+  background: #e95416;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.sn-shop-loop-carousel__arrow:focus-visible {
+  outline: 2px solid #ff8350;
+  outline-offset: 3px;
+}
+
+.sn-shop-loop-carousel__arrow svg {
+  width: 19px;
+  height: 19px;
+}
+
+.sn-shop-loop-carousel__arrow--prev { inset-inline-start: 18px; }
+.sn-shop-loop-carousel__arrow--next { inset-inline-end: 18px; }
+
+.sn-shop-loop-carousel:not(.is-overflowing) .sn-shop-loop-carousel__arrow {
+  display: none;
 }
 
 .sn-shop-nav__catalog {
@@ -200,15 +263,23 @@
   }
 
   .sn-shop-nav__bar a,
-  .sn-shop-nav__bar a:first-child {
+  .sn-shop-nav__current {
     margin-inline-end: 0;
     padding: 0 18px;
     font-size: .8125rem;
   }
 
-  .sn-shop-nav__bar a:first-child {
+  .sn-shop-nav__current {
     padding-inline-start: 4px;
   }
+
+  .sn-shop-loop-carousel__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .sn-shop-loop-carousel__arrow--prev { inset-inline-start: 12px; }
+  .sn-shop-loop-carousel__arrow--next { inset-inline-end: 12px; }
 
   .sn-shop-nav__tiles-wrap {
     width: 100%;

@@ -65,3 +65,70 @@ if (!customElements.get('suntneew-shop-navigation')) {
     }
   );
 }
+
+const setupSuntneewShopLoopCarousels = () => {
+  document.querySelectorAll('.sn-shop-loop-carousel').forEach((carousel) => {
+    if (carousel.dataset.loopReady === 'true') return;
+
+    const scroller = carousel.querySelector('scroll-carousel');
+    const previousButton = carousel.querySelector('[data-shop-carousel-prev]');
+    const nextButton = carousel.querySelector('[data-shop-carousel-next]');
+    if (!scroller || !previousButton || !nextButton) return;
+
+    carousel.dataset.loopReady = 'true';
+    const abortController = new AbortController();
+    const { signal } = abortController;
+    let frameRequest;
+    let step = scroller.clientWidth;
+
+    const getStep = () => {
+      const cards = scroller.querySelectorAll('product-card');
+      if (cards.length < 2) return scroller.clientWidth;
+      const first = cards[0].getBoundingClientRect();
+      const second = cards[1].getBoundingClientRect();
+      return Math.max(second.left - first.left, first.width);
+    };
+
+    const measure = () => {
+      const overflowing = scroller.scrollWidth > scroller.clientWidth + 2;
+      carousel.classList.toggle('is-overflowing', overflowing);
+      step = getStep();
+    };
+
+    const scheduleMeasure = () => {
+      if (frameRequest) return;
+      frameRequest = requestAnimationFrame(() => {
+        frameRequest = undefined;
+        measure();
+      });
+    };
+
+    const move = (direction) => {
+      if (!carousel.classList.contains('is-overflowing')) return;
+      const maximum = scroller.scrollWidth - scroller.clientWidth;
+      const current = scroller.scrollLeft;
+      let target = current + direction * step;
+
+      if (direction > 0 && target >= maximum - 2) target = 0;
+      if (direction < 0 && target <= 2) target = maximum;
+      scroller.scrollTo({ left: target, behavior: 'smooth' });
+    };
+
+    previousButton.addEventListener('click', () => move(-1), { signal });
+    nextButton.addEventListener('click', () => move(1), { signal });
+    scroller.addEventListener('scroll', scheduleMeasure, { passive: true, signal });
+    window.addEventListener('resize', scheduleMeasure, { passive: true, signal });
+    const resizeObserver = new ResizeObserver(scheduleMeasure);
+    resizeObserver.observe(scroller);
+
+    requestAnimationFrame(measure);
+  });
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupSuntneewShopLoopCarousels, { once: true });
+} else {
+  setupSuntneewShopLoopCarousels();
+}
+
+document.addEventListener('shopify:section:load', setupSuntneewShopLoopCarousels);

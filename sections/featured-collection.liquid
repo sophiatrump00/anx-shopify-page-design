@@ -45,7 +45,7 @@
       link_url: link_url
     -%}
 
-    <div class="{% if section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
+    <div class="{% if section.settings.loop_arrows %}sn-shop-loop-carousel{% elsif section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
       {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
 
       <scroll-carousel
@@ -82,7 +82,14 @@
         </reveal-items>
       </scroll-carousel>
 
-      {%- if section.settings.stack_products == false -%}
+      {%- if section.settings.loop_arrows -%}
+        <button type="button" class="sn-shop-loop-carousel__arrow sn-shop-loop-carousel__arrow--prev" data-shop-carousel-prev aria-controls="{{ scroll_area_id }}" aria-label="{{ 'general.accessibility.previous' | t | escape }}">
+          {%- render 'icon' with 'chevron-left', direction_aware: true -%}
+        </button>
+        <button type="button" class="sn-shop-loop-carousel__arrow sn-shop-loop-carousel__arrow--next" data-shop-carousel-next aria-controls="{{ scroll_area_id }}" aria-label="{{ 'general.accessibility.next' | t | escape }}">
+          {%- render 'icon' with 'chevron-right', direction_aware: true -%}
+        </button>
+      {%- elsif section.settings.stack_products == false -%}
         {%- if section.settings.show_progress_bar -%}
           {%- assign default_progress = section.settings.products_per_row_desktop | times: 1.0 | divided_by: section.settings.products_count -%}
           {%- render 'scrollbar', observes: scroll_area_id, default_progress: default_progress, show_buttons: true -%}
@@ -145,6 +152,14 @@
       "type": "checkbox",
       "id": "show_progress_bar",
       "label": "Show carousel progress bar",
+      "default": false,
+      "visible_if": "{{ section.settings.stack_products == false }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "loop_arrows",
+      "label": "Looping arrow controls",
+      "info": "Use on the Shop page for circular previous and next controls.",
       "default": false,
       "visible_if": "{{ section.settings.stack_products == false }}"
     },
