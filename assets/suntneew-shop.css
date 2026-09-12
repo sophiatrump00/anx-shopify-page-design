@@ -136,7 +136,7 @@
 .template-page-shop .sn-shop-section-header-row > .section-header {
   width: 100%;
   display: block;
-  text-align: center;
+  text-align: start;
 }
 
 .template-page-shop .sn-shop-section-header-row > .section-header .prose {
@@ -145,7 +145,7 @@
   max-width: none;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0 12px;
 }
 
@@ -170,7 +170,7 @@
 
 .sn-shop-nav__catalog {
   padding: clamp(34px, 4vw, 62px) 0 clamp(52px, 6vw, 88px);
-  background: #fff;
+  background: #f5f6f7;
 }
 
 .sn-shop-nav__tiles-wrap {
@@ -192,9 +192,9 @@
 
 .sn-shop-nav__tile {
   display: grid;
-  min-height: 154px;
-  padding: 10px 18px 14px;
-  grid-template-rows: 96px auto;
+  min-height: 126px;
+  padding: 8px 18px 12px;
+  grid-template-rows: 74px auto;
   align-items: end;
   color: var(--sn-shop-ink);
   text-align: center;
@@ -204,18 +204,19 @@
 
 .sn-shop-nav__tile-media {
   display: flex;
-  height: 96px;
+  height: 74px;
   align-items: center;
   justify-content: center;
 }
 
 .sn-shop-nav__tile-media img {
   display: block;
-  max-width: 180px;
-  max-height: 96px;
+  max-width: 140px;
+  max-height: 74px;
   width: 100%;
   height: 100%;
   object-fit: contain;
+  mix-blend-mode: multiply;
   transition: transform 180ms ease;
 }
 
@@ -245,6 +246,103 @@
 
 .template-page-shop .shopify-section--featured-collection product-card {
   border-radius: 6px;
+}
+
+.template-page-shop .sn-shop-loop-carousel__track {
+  overflow: hidden;
+}
+
+.template-page-shop .sn-shop-loop-carousel .product-card__figure {
+  padding: 16px 16px 0;
+}
+
+.template-page-shop .sn-shop-loop-carousel .product-card__figure > a {
+  display: block;
+}
+
+.template-page-shop .sn-shop-loop-carousel .product-card__image {
+  border-radius: 4px;
+}
+
+.sn-shop-card__highlights {
+  display: flex;
+  gap: 8px;
+  margin-block-end: 12px;
+}
+
+.sn-shop-card__feature {
+  position: relative;
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(24 35 48 / .14);
+  border-radius: 50%;
+  color: #68727b;
+  background: #fff;
+  transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.sn-shop-card__feature:hover,
+.sn-shop-card__feature:focus-visible {
+  border-color: #e95416;
+  color: #e95416;
+  transform: translateY(-2px);
+}
+
+.sn-shop-card__feature::after {
+  position: absolute;
+  z-index: 4;
+  inset-block-end: calc(100% + 8px);
+  inset-inline-start: 50%;
+  width: max-content;
+  max-width: 210px;
+  padding: 7px 9px;
+  border-radius: 4px;
+  color: #fff;
+  background: #252729;
+  content: attr(title);
+  font-size: .6875rem;
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 4px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.sn-shop-card__feature:hover::after,
+.sn-shop-card__feature:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.sn-shop-card__feature-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.sn-shop-card__selling-points {
+  display: grid;
+  gap: 5px;
+  margin: 0 0 14px;
+  padding: 0;
+  color: #68727b;
+  font-size: .75rem;
+  line-height: 1.35;
+  list-style: none;
+}
+
+.sn-shop-card__selling-points li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sn-shop-card__selling-points li::before {
+  margin-inline-end: 5px;
+  color: #e95416;
+  content: '•';
 }
 
 @media screen and (max-width: 999px) {
@@ -282,18 +380,18 @@
   }
 
   .sn-shop-nav__tile {
-    min-height: 138px;
+    min-height: 116px;
     padding: 10px;
-    grid-template-rows: 82px auto;
+    grid-template-rows: 68px auto;
   }
 
   .sn-shop-nav__tile-media {
-    height: 82px;
+    height: 68px;
   }
 
   .sn-shop-nav__tile-media img {
-    max-width: 130px;
-    max-height: 82px;
+    max-width: 112px;
+    max-height: 68px;
   }
 }
 
@@ -307,7 +405,7 @@
   }
 
   .template-page-shop .sn-shop-section-header-row > .section-header .prose {
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0 8px;
   }
 

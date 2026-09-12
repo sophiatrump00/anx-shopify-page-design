@@ -76,7 +76,8 @@
                 position: forloop.index,
                 background: section.settings.product_card_background,
                 text_color: section.settings.product_card_text_color,
-                show_badges: true
+                show_badges: true,
+                shop_card: section.settings.loop_arrows
               -%}
             {%- else -%}
               {%- for i in (1..section.settings.products_count) -%}

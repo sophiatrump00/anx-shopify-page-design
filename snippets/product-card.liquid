@@ -21,6 +21,7 @@
   * background: the background to use for the product card (if none is passed then the one from the global setting is used)
   * text_color: the text color to use for the product card (if none is passed then the one from the global setting is used)
   * text_alignment: can be "center". If nothing is set, the theme uses the default product card setting
+  * shop_card: render the compact Shop-page feature highlights
 {%- endcomment -%}
 
 {%- assign show_rating = show_rating | default: settings.show_product_rating, allow_false: true -%}
@@ -176,6 +177,42 @@
   {%- endcomment -%}
 
   <div class="product-card__info {% if text_alignment == 'center' %}product-card__info--center{% endif %}">
+    {%- if shop_card -%}
+      {%- assign shop_capacity = product.metafields.custom.suntneew_capacity.value | first -%}
+      {%- assign shop_system = product.metafields.custom.suntneew_system_format.value | first -%}
+      {%- assign shop_use_case = product.metafields.custom.suntneew_use_case.value | first -%}
+      {%- assign shop_engine = product.metafields.custom.suntneew_engine_coverage.value | first -%}
+      {%- assign shop_form_factor = product.metafields.custom.suntneew_form_factor.value | first -%}
+      {%- assign shop_highlight_one = shop_capacity | default: shop_system | default: shop_use_case | default: 'Everyday power' -%}
+      {%- assign shop_highlight_two = shop_engine | default: shop_form_factor | default: shop_use_case | default: 'Ready for the road' -%}
+      {%- if product.metafields.custom.suntneew_bluetooth_monitoring.value == true -%}
+        {%- assign shop_highlight_three = 'Bluetooth monitoring' -%}
+        {%- assign shop_highlight_three_icon = 'picto-bluetooth' -%}
+      {%- else -%}
+        {%- assign shop_highlight_three = shop_use_case | default: shop_system | default: 'Built for real life' -%}
+        {%- assign shop_highlight_three_icon = 'picto-shield' -%}
+      {%- endif -%}
+      <div class="sn-shop-card__highlights" aria-label="Product highlights">
+        <a class="sn-shop-card__feature" href="{{ product.url }}" data-instant aria-label="{{ shop_highlight_one | escape }}" title="{{ shop_highlight_one | escape }}">
+          <span class="sn-shop-card__feature-icon">{%- render 'icon' with 'picto-target' -%}</span>
+          <span class="sr-only">{{ shop_highlight_one }}</span>
+        </a>
+        <a class="sn-shop-card__feature" href="{{ product.url }}" data-instant aria-label="{{ shop_highlight_two | escape }}" title="{{ shop_highlight_two | escape }}">
+          <span class="sn-shop-card__feature-icon">{%- render 'icon' with 'picto-truck' -%}</span>
+          <span class="sr-only">{{ shop_highlight_two }}</span>
+        </a>
+        <a class="sn-shop-card__feature" href="{{ product.url }}" data-instant aria-label="{{ shop_highlight_three | escape }}" title="{{ shop_highlight_three | escape }}">
+          <span class="sn-shop-card__feature-icon">{%- render 'icon' with shop_highlight_three_icon -%}</span>
+          <span class="sr-only">{{ shop_highlight_three }}</span>
+        </a>
+      </div>
+      <ul class="sn-shop-card__selling-points">
+        <li>{{ shop_highlight_one }}</li>
+        <li>{{ shop_highlight_two }}</li>
+        <li>{{ shop_highlight_three }}</li>
+      </ul>
+    {%- endif -%}
+
     {%- if show_vendor and product.vendor != blank -%}
       {%- if show_rating and text_alignment != 'center' -%}
         <div class="rating-with-text w-full">
