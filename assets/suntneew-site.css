@@ -55,6 +55,37 @@
   transform: none;
 }
 
+/* Homepage storytelling uses staged media and copy instead of one block-level fade. */
+.sn-home-motion main .shopify-section {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.sn-home-motion main .sn-home-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 620ms ease var(--sn-reveal-delay, 0ms), transform 700ms cubic-bezier(.2, .7, .2, 1) var(--sn-reveal-delay, 0ms);
+}
+
+.sn-home-motion main .sn-home-reveal--media {
+  transform: translateY(24px) scale(1.035);
+}
+
+.sn-home-motion main .sn-home-reveal--hotspot {
+  transform: translate(-50%, -50%) scale(.72);
+  transition-duration: 420ms;
+}
+
+.sn-home-motion main .sn-home-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.sn-home-motion main .sn-home-reveal--hotspot.is-visible {
+  transform: translate(-50%, -50%) scale(1);
+}
+
 @media screen and (min-width: 1150px) {
   .header__wrapper {
     /* Keep the header on the same content rails as the hero instead of adding a second inset. */
@@ -89,6 +120,16 @@
 
 @media (prefers-reduced-motion: reduce) {
   .sn-motion-ready main .sn-scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .sn-home-motion main .sn-home-reveal,
+  .sn-home-motion main .sn-home-reveal--media,
+  .sn-home-motion main .sn-home-reveal--hotspot,
+  .sn-home-motion main .sn-home-reveal.is-visible,
+  .sn-home-motion main .sn-home-reveal--hotspot.is-visible {
     opacity: 1;
     transform: none;
     transition: none;
