@@ -35,19 +35,31 @@
 <div{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} {% render 'section-properties' %}>
   <div class="section-stack">
     {%- assign link_url = section.settings.link_url | default: section.settings.collection.url -%}
-    {%- render 'section-header',
-      subheading: section.settings.subheading,
-      heading: section.settings.title,
-      heading_color: section.settings.heading_color,
-      heading_gradient: section.settings.heading_gradient,
-      content: section.settings.content,
-      link_text: section.settings.link_text,
-      link_url: link_url
-    -%}
+    {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
+    {%- if section.settings.loop_arrows -%}<div class="sn-shop-loop-carousel">{%- endif -%}
+    <div class="sn-shop-section-header-row">
+      {%- render 'section-header',
+        subheading: section.settings.subheading,
+        heading: section.settings.title,
+        heading_color: section.settings.heading_color,
+        heading_gradient: section.settings.heading_gradient,
+        content: section.settings.content,
+        link_text: section.settings.link_text,
+        link_url: link_url
+      -%}
+      {%- if section.settings.loop_arrows -%}
+        <div class="sn-shop-loop-carousel__controls">
+          <button type="button" class="sn-shop-loop-carousel__arrow sn-shop-loop-carousel__arrow--prev" data-shop-carousel-prev aria-controls="{{ scroll_area_id }}" aria-label="{{ 'general.accessibility.previous' | t | escape }}">
+            {%- render 'icon' with 'chevron-left', direction_aware: true -%}
+          </button>
+          <button type="button" class="sn-shop-loop-carousel__arrow sn-shop-loop-carousel__arrow--next" data-shop-carousel-next aria-controls="{{ scroll_area_id }}" aria-label="{{ 'general.accessibility.next' | t | escape }}">
+            {%- render 'icon' with 'chevron-right', direction_aware: true -%}
+          </button>
+        </div>
+      {%- endif -%}
+    </div>
 
-    <div class="{% if section.settings.loop_arrows %}sn-shop-loop-carousel{% elsif section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
-      {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
-
+    <div class="{% if section.settings.loop_arrows %}sn-shop-loop-carousel__track{% elsif section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
       <scroll-carousel
         selector="product-card"
         id="{{ scroll_area_id }}"
@@ -82,14 +94,7 @@
         </reveal-items>
       </scroll-carousel>
 
-      {%- if section.settings.loop_arrows -%}
-        <button type="button" class="sn-shop-loop-carousel__arrow sn-shop-loop-carousel__arrow--prev" data-shop-carousel-prev aria-controls="{{ scroll_area_id }}" aria-label="{{ 'general.accessibility.previous' | t | escape }}">
-          {%- render 'icon' with 'chevron-left', direction_aware: true -%}
-        </button>
-        <button type="button" class="sn-shop-loop-carousel__arrow sn-shop-loop-carousel__arrow--next" data-shop-carousel-next aria-controls="{{ scroll_area_id }}" aria-label="{{ 'general.accessibility.next' | t | escape }}">
-          {%- render 'icon' with 'chevron-right', direction_aware: true -%}
-        </button>
-      {%- elsif section.settings.stack_products == false -%}
+      {%- if section.settings.loop_arrows == false and section.settings.stack_products == false -%}
         {%- if section.settings.show_progress_bar -%}
           {%- assign default_progress = section.settings.products_per_row_desktop | times: 1.0 | divided_by: section.settings.products_count -%}
           {%- render 'scrollbar', observes: scroll_area_id, default_progress: default_progress, show_buttons: true -%}
@@ -106,6 +111,7 @@
         {%- endif -%}
       {%- endif -%}
     </div>
+    {%- if section.settings.loop_arrows -%}</div>{%- endif -%}
   </div>
 </div>
 

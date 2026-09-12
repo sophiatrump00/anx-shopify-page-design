@@ -1,7 +1,7 @@
 {{ 'suntneew-shop.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'suntneew-shop.js' | asset_url }}" defer></script>
 
-<suntneew-shop-navigation class="sn-shop-nav" aria-labelledby="sn-shop-title-{{ section.id }}">
+<suntneew-shop-navigation class="sn-shop-nav">
   <nav class="sn-shop-nav__bar" aria-label="Shop categories">
     <div class="sn-shop-nav__bar-inner">
       <span class="sn-shop-nav__current" aria-current="page">{{ section.settings.all_label | escape }}</span>
@@ -33,11 +33,6 @@
       </div>
     </div>
 
-    <div class="sn-shop-nav__intro" id="sn-shop-products-{{ section.id }}">
-      {%- if section.settings.eyebrow != blank -%}<p class="sn-shop-nav__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-      <h1 class="sn-shop-nav__title" id="sn-shop-title-{{ section.id }}">{{ section.settings.title | escape }}</h1>
-      {%- if section.settings.copy != blank -%}<div class="sn-shop-nav__copy">{{ section.settings.copy }}</div>{%- endif -%}
-    </div>
   </div>
 </suntneew-shop-navigation>
 
@@ -48,10 +43,7 @@
   "class": "shopify-section--suntneew-shop-navigation",
   "max_blocks": 6,
   "settings": [
-    { "type": "text", "id": "all_label", "label": "All products label", "default": "All Products" },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Power for real life" },
-    { "type": "text", "id": "title", "label": "Heading", "default": "Shop SuntNeew" },
-    { "type": "richtext", "id": "copy", "label": "Introduction", "default": "<p>Find dependable power for the road, the vehicle and the home.</p>" }
+    { "type": "text", "id": "all_label", "label": "All products label", "default": "All Products" }
   ],
   "blocks": [
     {

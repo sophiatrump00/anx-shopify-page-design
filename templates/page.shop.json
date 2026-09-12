@@ -18,10 +18,7 @@
       },
       "block_order": ["rv", "jump", "home"],
       "settings": {
-        "all_label": "All Products",
-        "eyebrow": "Power for real life",
-        "title": "Shop SuntNeew",
-        "copy": "<p>Find dependable power for the road, the vehicle and the home.</p>"
+        "all_label": "All Products"
       }
     },
     "rv_products": {
