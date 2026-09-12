@@ -32,7 +32,7 @@
   }
 </style>
 
-<div {% render 'section-properties' %}>
+<div{% if section.settings.anchor_id != blank %} id="{{ section.settings.anchor_id | handle }}"{% endif %} {% render 'section-properties' %}>
   <div class="section-stack">
     {%- assign link_url = section.settings.link_url | default: section.settings.collection.url -%}
     {%- render 'section-header',
@@ -116,6 +116,12 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Section anchor",
+      "info": "Optional in-page anchor, without #."
     },
     {
       "type": "product_list",

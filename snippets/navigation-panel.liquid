@@ -55,19 +55,19 @@
               assign mobile_rendered_link_url = link.url
               assign is_technology_mobile_menu = false
               assign is_support_mobile_menu = false
-              assign is_all_products_mobile_menu = false
+              assign is_shop_mobile_menu = false
               assign is_product_series_mobile_menu = false
               assign is_direct_primary_mobile_link = false
 
-              if mobile_link_title_downcase == 'all products' or link.url == routes.all_products_collection_url
-                assign is_all_products_mobile_menu = true
+              if mobile_link_title_downcase == 'all products' or mobile_link_title_downcase == 'shop' or link.url == routes.all_products_collection_url
+                assign is_shop_mobile_menu = true
               elsif link.url == routes.collections_url and link.levels == 0
-                assign is_all_products_mobile_menu = true
+                assign is_shop_mobile_menu = true
               endif
 
-              if is_all_products_mobile_menu
-                assign mobile_rendered_link_url = routes.all_products_collection_url
-                assign is_all_products_mobile_menu = true
+              if is_shop_mobile_menu
+                assign mobile_rendered_link_url = pages['shop'].url | default: '/pages/shop'
+                assign is_direct_primary_mobile_link = true
               elsif mobile_link_title_downcase == 'product series' or link.url == routes.collections_url
                 assign is_product_series_mobile_menu = true
               elsif mobile_link_title_downcase == 'help me choose' or link.url contains '/pages/power-calculator'
@@ -121,7 +121,7 @@
             {% liquid
               assign opens_mobile_panel = false
 
-              if is_support_mobile_menu or is_all_products_mobile_menu
+              if is_support_mobile_menu
                 assign opens_mobile_panel = true
               elsif is_direct_primary_mobile_link == false
                 if link.links.size > 0 or mega_menu_block != '' and is_mega_menu == false
@@ -140,7 +140,7 @@
               {%- else -%}
                 <a href="{{ mobile_rendered_link_url }}" class="group block w-full">
                   <span
-                    ><span class="reversed-link">{{ link.title }}</span></span
+                    ><span class="reversed-link">{% if is_shop_mobile_menu %}Shop{% else %}{{ link.title }}{% endif %}</span></span
                   >
                 </a>
               {%- endif -%}
@@ -158,13 +158,11 @@
                       </button>
                     </li>
 
-                    {%- if is_all_products_mobile_menu -%}
-                      {%- render 'suntneew-product-mobile-links' -%}
-                    {%- elsif is_support_mobile_menu -%}
+                    {%- if is_support_mobile_menu -%}
                       {%- render 'suntneew-support-mobile-links' -%}
                     {%- endif -%}
 
-                    {%- if link.links.size > 0 and is_all_products_mobile_menu == false -%}
+                    {%- if link.links.size > 0 -%}
                       {%- for sub_link in link.links -%}
                         <li class="h3 {% if is_mega_menu %}sm:h5{% else %}sm:h4{% endif %}">
                           {%- if sub_link.links.size > 0 -%}

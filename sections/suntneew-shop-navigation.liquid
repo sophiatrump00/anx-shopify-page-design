@@ -1,0 +1,81 @@
+{{ 'suntneew-shop.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'suntneew-shop.js' | asset_url }}" defer></script>
+
+<suntneew-shop-navigation class="sn-shop-nav" aria-labelledby="sn-shop-title-{{ section.id }}">
+  <nav class="sn-shop-nav__bar" aria-label="Shop categories">
+    <div class="sn-shop-nav__bar-inner">
+      <a href="#sn-shop-catalog-{{ section.id }}">{{ section.settings.all_label | escape }}</a>
+      {%- for block in section.blocks -%}
+        {%- if block.settings.collection != blank -%}
+          <a href="#shop-{{ block.settings.collection.handle }}">{{ block.settings.label | default: block.settings.collection.title | escape }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </nav>
+
+  <div class="sn-shop-nav__catalog" id="sn-shop-catalog-{{ section.id }}">
+    <div class="sn-shop-nav__tiles-wrap">
+      <div class="sn-shop-nav__tiles">
+        <a class="sn-shop-nav__tile" href="#sn-shop-products-{{ section.id }}">
+          <span class="sn-shop-nav__tile-media sn-shop-nav__all-media" aria-hidden="true">
+            {%- for block in section.blocks limit: 3 -%}
+              {%- assign preview_product = block.settings.collection.products.first -%}
+              {%- if preview_product.featured_media != blank -%}
+                {{- preview_product.featured_media | image_url: width: 360 | image_tag: loading: 'eager', sizes: '(max-width: 699px) 26vw, 150px', widths: '160,240,320,360' -}}
+              {%- endif -%}
+            {%- endfor -%}
+          </span>
+          <span class="sn-shop-nav__tile-label">{{ section.settings.all_label | escape }}</span>
+        </a>
+
+        {%- for block in section.blocks -%}
+          {%- assign shop_collection = block.settings.collection -%}
+          {%- if shop_collection != blank -%}
+            {%- assign tile_image = block.settings.image | default: shop_collection.featured_image | default: shop_collection.products.first.featured_media -%}
+            <a class="sn-shop-nav__tile" href="#shop-{{ shop_collection.handle }}" {{ block.shopify_attributes }}>
+              <span class="sn-shop-nav__tile-media">
+                {%- if tile_image != blank -%}
+                  {{- tile_image | image_url: width: 520 | image_tag: loading: 'eager', sizes: '(max-width: 699px) 42vw, 240px', widths: '200,300,400,520' -}}
+                {%- endif -%}
+              </span>
+              <span class="sn-shop-nav__tile-label">{{ block.settings.label | default: shop_collection.title | escape }}</span>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="sn-shop-nav__intro" id="sn-shop-products-{{ section.id }}">
+      {%- if section.settings.eyebrow != blank -%}<p class="sn-shop-nav__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h1 class="sn-shop-nav__title" id="sn-shop-title-{{ section.id }}">{{ section.settings.title | escape }}</h1>
+      {%- if section.settings.copy != blank -%}<div class="sn-shop-nav__copy">{{ section.settings.copy }}</div>{%- endif -%}
+    </div>
+  </div>
+</suntneew-shop-navigation>
+
+{% schema %}
+{
+  "name": "SuntNeew shop navigation",
+  "tag": "section",
+  "class": "shopify-section--suntneew-shop-navigation",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "all_label", "label": "All products label", "default": "All Products" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Power for real life" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Shop SuntNeew" },
+    { "type": "richtext", "id": "copy", "label": "Introduction", "default": "<p>Find dependable power for the road, the vehicle and the home.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "label", "label": "Display label" },
+        { "type": "image_picker", "id": "image", "label": "Category image", "info": "Defaults to the collection image or first product image." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "SuntNeew shop navigation" }]
+}
+{% endschema %}

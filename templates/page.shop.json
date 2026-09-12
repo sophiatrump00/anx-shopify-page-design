@@ -1,0 +1,107 @@
+{
+  "sections": {
+    "shop_navigation": {
+      "type": "suntneew-shop-navigation",
+      "blocks": {
+        "rv": {
+          "type": "category",
+          "settings": { "collection": "rv-batteries", "label": "RV Batteries", "image": "" }
+        },
+        "jump": {
+          "type": "category",
+          "settings": { "collection": "jump-starters", "label": "Jump Starters", "image": "" }
+        },
+        "home": {
+          "type": "category",
+          "settings": { "collection": "home-energy-storage", "label": "Home Energy Storage", "image": "" }
+        }
+      },
+      "block_order": ["rv", "jump", "home"],
+      "settings": {
+        "all_label": "All Products",
+        "eyebrow": "Power for real life",
+        "title": "Shop SuntNeew",
+        "copy": "<p>Find dependable power for the road, the vehicle and the home.</p>"
+      }
+    },
+    "rv_products": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "rv-batteries",
+        "anchor_id": "shop-rv-batteries",
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 4,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "subheading": "12.8V LiFePO4 power",
+        "title": "RV Batteries",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#F4F4F1",
+        "background_gradient": "",
+        "text_color": "#182330",
+        "heading_color": "#E95416",
+        "heading_gradient": "",
+        "product_card_background": "#FFFFFF",
+        "product_card_text_color": "#182330"
+      }
+    },
+    "jump_products": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "jump-starters",
+        "anchor_id": "shop-jump-starters",
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 8,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "subheading": "Roadside readiness",
+        "title": "Jump Starters",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#F4F4F1",
+        "background_gradient": "",
+        "text_color": "#182330",
+        "heading_color": "#E95416",
+        "heading_gradient": "",
+        "product_card_background": "#FFFFFF",
+        "product_card_text_color": "#182330"
+      }
+    },
+    "home_products": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "home-energy-storage",
+        "anchor_id": "shop-home-energy-storage",
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 3,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "subheading": "Everyday energy resilience",
+        "title": "Home Energy Storage",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#F4F4F1",
+        "background_gradient": "",
+        "text_color": "#182330",
+        "heading_color": "#E95416",
+        "heading_gradient": "",
+        "product_card_background": "#FFFFFF",
+        "product_card_text_color": "#182330"
+      }
+    }
+  },
+  "order": ["shop_navigation", "rv_products", "jump_products", "home_products"]
+}

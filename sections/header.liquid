@@ -87,7 +87,7 @@
 <height-observer variable="header">
   <store-header
     class="header"
-    {% if section.settings.hide_on_scroll %}
+    {% if section.settings.hide_on_scroll and page.handle != 'shop' %}
       hide-on-scroll="100"
     {% endif %}
     {% if section.settings.enable_sticky %}
@@ -126,25 +126,22 @@
                     assign is_support_menu = false
                     assign is_product_series_menu = false
                     assign is_direct_primary_link = false
-                    assign primary_menu_key = ''
+                    assign is_shop_menu = false
 
                     # Keep the storefront navigation deterministic even when the
                     # saved Shopify menu still contains stale or duplicate URLs.
-                    # The header deliberately retains one product menu only:
-                    # All Products. Product Series remains nested inside that
-                    # menu rather than becoming a competing top-level item.
-                    if link_title_downcase == 'all products' or link.url == routes.all_products_collection_url
-                      assign primary_menu_key = 'all-products'
+                    # The saved menu may still contain the former All Products
+                    # entry. Render it as the dedicated Shop page and keep the
+                    # retired Product Series item out of the storefront header.
+                    if link_title_downcase == 'all products' or link_title_downcase == 'shop' or link.url == routes.all_products_collection_url
+                      assign is_shop_menu = true
                     elsif link.url == routes.collections_url and link.levels == 0
-                      assign primary_menu_key = 'all-products'
+                      assign is_shop_menu = true
                     endif
 
-                    if primary_menu_key == 'all-products'
-                      # The store's saved menu currently resolves both labels to
-                      # /collections. Keep All Products on Shopify's canonical
-                      # all-products route.
-                      assign rendered_link_url = routes.all_products_collection_url
-                      assign primary_menu_key = 'all-products'
+                    if is_shop_menu
+                      assign rendered_link_url = pages['shop'].url | default: '/pages/shop'
+                      assign is_direct_primary_link = true
                     elsif link_title_downcase == 'product series' or link.url == routes.collections_url
                       assign is_product_series_menu = true
                     elsif link_title_downcase == 'help me choose' or link.url contains '/pages/power-calculator'
@@ -175,7 +172,7 @@
                   %}
 
                   {%- unless is_technology_menu or is_product_series_menu -%}
-                    <li{% if is_support_menu %} class="header__support-menu"{% elsif primary_menu_key != blank %} class="header__primary-menu"{% endif %}>
+                    <li{% if is_support_menu %} class="header__support-menu"{% elsif is_shop_menu %} class="header__shop-menu"{% endif %}>
                     {%- if is_support_menu -%}
                       <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
                         <summary class="suntneew-support-menu__trigger text-with-icon gap-2.5 bold link-faded-reverse">
@@ -185,24 +182,15 @@
 
                         {%- render 'suntneew-support-mega-menu' -%}
                       </details>
-                    {%- elsif primary_menu_key != blank -%}
-                      <details is="mega-menu-disclosure" trigger="{{ section.settings.menu_open_trigger | escape }}">
-                        <summary class="suntneew-primary-menu__trigger text-with-icon gap-2.5 bold link-faded-reverse">
-                          {{- link.title -}}
-                          {%- render 'icon' with 'chevron-bottom' -%}
-                        </summary>
-
-                        {%- render 'suntneew-primary-mega-menu', menu_key: primary_menu_key -%}
-                      </details>
                     {%- elsif is_direct_primary_link -%}
                       <a
                         href="{{ rendered_link_url }}"
-                        class="bold link-faded-reverse"
-                        {% if link.current %}
+                        class="bold link-faded-reverse{% if is_shop_menu %} suntneew-shop-link{% endif %}"
+                        {% if link.current or is_shop_menu and page.handle == 'shop' %}
                           aria-current="page"
                         {% endif %}
                       >
-                        {{- link.title -}}
+                        {%- if is_shop_menu -%}Shop{%- else -%}{{- link.title -}}{%- endif -%}
                       </a>
                     {%- elsif link.levels == 0 and mega_menu_block == '' -%}
                       <a

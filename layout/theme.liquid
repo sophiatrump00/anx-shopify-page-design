@@ -77,7 +77,7 @@
   {% render 'shogun-head' %}
 </head>
 
-  <body class="{% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}">
+  <body class="template-{{ request.page_type | handle }}{% if template.suffix != blank %} template-{{ request.page_type | handle }}-{{ template.suffix | handle }}{% endif %}{% if settings.zoom_image_on_hover %} zoom-image--enabled{% endif %}">
     {%- render 'shadow-dom-templates' -%}
 
     <a href="#main" class="skip-to-content sr-only">{{ 'general.accessibility.skip_to_content' | t }}</a>
