@@ -98,11 +98,11 @@ export const PRODUCTS = [
     category: 'jump-starters',
     family: 'JUMP STARTERS',
     model: 'KB700 / KP-700',
-    cardTitle: 'KB700 Fan Jump Starter',
+    cardTitle: 'KB700 Fan Portable Car Jump Starter',
     cardDescription:
-      'Setup, vehicle starting, air-duster operation, charging, safety and model-matched compliance resources.',
+      'Setup, Emergency Car Starter use, air-duster operation, charging, safety and model-matched compliance resources.',
     cardImage: 'suntneew-kb700-2026-gallery-01-main.jpg',
-    cardImageAlt: 'SuntNeew KB700 fan jump starter with smart clamp, air nozzle and USB cable',
+    cardImageAlt: 'SuntNeew KB700 Fan Portable Car Jump Starter with smart clamp, air nozzle and USB cable',
     manualAsset: 'suntneew-kb700-user-manual-en-fr-de.pdf',
     exists: true,
   },
@@ -117,7 +117,7 @@ export const PRODUCTS = [
     cardDescription:
       '8,000mAh emergency starting, 5W lighting modes, device charging and model-matched compliance resources.',
     cardImage: 'suntneew-u23-2026-gallery-01-main.jpg',
-    cardImageAlt: 'SuntNeew U23 portable car jump starter with smart clamp and USB cable',
+    cardImageAlt: 'SuntNeew U23 Portable Car Jump Starter with smart clamp and USB cable',
     heading: 'U23 Support & Manuals',
     intro:
       'Read the mobile-friendly manual online, download the English, French and German manual in one PDF, or review model-matched safety and compliance information.',
@@ -143,7 +143,7 @@ export const PRODUCTS = [
     sections: [
       {
         title: 'Product overview',
-        body: `<p>The U23 is a compact, portable car jump starter with a built-in high-intensity floodlight. It combines three core functions: emergency vehicle starting, emergency lighting and a portable power bank.</p>
+        body: `<p>The U23 is a compact, Portable Car Jump Starter with a built-in high-intensity floodlight. It combines three core functions: emergency Emergency Car Starter use, emergency lighting and a portable power bank.</p>
 <p><strong>Battery:</strong> 8,000mAh / 29.6Wh<br><strong>Input:</strong> Type-C 5V 2A<br><strong>Output:</strong> USB 5V 2.4A<br><strong>EC5 output:</strong> 12V<br><strong>Recharge time:</strong> 3–4 hours<br><strong>Starting current:</strong> 700A<br><strong>Peak current:</strong> 1,500A<br><strong>Operating temperature:</strong> −20°C to 60°C</p>
 <p>The printed booklet lists the U23 jump starter, a USB cable, a smart clamp, the paper box, the user manual and a tool bag as the supplied items. Check your package for the complete current bundle.</p>`,
       },
@@ -191,7 +191,7 @@ export const PRODUCTS = [
     cardDescription:
       '10,000mAh starting power with an HD display, dual USB outputs, LED modes and compliance resources.',
     cardImage: 'suntneew-u32-2026-gallery-01-main.jpg',
-    cardImageAlt: 'SuntNeew U32 portable car jump starter with HD display and smart clamp',
+    cardImageAlt: 'SuntNeew U32 Portable Car Jump Starter with HD display and smart clamp',
     heading: 'U32 Support & Manuals',
     intro:
       'Read the mobile-friendly manual online, download the English, French and German manual in one PDF, or review model-matched safety and compliance information.',
@@ -217,7 +217,7 @@ export const PRODUCTS = [
     sections: [
       {
         title: 'Product overview',
-        body: `<p>U32 is a multifunctional jump starter with an HD display and a 10,000mAh battery. It combines vehicle starting, emergency lighting and device power in one unit, with a smart clamp that protects against reverse connection.</p>
+        body: `<p>U32 is a multifunctional Portable Car Jump Starter with an HD display and a 10,000mAh battery. It combines Emergency Car Starter use, emergency lighting and device power in one unit, with a smart clamp that protects against reverse connection.</p>
 <p><strong>Battery:</strong> 10,000mAh / 37Wh<br><strong>USB-C input:</strong> 5V 2A / 9V 2A<br><strong>USB-A1 output:</strong> 5V 2.4A<br><strong>USB-A2 output:</strong> 5V 2.4A<br><strong>USB total output:</strong> 5V 2.4A max<br><strong>Recharge time:</strong> 3–5 hours<br><strong>Starting current:</strong> 1,000A<br><strong>Peak current:</strong> 2,000A<br><strong>Operating temperature:</strong> −20°C to 60°C</p>
 <p>The HD screen shows the remaining charge in real time with clear function marks. The printed booklet lists the U32 jump starter, a USB cable, a smart clamp, the paper box, the user manual and a tool bag.</p>`,
       },
@@ -261,11 +261,11 @@ export const PRODUCTS = [
     category: 'jump-starters',
     family: 'JUMP STARTERS',
     model: 'OJ02',
-    cardTitle: 'OJ02 OBD2 Jump Starter',
+    cardTitle: 'OJ02 OBD2 Portable Car Jump Starter',
     cardDescription:
       '12V emergency starting with OBD2 diagnostics, LED guidance, USB output and model-matched compliance files.',
     cardImage: 'suntneew-oj02-gallery-01-main.jpg',
-    cardImageAlt: 'SuntNeew OJ02 OBD2 jump starter with smart clamp and diagnostic cable',
+    cardImageAlt: 'SuntNeew OJ02 OBD2 Portable Car Jump Starter with smart clamp and diagnostic cable',
     heading: 'OJ02 Support & Manuals',
     intro:
       'Read the mobile-friendly manual online, download the English, French and German manual in one PDF, or review the model-matched compliance files published for OJ02.',
@@ -276,7 +276,7 @@ export const PRODUCTS = [
     pdfCardEyebrow: 'ENGLISH · FRANÇAIS · DEUTSCH',
     pdfCardDescription:
       'One file with the original English booklet plus the French and German sections for offline use.',
-    manualHeading: 'OJ02 OBD2 Jump Starter',
+    manualHeading: 'OJ02 OBD2 Portable Car Jump Starter',
     manualIntro:
       'Use this online guide for 12V starting, OBD2 diagnostics, the LED status table and safety.',
     manualVersion: 'Online edition based on the English manual dated June 1, 2026.',
@@ -342,11 +342,11 @@ PRODUCTS.push(
     category: 'jump-starters',
     family: 'JUMP STARTERS',
     model: 'CY-A20',
-    cardTitle: 'A20 Jump Starter',
+    cardTitle: 'A20 Portable Car Jump Starter',
     cardDescription:
       '8,000mAh / 29.6Wh portable starting, USB-C and dual USB-A charging, safety guidance and tripack downloads.',
     cardImage: 'suntneew-a20-2026-gallery-01-main.jpg',
-    cardImageAlt: 'SuntNeew A20 jump starter with smart clamp and USB cable',
+    cardImageAlt: 'SuntNeew A20 Portable Car Jump Starter with smart clamp and USB cable',
     heading: 'A20 Support & Manuals',
     intro:
       'Read the illustrated quick start online, download the English, French and German version in one PDF, or review the safety and compliance categories recorded for the A20 family.',
@@ -357,7 +357,7 @@ PRODUCTS.push(
     pdfCardEyebrow: 'ENGLISH · FRANÇAIS · DEUTSCH',
     pdfCardDescription:
       'One file with the illustrated English quick start plus the French and German text sections.',
-    manualHeading: 'A20 Jump Starter — 8,000mAh',
+    manualHeading: 'A20 Portable Car Jump Starter — 8,000mAh',
     manualIntro:
       'Use this online guide for charging, 12V starting, safety and the A20 family variants.',
     manualVersion:
@@ -414,11 +414,11 @@ PRODUCTS.push(
     category: 'jump-starters',
     family: 'JUMP STARTERS',
     model: 'CY-A3',
-    cardTitle: 'A3 Jump Starter',
+    cardTitle: 'A3 Portable Car Jump Starter',
     cardDescription:
       '16,000mAh starting power with PD 60W charging, 8 safeguards and the compliance categories recorded for CY-A3.',
     cardImage: 'suntneew-a3-gallery-01.jpg',
-    cardImageAlt: 'SuntNeew A3 jump starter with intelligent jumper clamps and carry case',
+    cardImageAlt: 'SuntNeew A3 Portable Car Jump Starter with intelligent jumper clamps and carry case',
     heading: 'A3 Support & Manuals',
     intro:
       'Read the mobile-friendly guide online, download the illustrated quick-start manual with the French and German sections in one PDF, or review the safety and compliance categories recorded for the CY-A3 model.',
@@ -429,7 +429,7 @@ PRODUCTS.push(
     pdfCardEyebrow: 'ENGLISH · FRANÇAIS · DEUTSCH',
     pdfCardDescription:
       'One file with the eight-panel illustrated quick guide plus the French and German sections for offline use.',
-    manualHeading: 'A3 Jump Starter — 16,000mAh',
+    manualHeading: 'A3 Portable Car Jump Starter — 16,000mAh',
     manualIntro:
       'Use this online guide for 12V starting, PD 60W charging, safety and protection functions.',
     manualVersion:

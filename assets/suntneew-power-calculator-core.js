@@ -103,6 +103,9 @@
       var gasoline = asNumber(record.gasoline, 0);
       var diesel = asNumber(record.diesel, 0);
       if (gasoline <= 0 && diesel <= 0) return null;
+      common.model = common.model
+        .replace(/\s+Jump Starter$/i, '')
+        .replace(/\s+Portable Car Jump Starter$/i, '') + ' Portable Car Jump Starter';
       return Object.assign(common, {
         variant: String(record.variant || ''),
         voltage: String(record.voltage || '12v'),

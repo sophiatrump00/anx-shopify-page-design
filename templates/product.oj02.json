@@ -28,7 +28,7 @@
     "gallery_fallback": {
       "type":"suntneew-pdp-gallery-fallback",
       "blocks": {
-        "image1":{"type":"image","settings":{"asset_name":"suntneew-oj02-gallery-01-main.jpg","alt":"SuntNeew OJ02 OBD2 jump starter with smart clamps and accessories"}},
+        "image1":{"type":"image","settings":{"asset_name":"suntneew-oj02-gallery-01-main.jpg","alt":"SuntNeew OJ02 OBD2 Portable Car Jump Starter with smart clamps and accessories"}},
         "image2":{"type":"image","settings":{"asset_name":"suntneew-oj02-gallery-02-obd.jpg","alt":"SuntNeew OJ02 connected for OBD2 vehicle diagnostics"}},
         "image3":{"type":"image","settings":{"asset_name":"suntneew-oj02-feature-clamp.jpg","alt":"SuntNeew OJ02 connected to a compatible 12V vehicle battery with the smart clamp"}},
         "image4":{"type":"image","settings":{"asset_name":"suntneew-oj02-feature-obd-mobile.jpg","alt":"SuntNeew OJ02 OBD2 diagnostic interface in a vehicle"}}
