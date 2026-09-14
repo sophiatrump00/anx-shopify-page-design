@@ -58,7 +58,9 @@ function fixture(url) {
 }
 async function render(context) {
   const localeName = context.locale === 'en' ? 'en.default' : context.locale;
-  const messages = JSON.parse(await fs.readFile(path.join(root, 'locales', localeName + '.json'), 'utf8'));
+  // Shopify writes a /* ... */ banner into locale files and strips it when parsing; mirror that here.
+  const localeSource = await fs.readFile(path.join(root, 'locales', localeName + '.json'), 'utf8');
+  const messages = JSON.parse(localeSource.replace(/\/\*[\s\S]*?\*\//g, ''));
   const globals = Object.fromEntries(['request', 'shop', 'cart', 'customer', 'routes', 'page'].map(key => [key, context[key]]));
   const engine = new Liquid({ root: [path.join(root, 'snippets')], extname: '.liquid', strictFilters: false, globals });
   engine.registerFilter('t', key => key.split('.').reduce((v, k) => v?.[k], messages) ?? key);

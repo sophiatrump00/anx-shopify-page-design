@@ -110,7 +110,6 @@ test('preview, single-product, ended and Arabic layouts render with reduced moti
   }
 });
 test('AD19 uses real product data, 85% off and a seven-day preview; no accounts or real mail required', async ({ page }) => {
-  const sent = []; page.on('request', r => { if (r.method() === 'POST') sent.push(r.url()); });
   await page.goto('/?state=live&items=1');
   await expect(page.locator('[data-card-title]')).toHaveText('SP-AD19');
   await expect(page.locator('[data-price]')).toHaveText('$18.00');
@@ -118,43 +117,49 @@ test('AD19 uses real product data, 85% off and a seven-day preview; no accounts 
   await expect(page.locator('[data-saving]')).toContainText('85%');
   const config = JSON.parse(await page.locator('[data-drop-config]').textContent());
   expect(Date.parse(config.campaigns[0].endsAt) - Date.parse(config.campaigns[0].startsAt)).toBe(7 * 86400000);
+  expect(config.fixedDiscountCode).toBe('AD19-MEMBER85');
   await page.locator('[data-buy]').click();
   await expect(page.locator('[data-claim-dialog]')).toBeVisible();
   await page.locator('[name=email]').fill('preview@example.com');
   await page.locator('[name=phone]').fill('+1 202 555 0123');
   await page.locator('[data-claim-contact] button').click();
-  await expect(page.locator('[data-claim-feedback]')).toContainText('123456');
-  await page.locator('[name=code]').fill('000000');
-  await page.locator('[data-claim-verify] button[type=submit]').click();
-  await expect(page.locator('[data-claim-feedback]')).toContainText('incorrect');
-  await page.locator('[name=code]').fill('123456');
-  await page.locator('[data-claim-verify] button[type=submit]').click();
   await expect(page.locator('[data-claim-success]')).toBeVisible();
+  await expect(page.locator('[data-fixed-code]')).toHaveText('AD19-MEMBER85');
+  await expect(page.locator('[data-claim-feedback]')).toContainText('Preview complete');
   await expect(page.locator('[data-claim-checkout]')).toBeDisabled();
-  expect(sent).toEqual([]);
+  await expect(page.locator('[data-claim-verify]')).toBeHidden();
   await page.screenshot({ path: path.join(output, 'ad19-claim-desktop.png') });
 });
-test('native guest form handles service errors and verified offers without a login', async ({ page }) => {
-  const requests = []; const code = 'MD-' + 'A'.repeat(28);
-  await page.route('**/apps/member-drops/request', route => { requests.push(route.request().postDataJSON()); return route.fulfill({ json: { challengeId: 'test-challenge' } }); });
-  await page.route('**/apps/member-drops/verify', route => route.request().postDataJSON().code === '123456' ? route.fulfill({ json: { variantId: '101', code, discountPath: `/discount/${code}?redirect=%2Fcheckout`, expiresAt: new Date(Date.now() + 86400000).toISOString() } }) : route.fulfill({ status: 400, json: { error: 'invalid_code' } }));
+test('native guest form reveals the fixed code, survives a failed POST and opens discount checkout', async ({ page }) => {
+  const requests = [];
+  let status = 500;
+  await page.route('**/contact', route => { requests.push(route.request().postData()); return route.fulfill({ status, contentType: 'text/html', body: 'ok' }); });
+  await page.route('**/discount/**', route => route.fulfill({ contentType: 'text/html', body: '<html><body>discount</body></html>' }));
   await ready(page, 'state=live&commerce_test=1&items=1&native=1&member=0');
   await expect(page.locator('[data-buy]')).toBeEnabled();
   await expect(page.locator('[data-login]')).toBeHidden();
   await page.locator('[data-buy]').click();
+  await expect(page.locator('[data-claim-dialog]')).toBeVisible();
   await page.locator('[name=email]').fill('guest@example.com');
   await page.locator('[name=phone]').fill('123');
   await page.locator('[data-claim-contact] button').click();
   await expect(page.locator('[data-claim-feedback]')).toContainText('country code'); expect(requests).toHaveLength(0);
   await page.locator('[name=phone]').fill('+12025550123');
   await page.locator('[data-claim-contact] button').click();
-  await page.locator('[name=code]').fill('000000');
-  await page.locator('[data-claim-verify] button[type=submit]').click();
-  await expect(page.locator('[data-claim-feedback]')).toContainText('incorrect');
-  await page.locator('[name=code]').fill('123456');
-  await page.locator('[data-claim-verify] button[type=submit]').click();
+  await expect(page.locator('[data-claim-feedback]')).toContainText('could not complete');
+  await expect(page.locator('[data-claim-success]')).toBeHidden();
+  expect(requests).toHaveLength(1);
+  status = 200;
+  await page.locator('[data-claim-contact] button').click();
+  await expect(page.locator('[data-claim-success]')).toBeVisible();
+  await expect(page.locator('[data-fixed-code]')).toHaveText('AD19-MEMBER85');
+  await expect(page.locator('[data-claim-feedback]')).toContainText('Your exclusive offer is ready');
   await expect(page.locator('[data-claim-checkout]')).toBeEnabled();
-  expect(requests[0]).toEqual({ email: 'guest@example.com', phone: '+12025550123', campaign: 'current', variantId: '101' });
+  const navigation = page.waitForRequest(request => request.url().includes('/discount/'));
+  await page.locator('[data-claim-checkout]').click();
+  expect((await navigation).url()).toContain('/discount/AD19-MEMBER85?redirect=%2Fcheckout');
+  expect(requests[0]).toContain('guest@example.com');
+  expect(requests[0]).toContain('+12025550123');
 });
 test('AD19 claim fits a phone and Escape clears contact details', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/?state=live');
