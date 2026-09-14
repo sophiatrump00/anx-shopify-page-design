@@ -113,6 +113,7 @@
     "pageUrl": {{ request.path | json }}, "rootUrl": {{ routes.root_url | json }}, "loginUrl": {{ drop_login_url | json }},
     "claimMode": {{ section.settings.claim_mode | default: 'native-codes' | json }},
     "claimEndpoint": {{ section.settings.claim_endpoint | default: '/apps/member-drops' | json }},
+    "fixedDiscountCode": {{ section.settings.fixed_discount_code | json }},
     "member": {{ drop_customer | json }}, "accountsEnabled": {{ shop.customer_accounts_enabled | json }},
     "currency": {{ cart.currency.iso_code | default: shop.currency | json }}, "locale": {{ request.locale.iso_code | json }},
     "designMode": {{ request.design_mode | json }}, "previewState": {{ section.settings.preview_state | json }},

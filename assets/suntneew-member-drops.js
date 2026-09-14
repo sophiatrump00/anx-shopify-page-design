@@ -302,7 +302,7 @@
           this.text('[data-claim-feedback]', this.config.designMode ? this.t('claim_demo_done') : this.t('claim_ready'));
           this.$('[data-claim-checkout]').disabled = this.config.designMode;
         } catch (error) { if (generation === this.claimGeneration) this.claimMessage(error.message); }
-        finally { this.claimPending = false; this.claimBusy(false); }
+        finally { this.claimPending = false; this.claimBusy(false); if (this.config.designMode) this.$('[data-claim-checkout]').disabled = true; }
       });
       verify.addEventListener('submit', async event => {
         event.preventDefault(); if (this.claimPending) return;
