@@ -445,11 +445,19 @@
     "shopify_reviews": {
       "review_info": "Dit product heeft een beoordeling van {{ rating_value }} van {{ rating_max }} sterren.",
       "leave_review": "Laat een recensie achter",
-      "review_count": {
+    "review_count": {
         "zero": "Dit product heeft nog geen recensies.",
         "one": "Het heeft {{ count }} recensie gekregen.",
         "other": "Het heeft {{ count }} recensies gekregen."
       }
     }
+  },
+  "suntneew_seo": {
+    "collection": "SuntNeew RV-batterijen, startboosters en thuisbatterijen voor onderweg, pechhulp en noodstroom – met specificaties, compatibiliteit en ondersteuning.",
+    "rv_series": "SuntNeew LiFePO4 RV-batterijen voor betrouwbare deep-cycle-energie in de camper, tijdens het kamperen en off-grid. Met specificaties, compatibiliteit en laadadvies.",
+    "jump_series": "SuntNeew startboosters voor pechhulp onderweg, met verlichting en oplaadfunctie voor apparaten. Met specificaties, compatibiliteit en laadadvies.",
+    "home_energy": "SuntNeew thuisbatterijen: 5,12 tot 15,36 kWh LiFePO4, tot negen eenheden in één bank. Vergelijk de capaciteit en de compatibiliteit met uw omvormer.",
+    "product_suffix": "Bekijk specificaties, compatibiliteit, laadadvies en ondersteuning voordat u uw SuntNeew product kiest.",
+    "home_suffix": "Ontdek betrouwbare energie voor onderweg, voertuigen en noodstroom thuis met praktische productinformatie."
   }
 }

@@ -37,14 +37,18 @@
   elsif request.page_type == 'collection'
     case collection.handle
       when 'all'
-        assign seo_description = 'Shop SuntNeew RV batteries, portable jump starters and home energy storage for travel, emergencies and reliable backup power.'
+        assign seo_description_key = 'collection'
       when 'rv-batteries'
-        assign seo_description = 'Shop SuntNeew LiFePO4 RV batteries for dependable deep-cycle power on the road, at camp and off the grid.'
+        assign seo_description_key = 'rv_series'
       when 'jump-starters'
-        assign seo_description = 'Shop SuntNeew portable jump starters for dependable vehicle emergency power, lighting and device charging.'
+        assign seo_description_key = 'jump_series'
       when 'home-energy-storage'
-        assign seo_description = 'Explore SuntNeew home energy storage systems for practical backup power, capacity planning and resilient essential loads.'
+        assign seo_description_key = 'home_energy'
     endcase
+    if seo_description_key != blank
+      assign seo_translation_key = 'suntneew_seo.' | append: seo_description_key
+      assign seo_description = seo_translation_key | t
+    endif
   elsif request.page_type == 'blog'
     assign seo_description_key = 'journal'
     assign seo_description = 'Read SuntNeew Journal guides for RV power, vehicle readiness and practical home energy planning.'

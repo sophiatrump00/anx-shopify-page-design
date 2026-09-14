@@ -464,5 +464,13 @@
         "other": "Ma {{ count }} opinii."
       }
     }
+  },
+  "suntneew_seo": {
+    "collection": "Akumulatory RV, urządzenia rozruchowe i magazyny energii SuntNeew — na podróże, pomoc drogową i zasilanie awaryjne. Specyfikacje, kompatybilność i wsparcie.",
+    "rv_series": "Akumulatory LiFePO4 SuntNeew do kampera i przyczepy — niezawodna energia deep-cycle w podróży i poza siecią. Specyfikacje, kompatybilność i wskazówki ładowania.",
+    "jump_series": "Urządzenia rozruchowe SuntNeew do pomocy drogowej, z latarką i funkcją ładowania urządzeń. Specyfikacje, kompatybilność i wskazówki ładowania.",
+    "home_energy": "Magazyny energii SuntNeew do domu: 5,12–15,36 kWh LiFePO4, do dziewięciu jednostek w jednym banku. Porównaj pojemność i kompatybilność z falownikiem.",
+    "product_suffix": "Sprawdź specyfikacje, kompatybilność, wskazówki ładowania i wsparcie, zanim wybierzesz produkt SuntNeew.",
+    "home_suffix": "Poznaj niezawodne zasilanie w podróży, do pojazdów i do domu dzięki praktycznym informacjom o produktach."
   }
 }
