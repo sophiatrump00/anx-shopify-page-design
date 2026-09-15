@@ -429,13 +429,16 @@
               {%- assign family_url = routes.root_url | append: 'products/' | append: block.settings.product_handle -%}
             {%- endif -%}
             {%- assign family_image = block.settings.asset_name -%}
-            {%- if family_product.featured_media != blank -%}
+            {%- assign family_image_is_asset = false -%}
+            {%- if family_image contains 'suntneew-shop-white-' -%}
+              {%- assign family_image_is_asset = true -%}
+            {%- elsif family_product.featured_media != blank -%}
               {%- assign family_image = family_product.featured_media -%}
             {%- endif -%}
             <article class="suntneew-jump-card" data-jump-card data-capacities="{{ block.settings.capacities | escape }}" {{ block.shopify_attributes }}>
               <a class="suntneew-jump-card__media" href="{{ family_url }}">
                 {%- if family_image != blank -%}
-                  {%- if family_product.featured_media != blank -%}
+                  {%- if family_image_is_asset == false and family_product.featured_media != blank -%}
                     {{- family_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360,540,720,900', sizes: '(min-width: 1000px) 24vw, (min-width: 700px) 42vw, 92vw', alt: block.settings.image_alt -}}
                   {%- else -%}
                     <img src="{{ family_image | asset_url }}" alt="{{ block.settings.image_alt | escape }}" loading="lazy" width="900" height="900">
