@@ -34,6 +34,14 @@
     assign seo_description = 'Review your SuntNeew quote history and contact support for help with a product or order.'
     assign seo_robots = 'noindex,follow'
     assign seo_indexable = false
+  elsif request.page_type == 'page' and seo_path contains '/pages/10-kwh-battery-storage'
+    comment
+      The 10 kWh landing page is currently localized for Germany only. Shopify
+      exposes the English base handle in every other locale, so keep those
+      fallback copies out of the index until each locale receives real copy.
+    endcomment
+    assign seo_robots = 'noindex,follow'
+    assign seo_indexable = false
   elsif request.page_type == 'collection'
     case collection.handle
       when 'all'

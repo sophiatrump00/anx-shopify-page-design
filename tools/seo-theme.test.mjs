@@ -77,3 +77,23 @@ test('SEO descriptions render in eight languages and normalize indexable lengths
   assert.ok(description.length >= 110, 'Long body excerpts should stay useful after normalization');
   assert.ok(description.length <= 155, 'Indexable descriptions should stay below the audit cap');
 });
+
+test('German-only 10 kWh landing page noindexes untranslated fallback URLs', async () => {
+  const fallback = await engine.renderFile('suntneew-seo-head', {
+    page_title: '10 kWh Battery Storage',
+    page_description: 'English fallback content',
+    current_page: 1,
+    request: { page_type: 'page', path: '/fr/pages/10-kwh-battery-storage' },
+    page: { handle: '10-kwh-battery-storage', metafields: { global: {} } },
+  });
+  assert.match(fallback, /<meta name="robots" content="noindex,follow">/);
+
+  const german = await engine.renderFile('suntneew-seo-head', {
+    page_title: 'Batteriespeicher 10 kWh',
+    page_description: 'Deutsche Inhalte fuer den Batteriespeicher mit 10 kWh.',
+    current_page: 1,
+    request: { page_type: 'page', path: '/de/pages/batteriespeicher-10-kwh' },
+    page: { handle: 'batteriespeicher-10-kwh', metafields: { global: {} } },
+  });
+  assert.doesNotMatch(german, /<meta name="robots" content="noindex,follow">/);
+});
