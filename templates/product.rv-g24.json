@@ -17,7 +17,7 @@
         "sku": {"type": "sku", "settings": {}},
         "price": {"type": "price", "settings": {"show_taxes_notice": false}},
         "separator": {"type": "separator", "settings": {}},
-        "intro": {"type": "text", "settings": {"text": "<p>A compact 12.8V, 100Ah Group 24 LiFePO4 upgrade with 1,280Wh rated energy, Bluetooth 5.0 monitoring, IP65 protection and a listed 5,000+ cycle-life reference for RV auxiliary power systems.</p>"}},
+        "intro": {"type": "text", "settings": {"text": "<p>A compact 12.8V, 100Ah Group 24 LiFePO4 upgrade with 1,280Wh rated energy, Bluetooth 5.0 monitoring, IP65 protection and a cycle-life reference of at least 5,000 cycles at 80% depth of discharge for RV auxiliary power systems.</p>"}},
         "quantity_selector": {"type": "quantity_selector", "settings": {}},
         "bundle": {"type": "suntneew_bundle_selector", "settings": {"enabled": true, "heading": "Build a Group 24 multi-pack", "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.", "discount_percent": 3}},
         "buy_buttons": {"type": "buy_buttons", "settings": {"show_payment_button": true, "show_gift_card_recipient": false}}
@@ -31,7 +31,7 @@
         "capacity": {"type": "metric", "settings": {"value": "100Ah", "label": "Rated capacity", "variant_match": ""}},
         "energy": {"type": "metric", "settings": {"value": "1,280Wh", "label": "Rated energy", "variant_match": ""}},
         "current": {"type": "metric", "settings": {"value": "100A", "label": "Max charge / continuous discharge", "variant_match": ""}},
-        "cycles": {"type": "metric", "settings": {"value": "5,000+ cycles", "label": "Cycle-life reference", "variant_match": ""}},
+        "cycles": {"type": "metric", "settings": {"value": "At least 5,000", "label": "Cycles at 80% DoD", "variant_match": ""}},
         "ip": {"type": "metric", "settings": {"value": "IP65", "label": "Dust-tight; protected against water jets", "variant_match": ""}}
       },
       "block_order": ["capacity", "energy", "current", "cycles", "ip"],
@@ -218,7 +218,7 @@
         "capacity": {"type": "spec", "settings": {"label": "Rated capacity", "value": "100Ah", "group": "primary", "variant_match": ""}},
         "energy": {"type": "spec", "settings": {"label": "Rated energy", "value": "1,280Wh", "group": "primary", "variant_match": ""}},
         "power": {"type": "spec", "settings": {"label": "Maximum continuous output power", "value": "1,280W", "group": "primary", "variant_match": ""}},
-        "cycles": {"type": "spec", "settings": {"label": "Cycle-life reference", "value": "5,000+ cycles", "group": "primary", "variant_match": ""}},
+        "cycles": {"type": "spec", "settings": {"label": "Cycle-life reference at 80% DoD", "value": "At least 5,000 cycles", "group": "primary", "variant_match": ""}},
         "model": {"type": "spec", "settings": {"label": "Model / site name", "value": "Group 24 / ESS-LFP12100BG24", "group": "system", "variant_match": ""}},
         "charge_method": {"type": "spec", "settings": {"label": "Charge method", "value": "CC/CV", "group": "system", "variant_match": ""}},
         "charge_voltage": {"type": "spec", "settings": {"label": "Charge voltage", "value": "14.4V ±0.2V", "group": "system", "variant_match": ""}},
@@ -329,10 +329,11 @@
         "starting": {"type": "question", "settings": {"question": "Can this battery start an engine?", "answer": "<p>No. This is a deep-cycle auxiliary battery and is not intended to start a vehicle, boat engine or other device. Do not use it as a starting battery.</p>"}},
         "charger": {"type": "question", "settings": {"question": "Can I use an automotive lead-acid charger?", "answer": "<p>Only if the charger documentation explicitly supports the required LiFePO4 voltage profile and current limits. Do not assume every lead-acid charger is compatible.</p>"}},
         "temperature": {"type": "question", "settings": {"question": "What happens when the battery is too cold to charge?", "answer": "<p>Low-temperature charging protection stops battery charging below 0°C and resumes above 5°C battery temperature. This protection does not change the specified charging, discharge, storage or installation limits in the manual.</p>"}},
+        "cycles": {"type": "question", "settings": {"question": "What conditions apply to the 5,000-cycle reference?", "answer": "<p>The G24 cycle-life reference is at least 5,000 cycles at 80% depth of discharge, from the approved test condition of 0.5C charge and discharge to 80% end-of-life. Actual cycle life varies with depth of discharge, charge and discharge rate, temperature and operating conditions.</p>"}},
         "documents": {"type": "question", "settings": {"question": "Which certificates and files are relevant to G24?", "answer": "<p>The FCC SDoC and EMC certificate identify G24 among their listed models. The RoHS report covers the RV battery series. The IP65 and FCC Grant files are published as confirmed G24/G31 shared-design references; their original documents retain the G31 model and legacy-grantee information.</p>"}},
         "support": {"type": "question", "settings": {"question": "What do 24/7 Support and the 5-Year Limited Warranty mean?", "answer": "<p>24/7 Support covers product setup, charging, Bluetooth, installation and after-sales questions. The 5-Year Limited Warranty covers eligible product defects under the model-specific warranty terms.</p>"}}
       },
-      "block_order": ["fit", "dimensions", "current", "starting", "charger", "temperature", "documents", "support"],
+      "block_order": ["fit", "dimensions", "current", "starting", "charger", "temperature", "cycles", "documents", "support"],
       "settings": {"anchor_id": "faq", "eyebrow": "GROUP 24 BUYING QUESTIONS", "heading": "Frequently asked questions"}
     },
     "related-products": {"type": "related-products", "settings": {}}

@@ -30,7 +30,7 @@
       "blocks": {
         "energy":{"type":"metric","settings":{"value":"4,019.2Wh","label":"Rated energy","variant_match":""}},
         "capacity":{"type":"metric","settings":{"value":"314Ah","label":"12.8V LiFePO4","variant_match":""}},
-        "cycles":{"type":"metric","settings":{"value":"5,000+ cycles","label":"Cycle-life reference","variant_match":""}},
+        "cycles":{"type":"metric","settings":{"value":"At least 8,000","label":"Cycles at 70% SOH","variant_match":""}},
         "current":{"type":"metric","settings":{"value":"157A","label":"Max continuous discharge","variant_match":""}},
         "ip":{"type":"metric","settings":{"value":"IP65","label":"Dust-tight; protected against water jets","variant_match":""}}
       },
@@ -233,7 +233,7 @@
         "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"314Ah","group":"primary","variant_match":""}},
         "energy":{"type":"spec","settings":{"label":"Rated energy","value":"4,019.2Wh","group":"primary","variant_match":""}},
         "power":{"type":"spec","settings":{"label":"Maximum continuous output power","value":"2,010W","group":"primary","variant_match":""}},
-        "cycles":{"type":"spec","settings":{"label":"Cycle-life reference","value":"5,000+ cycles","group":"primary","variant_match":""}},
+        "cycles":{"type":"spec","settings":{"label":"Cycle-life reference at 70% SOH","value":"At least 8,000 cycles","group":"primary","variant_match":""}},
         "model":{"type":"spec","settings":{"label":"Model","value":"ESS-LFP12314B","group":"system","variant_match":""}},
         "charge_method":{"type":"spec","settings":{"label":"Charge method","value":"CC/CV","group":"system","variant_match":""}},
         "charge_voltage":{"type":"spec","settings":{"label":"Charge voltage","value":"14.4V +/- 0.2V","group":"system","variant_match":""}},
@@ -272,9 +272,10 @@
         "q3":{"type":"question","settings":{"question":"Can the 314Ah battery use the same compartment as the 230Ah model?","answer":"<p>The stated 522 × 268 × 220 mm enclosure dimensions are the same, but the 314Ah battery weighs 26kg. Recheck structure, restraint, access and the complete electrical design for the exact model.</p>"}},
         "q4":{"type":"question","settings":{"question":"What does IP65 mean for this battery?","answer":"<p>IP65 indicates a dust-tight enclosure with protection against water jets. It is not an immersion rating; keep the battery location, terminals and cable routing protected and follow the installation manual.</p>"}},
         "q5":{"type":"question","settings":{"question":"Should I choose the 314Ah or 230Ah battery?","answer":"<p>Choose 314Ah when 2,010W covers your simultaneous load and you want 1,075.2Wh / 36.5% more reserve in the same 522 × 268 × 220mm enclosure. Choose 230Ah when 2,944Wh covers your time between charges and you want 2,560W continuous output, 5.4kg less weight and the lower current single-unit price. Test your devices in the <a href=\"/pages/power-calculator?scenario=rv\">Power Planner</a>.</p>"}},
-        "q6":{"type":"question","settings":{"question":"Where can I review the complete operating limits?","answer":"<p>The current English product manual is available in Documents on this page. Review it together with the charger, inverter and RV manufacturer instructions before installation.</p>"}}
+        "q6":{"type":"question","settings":{"question":"Where can I review the complete operating limits?","answer":"<p>The current English product manual is available in Documents on this page. Review it together with the charger, inverter and RV manufacturer instructions before installation.</p>"}},
+        "q7":{"type":"question","settings":{"question":"What conditions apply to the 8,000-cycle reference?","answer":"<p>The 314Ah cycle-life reference is at least 8,000 cycles at 70% state of health (SOH), from the approved test condition of 0.5C charge and discharge to the 70% SOH end-of-test point. Actual cycle life varies with depth of discharge, charge and discharge rate, temperature and operating conditions.</p>"}}
       },
-      "block_order":["q1","q2","q3","q4","q5","q6"],
+      "block_order":["q1","q2","q3","q4","q5","q6","q7"],
       "settings":{"anchor_id":"faq","eyebrow":"314Ah planning","heading":"Frequently asked questions"}
     },
     "related-products":{"type":"related-products","settings":{}}
