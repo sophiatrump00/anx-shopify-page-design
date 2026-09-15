@@ -253,7 +253,7 @@
     "confidence_grid": {
       "type": "suntneew-confidence-grid",
       "blocks": {
-        "warranty": {"type":"item","settings":{"icon":"warranty","title":"5-Year Service","text":"After-sales service support for product setup, charging, installation and troubleshooting. See the model-specific terms."}},
+        "warranty": {"type":"item","settings":{"icon":"warranty","title":"5-Year Limited Warranty","text":"Limited product warranty coverage for eligible defects, subject to the model-specific warranty terms."}},
         "delivery": {"type":"item","settings":{"icon":"delivery","title":"Fast U.S. Local Delivery","text":"Products stocked in U.S. warehouses ship domestically for faster delivery."}},
         "shipping": {"type":"item","settings":{"icon":"shipping","title":"Free U.S. Shipping","text":"Free standard shipping on eligible orders within the contiguous United States."}},
         "returns": {"type":"item","settings":{"icon":"returns","title":"14-Day Hassle-Free Returns","text":"Request eligible returns within 14 days after delivery under our return policy."}}

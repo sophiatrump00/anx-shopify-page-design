@@ -291,9 +291,9 @@
             "mobile_image_asset": "suntneew-rv-g31-amazon-aplus-service-5-year.jpg",
             "image_alt": "SuntNeew five-year service graphic",
             "image_fit": "contain",
-            "eyebrow": "5-YEAR SERVICE",
-            "heading": "Five years of product service coverage.",
-            "body": "<p>The 5-Year Service period describes the product's after-sales service relationship. It is a service-period statement, not a replacement for the product manual, nor a statement of a separate ten-year warranty.</p>",
+            "eyebrow": "5-YEAR LIMITED WARRANTY",
+            "heading": "Five years of limited warranty coverage.",
+            "body": "<p>The 5-Year Limited Warranty covers eligible product defects under the model-specific warranty terms. It does not guarantee ten years of product life or cover misuse, modification or operation outside the stated limits.</p>",
             "variant_match": ""
           }
         },
@@ -316,7 +316,7 @@
         "anchor_id": "support-certificates",
         "eyebrow": "SUPPORT & CERTIFICATES",
         "heading": "Support, service and the documents behind G24.",
-        "lede": "<p>24/7 support and 5-Year Service are available across the RV range. The downloadable files below identify their exact G24, RV-series or confirmed G24/G31 shared-design scope.</p>",
+        "lede": "<p>Warranty coverage and 24/7 support are available across the RV range. The downloadable files below identify their exact G24, RV-series or confirmed G24/G31 shared-design scope.</p>",
         "layout_mode": "full_width_below"
       }
     },
@@ -330,7 +330,7 @@
         "charger": {"type": "question", "settings": {"question": "Can I use an automotive lead-acid charger?", "answer": "<p>Only if the charger documentation explicitly supports the required LiFePO4 voltage profile and current limits. Do not assume every lead-acid charger is compatible.</p>"}},
         "temperature": {"type": "question", "settings": {"question": "What happens when the battery is too cold to charge?", "answer": "<p>Low-temperature charging protection stops battery charging below 0°C and resumes above 5°C battery temperature. This protection does not change the specified charging, discharge, storage or installation limits in the manual.</p>"}},
         "documents": {"type": "question", "settings": {"question": "Which certificates and files are relevant to G24?", "answer": "<p>The FCC SDoC and EMC certificate identify G24 among their listed models. The RoHS report covers the RV battery series. The IP65 and FCC Grant files are published as confirmed G24/G31 shared-design references; their original documents retain the G31 model and legacy-grantee information.</p>"}},
-        "support": {"type": "question", "settings": {"question": "What do 24/7 Support and 5-Year Service mean?", "answer": "<p>24/7 Support covers product setup, charging, Bluetooth, installation and after-sales questions. 5-Year Service describes the after-sales service period; it should not be read as a separate ten-year warranty statement.</p>"}}
+        "support": {"type": "question", "settings": {"question": "What do 24/7 Support and the 5-Year Limited Warranty mean?", "answer": "<p>24/7 Support covers product setup, charging, Bluetooth, installation and after-sales questions. The 5-Year Limited Warranty covers eligible product defects under the model-specific warranty terms.</p>"}}
       },
       "block_order": ["fit", "dimensions", "current", "starting", "charger", "temperature", "documents", "support"],
       "settings": {"anchor_id": "faq", "eyebrow": "GROUP 24 BUYING QUESTIONS", "heading": "Frequently asked questions"}

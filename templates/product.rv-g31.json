@@ -319,9 +319,9 @@
             "mobile_image_asset":"suntneew-rv-g31-amazon-aplus-service-5-year.jpg",
             "image_alt":"SuntNeew five-year service graphic",
             "image_fit":"contain",
-            "eyebrow":"5-YEAR SERVICE",
-            "heading":"Five years of product service coverage.",
-            "body":"<p>The 5-Year Service period covers the product's after-sales service relationship and is separate from the Up to 10-Year Life reference. Product life describes expected service life under suitable conditions; it is not a 10-year warranty statement.</p>",
+            "eyebrow":"5-YEAR LIMITED WARRANTY",
+            "heading":"Five years of limited warranty coverage.",
+            "body":"<p>The 5-Year Limited Warranty covers eligible product defects under the model-specific warranty terms. The Up to 10-Year Life reference describes expected product life under suitable conditions; it is not a ten-year warranty.</p>",
             "variant_match":""
           }
         },
@@ -344,7 +344,7 @@
         "anchor_id":"support-certificates",
         "eyebrow":"SUPPORT & CERTIFICATES",
         "heading":"Support, service and the documents behind the product.",
-        "lede":"<p>Keep after-sales support, 5-Year Service and the available compliance files together so customers can review the promise and the supporting material in one place.</p>",
+        "lede":"<p>Keep warranty coverage, after-sales support and the available compliance files together so customers can review the promise and supporting material in one place.</p>",
         "layout_mode":"full_width_below"
       }
     },
@@ -352,7 +352,7 @@
       "type": "suntneew-pdp-faq",
       "blocks": {
         "cycles": {"type":"question","settings":{"question":"What conditions apply to the cycle-life references?","answer":"<p>The approved G31 reference tiers are 4,000+ cycles at 100% depth of discharge, 6,000 cycles at 80% DoD and 15,000 cycles at 60% DoD. Actual cycle life varies with charge and discharge rate, temperature, maintenance, depth of discharge and operating conditions.</p>"}},
-        "life_service": {"type":"question","settings":{"question":"Is Up to 10-Year Life the same as 5-Year Service?","answer":"<p>No. Up to 10-Year Life is a product-life reference under suitable use. 5-Year Service describes the after-sales service period. Neither phrase should be rewritten as a 10-year warranty.</p>"}},
+        "life_service": {"type":"question","settings":{"question":"Is Up to 10-Year Life the same as the 5-Year Limited Warranty?","answer":"<p>No. Up to 10-Year Life is a product-life reference under suitable use. The 5-Year Limited Warranty covers eligible defects under the model-specific warranty terms; it does not guarantee ten years of product life.</p>"}},
         "support": {"type":"question","settings":{"question":"What is included in 24/7 Support?","answer":"<p>You can contact SuntNeew support for product setup, charging, Bluetooth, installation and after-sales questions. Provide the order information, model number and photos or readings relevant to the issue.</p>"}},
         "starting": {"type":"question","settings":{"question":"Can this battery be used to start an engine?","answer":"<p>No. This is a deep-cycle auxiliary battery and is not intended to start a vehicle, boat engine or other device. Do not use it as a starting battery.</p>"}},
         "installation": {"type":"question","settings":{"question":"What should I confirm before installation?","answer":"<p>Confirm the 339 × 185 × 218mm enclosure, terminal position, hold-down, upright mounting, cable route and service clearance. Size conductors, fuses, disconnects, inverter and charging sources for the complete DC system.</p>"}},
