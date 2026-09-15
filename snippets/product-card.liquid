@@ -45,7 +45,7 @@
   {%- assign card_class = 'product-card product-card--blends ' -%}
 {%- endif -%}
 
-{%- if show_secondary_image and product.media.size > 1 -%}
+{%- if show_secondary_image and product.media.size > 1 and shop_card != true -%}
   {%- assign card_class = card_class | append: 'product-card--show-secondary-media' -%}
 {%- endif -%}
 
@@ -73,8 +73,21 @@
   {%- endcomment -%}
 
   {%- assign shop_card_media = product.featured_media -%}
+  {%- assign shop_card_asset = blank -%}
+  {%- if shop_card -%}
+    {%- case product.handle -%}
+      {%- when 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-31' -%}{%- assign shop_card_asset = 'suntneew-shop-white-g31.jpg' -%}
+      {%- when 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-24' -%}{%- assign shop_card_asset = 'suntneew-shop-white-g24.jpg' -%}
+      {%- when 'suntneew-12-8v-230ah-lifepo4-rv-battery' -%}{%- assign shop_card_asset = 'suntneew-shop-white-230ah.jpg' -%}
+      {%- when 'suntneew-12-8v-314ah-lifepo4-rv-battery' -%}{%- assign shop_card_asset = 'suntneew-shop-white-314ah.jpg' -%}
+      {%- when 'suntneew-a3-jump-starter-16000mah' -%}{%- assign shop_card_asset = 'suntneew-shop-white-a3.jpg' -%}
+      {%- when 'suntneew-kb700-fan-jump-starter-7-200mah' -%}{%- assign shop_card_asset = 'suntneew-shop-white-kb700.jpg' -%}
+      {%- when 'suntneew-oj02-obd2-jump-starter' -%}{%- assign shop_card_asset = 'suntneew-shop-white-oj02.jpg' -%}
+    {%- endcase -%}
+  {%- endif -%}
   {%- if shop_card and product.metafields.custom.shop_card_image.value != blank -%}
     {%- assign shop_card_media = product.metafields.custom.shop_card_image.value -%}
+    {%- assign shop_card_asset = blank -%}
   {%- endif -%}
 
   {%- if product.media.size > 0 or shop_card_media != blank -%}
@@ -97,14 +110,18 @@
         -%}
 
         {%- capture main_image_classes -%}product-card__image product-card__image--primary {% if settings.product_image_aspect_ratio contains 'crop' %}object-fill-safe{% endif %} aspect-{{ settings.product_image_aspect_ratio | split: '_' | first }}{%- endcapture -%}
-        {%- assign card_image_width = shop_card_media.width | at_most: 960 -%}
-        {{-
-          shop_card_media
-          | image_url: width: card_image_width
-          | image_tag: loading: main_media_loading_strategy, sizes: sizes, widths: '200,300,400,500,600,700,800,960', class: main_image_classes
-        -}}
+        {%- if shop_card_asset != blank -%}
+          <img src="{{ shop_card_asset | asset_url }}" alt="{{ product.title | escape }}" width="1200" height="1200" loading="{{ main_media_loading_strategy | default: 'eager' }}" class="{{ main_image_classes }}">
+        {%- else -%}
+          {%- assign card_image_width = shop_card_media.width | at_most: 960 -%}
+          {{-
+            shop_card_media
+            | image_url: width: card_image_width
+            | image_tag: loading: main_media_loading_strategy, sizes: sizes, widths: '200,300,400,500,600,700,800,960', class: main_image_classes
+          -}}
+        {%- endif -%}
 
-        {%- if show_secondary_image and product.media.size > 1 -%}
+        {%- if show_secondary_image and product.media.size > 1 and shop_card != true -%}
           {%- assign next_media = product.media[product.featured_media.position] | default: product.media[1] -%}
           {%- assign next_media_width = next_media.width | at_most: 960 -%}
           {{-

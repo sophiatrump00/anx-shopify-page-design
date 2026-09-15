@@ -20,9 +20,18 @@
           {%- assign shop_collection = block.settings.collection -%}
           {%- if shop_collection != blank -%}
             {%- assign tile_image = block.settings.image | default: shop_collection.featured_image | default: shop_collection.products.first.featured_media -%}
+            {%- assign tile_asset = blank -%}
+            {%- if block.settings.image == blank -%}
+              {%- case shop_collection.handle -%}
+                {%- when 'rv-batteries' -%}{%- assign tile_asset = 'suntneew-shop-white-g31.jpg' -%}
+                {%- when 'jump-starters' -%}{%- assign tile_asset = 'suntneew-shop-white-kb700.jpg' -%}
+              {%- endcase -%}
+            {%- endif -%}
             <a class="sn-shop-nav__tile" href="{{ shop_collection.url }}" {{ block.shopify_attributes }}>
               <span class="sn-shop-nav__tile-media">
-                {%- if tile_image != blank -%}
+                {%- if tile_asset != blank -%}
+                  <img src="{{ tile_asset | asset_url }}" alt="{{ block.settings.label | default: shop_collection.title | escape }}" width="1200" height="1200" loading="eager">
+                {%- elsif tile_image != blank -%}
                   {{- tile_image | image_url: width: 520 | image_tag: loading: 'eager', sizes: '(max-width: 699px) 42vw, 240px', widths: '200,300,400,520' -}}
                 {%- endif -%}
               </span>
