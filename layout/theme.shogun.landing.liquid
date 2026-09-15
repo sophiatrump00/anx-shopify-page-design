@@ -68,7 +68,7 @@ This file can be re-written at any time.
   
   {% render 'shogun-head' %}
 </head>
-  <body class="{% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}">
+  <body class="template-{{ request.page_type | handle }}{% if template.suffix != blank %} template-{{ request.page_type | handle }}-{{ template.suffix | handle }}{% endif %}{% if settings.zoom_image_on_hover %} zoom-image--enabled{% endif %}">
     {% include 'shogun-content-handler' %}
 
     
