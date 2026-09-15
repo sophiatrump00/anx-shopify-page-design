@@ -17,7 +17,7 @@
         "sku": {"type":"sku","settings":{}},
         "price": {"type":"price","settings":{"show_taxes_notice":false}},
         "separator": {"type":"separator","settings":{}},
-        "intro": {"type":"text","settings":{"text":"<p>A 12.8V 100Ah Group 31 LiFePO4 deep-cycle battery with 1,280Wh rated energy, Bluetooth 5.0 monitoring, IP65 protection, up to 15,000 cycles at 60% DoD and an up-to-10-year life reference for RV, marine and off-grid auxiliary power systems.</p>"}},
+        "intro": {"type":"text","settings":{"text":"<p>A 12.8V 100Ah Group 31 LiFePO4 deep-cycle battery with 1,280Wh rated energy, Bluetooth 5.0 monitoring, IP65 protection and cycle-life references of 4,000+ cycles at 100% DoD, 6,000 cycles at 80% DoD and 15,000 cycles at 60% DoD. The product-life reference is up to 10 years under suitable conditions.</p>"}},
         "quantity_selector": {"type":"quantity_selector","settings":{}},
         "bundle": {"type":"suntneew_bundle_selector","settings":{"enabled":true,"heading":"Build a Group 31 multi-pack","body":"Choose 1, 2, 5 or 10 units, or use a custom quantity.","discount_percent":3}},
         "buy_buttons": {"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
@@ -30,7 +30,7 @@
       "blocks": {
         "capacity": {"type":"metric","settings":{"value":"100Ah","label":"Rated capacity","variant_match":""}},
         "energy": {"type":"metric","settings":{"value":"1,280Wh","label":"Rated energy","variant_match":""}},
-        "cycles": {"type":"metric","settings":{"value":"Up to 15,000","label":"Cycles at 60% DoD","variant_match":""}},
+        "cycles": {"type":"metric","settings":{"value":"4,000+ / 6,000 / 15,000","label":"Cycles at 100% / 80% / 60% DoD","variant_match":""}},
         "life": {"type":"metric","settings":{"value":"Up to 10 years","label":"Product-life reference","variant_match":""}},
         "ip": {"type":"metric","settings":{"value":"IP65","label":"Dust-tight; protected against water jets","variant_match":""}}
       },
@@ -242,8 +242,8 @@
         "energy": {"type":"spec","settings":{"label":"Rated energy","value":"1,280Wh","group":"primary","variant_match":""}},
         "power": {"type":"spec","settings":{"label":"Maximum continuous output power","value":"1,280W","group":"primary","variant_match":""}},
         "cycles_100": {"type":"spec","settings":{"label":"Cycle-life reference at 100% DoD","value":"4,000+ cycles","group":"primary","variant_match":""}},
-        "cycles_80": {"type":"spec","settings":{"label":"Cycle-life reference at 80% DoD","value":"6,000+ cycles","group":"primary","variant_match":""}},
-        "cycles_60": {"type":"spec","settings":{"label":"Cycle-life reference at 60% DoD","value":"Up to 15,000 cycles","group":"primary","variant_match":""}},
+        "cycles_80": {"type":"spec","settings":{"label":"Cycle-life reference at 80% DoD","value":"6,000 cycles","group":"primary","variant_match":""}},
+        "cycles_60": {"type":"spec","settings":{"label":"Cycle-life reference at 60% DoD","value":"15,000 cycles","group":"primary","variant_match":""}},
         "life": {"type":"spec","settings":{"label":"Product-life reference","value":"Up to 10 years; actual life varies by operating conditions","group":"primary","variant_match":""}},
         "model": {"type":"spec","settings":{"label":"Model / site name","value":"Group 31 / ESS-12.8V100AH-B-G31 / ESS-LFP12100BG31","group":"system","variant_match":""}},
         "fcc_id": {"type":"spec","settings":{"label":"FCC ID","value":"2BQK7-12100BG31","group":"system","variant_match":""}},
@@ -351,7 +351,7 @@
     "faq": {
       "type": "suntneew-pdp-faq",
       "blocks": {
-        "cycles": {"type":"question","settings":{"question":"What conditions apply to the 15,000+ cycle claim?","answer":"<p>The current tiered reference is 4,000+ cycles at 100% depth of discharge, 6,000+ at 80% DoD and up to 15,000 at 60% DoD. Actual cycle life varies with charge and discharge rate, temperature, maintenance, depth of discharge and operating conditions.</p>"}},
+        "cycles": {"type":"question","settings":{"question":"What conditions apply to the cycle-life references?","answer":"<p>The approved G31 reference tiers are 4,000+ cycles at 100% depth of discharge, 6,000 cycles at 80% DoD and 15,000 cycles at 60% DoD. Actual cycle life varies with charge and discharge rate, temperature, maintenance, depth of discharge and operating conditions.</p>"}},
         "life_service": {"type":"question","settings":{"question":"Is Up to 10-Year Life the same as 5-Year Service?","answer":"<p>No. Up to 10-Year Life is a product-life reference under suitable use. 5-Year Service describes the after-sales service period. Neither phrase should be rewritten as a 10-year warranty.</p>"}},
         "support": {"type":"question","settings":{"question":"What is included in 24/7 Support?","answer":"<p>You can contact SuntNeew support for product setup, charging, Bluetooth, installation and after-sales questions. Provide the order information, model number and photos or readings relevant to the issue.</p>"}},
         "starting": {"type":"question","settings":{"question":"Can this battery be used to start an engine?","answer":"<p>No. This is a deep-cycle auxiliary battery and is not intended to start a vehicle, boat engine or other device. Do not use it as a starting battery.</p>"}},

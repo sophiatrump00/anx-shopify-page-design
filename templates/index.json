@@ -99,9 +99,9 @@
             "mobile_fallback_asset": "suntneew-rv-230ah-feature-lifestyle-mobile.jpg",
             "image_alt": "RV campsite powered by a SuntNeew battery",
             "eyebrow": "RV BATTERIES",
-            "product_label": "SERIES PREPARING",
+            "product_label": "4 PRODUCTS AVAILABLE",
             "title": "RV power, ready for its next chapter.",
-            "text": "The RV series stays available as a category. Its product listings and individual product pages are temporarily blank.",
+            "text": "Four RV battery products are available now, with model-specific pages for fit, specifications and support.",
             "link_label": "Explore RV series",
             "link": "shopify://collections/rv-batteries"
           }
@@ -165,8 +165,8 @@
           "settings": {
             "x_position": 34,
             "y_position": 54,
-            "title": "Long-life LiFePO4 power",
-            "text": "<p>Up to 15,000 cycles* under laboratory conditions, with actual life varying by model and use.</p>"
+            "title": "Cycle life with the condition shown",
+            "text": "<p>G31 reference tiers: 4,000+ cycles at 100% DoD, 6,000 cycles at 80% DoD and 15,000 cycles at 60% DoD.</p>"
           }
         },
         "bluetooth": {
@@ -198,11 +198,11 @@
         "eyebrow": "LONG-LIFE SMART RV POWER",
         "heading": "Power you can see. Protection you can trust.",
         "body": "Built for RV living with long cycle life, Bluetooth 5.0 monitoring, built-in BMS protection and low-temperature charge protection.",
-        "stat_1": "Up to 15,000 Cycles*",
+        "stat_1": "4,000+ @ 100% DoD",
         "stat_2": "Bluetooth 5.0 Monitoring",
         "stat_3": "Low-Temperature Charge Protection",
         "stat_4": "-4 to 140 degrees F Discharge",
-        "footnote": "*Up to 15,000 cycles under laboratory conditions. Actual cycle life varies by model, depth of discharge, charge/discharge rate, temperature and usage.",
+        "footnote": "G31 cycle-life references from approved product data: 4,000+ cycles at 100% DoD, 6,000 cycles at 80% DoD and 15,000 cycles at 60% DoD. Actual cycle life varies with depth of discharge, charge/discharge rate, temperature and use.",
         "button_label": "Explore RV series",
         "button_link": "shopify://collections/rv-batteries"
       }
@@ -253,7 +253,7 @@
     "confidence_grid": {
       "type": "suntneew-confidence-grid",
       "blocks": {
-        "warranty": {"type":"item","settings":{"icon":"warranty","title":"5-Year Limited Warranty","text":"Long-term warranty protection backed by dedicated product support."}},
+        "warranty": {"type":"item","settings":{"icon":"warranty","title":"5-Year Service","text":"After-sales service support for product setup, charging, installation and troubleshooting. See the model-specific terms."}},
         "delivery": {"type":"item","settings":{"icon":"delivery","title":"Fast U.S. Local Delivery","text":"Products stocked in U.S. warehouses ship domestically for faster delivery."}},
         "shipping": {"type":"item","settings":{"icon":"shipping","title":"Free U.S. Shipping","text":"Free standard shipping on eligible orders within the contiguous United States."}},
         "returns": {"type":"item","settings":{"icon":"returns","title":"14-Day Hassle-Free Returns","text":"Request eligible returns within 14 days after delivery under our return policy."}}
@@ -278,7 +278,7 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "faq_rv": {"type":"item","settings":{"title":"Where are the RV battery products?","content":"<p>RV Batteries remains a visible SuntNeew series. Its product listings and individual product pages are being prepared and are intentionally not shown yet.</p>"}},
+        "faq_rv": {"type":"item","settings":{"title":"Where can I find the RV battery products?","content":"<p>The RV battery range is live now. Choose from four active products in the RV Batteries collection, then open the model page to check physical fit, operating limits, specifications and support details.</p>"}},
         "faq_output": {"type":"item","settings":{"title":"Does more Ah always mean more output?","content":"<p>No. Stored energy and continuous output are different constraints. Compare both values, alongside system voltage, cables, fuse requirements and intended load.</p>"}},
         "faq_jump": {"type":"item","settings":{"title":"Which jump starter should I choose?","content":"<p>Start with the supported vehicle and engine range listed on the product page, then compare portability, capacity, ports and emergency-light features.</p>"}},
         "faq_home": {"type":"item","settings":{"title":"Can I buy home energy storage as an individual?","content":"<p>Yes. Choose the model and capacity that fit your needs, then add it to cart or use Buy it now. Review compatibility and local installation requirements before installation.</p>"}},
