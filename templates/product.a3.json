@@ -8,534 +8,93 @@
  * ------------------------------------------------------------
  */
 {
+
   "sections": {
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h1"
-          }
-        },
-        "sku": {
-          "type": "sku",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "separator": {
-          "type": "separator",
-          "settings": {}
-        },
-        "intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p>16,000mAh / 59.2Wh 12V jump starter with 800A starting current, 2500A peak current and PD 60W power delivery.</p>"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "bundle": {
-          "type": "suntneew_bundle_selector",
-          "settings": {
-            "enabled": true,
-            "show_savings": true,
-            "heading": "Build an A3 multi-pack",
-            "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.",
-            "discount_percent": 3
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false
-          }
-        }
+        "vendor": {"type": "vendor", "settings": {}},
+        "title": {"type": "title", "settings": {"heading_tag": "h1"}},
+        "sku": {"type": "sku", "settings": {}},
+        "price": {"type": "price", "settings": {"show_taxes_notice": false}},
+        "separator": {"type": "separator", "settings": {}},
+        "intro": {"type": "text", "settings": {"text": "<p>16,000mAh / 59.2Wh 12V jump starter with 800A starting current, 2500A peak current and PD 60W power delivery.</p>"}},
+        "quantity_selector": {"type": "quantity_selector", "settings": {}},
+        "bundle": {"type": "suntneew_bundle_selector", "settings": {"enabled": true, "show_savings": true, "heading": "Build an A3 multi-pack", "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.", "discount_percent": 3}},
+        "buy_buttons": {"type": "buy_buttons", "settings": {"show_payment_button": false, "show_gift_card_recipient": false}}
       },
-      "block_order": [
-        "vendor",
-        "title",
-        "sku",
-        "price",
-        "separator",
-        "intro",
-        "quantity_selector",
-        "bundle",
-        "buy_buttons"
-      ],
-      "settings": {
-        "show_fixed_add_to_cart": true,
-        "enable_suntneew_pdp_experience": true,
-        "suntneew_media_autoplay_interval": 6,
-        "show_suntneew_pdp_promises": true,
-        "desktop_media_width": 50,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots"
-      }
+      "block_order": ["vendor", "title", "sku", "price", "separator", "intro", "quantity_selector", "bundle", "buy_buttons"],
+      "settings": {"show_fixed_add_to_cart": true, "enable_suntneew_pdp_experience": true, "suntneew_media_autoplay_interval": 6, "show_suntneew_pdp_promises": true, "desktop_media_width": 50, "desktop_media_layout": "carousel_thumbnails_bottom", "mobile_media_size": "contained", "mobile_carousel_control": "dots"}
     },
     "proof": {
       "type": "suntneew-pdp-proof",
       "blocks": {
-        "peak": {
-          "type": "metric",
-          "settings": {
-            "value": "2500A",
-            "label": "Peak current",
-            "variant_match": ""
-          }
-        },
-        "start": {
-          "type": "metric",
-          "settings": {
-            "value": "800A",
-            "label": "Starting current",
-            "variant_match": ""
-          }
-        },
-        "engine": {
-          "type": "metric",
-          "settings": {
-            "value": "8.0L / 5.5L",
-            "label": "Gas / diesel capacity",
-            "variant_match": ""
-          }
-        },
-        "starts": {
-          "type": "metric",
-          "settings": {
-            "value": "59.2Wh",
-            "label": "Stored energy",
-            "variant_match": ""
-          }
-        }
+        "peak": {"type": "metric", "settings": {"value": "2500A", "label": "Peak current", "variant_match": ""}},
+        "start": {"type": "metric", "settings": {"value": "800A", "label": "Starting current", "variant_match": ""}},
+        "engine": {"type": "metric", "settings": {"value": "8.0L / 5.5L", "label": "Gas / diesel capacity", "variant_match": ""}},
+        "starts": {"type": "metric", "settings": {"value": "59.2Wh", "label": "Stored energy", "variant_match": ""}}
       },
-      "block_order": [
-        "peak",
-        "start",
-        "engine",
-        "starts"
-      ],
-      "settings": {
-        "accessibility_label": "A3 product highlights"
-      }
+      "block_order": ["peak", "start", "engine", "starts"],
+      "settings": {"accessibility_label": "A3 product highlights"}
     },
     "anchor_nav": {
       "type": "suntneew-pdp-anchor-nav",
       "blocks": {
-        "features": {
-          "type": "link",
-          "settings": {
-            "label": "Features",
-            "target_id": "features"
-          }
-        },
-        "specs": {
-          "type": "link",
-          "settings": {
-            "label": "Specifications",
-            "target_id": "specifications"
-          }
-        },
-        "box": {
-          "type": "link",
-          "settings": {
-            "label": "In the Box",
-            "target_id": "in-the-box"
-          }
-        },
-        "manuals": {
-          "type": "link",
-          "settings": {
-            "label": "Documents",
-            "target_id": "manuals"
-          }
-        },
-        "faq": {
-          "type": "link",
-          "settings": {
-            "label": "FAQ",
-            "target_id": "faq"
-          }
-        }
+        "features": {"type": "link", "settings": {"label": "Features", "target_id": "features"}},
+        "specs": {"type": "link", "settings": {"label": "Specifications", "target_id": "specifications"}},
+        "box": {"type": "link", "settings": {"label": "In the Box", "target_id": "in-the-box"}},
+        "manuals": {"type": "link", "settings": {"label": "Documents", "target_id": "manuals"}},
+        "faq": {"type": "link", "settings": {"label": "FAQ", "target_id": "faq"}}
       },
-      "block_order": [
-        "features",
-        "specs",
-        "box",
-        "manuals",
-        "faq"
-      ],
+      "block_order": ["features", "specs", "box", "manuals", "faq"],
       "settings": {}
     },
-    "experience": {
-      "type": "suntneew-a3-experience",
-      "settings": {}
-    },
+    "experience": {"type": "suntneew-a3-experience", "settings": {}},
     "details": {
       "type": "suntneew-pdp-details",
       "blocks": {
-        "capacity": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated capacity",
-            "value": "16,000mAh",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "energy": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated energy",
-            "value": "59.2Wh",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "start": {
-          "type": "spec",
-          "settings": {
-            "label": "Starting current",
-            "value": "800A",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "peak": {
-          "type": "spec",
-          "settings": {
-            "label": "Peak current",
-            "value": "2500A",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "engine": {
-          "type": "spec",
-          "settings": {
-            "label": "Vehicle capacity",
-            "value": "Up to 8.0L Gas / 5.5L Diesel",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "starts": {
-          "type": "spec",
-          "settings": {
-            "label": "Stored energy",
-            "value": "59.2Wh",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "input": {
-          "type": "spec",
-          "settings": {
-            "label": "USB-C input",
-            "value": "PD 60W: 5V/9V/12V/15V/20V, up to 3A",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "output": {
-          "type": "spec",
-          "settings": {
-            "label": "Outputs",
-            "value": "USB-C PD60W; USB-A PD18W; USB-A 5V/2.4A",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "light": {
-          "type": "spec",
-          "settings": {
-            "label": "Emergency light",
-            "value": "150 lm; steady, strobe and SOS",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "safety": {
-          "type": "spec",
-          "settings": {
-            "label": "Smart-clamp safeguards",
-            "value": "Reverse-polarity, short-circuit and connection protection",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "temperature": {
-          "type": "spec",
-          "settings": {
-            "label": "Working temperature",
-            "value": "-20°C to 60°C",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "shell": {
-          "type": "spec",
-          "settings": {
-            "label": "Shell",
-            "value": "Aluminum alloy",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "weight": {
-          "type": "spec",
-          "settings": {
-            "label": "Net weight",
-            "value": "0.77kg / 1.7lb",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "box1": {
-          "type": "included",
-          "settings": {
-            "item": "A3 main unit x1",
-            "variant_match": ""
-          }
-        },
-        "box2": {
-          "type": "included",
-          "settings": {
-            "item": "Intelligent jumper clamps x1",
-            "variant_match": ""
-          }
-        },
-        "box3": {
-          "type": "included",
-          "settings": {
-            "item": "PD 60W USB-C cable x1",
-            "variant_match": ""
-          }
-        },
-        "box4": {
-          "type": "included",
-          "settings": {
-            "item": "EVA carry case x1",
-            "variant_match": ""
-          }
-        },
-        "box5": {
-          "type": "included",
-          "settings": {
-            "item": "User manual x1",
-            "variant_match": ""
-          }
-        },
-        "manual": {
-          "type": "download",
-          "settings": {
-            "label": "A3 user manual — EN · FR · DE (PDF)",
-            "link": "",
-            "asset_name": "suntneew-a3-user-manual-en-fr-de.pdf",
-            "variant_match": "",
-            "document_group": "manuals"
-          }
-        },
-        "fcc": {
-          "type": "download",
-          "settings": {
-            "label": "FCC SDoC — CY-A3",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "FCC",
-            "description": "Supplier's Declaration of Conformity for the CY-A3 model.",
-            "public_copy_ready": true
-          }
-        },
-        "un38": {
-          "type": "download",
-          "settings": {
-            "label": "UN38.3 Summary — CY-A3",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "UN38.3",
-            "description": "Transport-test summary for the CY-A3 model.",
-            "public_copy_ready": false
-          }
-        },
-        "ul2743": {
-          "type": "download",
-          "settings": {
-            "label": "Safety tested to UL 2743 — A3 / CY-A3",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "Safety tested to UL 2743",
-            "description": "Product-level safety test report for the selected A3 / CY-A3 model. This wording does not represent a UL Listing or certification.",
-            "public_copy_ready": false
-          }
-        },
-        "emc": {
-          "type": "download",
-          "settings": {
-            "label": "CE-EMC — CY-A3",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "CE-EMC",
-            "description": "Model-matched EMC documentation for CY-A3; public redacted copy pending.",
-            "public_copy_ready": false
-          }
-        },
-        "rohs": {
-          "type": "download",
-          "settings": {
-            "label": "RoHS — CY-A3",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "RoHS",
-            "description": "Model-matched RoHS documentation for CY-A3; public redacted copy pending.",
-            "public_copy_ready": false
-          }
-        },
-        "sds": {
-          "type": "download",
-          "settings": {
-            "label": "SDS — CY-A3",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "SDS",
-            "description": "Safety data sheet for the A3 battery pack; upload only the approved public copy.",
-            "public_copy_ready": false
-          }
-        }
+        "capacity": {"type": "spec", "settings": {"label": "Rated capacity", "value": "16,000mAh", "group": "primary", "variant_match": ""}},
+        "energy": {"type": "spec", "settings": {"label": "Rated energy", "value": "59.2Wh", "group": "primary", "variant_match": ""}},
+        "start": {"type": "spec", "settings": {"label": "Starting current", "value": "800A", "group": "primary", "variant_match": ""}},
+        "peak": {"type": "spec", "settings": {"label": "Peak current", "value": "2500A", "group": "primary", "variant_match": ""}},
+        "engine": {"type": "spec", "settings": {"label": "Vehicle capacity", "value": "Up to 8.0L Gas / 5.5L Diesel", "group": "primary", "variant_match": ""}},
+        "starts": {"type": "spec", "settings": {"label": "Stored energy", "value": "59.2Wh", "group": "primary", "variant_match": ""}},
+        "input": {"type": "spec", "settings": {"label": "USB-C input", "value": "PD 60W: 5V/9V/12V/15V/20V, up to 3A", "group": "system", "variant_match": ""}},
+        "output": {"type": "spec", "settings": {"label": "Outputs", "value": "USB-C PD60W; USB-A PD18W; USB-A 5V/2.4A", "group": "system", "variant_match": ""}},
+        "light": {"type": "spec", "settings": {"label": "Emergency light", "value": "150 lm; steady, strobe and SOS", "group": "system", "variant_match": ""}},
+        "safety": {"type": "spec", "settings": {"label": "Smart-clamp safeguards", "value": "Reverse-polarity, short-circuit and connection protection", "group": "system", "variant_match": ""}},
+        "temperature": {"type": "spec", "settings": {"label": "Working temperature", "value": "-20°C to 60°C", "group": "installation", "variant_match": ""}},
+        "shell": {"type": "spec", "settings": {"label": "Shell", "value": "Aluminum alloy", "group": "installation", "variant_match": ""}},
+        "weight": {"type": "spec", "settings": {"label": "Net weight", "value": "0.77kg / 1.7lb", "group": "installation", "variant_match": ""}},
+        "box1": {"type": "included", "settings": {"item": "A3 main unit x1", "variant_match": ""}},
+        "box2": {"type": "included", "settings": {"item": "Intelligent jumper clamps x1", "variant_match": ""}},
+        "box3": {"type": "included", "settings": {"item": "PD 60W USB-C cable x1", "variant_match": ""}},
+        "box4": {"type": "included", "settings": {"item": "EVA carry case x1", "variant_match": ""}},
+        "box5": {"type": "included", "settings": {"item": "User manual x1", "variant_match": ""}},
+        "manual": {"type": "download", "settings": {"label": "A3 user manual — EN · FR · DE (PDF)", "link": "", "asset_name": "suntneew-a3-user-manual-en-fr-de.pdf", "variant_match": "", "document_group": "manuals"}},
+        "fcc": {"type": "download", "settings": {"label": "FCC SDoC — CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "FCC", "description": "Supplier's Declaration of Conformity for the CY-A3 model.", "public_copy_ready": true}},
+        "un38": {"type": "download", "settings": {"label": "UN38.3 Summary — CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "UN38.3", "description": "Transport-test summary for the CY-A3 model.", "public_copy_ready": false}},
+        "ul2743": {"type": "download", "settings": {"label": "Safety tested to UL 2743 — A3 / CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "Safety tested to UL 2743", "description": "Product-level safety test report for the selected A3 / CY-A3 model. This wording does not represent a UL Listing or certification.", "public_copy_ready": false}},
+        "emc": {"type": "download", "settings": {"label": "CE-EMC — CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "CE-EMC", "description": "Model-matched EMC documentation for CY-A3; public redacted copy pending.", "public_copy_ready": false}},
+        "rohs": {"type": "download", "settings": {"label": "RoHS — CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "RoHS", "description": "Model-matched RoHS documentation for CY-A3; public redacted copy pending.", "public_copy_ready": false}},
+        "sds": {"type": "download", "settings": {"label": "SDS — CY-A3", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "SDS", "description": "Safety data sheet for the A3 battery pack; upload only the approved public copy.", "public_copy_ready": false}}
       },
-      "block_order": [
-        "capacity",
-        "energy",
-        "start",
-        "peak",
-        "engine",
-        "starts",
-        "input",
-        "output",
-        "light",
-        "safety",
-        "temperature",
-        "shell",
-        "weight",
-        "box1",
-        "box2",
-        "box3",
-        "box4",
-        "box5",
-        "manual",
-        "fcc",
-        "un38",
-        "ul2743",
-        "emc",
-        "rohs",
-        "sds"
-      ],
-      "settings": {
-        "anchor_id": "specifications",
-        "eyebrow": "PRODUCT DETAILS",
-        "heading": "A3 technical specifications",
-        "lede": "<p>A3 is the independent-site name for product model CY-A3. All values below refer to the single documented A3 configuration.</p>",
-        "primary_group_heading": "Starting performance",
-        "system_group_heading": "Charging, light & protection",
-        "installation_group_heading": "Construction & operating range",
-        "included_heading": "In the box",
-        "download_heading": "Manuals & Documents",
-        "manuals_group_heading": "User Manuals",
-        "compliance_group_heading": "Safety & Compliance",
-        "compliance_note": "A3 and CY-A3 are the same product naming family. Compliance cards show the standard and model scope; public copies are added only after redaction review.",
-        "compliance_link_label": "View public copy",
-        "compliance_pending_label": "Public copy pending"
-      }
+      "block_order": ["capacity", "energy", "start", "peak", "engine", "starts", "input", "output", "light", "safety", "temperature", "shell", "weight", "box1", "box2", "box3", "box4", "box5", "manual", "fcc", "un38", "ul2743", "emc", "rohs", "sds"],
+      "settings": {"anchor_id": "specifications", "eyebrow": "PRODUCT DETAILS", "heading": "A3 technical specifications", "lede": "<p>A3 is the independent-site name for product model CY-A3. All values below refer to the single documented A3 configuration.</p>", "primary_group_heading": "Starting performance", "system_group_heading": "Charging, light & protection", "installation_group_heading": "Construction & operating range", "included_heading": "In the box", "download_heading": "Manuals & Documents", "manuals_group_heading": "User Manuals", "compliance_group_heading": "Safety & Compliance", "compliance_note": "A3 and CY-A3 are the same product naming family. Compliance cards show the standard and model scope; public copies are added only after redaction review.", "compliance_link_label": "View public copy", "compliance_pending_label": "Public copy pending"}
     },
     "faq": {
       "type": "suntneew-pdp-faq",
       "blocks": {
-        "q1": {
-          "type": "question",
-          "settings": {
-            "question": "What vehicle capacity is A3 designed for?",
-            "answer": "<p>A3 is designed for compatible 12V vehicles up to 8.0L gas or 5.5L diesel. Confirm the vehicle system and follow both manuals before use.</p>"
-          }
-        },
-        "q2": {
-          "type": "question",
-          "settings": {
-            "question": "What device-charging outputs does A3 provide?",
-            "answer": "<p>A3 provides USB-C PD60W input/output plus USB-A device-charging outputs. Use compatible cables and devices within the stated output limits.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "What does PD 60W mean here?",
-            "answer": "<p>The USB-C port supports Power Delivery input and output up to 60W, with 5V, 9V, 12V, 15V and 20V profiles up to 3A.</p>"
-          }
-        },
-        "q4": {
-          "type": "question",
-          "settings": {
-            "question": "What is included with A3?",
-            "answer": "<p>The documented pack contains the A3 main unit, intelligent jumper clamps, USB-C cable, EVA case and user manual.</p>"
-          }
-        },
-        "q5": {
-          "type": "question",
-          "settings": {
-            "question": "Is CY-A3 a different product?",
-            "answer": "<p>No. A3 is the independent-site product name. CY-A3 is the model name used in the product, certification and transport documents.</p>"
-          }
-        }
+        "q1": {"type": "question", "settings": {"question": "What vehicle capacity is A3 designed for?", "answer": "<p>A3 is designed for compatible 12V vehicles up to 8.0L gas or 5.5L diesel. Confirm the vehicle system and follow the product instructions before use.</p>"}},
+        "q2": {"type": "question", "settings": {"question": "What device-charging outputs does A3 provide?", "answer": "<p>A3 provides USB-C PD60W input/output plus USB-A device-charging outputs. Use compatible cables and devices within the stated output limits.</p>"}},
+        "q3": {"type": "question", "settings": {"question": "What does PD 60W mean here?", "answer": "<p>The USB-C port supports Power Delivery input and output up to 60W, with 5V, 9V, 12V, 15V and 20V profiles up to 3A.</p>"}},
+        "q4": {"type": "question", "settings": {"question": "What is included with A3?", "answer": "<p>The documented pack contains the A3 main unit, intelligent jumper clamps, USB-C cable, EVA case and user manual.</p>"}},
+        "q5": {"type": "question", "settings": {"question": "Is CY-A3 a different product?", "answer": "<p>No. A3 is the independent-site product name. CY-A3 is the model name used in the product, certification and transport documents.</p>"}}
       },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5"
-      ],
-      "settings": {
-        "anchor_id": "faq",
-        "eyebrow": "A3 SUPPORT",
-        "heading": "Frequently asked questions"
-      }
+      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "settings": {"anchor_id": "faq", "eyebrow": "A3 SUPPORT", "heading": "Frequently asked questions"}
     },
-    "related-products": {
-      "type": "related-products",
-      "settings": {}
-    }
+    "related-products": {"type": "related-products", "settings": {}}
   },
-  "order": [
-    "main",
-    "proof",
-    "anchor_nav",
-    "experience",
-    "details",
-    "faq",
-    "related-products"
-  ]
+  "order": ["main", "proof", "anchor_nav", "experience", "details", "faq", "related-products"]
 }

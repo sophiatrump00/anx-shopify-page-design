@@ -12,188 +12,42 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h1"
-          }
-        },
-        "sku": {
-          "type": "sku",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "separator": {
-          "type": "separator",
-          "settings": {}
-        },
-        "intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p>A compact 12.8V, 100Ah Group 24 LiFePO4 upgrade with 1,280Wh rated energy, Bluetooth 5.0 monitoring, no IP certification; protect from water ingress and a cycle-life reference of at least 5,000 cycles at 80% depth of discharge for RV auxiliary power systems.</p>"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "bundle": {
-          "type": "suntneew_bundle_selector",
-          "settings": {
-            "enabled": true,
-            "heading": "Build a Group 24 multi-pack",
-            "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.",
-            "discount_percent": 3
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": false
-          }
-        }
+        "vendor": {"type": "vendor", "settings": {}},
+        "title": {"type": "title", "settings": {"heading_tag": "h1"}},
+        "sku": {"type": "sku", "settings": {}},
+        "price": {"type": "price", "settings": {"show_taxes_notice": false}},
+        "separator": {"type": "separator", "settings": {}},
+        "intro": {"type": "text", "settings": {"text": "<p>A compact 12.8V, 100Ah Group 24 LiFePO4 deep-cycle battery with 1,280Wh rated energy, Bluetooth 5.0 monitoring and a cycle-life reference of at least 5,000 cycles at 80% depth of discharge for RV auxiliary and energy-storage systems. This model has no IP certification and must be protected from water ingress.</p>"}},
+        "quantity_selector": {"type": "quantity_selector", "settings": {}},
+        "bundle": {"type": "suntneew_bundle_selector", "settings": {"enabled": true, "heading": "Build a Group 24 multi-pack", "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.", "discount_percent": 3}},
+        "buy_buttons": {"type": "buy_buttons", "settings": {"show_payment_button": true, "show_gift_card_recipient": false}}
       },
-      "block_order": [
-        "vendor",
-        "title",
-        "sku",
-        "price",
-        "separator",
-        "intro",
-        "quantity_selector",
-        "bundle",
-        "buy_buttons"
-      ],
-      "settings": {
-        "show_fixed_add_to_cart": true,
-        "enable_suntneew_pdp_experience": true,
-        "suntneew_media_autoplay_interval": 6,
-        "show_suntneew_pdp_promises": true,
-        "desktop_media_width": 50,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots"
-      }
+      "block_order": ["vendor", "title", "sku", "price", "separator", "intro", "quantity_selector", "bundle", "buy_buttons"],
+      "settings": {"show_fixed_add_to_cart": true, "enable_suntneew_pdp_experience": true, "suntneew_media_autoplay_interval": 6, "show_suntneew_pdp_promises": true, "desktop_media_width": 50, "desktop_media_layout": "carousel_thumbnails_bottom", "mobile_media_size": "contained", "mobile_carousel_control": "dots"}
     },
     "proof": {
       "type": "suntneew-pdp-proof",
       "blocks": {
-        "capacity": {
-          "type": "metric",
-          "settings": {
-            "value": "100Ah",
-            "label": "Rated capacity",
-            "variant_match": ""
-          }
-        },
-        "energy": {
-          "type": "metric",
-          "settings": {
-            "value": "1,280Wh",
-            "label": "Rated energy",
-            "variant_match": ""
-          }
-        },
-        "current": {
-          "type": "metric",
-          "settings": {
-            "value": "100A",
-            "label": "Max charge / continuous discharge",
-            "variant_match": ""
-          }
-        },
-        "cycles": {
-          "type": "metric",
-          "settings": {
-            "value": "At least 5,000",
-            "label": "Cycles at 80% DoD",
-            "variant_match": ""
-          }
-        },
-        "ip": {
-          "type": "metric",
-          "settings": {
-            "value": "No IP rating",
-            "label": "Protect from water ingress",
-            "variant_match": ""
-          }
-        }
+        "capacity": {"type": "metric", "settings": {"value": "100Ah", "label": "Rated capacity", "variant_match": ""}},
+        "energy": {"type": "metric", "settings": {"value": "1,280Wh", "label": "Rated energy", "variant_match": ""}},
+        "current": {"type": "metric", "settings": {"value": "100A", "label": "Max charge / continuous discharge", "variant_match": ""}},
+        "cycles": {"type": "metric", "settings": {"value": "At least 5,000", "label": "Cycles at 80% DoD", "variant_match": ""}},
+        "ip": {"type": "metric", "settings": {"value": "No IP rating", "label": "Protect from water ingress", "variant_match": ""}}
       },
-      "block_order": [
-        "capacity",
-        "energy",
-        "current",
-        "cycles",
-        "ip"
-      ],
-      "settings": {
-        "accessibility_label": "Group 24 RV battery highlights"
-      }
+      "block_order": ["capacity", "energy", "current", "cycles", "ip"],
+      "settings": {"accessibility_label": "Group 24 RV battery highlights"}
     },
     "anchor_nav": {
       "type": "suntneew-pdp-anchor-nav",
       "blocks": {
-        "features": {
-          "type": "link",
-          "settings": {
-            "label": "Features",
-            "target_id": "features"
-          }
-        },
-        "specs": {
-          "type": "link",
-          "settings": {
-            "label": "Specifications",
-            "target_id": "specifications"
-          }
-        },
-        "box": {
-          "type": "link",
-          "settings": {
-            "label": "In the box",
-            "target_id": "in-the-box"
-          }
-        },
-        "support": {
-          "type": "link",
-          "settings": {
-            "label": "Support & certificates",
-            "target_id": "support-certificates"
-          }
-        },
-        "manuals": {
-          "type": "link",
-          "settings": {
-            "label": "Documents",
-            "target_id": "manuals"
-          }
-        },
-        "faq": {
-          "type": "link",
-          "settings": {
-            "label": "FAQ",
-            "target_id": "faq"
-          }
-        }
+        "features": {"type": "link", "settings": {"label": "Features", "target_id": "features"}},
+        "specs": {"type": "link", "settings": {"label": "Specifications", "target_id": "specifications"}},
+        "box": {"type": "link", "settings": {"label": "In the box", "target_id": "in-the-box"}},
+        "support": {"type": "link", "settings": {"label": "Support & certificates", "target_id": "support-certificates"}},
+        "manuals": {"type": "link", "settings": {"label": "Documents", "target_id": "manuals"}},
+        "faq": {"type": "link", "settings": {"label": "FAQ", "target_id": "faq"}}
       },
-      "block_order": [
-        "features",
-        "specs",
-        "box",
-        "support",
-        "manuals",
-        "faq"
-      ],
+      "block_order": ["features", "specs", "box", "support", "manuals", "faq"],
       "settings": {}
     },
     "features": {
@@ -347,15 +201,7 @@
           }
         }
       },
-      "block_order": [
-        "overview",
-        "fit",
-        "installation",
-        "monitoring",
-        "protection",
-        "temperature",
-        "in_box"
-      ],
+      "block_order": ["overview", "fit", "installation", "monitoring", "protection", "temperature", "in_box"],
       "settings": {
         "anchor_id": "features",
         "eyebrow": "GROUP 24 FEATURES",
@@ -367,367 +213,42 @@
     "details": {
       "type": "suntneew-pdp-details",
       "blocks": {
-        "chemistry": {
-          "type": "spec",
-          "settings": {
-            "label": "Cell chemistry",
-            "value": "LiFePO4",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "voltage": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated voltage",
-            "value": "12.8V",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "capacity": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated capacity",
-            "value": "100Ah",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "energy": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated energy",
-            "value": "1,280Wh",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "power": {
-          "type": "spec",
-          "settings": {
-            "label": "Maximum continuous output power",
-            "value": "1,280W",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "cycles": {
-          "type": "spec",
-          "settings": {
-            "label": "Cycle-life reference at 80% DoD",
-            "value": "At least 5,000 cycles",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "model": {
-          "type": "spec",
-          "settings": {
-            "label": "Model / site name",
-            "value": "Group 24 / ESS-LFP12100BG24",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "charge_method": {
-          "type": "spec",
-          "settings": {
-            "label": "Charge method",
-            "value": "CC/CV",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "charge_voltage": {
-          "type": "spec",
-          "settings": {
-            "label": "Charge voltage",
-            "value": "14.4V ±0.2V",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "recommended_charge": {
-          "type": "spec",
-          "settings": {
-            "label": "Recommended charge current",
-            "value": "30A (0.3C)",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "charge": {
-          "type": "spec",
-          "settings": {
-            "label": "Maximum continuous charge current",
-            "value": "100A",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "discharge": {
-          "type": "spec",
-          "settings": {
-            "label": "Maximum continuous discharge current",
-            "value": "100A",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "bluetooth": {
-          "type": "spec",
-          "settings": {
-            "label": "Wireless monitoring",
-            "value": "Bluetooth 5.0",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "ip_rating": {
-          "type": "spec",
-          "settings": {
-            "label": "Enclosure protection",
-            "value": "No IP certification; protect from water ingress and do not immerse",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "low_temp": {
-          "type": "spec",
-          "settings": {
-            "label": "Low-temperature charging protection",
-            "value": "Stops below 0°C; resumes above 5°C battery temperature",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "expansion": {
-          "type": "spec",
-          "settings": {
-            "label": "Series / parallel expansion",
-            "value": "Up to 4S or 4P; up to 16 matched batteries in a 4P4S system",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "dimensions": {
-          "type": "spec",
-          "settings": {
-            "label": "Dimensions (L × W × H)",
-            "value": "260 × 170 × 212mm / 10.24 × 6.69 × 8.35in, excluding terminals",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "weight": {
-          "type": "spec",
-          "settings": {
-            "label": "Listed weight",
-            "value": "9.4kg",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "housing": {
-          "type": "spec",
-          "settings": {
-            "label": "Housing material",
-            "value": "ABS",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "torque": {
-          "type": "spec",
-          "settings": {
-            "label": "Recommended terminal torque",
-            "value": "12–14N·m / 106.2–123.9in-lb",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "temperature": {
-          "type": "spec",
-          "settings": {
-            "label": "Temperature range",
-            "value": "Charge 0–55°C; discharge -20–60°C; storage -10–50°C",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "box_battery": {
-          "type": "included",
-          "settings": {
-            "item": "Group 24 12.8V 100Ah LiFePO4 battery ×1",
-            "variant_match": ""
-          }
-        },
-        "box_screws": {
-          "type": "included",
-          "settings": {
-            "item": "M8 terminal screws ×2",
-            "variant_match": ""
-          }
-        },
-        "box_caps": {
-          "type": "included",
-          "settings": {
-            "item": "Insulating caps ×2",
-            "variant_match": ""
-          }
-        },
-        "box_washers": {
-          "type": "included",
-          "settings": {
-            "item": "Washers ×2",
-            "variant_match": ""
-          }
-        },
-        "box_manual": {
-          "type": "included",
-          "settings": {
-            "item": "English user manual ×1",
-            "variant_match": ""
-          }
-        },
-        "manual": {
-          "type": "download",
-          "settings": {
-            "label": "Group 24 product manual — EN · FR · DE (PDF)",
-            "link": "",
-            "asset_name": "suntneew-rv-g24-manual-en-fr-de.pdf",
-            "variant_match": ""
-          }
-        },
-        "fcc_sdoc": {
-          "type": "download",
-          "settings": {
-            "label": "FCC SDoC — G24 / G31 shared models",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "FCC",
-            "description": "Shared FCC SDoC listing the G24 / G31 model family.",
-            "public_copy_ready": true
-          }
-        },
-        "emc": {
-          "type": "download",
-          "settings": {
-            "label": "CE-EMC — G24 / G31 shared models",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "CE-EMC",
-            "description": "Shared EMC documentation listing the G24 / G31 model family.",
-            "public_copy_ready": true
-          }
-        },
-        "rohs": {
-          "type": "download",
-          "settings": {
-            "label": "RoHS — RV battery series",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "RoHS",
-            "description": "Series-level RoHS report used as a supporting reference for the RV battery line.",
-            "public_copy_ready": true
-          }
-        },
-        "ip65": {
-          "type": "download",
-          "settings": {
-            "label": "Ingress boundary — Group 24 has no IP certification",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "No IP certification",
-            "description": "The approved Group 24 data prohibits waterproof and immersion claims; protect the battery from water ingress.",
-            "public_copy_ready": false
-          }
-        },
-        "fcc_grant": {
-          "type": "download",
-          "settings": {
-            "label": "FCC Equipment Authorization — shared-design reference",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "FCC ID",
-            "description": "Shared-design FCC authorization reference for the G24 / G31 family.",
-            "public_copy_ready": true
-          }
-        },
-        "un38": {
-          "type": "download",
-          "settings": {
-            "label": "UN38.3 Summary — G24",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "UN38.3",
-            "description": "Transport-test summary for the G24 model; upload only a model-matched public copy.",
-            "public_copy_ready": false
-          }
-        },
-        "sds": {
-          "type": "download",
-          "settings": {
-            "label": "SDS — G24",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "SDS",
-            "description": "Safety data sheet for the G24 battery pack; upload only the approved public copy.",
-            "public_copy_ready": false
-          }
-        }
+        "chemistry": {"type": "spec", "settings": {"label": "Cell chemistry", "value": "LiFePO4", "group": "primary", "variant_match": ""}},
+        "voltage": {"type": "spec", "settings": {"label": "Rated voltage", "value": "12.8V", "group": "primary", "variant_match": ""}},
+        "capacity": {"type": "spec", "settings": {"label": "Rated capacity", "value": "100Ah", "group": "primary", "variant_match": ""}},
+        "energy": {"type": "spec", "settings": {"label": "Rated energy", "value": "1,280Wh", "group": "primary", "variant_match": ""}},
+        "power": {"type": "spec", "settings": {"label": "Maximum continuous output power", "value": "1,280W", "group": "primary", "variant_match": ""}},
+        "cycles": {"type": "spec", "settings": {"label": "Cycle-life reference at 80% DoD", "value": "At least 5,000 cycles", "group": "primary", "variant_match": ""}},
+        "model": {"type": "spec", "settings": {"label": "Model / site name", "value": "Group 24 / ESS-LFP12100BG24", "group": "system", "variant_match": ""}},
+        "charge_method": {"type": "spec", "settings": {"label": "Charge method", "value": "CC/CV", "group": "system", "variant_match": ""}},
+        "charge_voltage": {"type": "spec", "settings": {"label": "Charge voltage", "value": "14.4V ±0.2V", "group": "system", "variant_match": ""}},
+        "recommended_charge": {"type": "spec", "settings": {"label": "Recommended charge current", "value": "30A (0.3C)", "group": "system", "variant_match": ""}},
+        "charge": {"type": "spec", "settings": {"label": "Maximum continuous charge current", "value": "100A", "group": "system", "variant_match": ""}},
+        "discharge": {"type": "spec", "settings": {"label": "Maximum continuous discharge current", "value": "100A", "group": "system", "variant_match": ""}},
+        "bluetooth": {"type": "spec", "settings": {"label": "Wireless monitoring", "value": "Bluetooth 5.0", "group": "system", "variant_match": ""}},
+        "ip_rating": {"type": "spec", "settings": {"label": "Ingress boundary", "value": "No IP certification; do not immerse or install where water can enter", "group": "system", "variant_match": ""}},
+        "low_temp": {"type": "spec", "settings": {"label": "Low-temperature charging protection", "value": "Stops below 0°C; resumes above 5°C battery temperature", "group": "system", "variant_match": ""}},
+        "expansion": {"type": "spec", "settings": {"label": "Series / parallel expansion", "value": "Up to 4S or 4P; up to 16 matched batteries in a 4P4S system", "group": "system", "variant_match": ""}},
+        "dimensions": {"type": "spec", "settings": {"label": "Dimensions (L × W × H)", "value": "260 × 170 × 212mm / 10.24 × 6.69 × 8.35in, excluding terminals", "group": "installation", "variant_match": ""}},
+        "weight": {"type": "spec", "settings": {"label": "Listed weight", "value": "9.4kg", "group": "installation", "variant_match": ""}},
+        "housing": {"type": "spec", "settings": {"label": "Housing material", "value": "ABS", "group": "installation", "variant_match": ""}},
+        "torque": {"type": "spec", "settings": {"label": "Recommended terminal torque", "value": "12–14N·m / 106.2–123.9in-lb", "group": "installation", "variant_match": ""}},
+        "temperature": {"type": "spec", "settings": {"label": "Temperature range", "value": "Charge 0–55°C; discharge -20–60°C; storage -10–50°C", "group": "installation", "variant_match": ""}},
+        "box_battery": {"type": "included", "settings": {"item": "Group 24 12.8V 100Ah LiFePO4 battery ×1", "variant_match": ""}},
+        "box_screws": {"type": "included", "settings": {"item": "M8 terminal screws ×2", "variant_match": ""}},
+        "box_caps": {"type": "included", "settings": {"item": "Insulating caps ×2", "variant_match": ""}},
+        "box_washers": {"type": "included", "settings": {"item": "Washers ×2", "variant_match": ""}},
+        "box_manual": {"type": "included", "settings": {"item": "English user manual ×1", "variant_match": ""}},
+        "manual": {"type": "download", "settings": {"label": "Group 24 product manual — EN · FR · DE (PDF)", "link": "", "asset_name": "suntneew-rv-g24-manual-en-fr-de.pdf", "variant_match": ""}},
+        "fcc_sdoc": {"type": "download", "settings": {"label": "FCC SDoC — G24 / G31 shared models", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "FCC", "description": "Shared FCC SDoC listing the G24 / G31 model family.", "public_copy_ready": true}},
+        "emc": {"type": "download", "settings": {"label": "CE-EMC — G24 / G31 shared models", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "CE-EMC", "description": "Shared EMC documentation listing the G24 / G31 model family.", "public_copy_ready": true}},
+        "rohs": {"type": "download", "settings": {"label": "RoHS — RV battery series", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "RoHS", "description": "Series-level RoHS report used as a supporting reference for the RV battery line.", "public_copy_ready": true}},
+        "ip65": {"type": "download", "settings": {"label": "Ingress boundary — no IP certification", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "No IP certification", "description": "The approved Group 24 product data requires protection from water ingress and prohibits immersion claims.", "public_copy_ready": false}},
+        "fcc_grant": {"type": "download", "settings": {"label": "FCC Equipment Authorization — shared-design reference", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "FCC ID", "description": "Shared-design FCC authorization reference for the G24 / G31 family.", "public_copy_ready": true}},
+        "un38": {"type": "download", "settings": {"label": "UN38.3 Summary — G24", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "UN38.3", "description": "Transport-test summary for the G24 model; upload only a model-matched public copy.", "public_copy_ready": false}},
+        "sds": {"type": "download", "settings": {"label": "SDS — G24", "link": "", "asset_name": "", "variant_match": "", "document_group": "compliance", "standard": "SDS", "description": "Safety data sheet for the G24 battery pack; upload only the approved public copy.", "public_copy_ready": false}}
       },
-      "block_order": [
-        "chemistry",
-        "voltage",
-        "capacity",
-        "energy",
-        "power",
-        "cycles",
-        "model",
-        "charge_method",
-        "charge_voltage",
-        "recommended_charge",
-        "charge",
-        "discharge",
-        "bluetooth",
-        "ip_rating",
-        "low_temp",
-        "expansion",
-        "dimensions",
-        "weight",
-        "housing",
-        "torque",
-        "temperature",
-        "box_battery",
-        "box_screws",
-        "box_caps",
-        "box_washers",
-        "box_manual",
-        "manual",
-        "fcc_sdoc",
-        "emc",
-        "rohs",
-        "ip65",
-        "fcc_grant",
-        "un38",
-        "sds"
-      ],
+      "block_order": ["chemistry", "voltage", "capacity", "energy", "power", "cycles", "model", "charge_method", "charge_voltage", "recommended_charge", "charge", "discharge", "bluetooth", "ip_rating", "low_temp", "expansion", "dimensions", "weight", "housing", "torque", "temperature", "box_battery", "box_screws", "box_caps", "box_washers", "box_manual", "manual", "fcc_sdoc", "emc", "rohs", "ip65", "fcc_grant", "un38", "sds"],
       "settings": {
         "anchor_id": "specifications",
         "eyebrow": "PRODUCT DATA",
@@ -742,7 +263,7 @@
         "download_heading": "Manuals & Documents",
         "manuals_group_heading": "User Manuals",
         "compliance_group_heading": "Safety & Compliance",
-        "compliance_note": "G24 and G31 share the FCC / CE-EMC evidence shown here. no IP certification is the unified RV-battery enclosure specification; expand the card to view the named model scope.",
+        "compliance_note": "The FCC / CE-EMC cards identify their stated model scope. Group 24 has no IP certification and must be protected from water ingress.",
         "compliance_link_label": "View public copy",
         "compliance_pending_label": "Public copy pending"
       }
@@ -785,16 +306,12 @@
             "image_fit": "contain",
             "eyebrow": "SUPPORTING DOCUMENTS",
             "heading": "Open the files that match G24 or its confirmed shared design.",
-            "body": "<p>The FCC SDoC and EMC certificate list G24. The RoHS report covers the RV battery series. The no IP certification and FCC Grant files are G24/G31 shared-design references and retain the original G31 model and legacy-grantee details in the source documents.</p>",
+            "body": "<p>The FCC SDoC and EMC certificate list G24. The RoHS report covers the RV battery series. Group 24 has no IP certification; do not use a Group 31 ingress document as a Group 24 specification.</p>",
             "variant_match": ""
           }
         }
       },
-      "block_order": [
-        "support",
-        "service",
-        "certificates"
-      ],
+      "block_order": ["support", "service", "certificates"],
       "settings": {
         "anchor_id": "support-certificates",
         "eyebrow": "SUPPORT & CERTIFICATES",
@@ -806,100 +323,20 @@
     "faq": {
       "type": "suntneew-pdp-faq",
       "blocks": {
-        "fit": {
-          "type": "question",
-          "settings": {
-            "question": "Can G24 replace a Group 31 battery?",
-            "answer": "<p>Only if the planned battery bay, hold-down, terminal orientation and cable route suit the smaller 260 × 170 × 212mm G24 enclosure. Both batteries are 12.8V 100Ah, but their physical cases are different; measure the actual installation before ordering.</p>"
-          }
-        },
-        "dimensions": {
-          "type": "question",
-          "settings": {
-            "question": "Are the stated dimensions including the terminals?",
-            "answer": "<p>No. The 260 × 170 × 212mm dimensions exclude the terminals. Allow additional clearance for terminal hardware, cable lugs, covers and bend radius.</p>"
-          }
-        },
-        "current": {
-          "type": "question",
-          "settings": {
-            "question": "Can the battery continuously supply 100A?",
-            "answer": "<p>The current product data lists 100A as the maximum continuous charge and discharge rating. The practical system limit also depends on conductors, protection devices, connections, inverter and connected equipment.</p>"
-          }
-        },
-        "starting": {
-          "type": "question",
-          "settings": {
-            "question": "Can this battery start an engine?",
-            "answer": "<p>No. This is a deep-cycle auxiliary battery and is not intended to start a vehicle, boat engine or other device. Do not use it as a starting battery.</p>"
-          }
-        },
-        "charger": {
-          "type": "question",
-          "settings": {
-            "question": "Can I use an automotive lead-acid charger?",
-            "answer": "<p>Only if the charger documentation explicitly supports the required LiFePO4 voltage profile and current limits. Do not assume every lead-acid charger is compatible.</p>"
-          }
-        },
-        "temperature": {
-          "type": "question",
-          "settings": {
-            "question": "What happens when the battery is too cold to charge?",
-            "answer": "<p>Low-temperature charging protection stops battery charging below 0°C and resumes above 5°C battery temperature. This protection does not change the specified charging, discharge, storage or installation limits in the manual.</p>"
-          }
-        },
-        "cycles": {
-          "type": "question",
-          "settings": {
-            "question": "What conditions apply to the 5,000-cycle reference?",
-            "answer": "<p>The G24 cycle-life reference is at least 5,000 cycles at 80% depth of discharge, from the approved test condition of 0.5C charge and discharge to 80% end-of-life. Actual cycle life varies with depth of discharge, charge and discharge rate, temperature and operating conditions.</p>"
-          }
-        },
-        "documents": {
-          "type": "question",
-          "settings": {
-            "question": "Which certificates and files are relevant to G24?",
-            "answer": "<p>The FCC SDoC and EMC certificate identify G24 among their listed models. The RoHS report covers the RV battery series. The no IP certification and FCC Grant files are published as confirmed G24/G31 shared-design references; their original documents retain the G31 model and legacy-grantee information.</p>"
-          }
-        },
-        "support": {
-          "type": "question",
-          "settings": {
-            "question": "What do 24/7 Support and the 5-Year Limited Warranty mean?",
-            "answer": "<p>24/7 Support covers product setup, charging, Bluetooth, installation and after-sales questions. The 5-Year Limited Warranty covers eligible product defects under the model-specific warranty terms.</p>"
-          }
-        }
+        "fit": {"type": "question", "settings": {"question": "Can G24 replace a Group 31 battery?", "answer": "<p>Only if the planned battery bay, hold-down, terminal orientation and cable route suit the smaller 260 × 170 × 212mm G24 enclosure. Both batteries are 12.8V 100Ah, but their physical cases are different; measure the actual installation before ordering.</p>"}},
+        "dimensions": {"type": "question", "settings": {"question": "Are the stated dimensions including the terminals?", "answer": "<p>No. The 260 × 170 × 212mm dimensions exclude the terminals. Allow additional clearance for terminal hardware, cable lugs, covers and bend radius.</p>"}},
+        "current": {"type": "question", "settings": {"question": "Can the battery continuously supply 100A?", "answer": "<p>The current product data lists 100A as the maximum continuous charge and discharge rating. The practical system limit also depends on conductors, protection devices, connections, inverter and connected equipment.</p>"}},
+        "starting": {"type": "question", "settings": {"question": "Can this battery start an engine?", "answer": "<p>No. This is a deep-cycle auxiliary battery and is not intended to start a vehicle, boat engine or other device. Do not use it as a starting battery.</p>"}},
+        "charger": {"type": "question", "settings": {"question": "Can I use an automotive lead-acid charger?", "answer": "<p>Only if the charger documentation explicitly supports the required LiFePO4 voltage profile and current limits. Do not assume every lead-acid charger is compatible.</p>"}},
+        "temperature": {"type": "question", "settings": {"question": "What happens when the battery is too cold to charge?", "answer": "<p>Low-temperature charging protection stops battery charging below 0°C and resumes above 5°C battery temperature. This protection does not change the specified charging, discharge, storage or installation limits in the manual.</p>"}},
+        "cycles": {"type": "question", "settings": {"question": "What conditions apply to the 5,000-cycle reference?", "answer": "<p>The G24 cycle-life reference is at least 5,000 cycles at 80% depth of discharge, from the approved test condition of 0.5C charge and discharge to 80% end-of-life. Actual cycle life varies with depth of discharge, charge and discharge rate, temperature and operating conditions.</p>"}},
+        "documents": {"type": "question", "settings": {"question": "Which certificates and files are relevant to G24?", "answer": "<p>The FCC SDoC and EMC certificate identify G24 among their listed models, and the RoHS report covers the RV battery series. Group 24 has no IP certification and must be protected from water ingress.</p>"}},
+        "support": {"type": "question", "settings": {"question": "What do 24/7 Support and the 5-Year Limited Warranty mean?", "answer": "<p>24/7 Support covers product setup, charging, Bluetooth, installation and after-sales questions. The 5-Year Limited Warranty covers eligible product defects under the model-specific warranty terms.</p>"}}
       },
-      "block_order": [
-        "fit",
-        "dimensions",
-        "current",
-        "starting",
-        "charger",
-        "temperature",
-        "cycles",
-        "documents",
-        "support"
-      ],
-      "settings": {
-        "anchor_id": "faq",
-        "eyebrow": "GROUP 24 BUYING QUESTIONS",
-        "heading": "Frequently asked questions"
-      }
+      "block_order": ["fit", "dimensions", "current", "starting", "charger", "temperature", "cycles", "documents", "support"],
+      "settings": {"anchor_id": "faq", "eyebrow": "GROUP 24 BUYING QUESTIONS", "heading": "Frequently asked questions"}
     },
-    "related-products": {
-      "type": "related-products",
-      "settings": {}
-    }
+    "related-products": {"type": "related-products", "settings": {}}
   },
-  "order": [
-    "main",
-    "proof",
-    "anchor_nav",
-    "features",
-    "details",
-    "service_proof",
-    "faq",
-    "related-products"
-  ]
+  "order": ["main", "proof", "anchor_nav", "features", "details", "service_proof", "faq", "related-products"]
 }
