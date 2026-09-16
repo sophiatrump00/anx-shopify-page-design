@@ -10,48 +10,194 @@
 {
   "sections": {
     "main": {
-      "type":"main-product",
+      "type": "main-product",
       "blocks": {
-        "vendor":{"type":"vendor","settings":{}},
-        "title":{"type":"title","settings":{"heading_tag":"h1"}},
-        "sku":{"type":"sku","settings":{}},
-        "price":{"type":"price","settings":{"show_taxes_notice":false}},
-        "separator":{"type":"separator","settings":{}},
-        "intro":{"type":"text","settings":{"text":"<p>Choose the 12.8V 314Ah RV battery when longer reserve matters more than maximum output: 4,019.2Wh in the same 522 × 268 × 220mm enclosure as 230Ah, adding 1,075.2Wh / 36.5% more energy with 2,010W / 157A continuous output and Bluetooth 5.0 monitoring.</p>"}},
-        "quantity_selector":{"type":"quantity_selector","settings":{}},
-        "bundle":{"type":"suntneew_bundle_selector","settings":{"enabled":true,"heading":"Build a 314Ah multi-pack","body":"Choose 1, 2, 5 or 10 units, or use a custom quantity.","discount_percent":3}},
-        "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}}
+        "vendor": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h1"
+          }
+        },
+        "sku": {
+          "type": "sku",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "intro": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Choose the 12.8V 314Ah RV battery when longer reserve matters more than maximum output: 4,019.2Wh in the same 522 × 268 × 222mm enclosure as 230Ah, adding 1,075.2Wh / 36.5% more energy with 2,010W / 157A continuous output and Bluetooth 5.0 monitoring.</p>"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "bundle": {
+          "type": "suntneew_bundle_selector",
+          "settings": {
+            "enabled": true,
+            "heading": "Build a 314Ah multi-pack",
+            "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.",
+            "discount_percent": 3
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": false
+          }
+        }
       },
-      "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","bundle","buy_buttons"],
-      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":50,"desktop_media_layout":"carousel_thumbnails_bottom","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "block_order": [
+        "vendor",
+        "title",
+        "sku",
+        "price",
+        "separator",
+        "intro",
+        "quantity_selector",
+        "bundle",
+        "buy_buttons"
+      ],
+      "settings": {
+        "show_fixed_add_to_cart": true,
+        "enable_suntneew_pdp_experience": true,
+        "suntneew_media_autoplay_interval": 6,
+        "show_suntneew_pdp_promises": true,
+        "desktop_media_width": 50,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "dots"
+      }
     },
     "proof": {
-      "type":"suntneew-pdp-proof",
+      "type": "suntneew-pdp-proof",
       "blocks": {
-        "energy":{"type":"metric","settings":{"value":"4,019.2Wh","label":"Rated energy","variant_match":""}},
-        "capacity":{"type":"metric","settings":{"value":"314Ah","label":"12.8V LiFePO4","variant_match":""}},
-        "cycles":{"type":"metric","settings":{"value":"At least 8,000","label":"Cycles at 70% SOH","variant_match":""}},
-        "current":{"type":"metric","settings":{"value":"157A","label":"Max continuous discharge","variant_match":""}},
-        "ip":{"type":"metric","settings":{"value":"IP65","label":"Dust-tight; protected against water jets","variant_match":""}}
+        "energy": {
+          "type": "metric",
+          "settings": {
+            "value": "4,019.2Wh",
+            "label": "Rated energy",
+            "variant_match": ""
+          }
+        },
+        "capacity": {
+          "type": "metric",
+          "settings": {
+            "value": "314Ah",
+            "label": "12.8V LiFePO4",
+            "variant_match": ""
+          }
+        },
+        "cycles": {
+          "type": "metric",
+          "settings": {
+            "value": "At least 8,000",
+            "label": "Cycles at 70% SOH",
+            "variant_match": ""
+          }
+        },
+        "current": {
+          "type": "metric",
+          "settings": {
+            "value": "157A",
+            "label": "Max continuous discharge",
+            "variant_match": ""
+          }
+        },
+        "ip": {
+          "type": "metric",
+          "settings": {
+            "value": "No IP rating",
+            "label": "Protect from water ingress",
+            "variant_match": ""
+          }
+        }
       },
-      "block_order":["energy","capacity","cycles","current","ip"],
-      "settings":{"accessibility_label":"314Ah RV battery highlights"}
+      "block_order": [
+        "energy",
+        "capacity",
+        "cycles",
+        "current",
+        "ip"
+      ],
+      "settings": {
+        "accessibility_label": "314Ah RV battery highlights"
+      }
     },
     "choose_230_314": {
-      "type":"suntneew-calculator-entry",
-      "settings":{"anchor_id":"choose-230-or-314","eyebrow":"230AH OR 314AH?","heading":"Choose 230Ah for output. Choose 314Ah for reserve.","body":"The enclosure size is the same. Pick by priority, then use the Power Calculator to check the appliances you run.","button_label":"Use Power Calculator","comparison_mode":true}
+      "type": "suntneew-calculator-entry",
+      "settings": {
+        "anchor_id": "choose-230-or-314",
+        "eyebrow": "230AH OR 314AH?",
+        "heading": "Choose 230Ah for output. Choose 314Ah for reserve.",
+        "body": "The enclosure size is the same. Pick by priority, then use the Power Calculator to check the appliances you run.",
+        "button_label": "Use Power Calculator",
+        "comparison_mode": true
+      }
     },
     "anchor_nav": {
-      "type":"suntneew-pdp-anchor-nav",
+      "type": "suntneew-pdp-anchor-nav",
       "blocks": {
-        "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
-        "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
-        "install":{"type":"link","settings":{"label":"Before installation","target_id":"in-the-box"}},
-        "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
-        "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
+        "features": {
+          "type": "link",
+          "settings": {
+            "label": "Features",
+            "target_id": "features"
+          }
+        },
+        "specs": {
+          "type": "link",
+          "settings": {
+            "label": "Specifications",
+            "target_id": "specifications"
+          }
+        },
+        "install": {
+          "type": "link",
+          "settings": {
+            "label": "Before installation",
+            "target_id": "in-the-box"
+          }
+        },
+        "manuals": {
+          "type": "link",
+          "settings": {
+            "label": "Documents",
+            "target_id": "manuals"
+          }
+        },
+        "faq": {
+          "type": "link",
+          "settings": {
+            "label": "FAQ",
+            "target_id": "faq"
+          }
+        }
       },
-      "block_order":["features","specs","install","manuals","faq"],
-      "settings":{}
+      "block_order": [
+        "features",
+        "specs",
+        "install",
+        "manuals",
+        "faq"
+      ],
+      "settings": {}
     },
     "features": {
       "type": "suntneew-rv-experience",
@@ -86,12 +232,12 @@
             "image_alt": "SuntNeew 314Ah LiFePO4 RV battery supporting family RV living from evening to next morning",
             "eyebrow": "NIGHT TO NEXT MORNING",
             "heading": "A larger 12V reserve for the hours after camp goes quiet.",
-            "body": "<p>Keep the fridge, lights, network and planned overnight loads running longer in the same 522 × 268 × 220mm enclosure used by the 230Ah model. Check your real load profile before sizing the inverter and wiring.</p>",
+            "body": "<p>Keep the fridge, lights, network and planned overnight loads running longer in the same 522 × 268 × 222mm enclosure used by the 230Ah model. Check your real load profile before sizing the inverter and wiring.</p>",
             "metric_1_value": "4,019.2Wh",
             "metric_1_label": "Rated energy",
             "metric_2_value": "12.8V",
             "metric_2_label": "System voltage",
-            "metric_3_value": "522 × 268 × 220mm",
+            "metric_3_value": "522 × 268 × 222mm",
             "metric_3_label": "Same stated footprint",
             "metric_4_value": "26kg",
             "metric_4_label": "Battery weight",
@@ -150,10 +296,10 @@
             "image_alt": "SuntNeew 314Ah LiFePO4 RV battery secured in a professional service-bay installation",
             "eyebrow": "SECURE A 26KG BATTERY",
             "heading": "Plan the tray, restraint and cable path before the battery arrives.",
-            "body": "<p>The 522 × 268 × 220mm enclosure fits the same stated footprint as 230Ah, but the 314Ah battery weighs 26kg. Confirm support structure, hold-downs, terminal access, conductor sizing and fuse placement for the complete system.</p>",
+            "body": "<p>The 522 × 268 × 222mm enclosure fits the same stated footprint as 230Ah, but the 314Ah battery weighs 26kg. Confirm support structure, hold-downs, terminal access, conductor sizing and fuse placement for the complete system.</p>",
             "metric_1_value": "26kg",
             "metric_1_label": "Battery weight",
-            "metric_2_value": "522 × 268 × 220mm",
+            "metric_2_value": "522 × 268 × 222mm",
             "metric_2_label": "Stated dimensions",
             "metric_3_value": "12–14N·m",
             "metric_3_label": "Terminal torque",
@@ -226,59 +372,447 @@
       }
     },
     "details": {
-      "type":"suntneew-pdp-details",
+      "type": "suntneew-pdp-details",
       "blocks": {
-        "chemistry":{"type":"spec","settings":{"label":"Cell chemistry","value":"LiFePO4","group":"primary","variant_match":""}},
-        "voltage":{"type":"spec","settings":{"label":"Rated voltage","value":"12.8V","group":"primary","variant_match":""}},
-        "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"314Ah","group":"primary","variant_match":""}},
-        "energy":{"type":"spec","settings":{"label":"Rated energy","value":"4,019.2Wh","group":"primary","variant_match":""}},
-        "power":{"type":"spec","settings":{"label":"Maximum continuous output power","value":"2,010W","group":"primary","variant_match":""}},
-        "cycles":{"type":"spec","settings":{"label":"Cycle-life reference at 70% SOH","value":"At least 8,000 cycles","group":"primary","variant_match":""}},
-        "model":{"type":"spec","settings":{"label":"Model","value":"ESS-LFP12314B","group":"system","variant_match":""}},
-        "charge_method":{"type":"spec","settings":{"label":"Charge method","value":"CC/CV","group":"system","variant_match":""}},
-        "charge_voltage":{"type":"spec","settings":{"label":"Charge voltage","value":"14.4V +/- 0.2V","group":"system","variant_match":""}},
-        "recommended_charge":{"type":"spec","settings":{"label":"Recommended charge current","value":"63A (0.2C)","group":"system","variant_match":""}},
-        "charge":{"type":"spec","settings":{"label":"Maximum continuous charge current","value":"157A","group":"system","variant_match":""}},
-        "discharge":{"type":"spec","settings":{"label":"Maximum continuous discharge current","value":"157A","group":"system","variant_match":""}},
-        "bms_protection":{"type":"spec","settings":{"label":"BMS protection current","value":"200A protection threshold; not a continuous operating rating","group":"system","variant_match":""}},
-        "bluetooth":{"type":"spec","settings":{"label":"Wireless monitoring","value":"Bluetooth 5.0","group":"system","variant_match":""}},
-        "ip_rating":{"type":"spec","settings":{"label":"Enclosure protection","value":"IP65 (not for immersion)","group":"system","variant_match":""}},
-        "low_temp":{"type":"spec","settings":{"label":"Low-temperature charging protection","value":"Stops below 0C; resumes above 5C","group":"system","variant_match":""}},
-        "dimensions":{"type":"spec","settings":{"label":"Dimensions (L × W × H)","value":"522 × 268 × 220 mm","group":"installation","variant_match":""}},
-        "weight":{"type":"spec","settings":{"label":"Weight","value":"26kg","group":"installation","variant_match":""}},
-        "housing":{"type":"spec","settings":{"label":"Housing material","value":"ABS","group":"installation","variant_match":""}},
-        "torque":{"type":"spec","settings":{"label":"Recommended terminal torque","value":"12 to 14 N.m","group":"installation","variant_match":""}},
-        "temperature":{"type":"spec","settings":{"label":"Temperature range","value":"Charge 0 to 55C; discharge -20 to 60C; storage -10 to 50C","group":"installation","variant_match":""}},
-        "note1":{"type":"included","settings":{"item":"Verify that the mounting structure supports the 26kg battery","variant_match":""}},
-        "note2":{"type":"included","settings":{"item":"Use 63A as the recommended charge reference; keep continuous discharge within 157A and treat 200A as BMS protection only","variant_match":""}},
-        "note3":{"type":"included","settings":{"item":"Protect terminals and size conductors and fuses for the confirmed system limits","variant_match":""}},
-        "note4":{"type":"included","settings":{"item":"Keep service access, cable bend radius and restraint in the enclosure plan","variant_match":""}},
-        "manual":{"type":"download","settings":{"label":"314Ah user manual — EN · FR · DE (PDF)","link":"","asset_name":"suntneew-rv-314ah-manual-en-fr-de.pdf","variant_match":""}},
-        "fcc_sdoc":{"type":"download","settings":{"label":"FCC SDoC — 230Ah / 314Ah listed models","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"FCC","description":"Shared FCC SDoC for the 230Ah / 314Ah model family.","public_copy_ready":true}},
-        "emc":{"type":"download","settings":{"label":"CE-EMC — 230Ah / 314Ah listed models","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"CE-EMC","description":"Shared EMC documentation for the 230Ah / 314Ah model family.","public_copy_ready":true}},
-        "rohs":{"type":"download","settings":{"label":"RoHS — RV battery series","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"RoHS","description":"Series-level RoHS report used as a supporting reference for the RV battery line.","public_copy_ready":true}},
-        "un38":{"type":"download","settings":{"label":"UN38.3 Summary — 314Ah","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"UN38.3","description":"Transport-test summary for the 314Ah model; upload only a model-matched public copy.","public_copy_ready":false}},
-        "sds":{"type":"download","settings":{"label":"SDS — 314Ah","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"SDS","description":"Safety data sheet for the 314Ah battery pack; upload only the approved public copy.","public_copy_ready":false}},
-        "ip65":{"type":"download","settings":{"label":"IP65 enclosure protection — RV battery family","link":"","asset_name":"","variant_match":"","document_group":"compliance","standard":"IP65","description":"IP65 is the unified enclosure specification shown across the RV battery family. A family-scope public evidence copy is pending for 314Ah; IP65 means dust-tight and protected against water jets, not immersion.","public_copy_ready":false}}
+        "chemistry": {
+          "type": "spec",
+          "settings": {
+            "label": "Cell chemistry",
+            "value": "LiFePO4",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "voltage": {
+          "type": "spec",
+          "settings": {
+            "label": "Rated voltage",
+            "value": "12.8V",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "capacity": {
+          "type": "spec",
+          "settings": {
+            "label": "Rated capacity",
+            "value": "314Ah",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "energy": {
+          "type": "spec",
+          "settings": {
+            "label": "Rated energy",
+            "value": "4,019.2Wh",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "power": {
+          "type": "spec",
+          "settings": {
+            "label": "Maximum continuous output power",
+            "value": "2,010W",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "cycles": {
+          "type": "spec",
+          "settings": {
+            "label": "Cycle-life reference at 70% SOH",
+            "value": "At least 8,000 cycles",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "model": {
+          "type": "spec",
+          "settings": {
+            "label": "Model",
+            "value": "ESS-LFP12314B",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "charge_method": {
+          "type": "spec",
+          "settings": {
+            "label": "Charge method",
+            "value": "CC/CV",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "charge_voltage": {
+          "type": "spec",
+          "settings": {
+            "label": "Charge voltage",
+            "value": "14.4V +/- 0.2V",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "recommended_charge": {
+          "type": "spec",
+          "settings": {
+            "label": "Recommended charge current",
+            "value": "63A (0.2C)",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "charge": {
+          "type": "spec",
+          "settings": {
+            "label": "Maximum continuous charge current",
+            "value": "157A",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "discharge": {
+          "type": "spec",
+          "settings": {
+            "label": "Maximum continuous discharge current",
+            "value": "157A",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "bms_protection": {
+          "type": "spec",
+          "settings": {
+            "label": "BMS protection current",
+            "value": "200A protection threshold; not a continuous operating rating",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "bluetooth": {
+          "type": "spec",
+          "settings": {
+            "label": "Wireless monitoring",
+            "value": "Bluetooth 5.0",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "ip_rating": {
+          "type": "spec",
+          "settings": {
+            "label": "Enclosure protection",
+            "value": "No IP certification; protect from water ingress and do not immerse",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "low_temp": {
+          "type": "spec",
+          "settings": {
+            "label": "Low-temperature charging protection",
+            "value": "Stops below 0C; resumes above 5C",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "dimensions": {
+          "type": "spec",
+          "settings": {
+            "label": "Dimensions (L × W × H)",
+            "value": "522 × 268 × 222 mm",
+            "group": "installation",
+            "variant_match": ""
+          }
+        },
+        "weight": {
+          "type": "spec",
+          "settings": {
+            "label": "Weight",
+            "value": "26kg",
+            "group": "installation",
+            "variant_match": ""
+          }
+        },
+        "housing": {
+          "type": "spec",
+          "settings": {
+            "label": "Housing material",
+            "value": "ABS",
+            "group": "installation",
+            "variant_match": ""
+          }
+        },
+        "torque": {
+          "type": "spec",
+          "settings": {
+            "label": "Recommended terminal torque",
+            "value": "12 to 14 N.m",
+            "group": "installation",
+            "variant_match": ""
+          }
+        },
+        "temperature": {
+          "type": "spec",
+          "settings": {
+            "label": "Temperature range",
+            "value": "Charge 0 to 55C; discharge -20 to 60C; storage -10 to 50C",
+            "group": "installation",
+            "variant_match": ""
+          }
+        },
+        "note1": {
+          "type": "included",
+          "settings": {
+            "item": "Verify that the mounting structure supports the 26kg battery",
+            "variant_match": ""
+          }
+        },
+        "note2": {
+          "type": "included",
+          "settings": {
+            "item": "Use 63A as the recommended charge reference; keep continuous discharge within 157A and treat 200A as BMS protection only",
+            "variant_match": ""
+          }
+        },
+        "note3": {
+          "type": "included",
+          "settings": {
+            "item": "Protect terminals and size conductors and fuses for the confirmed system limits",
+            "variant_match": ""
+          }
+        },
+        "note4": {
+          "type": "included",
+          "settings": {
+            "item": "Keep service access, cable bend radius and restraint in the enclosure plan",
+            "variant_match": ""
+          }
+        },
+        "manual": {
+          "type": "download",
+          "settings": {
+            "label": "314Ah user manual — EN · FR · DE (PDF)",
+            "link": "",
+            "asset_name": "suntneew-rv-314ah-manual-en-fr-de.pdf",
+            "variant_match": ""
+          }
+        },
+        "fcc_sdoc": {
+          "type": "download",
+          "settings": {
+            "label": "FCC SDoC — 230Ah / 314Ah listed models",
+            "link": "",
+            "asset_name": "",
+            "variant_match": "",
+            "document_group": "compliance",
+            "standard": "FCC",
+            "description": "Shared FCC SDoC for the 230Ah / 314Ah model family.",
+            "public_copy_ready": true
+          }
+        },
+        "emc": {
+          "type": "download",
+          "settings": {
+            "label": "CE-EMC — 230Ah / 314Ah listed models",
+            "link": "",
+            "asset_name": "",
+            "variant_match": "",
+            "document_group": "compliance",
+            "standard": "CE-EMC",
+            "description": "Shared EMC documentation for the 230Ah / 314Ah model family.",
+            "public_copy_ready": true
+          }
+        },
+        "rohs": {
+          "type": "download",
+          "settings": {
+            "label": "RoHS — RV battery series",
+            "link": "",
+            "asset_name": "",
+            "variant_match": "",
+            "document_group": "compliance",
+            "standard": "RoHS",
+            "description": "Series-level RoHS report used as a supporting reference for the RV battery line.",
+            "public_copy_ready": true
+          }
+        },
+        "un38": {
+          "type": "download",
+          "settings": {
+            "label": "UN38.3 Summary — 314Ah",
+            "link": "",
+            "asset_name": "",
+            "variant_match": "",
+            "document_group": "compliance",
+            "standard": "UN38.3",
+            "description": "Transport-test summary for the 314Ah model; upload only a model-matched public copy.",
+            "public_copy_ready": false
+          }
+        },
+        "sds": {
+          "type": "download",
+          "settings": {
+            "label": "SDS — 314Ah",
+            "link": "",
+            "asset_name": "",
+            "variant_match": "",
+            "document_group": "compliance",
+            "standard": "SDS",
+            "description": "Safety data sheet for the 314Ah battery pack; upload only the approved public copy.",
+            "public_copy_ready": false
+          }
+        },
+        "ip65": {
+          "type": "download",
+          "settings": {
+            "label": "Ingress boundary — 314Ah has no IP certification",
+            "link": "",
+            "asset_name": "",
+            "variant_match": "",
+            "document_group": "compliance",
+            "standard": "No IP certification",
+            "description": "The approved 314Ah data prohibits waterproof and immersion claims; protect the battery from water ingress.",
+            "public_copy_ready": false
+          }
+        }
       },
-      "block_order":["chemistry","voltage","capacity","energy","power","cycles","model","charge_method","charge_voltage","recommended_charge","charge","discharge","bms_protection","bluetooth","ip_rating","low_temp","dimensions","weight","housing","torque","temperature","note1","note2","note3","note4","manual","fcc_sdoc","emc","rohs","un38","sds","ip65"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Verified product data","heading":"314Ah technical specifications","lede":"<p>The key capacity, charging, protection and installation values are transcribed from the current English product manual. Use the manual for the full operating sequence and safety limits.</p>","primary_group_heading":"Capacity & performance","system_group_heading":"Charging, monitoring & protection","installation_group_heading":"Enclosure & physical fit","included_eyebrow":"Installation planning","included_heading":"Before installation","download_eyebrow":"Product documentation","download_heading":"Manuals & Documents","manuals_group_heading":"User Manuals","compliance_group_heading":"Safety & Compliance","compliance_note":"The current specification separates 157A continuous operation from the 200A BMS protection threshold. IP65 is shown as the unified RV-line enclosure specification; public report copies are added only after redaction review.","compliance_link_label":"View public copy","compliance_pending_label":"Public copy pending"}
+      "block_order": [
+        "chemistry",
+        "voltage",
+        "capacity",
+        "energy",
+        "power",
+        "cycles",
+        "model",
+        "charge_method",
+        "charge_voltage",
+        "recommended_charge",
+        "charge",
+        "discharge",
+        "bms_protection",
+        "bluetooth",
+        "ip_rating",
+        "low_temp",
+        "dimensions",
+        "weight",
+        "housing",
+        "torque",
+        "temperature",
+        "note1",
+        "note2",
+        "note3",
+        "note4",
+        "manual",
+        "fcc_sdoc",
+        "emc",
+        "rohs",
+        "un38",
+        "sds",
+        "ip65"
+      ],
+      "settings": {
+        "anchor_id": "specifications",
+        "eyebrow": "Verified product data",
+        "heading": "314Ah technical specifications",
+        "lede": "<p>The key capacity, charging, protection and installation values are transcribed from the current English product manual. Use the manual for the full operating sequence and safety limits.</p>",
+        "primary_group_heading": "Capacity & performance",
+        "system_group_heading": "Charging, monitoring & protection",
+        "installation_group_heading": "Enclosure & physical fit",
+        "included_eyebrow": "Installation planning",
+        "included_heading": "Before installation",
+        "download_eyebrow": "Product documentation",
+        "download_heading": "Manuals & Documents",
+        "manuals_group_heading": "User Manuals",
+        "compliance_group_heading": "Safety & Compliance",
+        "compliance_note": "The current specification separates 157A continuous operation from the 200A BMS protection threshold. no IP certification is shown as the unified RV-line enclosure specification; public report copies are added only after redaction review.",
+        "compliance_link_label": "View public copy",
+        "compliance_pending_label": "Public copy pending"
+      }
     },
     "faq": {
-      "type":"suntneew-pdp-faq",
+      "type": "suntneew-pdp-faq",
       "blocks": {
-        "q1":{"type":"question","settings":{"question":"How much energy does the 314Ah battery store?","answer":"<p>The rated energy is 4,019.2Wh from the documented 12.8V and 314Ah ratings. Actual usable energy depends on operating limits, load and system settings.</p>"}},
-        "q2":{"type":"question","settings":{"question":"What is the difference between 157A and 200A?","answer":"<p>157A is the maximum continuous charge/discharge value used for normal system sizing. 200A is the BMS protection threshold, not a continuous operating rating. Use 63A as the recommended charge-current reference and size every system component to its lowest limit.</p>"}},
-        "q3":{"type":"question","settings":{"question":"Can the 314Ah battery use the same compartment as the 230Ah model?","answer":"<p>The stated 522 × 268 × 220 mm enclosure dimensions are the same, but the 314Ah battery weighs 26kg. Recheck structure, restraint, access and the complete electrical design for the exact model.</p>"}},
-        "q4":{"type":"question","settings":{"question":"What does IP65 mean for this battery?","answer":"<p>IP65 indicates a dust-tight enclosure with protection against water jets. It is not an immersion rating; keep the battery location, terminals and cable routing protected and follow the installation manual.</p>"}},
-        "q5":{"type":"question","settings":{"question":"Should I choose the 314Ah or 230Ah battery?","answer":"<p>Choose 314Ah when 2,010W covers your simultaneous load and you want 1,075.2Wh / 36.5% more reserve in the same 522 × 268 × 220mm enclosure. Choose 230Ah when 2,944Wh covers your time between charges and you want 2,560W continuous output, 5.4kg less weight and the lower current single-unit price. Test your devices in the <a href=\"/pages/power-calculator?scenario=rv\">Power Planner</a>.</p>"}},
-        "q6":{"type":"question","settings":{"question":"Where can I review the complete operating limits?","answer":"<p>The current English product manual is available in Documents on this page. Review it together with the charger, inverter and RV manufacturer instructions before installation.</p>"}},
-        "q7":{"type":"question","settings":{"question":"What conditions apply to the 8,000-cycle reference?","answer":"<p>The 314Ah cycle-life reference is at least 8,000 cycles at 70% state of health (SOH), from the approved test condition of 0.5C charge and discharge to the 70% SOH end-of-test point. Actual cycle life varies with depth of discharge, charge and discharge rate, temperature and operating conditions.</p>"}}
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "How much energy does the 314Ah battery store?",
+            "answer": "<p>The rated energy is 4,019.2Wh from the documented 12.8V and 314Ah ratings. Actual usable energy depends on operating limits, load and system settings.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "What is the difference between 157A and 200A?",
+            "answer": "<p>157A is the maximum continuous charge/discharge value used for normal system sizing. 200A is the BMS protection threshold, not a continuous operating rating. Use 63A as the recommended charge-current reference and size every system component to its lowest limit.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Can the 314Ah battery use the same compartment as the 230Ah model?",
+            "answer": "<p>The stated 522 × 268 × 222 mm enclosure dimensions are the same, but the 314Ah battery weighs 26kg. Recheck structure, restraint, access and the complete electrical design for the exact model.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Does this battery have an IP rating?",
+            "answer": "<p>No IP certification is listed for the 314Ah model. Do not immerse it or make waterproof claims; protect the battery, terminals and cable routing from water ingress.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Should I choose the 314Ah or 230Ah battery?",
+            "answer": "<p>Choose 314Ah when 2,010W covers your simultaneous load and you want 1,075.2Wh / 36.5% more reserve in the same 522 × 268 × 222mm enclosure. Choose 230Ah when 2,944Wh covers your time between charges and you want 2,560W continuous output, 5.4kg less weight and the lower current single-unit price. Test your devices in the <a href=\"/pages/power-calculator?scenario=rv\">Power Planner</a>.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "Where can I review the complete operating limits?",
+            "answer": "<p>The current English product manual is available in Documents on this page. Review it together with the charger, inverter and RV manufacturer instructions before installation.</p>"
+          }
+        },
+        "q7": {
+          "type": "question",
+          "settings": {
+            "question": "What conditions apply to the 8,000-cycle reference?",
+            "answer": "<p>The 314Ah cycle-life reference is at least 8,000 cycles at 70% state of health (SOH), from the approved test condition of 0.5C charge and discharge to the 70% SOH end-of-test point. Actual cycle life varies with depth of discharge, charge and discharge rate, temperature and operating conditions.</p>"
+          }
+        }
       },
-      "block_order":["q1","q2","q3","q4","q5","q6","q7"],
-      "settings":{"anchor_id":"faq","eyebrow":"314Ah planning","heading":"Frequently asked questions"}
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7"
+      ],
+      "settings": {
+        "anchor_id": "faq",
+        "eyebrow": "314Ah planning",
+        "heading": "Frequently asked questions"
+      }
     },
-    "related-products":{"type":"related-products","settings":{}}
+    "related-products": {
+      "type": "related-products",
+      "settings": {}
+    }
   },
-  "order":["main","proof","choose_230_314","anchor_nav","features","details","faq","related-products"]
+  "order": [
+    "main",
+    "proof",
+    "choose_230_314",
+    "anchor_nav",
+    "features",
+    "details",
+    "faq",
+    "related-products"
+  ]
 }
