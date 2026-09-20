@@ -163,28 +163,28 @@
         "cycle_life": {
           "type": "feature",
           "settings": {
-            "x_position": 34,
-            "y_position": 54,
-            "title": "Cycle life with the condition shown",
-            "text": "<p>G31 reference tiers: 4,000+ cycles at 100% DoD, 6,000 cycles at 80% DoD and 15,000 cycles at 60% DoD.</p>"
+            "x_position": 53,
+            "y_position": 72,
+            "title": "Long-life LiFePO4 power",
+            "text": "<p>Rated for 4,000+ cycles at 100% DoD, 6,000 cycles at 80% DoD and 15,000 cycles at 60% DoD under the stated reference conditions.</p>"
           }
         },
         "bluetooth": {
           "type": "feature",
           "settings": {
-            "x_position": 54,
-            "y_position": 25,
-            "title": "See your power live",
-            "text": "<p>Monitor SOC, voltage, temperature and cell-voltage difference from your phone with Bluetooth 5.0.</p>"
+            "x_position": 46,
+            "y_position": 48,
+            "title": "Bluetooth 5.0 monitoring",
+            "text": "<p>Check state of charge, voltage, current and battery temperature from a compatible phone before changing loads or charging sources.</p>"
           }
         },
         "temperature": {
           "type": "feature",
           "settings": {
-            "x_position": 73,
-            "y_position": 58,
-            "title": "Built for changing temperatures",
-            "text": "<p>Charge from 32 degrees F to 131 degrees F and discharge from -4 degrees F to 140 degrees F. Charging pauses below 32 degrees F and resumes when the battery returns to a safe charging range.</p>"
+            "x_position": 77,
+            "y_position": 48,
+            "title": "Built-in BMS protection",
+            "text": "<p>Low-temperature charging protection stops charging below 0°C and resumes above 5°C. The BMS also covers overcharge, over-discharge, over-current, short-circuit and over-temperature protection.</p>"
           }
         }
       },
