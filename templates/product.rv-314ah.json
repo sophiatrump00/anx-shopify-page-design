@@ -270,8 +270,8 @@
         "bluetooth": {
           "type": "feature",
           "settings": {
-            "image_asset": "suntneew-rv-314ah-feature-bluetooth-output.png",
-            "mobile_image_asset": "suntneew-rv-314ah-feature-bluetooth-output.png",
+            "image_asset": "suntneew-rv-314ah-feature-bluetooth-section-output.jpg",
+            "mobile_image_asset": "suntneew-rv-314ah-feature-bluetooth-section-output.jpg",
             "image_alt": "Phone displaying Bluetooth 5.0 battery status beside SuntNeew 314Ah LiFePO4 battery in an RV",
             "eyebrow": "CHECK STATUS BEFORE YOU CHANGE THE LOAD",
             "heading": "Bluetooth 5.0 keeps the 314Ah reserve easy to read.",
