@@ -18,6 +18,9 @@
   * option_position: the position of the option in the list of options [REQUIRED FOR PRODUCT OPTION]
   * output_variant_media: if set to true, the variant media will be outputted as a data attribute of the associated form control. This is
                           done on card swatches to allow for a quick preview of the variant media.
+  * shop_card_color_assets: optional 'color:asset,color:asset' map. When the swatch color matches, the previewed media
+                            is replaced by the given theme asset instead of the variant media. Used by the shop page so
+                            its cards always show the white-background studio shots.
   * url: if defined, option value will be used as a plain link tag instead of an input. If passing an option_value object, the product_url
          will be used as the link target automatically. [OPTIONAL]
   * reload_page_for_combined_products: if set to true, when a given option value is connected to a combined product, the option will be generated
@@ -131,7 +134,22 @@
         {%- assign secondary_variant_media = variant.product.media[variant.featured_media.position] | default: variant.product.media[1] -%}
       {% endif %}
 
-      data-variant-id="{{ variant.id }}" {% if variant.featured_media %}data-variant-media="{{ variant.featured_media | json | escape }}" {% if secondary_variant_media %}data-variant-secondary-media="{{ secondary_variant_media | json | escape }}"{% endif %}{% endif %}
+      {%- assign swatch_media_override = blank -%}
+      {%- if shop_card_color_assets != blank -%}
+        {%- assign swatch_color_pairs = shop_card_color_assets | split: ',' -%}
+        {%- for swatch_color_pair in swatch_color_pairs -%}
+          {%- assign swatch_color_parts = swatch_color_pair | split: ':' -%}
+          {%- assign swatch_color_key = swatch_color_parts[0] | strip | downcase -%}
+          {%- if swatch_color_key == downcase_label -%}
+            {%- assign swatch_color_asset = swatch_color_parts[1] | strip -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if swatch_color_asset != blank -%}
+          {%- capture swatch_media_override -%}{"alt":{{ label | json }},"preview_image":{"aspect_ratio":1.0,"height":1200,"width":1200,"src":{{ swatch_color_asset | asset_url | json }}}}{%- endcapture -%}
+        {%- endif -%}
+      {%- endif -%}
+
+      data-variant-id="{{ variant.id }}" {% if swatch_media_override != blank %}data-variant-media="{{ swatch_media_override | escape }}"{% elsif variant.featured_media %}data-variant-media="{{ variant.featured_media | json | escape }}" {% if secondary_variant_media %}data-variant-secondary-media="{{ secondary_variant_media | json | escape }}"{% endif %}{% endif %}
     {%- endif -%}
   {%- endcapture -%}
 

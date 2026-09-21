@@ -93,6 +93,19 @@
     {%- assign shop_card_asset = blank -%}
   {%- endif -%}
 
+  {%- comment -%}
+    Shop cards must always show the white-background studio shots, including when a color swatch is hovered or
+    selected. Swatch previews on the shop page therefore use the per-color theme asset instead of the variant media,
+    so the product gallery and the product page keep their own imagery.
+    Format: 'color:asset,color:asset' — colors are matched against the swatch label, lowercased.
+  {%- endcomment -%}
+  {%- assign shop_card_color_assets = blank -%}
+  {%- if shop_card -%}
+    {%- case product.handle -%}
+      {%- when 'suntneew-a20-jump-starter-8000mah' -%}{%- assign shop_card_color_assets = 'orange:suntneew-shop-white-a20.jpg,red:suntneew-shop-white-a20-red.jpg' -%}
+    {%- endcase -%}
+  {%- endif -%}
+
   {%- if product.media.size > 0 or shop_card_media != blank -%}
     <div class="product-card__figure">
       <a href="{{ product.url }}" data-instant>
@@ -304,7 +317,7 @@
 
                   {%- liquid
                     for option_value in product_option.values limit: 4
-                      render 'option-value', type: 'swatch', option_value: option_value, param_name: param_name, option_position: product_option.position, output_variant_media: true, size: 'sm'
+                      render 'option-value', type: 'swatch', option_value: option_value, param_name: param_name, option_position: product_option.position, output_variant_media: true, shop_card_color_assets: shop_card_color_assets, size: 'sm'
                     endfor
                   -%}
 
@@ -338,6 +351,7 @@
                       param_name: param_name,
                       size: 'sm',
                       output_variant_media: true,
+                      shop_card_color_assets: shop_card_color_assets,
                       selected: selected
                     -%}
                   {%- endfor -%}
