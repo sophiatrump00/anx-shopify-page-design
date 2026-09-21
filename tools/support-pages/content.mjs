@@ -438,7 +438,7 @@ PRODUCTS.push(
       'Review the safety and compliance categories recorded for the CY-A3 model.',
     facts: [
       { label: 'Rated capacity', value: '16,000mAh / 59.2Wh' },
-      { label: 'Starting / peak current', value: '800A / 2,500A' },
+      { label: 'Starting / peak current', value: '2,000A / 4,000A' },
       { label: 'Vehicle capacity', value: '8.0L gas / 6.5L diesel' },
       { label: 'USB-C PD', value: '60W input and output' },
     ],
@@ -446,7 +446,7 @@ PRODUCTS.push(
       {
         title: 'Product overview',
         body: `<p>A3 is the independent-site product name; CY-A3 is the model name used in the product, certification and transport documents.</p>
-<p><strong>Rated capacity:</strong> 16,000mAh / 59.2Wh<br><strong>Starting current:</strong> 800A<br><strong>Peak current:</strong> 2,500A<br><strong>Vehicle capacity:</strong> up to 8.0L gasoline / 6.5L diesel<br><strong>Starts per full charge:</strong> up to 50+<br><strong>USB-C input:</strong> PD 60W, 5V/9V/12V/15V/20V up to 3A<br><strong>Outputs:</strong> USB-C PD60W, USB-A PD18W, USB-A 5V/2.4A<br><strong>Emergency light:</strong> 150 lm, steady, strobe and SOS<br><strong>Protection functions:</strong> 8 safeguards<br><strong>Product weight:</strong> 764g<br><strong>Working temperature:</strong> −20°C to 60°C</p>
+<p><strong>Rated capacity:</strong> 16,000mAh / 59.2Wh<br><strong>Starting current:</strong> 2,000A<br><strong>Peak current:</strong> 4,000A<br><strong>Vehicle capacity:</strong> up to 8.0L gasoline / 5.5L diesel<br><strong>Starts per full charge:</strong> up to 50+<br><strong>USB-C input:</strong> PD 60W, 5V/9V/12V/15V/20V up to 3A<br><strong>Outputs:</strong> USB-C PD60W, USB-A PD18W, USB-A 5V/2.4A<br><strong>Emergency light:</strong> 150 lm, steady, strobe and SOS<br><strong>Protection functions:</strong> 8 safeguards<br><strong>Product weight:</strong> 764g<br><strong>Working temperature:</strong> −20°C to 60°C</p>
 <p>The documented pack contains the A3 main unit, intelligent jumper clamps, a PD 60W USB-C cable, an EVA carry case and the user manual.</p>`,
       },
       {

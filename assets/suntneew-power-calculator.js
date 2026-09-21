@@ -87,7 +87,8 @@
           reserve: record.dataset.productPriorityReserve
         },
         architecture: record.dataset.productArchitecture,
-        maxSystemOutputW: record.dataset.productMaxSystemOutputW
+        maxSystemOutputW: record.dataset.productMaxSystemOutputW,
+        available: record.dataset.productAvailable
       };
     }));
 

@@ -18,7 +18,7 @@
         "sku": {"type": "sku", "settings": {}},
         "price": {"type": "price", "settings": {"show_taxes_notice": false}},
         "separator": {"type": "separator", "settings": {}},
-        "intro": {"type": "text", "settings": {"text": "<p>16,000mAh / 59.2Wh 12V jump starter with 800A starting current, 2500A peak current and PD 60W power delivery.</p>"}},
+        "intro": {"type": "text", "settings": {"text": "<p>16,000mAh / 59.2Wh 12V jump starter with 2000A starting current, 4000A peak current and PD 60W power delivery.</p>"}},
         "quantity_selector": {"type": "quantity_selector", "settings": {}},
         "bundle": {"type": "suntneew_bundle_selector", "settings": {"enabled": true, "show_savings": true, "heading": "Build an A3 multi-pack", "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.", "discount_percent": 3}},
         "buy_buttons": {"type": "buy_buttons", "settings": {"show_payment_button": false, "show_gift_card_recipient": false}}
@@ -29,8 +29,8 @@
     "proof": {
       "type": "suntneew-pdp-proof",
       "blocks": {
-        "peak": {"type": "metric", "settings": {"value": "2500A", "label": "Peak current", "variant_match": ""}},
-        "start": {"type": "metric", "settings": {"value": "800A", "label": "Starting current", "variant_match": ""}},
+        "peak": {"type": "metric", "settings": {"value": "4000A", "label": "Peak current", "variant_match": ""}},
+        "start": {"type": "metric", "settings": {"value": "2000A", "label": "Starting current", "variant_match": ""}},
         "engine": {"type": "metric", "settings": {"value": "8.0L / 5.5L", "label": "Gas / diesel capacity", "variant_match": ""}},
         "starts": {"type": "metric", "settings": {"value": "59.2Wh", "label": "Stored energy", "variant_match": ""}}
       },
@@ -55,8 +55,8 @@
       "blocks": {
         "capacity": {"type": "spec", "settings": {"label": "Rated capacity", "value": "16,000mAh", "group": "primary", "variant_match": ""}},
         "energy": {"type": "spec", "settings": {"label": "Rated energy", "value": "59.2Wh", "group": "primary", "variant_match": ""}},
-        "start": {"type": "spec", "settings": {"label": "Starting current", "value": "800A", "group": "primary", "variant_match": ""}},
-        "peak": {"type": "spec", "settings": {"label": "Peak current", "value": "2500A", "group": "primary", "variant_match": ""}},
+        "start": {"type": "spec", "settings": {"label": "Starting current", "value": "2000A", "group": "primary", "variant_match": ""}},
+        "peak": {"type": "spec", "settings": {"label": "Peak current", "value": "4000A", "group": "primary", "variant_match": ""}},
         "engine": {"type": "spec", "settings": {"label": "Vehicle capacity", "value": "Up to 8.0L Gas / 5.5L Diesel", "group": "primary", "variant_match": ""}},
         "starts": {"type": "spec", "settings": {"label": "Stored energy", "value": "59.2Wh", "group": "primary", "variant_match": ""}},
         "input": {"type": "spec", "settings": {"label": "USB-C input", "value": "PD 60W: 5V/9V/12V/15V/20V, up to 3A", "group": "system", "variant_match": ""}},

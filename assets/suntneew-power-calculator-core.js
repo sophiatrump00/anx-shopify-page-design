@@ -39,6 +39,7 @@
     { scenario: 'jump', key: 'jump-u32', id: 'u32-10000', model: 'U32', variant: '10,000mAh', voltage: '12v', gasoline: 6.5, diesel: 3.5, priority: { compact: 1, display: 0, charging: 2, reserve: 3 } },
     { scenario: 'jump', key: 'jump-a20', id: 'a20-12000', model: 'A20', variant: '12,000mAh variant', voltage: '12v', gasoline: 7, diesel: 4, priority: { compact: 3, display: 3, charging: 1, reserve: 2 } },
     { scenario: 'jump', key: 'jump-a3', id: 'a3-16000', model: 'A3', variant: '16,000mAh', voltage: '12v', gasoline: 8, diesel: 5, priority: { compact: 4, display: 2, charging: 0, reserve: 1 } },
+    { scenario: 'jump', key: 'jump-kb700', id: 'kb700-7200', model: 'KB700 Fan Jump Starter', variant: '7,200mAh / 1,000A peak', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 2, display: 4, charging: 2, reserve: 3 } },
     { scenario: 'jump', key: 'jump-a20', id: 'a20-16000', model: 'A20', variant: '16,000mAh variant', voltage: '12v', gasoline: 8, diesel: 5, priority: { compact: 5, display: 3, charging: 1, reserve: 0 } },
     { scenario: 'home', key: 'home-wl5a', id: 'wl5a', model: 'SuntNeew WL5A', architecture: 'low', capacityWh: 5120, maxUnits: 9, maxSystemOutputW: 12000 },
     { scenario: 'home', key: 'home-wl10b', id: 'wl10b', model: 'SuntNeew WL10B', architecture: 'low', capacityWh: 10240, maxUnits: 9, maxSystemOutputW: 12000 },
@@ -67,6 +68,12 @@
     };
   }
 
+  // Out-of-stock records stay in the catalog so the input ranges stay stable, but they are
+  // never recommended: results only ever show products that are currently available.
+  function isAvailable(product) {
+    return !product || product.available !== false;
+  }
+
   function normalizeRecord(record) {
     if (!record || record.enabled === false) return null;
 
@@ -75,7 +82,8 @@
       scenario: scenario,
       key: String(record.key || ''),
       id: String(record.id || record.key || ''),
-      model: String(record.model || record.key || '')
+      model: String(record.model || record.key || ''),
+      available: !(record.available === false || record.available === 'false')
     };
 
     if (!common.key || !common.id || !common.model) return null;
@@ -320,8 +328,10 @@
       dimensions.heightMm <= space.heightMm;
   }
 
-  function rvProductsForFit(fit, seriesCount, space) {
+  function rvProductsForFit(fit, seriesCount, space, options) {
+    var includeUnavailable = Boolean(options && options.includeUnavailable);
     return catalog.rv.filter(function (product) {
+      if (!includeUnavailable && !isAvailable(product)) return false;
       if (product.maxSeries < seriesCount) return false;
       if (space) return productFitsSpace(product, space);
       if (fit === 'group24' || fit === 'group31') return product.fit === fit;
@@ -351,11 +361,13 @@
     };
   }
 
-  function homeProductsForArchitecture(architecture) {
+  function homeProductsForArchitecture(architecture, options) {
+    var includeUnavailable = Boolean(options && options.includeUnavailable);
+    var inRange = function (product) { return includeUnavailable || isAvailable(product); };
     if (architecture === 'low' || architecture === 'high') {
-      return catalog.home.filter(function (product) { return product.architecture === architecture; });
+      return catalog.home.filter(function (product) { return product.architecture === architecture && inRange(product); });
     }
-    return catalog.home.slice();
+    return catalog.home.filter(inRange);
   }
 
   function rvCapability(product, seriesCount) {
@@ -572,7 +584,12 @@
     var space = normalizeRvSpace(input || {});
     var products = rvProductsForFit(fit, seriesCount, space);
 
-    if (!products.length) return supportResult('rv', snTranslate('No verified RV product is configured for the selected footprint.'));
+    if (!products.length) {
+      var configuredRv = rvProductsForFit(fit, seriesCount, space, { includeUnavailable: true });
+      return supportResult('rv', snTranslate(configuredRv.length
+        ? 'No in-stock RV battery matches the selected footprint right now. Contact us for current availability.'
+        : 'No verified RV product is configured for the selected footprint.'));
+    }
     if (!loadMetrics.activeCount) return invalidResult('rv', snTranslate('Select at least one appliance.'));
     if (!loadMetrics.valid) return invalidResult('rv', snTranslate('Use positive load values and run times from 0.1 to 24 hours.'));
     if (backupDays < MIN_RV_BACKUP_DAYS || backupDays > MAX_RV_BACKUP_DAYS) {
@@ -649,9 +666,10 @@
 
     var factor = environmentFactor(environment);
     var planningLiters = round(engineLiters * factor, 2);
-    var candidates = catalog.jump.filter(function (product) {
+    var configuredCandidates = catalog.jump.filter(function (product) {
       return product.voltage === voltage && product[fuel] >= planningLiters;
-    }).map(function (product) {
+    });
+    var candidates = configuredCandidates.filter(isAvailable).map(function (product) {
       return Object.assign({}, product, {
         score: asNumber(product.priority[priority], 3),
         coverageOverage: round(product[fuel] - planningLiters, 2)
@@ -660,7 +678,11 @@
       return a.score - b.score || a.coverageOverage - b.coverageOverage;
     });
 
-    if (!candidates.length) return supportResult('jump', snTranslate('The configured starting coverage table is incomplete.'));
+    if (!candidates.length) {
+      return supportResult('jump', snTranslate(configuredCandidates.length
+        ? 'No in-stock SuntNeew jump starter currently covers this engine size. Contact us for current availability.'
+        : 'The configured starting coverage table is incomplete.'));
+    }
 
     var match = candidates[0];
     var alternate = candidates.find(function (candidate) { return candidate.id !== match.id; });
@@ -709,7 +731,12 @@
     if (architecture !== 'low' && architecture !== 'high') architecture = 'auto';
     var products = homeProductsForArchitecture(architecture);
 
-    if (!products.length) return supportResult('home', snTranslate('No verified home battery is configured for the selected architecture.'));
+    if (!products.length) {
+      var configuredHome = homeProductsForArchitecture(architecture, { includeUnavailable: true });
+      return supportResult('home', snTranslate(configuredHome.length
+        ? 'No in-stock home battery matches the selected architecture right now. Contact us for current availability.'
+        : 'No verified home battery is configured for the selected architecture.'));
+    }
     if (!loadMetrics.activeCount) return invalidResult('home', snTranslate('Select at least one essential load.'));
     if (!loadMetrics.valid) return invalidResult('home', snTranslate('Use positive load values and run times from 0.1 to 24 hours.'));
     if (backupHours < MIN_HOME_BACKUP_HOURS || backupHours > MAX_HOME_BACKUP_HOURS) {

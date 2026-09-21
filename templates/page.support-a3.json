@@ -23,7 +23,7 @@
           "type": "quick_fact",
           "settings": {
             "label": "Starting / peak current",
-            "value": "800A / 2,500A"
+            "value": "2,000A / 4,000A"
           }
         },
         "fact_3": {
@@ -44,7 +44,7 @@
           "type": "manual_section",
           "settings": {
             "title": "Product overview",
-            "body": "<p>A3 is the independent-site product name; CY-A3 is the model name used in the product, certification and transport documents.</p>\n<p><strong>Rated capacity:</strong> 16,000mAh / 59.2Wh<br><strong>Starting current:</strong> 800A<br><strong>Peak current:</strong> 2,500A<br><strong>Vehicle capacity:</strong> up to 8.0L gasoline / 5.5L diesel<br><strong>USB-C:</strong> PD60W input/output<br><strong>Outputs:</strong> USB-C PD60W plus USB-A device-charging outputs<br><strong>Emergency light:</strong> 150 lm, 6000K, steady, flash and SOS<br><strong>Smart-clamp safeguards:</strong> reverse-polarity, short-circuit and connection protection<br><strong>Product weight:</strong> 0.77kg / 1.7lb<br><strong>Working temperature:</strong> −20°C to 60°C discharge range</p>",
+            "body": "<p>A3 is the independent-site product name; CY-A3 is the model name used in the product, certification and transport documents.</p>\n<p><strong>Rated capacity:</strong> 16,000mAh / 59.2Wh<br><strong>Starting current:</strong> 2,000A<br><strong>Peak current:</strong> 4,000A<br><strong>Vehicle capacity:</strong> up to 8.0L gasoline / 5.5L diesel<br><strong>USB-C:</strong> PD60W input/output<br><strong>Outputs:</strong> USB-C PD60W plus USB-A device-charging outputs<br><strong>Emergency light:</strong> 150 lm, 6000K, steady, flash and SOS<br><strong>Smart-clamp safeguards:</strong> reverse-polarity, short-circuit and connection protection<br><strong>Product weight:</strong> 0.77kg / 1.7lb<br><strong>Working temperature:</strong> −20°C to 60°C discharge range</p>",
             "asset_name": "",
             "image_alt": "",
             "image_caption": ""

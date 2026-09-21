@@ -115,7 +115,7 @@
             "spec_capacity": "7,200mAh",
             "spec_start": "500A",
             "spec_peak": "1,000A",
-            "spec_fit": "Up to 6.0L gas / 4.0L diesel",
+            "spec_fit": "Up to 6.0L gas / 3.0L diesel",
             "link_label": "Open KB700 details"
           }
         },
@@ -180,11 +180,11 @@
             "image_alt": "SuntNeew A3 Portable Car Jump Starter",
             "eyebrow": "A3 · 16,000mAh",
             "title": "SuntNeew A3 Portable Car Jump Starter",
-            "summary": "A single 16,000mAh configuration with PD60W USB-C and 2,500A peak current.",
+            "summary": "A single 16,000mAh configuration with PD60W USB-C and 4,000A peak current.",
             "capacities": "16000",
             "spec_capacity": "16,000mAh",
-            "spec_start": "800A",
-            "spec_peak": "2,500A",
+            "spec_start": "2,000A",
+            "spec_peak": "4,000A",
             "spec_fit": "12V vehicle fit",
             "link_label": "Open A3 details"
           }
