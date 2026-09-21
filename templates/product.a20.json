@@ -43,6 +43,22 @@
       "block_order":["a20_8_peak","a20_8_capacity","a20_8_energy","a20_12_peak","a20_12_capacity","a20_12_energy","a20_16_peak","a20_16_capacity","a20_16_energy","common_io"],
       "settings":{"accessibility_label":"A20 selected variant highlights"}
     },
+    "demo_video": {
+      "type":"suntneew-pdp-video-band",
+      "settings": {
+        "eyebrow":"Real footage",
+        "heading":"See how the A20 clamps on to a real car battery",
+        "lede":"Filmed on camera, start to finish: clamps on red first, the smart-clamp indicator already lit, the 12V readout and the USB output. No studio, no staged rescue.",
+        "video_url":"https://www.youtube.com/watch?v=cZLH2Q9gKlc",
+        "poster_alt":"SuntNeew A20 jump starter connected to a car battery in an engine bay",
+        "caption":"Canyon Life on Amazon Live",
+        "play_label":"Play the A20 demo video",
+        "cta_label":"Shop the A20 — 15% off with code ANX15",
+        "cta_link":"https://www.suntneew.com/products/suntneew-a20-jump-starter-8000mah?discount=ANX15&utm_source=pdp&utm_medium=onsite&utm_campaign=a20_demo&utm_content=pdp_video_band",
+        "cta_note":"The code is applied automatically through this link. Code ANX15 ends 20 Oct 2026.",
+        "anchor_id":"demo"
+      }
+    },
     "anchor_nav": {
       "type":"suntneew-pdp-anchor-nav",
       "blocks": {
@@ -107,5 +123,5 @@
     },
     "related-products":{"type":"related-products","settings":{}}
   },
-  "order":["main","proof","anchor_nav","features","details","faq","related-products"]
+  "order":["main","proof","demo_video","anchor_nav","features","details","faq","related-products"]
 }
