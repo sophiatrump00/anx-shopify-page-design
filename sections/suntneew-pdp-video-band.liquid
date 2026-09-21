@@ -2,6 +2,15 @@
 
 {%- assign demo_video_id = section.settings.video_url.id -%}
 {%- assign demo_video_host = section.settings.video_url.type -%}
+{%- assign demo_hosted_url = section.settings.hosted_video_url -%}
+{%- assign demo_hosted_url_mobile = section.settings.hosted_video_url_mobile | default: demo_hosted_url -%}
+{%- assign demo_poster_asset = section.settings.poster_asset | default: 'suntneew-a20-2026-pdp-demo-poster.webp' -%}
+{%- assign demo_has_youtube = false -%}
+{%- if demo_video_id != blank and demo_video_host == 'youtube' -%}{%- assign demo_has_youtube = true -%}{%- endif -%}
+{%- assign demo_has_hosted = false -%}
+{%- if demo_hosted_url != blank -%}{%- assign demo_has_hosted = true -%}{%- endif -%}
+{%- assign demo_has_video = false -%}
+{%- if demo_has_youtube or demo_has_hosted -%}{%- assign demo_has_video = true -%}{%- endif -%}
 <section
   id="{{ section.settings.anchor_id | default: 'demo' | handleize }}"
   class="sn-a20-pdp sn-a20-pdp-video"
@@ -17,12 +26,17 @@
     {%- endif -%}
 
     <div class="sn-a20-pdp-video__frame">
-      {%- if demo_video_id != blank and demo_video_host == 'youtube' -%}
+      {%- if demo_has_video -%}
         <button
           type="button"
           class="sn-a20-pdp-video__facade"
           data-a20-video-play
-          data-a20-video-id="{{ demo_video_id | escape }}"
+          {%- if demo_has_youtube -%}
+            data-a20-video-id="{{ demo_video_id | escape }}"
+          {%- else -%}
+            data-a20-video-src="{{ demo_hosted_url | escape }}"
+            {%- if demo_hosted_url_mobile != blank %} data-a20-video-src-mobile="{{ demo_hosted_url_mobile | escape }}"{% endif %}
+          {%- endif -%}
           aria-label="{{ section.settings.play_label | default: 'Play the demo video' | escape }}"
         >
           {%- if section.settings.poster != blank -%}
@@ -37,7 +51,7 @@
             -}}
           {%- else -%}
             <img
-              src="{{ 'suntneew-a20-2026-pdp-demo-poster.webp' | asset_url }}"
+              src="{{ demo_poster_asset | asset_url }}"
               alt="{{ section.settings.poster_alt | escape }}"
               width="1600"
               height="900"
@@ -50,7 +64,7 @@
           {%- endif -%}
         </button>
       {%- else -%}
-        <p class="sn-a20-pdp-video__empty">Add a YouTube URL in the section settings to show the demo video.</p>
+        <p class="sn-a20-pdp-video__empty">Add a YouTube URL or a hosted MP4 URL in the section settings to show the demo video.</p>
       {%- endif -%}
     </div>
 
@@ -97,11 +111,13 @@
     object-fit: cover;
   }
 
-  #shopify-section-{{ section.id }} .sn-a20-pdp-video__embed iframe {
+  #shopify-section-{{ section.id }} .sn-a20-pdp-video__embed iframe,
+  #shopify-section-{{ section.id }} .sn-a20-pdp-video__embed video {
     display: block;
     width: 100%;
     height: 100%;
     border: 0;
+    background: #0f1620;
   }
 
   #shopify-section-{{ section.id }} .sn-a20-pdp-video__facade::after {
@@ -187,19 +203,43 @@
       const facade = event.target.closest('[data-a20-video-play]');
       if (!facade) return;
 
+      const hostedSrc = facade.dataset.a20VideoSrc;
       const videoId = facade.dataset.a20VideoId;
-      if (!videoId) return;
+      if (!hostedSrc && !videoId) return;
 
       const embed = document.createElement('div');
       embed.className = 'sn-a20-pdp-video__embed';
 
-      const iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
-      iframe.title = facade.getAttribute('aria-label') || 'A20 demo video';
-      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.allowFullscreen = true;
+      if (hostedSrc) {
+        const video = document.createElement('video');
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.setAttribute('aria-label', facade.getAttribute('aria-label') || 'Product demo video');
+        const mobileSrc = facade.dataset.a20VideoSrcMobile;
+        if (mobileSrc) {
+          const desktopSource = document.createElement('source');
+          desktopSource.src = hostedSrc;
+          desktopSource.media = '(min-width: 750px)';
+          const mobileSource = document.createElement('source');
+          mobileSource.src = mobileSrc;
+          mobileSource.media = '(max-width: 749px)';
+          video.appendChild(desktopSource);
+          video.appendChild(mobileSource);
+        } else {
+          video.src = hostedSrc;
+        }
+        embed.appendChild(video);
+      } else {
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+        iframe.title = facade.getAttribute('aria-label') || 'Product demo video';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        embed.appendChild(iframe);
+      }
 
-      embed.appendChild(iframe);
       facade.replaceWith(embed);
     });
   })();
@@ -212,8 +252,11 @@
     {"type":"text","id":"eyebrow","label":"Eyebrow","default":"Real footage"},
     {"type":"text","id":"heading","label":"Heading","default":"See how the A20 clamps on to a real car battery"},
     {"type":"textarea","id":"lede","label":"Intro text","default":"Filmed on camera, start to finish: clamps on red first, the smart-clamp indicator already lit, the 12V readout and the USB output. No studio, no staged rescue."},
-    {"type":"video_url","id":"video_url","label":"Video URL","accept":["youtube"],"info":"YouTube only. The player loads on click, so the page stays fast."},
+    {"type":"video_url","id":"video_url","label":"YouTube URL","accept":["youtube"],"info":"Optional. Takes priority over the hosted MP4 when both are set. The player loads on click, so the page stays fast."},
+    {"type":"text","id":"hosted_video_url","label":"Hosted MP4 URL","info":"Optional. Use for SuntNeew's own product films uploaded to Files; plays in a native player with no YouTube branding."},
+    {"type":"text","id":"hosted_video_url_mobile","label":"Hosted MP4 URL (mobile)","info":"Optional. Lower-bitrate rendition served below 750px."},
     {"type":"image_picker","id":"poster","label":"Poster image","info":"Optional. Defaults to the bundled A20 demo still."},
+    {"type":"text","id":"poster_asset","label":"Poster asset filename","default":"suntneew-a20-2026-pdp-demo-poster.webp","info":"Theme asset used when no poster image is picked."},
     {"type":"text","id":"poster_alt","label":"Poster alt text","default":"SuntNeew A20 jump starter connected to a car battery in an engine bay"},
     {"type":"text","id":"caption","label":"Caption on the poster","default":"Canyon Life on Amazon Live"},
     {"type":"text","id":"play_label","label":"Play button label","default":"Play the A20 demo video"},

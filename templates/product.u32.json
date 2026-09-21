@@ -49,6 +49,24 @@
       "block_order":["peak","start","capacity","energy"],
       "settings":{"accessibility_label":"U32 product highlights"}
     },
+    "demo_video": {
+      "type":"suntneew-pdp-video-band",
+      "settings": {
+        "eyebrow":"Product film",
+        "heading":"From the glovebox to a started car",
+        "lede":"Fifty seconds, start to finish: the U32 comes out of the glovebox, the clamps go on the battery, and the car drives off. You also see the 100% charge display, the emergency LED and two devices charging from the USB ports.",
+        "hosted_video_url":"https://cdn.shopify.com/videos/c/vp/3314835de5a647f19f0bfaacd00e44e4/3314835de5a647f19f0bfaacd00e44e4.HD-1080p-3.3Mbps-95039375.mp4",
+        "hosted_video_url_mobile":"https://cdn.shopify.com/videos/c/vp/3314835de5a647f19f0bfaacd00e44e4/3314835de5a647f19f0bfaacd00e44e4.HD-720p-2.1Mbps-95039375.mp4",
+        "poster_asset":"suntneew-u32-2026-pdp-demo-poster.jpg",
+        "poster_alt":"SuntNeew U32 jump starter with smart clamps connected to a car battery",
+        "caption":"SuntNeew U32 product film",
+        "play_label":"Play the U32 product film",
+        "cta_label":"See the U32",
+        "cta_link":"https://www.suntneew.com/products/suntneew-u32-portable-car-jump-starter-10-000mah?utm_source=pdp&utm_medium=onsite&utm_campaign=u32_demo&utm_content=pdp_video_band",
+        "cta_note":"10,000mAh / 12V. Check your engine size and battery type before ordering.",
+        "anchor_id":"demo"
+      }
+    },
     "anchor_nav": {
       "type":"suntneew-pdp-anchor-nav",
       "blocks": {
@@ -129,5 +147,5 @@
     },
     "related-products":{"type":"related-products","settings":{}}
   },
-  "order":["main","gallery_fallback","proof","anchor_nav","features","details","faq","related-products"]
+  "order":["main","gallery_fallback","proof","demo_video","anchor_nav","features","details","faq","related-products"]
 }
