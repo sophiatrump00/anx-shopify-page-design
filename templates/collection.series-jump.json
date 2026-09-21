@@ -188,6 +188,23 @@
             "spec_fit": "12V vehicle fit",
             "link_label": "Open A3 details"
           }
+        },
+        "family_oj02": {
+          "type": "family",
+          "settings": {
+            "product_handle": "suntneew-oj02-obd2-jump-starter",
+            "asset_name": "suntneew-shop-white-oj02.jpg",
+            "image_alt": "SuntNeew OJ02 OBD2 jump starter with smart clamp and OBD2 cable",
+            "eyebrow": "OJ02 · 8,000mAh",
+            "title": "SuntNeew OJ02 OBD2 Jump Starter",
+            "summary": "A 12V jump starter with OBD2 diagnostics, 700A starting current and 1,500A peak current.",
+            "capacities": "8000",
+            "spec_capacity": "8,000mAh",
+            "spec_start": "700A",
+            "spec_peak": "1,500A",
+            "spec_fit": "Up to 6.0L gas / 3.0L diesel",
+            "link_label": "Open OJ02 details"
+          }
         }
       },
       "block_order": [
@@ -202,7 +219,8 @@
         "family_a20",
         "family_u23",
         "family_u32",
-        "family_a3"
+        "family_a3",
+        "family_oj02"
       ],
       "settings": {
         "eyebrow": "CHOOSE BY FIT",

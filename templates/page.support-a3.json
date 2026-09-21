@@ -120,7 +120,7 @@
         "compliance_4": {
           "type": "compliance_item",
           "settings": {
-            "standard": "Safety tested to UL 2743",
+            "standard": "UL 2743 test report",
             "title": "Product safety testing",
             "description": "Product-level safety-test scope recorded for the A3 / CY-A3 model family.",
             "status": "Product safety evidence"

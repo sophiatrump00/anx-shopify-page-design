@@ -34,7 +34,7 @@ const MULTILINGUAL_PDF_LABEL = 'EN · FR · DE PDF';
 // 通用合规条目措辞
 const compliance = {
   ul2743: (model) => ({
-    standard: 'Safety tested to UL 2743',
+    standard: 'UL 2743 test report',
     title: 'Product safety testing',
     description: `Product-level safety-test scope recorded for the ${model} model family.`,
     status: 'Product safety evidence',

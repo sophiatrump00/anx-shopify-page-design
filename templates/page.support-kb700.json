@@ -84,7 +84,7 @@
         "compliance_ul": {
           "type": "compliance_item",
           "settings": {
-            "standard": "Safety tested to UL 2743",
+            "standard": "UL 2743 test report",
             "title": "Product safety testing",
             "description": "Product-level safety-test scope shown for the KB700 / KP-700 model family.",
             "status": "Product safety evidence"

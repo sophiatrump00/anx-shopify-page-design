@@ -103,7 +103,7 @@
         "compliance_1": {
           "type": "compliance_item",
           "settings": {
-            "standard": "Safety tested to UL 2743",
+            "standard": "UL 2743 test report",
             "title": "Product safety testing",
             "description": "Product-level safety-test scope recorded for the U32 model family.",
             "status": "Product safety evidence"
