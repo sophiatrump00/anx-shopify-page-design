@@ -8,7 +8,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-import { DIRECTORY_SETTINGS, PRODUCTS } from './content.mjs';
+import { COMPLIANCE_DOCUMENTS, DIRECTORY_SETTINGS, PRODUCTS } from './content.mjs';
 import { repoRoot } from '../manual-build/lib/render.mjs';
 
 const HEADER = `/*
@@ -84,6 +84,7 @@ for (const product of PRODUCTS) {
 
   product.complianceItems.forEach((item, index) => {
     const id = `compliance_${index + 1}`;
+    const documents = (COMPLIANCE_DOCUMENTS[product.handle] || {})[item.standard] || [];
     blocks[id] = {
       type: 'compliance_item',
       settings: {
@@ -91,6 +92,9 @@ for (const product of PRODUCTS) {
         title: item.title,
         description: item.description,
         status: item.status,
+        document_assets: documents
+          .map(([file, label]) => (label ? `${file} | ${label}` : file))
+          .join('\n'),
       },
     };
     order.push(id);

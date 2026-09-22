@@ -126,7 +126,8 @@
             "standard": "FCC",
             "title": "Electromagnetic compatibility",
             "description": "FCC information associated with the Group 31 battery family, including the model-matched FCC ID and Part 15 test report.",
-            "status": "U.S. market information"
+            "status": "U.S. market information",
+            "document_assets": "suntneew-rv-g31-fcc-grant-public.pdf | FCC Equipment Authorization — ID 2BQK7-12100BG31 (PDF)\nsuntneew-rv-g24-g31-fcc-sdoc-public.pdf | FCC SDoC — Group 24 / Group 31 (PDF)"
           }
         },
         "compliance_2": {
@@ -135,7 +136,8 @@
             "standard": "CE-EMC",
             "title": "Electromagnetic compatibility (EU)",
             "description": "Model-matched EMC documentation recorded for the Group 31 and Group 24 battery family.",
-            "status": "EU market information"
+            "status": "EU market information",
+            "document_assets": "suntneew-rv-g24-g31-emc-certificate-public.pdf | CE-EMC certificate — Group 24 / Group 31 (PDF)"
           }
         },
         "compliance_3": {
@@ -144,7 +146,8 @@
             "standard": "RoHS",
             "title": "Restricted substances",
             "description": "RoHS documentation recorded for the the RV battery series model family.",
-            "status": "EU market information"
+            "status": "EU market information",
+            "document_assets": "suntneew-rv-series-rohs-test-report-public-excerpt.pdf | RoHS test report — RV series (PDF)"
           }
         },
         "compliance_4": {
@@ -153,7 +156,8 @@
             "standard": "IP65",
             "title": "Enclosure protection",
             "description": "Enclosure-protection evidence recorded for the Group 31 battery; keep the battery dry and never submerge it.",
-            "status": "Ingress protection"
+            "status": "Ingress protection",
+            "document_assets": "suntneew-rv-g31-ip65-certificate-public.pdf | IP65 certificate — Group 31 (PDF)"
           }
         },
         "compliance_5": {
@@ -162,7 +166,8 @@
             "standard": "UN38.3",
             "title": "Battery transport testing",
             "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in the Group 31 battery.",
-            "status": "Transport evidence"
+            "status": "Transport evidence",
+            "document_assets": ""
           }
         },
         "compliance_6": {
@@ -171,7 +176,8 @@
             "standard": "SDS",
             "title": "Safety and handling information",
             "description": "Safety Data Sheet information for handling, storage and response for the battery used in the Group 31 battery.",
-            "status": "Safety information"
+            "status": "Safety information",
+            "document_assets": ""
           }
         }
       },

@@ -96,7 +96,8 @@
             "standard": "FCC",
             "title": "Electromagnetic compatibility",
             "description": "FCC information associated with the CY-A20 8,000mAh / 12,000mAh / 16,000mAh variants.",
-            "status": "U.S. market information"
+            "status": "U.S. market information",
+            "document_assets": "suntneew-a20-fcc-sdoc-public.pdf | FCC SDoC — CY-A20 (PDF)"
           }
         },
         "compliance_2": {
@@ -105,7 +106,8 @@
             "standard": "UL 2743 test report",
             "title": "Product safety testing",
             "description": "Product-level safety-test scope recorded for the CY-A20 model family.",
-            "status": "Product safety evidence"
+            "status": "Product safety evidence",
+            "document_assets": ""
           }
         },
         "compliance_3": {
@@ -114,7 +116,8 @@
             "standard": "UN38.3",
             "title": "Battery transport testing",
             "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in the A20 family.",
-            "status": "Transport evidence"
+            "status": "Transport evidence",
+            "document_assets": ""
           }
         },
         "compliance_4": {
@@ -123,7 +126,8 @@
             "standard": "SDS",
             "title": "Safety and handling information",
             "description": "Safety Data Sheet information for handling, storage and response for the battery used in the A20 family.",
-            "status": "Safety information"
+            "status": "Safety information",
+            "document_assets": ""
           }
         }
       },

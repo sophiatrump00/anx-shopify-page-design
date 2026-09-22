@@ -124,6 +124,20 @@
               <span>{{ block.settings.standard }}</span>
               <h3>{{ block.settings.title }}</h3>
               <p>{{ block.settings.description }}</p>
+              {%- assign doc_lines = block.settings.document_assets | strip | newline_to_br | split: '<br />' -%}
+              {%- if block.settings.document_assets != blank -%}
+                <ul class="sn-support__compliance-files">
+                  {%- for doc_line in doc_lines -%}
+                    {%- assign doc_parts = doc_line | split: '|' -%}
+                    {%- assign doc_file = doc_parts[0] | strip -%}
+                    {%- if doc_file != blank -%}
+                      {%- assign doc_label = doc_parts[1] | strip -%}
+                      {%- if doc_label == blank -%}{%- assign doc_label = 'Download document' -%}{%- endif -%}
+                      <li><a class="sn-support__compliance-download" href="{{ doc_file | asset_url }}" target="_blank" rel="noopener">{{ doc_label }}<span aria-hidden="true">&darr;</span></a></li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
               <small>{{ block.settings.status }}</small>
             </article>
           {%- endif -%}
@@ -205,7 +219,8 @@
         {"type": "text", "id": "standard", "label": "Standard", "default": "FCC"},
         {"type": "text", "id": "title", "label": "Title", "default": "Model-matched document"},
         {"type": "textarea", "id": "description", "label": "Description"},
-        {"type": "text", "id": "status", "label": "Evidence type", "default": "Product information"}
+        {"type": "text", "id": "status", "label": "Evidence type", "default": "Product information"},
+        {"type": "textarea", "id": "document_assets", "label": "Downloadable files (one per line: theme-asset-filename | Link label)"}
       ]
     }
   ],

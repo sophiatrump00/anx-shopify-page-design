@@ -106,7 +106,8 @@
             "standard": "UL 2743 test report",
             "title": "Product safety testing",
             "description": "Product-level safety-test scope recorded for the U32 model family.",
-            "status": "Product safety evidence"
+            "status": "Product safety evidence",
+            "document_assets": ""
           }
         },
         "compliance_2": {
@@ -115,7 +116,8 @@
             "standard": "FCC",
             "title": "Electromagnetic compatibility",
             "description": "FCC information associated with U32, including the Part 15 notice in the manual.",
-            "status": "U.S. market information"
+            "status": "U.S. market information",
+            "document_assets": "suntneew-u32-fcc-sdoc-public.pdf | FCC SDoC — U32 (PDF)"
           }
         },
         "compliance_3": {
@@ -124,7 +126,8 @@
             "standard": "UN38.3",
             "title": "Battery transport testing",
             "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in U32.",
-            "status": "Transport evidence"
+            "status": "Transport evidence",
+            "document_assets": ""
           }
         },
         "compliance_4": {
@@ -133,7 +136,8 @@
             "standard": "SDS",
             "title": "Safety and handling information",
             "description": "Safety Data Sheet information for handling, storage and response for the battery used in U32.",
-            "status": "Safety information"
+            "status": "Safety information",
+            "document_assets": ""
           }
         }
       },

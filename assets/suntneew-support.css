@@ -661,6 +661,31 @@
   font-weight: 800;
 }
 
+.sn-support__compliance-files {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sn-support__compliance-files li { margin: 0; }
+
+.sn-support__compliance-download {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  padding-bottom: 2px;
+  border-bottom: 2px solid #e9653b;
+  color: #17323d;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.sn-support__compliance-download:hover { color: #b84b22; }
+
 .sn-support__compliance-note {
   display: flex;
   gap: 24px;

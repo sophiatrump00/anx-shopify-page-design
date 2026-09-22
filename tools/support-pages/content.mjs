@@ -31,6 +31,68 @@ export const DIRECTORY_SETTINGS = {
 
 const MULTILINGUAL_PDF_LABEL = 'EN · FR · DE PDF';
 
+// ---------------------------------------------------------------------------
+// 已发布到主题 assets 的公开版证书 → 各支持页 Safety & Compliance 卡片下载项
+//
+// 只登记「主题里真实存在、且已经过隐私处理」的文件。没有对应文件的卡片保持纯描述。
+// 键为支持页 handle，二级键为 compliance 条目的 standard 值。
+// ---------------------------------------------------------------------------
+
+export const COMPLIANCE_DOCUMENTS = {
+  'support-a20': {
+    FCC: [['suntneew-a20-fcc-sdoc-public.pdf', 'FCC SDoC — CY-A20 (PDF)']],
+  },
+  'support-a3': {
+    FCC: [['suntneew-a3-fcc-sdoc-public.pdf', 'FCC SDoC — CY-A3 (PDF)']],
+  },
+  'support-u23': {
+    FCC: [['suntneew-u23-fcc-sdoc-public.pdf', 'FCC SDoC — U23 (PDF)']],
+  },
+  'support-u32': {
+    FCC: [['suntneew-u32-fcc-sdoc-public.pdf', 'FCC SDoC — U32 (PDF)']],
+  },
+  'support-oj02': {
+    'UL 2743 test report': [['suntneew-oj02-ul2743-test-report.pdf', 'UL 2743 test report — OJ02 (PDF)']],
+    FCC: [['suntneew-oj02-fcc-sdoc.pdf', 'FCC SDoC — OJ02 (PDF)']],
+    'CE-EMC': [['suntneew-oj02-ce-emc-certificate.pdf', 'CE-EMC certificate — OJ02 (PDF)']],
+    RoHS: [['suntneew-oj02-rohs-certificate.pdf', 'RoHS certificate — OJ02 (PDF)']],
+    'UN38.3': [['suntneew-oj02-un38-3-summary.pdf', 'UN38.3 transport report — OJ02 (PDF)']],
+    SDS: [['suntneew-oj02-sds.pdf', 'Safety data sheet — OJ02 (PDF)']],
+  },
+  'support-rv-g24': {
+    FCC: [['suntneew-rv-g24-g31-fcc-sdoc-public.pdf', 'FCC SDoC — Group 24 / Group 31 (PDF)']],
+    'CE-EMC': [
+      ['suntneew-rv-g24-g31-emc-certificate-public.pdf', 'CE-EMC certificate — Group 24 / Group 31 (PDF)'],
+    ],
+    RoHS: [['suntneew-rv-series-rohs-test-report-public-excerpt.pdf', 'RoHS test report — RV series (PDF)']],
+  },
+  'support-rv-g31': {
+    FCC: [
+      ['suntneew-rv-g31-fcc-grant-public.pdf', 'FCC Equipment Authorization — ID 2BQK7-12100BG31 (PDF)'],
+      ['suntneew-rv-g24-g31-fcc-sdoc-public.pdf', 'FCC SDoC — Group 24 / Group 31 (PDF)'],
+    ],
+    'CE-EMC': [
+      ['suntneew-rv-g24-g31-emc-certificate-public.pdf', 'CE-EMC certificate — Group 24 / Group 31 (PDF)'],
+    ],
+    RoHS: [['suntneew-rv-series-rohs-test-report-public-excerpt.pdf', 'RoHS test report — RV series (PDF)']],
+    IP65: [['suntneew-rv-g31-ip65-certificate-public.pdf', 'IP65 certificate — Group 31 (PDF)']],
+  },
+  'support-rv-230ah': {
+    FCC: [['suntneew-rv-230-314-fcc-sdoc-public.pdf', 'FCC SDoC — 230Ah / 314Ah (PDF)']],
+    'CE-EMC': [
+      ['suntneew-rv-230-314-emc-certificate-public.pdf', 'CE-EMC certificate — 230Ah / 314Ah (PDF)'],
+    ],
+    RoHS: [['suntneew-rv-series-rohs-test-report-public-excerpt.pdf', 'RoHS test report — RV series (PDF)']],
+  },
+  'support-rv-314ah': {
+    FCC: [['suntneew-rv-230-314-fcc-sdoc-public.pdf', 'FCC SDoC — 230Ah / 314Ah (PDF)']],
+    'CE-EMC': [
+      ['suntneew-rv-230-314-emc-certificate-public.pdf', 'CE-EMC certificate — 230Ah / 314Ah (PDF)'],
+    ],
+    RoHS: [['suntneew-rv-series-rohs-test-report-public-excerpt.pdf', 'RoHS test report — RV series (PDF)']],
+  },
+};
+
 // 通用合规条目措辞
 const compliance = {
   ul2743: (model) => ({

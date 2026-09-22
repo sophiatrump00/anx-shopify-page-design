@@ -96,7 +96,8 @@
             "standard": "Installation manual",
             "title": "Model-matched user and installation manual",
             "description": "The WL5A installation and operating manual is being prepared for publication.",
-            "status": "In preparation"
+            "status": "In preparation",
+            "document_assets": ""
           }
         },
         "compliance_2": {
@@ -105,7 +106,8 @@
             "standard": "Certification",
             "title": "Product certification",
             "description": "Model-matched certificates are published once the release is approved for the WL5A configuration.",
-            "status": "In preparation"
+            "status": "In preparation",
+            "document_assets": ""
           }
         },
         "compliance_3": {
@@ -114,7 +116,8 @@
             "standard": "UN38.3",
             "title": "Battery transport testing",
             "description": "Transport-test documentation is published with the model-matched support pack.",
-            "status": "In preparation"
+            "status": "In preparation",
+            "document_assets": ""
           }
         },
         "compliance_4": {
@@ -123,7 +126,8 @@
             "standard": "SDS",
             "title": "Safety and handling information",
             "description": "Safety data sheet information for handling, storage and response is being prepared.",
-            "status": "In preparation"
+            "status": "In preparation",
+            "document_assets": ""
           }
         }
       },

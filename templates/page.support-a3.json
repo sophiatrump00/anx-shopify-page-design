@@ -30,7 +30,7 @@
           "type": "quick_fact",
           "settings": {
             "label": "Vehicle capacity",
-            "value": "8.0L gas / 5.5L diesel"
+            "value": "8.0L gas / 6.5L diesel"
           }
         },
         "fact_4": {
@@ -44,7 +44,7 @@
           "type": "manual_section",
           "settings": {
             "title": "Product overview",
-            "body": "<p>A3 is the independent-site product name; CY-A3 is the model name used in the product, certification and transport documents.</p>\n<p><strong>Rated capacity:</strong> 16,000mAh / 59.2Wh<br><strong>Starting current:</strong> 2,000A<br><strong>Peak current:</strong> 4,000A<br><strong>Vehicle capacity:</strong> up to 8.0L gasoline / 5.5L diesel<br><strong>USB-C:</strong> PD60W input/output<br><strong>Outputs:</strong> USB-C PD60W plus USB-A device-charging outputs<br><strong>Emergency light:</strong> 150 lm, 6000K, steady, flash and SOS<br><strong>Smart-clamp safeguards:</strong> reverse-polarity, short-circuit and connection protection<br><strong>Product weight:</strong> 0.77kg / 1.7lb<br><strong>Working temperature:</strong> −20°C to 60°C discharge range</p>",
+            "body": "<p>A3 is the independent-site product name; CY-A3 is the model name used in the product, certification and transport documents.</p>\n<p><strong>Rated capacity:</strong> 16,000mAh / 59.2Wh<br><strong>Starting current:</strong> 2,000A<br><strong>Peak current:</strong> 4,000A<br><strong>Vehicle capacity:</strong> up to 8.0L gasoline / 5.5L diesel<br><strong>Starts per full charge:</strong> up to 50+<br><strong>USB-C input:</strong> PD 60W, 5V/9V/12V/15V/20V up to 3A<br><strong>Outputs:</strong> USB-C PD60W, USB-A PD18W, USB-A 5V/2.4A<br><strong>Emergency light:</strong> 150 lm, steady, strobe and SOS<br><strong>Protection functions:</strong> 8 safeguards<br><strong>Product weight:</strong> 764g<br><strong>Working temperature:</strong> −20°C to 60°C</p>\n<p>The documented pack contains the A3 main unit, intelligent jumper clamps, a PD 60W USB-C cable, an EVA carry case and the user manual.</p>",
             "asset_name": "",
             "image_alt": "",
             "image_caption": ""
@@ -96,7 +96,8 @@
             "standard": "FCC",
             "title": "Electromagnetic compatibility",
             "description": "FCC information associated with the CY-A3 model.",
-            "status": "U.S. market information"
+            "status": "U.S. market information",
+            "document_assets": "suntneew-a3-fcc-sdoc-public.pdf | FCC SDoC — CY-A3 (PDF)"
           }
         },
         "compliance_2": {
@@ -105,7 +106,8 @@
             "standard": "CE-EMC",
             "title": "Electromagnetic compatibility (EU)",
             "description": "Model-matched EMC documentation recorded for CY-A3.",
-            "status": "EU market information"
+            "status": "EU market information",
+            "document_assets": ""
           }
         },
         "compliance_3": {
@@ -114,7 +116,8 @@
             "standard": "RoHS",
             "title": "Restricted substances",
             "description": "RoHS documentation recorded for the CY-A3 model family.",
-            "status": "EU market information"
+            "status": "EU market information",
+            "document_assets": ""
           }
         },
         "compliance_4": {
@@ -123,7 +126,8 @@
             "standard": "UL 2743 test report",
             "title": "Product safety testing",
             "description": "Product-level safety-test scope recorded for the A3 / CY-A3 model family.",
-            "status": "Product safety evidence"
+            "status": "Product safety evidence",
+            "document_assets": ""
           }
         },
         "compliance_5": {
@@ -132,7 +136,8 @@
             "standard": "UN38.3",
             "title": "Battery transport testing",
             "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in CY-A3.",
-            "status": "Transport evidence"
+            "status": "Transport evidence",
+            "document_assets": ""
           }
         },
         "compliance_6": {
@@ -141,7 +146,8 @@
             "standard": "SDS",
             "title": "Safety and handling information",
             "description": "Safety Data Sheet information for handling, storage and response for the battery used in the A3 battery pack.",
-            "status": "Safety information"
+            "status": "Safety information",
+            "document_assets": ""
           }
         }
       },
