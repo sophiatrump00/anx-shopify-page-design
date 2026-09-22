@@ -143,7 +143,7 @@ export const PRODUCTS = [
     sections: [
       {
         title: 'Product overview',
-        body: `<p>The U23 is a compact, Portable Car Jump Starter with a built-in high-intensity floodlight. It combines three core functions: emergency Emergency Car Starter use, emergency lighting and a portable power bank.</p>
+        body: `<p>The U23 is a compact, Portable Car Jump Starter with a built-in high-intensity floodlight. It combines three core functions: emergency Emergency Car Starter use, emergency lighting and USB-A device charging.</p>
 <p><strong>Battery:</strong> 8,000mAh / 29.6Wh<br><strong>Input:</strong> Type-C 5V 2A<br><strong>Output:</strong> USB 5V 2.4A<br><strong>EC5 output:</strong> 12V<br><strong>Recharge time:</strong> 3–4 hours<br><strong>Starting current:</strong> 700A<br><strong>Peak current:</strong> 1,500A<br><strong>Operating temperature:</strong> −20°C to 60°C</p>
 <p>The printed booklet lists the U23 jump starter, a USB cable, a smart clamp, the paper box, the user manual and a tool bag as the supplied items. Check your package for the complete current bundle.</p>`,
       },
