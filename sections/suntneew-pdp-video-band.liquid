@@ -31,12 +31,14 @@
           type="button"
           class="sn-a20-pdp-video__facade"
           data-a20-video-play
-          {%- if demo_has_youtube -%}
+          {% if demo_has_youtube %}
             data-a20-video-id="{{ demo_video_id | escape }}"
-          {%- else -%}
+          {% else %}
             data-a20-video-src="{{ demo_hosted_url | escape }}"
-            {%- if demo_hosted_url_mobile != blank %} data-a20-video-src-mobile="{{ demo_hosted_url_mobile | escape }}"{% endif %}
-          {%- endif -%}
+            {% if demo_hosted_url_mobile != blank %}
+              data-a20-video-src-mobile="{{ demo_hosted_url_mobile | escape }}"
+            {% endif %}
+          {% endif %}
           aria-label="{{ section.settings.play_label | default: 'Play the demo video' | escape }}"
         >
           {%- if section.settings.poster != blank -%}
