@@ -1,0 +1,89 @@
+        {%- if qr_support_enabled and template.suffix != 'kb700' -%}
+          <div class="sn-pdp-qr-mobile" aria-label="{{ qr_support_model | escape }} support">
+            <div class="sn-pdp-qr-mobile__intro">
+              <div class="sn-pdp-qr-mobile__image">
+                {%- if product.featured_image -%}
+                  <img src="{{ product.featured_image | image_url: width: 720 }}" alt="{{ qr_support_model | escape }}" loading="eager" width="720" height="720">
+                {%- endif -%}
+              </div>
+              <div class="sn-pdp-qr-mobile__intro-copy">
+                <p class="sn-pdp-qr-mobile__eyebrow">{{ qr_support_model | upcase }}</p>
+                <h3>Product support for your {{ qr_support_model }}.</h3>
+                <p>{{ qr_support_intro }}</p>
+              </div>
+            </div>
+
+            <div class="sn-pdp-qr-mobile__actions" aria-label="{{ qr_support_model | escape }} support actions">
+              {%- if manual_count > 1 -%}
+                <a class="sn-pdp-qr-mobile__action sn-pdp-qr-mobile__action--primary" href="#qr-product-documents">
+                  <span>{{ 'suntneew_auto.s1e67508276ac' | t }}</span>
+                  <small>{{ 'suntneew_auto.s5cfe9ae02374' | t }}</small>
+                  <span aria-hidden="true">↓</span>
+                </a>
+                {%- elsif qr_primary_document_url != blank -%}
+                <a class="sn-pdp-qr-mobile__action sn-pdp-qr-mobile__action--primary" href="{{ qr_primary_document_url }}" target="_blank" rel="noopener">
+                  <span>{% if template.suffix contains 'home-' %}View product specification{% else %}Download user manual{% endif %}</span>
+                  <small>{% if template.suffix contains 'home-' %}Current product data{% else %}Open the model-matched guide{% endif %}</small>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              {%- endif -%}
+            </div>
+
+            <div class="sn-pdp-qr-mobile__facts" aria-label="{{ qr_support_model | escape }} key specifications">
+              <div><strong>{{ qr_support_fact_one_value }}</strong><span>{{ qr_support_fact_one_label }}</span></div>
+              <div><strong>{{ qr_support_fact_two_value }}</strong><span>{{ qr_support_fact_two_label }}</span></div>
+              <div><strong>{{ qr_support_fact_three_value }}</strong><span>{{ qr_support_fact_three_label }}</span></div>
+              <div><strong>{{ qr_support_fact_four_value }}</strong><span>{{ qr_support_fact_four_label }}</span></div>
+            </div>
+
+            <details class="sn-pdp-qr-mobile__details">
+              <summary><span>{{ 'suntneew_auto.sa30f9b261ef3' | t }}</span><span aria-hidden="true">＋</span></summary>
+              <ul>
+                <li>{{ qr_support_install_intro }}</li>
+                <li>{{ 'suntneew_auto.s64d0c4b2a9c8' | t }}</li>
+                <li>{{ 'suntneew_auto.scb552285b905' | t }}</li>
+              </ul>
+            </details>
+
+            {%- if manual_count > 1 -%}
+              <details id="qr-product-documents" class="sn-pdp-qr-mobile__details sn-pdp-qr-mobile__details--documents">
+                <summary><span>{{ 'suntneew_auto.s19a53de5ce40' | t }}</span><span aria-hidden="true">＋</span></summary>
+                <div class="sn-pdp-qr-mobile__document-list">
+                  {%- for block in download_blocks -%}
+                    {%- assign document_group = block.settings.document_group | default: 'manuals' -%}
+                    {%- if document_group != 'compliance' -%}
+                      {%- if block.settings.link != blank -%}
+                        <a href="{{ block.settings.link }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %}>{{ block.settings.label }} <span aria-hidden="true">↗</span></a>
+                      {%- elsif block.settings.asset_name != blank -%}
+                        <a href="{{ block.settings.asset_name | asset_url }}" target="_blank" rel="noopener" {% if block.settings.variant_match != blank %}data-variant-match="{{ block.settings.variant_match | escape }}"{% endif %}>{{ block.settings.label }} <span aria-hidden="true">↗</span></a>
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </details>
+            {%- endif -%}
+
+            {%- if compliance_count > 0 -%}
+              <details class="sn-pdp-qr-mobile__details sn-pdp-qr-mobile__details--documents">
+                <summary><span>{{ 'suntneew_auto.s534a98b0129e' | t }}</span><span aria-hidden="true">＋</span></summary>
+                <div class="sn-pdp-qr-mobile__chips" aria-label="{{ qr_support_model | escape }} document topics">
+                  {%- assign qr_standards_seen = '|' -%}
+                  {%- for block in download_blocks -%}
+                    {%- if block.settings.document_group == 'compliance' -%}
+                      {%- assign qr_standard = block.settings.standard | default: block.settings.label -%}
+                      {%- assign qr_standard_lower = qr_standard | downcase -%}
+                      {%- assign qr_standard_token = '|' | append: qr_standard_lower | append: '|' -%}
+                      {%- unless qr_standards_seen contains qr_standard_token -%}
+                        <span>{{ qr_standard }}</span>
+                        {%- assign qr_standards_seen = qr_standards_seen | append: qr_standard_lower | append: '|' -%}
+                      {%- endunless -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+                <p>{{ 'suntneew_auto.sc1741bf0ae43' | t }}</p>
+              </details>
+            {%- endif -%}
+
+            <a class="sn-pdp-qr-mobile__product-link" href="{{ pages['contact-us'].url }}">Need help with {{ qr_support_model }}? <span>{{ 'suntneew_auto.s814f4ed2d5bd' | t }} <span aria-hidden="true">→</span></span></a>
+          </div>
+        {%- endif -%}
