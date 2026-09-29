@@ -107,16 +107,16 @@
           "settings": {
             "product_handle": "suntneew-kb700-fan-jump-starter-7-200mah",
             "asset_name": "suntneew-shop-white-kb700.jpg",
-            "image_alt": "SuntNeew KB700 Fan Portable Car Jump Starter with smart clamp, air nozzle and USB cable",
-            "eyebrow": "KB700 | 7,200mAh",
-            "title": "SuntNeew KB700 Fan Portable Car Jump Starter",
+            "image_alt": "SuntNeew KP700 Fan Portable Car Jump Starter with smart clamp, air nozzle and USB cable",
+            "eyebrow": "KP700 | 7,200mAh",
+            "title": "SuntNeew KP700 Fan Portable Car Jump Starter",
             "summary": "A 12V jump starter with a three-speed air duster, USB device charging and a 2W emergency light.",
             "capacities": "7200",
             "spec_capacity": "7,200mAh",
             "spec_start": "500A",
             "spec_peak": "1,000A",
             "spec_fit": "Up to 6.0L gas / 3.0L diesel",
-            "link_label": "Open KB700 details"
+            "link_label": "Open KP700 details"
           }
         },
         "family_a20": {
@@ -229,7 +229,7 @@
         "table_note": "Reference matching only. Confirm the exact model label, manual and battery condition before use; the table does not replace model-specific instructions.",
         "compare_label": "Show matches",
         "catalog_heading": "Compare product families",
-        "catalog_intro": "KB700, U23, U32 and A3 each open a model-specific page. A20 remains one product family with capacity and color variants.",
+        "catalog_intro": "KP700, U23, U32 and A3 each open a model-specific page. A20 remains one product family with capacity and color variants.",
         "cards_label": "Cards",
         "list_label": "List",
         "empty_label": "No family is mapped to this capacity yet. Review the full catalog or confirm the product data before publishing a new mapping."

@@ -1,4 +1,4 @@
-// 启动电源（KB700 / U23 / U32 / OJ02 / A20）手册的法语 / 德语正文。
+// 启动电源（KP700 / U23 / U32 / OJ02 / A20）手册的法语 / 德语正文。
 // 英文原件页保持原样（仅移除中文印制说明页），本文件生成对应的法语、德语排版页。
 
 import { callout, h3, h4, ol, p, pick, t, table, ul } from '../lib/html.mjs';
@@ -40,8 +40,8 @@ export const jumpStarters = [
     source: 'tools/manual-build/sources/kb700-manual-en-source.pdf',
     asset: 'suntneew-kb700-user-manual-en-fr-de.pdf',
     legacyAliases: ['suntneew-kb700-user-manual-en.pdf'],
-    model: 'KB700 / KP-700',
-    title: 'KB700 Fan Jump Starter — 7,200mAh',
+    model: 'KP700 / KP-700',
+    title: 'KP700 Fan Jump Starter — 7,200mAh',
     keepPages: { first: 1, last: 7, drop: [7] },
     inserts: ['tools/manual-build/inserts/kb700-insert.pdf'],
     insertLabel: 'Manufacturer / disposal insert',
@@ -59,8 +59,8 @@ export const jumpStarters = [
           html:
             p(
               isFr
-                ? 'Le KB700 est un bloc d’alimentation d’urgence multifonction destiné aux batteries de véhicule 12V compatibles. Il réunit le démarrage d’un véhicule, une soufflette à trois vitesses, un éclairage d’urgence de 2W et la charge d’appareils en USB 5V/2A.'
-                : 'Der KB700 ist ein multifunktionales Notstromgerät für kompatible 12V-Fahrzeugbatterien. Er kombiniert Fahrzeug-Starthilfe, eine dreistufige Druckluft-Soufflette, eine 2W-Notleuchte und USB-Ladung mit 5V/2A.',
+                ? 'Le KP700 est un bloc d’alimentation d’urgence multifonction destiné aux batteries de véhicule 12V compatibles. Il réunit le démarrage d’un véhicule, une soufflette à trois vitesses, un éclairage d’urgence de 2W et la charge d’appareils en USB 5V/2A.'
+                : 'Der KP700 ist ein multifunktionales Notstromgerät für kompatible 12V-Fahrzeugbatterien. Er kombiniert Fahrzeug-Starthilfe, eine dreistufige Druckluft-Soufflette, eine 2W-Notleuchte und USB-Ladung mit 5V/2A.',
             ) +
             table(
               isFr ? ['Caractéristique', 'Valeur'] : ['Merkmal', 'Wert'],
@@ -89,8 +89,8 @@ export const jumpStarters = [
           title: isFr ? '2. Recharge' : '2. Aufladen',
           html: p(
             isFr
-              ? 'Rechargez le KB700 via le port Type-C avec une source 5V/2A. Le temps de charge typique est d’environ quatre heures. Ne couvrez pas l’appareil pendant la charge.'
-              : 'Laden Sie den KB700 über den Type-C-Eingang mit einer 5V/2A-Quelle. Die typische Ladezeit beträgt etwa vier Stunden. Das Gerät während des Ladens nicht abdecken.',
+              ? 'Rechargez le KP700 via le port Type-C avec une source 5V/2A. Le temps de charge typique est d’environ quatre heures. Ne couvrez pas l’appareil pendant la charge.'
+              : 'Laden Sie den KP700 über den Type-C-Eingang mit einer 5V/2A-Quelle. Die typische Ladezeit beträgt etwa vier Stunden. Das Gerät während des Ladens nicht abdecken.',
           ),
         },
         {
@@ -98,8 +98,8 @@ export const jumpStarters = [
           html:
             callout(
               isFr
-                ? '<strong>Utilisez uniquement une batterie de véhicule 12V compatible.</strong> Chargez le KB700 à au moins 50 % avant de démarrer.'
-                : '<strong>Nur mit einer kompatiblen 12V-Fahrzeugbatterie verwenden.</strong> Laden Sie den KB700 vor dem Start auf mindestens 50 %.',
+                ? '<strong>Utilisez uniquement une batterie de véhicule 12V compatible.</strong> Chargez le KP700 à au moins 50 % avant de démarrer.'
+                : '<strong>Nur mit einer kompatiblen 12V-Fahrzeugbatterie verwenden.</strong> Laden Sie den KP700 vor dem Start auf mindestens 50 %.',
             ) +
             ol(
               isFr
@@ -108,7 +108,7 @@ export const jumpStarters = [
                     'Insérez complètement la fiche de la pince intelligente dans le port de démarrage EC5.',
                     'Connectez la pince rouge à la borne positive de la batterie, puis la pince noire à la borne négative.',
                     'Vérifiez que le témoin de la pince indique l’état prêt, puis démarrez le véhicule.',
-                    'Dès que le moteur démarre, débranchez la pince du KB700 et retirez les deux pinces des bornes dans les 30 secondes.',
+                    'Dès que le moteur démarre, débranchez la pince du KP700 et retirez les deux pinces des bornes dans les 30 secondes.',
                     'Laissez tourner le moteur du véhicule.',
                   ]
                 : [
@@ -116,7 +116,7 @@ export const jumpStarters = [
                     'Stecken Sie den Stecker der intelligenten Klemme vollständig in den EC5-Startanschluss.',
                     'Verbinden Sie die rote Klemme mit dem Pluspol der Batterie und danach die schwarze Klemme mit dem Minuspol.',
                     'Prüfen Sie, ob die Klemme den Bereitschaftszustand anzeigt, und starten Sie das Fahrzeug.',
-                    'Trennen Sie nach dem Motorstart die Klemme vom KB700 und entfernen Sie beide Klemmen innerhalb von 30 Sekunden.',
+                    'Trennen Sie nach dem Motorstart die Klemme vom KP700 und entfernen Sie beide Klemmen innerhalb von 30 Sekunden.',
                     'Lassen Sie den Motor laufen.',
                   ],
             ) +
@@ -160,7 +160,7 @@ export const jumpStarters = [
                   'Ce produit n’est pas un jouet. Tenez-le hors de portée des enfants ; le manuel imprimé recommande un usage à partir de 16 ans.',
                   'En cas de stockage prolongé, rechargez l’appareil au moins une fois tous les trois mois.',
                   'N’introduisez pas de branches ni d’autres objets dans l’entrée d’air ou entre les pales.',
-                  'Utilisez le produit dans un environnement propre et sec. Le KB700 n’est pas vendu comme étanche : ne le rincez pas et ne l’immergez pas.',
+                  'Utilisez le produit dans un environnement propre et sec. Le KP700 n’est pas vendu comme étanche : ne le rincez pas et ne l’immergez pas.',
                 ]
               : [
                   'Prüfen Sie vor der Verwendung den Ladezustand. Starten Sie kein Fahrzeug, wenn die Restladung unter 50 % liegt.',
@@ -176,7 +176,7 @@ export const jumpStarters = [
                   'Dieses Produkt ist kein Spielzeug. Halten Sie es von Kindern fern; das gedruckte Handbuch empfiehlt eine Nutzung ab 16 Jahren.',
                   'Laden Sie das Gerät bei längerer Lagerung mindestens alle drei Monate nach.',
                   'Stecken Sie keine Zweige oder andere Gegenstände in den Lufteinlass oder zwischen die Lüfterblätter.',
-                  'Verwenden Sie das Produkt in einer sauberen, trockenen Umgebung. Der KB700 ist nicht als wasserdicht ausgewiesen: nicht abspülen und nicht eintauchen.',
+                  'Verwenden Sie das Produkt in einer sauberen, trockenen Umgebung. Der KP700 ist nicht als wasserdicht ausgewiesen: nicht abspülen und nicht eintauchen.',
                 ]
             ),
           ),

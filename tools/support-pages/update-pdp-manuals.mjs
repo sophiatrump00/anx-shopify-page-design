@@ -14,8 +14,8 @@ const JOBS = [
     file: 'templates/product.kb700.json',
     oldAsset: 'suntneew-kb700-user-manual-en.pdf',
     newAsset: 'suntneew-kb700-user-manual-en-fr-de.pdf',
-    oldLabel: 'KB700 user manual (English PDF)',
-    newLabel: 'KB700 user manual — EN · FR · DE (PDF)',
+    oldLabel: 'KP700 user manual (English PDF)',
+    newLabel: 'KP700 user manual — EN · FR · DE (PDF)',
   },
   {
     file: 'templates/product.u23.json',

@@ -39,7 +39,7 @@
     { scenario: 'jump', key: 'jump-u32', id: 'u32-10000', model: 'U32', variant: '10,000mAh', voltage: '12v', gasoline: 6.5, diesel: 3.5, priority: { compact: 1, display: 0, charging: 2, reserve: 3 } },
     { scenario: 'jump', key: 'jump-a20', id: 'a20-12000', model: 'A20', variant: '12,000mAh variant', voltage: '12v', gasoline: 7, diesel: 4, priority: { compact: 3, display: 3, charging: 1, reserve: 2 } },
     { scenario: 'jump', key: 'jump-a3', id: 'a3-16000', model: 'A3', variant: '16,000mAh', voltage: '12v', gasoline: 8, diesel: 5, priority: { compact: 4, display: 2, charging: 0, reserve: 1 } },
-    { scenario: 'jump', key: 'jump-kb700', id: 'kb700-7200', model: 'KB700 Fan Jump Starter', variant: '7,200mAh / 1,000A peak', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 2, display: 4, charging: 2, reserve: 3 } },
+    { scenario: 'jump', key: 'jump-kb700', id: 'kb700-7200', model: 'KP700 Fan Jump Starter', variant: '7,200mAh / 1,000A peak', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 2, display: 4, charging: 2, reserve: 3 } },
     { scenario: 'jump', key: 'jump-a20', id: 'a20-16000', model: 'A20', variant: '16,000mAh variant', voltage: '12v', gasoline: 8, diesel: 5, priority: { compact: 5, display: 3, charging: 1, reserve: 0 } },
     { scenario: 'home', key: 'home-wl5a', id: 'wl5a', model: 'SuntNeew WL5A', architecture: 'low', capacityWh: 5120, maxUnits: 9, maxSystemOutputW: 12000 },
     { scenario: 'home', key: 'home-wl10b', id: 'wl10b', model: 'SuntNeew WL10B', architecture: 'low', capacityWh: 10240, maxUnits: 9, maxSystemOutputW: 12000 },
