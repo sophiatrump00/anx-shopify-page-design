@@ -800,9 +800,30 @@
         "heading": "Frequently asked questions"
       }
     },
-    "related-products": {
-      "type": "related-products",
-      "settings": {}
+    "judge_me_reviews": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_rv314ah": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_rv314ah"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
@@ -813,6 +834,6 @@
     "features",
     "details",
     "faq",
-    "related-products"
+    "judge_me_reviews"
   ]
 }

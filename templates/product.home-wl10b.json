@@ -10,95 +10,537 @@
 {
   "sections": {
     "main": {
-      "type":"main-product",
+      "type": "main-product",
       "blocks": {
-        "vendor":{"type":"vendor","settings":{}},
-        "title":{"type":"title","settings":{"heading_tag":"h1"}},
-        "sku":{"type":"sku","settings":{}},
-        "price":{"type":"price","settings":{"show_taxes_notice":false}},
-        "separator":{"type":"separator","settings":{}},
-        "intro":{"type":"text","settings":{"text":"<p>51.2V, 200Ah low-voltage LFP home battery with 10.24kWh rated capacity. Choose your quantity and purchase online; review inverter compatibility and installation requirements before installation.</p>"}},
-        "quantity_selector":{"type":"quantity_selector","settings":{}},
-        "bundle":{"type":"suntneew_bundle_selector","settings":{"enabled":true,"heading":"Build a WL10B multi-pack","body":"Choose 1, 2, 5 or 10 units, or use a custom quantity.","discount_percent":3}},
-        "buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":false}},
-        "shipping_note":{"type":"suntneew_shipping_note","settings":{"heading":"Shipping note","text":"this is a bulky item (over 31.5 kg). Delivery is quoted separately after your order — our team will contact you with the shipping cost before dispatch, and checkout does not charge delivery for it."}}
+        "vendor": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h1"
+          }
+        },
+        "sku": {
+          "type": "sku",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "intro": {
+          "type": "text",
+          "settings": {
+            "text": "<p>51.2V, 200Ah low-voltage LFP home battery with 10.24kWh rated capacity. Choose your quantity and purchase online; review inverter compatibility and installation requirements before installation.</p>"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "bundle": {
+          "type": "suntneew_bundle_selector",
+          "settings": {
+            "enabled": true,
+            "heading": "Build a WL10B multi-pack",
+            "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.",
+            "discount_percent": 3
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "shipping_note": {
+          "type": "suntneew_shipping_note",
+          "settings": {
+            "heading": "Shipping note",
+            "text": "this is a bulky item (over 31.5 kg). Delivery is quoted separately after your order — our team will contact you with the shipping cost before dispatch, and checkout does not charge delivery for it."
+          }
+        }
       },
-      "block_order":["vendor","title","sku","price","separator","intro","quantity_selector","bundle","buy_buttons","shipping_note"],
-      "settings":{"show_fixed_add_to_cart":true,"enable_suntneew_pdp_experience":true,"suntneew_media_autoplay_interval":6,"show_suntneew_pdp_promises":true,"desktop_media_width":50,"desktop_media_layout":"carousel_thumbnails_bottom","mobile_media_size":"contained","mobile_carousel_control":"dots"}
+      "block_order": [
+        "vendor",
+        "title",
+        "sku",
+        "price",
+        "separator",
+        "intro",
+        "quantity_selector",
+        "bundle",
+        "buy_buttons",
+        "shipping_note"
+      ],
+      "settings": {
+        "show_fixed_add_to_cart": true,
+        "enable_suntneew_pdp_experience": true,
+        "suntneew_media_autoplay_interval": 6,
+        "show_suntneew_pdp_promises": true,
+        "desktop_media_width": 50,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "dots"
+      }
     },
     "proof": {
-      "type":"suntneew-pdp-proof",
+      "type": "suntneew-pdp-proof",
       "blocks": {
-        "energy":{"type":"metric","settings":{"value":"10.24kWh","label":"Rated energy","variant_match":""}},
-        "voltage":{"type":"metric","settings":{"value":"51.2V / 200Ah","label":"Low-voltage LFP system","variant_match":""}},
-        "parallel":{"type":"metric","settings":{"value":"Up to 9 sets","label":"Maximum connection","variant_match":""}},
-        "connect":{"type":"metric","settings":{"value":"CAN / RS485","label":"Wi-Fi and Bluetooth listed","variant_match":""}}
+        "energy": {
+          "type": "metric",
+          "settings": {
+            "value": "10.24kWh",
+            "label": "Rated energy",
+            "variant_match": ""
+          }
+        },
+        "voltage": {
+          "type": "metric",
+          "settings": {
+            "value": "51.2V / 200Ah",
+            "label": "Low-voltage LFP system",
+            "variant_match": ""
+          }
+        },
+        "parallel": {
+          "type": "metric",
+          "settings": {
+            "value": "Up to 9 sets",
+            "label": "Maximum connection",
+            "variant_match": ""
+          }
+        },
+        "connect": {
+          "type": "metric",
+          "settings": {
+            "value": "CAN / RS485",
+            "label": "Wi-Fi and Bluetooth listed",
+            "variant_match": ""
+          }
+        }
       },
-      "block_order":["energy","voltage","parallel","connect"],
-      "settings":{"accessibility_label":"WL10B highlights"}
+      "block_order": [
+        "energy",
+        "voltage",
+        "parallel",
+        "connect"
+      ],
+      "settings": {
+        "accessibility_label": "WL10B highlights"
+      }
     },
     "anchor_nav": {
-      "type":"suntneew-pdp-anchor-nav",
+      "type": "suntneew-pdp-anchor-nav",
       "blocks": {
-        "features":{"type":"link","settings":{"label":"Features","target_id":"features"}},
-        "specs":{"type":"link","settings":{"label":"Specifications","target_id":"specifications"}},
-        "box":{"type":"link","settings":{"label":"Before installation","target_id":"in-the-box"}},
-        "manuals":{"type":"link","settings":{"label":"Documents","target_id":"manuals"}},
-        "faq":{"type":"link","settings":{"label":"FAQ","target_id":"faq"}}
+        "features": {
+          "type": "link",
+          "settings": {
+            "label": "Features",
+            "target_id": "features"
+          }
+        },
+        "specs": {
+          "type": "link",
+          "settings": {
+            "label": "Specifications",
+            "target_id": "specifications"
+          }
+        },
+        "box": {
+          "type": "link",
+          "settings": {
+            "label": "Before installation",
+            "target_id": "in-the-box"
+          }
+        },
+        "manuals": {
+          "type": "link",
+          "settings": {
+            "label": "Documents",
+            "target_id": "manuals"
+          }
+        },
+        "faq": {
+          "type": "link",
+          "settings": {
+            "label": "FAQ",
+            "target_id": "faq"
+          }
+        }
       },
-      "block_order":["features","specs","box","manuals","faq"],
-      "settings":{}
+      "block_order": [
+        "features",
+        "specs",
+        "box",
+        "manuals",
+        "faq"
+      ],
+      "settings": {}
     },
     "features": {
-      "type":"suntneew-pdp-story",
+      "type": "suntneew-pdp-story",
       "blocks": {
-        "installation":{"type":"feature","settings":{"image_asset":"suntneew-wl10b-install-v4.webp","image_alt":"SuntNeew WL10B battery installed in a modern home energy room","image_fit":"cover","eyebrow":"More stored energy, shown at home","heading":"A larger low-voltage unit with a clear place in the system","body":"<p>WL10B brings 10.24kWh of low-voltage storage into a single unit. Use the product dimensions and electrical details below to plan the installation.</p>","variant_match":""}},
-        "product":{"type":"feature","settings":{"image_asset":"suntneew-wl10b-main-v4.png","image_alt":"SuntNeew WL10B 10.24kWh home battery","eyebrow":"Higher-capacity low voltage","heading":"10.24kWh in one 51.2V enclosure","body":"<p>WL10B doubles the rated capacity of WL5A to 200Ah while retaining an LCD touch screen plus CAN, RS485, Wi-Fi and Bluetooth communication.</p>","variant_match":""}},
-        "front":{"type":"feature","settings":{"image_asset":"suntneew-wl10b-gallery-01-v4.png","image_alt":"SuntNeew WL10B home battery product view","eyebrow":"Product at a glance","heading":"A taller enclosure for the higher-capacity configuration","body":"<p>The product visual gives the system a physical scale. Use the dimensions, weight and electrical limits in the expandable fields when planning the final configuration.</p>","variant_match":""}},
-        "rear":{"type":"feature","settings":{"image_asset":"suntneew-wl10b-gallery-07-v2.jpg","image_alt":"SuntNeew WL10B rear connection detail","eyebrow":"Connection detail","heading":"Review the system interfaces before installation","body":"<p>Use the connection hardware and enclosure detail to plan around inverter limits, protection devices, cable routing and installer requirements.</p>","variant_match":""}},
-        "specsheet":{"type":"feature","settings":{"eyebrow":"System fit","heading":"Plan high-current storage around the complete system","body":"<p>WL10B provides 200A maximum discharge and 220A peak discharge. Review wiring, protection, inverter limits, delivery requirements and the installation plan before installation.</p>","variant_match":""}}
+        "installation": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-wl10b-install-v4.webp",
+            "image_alt": "SuntNeew WL10B battery installed in a modern home energy room",
+            "image_fit": "cover",
+            "eyebrow": "More stored energy, shown at home",
+            "heading": "A larger low-voltage unit with a clear place in the system",
+            "body": "<p>WL10B brings 10.24kWh of low-voltage storage into a single unit. Use the product dimensions and electrical details below to plan the installation.</p>",
+            "variant_match": ""
+          }
+        },
+        "product": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-wl10b-main-v4.png",
+            "image_alt": "SuntNeew WL10B 10.24kWh home battery",
+            "eyebrow": "Higher-capacity low voltage",
+            "heading": "10.24kWh in one 51.2V enclosure",
+            "body": "<p>WL10B doubles the rated capacity of WL5A to 200Ah while retaining an LCD touch screen plus CAN, RS485, Wi-Fi and Bluetooth communication.</p>",
+            "variant_match": ""
+          }
+        },
+        "front": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-wl10b-gallery-01-v4.png",
+            "image_alt": "SuntNeew WL10B home battery product view",
+            "eyebrow": "Product at a glance",
+            "heading": "A taller enclosure for the higher-capacity configuration",
+            "body": "<p>The product visual gives the system a physical scale. Use the dimensions, weight and electrical limits in the expandable fields when planning the final configuration.</p>",
+            "variant_match": ""
+          }
+        },
+        "rear": {
+          "type": "feature",
+          "settings": {
+            "image_asset": "suntneew-wl10b-gallery-07-v2.jpg",
+            "image_alt": "SuntNeew WL10B rear connection detail",
+            "eyebrow": "Connection detail",
+            "heading": "Review the system interfaces before installation",
+            "body": "<p>Use the connection hardware and enclosure detail to plan around inverter limits, protection devices, cable routing and installer requirements.</p>",
+            "variant_match": ""
+          }
+        },
+        "specsheet": {
+          "type": "feature",
+          "settings": {
+            "eyebrow": "System fit",
+            "heading": "Plan high-current storage around the complete system",
+            "body": "<p>WL10B provides 200A maximum discharge and 220A peak discharge. Review wiring, protection, inverter limits, delivery requirements and the installation plan before installation.</p>",
+            "variant_match": ""
+          }
+        }
       },
-      "block_order":["installation","product","front","rear","specsheet"],
-      "settings":{"anchor_id":"features","eyebrow":"Home energy storage","heading":"More low-voltage storage without moving to a high-voltage stack","lede":"<p>SuntNeew low-voltage storage with 10.24kWh rated energy. Match the inverter protocol, site conditions and installation plan to the product.</p>"}
+      "block_order": [
+        "installation",
+        "product",
+        "front",
+        "rear",
+        "specsheet"
+      ],
+      "settings": {
+        "anchor_id": "features",
+        "eyebrow": "Home energy storage",
+        "heading": "More low-voltage storage without moving to a high-voltage stack",
+        "lede": "<p>SuntNeew low-voltage storage with 10.24kWh rated energy. Match the inverter protocol, site conditions and installation plan to the product.</p>"
+      }
     },
     "details": {
-      "type":"suntneew-pdp-details",
+      "type": "suntneew-pdp-details",
       "blocks": {
-        "chem":{"type":"spec","settings":{"label":"Cell chemistry","value":"LFP","group":"primary","variant_match":""}},
-        "voltage":{"type":"spec","settings":{"label":"Rated voltage","value":"51.2V","group":"primary","variant_match":""}},
-        "capacity":{"type":"spec","settings":{"label":"Rated capacity","value":"200Ah / 10.24kWh","group":"primary","variant_match":""}},
-        "connection":{"type":"spec","settings":{"label":"Max connection","value":"9 sets","group":"system","variant_match":""}},
-        "chargev":{"type":"spec","settings":{"label":"Max charging voltage","value":"57.6V","group":"primary","variant_match":""}},
-        "overdischarge":{"type":"spec","settings":{"label":"Overdischarge voltage","value":"44.8V","group":"primary","variant_match":""}},
-        "charge":{"type":"spec","settings":{"label":"Max / peak charging current","value":"150A / 190A","group":"primary","variant_match":""}},
-        "discharge":{"type":"spec","settings":{"label":"Max / peak discharging current","value":"200A / 220A","group":"primary","variant_match":""}},
-        "cycles":{"type":"spec","settings":{"label":"Cycle life","value":"5,000 cycles","group":"primary","variant_match":""}},
-        "weight":{"type":"spec","settings":{"label":"Weight","value":"88kg","group":"installation","variant_match":""}},
-        "size":{"type":"spec","settings":{"label":"Dimensions (H x W x D)","value":"1165 x 525 x 170mm","group":"installation","variant_match":""}},
-        "comm":{"type":"spec","settings":{"label":"Communication","value":"CAN / RS485 / Wi-Fi / Bluetooth","group":"system","variant_match":""}},
-        "installation":{"type":"spec","settings":{"label":"Installation","value":"Wall mounting / floor standing","group":"installation","variant_match":""}},
-        "ip":{"type":"spec","settings":{"label":"Enclosure rating","value":"IP54","group":"installation","variant_match":""}},
-        "scope1":{"type":"included","settings":{"item":"Selected WL10B battery","variant_match":""}},
-        "scope2":{"type":"included","settings":{"item":"Review the inverter communication and electrical specifications before installation","variant_match":""}},
-        "scope3":{"type":"included","settings":{"item":"Confirm the delivery destination and any local receiving requirements","variant_match":""}},
-        "scope4":{"type":"included","settings":{"item":"Use a qualified installer and follow local electrical requirements","variant_match":""}},
-        "docs":{"type":"download","settings":{"label":"View SuntNeew specification sheet","link":"","asset_name":"suntneew-wl10b-spec-v2.jpg","variant_match":""}}
+        "chem": {
+          "type": "spec",
+          "settings": {
+            "label": "Cell chemistry",
+            "value": "LFP",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "voltage": {
+          "type": "spec",
+          "settings": {
+            "label": "Rated voltage",
+            "value": "51.2V",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "capacity": {
+          "type": "spec",
+          "settings": {
+            "label": "Rated capacity",
+            "value": "200Ah / 10.24kWh",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "connection": {
+          "type": "spec",
+          "settings": {
+            "label": "Max connection",
+            "value": "9 sets",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "chargev": {
+          "type": "spec",
+          "settings": {
+            "label": "Max charging voltage",
+            "value": "57.6V",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "overdischarge": {
+          "type": "spec",
+          "settings": {
+            "label": "Overdischarge voltage",
+            "value": "44.8V",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "charge": {
+          "type": "spec",
+          "settings": {
+            "label": "Max / peak charging current",
+            "value": "150A / 190A",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "discharge": {
+          "type": "spec",
+          "settings": {
+            "label": "Max / peak discharging current",
+            "value": "200A / 220A",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "cycles": {
+          "type": "spec",
+          "settings": {
+            "label": "Cycle life",
+            "value": "5,000 cycles",
+            "group": "primary",
+            "variant_match": ""
+          }
+        },
+        "weight": {
+          "type": "spec",
+          "settings": {
+            "label": "Weight",
+            "value": "88kg",
+            "group": "installation",
+            "variant_match": ""
+          }
+        },
+        "size": {
+          "type": "spec",
+          "settings": {
+            "label": "Dimensions (H x W x D)",
+            "value": "1165 x 525 x 170mm",
+            "group": "installation",
+            "variant_match": ""
+          }
+        },
+        "comm": {
+          "type": "spec",
+          "settings": {
+            "label": "Communication",
+            "value": "CAN / RS485 / Wi-Fi / Bluetooth",
+            "group": "system",
+            "variant_match": ""
+          }
+        },
+        "installation": {
+          "type": "spec",
+          "settings": {
+            "label": "Installation",
+            "value": "Wall mounting / floor standing",
+            "group": "installation",
+            "variant_match": ""
+          }
+        },
+        "ip": {
+          "type": "spec",
+          "settings": {
+            "label": "Enclosure rating",
+            "value": "IP54",
+            "group": "installation",
+            "variant_match": ""
+          }
+        },
+        "scope1": {
+          "type": "included",
+          "settings": {
+            "item": "Selected WL10B battery",
+            "variant_match": ""
+          }
+        },
+        "scope2": {
+          "type": "included",
+          "settings": {
+            "item": "Review the inverter communication and electrical specifications before installation",
+            "variant_match": ""
+          }
+        },
+        "scope3": {
+          "type": "included",
+          "settings": {
+            "item": "Confirm the delivery destination and any local receiving requirements",
+            "variant_match": ""
+          }
+        },
+        "scope4": {
+          "type": "included",
+          "settings": {
+            "item": "Use a qualified installer and follow local electrical requirements",
+            "variant_match": ""
+          }
+        },
+        "docs": {
+          "type": "download",
+          "settings": {
+            "label": "View SuntNeew specification sheet",
+            "link": "",
+            "asset_name": "suntneew-wl10b-spec-v2.jpg",
+            "variant_match": ""
+          }
+        }
       },
-      "block_order":["chem","voltage","capacity","connection","chargev","overdischarge","charge","discharge","cycles","weight","size","comm","installation","ip","scope1","scope2","scope3","scope4","docs"],
-      "settings":{"anchor_id":"specifications","eyebrow":"Configuration data","heading":"WL10B technical specifications","lede":"<p>The four decision-making numbers stay visible above. Open a category only when you need deeper electrical or installation detail.</p>","primary_group_heading":"Capacity & electrical limits","system_group_heading":"Connectivity & expansion","installation_group_heading":"Installation & enclosure","included_eyebrow":"Purchase notes","included_heading":"Before installation","download_eyebrow":"SuntNeew documentation","download_heading":"Manuals & Documents","manuals_group_heading":"User Manuals & Product Sheets","compliance_group_heading":"Safety & Compliance","compliance_note":"Model-matched safety and installation documents will be added when the public support pack is approved."}
+      "block_order": [
+        "chem",
+        "voltage",
+        "capacity",
+        "connection",
+        "chargev",
+        "overdischarge",
+        "charge",
+        "discharge",
+        "cycles",
+        "weight",
+        "size",
+        "comm",
+        "installation",
+        "ip",
+        "scope1",
+        "scope2",
+        "scope3",
+        "scope4",
+        "docs"
+      ],
+      "settings": {
+        "anchor_id": "specifications",
+        "eyebrow": "Configuration data",
+        "heading": "WL10B technical specifications",
+        "lede": "<p>The four decision-making numbers stay visible above. Open a category only when you need deeper electrical or installation detail.</p>",
+        "primary_group_heading": "Capacity & electrical limits",
+        "system_group_heading": "Connectivity & expansion",
+        "installation_group_heading": "Installation & enclosure",
+        "included_eyebrow": "Purchase notes",
+        "included_heading": "Before installation",
+        "download_eyebrow": "SuntNeew documentation",
+        "download_heading": "Manuals & Documents",
+        "manuals_group_heading": "User Manuals & Product Sheets",
+        "compliance_group_heading": "Safety & Compliance",
+        "compliance_note": "Model-matched safety and installation documents will be added when the public support pack is approved."
+      }
     },
     "faq": {
-      "type":"suntneew-pdp-faq",
+      "type": "suntneew-pdp-faq",
       "blocks": {
-        "q1":{"type":"question","settings":{"question":"What is the practical difference between WL5A and WL10B?","answer":"<p>WL10B provides 10.24kWh at 200Ah versus WL5A's 5.12kWh at 100Ah. It is larger and heavier, with higher charging and discharging current limits.</p>"}},
-        "q2":{"type":"question","settings":{"question":"Can I buy WL10B online?","answer":"<p>Yes. Choose the quantity, then use Add to cart or Buy it now. Review inverter compatibility and local installation requirements before installation.</p>"}},
-        "q3":{"type":"question","settings":{"question":"Can multiple WL10B batteries be connected?","answer":"<p>WL10B supports up to nine connected sets. The final design depends on inverter, busbar, cable, protection and installer requirements.</p>"}},
-        "q4":{"type":"question","settings":{"question":"Which documents are available?","answer":"<p>The current product specification sheet is available on this page. Contact support only if you need destination-specific technical documentation.</p>"}}
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "What is the practical difference between WL5A and WL10B?",
+            "answer": "<p>WL10B provides 10.24kWh at 200Ah versus WL5A's 5.12kWh at 100Ah. It is larger and heavier, with higher charging and discharging current limits.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Can I buy WL10B online?",
+            "answer": "<p>Yes. Choose the quantity, then use Add to cart or Buy it now. Review inverter compatibility and local installation requirements before installation.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Can multiple WL10B batteries be connected?",
+            "answer": "<p>WL10B supports up to nine connected sets. The final design depends on inverter, busbar, cable, protection and installer requirements.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Which documents are available?",
+            "answer": "<p>The current product specification sheet is available on this page. Contact support only if you need destination-specific technical documentation.</p>"
+          }
+        }
       },
-      "block_order":["q1","q2","q3","q4"],
-      "settings":{"anchor_id":"faq","eyebrow":"WL10B planning","heading":"Frequently asked questions"}
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {
+        "anchor_id": "faq",
+        "eyebrow": "WL10B planning",
+        "heading": "Frequently asked questions"
+      }
     },
-    "related-products":{"type":"related-products","settings":{}}
+    "judge_me_reviews": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_homewl10b": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_homewl10b"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
   },
-  "order":["main","proof","anchor_nav","features","details","faq","related-products"]
+  "order": [
+    "main",
+    "proof",
+    "anchor_nav",
+    "features",
+    "details",
+    "faq",
+    "judge_me_reviews"
+  ]
 }
