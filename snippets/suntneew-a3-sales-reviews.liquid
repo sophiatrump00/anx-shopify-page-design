@@ -1,0 +1,56 @@
+{%- comment -%}Product-specific Judge.me data; the enabled app embed loads the widget.{%- endcomment -%}
+{%- assign a3_review_data = product.metafields.judgeme.review_widget_data | remove: ' ' -%}
+{%- assign a3_shared_reviews = false -%}
+{%- if a3_review_data contains '"is_for_product_from_group":true' -%}
+  {%- assign a3_shared_reviews = true -%}
+{%- endif -%}
+{%- if placement == 'badge' -%}
+  <div class="product-reviews-summary" aria-label="A3 customer reviews">
+    <span class="a3-review-scope" data-a3-review-scope {% unless a3_shared_reviews %}hidden{% endunless %}>Jump starter range</span>
+    <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-auto-install="false" data-a3-rating hidden>
+      {{ product.metafields.judgeme.badge }}
+    </div>
+    <a class="review-link" href="#customer-reviews" data-a3-review-link>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16v12H9l-5 4zM8 8h8M8 12h5"/></svg>
+      <span data-a3-review-label>Customer reviews</span><span aria-hidden="true">↗</span>
+    </a>
+  </div>
+{%- elsif placement == 'reviews' -%}
+  <section class="a3-section a3-reviews" id="customer-reviews" aria-labelledby="reviews-heading">
+    <span id="reviews" class="anchor-alias"></span>
+    <div class="a3-shell">
+      <div class="review-heading-row">
+        <div><p class="product-kicker">Customer reviews</p><h2 class="a3-heading" id="reviews-heading">{% if a3_shared_reviews %}From our jump starter range.{% else %}Experiences with A3.{% endif %}</h2></div>
+        <a class="judgeme-label" href="https://judge.me/" target="_blank" rel="noopener">Powered by Judge.me</a>
+      </div>
+      <p class="a3-review-context" data-a3-review-context {% unless a3_shared_reviews %}hidden{% endunless %}>Shared reviews across SuntNeew jump starters. Each review identifies the model it was written for.</p>
+      <div class="a3-review-surface">
+        <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget"
+          data-product-title="{{ product.title | escape }}" data-id="{{ product.id }}" data-product-id="{{ product.id }}"
+          data-widget="review" data-auto-install="false" data-shop-reviews="false"
+          data-shop-reviews-count="{{ shop.metafields.judgeme.shop_reviews_count | default: 0 | escape }}"
+          data-empty-state="empty_widget" data-entry-point="review_widget.js" data-entry-key="review-widget/main.js">
+          {%- if product.metafields.judgeme.widget.size > 20 -%}
+            <div class="jdgm-legacy-widget-content" style="display:none">{{ product.metafields.judgeme.widget }}</div>
+          {%- endif -%}
+        </div>
+        <div class="a3-review-fallback" data-a3-review-fallback>
+          <div><strong>Experiences from A3 owners.</strong><p>Customer reviews appear here when available.</p></div>
+          <a class="a3-review-action" href="mailto:info@suntneew.com?subject=A3%20product%20question">Ask about A3 ↗</a>
+        </div>
+      </div>
+      {%- if product.metafields.judgeme.review_widget_data != blank -%}
+        <script>
+          window.jdgm = window.jdgm || {};
+          window.jdgm.data = window.jdgm.data || {};
+          window.jdgm.data.reviewWidget = window.jdgm.data.reviewWidget || {};
+          window.jdgm.data.reviewWidget[{{ product.id | json }}] = {{ product.metafields.judgeme.review_widget_data }};
+        </script>
+      {%- endif -%}
+      <div class="a3-review-footer">
+        <details class="a3-review-disclosure"><summary>About these reviews</summary><p>Reviews may include feedback imported from other sales channels. A Verified label is shown only when Judge.me confirms verification.</p></details>
+        <a class="a3-review-question" href="mailto:info@suntneew.com?subject=A3%20product%20question">Have a product question? Ask us ↗</a>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
