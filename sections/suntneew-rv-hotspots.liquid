@@ -21,6 +21,7 @@
 
         <p class="sn-rv-tech__footnote">{{ section.settings.footnote }}</p>
         <a class="sn-button" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label }}</a>
+        {% render 'suntneew-rv-model-links' %}
       </div>
 
       <div class="sn-rv-tech__visual">

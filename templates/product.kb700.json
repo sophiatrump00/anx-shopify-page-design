@@ -290,7 +290,7 @@
             "image_fit": "cover",
             "eyebrow": "12V starting support",
             "heading": "Ready for compatible gas and diesel vehicles.",
-            "body": "<p>For compatible 12V vehicle batteries, KP700 is documented for engines up to <strong>6.0L Gas</strong> or <strong>3.0L Diesel</strong>, with <strong>1,000A peak</strong> and <strong>500A starting current</strong>. A full charge is rated for <strong>up to 25 starts</strong>; actual results vary with vehicle, battery health and temperature.</p>",
+            "body": "<p>For compatible 12V vehicle batteries, KP700 is documented for engines up to <strong>6.0L Gas</strong> or <strong>4.0L Diesel</strong>, with <strong>1,000A peak</strong> and <strong>500A starting current</strong>. A full charge is rated for <strong>up to 25 starts</strong>; actual results vary with vehicle, battery health and temperature.</p>",
             "variant_match": ""
           }
         },
@@ -442,7 +442,7 @@
           "type": "spec",
           "settings": {
             "label": "Engine reference",
-            "value": "Up to 6.0L Gas / 3.0L Diesel",
+            "value": "Up to 6.0L Gas / 4.0L Diesel",
             "group": "primary",
             "variant_match": ""
           }
@@ -753,7 +753,7 @@
           "type": "question",
           "settings": {
             "question": "Which vehicles can KP700 support?",
-            "answer": "<p>KP700 is for compatible 12V vehicle batteries, with a documented reference of up to 6.0L gasoline or 3.0L diesel engines. Do not attempt to jump-start a higher-rated engine or a battery with a different voltage.</p>"
+            "answer": "<p>KP700 is for compatible 12V vehicle batteries, with a documented reference of up to 6.0L gasoline or 4.0L diesel engines. Do not attempt to jump-start a higher-rated engine or a battery with a different voltage.</p>"
           }
         },
         "q2": {

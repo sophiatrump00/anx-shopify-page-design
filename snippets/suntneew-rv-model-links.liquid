@@ -1,0 +1,34 @@
+{%- liquid
+  assign g31 = all_products['suntneew-12-8v-100ah-lifepo4-rv-battery-group-31']
+  assign rv230 = all_products['suntneew-12-8v-230ah-lifepo4-rv-battery']
+  case request.locale.iso_code
+    when 'de'
+      assign lead = 'Spezifikationen, Abmessungen und modellbezogene Unterlagen vergleichen:'
+    when 'es'
+      assign lead = 'Compare especificaciones, dimensiones y documentos de cada modelo:'
+    when 'fr'
+      assign lead = 'Comparez les caractéristiques, dimensions et documents de chaque modèle :'
+    when 'it'
+      assign lead = 'Confronta specifiche, dimensioni e documenti per ciascun modello:'
+    when 'pt-BR'
+      assign lead = 'Compare especificações, dimensões e documentos de cada modelo:'
+    when 'ja'
+      assign lead = '各モデルの仕様・寸法・資料を比較：'
+    when 'ar'
+      assign lead = 'قارن المواصفات والأبعاد والمستندات الخاصة بكل طراز:'
+    when 'nl'
+      assign lead = 'Vergelijk specificaties, afmetingen en documenten per model:'
+    when 'pl'
+      assign lead = 'Porównaj specyfikacje, wymiary i dokumenty poszczególnych modeli:'
+    else
+      assign lead = 'Compare specifications, dimensions and model-matched documents:'
+  endcase
+-%}
+{%- if g31 != blank and rv230 != blank -%}
+  <p class="sn-rv-tech__model-links" style="margin-top:18px;font-size:14px;line-height:1.7;">
+    {{ lead | escape }}
+    <a href="{{ g31.url }}" style="text-decoration:underline;">G31 100Ah</a>
+    <span aria-hidden="true"> · </span>
+    <a href="{{ rv230.url }}" style="text-decoration:underline;">230Ah</a>
+  </p>
+{%- endif -%}

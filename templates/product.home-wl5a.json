@@ -532,9 +532,16 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "preorder_review": {
+      "type": "suntneew-preorder-review",
+      "settings": {
+        "support_page": "shopify://pages/support-wl5a"
+      }
     }
   },
   "order": [
+    "preorder_review",
     "main",
     "proof",
     "anchor_nav",

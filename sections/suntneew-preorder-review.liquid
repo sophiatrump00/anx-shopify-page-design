@@ -1,0 +1,58 @@
+{%- liquid
+  case request.locale.iso_code
+    when 'de'
+      assign heading = 'Vor der Bestellung: Konfiguration und Unterlagen prüfen'
+      assign message = 'Lassen Sie vor der Zahlung die Batterie-/Wechselrichterkombination sowie die verfügbaren modellbezogenen Installations-, Zertifizierungs- und Transportunterlagen vom Support bestätigen. Diese Produktübersicht ersetzt keine Installationsanleitung.'
+      assign action = 'Unterlagen und Support'
+    when 'es'
+      assign heading = 'Antes de comprar: compruebe la configuración y los documentos'
+      assign message = 'Antes de pagar, pida a soporte que confirme la combinación de batería e inversor y los documentos disponibles de instalación, certificación y transporte para el modelo exacto. Esta información no sustituye al manual de instalación.'
+      assign action = 'Documentos y soporte'
+    when 'fr'
+      assign heading = 'Avant de commander : vérifier la configuration et les documents'
+      assign message = 'Avant le paiement, demandez au support de confirmer la combinaison batterie/onduleur et les documents disponibles pour ce modèle concernant l’installation, la certification et le transport. Cette présentation ne remplace pas le manuel d’installation.'
+      assign action = 'Documents et assistance'
+    when 'it'
+      assign heading = 'Prima di ordinare: verifica configurazione e documenti'
+      assign message = 'Prima del pagamento, chiedi al supporto di confermare la combinazione batteria/inverter e i documenti disponibili per il modello esatto relativi a installazione, certificazione e trasporto. Questa scheda non sostituisce il manuale di installazione.'
+      assign action = 'Documenti e assistenza'
+    when 'pt-BR'
+      assign heading = 'Antes de comprar: verifique a configuração e os documentos'
+      assign message = 'Antes do pagamento, peça ao suporte que confirme a combinação de bateria e inversor e os documentos disponíveis de instalação, certificação e transporte para o modelo exato. Esta página não substitui o manual de instalação.'
+      assign action = 'Documentos e suporte'
+    when 'ja'
+      assign heading = 'ご注文前に：構成と資料の確認'
+      assign message = 'お支払い前に、バッテリーとインバーターの組み合わせ、および該当モデルの設置・認証・輸送資料の提供状況をサポートにご確認ください。この製品概要は設置マニュアルの代わりにはなりません。'
+      assign action = '資料とサポート'
+    when 'ar'
+      assign heading = 'قبل الطلب: تحقق من التكوين والمستندات'
+      assign message = 'قبل الدفع، اطلب من الدعم تأكيد توافق البطارية والعاكس والمستندات المتاحة للتركيب والشهادات والنقل الخاصة بالطراز المحدد. لا تحل معلومات هذه الصفحة محل دليل التركيب.'
+      assign action = 'المستندات والدعم'
+    when 'nl'
+      assign heading = 'Vóór bestellen: controleer configuratie en documenten'
+      assign message = 'Vraag vóór betaling aan support om de combinatie van batterij en omvormer en de beschikbare installatie-, certificerings- en transportdocumenten voor het exacte model te bevestigen. Deze productinformatie vervangt geen installatiehandleiding.'
+      assign action = 'Documenten en ondersteuning'
+    when 'pl'
+      assign heading = 'Przed zamówieniem: sprawdź konfigurację i dokumenty'
+      assign message = 'Przed płatnością poproś pomoc techniczną o potwierdzenie zestawienia akumulatora z falownikiem oraz dostępnych dokumentów instalacji, certyfikacji i transportu dla danego modelu. Ta strona nie zastępuje instrukcji instalacji.'
+      assign action = 'Dokumenty i pomoc'
+    else
+      assign heading = 'Before ordering: check the configuration and documents'
+      assign message = 'Before paying, ask support to confirm the exact battery/inverter combination and the available model-matched installation, certification and transport documents. This product reference does not replace installation instructions.'
+      assign action = 'Documents and product support'
+  endcase
+-%}
+<section class="suntneew-preorder-review container" aria-labelledby="preorder-{{ section.id }}" style="padding-block:20px;">
+  <div style="border:1px solid #d5ded9;border-inline-start:4px solid #205d49;border-radius:6px;padding:18px 22px;background:#f3f7f3;color:#183a2d;">
+    <h2 id="preorder-{{ section.id }}" style="font-size:18px;line-height:1.4;margin:0 0 8px;">{{ heading | escape }}</h2>
+    <p style="margin:0 0 10px;line-height:1.6;">{{ message | escape }}</p>
+    <a href="{{ section.settings.support_page }}" style="text-decoration:underline;font-weight:700;">{{ action | escape }}</a>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Pre-order document review",
+  "settings": [{"type":"url","id":"support_page","label":"Model support page"}],
+  "presets": [{"name":"Pre-order document review"}]
+}
+{% endschema %}
