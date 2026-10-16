@@ -80,7 +80,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
-        "show_initial_transition": true,
+        "show_initial_transition": false,
         "image_size": "lg",
         "controls_type": "numbers",
         "transition_type": "fade_with_text",
