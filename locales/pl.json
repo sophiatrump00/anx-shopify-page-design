@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "page": "Strona {{ page }}",
@@ -472,5 +481,8 @@
     "home_energy": "Magazyny energii SuntNeew do domu: 5,12–15,36 kWh LiFePO4, do dziewięciu jednostek w jednym banku. Porównaj pojemność i kompatybilność z falownikiem.",
     "product_suffix": "Sprawdź specyfikacje, kompatybilność, wskazówki ładowania i wsparcie, zanim wybierzesz produkt SuntNeew.",
     "home_suffix": "Poznaj niezawodne zasilanie w podróży, do pojazdów i do domu dzięki praktycznym informacjom o produktach."
+  },
+  "suntneew_auto": {
+    "sc0dc6955a7a3": "Zestaw A20 zawiera po jednej sztuce: urządzenie A20, inteligentny zacisk z ochroną przed odwrotną polaryzacją, przewód USB do ładowania i skróconą instrukcję. Przeczytaj instrukcję przed pierwszym użyciem."
   }
 }

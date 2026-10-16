@@ -9,6 +9,7 @@
   <script type="application/ld+json">
     {{- product | structured_data -}}
   </script>
+  {%- render 'suntneew-a20-variant-descriptions', product: product -%}
 {%- elsif request.page_type == 'article' -%}
   <script type="application/ld+json">
     {{- article | structured_data -}}

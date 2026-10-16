@@ -39,7 +39,7 @@
         "intro": {
           "type": "text",
           "settings": {
-            "text": "<p>One compact jump-starter platform with capacity and color choices. Select a variant to see its matching peak current, energy, price and availability.</p>"
+            "text": "<p>Reliable 12V emergency power tailored to your engine size. Choose 8,000mAh for up to 6.0L gas / 3.0L diesel, 12,000mAh for up to 7.0L gas / 4.0L diesel, or 16,000mAh for up to 8.0L gas / 5.0L diesel. Select your capacity and color below to see pricing and availability.</p>"
           }
         },
         "variant_picker": {

@@ -1,0 +1,43 @@
+{%- if request.locale.iso_code == 'en' -%}
+  {%- case request.page_type -%}
+    {%- when 'page' -%}
+      {%- case page.handle -%}
+        {%- when 'manuals-certifications' -%}
+Download SuntNeew user manuals and quick-start guides by model. Find setup, charging and connection instructions for jump starters and LiFePO4 RV batteries.
+        {%- when 'support-rv-g31' -%}
+SuntNeew Group 31 100Ah RV battery manual: Bluetooth 5.0 pairing, solar charging guidance, series and parallel connections, and troubleshooting tips.
+        {%- when 'support-rv-230ah' -%}
+Get the SuntNeew 230Ah battery guide: review the 200A continuous discharge rating, battery-bank connections, Bluetooth monitoring and storage care.
+        {%- when 'support-a20' -%}
+SuntNeew A20 jump starter manual: follow the 12V starting instructions, understand smart-clamp lights, and find USB-C charging and safety guidance.
+        {%- when 'support-kb700' -%}
+SuntNeew KP700 manual & instructions: jump-start 12V vehicles up to 6L gas, master the 3-speed high-velocity air blower for car cleaning, and review charging tips.
+        {%- when 'support-u23' -%}
+SuntNeew U23 compact jump starter guide: check compatible 12V starting, use the 5W emergency light modes, and find USB charging and safety instructions.
+        {%- when 'support-u32' -%}
+SuntNeew U32 jump starter manual: read the status display, check the 6.5L gas engine limit, use dual USB outputs, and review clamp alerts.
+        {%- when 'support-oj02' -%}
+SuntNeew OJ02 manual: read and clear OBD2 engine trouble codes, view vehicle data, and follow the instructions for compatible 12V jump-starting.
+        {%- when 'support-a3' -%}
+SuntNeew A3 metal-shell jump starter guide: use up to 60W USB-C with compatible devices, check 8L gas / 5.5L diesel limits, and read safety guidance.
+        {%- when 'support-rv-g24' -%}
+SuntNeew Group 24 100Ah LiFePO4 RV battery manual: verify compact tray dimensions, Bluetooth app setup, low-temp charge protection, and 12V wiring guidance.
+        {%- when 'support-rv-314ah' -%}
+SuntNeew 314Ah LiFePO4 battery guide: review 4,019.2Wh rated energy, 157A continuous limits, Bluetooth monitoring, and series or parallel connection guidance.
+        {%- when 'support-wl5a' -%}
+SuntNeew WL5A home battery reference and document status: check inverter requirements and ask support about model-matched documents before ordering.
+        {%- when 'support-wl10b' -%}
+SuntNeew WL10B home storage reference: review inverter compatibility requirements, installation prerequisites and the current document status.
+        {%- when 'support-vh' -%}
+SuntNeew VH high-voltage energy storage guide: explore scalable high-voltage system architecture, BMS communication requirements, and pre-order consultation.
+        {%- when 'shop' -%}
+Shop SuntNeew reliable power gear: explore LiFePO4 RV deep-cycle batteries, 12V emergency car jump starters, and home backup systems built for real freedom.
+        {%- when 'member-drops' -%}
+Explore SuntNeew Member Drops for special pricing on selected products. Check current availability, eligible options and offer terms before claiming a price.
+      {%- endcase -%}
+    {%- when 'policy' -%}
+      {%- if request.path contains '/privacy-policy' -%}
+Learn how SuntNeew collects, uses and shares personal information, and how to contact us about your privacy choices.
+      {%- endif -%}
+  {%- endcase -%}
+{%- endif -%}

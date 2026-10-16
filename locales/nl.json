@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "page": "Pagina {{ page }}",
@@ -87,7 +96,7 @@
       "view_in_space": "Bekijk in je ruimte",
       "taxes_included": "Inclusief btw.",
       "taxes_excluded": "Exclusief btw.",
-      "shipping_policy_html": "<a href=\"{{ link }}\" class=\"link\">Verzendkosten berekend<\/a> bij het afrekenen",
+      "shipping_policy_html": "<a href=\"{{ link }}\" class=\"link\">Verzendkosten berekend</a> bij het afrekenen",
       "size_chart": "Maattabel",
       "available_colors_count": {
         "one": "{{ count }} kleur beschikbaar",
@@ -99,7 +108,7 @@
     },
     "gallery": {
       "close": "Galerie sluiten",
-      "zoom": "In-\/uitzoomen",
+      "zoom": "In-/uitzoomen",
       "error": "Afbeelding kan niet worden geladen"
     },
     "price": {
@@ -339,9 +348,9 @@
       "view_cart": "Winkelwagen bekijken",
       "checkout": "Afrekenen",
       "we_accept": "We accepteren",
-      "taxes_and_shipping_policy_at_checkout_html": "Btw en <a href=\"{{ link }}\" class=\"link\">verzendkosten<\/a> berekend bij het afrekenen",
+      "taxes_and_shipping_policy_at_checkout_html": "Btw en <a href=\"{{ link }}\" class=\"link\">verzendkosten</a> berekend bij het afrekenen",
       "taxes_included_but_shipping_at_checkout": "Btw inbegrepen en verzendkosten berekend bij het afrekenen",
-      "taxes_included_and_shipping_policy_html": "Btw inbegrepen. <a href=\"{{ link }}\" class=\"link\">Verzendkosten<\/a> berekend bij het afrekenen.",
+      "taxes_included_and_shipping_policy_html": "Btw inbegrepen. <a href=\"{{ link }}\" class=\"link\">Verzendkosten</a> berekend bij het afrekenen.",
       "taxes_and_shipping_at_checkout": "Btw en verzendkosten berekend bij het afrekenen"
     },
     "order": {
@@ -445,7 +454,7 @@
     "shopify_reviews": {
       "review_info": "Dit product heeft een beoordeling van {{ rating_value }} van {{ rating_max }} sterren.",
       "leave_review": "Laat een recensie achter",
-    "review_count": {
+      "review_count": {
         "zero": "Dit product heeft nog geen recensies.",
         "one": "Het heeft {{ count }} recensie gekregen.",
         "other": "Het heeft {{ count }} recensies gekregen."
@@ -459,5 +468,8 @@
     "home_energy": "SuntNeew thuisbatterijen: 5,12 tot 15,36 kWh LiFePO4, tot negen eenheden in één bank. Vergelijk de capaciteit en de compatibiliteit met uw omvormer.",
     "product_suffix": "Bekijk specificaties, compatibiliteit, laadadvies en ondersteuning voordat u uw SuntNeew product kiest.",
     "home_suffix": "Ontdek betrouwbare energie voor onderweg, voertuigen en noodstroom thuis met praktische productinformatie."
+  },
+  "suntneew_auto": {
+    "sc0dc6955a7a3": "Uw A20-set bevat een A20, een slimme accuklem met beveiliging tegen omgekeerde polariteit, een USB-laadkabel en een snelstartgids. Lees de gids vóór het eerste gebruik."
   }
 }

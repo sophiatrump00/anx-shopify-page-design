@@ -34,13 +34,15 @@
     assign seo_description = 'Review your SuntNeew quote history and contact support for help with a product or order.'
     assign seo_robots = 'noindex,follow'
     assign seo_indexable = false
-  elsif request.page_type == 'page' and seo_path contains '/pages/10-kwh-battery-storage'
+  elsif request.page_type == 'page' and page.id == 163078373671
     comment
-      The 10 kWh landing page is currently localized for Germany only. Shopify
-      exposes the English base handle in every other locale, so keep those
-      fallback copies out of the index until each locale receives real copy.
+      Keep every locale out of the index while installation documents and
+      localized buyer guides are still pending. seo.hidden removes the sitemap entry.
     endcomment
-    assign seo_robots = 'noindex,follow'
+    assign seo_robots = 'noindex,nofollow'
+    assign seo_indexable = false
+  elsif request.page_type == 'page' and page.id == 154446004519
+    assign seo_robots = 'noindex,nofollow'
     assign seo_indexable = false
   elsif request.page_type == 'collection'
     case collection.handle
@@ -141,13 +143,24 @@
     assign seo_description = seo_default_description
   endif
 
+  assign seo_reviewed_description = ''
+  if explicit_description == blank
+    capture seo_reviewed_description
+      render 'suntneew-reviewed-meta'
+    endcapture
+    assign seo_reviewed_description = seo_reviewed_description | strip
+    if seo_reviewed_description != blank
+      assign seo_description = seo_reviewed_description
+    endif
+  endif
+
   comment
     Keep indexable descriptions in a useful search-snippet range. Native
     descriptions remain the source text; only short values receive a
     page-type suffix and long values are shortened at the display boundary.
     Noindex utility pages bypass this normalization.
   endcomment
-  if seo_indexable
+  if seo_indexable and seo_reviewed_description == blank
     assign seo_description_size = seo_description | size
     if seo_description_size < 110 and seo_description_key != blank
       assign seo_translation_key = 'suntneew_seo.' | append: seo_description_key

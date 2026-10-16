@@ -153,7 +153,7 @@
             "image_alt": "SuntNeew A20 Portable Car Jump Starter family",
             "eyebrow": "A20 FAMILY",
             "title": "SuntNeew A20 Portable Car Jump Starter",
-            "summary": "One Shopify product with capacity and color variants. Select the exact capacity and color on the product page.",
+            "summary": "Compact glove-box backup in 8,000, 12,000 or 16,000mAh. Starting current ranges from 750A to 2,000A. The 16,000mAh version supports up to 8.0L gas / 5.0L diesel; check the limits for your selected version.",
             "capacities": "8000,12000,16000",
             "spec_capacity": "8,000 / 12,000 / 16,000mAh",
             "spec_start": "Model-specific",
@@ -256,7 +256,7 @@
         "table_note": "Engine limits apply only to the named 12V model and capacity. Check the vehicle and the exact product page before use; a start is not guaranteed. Availability is shown on the product page.",
         "compare_label": "Show matches",
         "catalog_heading": "Compare product families",
-        "catalog_intro": "KP700, U23, U32 and A3 each open a model-specific page. A20 remains one product family with capacity and color variants.",
+        "catalog_intro": "Not sure which jump starter fits your vehicle? Compare models below by engine displacement, starting current, and built-in tools like high-speed blowers or OBD2 scanners. For the A20, select your preferred capacity directly on its product page.",
         "cards_label": "Cards",
         "list_label": "List",
         "empty_label": "No family is mapped to this capacity yet. Review the full catalog or confirm the product data before publishing a new mapping."
