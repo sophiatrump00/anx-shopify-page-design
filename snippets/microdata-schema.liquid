@@ -87,7 +87,14 @@
 
 {%- if request.page_type == 'index' -%}
   {%- assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' -%}
-  {%- assign theme_logo_url = 'suntneew-logo-ai-dark.png' | asset_url | prepend: request.origin -%}
+  {%- assign theme_logo_url = 'suntneew-logo-ai-dark.png' | asset_url -%}
+  {%- assign theme_logo_prefix = theme_logo_url | slice: 0, 2 -%}
+  {%- assign theme_logo_first_character = theme_logo_url | slice: 0, 1 -%}
+  {%- if theme_logo_prefix == '//' -%}
+    {%- assign theme_logo_url = theme_logo_url | prepend: 'https:' -%}
+  {%- elsif theme_logo_first_character == '/' -%}
+    {%- assign theme_logo_url = theme_logo_url | prepend: request.origin -%}
+  {%- endif -%}
 
   <script type="application/ld+json">
     [

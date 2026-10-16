@@ -455,7 +455,7 @@
                   <li><strong>{{ block.settings.spec_peak | escape }}</strong><span>{{ 'suntneew_auto.s99c2d9b79422' | t }}</span></li>
                   <li><strong>{{ block.settings.spec_fit | escape }}</strong><span>{{ 'suntneew_auto.s971a534f406d' | t }}</span></li>
                 </ul>
-                {%- if family_product.options_with_values != blank -%}
+                {%- if family_product != blank and family_product.has_only_default_variant == false and family_product.options_with_values != blank -%}
                   <div class="suntneew-jump-card__variants" aria-label="Available variants">
                     {%- for option in family_product.options_with_values -%}
                       <span class="suntneew-jump-card__variant">{{ option.name }}: {{ option.values | join: ' / ' }}</span>

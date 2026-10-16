@@ -42,14 +42,18 @@
       timer = undefined;
     };
 
+    const dialogIsOpen = () => document.querySelector('[role="dialog"][open], dialog[open]') !== null;
+
     const schedule = () => {
       stop();
-      if (reduceMotion || document.hidden || gallery.matches(':hover') || gallery.contains(document.activeElement)) return;
+      if (reduceMotion || document.hidden || dialogIsOpen() || gallery.matches(':hover') || gallery.contains(document.activeElement)) return;
 
       const images = visibleImageThumbnails();
       if (images.length < 2) return;
 
       timer = window.setTimeout(() => {
+        // A thumbnail click outside an open drawer would dismiss its focus trap.
+        if (dialogIsOpen()) return;
         const current = activeThumb();
         const currentIndex = images.indexOf(current);
         images[(currentIndex + 1 + images.length) % images.length].click();
@@ -72,6 +76,8 @@
     gallery.addEventListener('focusin', stop);
     gallery.addEventListener('focusout', () => window.setTimeout(schedule, 0));
     document.addEventListener('visibilitychange', schedule);
+    document.addEventListener('dialog:after-show', stop);
+    document.addEventListener('dialog:after-hide', schedule);
 
     const observer = new MutationObserver(() => {
       const current = activeThumb();
