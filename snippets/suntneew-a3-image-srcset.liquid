@@ -1,0 +1,5 @@
+{% doc %}
+  @param {string} filename - Theme image asset filename.
+  @param {number} [original_width] - Original image width in pixels.
+{% enddoc %}
+{{- filename | asset_img_url: '360x' }} 360w, {{ filename | asset_img_url: '600x' }} 600w, {{ filename | asset_img_url: '900x' }} 900w, {{ filename | asset_img_url: '1200x' }} 1200w, {{ filename | asset_url }} {{ original_width | default: 1500 }}w

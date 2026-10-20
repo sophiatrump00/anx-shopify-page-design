@@ -17,6 +17,7 @@
         b.classList.toggle('is-active', b === button);
         b.setAttribute('aria-pressed', String(b === button));
       });
+      image.srcset = button.dataset.gallerySrcset || '';
       image.src = button.dataset.gallerySrc;
       image.alt = button.dataset.galleryAlt;
       query('#galleryLabel').textContent = button.dataset.galleryLabel;
@@ -29,6 +30,11 @@
       query('#gallery-original').href = button.dataset.gallerySrc;
     }
     thumbnails.forEach((b) => b.addEventListener('click', () => selectImage(b)));
+    image.addEventListener('load', () => {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        image.animate([{opacity: .4}, {opacity: 1}], {duration: 180, easing: 'ease-out'});
+      }
+    });
     all('[data-gallery-pick]').forEach((a) => a.addEventListener('click', () => {
       const suffix = String(a.dataset.galleryPick).padStart(2, '0');
       const button = thumbnails.find((b) => b.dataset.gallerySrc.includes(`gallery-${suffix}.jpg`));
@@ -124,6 +130,31 @@
     const badge = query('[data-a3-rating]');
     const reviewLabel = query('[data-a3-review-label]');
     const fallback = query('[data-a3-review-fallback]');
+    let reviewBodySequence = 0;
+    function enhanceReviewBodies() {
+      widget?.querySelectorAll('.jm-review-content__body').forEach((body) => {
+        if (body.dataset.a3Expandable || body.textContent.trim().length < 500) return;
+        const wrapper = body.closest('.jm-review-body-wrapper');
+        if (!wrapper || wrapper.querySelector('button, [role="button"]')) return;
+        body.dataset.a3Expandable = 'true';
+        body.id ||= `a3-review-body-${root.dataset.productId}-${++reviewBodySequence}`;
+        body.classList.add('a3-review-body--collapsed');
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'a3-review-expand';
+        toggle.textContent = root.dataset.reviewExpandLabel;
+        toggle.setAttribute('aria-controls', body.id);
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') !== 'true';
+          toggle.setAttribute('aria-expanded', String(expanded));
+          toggle.textContent = expanded ? root.dataset.reviewCollapseLabel : root.dataset.reviewExpandLabel;
+          body.classList.toggle('a3-review-body--collapsed', !expanded);
+          scheduleLayout();
+        });
+        wrapper.append(toggle);
+      });
+    }
     function syncReviews() {
       const data = window.jdgm?.data?.reviewWidget?.[root.dataset.productId];
       const shared = data?.reviews?.some((review) => review.is_for_product_from_group) ?? false;
@@ -136,6 +167,7 @@
       if (context && data) context.hidden = !shared || count === 0;
       if (data) query('#reviews-heading').textContent = shared ? 'From our jump starter range.' : 'Experiences with A3.';
       if (fallback) fallback.hidden = !!widget?.querySelector('[data-widget-container="review-widget"], .jdgm-rev-widg');
+      enhanceReviewBodies();
     }
     syncReviews();
     if (widget) new MutationObserver(syncReviews).observe(widget, {childList: true, subtree: true});
