@@ -39,7 +39,7 @@
         "intro": {
           "type": "text",
           "settings": {
-            "text": "<p>A compact 12.8V, 100Ah Group 24 LiFePO4 deep-cycle battery with 1,280Wh rated energy, Bluetooth 5.0 monitoring and a cycle-life reference of at least 5,000 cycles at 80% depth of discharge for RV auxiliary and energy-storage systems. This model has no IP certification and must be protected from water ingress.</p>"
+            "text": "<p>A compact 12.8V, 100Ah Group 24 LiFePO4 deep-cycle battery with 1,280Wh rated energy, Bluetooth 5.0 monitoring and a cycle-life reference of at least 5,000 cycles at 80% depth of discharge for RV auxiliary and energy-storage systems.</p>"
           }
         },
         "quantity_selector": {
@@ -119,22 +119,13 @@
             "label": "Cycles at 80% DoD",
             "variant_match": ""
           }
-        },
-        "ip": {
-          "type": "metric",
-          "settings": {
-            "value": "No IP rating",
-            "label": "Protect from water ingress",
-            "variant_match": ""
-          }
         }
       },
       "block_order": [
         "capacity",
         "energy",
         "current",
-        "cycles",
-        "ip"
+        "cycles"
       ],
       "settings": {
         "accessibility_label": "Group 24 RV battery highlights"
@@ -292,8 +283,8 @@
             "eyebrow": "PROTECTION INSIDE THE BATTERY, DISCIPLINE THROUGHOUT THE INSTALL",
             "heading": "Keep the compact system simple and protected.",
             "body": "<p>Battery protection is part of the product; correctly sized fuses, conductors, a disconnect and insulated terminals are still part of the RV system around it. Keep every charging source on a compatible LiFePO4 profile.</p>",
-            "metric_1_value": "No IP rating",
-            "metric_1_label": "Protect from water ingress",
+            "metric_1_value": "",
+            "metric_1_label": "",
             "metric_2_value": "CC/CV",
             "metric_2_label": "Charge method",
             "metric_3_value": "14.4V ±0.2V",
@@ -484,15 +475,6 @@
             "variant_match": ""
           }
         },
-        "ip_rating": {
-          "type": "spec",
-          "settings": {
-            "label": "Ingress boundary",
-            "value": "No IP certification; do not immerse or install where water can enter",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
         "low_temp": {
           "type": "spec",
           "settings": {
@@ -639,19 +621,6 @@
             "public_copy_ready": true
           }
         },
-        "ip65": {
-          "type": "download",
-          "settings": {
-            "label": "Ingress boundary — no IP certification",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "No IP certification",
-            "description": "The approved Group 24 product data requires protection from water ingress and prohibits immersion claims.",
-            "public_copy_ready": false
-          }
-        },
         "fcc_grant": {
           "type": "download",
           "settings": {
@@ -706,7 +675,6 @@
         "charge",
         "discharge",
         "bluetooth",
-        "ip_rating",
         "low_temp",
         "expansion",
         "dimensions",
@@ -723,7 +691,6 @@
         "fcc_sdoc",
         "emc",
         "rohs",
-        "ip65",
         "fcc_grant",
         "un38",
         "sds"
@@ -742,7 +709,7 @@
         "download_heading": "Manuals & Documents",
         "manuals_group_heading": "User Manuals",
         "compliance_group_heading": "Safety & Compliance",
-        "compliance_note": "The FCC / CE-EMC cards identify their stated model scope. Group 24 has no IP certification and must be protected from water ingress.",
+        "compliance_note": "The FCC / CE-EMC cards identify their stated model scope.",
         "compliance_link_label": "View public copy",
         "compliance_pending_label": "Public copy pending"
       }
@@ -785,7 +752,7 @@
             "image_fit": "contain",
             "eyebrow": "SUPPORTING DOCUMENTS",
             "heading": "Open the files that match G24 or its confirmed shared design.",
-            "body": "<p>The FCC SDoC and EMC certificate list G24. The RoHS report covers the RV battery series. Group 24 has no IP certification; do not use a Group 31 ingress document as a Group 24 specification.</p>",
+            "body": "<p>The FCC SDoC and EMC certificate list G24. The RoHS report covers the RV battery series.</p>",
             "variant_match": ""
           }
         }
@@ -859,7 +826,7 @@
           "type": "question",
           "settings": {
             "question": "Which certificates and files are relevant to G24?",
-            "answer": "<p>The FCC SDoC and EMC certificate identify G24 among their listed models, and the RoHS report covers the RV battery series. Group 24 has no IP certification and must be protected from water ingress.</p>"
+            "answer": "<p>The FCC SDoC and EMC certificate identify G24 among their listed models, and the RoHS report covers the RV battery series.</p>"
           }
         },
         "support": {

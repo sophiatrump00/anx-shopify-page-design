@@ -119,22 +119,13 @@
             "label": "Cycles at 70% SOH",
             "variant_match": ""
           }
-        },
-        "ip": {
-          "type": "metric",
-          "settings": {
-            "value": "No IP rating",
-            "label": "Protect from water ingress",
-            "variant_match": ""
-          }
         }
       },
       "block_order": [
         "energy",
         "capacity",
         "current",
-        "cycles",
-        "ip"
+        "cycles"
       ],
       "settings": {
         "accessibility_label": "230Ah RV battery highlights"
@@ -283,8 +274,8 @@
             "metric_2_label": "Max continuous output",
             "metric_3_value": "M8 × 14mm",
             "metric_3_label": "Terminal format",
-            "metric_4_value": "No IP rating",
-            "metric_4_label": "Protect from water ingress",
+            "metric_4_value": "",
+            "metric_4_label": "",
             "variant_match": "",
             "card_size": "tile",
             "media_style": "cover"
@@ -371,8 +362,8 @@
             "metric_2_label": "Charging resumes above",
             "metric_3_value": "-20–60°C",
             "metric_3_label": "Discharge range",
-            "metric_4_value": "No IP rating",
-            "metric_4_label": "Protect from water ingress",
+            "metric_4_value": "",
+            "metric_4_label": "",
             "variant_match": "",
             "card_size": "tile",
             "media_style": "cover"
@@ -586,15 +577,6 @@
             "variant_match": ""
           }
         },
-        "ip_rating": {
-          "type": "spec",
-          "settings": {
-            "label": "Ingress boundary",
-            "value": "No IP certification; protect from water ingress and do not immerse",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
         "low_temp": {
           "type": "spec",
           "settings": {
@@ -750,19 +732,6 @@
             "description": "Safety data sheet for the 230Ah battery pack; upload only the approved public copy.",
             "public_copy_ready": false
           }
-        },
-        "ip65": {
-          "type": "download",
-          "settings": {
-            "label": "Ingress boundary — no IP certification",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "No IP certification",
-            "description": "The approved 230Ah data prohibits waterproof and immersion claims; protect the battery from water ingress.",
-            "public_copy_ready": false
-          }
         }
       },
       "block_order": [
@@ -779,7 +748,6 @@
         "charge",
         "discharge",
         "bluetooth",
-        "ip_rating",
         "low_temp",
         "dimensions",
         "weight",
@@ -795,8 +763,7 @@
         "emc",
         "rohs",
         "un38",
-        "sds",
-        "ip65"
+        "sds"
       ],
       "settings": {
         "anchor_id": "specifications",
@@ -812,7 +779,7 @@
         "download_heading": "Manuals & Documents",
         "manuals_group_heading": "User Manuals",
         "compliance_group_heading": "Safety & Compliance",
-        "compliance_note": "The 230Ah model has no IP certification. Do not make waterproof or immersion claims, and protect the installation from water ingress.",
+        "compliance_note": "",
         "compliance_link_label": "View public copy",
         "compliance_pending_label": "Public copy pending"
       }
@@ -841,13 +808,6 @@
             "answer": "<p>The manual lists 46A as the recommended charge current and 115A as the maximum continuous charge current, using a 14.4V +/- 0.2V CC/CV profile. Coordinate all charging sources within those limits.</p>"
           }
         },
-        "q4": {
-          "type": "question",
-          "settings": {
-            "question": "Does this battery have an IP rating?",
-            "answer": "<p>No IP certification is listed for the 230Ah model. Do not immerse it or make waterproof claims; protect the battery, terminals and cable routing from water ingress.</p>"
-          }
-        },
         "q5": {
           "type": "question",
           "settings": {
@@ -874,7 +834,6 @@
         "q1",
         "q2",
         "q3",
-        "q4",
         "q5",
         "q6",
         "q7"

@@ -33,7 +33,9 @@
               <div><strong>{{ qr_support_fact_one_value }}</strong><span>{{ qr_support_fact_one_label }}</span></div>
               <div><strong>{{ qr_support_fact_two_value }}</strong><span>{{ qr_support_fact_two_label }}</span></div>
               <div><strong>{{ qr_support_fact_three_value }}</strong><span>{{ qr_support_fact_three_label }}</span></div>
+              {%- if qr_support_fact_four_value != blank -%}
               <div><strong>{{ qr_support_fact_four_value }}</strong><span>{{ qr_support_fact_four_label }}</span></div>
+              {%- endif -%}
             </div>
 
             <details class="sn-pdp-qr-mobile__details">
