@@ -117,6 +117,36 @@ JOBS = [
             "distributor": DISTRIBUTOR,
         },
     },
+    {
+        "id": "m7",
+        "base": "u23-insert.pdf",
+        "geometry": U23_BASE,
+        "fields": {
+            "model": "CY-M7",
+            "manufacturer": "XIAMEN ENERGYSTAR ENERGY STORAGE DEVELOPMENT CO., LTD",
+            "address1": "Room 601, 6th Floor, No. 866-10 Wuxian Road, Graphene New",
+            "address2": "Materials Industrial Park, Torch Hi-tech Zone, Xiamen, Fujian, China",
+            "address3": "",
+            "address4": "",
+            "email": EMAIL,
+            "distributor": DISTRIBUTOR,
+        },
+    },
+    {
+        "id": "b21ap",
+        "base": "u23-insert.pdf",
+        "geometry": U23_BASE,
+        "fields": {
+            "model": "B21AP",
+            "manufacturer": "XIAMEN ENERGYSTAR ENERGY STORAGE DEVELOPMENT CO., LTD",
+            "address1": "Room 601, 6th Floor, No. 866-10 Wuxian Road, Graphene New",
+            "address2": "Materials Industrial Park, Torch Hi-tech Zone, Xiamen, Fujian, China",
+            "address3": "",
+            "address4": "",
+            "email": EMAIL,
+            "distributor": DISTRIBUTOR,
+        },
+    },
 ]
 
 

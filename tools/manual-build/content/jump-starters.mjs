@@ -965,4 +965,469 @@ export const jumpStarters = [
       ];
     },
   },
+  // -------------------------------------------------------------------------
+  {
+    id: 'c2',
+    source: 'tools/manual-build/sources/c2-manual-en-source.pdf',
+    asset: 'suntneew-c2-user-manual-en-fr-de.pdf',
+    legacyAliases: ['suntneew-c2-user-manual-en.pdf'],
+    model: 'YSQY-C2 / C2',
+    title: 'C2 Jump Starter with Tire Inflator — 12,000mAh',
+    keepPages: { first: 1, last: 10 },
+    inserts: ['tools/manual-build/inserts/c2-insert.pdf'],
+    insertLabel: 'Product insert & compliance',
+    coverEyebrow: 'User manual · Manuel d’utilisation · Bedienungsanleitung',
+    coverNote:
+      'The English section contains the original 10-panel illustrated manual. The French and German sections provide the full operating, inflation, jump starting, safety, and troubleshooting instructions.',
+    coverFooter:
+      'Model YSQY-C2 · 12,000mAh / 44.4Wh · 800A peak · 150 PSI 22-cyl inflator · suntneew.com',
+    sections: (lang) => {
+      const L = (entry) => pick(entry, lang);
+      const isFr = lang === 'fr';
+      return [
+        {
+          title: isFr ? '1. Présentation du produit' : '1. Produktübersicht',
+          html:
+            p(
+              isFr
+                ? 'Le SuntNeew C2 est un appareil compact 4-en-1 combinant un compresseur d’air haute pression de 150 PSI (cylindre de 22 mm), un démarreur d’urgence 12V avec courant de crête de 800A, une batterie externe de 12 000mAh et une lampe torche d’urgence LED à 3 modes.'
+                : 'Der SuntNeew C2 ist ein kompaktes 4-in-1-Kombigerät mit einem 150-PSI-Hochdruck-Reifenkompressor (22-mm-Zylinder), einem 12V-Starthilfegerät mit 800A Spitzenstrom, einer 12.000mAh Powerbank und einer dreistufigen LED-Notleuchte.',
+            ) +
+            table(
+              isFr ? ['Caractéristique', 'Valeur'] : ['Merkmal', 'Wert'],
+              [
+                [isFr ? 'Modèle' : 'Modell', 'YSQY-C2 / C2'],
+                [isFr ? 'Capacité de batterie' : 'Batteriekapazität', '12 000mAh / 44,4Wh'],
+                [isFr ? 'Tension nominale' : 'Nennspannung', '14,8V'],
+                [isFr ? 'Puissance nominale' : 'Nennleistung', '96W'],
+                [isFr ? 'Courant de démarrage / crête' : 'Start- / Spitzenstrom', '240A / 800A'],
+                [isFr ? 'Pression de gonflage' : 'Aufpumpdruck', '3–150 PSI / 0,2–10,3 bar'],
+                [isFr ? 'Cylindre compresseur' : 'Kompressorzylinder', '22 mm (débit env. 35 L/min)'],
+                [isFr ? 'Entrée de charge' : 'Ladeeingang', 'USB-C 5V / 2A'],
+                [isFr ? 'Sortie USB' : 'USB-Ausgang', 'USB-A 5V / 2,4A'],
+                [isFr ? 'Bruit de fonctionnement' : 'Betriebsgeräusch', '&lt; 82 dB (à 1 m)'],
+                [isFr ? 'Température d’utilisation' : 'Betriebstemperatur', '−10 °C à +45 °C'],
+                [isFr ? 'Température de stockage' : 'Lagertemperatur', '−20 °C à +70 °C'],
+              ],
+            ),
+        },
+        {
+          title: isFr ? '2. Démarrage de secours 12V' : '2. 12V-Fahrzeug-Starthilfe',
+          html:
+            p(
+              isFr
+                ? 'Le démarreur C2 est conçu pour les véhicules équipés d’une batterie au plomb 12V (moteurs essence jusqu’à 4,0 L). Veillez à ce que la batterie interne du C2 affiche au moins 3 barres ou 50 % de charge avant toute tentative.'
+                : 'Das Starthilfegerät C2 ist für Fahrzeuge mit einer 12V-Blei-Säure-Batterie konzipiert (Benzinmotoren bis ca. 4,0 L). Stellen Sie sicher, dass das C2 vor dem Startversuch mindestens 3 Balken bzw. 50 % Ladung anzeigt.',
+            ) +
+            ol(
+              isFr
+                ? [
+                    'Insérez fermement la fiche bleue EC5 du câble de démarrage dans la prise de démarrage 12V du C2.',
+                    'Connectez la pince ROUGE (+) à la borne positive (+) de la batterie du véhicule.',
+                    'Connectez la pince NOIRE (−) à la borne négative (−) de la batterie ou au châssis du véhicule.',
+                    'Montez dans le véhicule et démarrez le moteur (durée de démarrage &lt; 3 secondes).',
+                    'Dès que le moteur tourne, retirez la fiche bleue du C2 dans les 30 secondes, puis retirez les pinces de la batterie.',
+                  ]
+                : [
+                    'Stecken Sie den blauen EC5-Stecker des Starthilfekabels fest in den 12V-Starthilfeanschluss des C2.',
+                    'Verbinden Sie die ROTE Klemme (+) mit dem Pluspol (+) der Fahrzeugbatterie.',
+                    'Verbinden Sie die SCHWARZE Klemme (−) mit dem Minuspol (−) der Batterie oder der Karosseriemasse.',
+                    'Starten Sie das Fahrzeug (Anlasser maximal 3 Sekunden betätigen).',
+                    'Sobald der Motor läuft, ziehen Sie den blauen Stecker innerhalb von 30 Sekunden ab und nehmen danach die Klemmen von der Batterie ab.',
+                  ],
+            ) +
+            callout(
+              isFr
+                ? '<strong>Attention :</strong> Si le moteur ne démarre pas du premier coup, attendez au moins 1 minute avant un nouvel essai. Ne faites pas plus de 3 tentatives successives afin d’éviter toute surchauffe.'
+                : '<strong>Achtung:</strong> Wenn der Motor nicht sofort anspringt, warten Sie mindestens 1 Minute vor dem nächsten Versuch. Unternehmen Sie maximal 3 aufeinanderfolgende Versuche, um eine Überhitzung zu vermeiden.',
+            ),
+        },
+        {
+          title: isFr ? '3. Compresseur de pneu et gonflage' : '3. Reifenkompressor und Aufpumpen',
+          html:
+            p(
+              isFr
+                ? 'Le compresseur d’air intégré de 22 cylindres fournit jusqu’à 150 PSI avec arrêt automatique précis lorsque la pression programmée est atteinte.'
+                : 'Der integrierte 22-mm-Kompressor liefert bis zu 150 PSI mit präziser automatischer Abschaltung bei Erreichen des eingestellten Solldrucks.',
+            ) +
+            table(
+              isFr ? ['Mode préréglé', 'Pression par défaut', 'Plage réglable'] : ['Modus', 'Voreinstellung', 'Einstellbereich'],
+              [
+                [isFr ? 'Voiture (Car)' : 'Auto (Car)', '2,5 bar (36 PSI)', '26–50 PSI (1,8–3,5 bar)'],
+                [isFr ? 'Moto (Motorcycle)' : 'Motorrad (Motorcycle)', '2,4 bar (35 PSI)', '26–45 PSI (1,8–3,1 bar)'],
+                [isFr ? 'Vélo (Bicycle)' : 'Fahrrad (Bicycle)', '45 PSI', '30–145 PSI (2,0–10,0 bar)'],
+                [isFr ? 'Ballon (Ball)' : 'Ball (Ball)', '8 PSI', '5–16 PSI (0,3–1,1 bar)'],
+                [isFr ? 'Personnalisé (Custom)' : 'Benutzerdefiniert (Custom)', '35 PSI', '3–150 PSI (0,2–10,3 bar)'],
+              ],
+            ) +
+            ol(
+              isFr
+                ? [
+                    'Vissez le flexible de gonflage sur l’orifice de sortie d’air du C2.',
+                    'Raccordez l’embout à la valve du pneu et verrouillez le levier. L’écran affiche la pression actuelle en temps réel.',
+                    'Appuyez longuement sur le bouton Marche (2 s) pour allumer l’appareil.',
+                    'Appuyez sur le bouton Mode pour faire défiler les préréglages (Voiture, Moto, Vélo, Ballon, Personnalisé). Réglez la valeur souhaitée à l’aide des boutons + et −.',
+                    'Appuyez brièvement sur le bouton Marche pour lancer le gonflage. L’appareil s’arrête automatiquement à la consigne.',
+                    'Démontez le raccord du pneu puis dévissez le flexible du boîtier C2.',
+                  ]
+                : [
+                    'Schrauben Sie den Füllschlauch in den Luftauslass des C2.',
+                    'Verbinden Sie das Schlauchende mit dem Reifenventil und verriegeln Sie den Hebel. Das Display zeigt den Ist-Druck an.',
+                    'Halten Sie die Einschalttaste 2 Sekunden lang gedrückt, um das Gerät einzuschalten.',
+                    'Drücken Sie die Modus-Taste, um den gewünschten Modus zu wählen (Auto, Motorrad, Fahrrad, Ball, Custom). Justieren Sie den Wert mit + und −.',
+                    'Drücken Sie kurz die Einschalttaste, um das Aufpumpen zu starten. Der Kompressor stoppt automatisch beim Erreichen des Solldrucks.',
+                    'Lösen Sie den Schlauch vom Ventil und schrauben Sie ihn vom Gerät ab.',
+                  ],
+            ) +
+            callout(
+              isFr
+                ? '<strong>Refroidissement :</strong> Après 10 minutes de gonflage continu, laissez l’appareil refroidir pendant au moins 10 minutes avant de reprendre.'
+                : '<strong>Kühlung:</strong> Nach 10 Minuten Dauerbetrieb lassen Sie das Gerät mindestens 10 Minuten abkühlen, bevor Sie es erneut verwenden.',
+            ),
+        },
+        {
+          title: isFr ? '4. Banque d’alimentation et éclairage LED' : '4. Powerbank und LED-Notleuchte',
+          html:
+            p(
+              isFr
+                ? 'Le C2 dispose d’une batterie de 12 000mAh / 44,4Wh capable d’alimenter vos appareils mobiles. La sortie USB-A fournit 5V / 2,4A. Pour recharger le C2, connectez le câble fourni au port USB-C (entrée 5V / 2A).'
+                : 'Das C2 besitzt einen 12.000mAh / 44,4Wh Lithium-Akku zur Versorgung von Mobilgeräten. Der USB-A-Port liefert 5V / 2,4A. Zum Laden des C2 verbinden Sie das mitgelieferte USB-C-Kabel mit dem Ladeanschluss (Eingang 5V / 2A).',
+            ) +
+            p(
+              isFr
+                ? 'La torche LED intégrée propose 3 modes : appuyez longuement sur le bouton Éclairage pour l’allumer en éclairage fixe ; appuyez à nouveau brièvement pour activer le signal SOS, puis une nouvelle fois pour le stroboscope d’alerte.'
+                : 'Die integrierte LED-Lampe bietet 3 Modi: Lichttaste lange drücken für Dauerlicht; erneut kurz drücken für das SOS-Notsignal und nochmals kurz für den Warnblitz (Stroboskop).',
+            ),
+        },
+        {
+          title: isFr ? '5. Sécurité et entretien' : '5. Sicherheit und Pflege',
+          html: ol(
+            isFr
+              ? [
+                  'Ne laissez jamais les pinces rouge et noire entrer en contact direct : risque de court-circuit et d’étincelles.',
+                  'Ne tentez pas de démarrer des batteries 24V ou des véhicules dépassant les limites préconisées.',
+                  'Ne touchez pas l’embout métallique du flexible d’air immédiatement après un gonflage prolongé (échauffement normal).',
+                  'Conservez l’appareil à l’abri de l’humidité, des températures extrêmes (−20 °C à +70 °C) et du feu.',
+                  'Rechargez le C2 au moins une fois tous les 3 mois lors d’un stockage prolongé pour maintenir la santé des cellules.',
+                ]
+              : [
+                  'Lassen Sie die rote und schwarze Klemme niemals miteinander in Kontakt kommen: Kurzschluss- und Funkengefahr.',
+                  'Starten Sie keine 24V-Batterien oder Fahrzeuge oberhalb der zulässigen Hubraumgrenzen.',
+                  'Berühren Sie das Metallgewinde des Füllschlauchs nach längerem Aufpumpen vorsichtig, da es heiß werden kann.',
+                  'Lagern Sie das Gerät vor Feuchtigkeit, extremen Temperaturen (−20 °C bis +70 °C) und offenem Feuer geschützt.',
+                  'Laden Sie das Gerät bei längerer Nichtbenutzung mindestens alle 3 Monate auf, um die Akkuzellen zu schonen.',
+                ],
+          ),
+        },
+        {
+          title: isFr ? '6. Guide de dépannage' : '6. Fehlerbehebung',
+          html: table(
+            isFr ? ['Symptôme', 'Cause possible', 'Solution'] : ['Symptom', 'Mögliche Ursache', 'Lösung'],
+            [
+              [
+                isFr ? 'Le véhicule ne démarre pas' : 'Fahrzeug startet nicht',
+                isFr ? 'Charge faible ou mauvais contact des pinces' : 'Zu geringe Akkuladung oder mangelhafter Klemmenkontakt',
+                isFr ? 'Rechargez le C2 à au moins 3 barres ; nettoyez les bornes et fixez solidement les pinces' : 'C2 auf mindestens 3 Balken laden; Batteriepole reinigen und Klemmen fest ansetzen',
+              ],
+              [
+                isFr ? 'Le compresseur ne démarre pas' : 'Kompressor läuft nicht an',
+                isFr ? 'Pression de consigne inférieure à la pression mesurée' : 'Eingestellter Solldruck liegt unter dem aktuellen Reifendruck',
+                isFr ? 'Augmentez la consigne avec la touche +' : 'Solldruck mit Taste + über den aktuellen Reifendruck anheben',
+              ],
+              [
+                isFr ? 'L’appareil ne se recharge pas' : 'Gerät lädt nicht',
+                isFr ? 'Câble USB-C ou chargeur inadapté' : 'USB-C-Kabel oder Netzteil defekt',
+                isFr ? 'Utilisez un chargeur mural certifié 5V / 2A et le câble USB-C fourni' : 'Zertifiziertes 5V/2A-Netzteil und intaktes USB-C-Kabel verwenden',
+              ],
+            ],
+          ),
+        },
+        {
+          title: isFr ? '7. Avis FCC' : '7. FCC-Hinweis',
+          html: FCC.map((entry) => p(L(entry))).join(''),
+        },
+      ];
+    },
+  },
+
+  // -------------------------------------------------------------------------
+  {
+    id: 'm7',
+    source: 'tools/manual-build/sources/m7-manual-en-source.pdf',
+    asset: 'suntneew-m7-user-manual-en-fr-de.pdf',
+    legacyAliases: ['suntneew-m7-user-manual-en.pdf'],
+    model: 'CY-M7 / M7',
+    title: 'M7 Jump Starter with Tire Inflator — 12,000mAh',
+    keepPages: { first: 1, last: 16, drop: [15] },
+    inserts: ['tools/manual-build/inserts/m7-insert.pdf'],
+    insertLabel: 'Manufacturer / disposal insert',
+    coverEyebrow: 'User manual · Manuel d’utilisation · Bedienungsanleitung',
+    coverNote:
+      'The English section contains the official manufacturer illustrated user manual. The French and German sections provide the complete translated operating instructions, specifications, safety guidelines, and troubleshooting procedures.',
+    coverFooter:
+      'Model CY-M7 · 12,000mAh / 44.4Wh · 1,000A peak · 150 PSI 19-cyl inflator · QC3.0 18W · suntneew.com',
+    sections: (lang) => {
+      const L = (entry) => pick(entry, lang);
+      const isFr = lang === 'fr';
+      return [
+        {
+          title: isFr ? '1. Présentation du produit' : '1. Produktübersicht',
+          html:
+            p(
+              isFr
+                ? 'Le SuntNeew M7 est un booster multifonction combinant un démarreur d’urgence 12V puissant (courant de crête 1 000A pour moteurs jusqu’à 8,0 L essence / 4,0 L diesel), un compresseur d’air intelligent de 150 PSI (cylindre de 19 mm), une batterie externe à charge rapide QC3.0 18W et un éclairage d’urgence LED tout-terrain.'
+                : 'Der SuntNeew M7 ist ein multifunktionaler Booster mit einem leistungsstarken 12V-Starthilfegerät (1.000A Spitzenstrom für Motoren bis 8,0 L Benzin / 4,0 L Diesel), einem intelligenten 150-PSI-Reifenkompressor (19-mm-Zylinder), einer QC3.0 18W Schnelllade-Powerbank und einer robusten LED-Notleuchte.',
+            ) +
+            table(
+              isFr ? ['Caractéristique', 'Valeur'] : ['Merkmal', 'Wert'],
+              [
+                [isFr ? 'Modèle' : 'Modell', 'CY-M7 / M7'],
+                [isFr ? 'Capacité de batterie' : 'Batteriekapazität', '12 000mAh / 44,4Wh'],
+                [isFr ? 'Courant de démarrage / crête' : 'Start- / Spitzenstrom', '500A / 1 000A'],
+                [isFr ? 'Compatibilité véhicule' : 'Fahrzeugkompatibilität', isFr ? 'Jusqu’à 8,0 L essence / 4,0 L diesel' : 'Bis 8,0 L Benzin / 4,0 L Diesel'],
+                [isFr ? 'Compresseur d’air' : 'Reifenkompressor', '150 PSI max. (cylindre 19 mm)'],
+                [isFr ? 'Entrée de charge' : 'Ladeeingang', 'USB-C 5V/2A, 9V/2A (18W max.)'],
+                [isFr ? 'Sortie USB-A (QC3.0)' : 'USB-A-Ausgang (QC3.0)', '5V/3A, 9V/2A, 12V/1,5A (18W)'],
+                [isFr ? 'Affichage numérique' : 'Digitalanzeige', isFr ? 'Double jauge LCD (pression + batterie)' : 'Duales LCD-Display (Druck + Akku)'],
+                [isFr ? 'Éclairage d’urgence' : 'Notbeleuchtung', isFr ? 'LED blanche (Continu, Stroboscope, SOS)' : 'Weiße LED (Dauerlicht, Stroboskop, SOS)'],
+                [isFr ? 'Température d’utilisation' : 'Betriebstemperatur', '−20 °C à +60 °C'],
+              ],
+            ),
+        },
+        {
+          title: isFr ? '2. Démarrage de secours de véhicule 12V' : '2. 12V-Fahrzeug-Starthilfe',
+          html:
+            p(
+              isFr
+                ? 'Assurez-vous que l’écran affiche au moins 50 % de charge restante avant de procéder au démarrage.'
+                : 'Stellen Sie sicher, dass das Display vor dem Startversuch mindestens 50 % Restladung anzeigt.',
+            ) +
+            ol(
+              isFr
+                ? [
+                    'Branchez la fiche bleue du câble intelligent dans le port de démarrage 12V du M7.',
+                    'Fixez la pince ROUGE (+) à la borne positive (+) et la pince NOIRE (−) à la borne négative (−) de la batterie.',
+                    'Vérifiez le voyant de la pince intelligente : vert fixe indique une connexion correcte et le système prêt.',
+                    'Démarrez le véhicule dans les 30 secondes.',
+                    'Retirez immédiatement les pinces après le démarrage et laissez le moteur tourner.',
+                  ]
+                : [
+                    'Stecken Sie den blauen Stecker des intelligenten Kabels in den 12V-Starthilfeanschluss des M7.',
+                    'Befestigen Sie die ROTE Klemme (+) am Pluspol (+) und die SCHWARZE Klemme (−) am Minuspol (−) der Batterie.',
+                    'Prüfen Sie die LED an der intelligenten Klemme: Dauerhaftes Grün signalisiert korrekten Anschluss und Startbereitschaft.',
+                    'Starten Sie das Fahrzeug innerhalb von 30 Sekunden.',
+                    'Nehmen Sie die Klemmen direkt nach dem Anspringen ab und lassen Sie den Motor weiterlaufen.',
+                  ],
+            ) +
+            callout(
+              isFr
+                ? '<strong>Protection :</strong> Si le voyant clignote en rouge ou émet un bip, vérifiez la polarité et la tension de la batterie.'
+                : '<strong>Schutzfunktion:</strong> Blinkt die Kontrollleuchte rot oder ertönt ein Warnton, prüfen Sie die Polarität und die Batteriespannung.',
+            ),
+        },
+        {
+          title: isFr ? '3. Compresseur de pneu intelligent' : '3. Intelligenter Reifenkompressor',
+          html:
+            p(
+              isFr
+                ? 'Le compresseur offre 4 modes de pression préréglés (voiture 2,5 bar, moto 2,4 bar, vélo 45 PSI, ballon 8 PSI) ainsi qu’un mode libre jusqu’à 150 PSI. Les unités supportées sont BAR, PSI, KPA et Kg/cm².'
+                : 'Der Kompressor bietet 4 voreingestellte Modi (Auto 2,5 bar, Motorrad 2,4 bar, Fahrrad 45 PSI, Ball 8 PSI) sowie einen freien Einstellmodus bis 150 PSI. Unterstützte Einheiten sind BAR, PSI, KPA und Kg/cm².',
+            ) +
+            ol(
+              isFr
+                ? [
+                    'Connectez fermement le flexible à air au port de sortie fileté du M7 et à la valve du pneu.',
+                    'Appuyez sur le bouton Marche pour afficher la pression courante.',
+                    'Appuyez sur le bouton M pour sélectionner le mode souhaité ; réglez la pression cible avec les boutons + et −.',
+                    'Appuyez à nouveau sur Marche pour lancer le gonflage. L’arrêt est automatique dès que la pression est atteinte.',
+                  ]
+                : [
+                    'Schrauben Sie den Luftschlauch fest an den Gewindeauslass des M7 und verbinden Sie ihn mit dem Reifenventil.',
+                    'Drücken Sie die Einschalttaste; das Display zeigt den aktuellen Druck an.',
+                    'Drücken Sie die Modus-Taste M zur Auswahl des passenden Modus und stellen Sie den Druck mit + und − ein.',
+                    'Drücken Sie die Einschalttaste erneut, um den Aufpumpvorgang zu starten. Die Abschaltung erfolgt automatisch bei Erreichen des Solldrucks.',
+                  ],
+            ) +
+            callout(
+              isFr
+                ? '<strong>Avis de sécurité :</strong> Laissez le compresseur refroidir après 10 minutes d’utilisation continue.'
+                : '<strong>Sicherheitshinweis:</strong> Lassen Sie das Gerät nach jeweils 10 Minuten Dauerbetrieb abkühlen.',
+            ),
+        },
+        {
+          title: isFr ? '4. Batterie externe QC3.0 et éclairage' : '4. QC3.0 Powerbank und Beleuchtung',
+          html:
+            p(
+              isFr
+                ? 'Le port USB-A est compatible avec la charge rapide Quick Charge 3.0 (jusqu’à 18W) pour recharger smartphones et tablettes compatibles. La recharge du M7 s’effectue par le port USB-C 18W.'
+                : 'Der USB-A-Ausgang unterstützt Quick Charge 3.0 bis 18W für schnelle Smartphone- und Tablet-Ladung. Das Wiederaufladen des M7 erfolgt über den 18W USB-C-Eingang.',
+            ) +
+            p(
+              isFr
+                ? 'La torche LED propose 3 modes : fixe puissant, stroboscope rapide et signal d’urgence SOS.'
+                : 'Die LED-Taschenlampe bietet 3 Modi: helles Dauerlicht, Schnellblitz (Stroboskop) und internationales SOS-Notsignal.',
+            ),
+        },
+        {
+          title: isFr ? '5. Sécurité, maintenance et avis FCC' : '5. Sicherheit, Wartung und FCC-Hinweis',
+          html:
+            ol(
+              isFr
+                ? [
+                    'N’inversez jamais les pinces rouge et noire.',
+                    'Rechargez l’appareil tous les 3 mois lors d’une inutilisation prolongée.',
+                    'Ne laissez pas l’appareil exposé à la lumière directe du soleil ou dans un véhicule surchauffé.',
+                  ]
+                : [
+                    'Rote und schwarze Klemmen niemals vertauschen oder kurzschließen.',
+                    'Bei längerer Lagerung mindestens alle 3 Monate vollständig nachladen.',
+                    'Nicht extremer Hitze, direkter Sonneneinstrahlung im Fahrzeug oder Feuchtigkeit aussetzen.',
+                  ],
+            ) + FCC.map((entry) => p(L(entry))).join(''),
+        },
+      ];
+    },
+  },
+
+  // -------------------------------------------------------------------------
+  {
+    id: 'b21ap',
+    source: 'tools/manual-build/sources/b21ap-manual-en-source.pdf',
+    asset: 'suntneew-b21ap-user-manual-en-fr-de.pdf',
+    legacyAliases: ['suntneew-b21ap-user-manual-en.pdf'],
+    model: 'DJJ-B21AP / B21AP',
+    title: 'B21AP Heavy-Duty Jump Starter with Air Compressor — 20,000mAh',
+    keepPages: { first: 2, last: 18 },
+    inserts: ['tools/manual-build/inserts/b21ap-insert.pdf'],
+    insertLabel: 'Manufacturer / disposal insert',
+    coverEyebrow: 'User manual · Manuel d’utilisation · Bedienungsanleitung',
+    coverNote:
+      'The English section contains the official manufacturer illustrated manual (pages 2–18). The French and German sections provide the complete translated operating, heavy-duty jump starting, 160 PSI inflation, 45W bidirectional PD charging, and maintenance procedures.',
+    coverFooter:
+      'Model DJJ-B21AP · 20,000mAh / 74Wh · 2,500A starting / 5,000A peak · 160 PSI inflator · 45W PD · suntneew.com',
+    sections: (lang) => {
+      const L = (entry) => pick(entry, lang);
+      const isFr = lang === 'fr';
+      return [
+        {
+          title: isFr ? '1. Présentation du produit et caractéristiques' : '1. Produktübersicht und technische Daten',
+          html:
+            p(
+              isFr
+                ? 'Le SuntNeew B21AP est le modèle haut de gamme de la série de démarreurs tout-terrain : batterie 20 000mAh / 74Wh haute capacité, courant de démarrage 2 500A et courant de crête 5 000A (compatible avec tous moteurs essence 12V et moteurs diesel jusqu’à 8,0 L), compresseur d’air haute pression 160 PSI, charge ultra-rapide Power Delivery 45W bidirectionnelle et double sortie USB-A QC 18W.'
+                : 'Der SuntNeew B21AP ist das Spitzenmodell der professionellen Booster-Reihe: 20.000mAh / 74Wh Hochleistungsakku, 2.500A Startstrom und 5.000A Spitzenstrom (geeignet für alle 12V-Benziner und Diesel bis 8,0 L), 160-PSI-Hochdruck-Reifenkompressor, bidirektionales 45W Power Delivery Schnellladen und zwei QC 18W USB-A-Ausgänge.',
+            ) +
+            table(
+              isFr ? ['Caractéristique', 'Spécification'] : ['Merkmal', 'Spezifikation'],
+              [
+                [isFr ? 'Modèle' : 'Modell', 'DJJ-B21AP / B21AP'],
+                [isFr ? 'Capacité nominale' : 'Nennkapazität', '20 000mAh / 74Wh'],
+                [isFr ? 'Courant de démarrage / crête' : 'Start- / Spitzenstrom', '2 500A / 5 000A'],
+                [isFr ? 'Véhicules compatibles' : 'Geeignete Fahrzeuge', isFr ? 'Tous moteurs essence 12V / Diesel jusqu’à 8,0 L' : 'Alle 12V-Benziner / Diesel bis 8,0 L'],
+                [isFr ? 'Pression max. compresseur' : 'Max. Kompressordruck', '160 PSI (11,0 bar)'],
+                [isFr ? 'Port USB-C (PD 45W bidirectionnel)' : 'USB-C-Port (PD 45W bidirektional)', 'Entrée/Sortie : 5V/3A, 9V/3A, 12V/3A, 15V/3A, 20V/2,25A (45W Max)'],
+                [isFr ? 'Sorties USB-A (x2)' : 'USB-A-Ausgänge (2x)', 'QC 18W chacune : 5V/3A, 9V/2A, 12V/1,5A'],
+                [isFr ? 'Éclairage d’urgence' : 'Notbeleuchtung', isFr ? 'Lampe LED haute luminosité (Torche, Flash, SOS)' : 'Hochleistungs-LED (Taschenlampe, Blitz, SOS)'],
+                [isFr ? 'Température de fonctionnement' : 'Betriebstemperatur', '−20 °C à +60 °C'],
+              ],
+            ),
+        },
+        {
+          title: isFr ? '2. Démarrage de véhicules lourds 12V' : '2. 12V-Schwerlast-Starthilfe',
+          html:
+            p(
+              isFr
+                ? 'Grâce à son courant de crête de 5 000A, le B21AP peut relancer instantanément les véhicules 12V les plus exigeants (camionnettes, SUV, bateaux, tracteurs).'
+                : 'Mit 5.000A Spitzenstrom startet das B21AP selbst anspruchsvollste 12V-Fahrzeuge (Pickups, große SUVs, Boote, Traktoren).',
+            ) +
+            ol(
+              isFr
+                ? [
+                    'Vérifiez que le niveau de charge affiché à l’écran est d’au moins 50 % (2 barres ou plus).',
+                    'Insérez la fiche bleue des câbles renforcés dans la prise haute intensité du B21AP.',
+                    'Reliez la pince ROUGE (+) à la borne positive et la pince NOIRE (−) à la borne négative de la batterie.',
+                    'Attendez la confirmation du voyant vert de la pince intelligente.',
+                    'Démarrez le moteur du véhicule.',
+                    'Débranchez la fiche bleue dans les 30 secondes suivant le démarrage, puis retirez les pinces.',
+                  ]
+                : [
+                    'Stellen Sie sicher, dass die Ladestandsanzeige mindestens 50 % beträgt.',
+                    'Stecken Sie den blauen Hochstromstecker fest in den Starthilfeport des B21AP.',
+                    'Verbinden Sie die ROTE Klemme (+) mit dem Pluspol und die SCHWARZE Klemme (−) mit dem Minuspol der Batterie.',
+                    'Warten Sie auf das grüne Signal der intelligenten Klemme.',
+                    'Starten Sie das Fahrzeug.',
+                    'Ziehen Sie den Stecker innerhalb von 30 Sekunden ab und trennen Sie anschließend die Klemmen.',
+                  ],
+            ) +
+            callout(
+              isFr
+                ? '<strong>Conseil pro :</strong> Ne tentez pas plus de 3 démarrages successifs. Laissez refroidir 2 minutes entre chaque tentative.'
+                : '<strong>Profi-Tipp:</strong> Maximal 3 Startversuche hintereinander. Nach jedem Versuch 2 Minuten abkühlen lassen.',
+            ),
+        },
+        {
+          title: isFr ? '3. Compresseur haute pression 160 PSI' : '3. 160 PSI Hochdruckkompressor',
+          html:
+            p(
+              isFr
+                ? 'Le compresseur 160 PSI permet de gonfler rapidement pneus de gros SUV, camionnettes, pneus haute pression de vélo et équipements sportifs.'
+                : 'Der 160-PSI-Kompressor füllt Reifen von großen SUVs, Pickups sowie Hochdruck-Rennradreifen und Sportbälle zügig auf.',
+            ) +
+            ol(
+              isFr
+                ? [
+                    'Vissez le flexible de gonflage sur le connecteur métallique du B21AP.',
+                    'Fixez le raccord à la valve et abaissez le levier de verrouillage.',
+                    'Allumez le B21AP ; l’écran affiche la pression actuelle.',
+                    'Sélectionnez le mode et ajustez la valeur cible avec les touches + et −.',
+                    'Appuyez sur le bouton de gonflage pour lancer la compression ; l’appareil s’arrête automatiquement dès la pression atteinte.',
+                  ]
+                : [
+                    'Schrauben Sie den Füllschlauch auf den Metallanschluss des B21AP.',
+                    'Setzen Sie den Anschluss auf das Reifenventil und drücken Sie den Verriegelungshebel um.',
+                    'Schalten Sie das Gerät ein; der aktuelle Druck wird digital angezeigt.',
+                    'Wählen Sie den gewünschten Modus und justieren Sie den Zieldruck mit + und −.',
+                    'Starten Sie den Kompressor; das Gerät schaltet sich bei Erreichen des Solldrucks automatisch ab.',
+                  ],
+            ) +
+            callout(
+              isFr
+                ? '<strong>Arrêt thermique :</strong> Le compresseur intègre une protection thermique automatique. En cas d’utilisation prolongée, laissez reposer l’appareil 10 minutes.'
+                : '<strong>Überhitzungsschutz:</strong> Der Kompressor verfügt über eine automatische Thermoüberwachung. Nach längerem Betrieb mindestens 10 Minuten pausieren.',
+            ),
+        },
+        {
+          title: isFr ? '4. Charge bidirectionnelle Power Delivery 45W' : '4. Bidirektionales PD 45W Schnellladen',
+          html:
+            p(
+              isFr
+                ? 'Le port USB-C prend en charge une charge rapide 45W dans les deux sens : il recharge un ordinateur portable, une tablette ou un smartphone compatible à haute vitesse, et permet de recharger entièrement la batterie de 20 000mAh du B21AP en environ 2 heures avec un chargeur PD 45W.'
+                : 'Der USB-C-Port unterstützt 45W bidirektionales Laden: Er versorgt Laptops, Tablets und Smartphones mit Höchstgeschwindigkeit und lädt den internen 20.000mAh-Akku des B21AP mit einem 45W-PD-Netzteil in rund 2 Stunden wieder voll auf.',
+            ) +
+            p(
+              isFr
+                ? 'Les deux ports USB-A complémentaires fournissent jusqu’à 18W chacun pour alimenter deux accessoires simultanément.'
+                : 'Die beiden zusätzlichen USB-A-Ausgänge liefern jeweils bis zu 18W, um zwei weitere Geräte parallel zu laden.',
+            ),
+        },
+        {
+          title: isFr ? '5. Sécurité, maintenance et avis FCC' : '5. Sicherheit, Wartung und FCC-Hinweis',
+          html:
+            ol(
+              isFr
+                ? [
+                    'N’utilisez pas l’appareil sous une pluie battante et ne l’immergez jamais dans l’eau.',
+                    'Veillez à brancher fermement tous les connecteurs avant utilisation.',
+                    'Rechargez complètement l’appareil tous les 3 mois lorsqu’il est remisé dans le coffre ou au garage.',
+                  ]
+                : [
+                    'Gerät vor starkem Regen, Nässe und Feuchtigkeit schützen; niemals unter Wasser tauchen.',
+                    'Vor jeder Nutzung alle Anschlüsse auf festen und sauberen Sitz prüfen.',
+                    'Bei Lagerung im Fahrzeug oder in der Garage alle 3 Monate vollständig nachladen.',
+                  ],
+            ) + FCC.map((entry) => p(L(entry))).join(''),
+        },
+      ];
+    },
+  },
 ];

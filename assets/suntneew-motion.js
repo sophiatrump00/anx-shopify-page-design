@@ -56,17 +56,33 @@
     return targets;
   };
 
-  const targets = isHome
+  const getA3Targets = () => {
+    const targets = [];
+    document.querySelectorAll('.sn-a3-pdp [data-a3-reveal]').forEach((element, index) => {
+      if (element.dataset.snA3MotionReady === 'true') return;
+      element.dataset.snA3MotionReady = 'true';
+      element.style.setProperty('--a3-reveal-delay', `${Math.min(index, 8) * 80}ms`);
+      targets.push(element);
+    });
+    return targets;
+  };
+
+  const a3Targets = getA3Targets();
+  const baseTargets = isHome
     ? getHomeTargets()
     : [...document.querySelectorAll('main .shopify-section, main product-card')];
+  const targets = [...baseTargets, ...a3Targets];
 
   if (reduceMotion || !targets.length) return;
 
   document.documentElement.classList.add('sn-motion-ready');
+  if (a3Targets.length) document.documentElement.classList.add('sn-a3-motion-ready');
   if (isHome) {
     document.documentElement.classList.add('sn-home-motion');
   } else {
+    const a3TargetSet = new Set(a3Targets);
     targets.forEach((element, index) => {
+      if (a3TargetSet.has(element)) return;
       element.classList.add('sn-scroll-reveal');
       element.style.setProperty('--sn-reveal-delay', `${Math.min(index % 6, 5) * 55}ms`);
     });

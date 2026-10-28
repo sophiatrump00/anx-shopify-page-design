@@ -157,6 +157,45 @@
         "link": "shopify://pages/power-calculator"
       }
     },
+    "trust_evidence": {
+      "type": "suntneew-evidence",
+      "blocks": {
+        "inside": {
+          "type": "evidence",
+          "settings": {
+            "title": "See what goes into the product.",
+            "text": "Open model pages for the details customers actually need: clamps, terminals, BMS boundaries, dimensions and system fit.",
+            "link_label": "Explore model details",
+            "link": "shopify://collections/rv-batteries"
+          }
+        },
+        "tested": {
+          "type": "evidence",
+          "settings": {
+            "title": "See the conditions behind the claim.",
+            "text": "Temperature limits, cycle references, protection behavior and model-matched documents stay attached to the product story.",
+            "link_label": "Open technology center",
+            "link": "shopify://pages/technology"
+          }
+        },
+        "real_use": {
+          "type": "evidence",
+          "settings": {
+            "title": "See it in real use.",
+            "text": "From a vehicle trunk to an RV battery bay, the scenes show where each product belongs before you choose.",
+            "link_label": "Find your product line",
+            "link": "shopify://collections/jump-starters"
+          }
+        }
+      },
+      "block_order": ["inside", "tested", "real_use"],
+      "settings": {
+        "anchor_id": "trust-evidence",
+        "eyebrow": "LOOK INSIDE BEFORE YOU BUY",
+        "heading": "The proof sits close to the product.",
+        "body": "A practical buying decision needs more than a big number. Start with the use case, then check the build, the conditions and the support path."
+      }
+    },
     "rv_proof": {
       "type": "suntneew-rv-hotspots",
       "blocks": {
@@ -308,5 +347,5 @@
       }
     }
   },
-  "order": ["main_slideshow", "ways_to_power", "power_planner_entry", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq"]
+  "order": ["main_slideshow", "ways_to_power", "power_planner_entry", "trust_evidence", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq"]
 }
