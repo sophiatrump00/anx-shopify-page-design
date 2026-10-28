@@ -30,6 +30,13 @@ function writeTemplate(filename, data) {
 }
 
 function directoryLabels(product) {
+  if (product.onlineLabel || product.pdfLabel || product.certificationsLabel) {
+    return {
+      online_label: product.onlineLabel || 'Online HTML manual',
+      pdf_label: product.pdfLabel || 'Online user guide',
+      certifications_label: product.certificationsLabel || 'Certifications',
+    };
+  }
   if (product.category === 'home-energy-storage') {
     return {
       online_label: 'Product information',

@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-product-support",
+      "blocks": {
+        "fact_1": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Rated capacity",
+            "value": "12,000mAh / 44.4Wh"
+          }
+        },
+        "fact_2": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Starting / peak current",
+            "value": "240A / 400A (4,000A peak rating)"
+          }
+        },
+        "fact_3": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Air compressor",
+            "value": "150 PSI (19-cylinder, 18L/min)"
+          }
+        },
+        "fact_4": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Engine reference",
+            "value": "Up to 8.0L gas / 4.0L diesel"
+          }
+        },
+        "manual_1": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Product overview",
+            "body": "<p>The SuntNeew M7 (model series CY-M7) is an all-in-one automotive roadside emergency system integrating a 12V vehicle jump starter, a high-efficiency 19-cylinder tire inflator, a portable USB fast charger, and multi-mode emergency lighting. Encased in a flame-retardant ABS+PC+TPU UL94-V0 mecha-inspired geometric shell, the M7 combines high mechanical durability with dependable all-weather performance.</p>\n<p><strong>Battery specifications:</strong> 16.8V high-rate lithium-polymer cell cluster, 12,000mAh / 44.4Wh rated energy<br><strong>Jump-starting performance:</strong> 240A rated starting current (3-second sustained cranking, voltage &ge; 10.8V), 400A instantaneous current (4,000A peak class rating)<br><strong>Engine capacity:</strong> 12V automotive systems up to 8.0L gasoline engines or 4.0L diesel engines (passenger cars, SUVs, pickup trucks, vans, motorcycles, motorboats)<br><strong>Air compressor unit:</strong> 19-cylinder motor-driven piston pump, 82W rated power (14.5V), 18 L/min air volume, maximum pressure &le; 150 PSI<br><strong>Dual-stage segmented flow:</strong> Gentle airflow for the initial 50 seconds (or up to 1.0 Bar) to protect tire valves, automatically ramping into high-volume rapid inflation<br><strong>Inflation capability:</strong> Inflates a 195/65R15 tire to 2.5 BAR in under 7 minutes; inflates a 275/35R20 tire to 2.5 BAR in under 9 minutes<br><strong>Accuracy:</strong> &plusmn;1 PSI (3–50 PSI), &plusmn;2 PSI (51–80 PSI), &plusmn;3 PSI (81–150 PSI)<br><strong>Input charging:</strong> Type-C 5V/2A (approx. 5 hours recharge time; 10W standard)<br><strong>Output charging:</strong> USB-A port delivering 5V/2A (supports fast charge protocols 5V/3A, 9V/2A, 12V/1.5A up to 18W)<br><strong>Lighting system:</strong> 12 daylight LEDs (84 lumens total, 6000K pure white) with Steady, Strobe, and SOS modes<br><strong>Dimensions & weight:</strong> 219.7 × 94.3 × 45.0 mm; net weight approx. 750g<br><strong>Operating environment:</strong> Discharge: −10°C to 35°C; Charging: 0°C to 35°C; Storage: −10°C to 55°C</p>\n<p>The package contains the M7 main unit, intelligent DO-port battery clamps, a quick-connect brass air hose, 3 air nozzles (sports ball needle, swim ring adapter, bike adapter), a USB-C charging cable, a nylon drawstring carry pouch, and the user manual.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_2": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Controls, display and diagnostic codes",
+            "body": "<p>The M7 is operated through five tactile buttons paired with a wide-angle digital LED display screen.</p>\n<p><strong>Button layout and functions:</strong></p>\n<ul><li><strong>Power button:</strong> Press and hold for 2 seconds to power on or power off. Short press while powered on starts or pauses air pump inflation. The unit automatically turns off after 20 seconds of inactivity in battery mode or 2 minutes in inflation mode.</li><li><strong>Lighting button:</strong> Short press turns on the 12-LED array in Steady illumination mode; press again for High-Speed Strobe; press a third time for SOS emergency signal; press a fourth time to extinguish the light.</li><li><strong>Mode button (\"M\"):</strong> Short press switches the inflation target between Car (default 36 PSI / 2.5 BAR, range 26–51 PSI), Motorcycle (default 35 PSI / 2.4 BAR, range 26–44 PSI), Bicycle (default 45 PSI / 3.1 BAR, range 30–150 PSI), Ball (default 8 PSI / 0.55 BAR, range 4–16 PSI), and Custom Mode (default 35 PSI, range 3–150 PSI). Long press for 3 seconds toggles between PSI, BAR, KPA, and kg/cm².</li><li><strong>\"+\" and \"−\" buttons:</strong> Short press increases or decreases preset target pressure. Long press for 3 seconds engages fast scrolling. The setting confirms automatically after flashing 3 times.</li></ul>\n<p><strong>Display and system diagnostic codes:</strong></p>\n<ul><li><strong>E-1 (Communication Error):</strong> Indicates an internal communication anomaly. Turns off automatically once normal communication resumes.</li><li><strong>E-2 (Zero-Point Offset Error):</strong> Pressure sensor zero baseline has shifted. <em>Remedy:</em> Simultaneously press and hold both the \"+\" and \"−\" buttons for 3 seconds to recalibrate the zero-pressure point.</li><li><strong>E-5 (Continuous Run Overheat Lockout):</strong> Built-in motor protection activates if the air compressor runs continuously for 10 minutes. The display flashes \"E-5\" for 5 seconds, followed by a mandatory 120-second cooling countdown lock (all buttons disabled) and a 50-second standby delay to safeguard motor longevity.</li><li><strong>Low Battery Icon Flashing:</strong> Battery voltage dropped below 12V during cranking or operation; recharge unit before next use.</li></ul>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_3": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Jump-start a vehicle",
+            "body": "<p><strong>Important:</strong> Only attempt a jump start when the M7 screen shows at least 80% battery capacity. For safety and equipment protection, follow these exact steps:</p>\n<ol><li>Turn off vehicle ignition and disengage all electrical accessories (lights, stereo, air conditioning).</li><li>Plug the heavy-duty DO-port connector of the smart jumper cable securely into the M7 jump socket until fully seated.</li><li>Clamp the <strong>RED clamp</strong> firmly onto the positive (+) battery terminal post.</li><li>Clamp the <strong>BLACK clamp</strong> firmly onto the negative (−) battery terminal post.</li><li>Verify that the smart clamp LED displays a solid green light, signaling a safe circuit and correct polarity.</li><li>Enter the vehicle cabin and crank the engine. The car should start immediately.</li><li>Disconnect the DO-port plug from the M7 unit within 30 seconds after the engine starts, then detach the black and red clamps from the car battery terminals.</li></ol>\n<p><strong>Precautions:</strong> Never crank the starter motor for longer than 3 seconds per attempt. If the engine fails to turn over, wait at least 60 seconds for the jump starter and vehicle battery to stabilize. Never exceed 3 consecutive cranking attempts. After starting a vehicle, wait at least 30 minutes before recharging the M7 unit.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_4": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Air compressor operation and segmented flow",
+            "body": "<p>The M7 utilizes an advanced 19-cylinder motor with dual-stage segmented flow technology: inflation begins at a gentle low flow for the first 50 seconds (or until reaching 1.0 Bar) to stabilize internal valve pressures, before seamlessly transitioning to full 18 L/min high-flow pumping.</p>\n<p><strong>How to inflate:</strong></p>\n<ol><li>Thread the brass air hose fitting into the M7 threaded air output port. <em>Note:</em> The air outlet generates heat during operation (~80°C); avoid touching the metal connector.</li><li>Connect the brass chuck to the tire valve stem and snap the locking latch down securely.</li><li>Press and hold the Power button for 2 seconds to turn on the unit. The display will show the current tire pressure.</li><li>Press the <strong>\"M\" button</strong> to choose the appropriate vehicle or equipment preset (Car, Motorcycle, Bicycle, Ball, Custom).</li><li>Adjust target pressure using the <strong>\"+\" or \"−\" buttons</strong>. The target digits flash 3 times to confirm.</li><li>Short press the <strong>Power button</strong> to start the air compressor. Real-time pressure updates continuously on the LED display.</li><li>The air pump automatically cuts off the moment target pressure is reached. You can pause inflation manually at any time by pressing the Power button.</li><li>Unlock the valve latch and remove the air hose.</li></ol>\n<p><strong>Overheat management:</strong> The M7 includes an automated 10-minute duty cycle limiter. If pumping reaches 10 continuous minutes, the unit halts and initiates a 120-second cooling countdown lock (indicated by E-5 on the display). Allow the unit to cool naturally before commencing another inflation cycle.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_5": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Power bank and device charging",
+            "body": "<p>The M7 features a high-density 12,000mAh battery pack capable of charging phones, action cameras, handheld gaming devices, and GPS navigation units on the go.</p>\n<p><strong>Charging mobile devices:</strong> Connect your device's USB cable to the M7 USB-A output port. Delivers 5V/2A (supports fast charge up to 18W for compatible devices). Delivers up to 2.3 hours of continuous full-rate discharge power.</p>\n<p><strong>Recharging the M7:</strong> Connect the included USB-C cable to the Type-C input port and plug into any certified 5V/2A USB power adapter. A full charge takes approximately 5 hours. The battery segments pulse sequentially during charging and remain solidly lit once fully charged.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_6": {
+          "type": "manual_section",
+          "settings": {
+            "title": "LED emergency lighting",
+            "body": "<p>The integrated 12-LED lighting array provides 84 lumens of 6000K daylight-white illumination, offering dependable lighting for dark roadsides, outdoor repair, and backcountry campsites.</p>\n<p><strong>Three lighting modes:</strong></p>\n<ul><li><strong>Steady work light:</strong> Continuous wide-beam illumination for engine bay inspection and tire changes.</li><li><strong>Fast strobe mode:</strong> Flashes at 200ms ON / 200ms OFF intervals to alert highway drivers and provide breakdown warning.</li><li><strong>SOS emergency distress mode:</strong> Flashes the international Morse code SOS sequence (3 short flashes &bull; 3 long flashes &bull; 3 short flashes) repeatedly for wilderness search and rescue situations.</li></ul>\n<p>Short press the Lighting button to step sequentially through Steady &rarr; Strobe &rarr; SOS &rarr; Off.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_7": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Safety precautions and maintenance",
+            "body": "<ol><li><strong>Voltage compatibility:</strong> The M7 is exclusively designed for 12V lead-acid and AGM vehicle starting systems. Do not connect to 24V commercial trucks.</li><li><strong>Extreme heat warning:</strong> The high-pressure air outlet connector can reach approximately 80°C during heavy inflation. Do not touch bare metal fittings immediately after use.</li><li><strong>Battery level prerequisite:</strong> Do not attempt to jump-start a vehicle when the M7 battery level is below 80%. Doing so may trigger internal overcurrent protection and reduce cell service life.</li><li><strong>Operating temperature boundaries:</strong> Discharge only between −10°C and 35°C; recharge only between 0°C and 35°C. Storage range is −10°C to 55°C.</li><li><strong>Chemical precautions:</strong> Do not store or operate in acidic, alkaline, or chemical environments. Keep away from flammable vapors and open flames.</li><li><strong>Quarterly maintenance:</strong> When not in regular use, recharge the unit to full capacity at least once every 3 months to maintain healthy cell chemistry.</li><li><strong>Shock and water hazards:</strong> The unit is rated for dry, clean environments. Do not submerge, rinse with water, or expose to driving rain.</li><li><strong>Non-toy policy:</strong> Keep this device out of reach of children. Proper operation requires automotive awareness.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_8": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Troubleshooting guide",
+            "body": "<ul><li><strong>Display shows E-1:</strong> Communication error detected between mainboard chips. Power down the device, wait 10 seconds, and power on again.</li><li><strong>Display shows E-2:</strong> Pressure sensor zero baseline has drifted. Press and hold the \"+\" and \"−\" buttons together for 3 seconds to recalibrate the zero pressure point.</li><li><strong>Display shows E-5:</strong> 10-minute continuous inflation protection activated. Wait for the 120-second cooling countdown to complete before resuming.</li><li><strong>Tire pressure value does not change during inflation:</strong> Check for air leakage at the hose connection or valve stem. If pressure does not increase within 2 minutes, the unit automatically stops to prevent motor damage.</li><li><strong>Vehicle does not start:</strong> Verify M7 battery level is &ge; 80%. Ensure clamps are tightly gripped to battery lead posts and free of rust or oil. Wait 60 seconds before re-attempting.</li></ul>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_9": {
+          "type": "manual_section",
+          "settings": {
+            "title": "FCC notice",
+            "body": "<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "compliance_1": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UL 2743 test report",
+            "title": "Product safety testing",
+            "description": "Product-level safety-test scope recorded for the M7 / CY-M7 model family.",
+            "status": "Product safety evidence",
+            "document_assets": ""
+          }
+        },
+        "compliance_2": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "FCC",
+            "title": "Electromagnetic compatibility",
+            "description": "FCC information associated with M7 / CY-M7.",
+            "status": "U.S. market information",
+            "document_assets": ""
+          }
+        },
+        "compliance_3": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UN38.3",
+            "title": "Battery transport testing",
+            "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in M7.",
+            "status": "Transport evidence",
+            "document_assets": ""
+          }
+        },
+        "compliance_4": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "SDS",
+            "title": "Safety and handling information",
+            "description": "Safety Data Sheet information for handling, storage and response for the battery used in M7.",
+            "status": "Safety information",
+            "document_assets": ""
+          }
+        },
+        "compliance_5": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "CE-EMC",
+            "title": "Electromagnetic compatibility (EU)",
+            "description": "Model-matched EMC documentation recorded for M7.",
+            "status": "EU market information",
+            "document_assets": ""
+          }
+        },
+        "compliance_6": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "RoHS",
+            "title": "Restricted substances",
+            "description": "RoHS documentation recorded for the M7 model family.",
+            "status": "EU market information",
+            "document_assets": ""
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4",
+        "manual_1",
+        "manual_2",
+        "manual_3",
+        "manual_4",
+        "manual_5",
+        "manual_6",
+        "manual_7",
+        "manual_8",
+        "manual_9",
+        "compliance_1",
+        "compliance_2",
+        "compliance_3",
+        "compliance_4",
+        "compliance_5",
+        "compliance_6"
+      ],
+      "settings": {
+        "support_label": "Support",
+        "resources_label": "Product Resources",
+        "eyebrow": "PRODUCT SUPPORT",
+        "model": "M7 / CY-M7",
+        "heading": "M7 Support & Manuals",
+        "intro": "Read the mobile-friendly user manual online, explore operational steps for 12V emergency vehicle starting and high-flow tire inflation, or review model-matched safety and compliance specifications.",
+        "resource_nav_label": "M7 manuals and compliance",
+        "online_card_eyebrow": "MOBILE & MULTILINGUAL",
+        "online_card_label": "Read the online manual",
+        "online_card_description": "Responsive instructions that follow the language selected on the store.",
+        "online_card_action": "Start reading",
+        "manual_asset_name": "",
+        "pdf_card_eyebrow": "ONLINE MANUAL",
+        "pdf_label": "",
+        "pdf_card_description": "Comprehensive web edition detailing vehicle jumping, 19-cylinder dual-stage inflation, safety timeouts, and maintenance.",
+        "pdf_card_action": "Download PDF",
+        "certifications_card_eyebrow": "MODEL-MATCHED INFORMATION",
+        "certifications_label": "View certifications",
+        "certifications_card_description": "Review the safety, transport, and electromagnetic compliance standards recorded for the M7 / CY-M7 model.",
+        "certifications_card_action": "View information",
+        "product_label": "",
+        "product_url": "",
+        "manual_eyebrow": "ONLINE USER MANUAL",
+        "manual_heading": "M7 Portable Car Jump Starter with Air Compressor",
+        "manual_intro": "Complete online user guide for setup, 12V emergency vehicle jump-starting, 19-cylinder tire inflation with segmented flow, digital controls, and safety protections.",
+        "manual_version": "Online edition based on the CY-M7 technical specification and test report dated August 2026.",
+        "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
+        "compliance_heading": "Safety & Compliance",
+        "compliance_intro": "The safety, transport, and electromagnetic compatibility categories recorded for M7 are collected here. Match documentation to the CY-M7 model code on the rating plate.",
+        "compliance_note": "Match every document to the model printed on the product label. Safety testing, transport records and safety data serve different purposes.",
+        "compliance_contact_label": "Contact product support"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

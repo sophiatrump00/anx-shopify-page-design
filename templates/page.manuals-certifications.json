@@ -114,6 +114,57 @@
             "cta_label": "Open CY-A3 support"
           }
         },
+        "c2": {
+          "type": "product_resource",
+          "settings": {
+            "category": "jump-starters",
+            "family": "JUMP STARTERS",
+            "model": "C2 / WK-C2",
+            "title": "C2 Portable Car Jump Starter with Air Compressor",
+            "description": "12,000mAh / 44.4Wh jump starter with integrated 150 PSI 22-cylinder inflator, dynamic multi-color display, smart protection clamp, and 300lm emergency lighting.",
+            "asset_name": "suntneew-c2-gallery-01-main.jpg",
+            "image_alt": "SuntNeew C2 Portable Car Jump Starter with smart clamps, air compressor hose and nozzles",
+            "page_handle": "support-c2",
+            "online_label": "Online HTML manual",
+            "pdf_label": "Online user guide",
+            "certifications_label": "Certifications",
+            "cta_label": "Open C2 / WK-C2 support"
+          }
+        },
+        "m7": {
+          "type": "product_resource",
+          "settings": {
+            "category": "jump-starters",
+            "family": "JUMP STARTERS",
+            "model": "M7 / CY-M7",
+            "title": "M7 Portable Car Jump Starter with Air Compressor",
+            "description": "12,000mAh / 44.4Wh starting power with a 150 PSI 19-cylinder air compressor, rugged mecha styling, segmented power delivery, and multi-mode emergency lighting.",
+            "asset_name": "suntneew-m7-gallery-01-main.jpg",
+            "image_alt": "SuntNeew M7 Portable Car Jump Starter with smart clamp and air compressor hose",
+            "page_handle": "support-m7",
+            "online_label": "Online HTML manual",
+            "pdf_label": "Online user guide",
+            "certifications_label": "Certifications",
+            "cta_label": "Open M7 / CY-M7 support"
+          }
+        },
+        "b21ap": {
+          "type": "product_resource",
+          "settings": {
+            "category": "jump-starters",
+            "family": "JUMP STARTERS",
+            "model": "B21AP / DJJ-B21AP",
+            "title": "B21AP High-Capacity Jump Starter with 160 PSI Air Compressor",
+            "description": "Heavy-duty 20,000mAh / 74Wh emergency jump starter with 5,000A peak current, 160 PSI metal air compressor, two-way 45W PD fast charging, and HD digital screen.",
+            "asset_name": "suntneew-b21ap-gallery-01-main.jpg",
+            "image_alt": "SuntNeew B21AP Heavy-Duty Jump Starter with smart battery clamp and air hose",
+            "page_handle": "support-b21ap",
+            "online_label": "Online HTML manual",
+            "pdf_label": "Online user guide",
+            "certifications_label": "Certifications",
+            "cta_label": "Open B21AP / DJJ-B21AP support"
+          }
+        },
         "g31": {
           "type": "product_resource",
           "settings": {
@@ -241,6 +292,9 @@
         "oj02",
         "a20",
         "a3",
+        "c2",
+        "m7",
+        "b21ap",
         "g31",
         "g24",
         "230ah",

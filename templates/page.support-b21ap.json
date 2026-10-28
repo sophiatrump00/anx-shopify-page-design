@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-product-support",
+      "blocks": {
+        "fact_1": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Battery capacity",
+            "value": "20,000mAh / 74Wh"
+          }
+        },
+        "fact_2": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Starting / peak current",
+            "value": "2,500A / 5,000A"
+          }
+        },
+        "fact_3": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Air compressor",
+            "value": "160 PSI max pressure"
+          }
+        },
+        "fact_4": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Fast charging",
+            "value": "Two-way PD 45W USB-C"
+          }
+        },
+        "manual_1": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Product overview",
+            "body": "<p>The SuntNeew B21AP (model DJJ-B21AP) is an ultra-high-capacity, heavy-duty automotive roadside command station. Featuring a 20,000mAh (74Wh) power reserve and a peak cranking current of 5,000A, it effortlessly jump-starts all gasoline engines and up to 10.0L diesel commercial vehicles. It integrates a 160 PSI high-pressure wireless air compressor, two-way 45W Power Delivery fast charging, and a multi-mode high-lumen emergency LED light.</p>\n<p><strong>Battery capacity & energy:</strong> 20,000mAh / 74Wh heavy-duty high-rate lithium-polymer cell pack<br><strong>Jump-starting capability:</strong> 2,500A continuous starting current, 5,000A peak current (starts 12V gasoline engines of any displacement and up to 10.0L diesel engines)<br><strong>Air compressor performance:</strong> Heavy-duty motor delivering up to 160 PSI maximum working pressure; operates quietly (&lt; 80 dB at 1 meter)<br><strong>Preset inflation modes:</strong> 5 selectable modes: Car (36 PSI), Motorcycle (35 PSI), Bicycle (45 PSI), Ball (8 PSI), and Freedom/Custom mode (3–160 PSI with memory function)<br><strong>Selectable pressure units:</strong> PSI, BAR, KPA, kg/cm² (1 Bar = 14.5 PSI = 100 KPA)<br><strong>Two-way USB-C Power Delivery:</strong> PD 45W (5V/3A, 9V/3A, 12V/3A, 15V/3A, 20V/2.25A) for both fast input charging and high-speed laptop/tablet charging<br><strong>Recharge duration:</strong> &le; 2 hours to 100% capacity using a 45W PD charger<br><strong>USB-A fast output:</strong> 5V/3A, 9V/2A, 12V/1.5A (18W fast charging for mobile phones and digital accessories)<br><strong>Lighting system:</strong> High-output LED light with Steady illumination, SOS emergency distress signal, and Hazard Warning Strobe<br><strong>Dimensions & weight:</strong> 220 × 143 × 55.5 mm; net weight approx. 1.35 kg<br><strong>Environmental ratings:</strong> Charging: 0°C to 45°C; Discharging: −10°C to 45°C; Storage: −10°C to 50°C</p>\n<p>The standard package contains the B21AP main unit, heavy-duty intelligent battery clamps, a detachable high-pressure air hose, 3 air compressor nozzle adapters (sports ball needle, tapered swim ring nozzle, Presta/Dunlop bicycle adapter), a USB-C to USB-C 45W PD fast charging cable, a rugged custom EVA storage case, and the comprehensive user manual.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_2": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Controls, ports and digital display",
+            "body": "<p>The B21AP features a high-visibility digital tube display and five precision control buttons arranged for effortless operation even while wearing work gloves.</p>\n<p><strong>Port layout:</strong></p>\n<ol><li><strong>LED flashlight:</strong> Front-facing high-output multi-mode LED lens.</li><li><strong>USB-A output port:</strong> 18W fast charge output (5V/3A, 9V/2A, 12V/1.5A).</li><li><strong>Air hose interface:</strong> Precision metal threaded port with anti-leak sealing ring.</li><li><strong>Type-C IN/OUT port:</strong> Two-way PD 45W high-speed charging port.</li><li><strong>Jump starter connection port:</strong> Heavy-current port protected by a thick silicone safety plug.</li><li><strong>Digital display screen:</strong> High-contrast display presenting live pressure readings, preset targets, mode indicators, and 4-grid battery level.</li></ol>\n<p><strong>Button controls:</strong></p>\n<ul><li><strong>Power / Pump button:</strong> Long press for 2 seconds to turn on the main power. When in inflation mode, short press starts or pauses the air pump. Long press for 2 seconds powers down the device. (Automatically turns off after 30 seconds of inactivity to prevent accidental discharge).</li><li><strong>\"M\" button (Mode / Unit):</strong> Short press cycles between Car, Motorcycle, Bicycle, Ball, and Freedom/Custom modes. Long press toggles between four pressure units (PSI, BAR, KPA, kg/cm²).</li><li><strong>\"+\" and \"−\" buttons:</strong> Short press increases or decreases target pressure in 0.5 PSI increments; long press enables rapid scrolling. Target numbers flash 3 times before locking in.</li><li><strong>LED light button:</strong> Independent button to toggle Steady light, SOS distress, and Strobe warning.</li></ul>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_3": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Jump-start a 12V vehicle",
+            "body": "<p><strong>Safety requirement:</strong> Use strictly with 12V vehicle battery systems. Ensure the B21AP battery level is above 50% (at least 2 battery bars illuminated) before attempting to start.</p>\n<ol><li>Turn off vehicle ignition and all accessories (air conditioning, headlights, audio).</li><li>Peel back the silicone protective plug and insert the heavy-duty battery clamp connector firmly into the B21AP jump port.</li><li>Connect the <strong>RED clamp</strong> to the positive (+) battery terminal, and the <strong>BLACK clamp</strong> to the negative (−) battery terminal. Ensure a tight, corrosion-free grip.</li><li>Enter the vehicle and start the engine within 40 seconds by pressing the Start button or turning the ignition key to START.</li><li>Once the vehicle starts, immediately remove the jumper cable connector from the B21AP unit, then remove the black and red clamps from the car battery terminals. Leave the engine idling to recharge the automotive battery.</li></ol>\n<p><strong>Cranking rules:</strong> If the engine does not start on the first try, disconnect the clamps from the car battery, wait at least 20 seconds, and reconnect. For repeated attempts, allow at least 1 minute of resting time between cranks to protect the jump starter circuitry. After jump starting a vehicle, wait at least 30 minutes before plugging the B21AP into a charger.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_4": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Air compressor and 160 PSI preset modes",
+            "body": "<p>The B21AP includes an ultra-high-pressure wireless air compressor delivering up to 160 PSI, capable of inflating everything from heavy SUV and truck tires to road bicycles requiring up to 145 PSI.</p>\n<p><strong>Inflation instructions:</strong></p>\n<ol><li>Screw the high-pressure air hose tightly into the unit's threaded air pipe interface.</li><li>Attach the chuck to the tire valve stem (or screw in an inflatable nozzle adapter for balls/rafts) and lock the lever.</li><li>Press and hold the Power button for 2 seconds to turn on the B21AP. The digital screen will display the item's current pressure.</li><li>Short press the <strong>\"M\" button</strong> to choose the appropriate preset mode:\n<ul><li><strong>Car mode:</strong> Default 36 PSI (adjustable from 26 to 50 PSI). Recommended for passenger cars, SUVs, and minivans.</li><li><strong>Motorcycle mode:</strong> Default 35 PSI (adjustable from 26 to 50 PSI). Recommended for motorbikes and scooters.</li><li><strong>Bicycle mode:</strong> Default 45 PSI (adjustable from 30 to 145 PSI). Supports standard tires as well as high-pressure road bike tires up to 145 PSI.</li><li><strong>Ball mode:</strong> Default 8 PSI (adjustable from 4 to 16 PSI). Ideal for basketballs, footballs, and sports equipment.</li><li><strong>Freedom mode:</strong> Default 35 PSI (freely adjustable from 3 to 160 PSI). Memorizes previous user settings across sessions.</li></ul></li><li>Long press the \"M\" button to switch between PSI, BAR, KPA, and kg/cm².</li><li>Use the <strong>\"+\" or \"−\" buttons</strong> to adjust the target pressure. The display flashes 3 times to confirm.</li><li>Short press the <strong>Power/Pump button</strong> to start inflation. The real-time pressure will rise on screen.</li><li>The air compressor automatically shuts off once the target pressure is reached. You can also pause inflation manually by short pressing the Power button.</li><li>Unlock and remove the air hose.</li></ol>\n<p><strong>Safety reminder:</strong> The pump motor generates between 75–80 dB of sound during operation. High-pressure inflation creates heat in the internal piston and hose connector; let the pump rest for 10 minutes after inflating two large vehicle tires.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_5": {
+          "type": "manual_section",
+          "settings": {
+            "title": "PD 45W two-way fast charging and power bank",
+            "body": "<p>The B21AP is equipped with bi-directional USB-C Power Delivery (PD 45W), enabling lightning-fast recharge speeds and high-wattage power output for modern consumer electronics.</p>\n<p><strong>Bi-directional PD 45W Type-C port:</strong></p>\n<ul><li><strong>Input (Recharging the unit):</strong> Connect the included Type-C cable to a 45W PD wall adapter. The massive 74Wh battery achieves a 100% full recharge in &le; 2 hours. The 4 battery indicator segments cycle during charging and remain solidly lit when complete.</li><li><strong>Output (Charging laptops & devices):</strong> Delivers up to 45W (5V/3A, 9V/3A, 12V/3A, 15V/3A, 20V/2.25A). Can directly power USB-C laptops (MacBook Pro/Air, Dell XPS, ThinkPad), tablets (iPad Pro), and fast-charge smartphones.</li></ul>\n<p><strong>USB-A fast charge output:</strong> Supplies 18W max (5V/3A, 9V/2A, 12V/1.5A) to charge GPS devices, wireless headphones, flashlights, and mobile phones simultaneously with the Type-C port.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_6": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Multifunctional LED lighting",
+            "body": "<p>A dedicated LED lighting system provides illumination for nighttime roadside work and backcountry navigation.</p>\n<p><strong>Lighting operation:</strong> With the unit powered on, press the dedicated <strong>LED Light button</strong>:</p>\n<ul><li><strong>1st press:</strong> Steady illumination (bright, even beam for inspecting tires, engine bay, or campsite).</li><li><strong>2nd press:</strong> SOS distress signal (international Morse code emergency beacon for search and rescue).</li><li><strong>3rd press:</strong> Hazard Warning Strobe (rapid flashing light to warn approaching traffic of breakdown).</li><li><strong>4th press:</strong> Turns the LED flashlight off.</li></ul>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_7": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Safety precautions and care",
+            "body": "<ol><li><strong>12V engine starting only:</strong> Never connect the jump starter to a 24V commercial vehicle electrical system.</li><li><strong>Internal motor spark notice:</strong> The built-in DC motor may generate minor electric sparks during operation. Never use the inflator in explosive or flammable environments (such as near gas leaks or paint fumes).</li><li><strong>Battery level warning:</strong> Never attempt to jump-start a vehicle when battery capacity is below 50%. Doing so can damage internal cells and cause voltage sag.</li><li><strong>Prevent short circuits:</strong> Do not touch the red and black clamp jaws together or clamp them to the same metal bracket.</li><li><strong>Cooling intervals:</strong> If an engine start attempt fails, wait at least 20 seconds before retrying, and at least 1 minute between repeated cranking cycles.</li><li><strong>Wait before charging:</strong> After completing a jump start, allow internal battery cells to cool down for at least 30 minutes before connecting a charger.</li><li><strong>Storage conditions:</strong> Store in a clean, dry environment between −10°C and 50°C away from corrosive materials. Protect from moisture, sand, and dust. The product is not waterproof; do not submerge or wash with water.</li><li><strong>Quarterly maintenance:</strong> Keep the internal battery charged by topping it up to 100% at least once every 3 months during storage.</li><li><strong>Do not disassemble:</strong> Never open the casing or tamper with internal components.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_8": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Troubleshooting guide",
+            "body": "<ul><li><strong>Slow inflation rate:</strong> Verify battery has at least 2 bars of charge. Check air hose connections at both ends for leaks. Ensure tire does not have a major sidewall puncture.</li><li><strong>Unit is on but pump will not start:</strong> Verify whether current tire pressure is higher than the preset target value. Increase target pressure with the \"+\" button and press Pump button.</li><li><strong>Pressure readout remains zero:</strong> Low-pressure inflatables (party balloons, vinyl beach rings) do not exert sufficient backpressure to register on the digital sensor.</li><li><strong>Device shuts down automatically after 30 seconds:</strong> This is an integrated power-saving safety feature designed to prevent accidental battery drain. Simply press and hold the Power button for 2 seconds to restart.</li><li><strong>Air hose connection leaking:</strong> Ensure the threaded brass nozzle is screwed all the way onto the valve stem and the quick-locking latch is pressed completely down.</li></ul>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_9": {
+          "type": "manual_section",
+          "settings": {
+            "title": "FCC notice",
+            "body": "<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "compliance_1": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UL 2743 test report",
+            "title": "Product safety testing",
+            "description": "Product-level safety-test scope recorded for the B21AP / DJJ-B21AP model family.",
+            "status": "Product safety evidence",
+            "document_assets": ""
+          }
+        },
+        "compliance_2": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "FCC",
+            "title": "Electromagnetic compatibility",
+            "description": "FCC information associated with B21AP / DJJ-B21AP.",
+            "status": "U.S. market information",
+            "document_assets": ""
+          }
+        },
+        "compliance_3": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UN38.3",
+            "title": "Battery transport testing",
+            "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in B21AP.",
+            "status": "Transport evidence",
+            "document_assets": ""
+          }
+        },
+        "compliance_4": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "SDS",
+            "title": "Safety and handling information",
+            "description": "Safety Data Sheet information for handling, storage and response for the battery used in B21AP.",
+            "status": "Safety information",
+            "document_assets": ""
+          }
+        },
+        "compliance_5": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "CE-EMC",
+            "title": "Electromagnetic compatibility (EU)",
+            "description": "Model-matched EMC documentation recorded for B21AP.",
+            "status": "EU market information",
+            "document_assets": ""
+          }
+        },
+        "compliance_6": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "RoHS",
+            "title": "Restricted substances",
+            "description": "RoHS documentation recorded for the B21AP model family.",
+            "status": "EU market information",
+            "document_assets": ""
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4",
+        "manual_1",
+        "manual_2",
+        "manual_3",
+        "manual_4",
+        "manual_5",
+        "manual_6",
+        "manual_7",
+        "manual_8",
+        "manual_9",
+        "compliance_1",
+        "compliance_2",
+        "compliance_3",
+        "compliance_4",
+        "compliance_5",
+        "compliance_6"
+      ],
+      "settings": {
+        "support_label": "Support",
+        "resources_label": "Product Resources",
+        "eyebrow": "PRODUCT SUPPORT",
+        "model": "B21AP / DJJ-B21AP",
+        "heading": "B21AP Support & Manuals",
+        "intro": "Read the mobile-friendly user manual online, follow step-by-step instructions for heavy-duty 12V vehicle jump starting and 160 PSI high-pressure inflation, or review model-matched safety and compliance records.",
+        "resource_nav_label": "B21AP manuals and compliance",
+        "online_card_eyebrow": "MOBILE & MULTILINGUAL",
+        "online_card_label": "Read the online manual",
+        "online_card_description": "Responsive instructions that follow the language selected on the store.",
+        "online_card_action": "Start reading",
+        "manual_asset_name": "",
+        "pdf_card_eyebrow": "ONLINE MANUAL",
+        "pdf_label": "",
+        "pdf_card_description": "Comprehensive web edition detailing heavy-duty 5,000A vehicle cranking, 160 PSI inflation modes, 45W PD fast charging, and diagnostics.",
+        "pdf_card_action": "Download PDF",
+        "certifications_card_eyebrow": "MODEL-MATCHED INFORMATION",
+        "certifications_label": "View certifications",
+        "certifications_card_description": "Review the six safety, transport, and electromagnetic compliance categories recorded for the B21AP / DJJ-B21AP model.",
+        "certifications_card_action": "View information",
+        "product_label": "",
+        "product_url": "",
+        "manual_eyebrow": "ONLINE USER MANUAL",
+        "manual_heading": "B21AP High-Capacity Jump Starter with 160 PSI Air Compressor",
+        "manual_intro": "Complete online user guide for setup, heavy-duty 12V engine starting, 160 PSI high-pressure air pump operation, 45W PD two-way fast charging, and maintenance.",
+        "manual_version": "Online edition based on the English user manual revision A0 dated May 23, 2026.",
+        "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
+        "compliance_heading": "Safety & Compliance",
+        "compliance_intro": "The six safety, transport, and electromagnetic compliance categories recorded for B21AP are collected here. Match documentation to the DJJ-B21AP model code on the rating plate.",
+        "compliance_note": "Match every document to the model printed on the product label. Safety testing, transport records and safety data serve different purposes.",
+        "compliance_contact_label": "Contact product support"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

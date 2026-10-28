@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "suntneew-product-support",
+      "blocks": {
+        "fact_1": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Rated capacity",
+            "value": "12,000mAh / 44.4Wh"
+          }
+        },
+        "fact_2": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Starting / peak current",
+            "value": "240A / 800A (4,000A peak rating)"
+          }
+        },
+        "fact_3": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Air compressor",
+            "value": "150 PSI (22-cylinder, 96W)"
+          }
+        },
+        "fact_4": {
+          "type": "quick_fact",
+          "settings": {
+            "label": "Engine reference",
+            "value": "Up to 8.0L gas / 5.0L diesel"
+          }
+        },
+        "manual_1": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Product overview",
+            "body": "<p>The SuntNeew C2 (engineering model WK-C2) is a versatile 4-in-1 automotive emergency power station combining a 12V vehicle jump starter, a high-pressure tire inflator, a portable USB power bank, and a 300-lumen emergency LED work light. Built for road trips, daily commuting, and off-grid reliability, it provides self-rescue capability without needing another vehicle or roadside assistance.</p>\n<p><strong>Cell configuration:</strong> 4S1P high-rate lithium-polymer pack (4 × 3,000mAh soft-pack cells)<br><strong>Rated battery capacity:</strong> 12,000mAh / 44.4Wh (14.8V nominal voltage, 16.8V charging cutoff)<br><strong>Jump-start ratings:</strong> 240A continuous starting current, 800A peak discharge current (4,000A peak class rating)<br><strong>Engine compatibility:</strong> 12V passenger cars, SUVs, vans, and pickups up to 8.0L gasoline or 5.0L diesel<br><strong>Air compressor mechanism:</strong> 22-cylinder high-pressure pump, 96W rated power, 14.8V rated voltage, stable current &lt; 6.5A<br><strong>Pressure range & performance:</strong> 3–150 PSI (inflates a standard 195/65R15 tire from 0 to 2.5 BAR in approx. 5 minutes)<br><strong>Inflation duty cycle:</strong> &gt; 25 minutes continuous runtime with built-in thermal protection<br><strong>Input charging:</strong> USB-C 5V/2A or 5V/3A (max recharge duration &lt; 3.5 hours at 5V/3A)<br><strong>Output power:</strong> USB-A 5V/2A for mobile digital devices<br><strong>Emergency light:</strong> 300 lumens multi-mode LED (Steady, Strobe, SOS)<br><strong>Enclosure & dimensions:</strong> Impact-resistant PC/ABS chassis, 205 × 120 × 53 mm, weight approx. 1.1 kg<br><strong>Operating temperature:</strong> −10°C to 50°C; Storage temperature: −30°C to 70°C</p>\n<p>The standard package includes the C2 main unit, heavy-duty smart battery clamps with a 60cm span, a 40cm woven heat-resistant air hose (US thread M8), three inflation nozzle adapters (ball needle, swim ring nozzle, bike valve adapter), a 50cm USB-C charging cable, an EVA zipper carrying case, and the user manual.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_2": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Controls and dynamic display",
+            "body": "<p>The C2 features an intuitive 6-button control interface and a dynamic atmosphere LED display that provides clear visual feedback in bright sunlight or pitch-black darkness.</p>\n<p><strong>Button layout and functions:</strong></p>\n<ul><li><strong>Power / Light button:</strong> Long press to power on the unit or toggle the 300-lumen LED flashlight; short press cycles through light modes (Steady, Strobe, SOS, Off).</li><li><strong>Mode / Unit switch (\"M\" button):</strong> Short press cycles through the 5 preset inflation modes (Car, Motorcycle, Bicycle, Ball, Custom Free mode). Long press toggles between four pressure units: PSI, BAR, KPA, and kg/cm².</li><li><strong>Pressure adjustment (\"+\" and \"−\" buttons):</strong> Short press to adjust the target inflation pressure in 0.5 PSI / 0.05 BAR increments; long press for rapid pressure adjustment. The target value flashes 3 times on the screen before confirming.</li><li><strong>Pump start / pause button:</strong> Short press to begin tire inflation; short press again to pause or stop inflation at any time.</li><li><strong>Jump starter socket:</strong> Dedicated EC5 port with anti-reverse physical keying and protective rubber dust cover.</li></ul>\n<p><strong>Dynamic screen indicators:</strong> The color-shifting atmosphere display dynamically shifts colors according to detected pressure and mode status. It displays numeric real-time tire pressure, target preset pressure, active vehicle/ball mode icons, battery charge percentage, and battery voltage level. To conserve energy, the device automatically powers off after 2 minutes of standby inactivity or no-load condition.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_3": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Jump-start a vehicle",
+            "body": "<p><strong>Safety requirement:</strong> Use exclusively with 12V electrical systems. Before attempting a jump start, ensure the C2 battery indicator displays at least 50% capacity (at least two battery bars or &gt; 50%).</p>\n<ol><li>Turn off the vehicle engine, headlights, air conditioning, and all electrical accessories.</li><li>Open the protective rubber cover on the C2 jump-start port and insert the blue EC5 connector of the smart jumper cable completely into the socket until firmly seated.</li><li>Connect the <strong>RED clamp</strong> to the positive (+) terminal of the car battery, and the <strong>BLACK clamp</strong> to the negative (−) terminal of the car battery. Ensure the clamp jaws make solid, clean contact with the metal terminal posts.</li><li>Check the indicator LED on the smart clamp housing. A solid green light indicates correct connection and circuit readiness. (If the indicator flashes red or sounds a warning buzzer, check for reverse polarity or a depleted vehicle battery).</li><li>Return to the driver's seat and turn the ignition key or press the Engine Start button. The engine should crank and start immediately.</li><li>Within 30 seconds after the engine starts, remove the jumper cable plug from the C2 unit, then remove the black and red clamps from the vehicle battery terminals. Leave the vehicle engine running for at least 15–20 minutes to allow the alternator to recharge the car battery.</li></ol>\n<p><strong>Cranking cautions:</strong> Do not crank the engine continuously for more than 5 seconds. If the vehicle fails to start on the first attempt, disconnect the clamps, wait at least 60 seconds to allow the jump starter and battery cells to cool, and then retry. Never make more than 3 consecutive starting attempts.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_4": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Air compressor and tire inflation",
+            "body": "<p>The built-in 22-cylinder high-pressure air pump delivers rapid, reliable inflation for car tires, motorcycles, bicycles, sports equipment, and outdoor inflatables up to 150 PSI.</p>\n<p><strong>Operating procedure:</strong></p>\n<ol><li>Screw the threaded brass connector of the 40cm woven air hose firmly into the C2 air output port.</li><li>Attach the opposite end of the hose to the tire valve stem (or screw on the ball needle/swim ring nozzle adapter for other inflatables) and press down the quick-lock lever to ensure an airtight seal.</li><li>Press the Power button to turn on the C2. The digital display will immediately show the current real-time tire pressure.</li><li>Short press the <strong>\"M\" button</strong> to choose your inflation mode:\n<ul><li><strong>Car mode:</strong> Default 36 PSI / 2.5 BAR (adjustable from 26 to 50 PSI).</li><li><strong>Motorcycle mode:</strong> Default 35 PSI / 2.4 BAR (adjustable from 26 to 44 PSI).</li><li><strong>Bicycle mode:</strong> Default 45 PSI / 3.1 BAR (adjustable from 30 to 145 PSI).</li><li><strong>Ball mode:</strong> Default 8 PSI / 0.55 BAR (adjustable from 4 to 16 PSI).</li><li><strong>Custom mode:</strong> Default 35 PSI (freely adjustable from 3 to 150 PSI; memorizes previous setting).</li></ul></li><li>Long press the \"M\" button if you wish to change the measurement unit (PSI, BAR, KPA, kg/cm²).</li><li>Press the <strong>\"+\" or \"−\" buttons</strong> to fine-tune your desired target pressure. The value flashes 3 times to lock in the setting.</li><li>Press the <strong>Pump Start button</strong> to commence inflation. The screen displays real-time rising pressure.</li><li>The compressor automatically shuts off once the target pressure is achieved, eliminating the risk of over-inflation. You can also pause inflation manually by pressing the Pump button at any time.</li><li>Unlock the valve lever and detach the air hose. Replace the tire valve dust cap.</li></ol>\n<p><strong>Thermal caution:</strong> The pump cylinder and metal air outlet generate heat during sustained operation (temperatures can reach 70–80°C). After 10–15 minutes of continuous pumping, allow the unit to cool down for 10 minutes before inflating another tire. Avoid touching the metal hose connector directly after use.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_5": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Power bank and device charging",
+            "body": "<p>The C2 functions as an emergency power bank to keep smartphones, tablets, cameras, GPS units, and other portable devices powered during outdoor adventures or unexpected blackouts.</p>\n<p><strong>Charging mobile devices:</strong> Connect your device's USB charging cable to the C2 USB-A output port (delivering 5V/2A, 10W max). Press the Power button to activate charging. Built-in smart circuitry detects connected loads and optimizes current delivery while safeguarding against overcharging and short circuits.</p>\n<p><strong>Recharging the C2 unit:</strong> Connect the included USB-C cable to the C2 Type-C input port and plug the other end into a standard 5V/2A or 5V/3A wall charger, car USB charger, or power adapter. The dynamic battery percentage indicator will animate while charging. A full recharge takes less than 3.5 hours using a 5V/3A power supply (approx. 5 hours with a 5V/2A adapter). When all 4 indicator bars remain solidly illuminated, charging is complete.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_6": {
+          "type": "manual_section",
+          "settings": {
+            "title": "LED emergency lighting",
+            "body": "<p>Equipped with a high-intensity 300-lumen daylight LED flashlight, the C2 provides over 10 square meters of illumination at a 1-meter height, essential for nighttime tire changes, engine inspections, campsite setup, and roadside emergencies.</p>\n<p><strong>Lighting modes:</strong></p>\n<ul><li><strong>Steady white light:</strong> Provides broad, flicker-free illumination with over 5 hours of continuous battery runtime on a full charge.</li><li><strong>Strobe light:</strong> High-frequency flashing beam designed to alert oncoming highway traffic and signal roadside breakdown presence.</li><li><strong>SOS distress signal:</strong> Standard international Morse code distress pattern (3 short, 3 long, 3 short) for critical emergency rescue situations.</li></ul>\n<p>To operate: Long press the Power/Light button for 2 seconds to turn on the LED light in Steady mode. Short press sequentially to cycle between Strobe, SOS, and Off. Long press at any time to shut off the light immediately.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_7": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Safety precautions and maintenance",
+            "body": "<ol><li><strong>12V systems only:</strong> Never connect the C2 to a 24V vehicle battery system (such as heavy commercial haulers or construction equipment).</li><li><strong>Correct polarity:</strong> Always connect red to positive (+) and black to negative (−). Never touch the red and black clamp jaws together when the cable is plugged into the starter.</li><li><strong>Cranking limits:</strong> Do not crank the vehicle engine for longer than 5 seconds per attempt. Maintain at least a 60-second rest interval between attempts, and never exceed 3 consecutive cranks.</li><li><strong>Storage temperature:</strong> Store the device in a cool, dry location between −30°C and 70°C. Avoid prolonged storage in direct sunlight or inside a baking glove compartment during hot summer days.</li><li><strong>Quarterly recharge:</strong> For optimal lithium battery health, recharge the unit to 100% at least once every 3 months during prolonged periods of storage.</li><li><strong>Water and moisture:</strong> The unit is not waterproof. Do not expose it to rain, splashing water, high humidity, or flammable liquids. If moisture enters the device, allow it to dry thoroughly before use.</li><li><strong>Air hose heat:</strong> Do not bend, kink, or pinch the air hose during pumping. The metal fittings become hot during prolonged inflation; handle using the rubberized sleeve.</li><li><strong>Non-toy policy:</strong> This product contains high-voltage and high-current electrical components and high-pressure mechanical parts. It is not intended for use by children.</li><li><strong>Do not disassemble:</strong> Tampering with internal cell packs, electronic boards, or motor assemblies voids the warranty and poses severe shock and fire hazards.</li></ol>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_8": {
+          "type": "manual_section",
+          "settings": {
+            "title": "Troubleshooting guide",
+            "body": "<ul><li><strong>Engine does not crank when key is turned:</strong> Ensure C2 battery level is above 50%. Check that the EC5 clamp plug is pushed fully into the socket. Inspect car battery terminal posts for corrosion, dirt, or grease; clean posts with a wire brush or cloth and re-seat clamps securely.</li><li><strong>Smart clamp LED flashes red or beeps continuously:</strong> Reverse polarity detected, or vehicle battery voltage is lower than minimum recognition threshold. Verify positive/negative terminal orientation.</li><li><strong>Air compressor does not start:</strong> Check whether the detected tire pressure is already higher than the preset target value. Adjust the target pressure higher with the \"+\" button and press the Pump button again.</li><li><strong>Air leaks around valve during pumping:</strong> Check that the threaded nozzle is screwed on tightly and that the quick-release clamp lever is fully locked down in the horizontal position.</li><li><strong>Pressure readout shows zero on small inflatables:</strong> Extremely low-pressure objects such as balloons, inflatable beach balls, or pool floats do not produce sufficient backpressure to register on the digital sensor. Monitor inflation manually and stop as soon as filled.</li><li><strong>Device shuts down automatically:</strong> Built-in battery saving timer powers down the unit after 2 minutes of inactivity or no-load condition. Press the Power button to wake the unit.</li></ul>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "manual_9": {
+          "type": "manual_section",
+          "settings": {
+            "title": "FCC notice",
+            "body": "<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>",
+            "asset_name": "",
+            "image_alt": "",
+            "image_caption": ""
+          }
+        },
+        "compliance_1": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UL 2743 test report",
+            "title": "Product safety testing",
+            "description": "Product-level safety-test scope recorded for the C2 / WK-C2 model family.",
+            "status": "Product safety evidence",
+            "document_assets": ""
+          }
+        },
+        "compliance_2": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "FCC",
+            "title": "Electromagnetic compatibility",
+            "description": "FCC information associated with C2 / WK-C2.",
+            "status": "U.S. market information",
+            "document_assets": ""
+          }
+        },
+        "compliance_3": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "UN38.3",
+            "title": "Battery transport testing",
+            "description": "Transport-test documentation used to support handling and shipment of the model-matched battery pack in C2.",
+            "status": "Transport evidence",
+            "document_assets": ""
+          }
+        },
+        "compliance_4": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "SDS",
+            "title": "Safety and handling information",
+            "description": "Safety Data Sheet information for handling, storage and response for the battery used in C2.",
+            "status": "Safety information",
+            "document_assets": ""
+          }
+        },
+        "compliance_5": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "CE-EMC",
+            "title": "Electromagnetic compatibility (EU)",
+            "description": "Model-matched EMC documentation recorded for C2.",
+            "status": "EU market information",
+            "document_assets": ""
+          }
+        },
+        "compliance_6": {
+          "type": "compliance_item",
+          "settings": {
+            "standard": "RoHS",
+            "title": "Restricted substances",
+            "description": "RoHS documentation recorded for the C2 model family.",
+            "status": "EU market information",
+            "document_assets": ""
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4",
+        "manual_1",
+        "manual_2",
+        "manual_3",
+        "manual_4",
+        "manual_5",
+        "manual_6",
+        "manual_7",
+        "manual_8",
+        "manual_9",
+        "compliance_1",
+        "compliance_2",
+        "compliance_3",
+        "compliance_4",
+        "compliance_5",
+        "compliance_6"
+      ],
+      "settings": {
+        "support_label": "Support",
+        "resources_label": "Product Resources",
+        "eyebrow": "PRODUCT SUPPORT",
+        "model": "C2 / WK-C2",
+        "heading": "C2 Support & Manuals",
+        "intro": "Read the mobile-friendly user manual online, review the complete operational guide for 12V jump-starting and tire inflation, or browse model-matched safety and compliance specifications.",
+        "resource_nav_label": "C2 manuals and compliance",
+        "online_card_eyebrow": "MOBILE & MULTILINGUAL",
+        "online_card_label": "Read the online manual",
+        "online_card_description": "Responsive instructions that follow the language selected on the store.",
+        "online_card_action": "Start reading",
+        "manual_asset_name": "",
+        "pdf_card_eyebrow": "ONLINE MANUAL",
+        "pdf_label": "",
+        "pdf_card_description": "Full web edition with step-by-step instructions for emergency starting, 150 PSI tire inflation presets, and device charging.",
+        "pdf_card_action": "Download PDF",
+        "certifications_card_eyebrow": "MODEL-MATCHED INFORMATION",
+        "certifications_label": "View certifications",
+        "certifications_card_description": "Review the safety, transport, and electromagnetic compliance standards recorded for the C2 / WK-C2 model.",
+        "certifications_card_action": "View information",
+        "product_label": "",
+        "product_url": "",
+        "manual_eyebrow": "ONLINE USER MANUAL",
+        "manual_heading": "C2 Portable Car Jump Starter with Air Compressor",
+        "manual_intro": "Complete online user guide for setup, 12V engine jump starting, 5-mode tire inflation, USB power bank charging, and safety precautions.",
+        "manual_version": "Online edition based on the WK-C2 technical engineering specification dated May 28, 2026.",
+        "compliance_eyebrow": "MODEL-MATCHED INFORMATION",
+        "compliance_heading": "Safety & Compliance",
+        "compliance_intro": "The safety, transport, and electromagnetic compatibility categories recorded for C2 are collected here. Match documentation to the WK-C2 model code on the rating plate.",
+        "compliance_note": "Match every document to the model printed on the product label. Safety testing, transport records and safety data serve different purposes.",
+        "compliance_contact_label": "Contact product support"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

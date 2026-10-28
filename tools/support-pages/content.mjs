@@ -544,6 +544,321 @@ PRODUCTS.push(
 );
 
 // ---------------------------------------------------------------------------
+// 启动电源气泵一体机：C2 / M7 / B21AP
+// ---------------------------------------------------------------------------
+
+PRODUCTS.push(
+  {
+    id: 'c2',
+    handle: 'support-c2',
+    pageTitle: 'C2 Support and Manuals',
+    category: 'jump-starters',
+    family: 'JUMP STARTERS',
+    model: 'C2 / WK-C2',
+    cardTitle: 'C2 Portable Car Jump Starter with Air Compressor',
+    cardDescription:
+      '12,000mAh / 44.4Wh jump starter with integrated 150 PSI 22-cylinder inflator, dynamic multi-color display, smart protection clamp, and 300lm emergency lighting.',
+    cardImage: 'suntneew-c2-gallery-01-main.jpg',
+    cardImageAlt: 'SuntNeew C2 Portable Car Jump Starter with smart clamps, air compressor hose and nozzles',
+    heading: 'C2 Support & Manuals',
+    intro:
+      'Read the mobile-friendly user manual online, review the complete operational guide for 12V jump-starting and tire inflation, or browse model-matched safety and compliance specifications.',
+    productUrl: '',
+    productLabel: '',
+    resourceNavLabel: 'C2 manuals and compliance',
+    manualAsset: '',
+    onlineLabel: 'Online HTML manual',
+    pdfLabel: 'Online user guide',
+    certificationsLabel: 'Certifications',
+    pdfCardEyebrow: 'ONLINE MANUAL',
+    pdfCardDescription:
+      'Full web edition with step-by-step instructions for emergency starting, 150 PSI tire inflation presets, and device charging.',
+    manualHeading: 'C2 Portable Car Jump Starter with Air Compressor',
+    manualIntro:
+      'Complete online user guide for setup, 12V engine jump starting, 5-mode tire inflation, USB power bank charging, and safety precautions.',
+    manualVersion: 'Online edition based on the WK-C2 technical engineering specification dated May 28, 2026.',
+    certificationsCardDescription:
+      'Review the safety, transport, and electromagnetic compliance standards recorded for the C2 / WK-C2 model.',
+    facts: [
+      { label: 'Rated capacity', value: '12,000mAh / 44.4Wh' },
+      { label: 'Starting / peak current', value: '240A / 800A (4,000A peak rating)' },
+      { label: 'Air compressor', value: '150 PSI (22-cylinder, 96W)' },
+      { label: 'Engine reference', value: 'Up to 8.0L gas / 5.0L diesel' },
+    ],
+    sections: [
+      {
+        title: 'Product overview',
+        body: `<p>The SuntNeew C2 (engineering model WK-C2) is a versatile 4-in-1 automotive emergency power station combining a 12V vehicle jump starter, a high-pressure tire inflator, a portable USB power bank, and a 300-lumen emergency LED work light. Built for road trips, daily commuting, and off-grid reliability, it provides self-rescue capability without needing another vehicle or roadside assistance.</p>
+<p><strong>Cell configuration:</strong> 4S1P high-rate lithium-polymer pack (4 × 3,000mAh soft-pack cells)<br><strong>Rated battery capacity:</strong> 12,000mAh / 44.4Wh (14.8V nominal voltage, 16.8V charging cutoff)<br><strong>Jump-start ratings:</strong> 240A continuous starting current, 800A peak discharge current (4,000A peak class rating)<br><strong>Engine compatibility:</strong> 12V passenger cars, SUVs, vans, and pickups up to 8.0L gasoline or 5.0L diesel<br><strong>Air compressor mechanism:</strong> 22-cylinder high-pressure pump, 96W rated power, 14.8V rated voltage, stable current &lt; 6.5A<br><strong>Pressure range & performance:</strong> 3–150 PSI (inflates a standard 195/65R15 tire from 0 to 2.5 BAR in approx. 5 minutes)<br><strong>Inflation duty cycle:</strong> &gt; 25 minutes continuous runtime with built-in thermal protection<br><strong>Input charging:</strong> USB-C 5V/2A or 5V/3A (max recharge duration &lt; 3.5 hours at 5V/3A)<br><strong>Output power:</strong> USB-A 5V/2A for mobile digital devices<br><strong>Emergency light:</strong> 300 lumens multi-mode LED (Steady, Strobe, SOS)<br><strong>Enclosure & dimensions:</strong> Impact-resistant PC/ABS chassis, 205 × 120 × 53 mm, weight approx. 1.1 kg<br><strong>Operating temperature:</strong> −10°C to 50°C; Storage temperature: −30°C to 70°C</p>
+<p>The standard package includes the C2 main unit, heavy-duty smart battery clamps with a 60cm span, a 40cm woven heat-resistant air hose (US thread M8), three inflation nozzle adapters (ball needle, swim ring nozzle, bike valve adapter), a 50cm USB-C charging cable, an EVA zipper carrying case, and the user manual.</p>`,
+      },
+      {
+        title: 'Controls and dynamic display',
+        body: `<p>The C2 features an intuitive 6-button control interface and a dynamic atmosphere LED display that provides clear visual feedback in bright sunlight or pitch-black darkness.</p>
+<p><strong>Button layout and functions:</strong></p>
+<ul><li><strong>Power / Light button:</strong> Long press to power on the unit or toggle the 300-lumen LED flashlight; short press cycles through light modes (Steady, Strobe, SOS, Off).</li><li><strong>Mode / Unit switch ("M" button):</strong> Short press cycles through the 5 preset inflation modes (Car, Motorcycle, Bicycle, Ball, Custom Free mode). Long press toggles between four pressure units: PSI, BAR, KPA, and kg/cm².</li><li><strong>Pressure adjustment ("+" and "−" buttons):</strong> Short press to adjust the target inflation pressure in 0.5 PSI / 0.05 BAR increments; long press for rapid pressure adjustment. The target value flashes 3 times on the screen before confirming.</li><li><strong>Pump start / pause button:</strong> Short press to begin tire inflation; short press again to pause or stop inflation at any time.</li><li><strong>Jump starter socket:</strong> Dedicated EC5 port with anti-reverse physical keying and protective rubber dust cover.</li></ul>
+<p><strong>Dynamic screen indicators:</strong> The color-shifting atmosphere display dynamically shifts colors according to detected pressure and mode status. It displays numeric real-time tire pressure, target preset pressure, active vehicle/ball mode icons, battery charge percentage, and battery voltage level. To conserve energy, the device automatically powers off after 2 minutes of standby inactivity or no-load condition.</p>`,
+      },
+      {
+        title: 'Jump-start a vehicle',
+        body: `<p><strong>Safety requirement:</strong> Use exclusively with 12V electrical systems. Before attempting a jump start, ensure the C2 battery indicator displays at least 50% capacity (at least two battery bars or &gt; 50%).</p>
+<ol><li>Turn off the vehicle engine, headlights, air conditioning, and all electrical accessories.</li><li>Open the protective rubber cover on the C2 jump-start port and insert the blue EC5 connector of the smart jumper cable completely into the socket until firmly seated.</li><li>Connect the <strong>RED clamp</strong> to the positive (+) terminal of the car battery, and the <strong>BLACK clamp</strong> to the negative (−) terminal of the car battery. Ensure the clamp jaws make solid, clean contact with the metal terminal posts.</li><li>Check the indicator LED on the smart clamp housing. A solid green light indicates correct connection and circuit readiness. (If the indicator flashes red or sounds a warning buzzer, check for reverse polarity or a depleted vehicle battery).</li><li>Return to the driver's seat and turn the ignition key or press the Engine Start button. The engine should crank and start immediately.</li><li>Within 30 seconds after the engine starts, remove the jumper cable plug from the C2 unit, then remove the black and red clamps from the vehicle battery terminals. Leave the vehicle engine running for at least 15–20 minutes to allow the alternator to recharge the car battery.</li></ol>
+<p><strong>Cranking cautions:</strong> Do not crank the engine continuously for more than 5 seconds. If the vehicle fails to start on the first attempt, disconnect the clamps, wait at least 60 seconds to allow the jump starter and battery cells to cool, and then retry. Never make more than 3 consecutive starting attempts.</p>`,
+      },
+      {
+        title: 'Air compressor and tire inflation',
+        body: `<p>The built-in 22-cylinder high-pressure air pump delivers rapid, reliable inflation for car tires, motorcycles, bicycles, sports equipment, and outdoor inflatables up to 150 PSI.</p>
+<p><strong>Operating procedure:</strong></p>
+<ol><li>Screw the threaded brass connector of the 40cm woven air hose firmly into the C2 air output port.</li><li>Attach the opposite end of the hose to the tire valve stem (or screw on the ball needle/swim ring nozzle adapter for other inflatables) and press down the quick-lock lever to ensure an airtight seal.</li><li>Press the Power button to turn on the C2. The digital display will immediately show the current real-time tire pressure.</li><li>Short press the <strong>"M" button</strong> to choose your inflation mode:
+<ul><li><strong>Car mode:</strong> Default 36 PSI / 2.5 BAR (adjustable from 26 to 50 PSI).</li><li><strong>Motorcycle mode:</strong> Default 35 PSI / 2.4 BAR (adjustable from 26 to 44 PSI).</li><li><strong>Bicycle mode:</strong> Default 45 PSI / 3.1 BAR (adjustable from 30 to 145 PSI).</li><li><strong>Ball mode:</strong> Default 8 PSI / 0.55 BAR (adjustable from 4 to 16 PSI).</li><li><strong>Custom mode:</strong> Default 35 PSI (freely adjustable from 3 to 150 PSI; memorizes previous setting).</li></ul></li><li>Long press the "M" button if you wish to change the measurement unit (PSI, BAR, KPA, kg/cm²).</li><li>Press the <strong>"+" or "−" buttons</strong> to fine-tune your desired target pressure. The value flashes 3 times to lock in the setting.</li><li>Press the <strong>Pump Start button</strong> to commence inflation. The screen displays real-time rising pressure.</li><li>The compressor automatically shuts off once the target pressure is achieved, eliminating the risk of over-inflation. You can also pause inflation manually by pressing the Pump button at any time.</li><li>Unlock the valve lever and detach the air hose. Replace the tire valve dust cap.</li></ol>
+<p><strong>Thermal caution:</strong> The pump cylinder and metal air outlet generate heat during sustained operation (temperatures can reach 70–80°C). After 10–15 minutes of continuous pumping, allow the unit to cool down for 10 minutes before inflating another tire. Avoid touching the metal hose connector directly after use.</p>`,
+      },
+      {
+        title: 'Power bank and device charging',
+        body: `<p>The C2 functions as an emergency power bank to keep smartphones, tablets, cameras, GPS units, and other portable devices powered during outdoor adventures or unexpected blackouts.</p>
+<p><strong>Charging mobile devices:</strong> Connect your device's USB charging cable to the C2 USB-A output port (delivering 5V/2A, 10W max). Press the Power button to activate charging. Built-in smart circuitry detects connected loads and optimizes current delivery while safeguarding against overcharging and short circuits.</p>
+<p><strong>Recharging the C2 unit:</strong> Connect the included USB-C cable to the C2 Type-C input port and plug the other end into a standard 5V/2A or 5V/3A wall charger, car USB charger, or power adapter. The dynamic battery percentage indicator will animate while charging. A full recharge takes less than 3.5 hours using a 5V/3A power supply (approx. 5 hours with a 5V/2A adapter). When all 4 indicator bars remain solidly illuminated, charging is complete.</p>`,
+      },
+      {
+        title: 'LED emergency lighting',
+        body: `<p>Equipped with a high-intensity 300-lumen daylight LED flashlight, the C2 provides over 10 square meters of illumination at a 1-meter height, essential for nighttime tire changes, engine inspections, campsite setup, and roadside emergencies.</p>
+<p><strong>Lighting modes:</strong></p>
+<ul><li><strong>Steady white light:</strong> Provides broad, flicker-free illumination with over 5 hours of continuous battery runtime on a full charge.</li><li><strong>Strobe light:</strong> High-frequency flashing beam designed to alert oncoming highway traffic and signal roadside breakdown presence.</li><li><strong>SOS distress signal:</strong> Standard international Morse code distress pattern (3 short, 3 long, 3 short) for critical emergency rescue situations.</li></ul>
+<p>To operate: Long press the Power/Light button for 2 seconds to turn on the LED light in Steady mode. Short press sequentially to cycle between Strobe, SOS, and Off. Long press at any time to shut off the light immediately.</p>`,
+      },
+      {
+        title: 'Safety precautions and maintenance',
+        body: `<ol><li><strong>12V systems only:</strong> Never connect the C2 to a 24V vehicle battery system (such as heavy commercial haulers or construction equipment).</li><li><strong>Correct polarity:</strong> Always connect red to positive (+) and black to negative (−). Never touch the red and black clamp jaws together when the cable is plugged into the starter.</li><li><strong>Cranking limits:</strong> Do not crank the vehicle engine for longer than 5 seconds per attempt. Maintain at least a 60-second rest interval between attempts, and never exceed 3 consecutive cranks.</li><li><strong>Storage temperature:</strong> Store the device in a cool, dry location between −30°C and 70°C. Avoid prolonged storage in direct sunlight or inside a baking glove compartment during hot summer days.</li><li><strong>Quarterly recharge:</strong> For optimal lithium battery health, recharge the unit to 100% at least once every 3 months during prolonged periods of storage.</li><li><strong>Water and moisture:</strong> The unit is not waterproof. Do not expose it to rain, splashing water, high humidity, or flammable liquids. If moisture enters the device, allow it to dry thoroughly before use.</li><li><strong>Air hose heat:</strong> Do not bend, kink, or pinch the air hose during pumping. The metal fittings become hot during prolonged inflation; handle using the rubberized sleeve.</li><li><strong>Non-toy policy:</strong> This product contains high-voltage and high-current electrical components and high-pressure mechanical parts. It is not intended for use by children.</li><li><strong>Do not disassemble:</strong> Tampering with internal cell packs, electronic boards, or motor assemblies voids the warranty and poses severe shock and fire hazards.</li></ol>`,
+      },
+      {
+        title: 'Troubleshooting guide',
+        body: `<ul><li><strong>Engine does not crank when key is turned:</strong> Ensure C2 battery level is above 50%. Check that the EC5 clamp plug is pushed fully into the socket. Inspect car battery terminal posts for corrosion, dirt, or grease; clean posts with a wire brush or cloth and re-seat clamps securely.</li><li><strong>Smart clamp LED flashes red or beeps continuously:</strong> Reverse polarity detected, or vehicle battery voltage is lower than minimum recognition threshold. Verify positive/negative terminal orientation.</li><li><strong>Air compressor does not start:</strong> Check whether the detected tire pressure is already higher than the preset target value. Adjust the target pressure higher with the "+" button and press the Pump button again.</li><li><strong>Air leaks around valve during pumping:</strong> Check that the threaded nozzle is screwed on tightly and that the quick-release clamp lever is fully locked down in the horizontal position.</li><li><strong>Pressure readout shows zero on small inflatables:</strong> Extremely low-pressure objects such as balloons, inflatable beach balls, or pool floats do not produce sufficient backpressure to register on the digital sensor. Monitor inflation manually and stop as soon as filled.</li><li><strong>Device shuts down automatically:</strong> Built-in battery saving timer powers down the unit after 2 minutes of inactivity or no-load condition. Press the Power button to wake the unit.</li></ul>`,
+      },
+      {
+        title: 'FCC notice',
+        body: `<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>`,
+      },
+    ],
+    complianceItems: [
+      compliance.ul2743('C2 / WK-C2'),
+      compliance.fcc('C2 / WK-C2'),
+      compliance.un38('C2'),
+      compliance.sds('C2'),
+      compliance.ceEmc('C2'),
+      compliance.rohs('C2'),
+    ],
+    complianceIntro:
+      'The safety, transport, and electromagnetic compatibility categories recorded for C2 are collected here. Match documentation to the WK-C2 model code on the rating plate.',
+  },
+  {
+    id: 'm7',
+    handle: 'support-m7',
+    pageTitle: 'M7 Support and Manuals',
+    category: 'jump-starters',
+    family: 'JUMP STARTERS',
+    model: 'M7 / CY-M7',
+    cardTitle: 'M7 Portable Car Jump Starter with Air Compressor',
+    cardDescription:
+      '12,000mAh / 44.4Wh starting power with a 150 PSI 19-cylinder air compressor, rugged mecha styling, segmented power delivery, and multi-mode emergency lighting.',
+    cardImage: 'suntneew-m7-gallery-01-main.jpg',
+    cardImageAlt: 'SuntNeew M7 Portable Car Jump Starter with smart clamp and air compressor hose',
+    heading: 'M7 Support & Manuals',
+    intro:
+      'Read the mobile-friendly user manual online, explore operational steps for 12V emergency vehicle starting and high-flow tire inflation, or review model-matched safety and compliance specifications.',
+    productUrl: '',
+    productLabel: '',
+    resourceNavLabel: 'M7 manuals and compliance',
+    manualAsset: '',
+    onlineLabel: 'Online HTML manual',
+    pdfLabel: 'Online user guide',
+    certificationsLabel: 'Certifications',
+    pdfCardEyebrow: 'ONLINE MANUAL',
+    pdfCardDescription:
+      'Comprehensive web edition detailing vehicle jumping, 19-cylinder dual-stage inflation, safety timeouts, and maintenance.',
+    manualHeading: 'M7 Portable Car Jump Starter with Air Compressor',
+    manualIntro:
+      'Complete online user guide for setup, 12V emergency vehicle jump-starting, 19-cylinder tire inflation with segmented flow, digital controls, and safety protections.',
+    manualVersion: 'Online edition based on the CY-M7 technical specification and test report dated August 2026.',
+    certificationsCardDescription:
+      'Review the safety, transport, and electromagnetic compliance standards recorded for the M7 / CY-M7 model.',
+    facts: [
+      { label: 'Rated capacity', value: '12,000mAh / 44.4Wh' },
+      { label: 'Starting / peak current', value: '240A / 400A (4,000A peak rating)' },
+      { label: 'Air compressor', value: '150 PSI (19-cylinder, 18L/min)' },
+      { label: 'Engine reference', value: 'Up to 8.0L gas / 4.0L diesel' },
+    ],
+    sections: [
+      {
+        title: 'Product overview',
+        body: `<p>The SuntNeew M7 (model series CY-M7) is an all-in-one automotive roadside emergency system integrating a 12V vehicle jump starter, a high-efficiency 19-cylinder tire inflator, a portable USB fast charger, and multi-mode emergency lighting. Encased in a flame-retardant ABS+PC+TPU UL94-V0 mecha-inspired geometric shell, the M7 combines high mechanical durability with dependable all-weather performance.</p>
+<p><strong>Battery specifications:</strong> 16.8V high-rate lithium-polymer cell cluster, 12,000mAh / 44.4Wh rated energy<br><strong>Jump-starting performance:</strong> 240A rated starting current (3-second sustained cranking, voltage &ge; 10.8V), 400A instantaneous current (4,000A peak class rating)<br><strong>Engine capacity:</strong> 12V automotive systems up to 8.0L gasoline engines or 4.0L diesel engines (passenger cars, SUVs, pickup trucks, vans, motorcycles, motorboats)<br><strong>Air compressor unit:</strong> 19-cylinder motor-driven piston pump, 82W rated power (14.5V), 18 L/min air volume, maximum pressure &le; 150 PSI<br><strong>Dual-stage segmented flow:</strong> Gentle airflow for the initial 50 seconds (or up to 1.0 Bar) to protect tire valves, automatically ramping into high-volume rapid inflation<br><strong>Inflation capability:</strong> Inflates a 195/65R15 tire to 2.5 BAR in under 7 minutes; inflates a 275/35R20 tire to 2.5 BAR in under 9 minutes<br><strong>Accuracy:</strong> &plusmn;1 PSI (3–50 PSI), &plusmn;2 PSI (51–80 PSI), &plusmn;3 PSI (81–150 PSI)<br><strong>Input charging:</strong> Type-C 5V/2A (approx. 5 hours recharge time; 10W standard)<br><strong>Output charging:</strong> USB-A port delivering 5V/2A (supports fast charge protocols 5V/3A, 9V/2A, 12V/1.5A up to 18W)<br><strong>Lighting system:</strong> 12 daylight LEDs (84 lumens total, 6000K pure white) with Steady, Strobe, and SOS modes<br><strong>Dimensions & weight:</strong> 219.7 × 94.3 × 45.0 mm; net weight approx. 750g<br><strong>Operating environment:</strong> Discharge: −10°C to 35°C; Charging: 0°C to 35°C; Storage: −10°C to 55°C</p>
+<p>The package contains the M7 main unit, intelligent DO-port battery clamps, a quick-connect brass air hose, 3 air nozzles (sports ball needle, swim ring adapter, bike adapter), a USB-C charging cable, a nylon drawstring carry pouch, and the user manual.</p>`,
+      },
+      {
+        title: 'Controls, display and diagnostic codes',
+        body: `<p>The M7 is operated through five tactile buttons paired with a wide-angle digital LED display screen.</p>
+<p><strong>Button layout and functions:</strong></p>
+<ul><li><strong>Power button:</strong> Press and hold for 2 seconds to power on or power off. Short press while powered on starts or pauses air pump inflation. The unit automatically turns off after 20 seconds of inactivity in battery mode or 2 minutes in inflation mode.</li><li><strong>Lighting button:</strong> Short press turns on the 12-LED array in Steady illumination mode; press again for High-Speed Strobe; press a third time for SOS emergency signal; press a fourth time to extinguish the light.</li><li><strong>Mode button ("M"):</strong> Short press switches the inflation target between Car (default 36 PSI / 2.5 BAR, range 26–51 PSI), Motorcycle (default 35 PSI / 2.4 BAR, range 26–44 PSI), Bicycle (default 45 PSI / 3.1 BAR, range 30–150 PSI), Ball (default 8 PSI / 0.55 BAR, range 4–16 PSI), and Custom Mode (default 35 PSI, range 3–150 PSI). Long press for 3 seconds toggles between PSI, BAR, KPA, and kg/cm².</li><li><strong>"+" and "−" buttons:</strong> Short press increases or decreases preset target pressure. Long press for 3 seconds engages fast scrolling. The setting confirms automatically after flashing 3 times.</li></ul>
+<p><strong>Display and system diagnostic codes:</strong></p>
+<ul><li><strong>E-1 (Communication Error):</strong> Indicates an internal communication anomaly. Turns off automatically once normal communication resumes.</li><li><strong>E-2 (Zero-Point Offset Error):</strong> Pressure sensor zero baseline has shifted. <em>Remedy:</em> Simultaneously press and hold both the "+" and "−" buttons for 3 seconds to recalibrate the zero-pressure point.</li><li><strong>E-5 (Continuous Run Overheat Lockout):</strong> Built-in motor protection activates if the air compressor runs continuously for 10 minutes. The display flashes "E-5" for 5 seconds, followed by a mandatory 120-second cooling countdown lock (all buttons disabled) and a 50-second standby delay to safeguard motor longevity.</li><li><strong>Low Battery Icon Flashing:</strong> Battery voltage dropped below 12V during cranking or operation; recharge unit before next use.</li></ul>`,
+      },
+      {
+        title: 'Jump-start a vehicle',
+        body: `<p><strong>Important:</strong> Only attempt a jump start when the M7 screen shows at least 80% battery capacity. For safety and equipment protection, follow these exact steps:</p>
+<ol><li>Turn off vehicle ignition and disengage all electrical accessories (lights, stereo, air conditioning).</li><li>Plug the heavy-duty DO-port connector of the smart jumper cable securely into the M7 jump socket until fully seated.</li><li>Clamp the <strong>RED clamp</strong> firmly onto the positive (+) battery terminal post.</li><li>Clamp the <strong>BLACK clamp</strong> firmly onto the negative (−) battery terminal post.</li><li>Verify that the smart clamp LED displays a solid green light, signaling a safe circuit and correct polarity.</li><li>Enter the vehicle cabin and crank the engine. The car should start immediately.</li><li>Disconnect the DO-port plug from the M7 unit within 30 seconds after the engine starts, then detach the black and red clamps from the car battery terminals.</li></ol>
+<p><strong>Precautions:</strong> Never crank the starter motor for longer than 3 seconds per attempt. If the engine fails to turn over, wait at least 60 seconds for the jump starter and vehicle battery to stabilize. Never exceed 3 consecutive cranking attempts. After starting a vehicle, wait at least 30 minutes before recharging the M7 unit.</p>`,
+      },
+      {
+        title: 'Air compressor operation and segmented flow',
+        body: `<p>The M7 utilizes an advanced 19-cylinder motor with dual-stage segmented flow technology: inflation begins at a gentle low flow for the first 50 seconds (or until reaching 1.0 Bar) to stabilize internal valve pressures, before seamlessly transitioning to full 18 L/min high-flow pumping.</p>
+<p><strong>How to inflate:</strong></p>
+<ol><li>Thread the brass air hose fitting into the M7 threaded air output port. <em>Note:</em> The air outlet generates heat during operation (~80°C); avoid touching the metal connector.</li><li>Connect the brass chuck to the tire valve stem and snap the locking latch down securely.</li><li>Press and hold the Power button for 2 seconds to turn on the unit. The display will show the current tire pressure.</li><li>Press the <strong>"M" button</strong> to choose the appropriate vehicle or equipment preset (Car, Motorcycle, Bicycle, Ball, Custom).</li><li>Adjust target pressure using the <strong>"+" or "−" buttons</strong>. The target digits flash 3 times to confirm.</li><li>Short press the <strong>Power button</strong> to start the air compressor. Real-time pressure updates continuously on the LED display.</li><li>The air pump automatically cuts off the moment target pressure is reached. You can pause inflation manually at any time by pressing the Power button.</li><li>Unlock the valve latch and remove the air hose.</li></ol>
+<p><strong>Overheat management:</strong> The M7 includes an automated 10-minute duty cycle limiter. If pumping reaches 10 continuous minutes, the unit halts and initiates a 120-second cooling countdown lock (indicated by E-5 on the display). Allow the unit to cool naturally before commencing another inflation cycle.</p>`,
+      },
+      {
+        title: 'Power bank and device charging',
+        body: `<p>The M7 features a high-density 12,000mAh battery pack capable of charging phones, action cameras, handheld gaming devices, and GPS navigation units on the go.</p>
+<p><strong>Charging mobile devices:</strong> Connect your device's USB cable to the M7 USB-A output port. Delivers 5V/2A (supports fast charge up to 18W for compatible devices). Delivers up to 2.3 hours of continuous full-rate discharge power.</p>
+<p><strong>Recharging the M7:</strong> Connect the included USB-C cable to the Type-C input port and plug into any certified 5V/2A USB power adapter. A full charge takes approximately 5 hours. The battery segments pulse sequentially during charging and remain solidly lit once fully charged.</p>`,
+      },
+      {
+        title: 'LED emergency lighting',
+        body: `<p>The integrated 12-LED lighting array provides 84 lumens of 6000K daylight-white illumination, offering dependable lighting for dark roadsides, outdoor repair, and backcountry campsites.</p>
+<p><strong>Three lighting modes:</strong></p>
+<ul><li><strong>Steady work light:</strong> Continuous wide-beam illumination for engine bay inspection and tire changes.</li><li><strong>Fast strobe mode:</strong> Flashes at 200ms ON / 200ms OFF intervals to alert highway drivers and provide breakdown warning.</li><li><strong>SOS emergency distress mode:</strong> Flashes the international Morse code SOS sequence (3 short flashes &bull; 3 long flashes &bull; 3 short flashes) repeatedly for wilderness search and rescue situations.</li></ul>
+<p>Short press the Lighting button to step sequentially through Steady &rarr; Strobe &rarr; SOS &rarr; Off.</p>`,
+      },
+      {
+        title: 'Safety precautions and maintenance',
+        body: `<ol><li><strong>Voltage compatibility:</strong> The M7 is exclusively designed for 12V lead-acid and AGM vehicle starting systems. Do not connect to 24V commercial trucks.</li><li><strong>Extreme heat warning:</strong> The high-pressure air outlet connector can reach approximately 80°C during heavy inflation. Do not touch bare metal fittings immediately after use.</li><li><strong>Battery level prerequisite:</strong> Do not attempt to jump-start a vehicle when the M7 battery level is below 80%. Doing so may trigger internal overcurrent protection and reduce cell service life.</li><li><strong>Operating temperature boundaries:</strong> Discharge only between −10°C and 35°C; recharge only between 0°C and 35°C. Storage range is −10°C to 55°C.</li><li><strong>Chemical precautions:</strong> Do not store or operate in acidic, alkaline, or chemical environments. Keep away from flammable vapors and open flames.</li><li><strong>Quarterly maintenance:</strong> When not in regular use, recharge the unit to full capacity at least once every 3 months to maintain healthy cell chemistry.</li><li><strong>Shock and water hazards:</strong> The unit is rated for dry, clean environments. Do not submerge, rinse with water, or expose to driving rain.</li><li><strong>Non-toy policy:</strong> Keep this device out of reach of children. Proper operation requires automotive awareness.</li></ol>`,
+      },
+      {
+        title: 'Troubleshooting guide',
+        body: `<ul><li><strong>Display shows E-1:</strong> Communication error detected between mainboard chips. Power down the device, wait 10 seconds, and power on again.</li><li><strong>Display shows E-2:</strong> Pressure sensor zero baseline has drifted. Press and hold the "+" and "−" buttons together for 3 seconds to recalibrate the zero pressure point.</li><li><strong>Display shows E-5:</strong> 10-minute continuous inflation protection activated. Wait for the 120-second cooling countdown to complete before resuming.</li><li><strong>Tire pressure value does not change during inflation:</strong> Check for air leakage at the hose connection or valve stem. If pressure does not increase within 2 minutes, the unit automatically stops to prevent motor damage.</li><li><strong>Vehicle does not start:</strong> Verify M7 battery level is &ge; 80%. Ensure clamps are tightly gripped to battery lead posts and free of rust or oil. Wait 60 seconds before re-attempting.</li></ul>`,
+      },
+      {
+        title: 'FCC notice',
+        body: `<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>`,
+      },
+    ],
+    complianceItems: [
+      compliance.ul2743('M7 / CY-M7'),
+      compliance.fcc('M7 / CY-M7'),
+      compliance.un38('M7'),
+      compliance.sds('M7'),
+      compliance.ceEmc('M7'),
+      compliance.rohs('M7'),
+    ],
+    complianceIntro:
+      'The safety, transport, and electromagnetic compatibility categories recorded for M7 are collected here. Match documentation to the CY-M7 model code on the rating plate.',
+  },
+  {
+    id: 'b21ap',
+    handle: 'support-b21ap',
+    pageTitle: 'B21AP Support and Manuals',
+    category: 'jump-starters',
+    family: 'JUMP STARTERS',
+    model: 'B21AP / DJJ-B21AP',
+    cardTitle: 'B21AP High-Capacity Jump Starter with 160 PSI Air Compressor',
+    cardDescription:
+      'Heavy-duty 20,000mAh / 74Wh emergency jump starter with 5,000A peak current, 160 PSI metal air compressor, two-way 45W PD fast charging, and HD digital screen.',
+    cardImage: 'suntneew-b21ap-gallery-01-main.jpg',
+    cardImageAlt: 'SuntNeew B21AP Heavy-Duty Jump Starter with smart battery clamp and air hose',
+    heading: 'B21AP Support & Manuals',
+    intro:
+      'Read the mobile-friendly user manual online, follow step-by-step instructions for heavy-duty 12V vehicle jump starting and 160 PSI high-pressure inflation, or review model-matched safety and compliance records.',
+    productUrl: '',
+    productLabel: '',
+    resourceNavLabel: 'B21AP manuals and compliance',
+    manualAsset: '',
+    onlineLabel: 'Online HTML manual',
+    pdfLabel: 'Online user guide',
+    certificationsLabel: 'Certifications',
+    pdfCardEyebrow: 'ONLINE MANUAL',
+    pdfCardDescription:
+      'Comprehensive web edition detailing heavy-duty 5,000A vehicle cranking, 160 PSI inflation modes, 45W PD fast charging, and diagnostics.',
+    manualHeading: 'B21AP High-Capacity Jump Starter with 160 PSI Air Compressor',
+    manualIntro:
+      'Complete online user guide for setup, heavy-duty 12V engine starting, 160 PSI high-pressure air pump operation, 45W PD two-way fast charging, and maintenance.',
+    manualVersion: 'Online edition based on the English user manual revision A0 dated May 23, 2026.',
+    certificationsCardDescription:
+      'Review the six safety, transport, and electromagnetic compliance categories recorded for the B21AP / DJJ-B21AP model.',
+    facts: [
+      { label: 'Battery capacity', value: '20,000mAh / 74Wh' },
+      { label: 'Starting / peak current', value: '2,500A / 5,000A' },
+      { label: 'Air compressor', value: '160 PSI max pressure' },
+      { label: 'Fast charging', value: 'Two-way PD 45W USB-C' },
+    ],
+    sections: [
+      {
+        title: 'Product overview',
+        body: `<p>The SuntNeew B21AP (model DJJ-B21AP) is an ultra-high-capacity, heavy-duty automotive roadside command station. Featuring a 20,000mAh (74Wh) power reserve and a peak cranking current of 5,000A, it effortlessly jump-starts all gasoline engines and up to 10.0L diesel commercial vehicles. It integrates a 160 PSI high-pressure wireless air compressor, two-way 45W Power Delivery fast charging, and a multi-mode high-lumen emergency LED light.</p>
+<p><strong>Battery capacity & energy:</strong> 20,000mAh / 74Wh heavy-duty high-rate lithium-polymer cell pack<br><strong>Jump-starting capability:</strong> 2,500A continuous starting current, 5,000A peak current (starts 12V gasoline engines of any displacement and up to 10.0L diesel engines)<br><strong>Air compressor performance:</strong> Heavy-duty motor delivering up to 160 PSI maximum working pressure; operates quietly (&lt; 80 dB at 1 meter)<br><strong>Preset inflation modes:</strong> 5 selectable modes: Car (36 PSI), Motorcycle (35 PSI), Bicycle (45 PSI), Ball (8 PSI), and Freedom/Custom mode (3–160 PSI with memory function)<br><strong>Selectable pressure units:</strong> PSI, BAR, KPA, kg/cm² (1 Bar = 14.5 PSI = 100 KPA)<br><strong>Two-way USB-C Power Delivery:</strong> PD 45W (5V/3A, 9V/3A, 12V/3A, 15V/3A, 20V/2.25A) for both fast input charging and high-speed laptop/tablet charging<br><strong>Recharge duration:</strong> &le; 2 hours to 100% capacity using a 45W PD charger<br><strong>USB-A fast output:</strong> 5V/3A, 9V/2A, 12V/1.5A (18W fast charging for mobile phones and digital accessories)<br><strong>Lighting system:</strong> High-output LED light with Steady illumination, SOS emergency distress signal, and Hazard Warning Strobe<br><strong>Dimensions & weight:</strong> 220 × 143 × 55.5 mm; net weight approx. 1.35 kg<br><strong>Environmental ratings:</strong> Charging: 0°C to 45°C; Discharging: −10°C to 45°C; Storage: −10°C to 50°C</p>
+<p>The standard package contains the B21AP main unit, heavy-duty intelligent battery clamps, a detachable high-pressure air hose, 3 air compressor nozzle adapters (sports ball needle, tapered swim ring nozzle, Presta/Dunlop bicycle adapter), a USB-C to USB-C 45W PD fast charging cable, a rugged custom EVA storage case, and the comprehensive user manual.</p>`,
+      },
+      {
+        title: 'Controls, ports and digital display',
+        body: `<p>The B21AP features a high-visibility digital tube display and five precision control buttons arranged for effortless operation even while wearing work gloves.</p>
+<p><strong>Port layout:</strong></p>
+<ol><li><strong>LED flashlight:</strong> Front-facing high-output multi-mode LED lens.</li><li><strong>USB-A output port:</strong> 18W fast charge output (5V/3A, 9V/2A, 12V/1.5A).</li><li><strong>Air hose interface:</strong> Precision metal threaded port with anti-leak sealing ring.</li><li><strong>Type-C IN/OUT port:</strong> Two-way PD 45W high-speed charging port.</li><li><strong>Jump starter connection port:</strong> Heavy-current port protected by a thick silicone safety plug.</li><li><strong>Digital display screen:</strong> High-contrast display presenting live pressure readings, preset targets, mode indicators, and 4-grid battery level.</li></ol>
+<p><strong>Button controls:</strong></p>
+<ul><li><strong>Power / Pump button:</strong> Long press for 2 seconds to turn on the main power. When in inflation mode, short press starts or pauses the air pump. Long press for 2 seconds powers down the device. (Automatically turns off after 30 seconds of inactivity to prevent accidental discharge).</li><li><strong>"M" button (Mode / Unit):</strong> Short press cycles between Car, Motorcycle, Bicycle, Ball, and Freedom/Custom modes. Long press toggles between four pressure units (PSI, BAR, KPA, kg/cm²).</li><li><strong>"+" and "−" buttons:</strong> Short press increases or decreases target pressure in 0.5 PSI increments; long press enables rapid scrolling. Target numbers flash 3 times before locking in.</li><li><strong>LED light button:</strong> Independent button to toggle Steady light, SOS distress, and Strobe warning.</li></ul>`,
+      },
+      {
+        title: 'Jump-start a 12V vehicle',
+        body: `<p><strong>Safety requirement:</strong> Use strictly with 12V vehicle battery systems. Ensure the B21AP battery level is above 50% (at least 2 battery bars illuminated) before attempting to start.</p>
+<ol><li>Turn off vehicle ignition and all accessories (air conditioning, headlights, audio).</li><li>Peel back the silicone protective plug and insert the heavy-duty battery clamp connector firmly into the B21AP jump port.</li><li>Connect the <strong>RED clamp</strong> to the positive (+) battery terminal, and the <strong>BLACK clamp</strong> to the negative (−) battery terminal. Ensure a tight, corrosion-free grip.</li><li>Enter the vehicle and start the engine within 40 seconds by pressing the Start button or turning the ignition key to START.</li><li>Once the vehicle starts, immediately remove the jumper cable connector from the B21AP unit, then remove the black and red clamps from the car battery terminals. Leave the engine idling to recharge the automotive battery.</li></ol>
+<p><strong>Cranking rules:</strong> If the engine does not start on the first try, disconnect the clamps from the car battery, wait at least 20 seconds, and reconnect. For repeated attempts, allow at least 1 minute of resting time between cranks to protect the jump starter circuitry. After jump starting a vehicle, wait at least 30 minutes before plugging the B21AP into a charger.</p>`,
+      },
+      {
+        title: 'Air compressor and 160 PSI preset modes',
+        body: `<p>The B21AP includes an ultra-high-pressure wireless air compressor delivering up to 160 PSI, capable of inflating everything from heavy SUV and truck tires to road bicycles requiring up to 145 PSI.</p>
+<p><strong>Inflation instructions:</strong></p>
+<ol><li>Screw the high-pressure air hose tightly into the unit's threaded air pipe interface.</li><li>Attach the chuck to the tire valve stem (or screw in an inflatable nozzle adapter for balls/rafts) and lock the lever.</li><li>Press and hold the Power button for 2 seconds to turn on the B21AP. The digital screen will display the item's current pressure.</li><li>Short press the <strong>"M" button</strong> to choose the appropriate preset mode:
+<ul><li><strong>Car mode:</strong> Default 36 PSI (adjustable from 26 to 50 PSI). Recommended for passenger cars, SUVs, and minivans.</li><li><strong>Motorcycle mode:</strong> Default 35 PSI (adjustable from 26 to 50 PSI). Recommended for motorbikes and scooters.</li><li><strong>Bicycle mode:</strong> Default 45 PSI (adjustable from 30 to 145 PSI). Supports standard tires as well as high-pressure road bike tires up to 145 PSI.</li><li><strong>Ball mode:</strong> Default 8 PSI (adjustable from 4 to 16 PSI). Ideal for basketballs, footballs, and sports equipment.</li><li><strong>Freedom mode:</strong> Default 35 PSI (freely adjustable from 3 to 160 PSI). Memorizes previous user settings across sessions.</li></ul></li><li>Long press the "M" button to switch between PSI, BAR, KPA, and kg/cm².</li><li>Use the <strong>"+" or "−" buttons</strong> to adjust the target pressure. The display flashes 3 times to confirm.</li><li>Short press the <strong>Power/Pump button</strong> to start inflation. The real-time pressure will rise on screen.</li><li>The air compressor automatically shuts off once the target pressure is reached. You can also pause inflation manually by short pressing the Power button.</li><li>Unlock and remove the air hose.</li></ol>
+<p><strong>Safety reminder:</strong> The pump motor generates between 75–80 dB of sound during operation. High-pressure inflation creates heat in the internal piston and hose connector; let the pump rest for 10 minutes after inflating two large vehicle tires.</p>`,
+      },
+      {
+        title: 'PD 45W two-way fast charging and power bank',
+        body: `<p>The B21AP is equipped with bi-directional USB-C Power Delivery (PD 45W), enabling lightning-fast recharge speeds and high-wattage power output for modern consumer electronics.</p>
+<p><strong>Bi-directional PD 45W Type-C port:</strong></p>
+<ul><li><strong>Input (Recharging the unit):</strong> Connect the included Type-C cable to a 45W PD wall adapter. The massive 74Wh battery achieves a 100% full recharge in &le; 2 hours. The 4 battery indicator segments cycle during charging and remain solidly lit when complete.</li><li><strong>Output (Charging laptops & devices):</strong> Delivers up to 45W (5V/3A, 9V/3A, 12V/3A, 15V/3A, 20V/2.25A). Can directly power USB-C laptops (MacBook Pro/Air, Dell XPS, ThinkPad), tablets (iPad Pro), and fast-charge smartphones.</li></ul>
+<p><strong>USB-A fast charge output:</strong> Supplies 18W max (5V/3A, 9V/2A, 12V/1.5A) to charge GPS devices, wireless headphones, flashlights, and mobile phones simultaneously with the Type-C port.</p>`,
+      },
+      {
+        title: 'Multifunctional LED lighting',
+        body: `<p>A dedicated LED lighting system provides illumination for nighttime roadside work and backcountry navigation.</p>
+<p><strong>Lighting operation:</strong> With the unit powered on, press the dedicated <strong>LED Light button</strong>:</p>
+<ul><li><strong>1st press:</strong> Steady illumination (bright, even beam for inspecting tires, engine bay, or campsite).</li><li><strong>2nd press:</strong> SOS distress signal (international Morse code emergency beacon for search and rescue).</li><li><strong>3rd press:</strong> Hazard Warning Strobe (rapid flashing light to warn approaching traffic of breakdown).</li><li><strong>4th press:</strong> Turns the LED flashlight off.</li></ul>`,
+      },
+      {
+        title: 'Safety precautions and care',
+        body: `<ol><li><strong>12V engine starting only:</strong> Never connect the jump starter to a 24V commercial vehicle electrical system.</li><li><strong>Internal motor spark notice:</strong> The built-in DC motor may generate minor electric sparks during operation. Never use the inflator in explosive or flammable environments (such as near gas leaks or paint fumes).</li><li><strong>Battery level warning:</strong> Never attempt to jump-start a vehicle when battery capacity is below 50%. Doing so can damage internal cells and cause voltage sag.</li><li><strong>Prevent short circuits:</strong> Do not touch the red and black clamp jaws together or clamp them to the same metal bracket.</li><li><strong>Cooling intervals:</strong> If an engine start attempt fails, wait at least 20 seconds before retrying, and at least 1 minute between repeated cranking cycles.</li><li><strong>Wait before charging:</strong> After completing a jump start, allow internal battery cells to cool down for at least 30 minutes before connecting a charger.</li><li><strong>Storage conditions:</strong> Store in a clean, dry environment between −10°C and 50°C away from corrosive materials. Protect from moisture, sand, and dust. The product is not waterproof; do not submerge or wash with water.</li><li><strong>Quarterly maintenance:</strong> Keep the internal battery charged by topping it up to 100% at least once every 3 months during storage.</li><li><strong>Do not disassemble:</strong> Never open the casing or tamper with internal components.</li></ol>`,
+      },
+      {
+        title: 'Troubleshooting guide',
+        body: `<ul><li><strong>Slow inflation rate:</strong> Verify battery has at least 2 bars of charge. Check air hose connections at both ends for leaks. Ensure tire does not have a major sidewall puncture.</li><li><strong>Unit is on but pump will not start:</strong> Verify whether current tire pressure is higher than the preset target value. Increase target pressure with the "+" button and press Pump button.</li><li><strong>Pressure readout remains zero:</strong> Low-pressure inflatables (party balloons, vinyl beach rings) do not exert sufficient backpressure to register on the digital sensor.</li><li><strong>Device shuts down automatically after 30 seconds:</strong> This is an integrated power-saving safety feature designed to prevent accidental battery drain. Simply press and hold the Power button for 2 seconds to restart.</li><li><strong>Air hose connection leaking:</strong> Ensure the threaded brass nozzle is screwed all the way onto the valve stem and the quick-locking latch is pressed completely down.</li></ul>`,
+      },
+      {
+        title: 'FCC notice',
+        body: `<p>This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions: (1) this device may not cause harmful interference, and (2) this device must accept any interference received, including interference that may cause undesired operation.</p>`,
+      },
+    ],
+    complianceItems: [
+      compliance.ul2743('B21AP / DJJ-B21AP'),
+      compliance.fcc('B21AP / DJJ-B21AP'),
+      compliance.un38('B21AP'),
+      compliance.sds('B21AP'),
+      compliance.ceEmc('B21AP'),
+      compliance.rohs('B21AP'),
+    ],
+    complianceIntro:
+      'The six safety, transport, and electromagnetic compliance categories recorded for B21AP are collected here. Match documentation to the DJJ-B21AP model code on the rating plate.',
+  },
+);
+
+
+// ---------------------------------------------------------------------------
 // 房车电池：G31 / G24 / 230Ah / 314Ah
 // ---------------------------------------------------------------------------
 
