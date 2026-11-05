@@ -11,6 +11,10 @@
   ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
 
+{%- assign g31_mobile_live = false -%}
+{%- if product.handle == 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-31' and template.suffix == 'rv-g31' -%}
+  {%- assign g31_mobile_live = true -%}
+{%- endif -%}
 <!doctype html>
 
 <html lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
@@ -79,9 +83,17 @@
     {%- endif -%}
   
   {% render 'shogun-head' %}
+  {%- if g31_mobile_live -%}
+    {{ 'suntneew-g31-mobile.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'suntneew-g31-mobile.js' | asset_url }}" defer></script>
+  {%- endif -%}
 </head>
 
   <body class="template-{{ request.page_type | handle }}{% if template.suffix != blank %} template-{{ request.page_type | handle }}-{{ template.suffix | handle }}{% endif %}{% if settings.zoom_image_on_hover %} zoom-image--enabled{% endif %}">
+    {%- if g31_mobile_live -%}
+      {%- render 'suntneew-g31-mobile' -%}
+      <div data-g31-desktop>
+    {%- endif -%}
     {%- render 'shadow-dom-templates' -%}
 
     <a href="#main" class="skip-to-content sr-only">{{ 'general.accessibility.skip_to_content' | t }}</a>
@@ -125,5 +137,6 @@
         {%- sections 'footer-group' -%}
       {%- endif -%}
     </main>
+    {%- if g31_mobile_live -%}</div>{%- endif -%}
   </body>
 </html>
