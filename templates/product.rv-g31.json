@@ -12,10 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -32,14 +28,10 @@
             "show_taxes_notice": false
           }
         },
-        "separator": {
-          "type": "separator",
-          "settings": {}
-        },
         "intro": {
           "type": "text",
           "settings": {
-            "text": "<p>A 12.8V 100Ah Group 31 LiFePO4 deep-cycle battery with 1,280Wh rated energy, Bluetooth 5.0 monitoring, IP65 protection and cycle-life references of 4,000+ cycles at 100% DoD, 6,000 cycles at 80% DoD and 15,000 cycles at 60% DoD. The product-life reference is up to 10 years under suitable conditions.</p>"
+            "text": "<p><strong>12.8V 100Ah · 1,280Wh</strong><br>Bluetooth 5.0 monitoring · IP65 enclosure</p><p>For RV auxiliary power. Check the 339 × 185 × 218mm case against your tray, hold-down and cable clearance.</p>"
           }
         },
         "quantity_selector": {
@@ -50,9 +42,10 @@
           "type": "suntneew_bundle_selector",
           "settings": {
             "enabled": true,
-            "heading": "Build a Group 31 multi-pack",
-            "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.",
-            "discount_percent": 3
+            "heading": "Choose a battery pack",
+            "body": "",
+            "discount_percent": 3,
+            "show_savings": false
           }
         },
         "buy_buttons": {
@@ -61,21 +54,26 @@
             "show_payment_button": true,
             "show_gift_card_recipient": false
           }
+        },
+        "reviews": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
         }
       },
       "block_order": [
-        "vendor",
         "title",
+        "reviews",
         "sku",
         "price",
-        "separator",
         "intro",
-        "quantity_selector",
         "bundle",
+        "quantity_selector",
         "buy_buttons"
       ],
       "settings": {
-        "show_fixed_add_to_cart": true,
+        "show_fixed_add_to_cart": false,
         "enable_suntneew_pdp_experience": true,
         "suntneew_media_autoplay_interval": 6,
         "show_suntneew_pdp_promises": true,

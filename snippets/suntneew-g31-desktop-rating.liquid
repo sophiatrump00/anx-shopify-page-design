@@ -1,0 +1,16 @@
+{% doc %}
+  Compact G31 review link using the product's live review metafields.
+
+  @param {product} product - Product whose reviews are displayed.
+{% enddoc %}
+{%- assign review_count = product.metafields.reviews.rating_count.value | default: 0 -%}
+{%- assign product_rating = product.metafields.reviews.rating.value -%}
+{%- if review_count > 0 and product_rating != blank -%}
+  <a class="suntneew-g31-rating" href="#judgeme_product_reviews">
+    <span class="suntneew-g31-rating__score">
+      <span aria-hidden="true">★</span>
+      {{ product_rating.rating | round: 1 }} / {{ product_rating.scale_max }}
+    </span>
+    <span>{{ 'product.rating_count' | t: count: review_count }}</span>
+  </a>
+{%- endif -%}

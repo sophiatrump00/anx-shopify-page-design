@@ -46,6 +46,7 @@
   form="{{ product_form_id }}"
   filtered-indexes="[]"
   data-suntneew-media-gallery
+  {% if rv_model == 'rv-g31' %}data-autoplay="false"{% endif %}
   data-autoplay-interval="{{ media_autoplay_interval | default: 6 }}"
   {% if enable_image_zoom %}allow-zoom="{{ max_image_zoom_level }}"{% endif %}
   class="product-gallery suntneew-rv-gallery--{{ rv_model }} {% if mobile_carousel_control contains 'dots' %}product-gallery--mobile-dots{% endif %} product-gallery--desktop-carousel"
@@ -62,11 +63,13 @@
 
   <div class="product-gallery__ar-wrapper">
     <div class="product-gallery__media-list-wrapper">
+      {%- unless rv_model == 'rv-g31' -%}
       <custom-cursor class="product-gallery__cursor">
         <div class="circle-button circle-button--fill circle-button--lg">
           {%- render 'icon' with 'chevron-right' -%}
         </div>
       </custom-cursor>
+      {%- endunless -%}
 
       <media-carousel
         desktop-mode="carousel_thumbnails_bottom"
@@ -116,12 +119,14 @@
     </div>
   </div>
 
+  {%- unless rv_model == 'rv-g31' -%}
   <div class="suntneew-media-modes" role="tablist" aria-label="Product media">
     <button type="button" class="suntneew-media-modes__button" data-media-mode="image" role="tab" aria-selected="true">
       <span class="suntneew-media-modes__icon" aria-hidden="true">▣</span>
       {{ 'suntneew_auto.s5697d03daef4' | t }}
     </button>
   </div>
+  {%- endunless -%}
 
   {%- if mobile_carousel_control == 'dots' -%}
     {{- page_dots -}}
