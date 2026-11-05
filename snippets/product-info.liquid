@@ -155,7 +155,11 @@ Renders the blocks that make up a product information panel.
 
           {%- if previous_block.type != 'price' -%}
             <div class="product-info__rating">
-              {%- render 'product-rating', product: product, show_empty: block.settings.show_empty, block: block -%}
+              {%- if context == 'main_product' and template.suffix == 'rv-g31' and product.handle == 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-31' -%}
+                {%- render 'suntneew-g31-desktop-rating', product: product -%}
+              {%- else -%}
+                {%- render 'product-rating', product: product, show_empty: block.settings.show_empty, block: block -%}
+              {%- endif -%}
             </div>
           {%- endif -%}
 

@@ -46,7 +46,7 @@
 
     const schedule = () => {
       stop();
-      if (reduceMotion || document.hidden || dialogIsOpen() || gallery.matches(':hover') || gallery.contains(document.activeElement)) return;
+      if (gallery.dataset.autoplay === 'false' || reduceMotion || document.hidden || dialogIsOpen() || gallery.matches(':hover') || gallery.contains(document.activeElement)) return;
 
       const images = visibleImageThumbnails();
       if (images.length < 2) return;
