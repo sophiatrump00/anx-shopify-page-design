@@ -89,13 +89,6 @@
           <span class="rating-caption">{{ g31_rating }} ({{ g31_review_count }} reviews)</span>
         </a>
 
-        <div class="price-row" aria-live="polite">
-          <strong data-price-total>{{ g31_variant.price | money }}</strong>
-          <s data-compare-total {% unless g31_variant.compare_at_price > g31_variant.price %}hidden{% endunless %}>{{ g31_variant.compare_at_price | money }}</s>
-          <span class="discount-tag" {% unless g31_variant.compare_at_price > g31_variant.price %}hidden{% endunless %}>{{ g31_discount }}% OFF</span>
-        </div>
-        <p class="shipping-note">Taxes and shipping calculated at checkout</p>
-
         <div class="key-points" id="g31m-key-points">
           <ul>
             <li><strong>100Ah / 1,280Wh:</strong> 12.8V LiFePO4 energy storage for RV auxiliary systems.</li>

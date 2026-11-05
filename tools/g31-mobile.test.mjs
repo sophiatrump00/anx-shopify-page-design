@@ -45,8 +45,8 @@ test('sold-out variants cannot be submitted from either purchase location', asyn
 
 test('no-discount products hide compare-at prices and use one external review instance', async () => {
   const html = await render({ compare_at_price: 19900, inventory_policy: 'continue', inventory_quantity: 0 });
-  assert.equal((html.match(/<s data-compare-total hidden>/g) || []).length, 2);
-  assert.equal((html.match(/class="discount-tag" hidden/g) || []).length, 2);
+  assert.equal((html.match(/<s data-compare-total hidden>/g) || []).length, 1);
+  assert.equal((html.match(/class="discount-tag" hidden/g) || []).length, 1);
   assert.match(html, /name="quantity"[^>]+max="99"/);
   assert.match(html, /data-g31-review-slot/);
   assert.doesNotMatch(html, /id="judgeme_product_reviews"/);
