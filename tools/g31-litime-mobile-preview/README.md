@@ -6,7 +6,7 @@ A mobile preview of the SuntNeew Group 31 product page, following LiTime's mobil
 
 Shopify theme: `190498636071` (unpublished).
 
-https://www.suntneew.com/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-31?preview_theme_id=190498636071&view=g31-mobile-preview
+https://www.suntneew.com/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-31?preview_theme_id=190498636071&view=g31-mobile-preview&pb=0
 
 The page intentionally displays a mobile canvas up to 430 CSS pixels, including on desktop. All header and purchase buttons are demonstrations. They do not create a cart or start checkout. Product template assignments and the published theme are unchanged.
 

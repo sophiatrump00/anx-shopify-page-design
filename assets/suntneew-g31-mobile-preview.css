@@ -97,6 +97,26 @@ s { color:#9b9b9b; font-size:13px; font-weight:400; }
 #manuals p,#reviews p { font-size:13px; line-height:1.6; color:#666; }
 .review-summary { display:grid; justify-items:center; gap:6px; border-block:1px solid var(--line); padding:20px; font-size:13px; }
 .review-summary strong { font-size:36px; }.review-summary .rating-stars { font-size:21px; }
+#judgeme_product_reviews { padding-top:20px; }
+#judgeme_product_reviews .jm-review-widget { padding:0 !important; font-size:13px !important; --jm-review-widget-star-and-histogram-color:#f5a400 !important; --jm-review-widget-button-color:#191919 !important; --jm-widget-primary-color:#191919 !important; }
+#judgeme_product_reviews .jm-review-widget-minimal-header__title,
+#judgeme_product_reviews .jm-average-rating-display,
+#judgeme_product_reviews .jm-action-buttons { display:none !important; }
+#judgeme_product_reviews .jm-review-widget__header { gap:0 !important; }
+#judgeme_product_reviews .jm-review-widget-minimal-header__button-and-filters { justify-content:flex-end; }
+#judgeme_product_reviews .jdgm-review-list { display:grid !important; gap:20px !important; }
+#judgeme_product_reviews .jm-review-item { padding:0 0 20px !important; border-bottom:1px solid var(--line); }
+#judgeme_product_reviews .jm-review-item__content { display:grid !important; gap:8px !important; }
+#judgeme_product_reviews .jm-review-item__content > *,
+#judgeme_product_reviews .jm-reviewer-info__details > *,
+#judgeme_product_reviews .jm-review-content > * { margin-block:0 !important; }
+#judgeme_product_reviews .jm-reviewer-avatar { width:28px !important; height:28px !important; min-width:28px; }
+#judgeme_product_reviews .jm-reviewer-info__details { display:flex !important; flex-direction:row !important; flex-wrap:wrap; align-items:center; gap:4px 10px !important; }
+#judgeme_product_reviews .jm-reviewer-info__details .jm-text { font-size:12px !important; }
+#judgeme_product_reviews .jm-star-rating,
+#judgeme_product_reviews .jm-star-rating [class*="star"] { font-size:16px !important; line-height:1 !important; }
+#judgeme_product_reviews .jm-review-content { display:grid !important; gap:5px !important; }
+#judgeme_product_reviews .jm-review-content__title { font-size:14px !important; font-weight:600 !important; color:#222; }
 .faq-item { border-bottom:1px solid var(--line); }
 .faq-item summary { padding:17px 0; color:#222; font-size:14px; line-height:1.5; cursor:pointer; }
 .faq-item div { padding:0 0 16px; color:#666; font-size:13px; line-height:1.6; }
