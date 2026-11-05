@@ -114,7 +114,7 @@ s { color:#9b9b9b; font-size:13px; font-weight:400; }
 #judgeme_product_reviews .jm-reviewer-info__details { display:flex !important; flex-direction:row !important; flex-wrap:wrap; align-items:center; gap:4px 10px !important; }
 #judgeme_product_reviews .jm-reviewer-info__details .jm-text { font-size:12px !important; }
 #judgeme_product_reviews .jm-star-rating,
-#judgeme_product_reviews .jm-star-rating [class*="star"] { font-size:16px !important; line-height:1 !important; }
+#judgeme_product_reviews .jm-star-rating [class*="star"] { font-size:16px !important; line-height:1 !important; color:#f5a400 !important; }
 #judgeme_product_reviews .jm-review-content { display:grid !important; gap:5px !important; }
 #judgeme_product_reviews .jm-review-content__title { font-size:14px !important; font-weight:600 !important; color:#222; }
 .faq-item { border-bottom:1px solid var(--line); }
