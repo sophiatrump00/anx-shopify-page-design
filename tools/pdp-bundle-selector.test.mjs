@@ -80,7 +80,8 @@ function assertUnavailable(ui, state, label) {
 test('available A20 pack totals match server output and quantity selection updates the actual form', async t => {
   const ui = await fixture();
   t.after(() => ui.dom.window.close());
-  assert.deepEqual(ui.prices(), ['$49.99', '$96.98', '$227.45', '$454.91']);
+  // Recorded live Shopify cart totals: the percentage discount is truncated per unit.
+  assert.deepEqual(ui.prices(), ['$49.99', '$97.00', '$227.50', '$455.00']);
   const server = await fixture({ activate: false });
   t.after(() => server.dom.window.close());
   assert.deepEqual(server.prices(), ui.prices());
@@ -98,7 +99,7 @@ test('an absent red capacity cannot fall back to another variant price, and swit
   assertUnavailable(ui, 'unavailable', 'Unavailable');
   ui.choose(variants[1]);
   assert.equal(ui.selector.dataset.selectionState, 'available');
-  assert.equal(ui.prices()[1], '$96.98');
+  assert.equal(ui.prices()[1], '$97.00');
   assert.ok(ui.buttons.every(button => !button.disabled));
   assert.equal(ui.buttons[0].getAttribute('aria-pressed'), 'true');
   assert.ok([...ui.selector.querySelectorAll('[data-bundle-savings]')].every(node => !node.hidden));
@@ -135,7 +136,7 @@ test('switching available variants reads the current form ID instead of a cached
   t.after(() => ui.dom.window.close());
   ui.choose(second);
   assert.equal(ui.prices()[0], '$74.99');
-  assert.equal(ui.prices()[1], '$145.48');
+  assert.equal(ui.prices()[1], '$145.50');
   ui.choose(variants[0]);
   assert.equal(ui.prices()[0], '$49.99');
 });

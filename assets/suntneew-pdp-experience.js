@@ -134,8 +134,10 @@
       optionButtons.forEach((button) => {
         const quantity = Number(button.dataset.bundleQuantity);
         const original = (variant?.price || 0) * quantity;
-        const discount = Number(button.dataset.bundleDiscount || 0) / 100;
-        const finalPrice = Math.round(original * (1 - discount));
+        const discountPercent = Number(button.dataset.bundleDiscount || 0);
+        // Shopify truncates the percentage discount per unit before multiplying quantity.
+        const unitDiscount = Math.floor((variant?.price || 0) * discountPercent / 100);
+        const finalPrice = ((variant?.price || 0) - unitDiscount) * quantity;
         const offset = quantity - minimum;
         const available = purchasable
           && offset >= 0
@@ -147,7 +149,7 @@
         if (price) price.textContent = purchasable ? formatMoney(finalPrice, currency) : unavailableLabel;
         if (compare) {
           compare.textContent = purchasable ? formatMoney(original, currency) : '';
-          compare.hidden = !purchasable || discount === 0;
+          compare.hidden = !purchasable || discountPercent === 0;
         }
       });
     };

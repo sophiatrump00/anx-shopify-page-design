@@ -71,8 +71,9 @@ Renders preset multi-pack quantities that update the product form quantity.
           endif
 
           assign undiscounted_price = selected_variant.price | times: quantity
-          assign bundle_multiplier = 100 | minus: pack_discount
-          assign pack_price = undiscounted_price | times: bundle_multiplier | divided_by: 100.0 | round
+          assign unit_discount = selected_variant.price | times: pack_discount | divided_by: 100.0 | floor
+          assign discounted_unit_price = selected_variant.price | minus: unit_discount
+          assign pack_price = discounted_unit_price | times: quantity
           assign preset_available = selected_variant.available
 
           if quantity < minimum_quantity
