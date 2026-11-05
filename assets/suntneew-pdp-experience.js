@@ -106,41 +106,50 @@
     const optionButtons = [...selector.querySelectorAll('[data-bundle-quantity]')];
     const customButton = selector.querySelector('[data-bundle-custom]');
     const productInfo = selector.closest('.product-info') || document;
-    let currentVariantId;
-
     const selectedVariant = () => {
-      const idInput = form.querySelector('[name="id"]:not([disabled])')
-        || form.querySelector('[name="id"]')
-        || document.querySelector(`[name="id"][form="${selector.dataset.formId}"]`);
-      return variants.find((variant) => String(variant.id) === String(currentVariantId || idInput?.value)) || variants[0];
+      const idInput = [...form.elements].find((input) => input.name === 'id' && !input.disabled)
+        || form.querySelector('[name="id"]');
+      // An absent combination has no ID. Never display a different variant's price.
+      return variants.find((variant) => String(variant.id) === String(idInput?.value));
     };
 
     const refresh = () => {
       const variant = selectedVariant();
-      if (!variant) return;
+      const purchasable = variant?.available === true;
+      const unavailableLabel = variant ? selector.dataset.soldOutLabel : selector.dataset.unavailableLabel;
+      selector.dataset.selectionState = purchasable ? 'available' : variant ? 'sold-out' : 'unavailable';
+      selector.querySelectorAll('[data-bundle-savings]').forEach((node) => { node.hidden = !purchasable; });
+      const status = selector.querySelector('[data-bundle-status]');
+      if (status) {
+        status.hidden = purchasable;
+        status.textContent = purchasable ? '' : unavailableLabel;
+      }
+      if (customButton) customButton.disabled = !purchasable;
 
-      const quantityRule = variant.quantity_rule || {};
+      const quantityRule = variant?.quantity_rule || {};
       const minimum = Number(quantityRule.min || 1);
       const maximum = quantityRule.max == null ? null : Number(quantityRule.max);
       const increment = Number(quantityRule.increment || 1);
 
       optionButtons.forEach((button) => {
         const quantity = Number(button.dataset.bundleQuantity);
-        const original = variant.price * quantity;
-        const discount = Number(button.dataset.bundleDiscount || 0) / 100;
-        const finalPrice = Math.round(original * (1 - discount));
+        const original = (variant?.price || 0) * quantity;
+        const discountPercent = Number(button.dataset.bundleDiscount || 0);
+        // Shopify truncates the percentage discount per unit before multiplying quantity.
+        const unitDiscount = Math.floor((variant?.price || 0) * discountPercent / 100);
+        const finalPrice = ((variant?.price || 0) - unitDiscount) * quantity;
         const offset = quantity - minimum;
-        const available = variant.available !== false
+        const available = purchasable
           && offset >= 0
           && (maximum === null || quantity <= maximum)
           && offset % increment === 0;
         button.disabled = !available;
         const price = button.querySelector('[data-bundle-price]');
         const compare = button.querySelector('[data-bundle-compare]');
-        if (price) price.textContent = formatMoney(finalPrice, currency);
+        if (price) price.textContent = purchasable ? formatMoney(finalPrice, currency) : unavailableLabel;
         if (compare) {
-          compare.textContent = formatMoney(original, currency);
-          compare.hidden = discount === 0;
+          compare.textContent = purchasable ? formatMoney(original, currency) : '';
+          compare.hidden = !purchasable || discountPercent === 0;
         }
       });
     };
@@ -156,8 +165,9 @@
         if (selected) presetSelected = true;
       });
       if (customButton) {
-        customButton.classList.toggle('is-selected', !presetSelected);
-        customButton.setAttribute('aria-pressed', String(!presetSelected));
+        const selected = !customButton.disabled && !presetSelected;
+        customButton.classList.toggle('is-selected', selected);
+        customButton.setAttribute('aria-pressed', String(selected));
       }
     };
 
@@ -192,9 +202,11 @@
       if (event.target?.matches?.(`[name="quantity"][form="${selector.dataset.formId}"]`)) syncSelection();
     });
 
-    form.addEventListener('change', refresh);
-    form.addEventListener('variant:change', (event) => {
-      currentVariantId = event.detail?.variant?.id;
+    form.addEventListener('change', () => {
+      refresh();
+      syncSelection();
+    });
+    form.addEventListener('variant:change', () => {
       refresh();
       syncSelection();
     });

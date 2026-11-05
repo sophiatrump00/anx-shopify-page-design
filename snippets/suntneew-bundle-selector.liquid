@@ -20,7 +20,7 @@ Renders preset multi-pack quantities that update the product form quantity.
     assign initial_quantity_text = initial_quantity | append: ''
     assign initial_is_preset = false
 
-    if preset_quantities contains initial_quantity_text
+    if selected_variant.available and preset_quantities contains initial_quantity_text
       assign initial_is_preset = true
     endif
   -%}
@@ -30,6 +30,9 @@ Renders preset multi-pack quantities that update the product form quantity.
     data-suntneew-bundle-selector
     data-form-id="{{ product_form_id }}"
     data-currency="{{ localization.country.currency.iso_code | escape }}"
+    data-unavailable-label="{{ 'product.general.unavailable_button' | t | escape }}"
+    data-sold-out-label="{{ 'product.general.sold_out_button' | t | escape }}"
+    data-selection-state="{% if selected_variant.available %}available{% elsif selected_variant %}sold-out{% else %}unavailable{% endif %}"
   >
     <div class="suntneew-bundle-selector__heading">
       <div>
@@ -43,7 +46,7 @@ Renders preset multi-pack quantities that update the product form quantity.
         <h3>{{ block.settings.heading }}</h3>
       </div>
       {%- if savings_enabled -%}
-        <span class="suntneew-bundle-selector__badge">{{ 'product.quantity.save_up_to' | t: percent: maximum_discount }}</span>
+        <span class="suntneew-bundle-selector__badge" data-bundle-savings{% unless selected_variant.available %} hidden{% endunless %}>{{ 'product.quantity.save_up_to' | t: percent: maximum_discount }}</span>
       {%- endif -%}
     </div>
 
@@ -68,9 +71,10 @@ Renders preset multi-pack quantities that update the product form quantity.
           endif
 
           assign undiscounted_price = selected_variant.price | times: quantity
-          assign bundle_multiplier = 100 | minus: pack_discount
-          assign pack_price = undiscounted_price | times: bundle_multiplier | divided_by: 100
-          assign preset_available = true
+          assign unit_discount = selected_variant.price | times: pack_discount | divided_by: 100.0 | floor
+          assign discounted_unit_price = selected_variant.price | minus: unit_discount
+          assign pack_price = discounted_unit_price | times: quantity
+          assign preset_available = selected_variant.available
 
           if quantity < minimum_quantity
             assign preset_available = false
@@ -90,19 +94,19 @@ Renders preset multi-pack quantities that update the product form quantity.
 
         <button
           type="button"
-          class="suntneew-bundle-selector__option{% if quantity == initial_quantity %} is-selected{% endif %}"
+          class="suntneew-bundle-selector__option{% if preset_available and quantity == initial_quantity %} is-selected{% endif %}"
           data-bundle-quantity="{{ quantity }}"
           data-bundle-discount="{{ pack_discount }}"
-          aria-pressed="{% if quantity == initial_quantity %}true{% else %}false{% endif %}"
+          aria-pressed="{% if preset_available and quantity == initial_quantity %}true{% else %}false{% endif %}"
           {% unless preset_available %}disabled{% endunless %}
         >
           <span class="suntneew-bundle-selector__option-copy">
             <strong>{{ 'product.quantity.unit_count' | t: count: quantity }}</strong>
-            <small>{% if pack_discount > 0 %}{{ 'product.quantity.save_percent' | t: percent: pack_discount }}{% else %}{{ 'product.quantity.standard_price' | t }}{% endif %}</small>
+            <small data-bundle-savings{% unless selected_variant.available %} hidden{% endunless %}>{% if pack_discount > 0 %}{{ 'product.quantity.save_percent' | t: percent: pack_discount }}{% else %}{{ 'product.quantity.standard_price' | t }}{% endif %}</small>
           </span>
           <span class="suntneew-bundle-selector__price-wrap">
-            <span class="suntneew-bundle-selector__price" data-bundle-price>{{ pack_price | money }}</span>
-            <s class="suntneew-bundle-selector__compare" data-bundle-compare{% if pack_discount == 0 %} hidden{% endif %}>{{ undiscounted_price | money }}</s>
+            <span class="suntneew-bundle-selector__price" data-bundle-price>{% if selected_variant.available %}{{ pack_price | money }}{% elsif selected_variant %}{{ 'product.general.sold_out_button' | t }}{% else %}{{ 'product.general.unavailable_button' | t }}{% endif %}</span>
+            <s class="suntneew-bundle-selector__compare" data-bundle-compare{% if pack_discount == 0 or selected_variant.available != true %} hidden{% endif %}>{% if selected_variant.available %}{{ undiscounted_price | money }}{% endif %}</s>
           </span>
         </button>
       {%- endfor -%}
@@ -110,18 +114,21 @@ Renders preset multi-pack quantities that update the product form quantity.
 
     <button
       type="button"
-      class="suntneew-bundle-selector__custom{% unless initial_is_preset %} is-selected{% endunless %}"
+      class="suntneew-bundle-selector__custom{% if selected_variant.available and initial_is_preset == false %} is-selected{% endif %}"
       data-bundle-custom
       aria-controls="{{ product_form_id }}-quantity"
-      aria-pressed="{% if initial_is_preset %}false{% else %}true{% endif %}"
+      aria-pressed="{% if selected_variant.available and initial_is_preset == false %}true{% else %}false{% endif %}"
+      {% unless selected_variant.available %}disabled{% endunless %}
     >
       <span>{{ 'product.quantity.custom_quantity' | t }}</span>
       <small>{{ 'product.quantity.custom_quantity_hint' | t }}</small>
     </button>
 
     {%- if savings_enabled -%}
-      <p class="suntneew-bundle-selector__note">{{ 'product.quantity.discount_ladder_note' | t: two: discount_step, three: middle_discount, four: maximum_discount }}</p>
+      <p class="suntneew-bundle-selector__note" data-bundle-savings{% unless selected_variant.available %} hidden{% endunless %}>{{ 'product.quantity.discount_ladder_note' | t: two: discount_step, three: middle_discount, four: maximum_discount }}</p>
     {%- endif -%}
+
+    <p class="suntneew-bundle-selector__note" data-bundle-status role="status" aria-live="polite"{% if selected_variant.available %} hidden{% endif %}>{% unless selected_variant.available %}{% if selected_variant %}{{ 'product.general.sold_out_button' | t }}{% else %}{{ 'product.general.unavailable_button' | t }}{% endif %}{% endunless %}</p>
 
     <script type="application/json" data-suntneew-bundle-variants>{{ product.variants | json }}</script>
   </div>

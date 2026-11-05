@@ -1,0 +1,91 @@
+{% comment %}
+Theme-owned landing layout. Legacy Shogun layout is retained for compatibility.
+{% endcomment %}
+
+{% assign shogun_content_for_header = blank %}
+{% assign shogun_content_for_layout = blank %}
+{% # theme-check-disable-next-line DeprecatedTag %}
+{% include 'suntneew-shogun-content-handler' %}
+<html lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
+  <head>
+  {% comment %}Loads Shogun Analytics. Removing this will disrupt analytics data collection.{% endcomment %}
+  <script type="text/javascript" async src="https://na.shgcdn3.com/pixel-collector.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="theme-color" content="{{ settings.header_background }}">
+
+    {%- render 'suntneew-seo-head' -%}
+    {%- render 'suntneew-analytics-head' -%}
+
+    {%- if settings.favicon -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 96 }}">
+      <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180 }}">
+    {%- endif -%}
+
+    {%- comment -%}Few prefetch to increase performance on commonly used third-parties{%- endcomment -%}
+    <link rel="preconnect" href="https://cdn.shopify.com">
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- unless settings.heading_font.system? -%}
+      {{ settings.heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2' }}
+    {%- endunless -%}
+
+    {%- unless settings.text_font.system? -%}
+      {{ settings.text_font | font_url | preload_tag: as: 'font', type: 'font/woff2' }}
+    {%- endunless -%}
+
+    {%- render 'social-meta-tags' -%}
+    {%- render 'microdata-schema' -%}
+    {%- render 'css-variables' -%}
+    {%- render 'js-variables' -%}
+
+    <script type="importmap">
+      {%- comment -%}On Safari 16.3 and lower, a polyfill is used to load importmap{%- endcomment -%}
+      {
+        "imports": {
+          "vendor": "{{ 'vendor.min.js' | asset_url }}",
+          "theme": "{{ 'theme.js' | asset_url }}",
+          "photoswipe": "{{ 'photoswipe.min.js' | asset_url }}"
+        }
+      }
+    </script>
+
+    <script type="module">
+      const loadTheme = () => import('theme');
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadTheme, { once: true });
+      } else {
+        loadTheme();
+      }
+    </script>
+
+    {{ content_for_header }}
+    {{ shogun_content_for_header }}
+
+    {{- 'theme-bundle-1.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'theme-bundle-2.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'theme-bundle-3.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'suntneew-site.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'suntneew-home.css' | asset_url | stylesheet_tag: preload: true -}}
+    <script src="{{ 'suntneew-motion.js' | asset_url }}" defer></script>
+    {%- if request.page_type == 'index' -%}
+      <script src="{{ 'suntneew-home.js' | asset_url }}" defer></script>
+    {%- endif -%}
+
+  {% render 'shogun-head' %}
+</head>
+  <body class="template-{{ request.page_type | handle }}{% if template.suffix != blank %} template-{{ request.page_type | handle }}-{{ template.suffix | handle }}{% endif %}{% if settings.zoom_image_on_hover %} zoom-image--enabled{% endif %}">
+    {%- if shogun_content_for_layout != blank -%}
+      {{ shogun_content_for_layout }}
+    {%- else -%}
+      {{ content_for_layout }}
+    {%- endif -%}
+
+    <style type="text/css">
+      body, html {
+        width: 100% !important;
+        background: white !important;
+      }
+    </style>
+
+  </body>
+</html>
