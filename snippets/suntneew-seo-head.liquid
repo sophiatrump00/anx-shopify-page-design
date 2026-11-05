@@ -185,7 +185,22 @@
           assign seo_suffix_key = 'returns_suffix'
         endif
       endif
-      assign seo_suffix = 'suntneew_seo.' | append: seo_suffix_key | t
+      case seo_suffix_key
+        when 'home_suffix'
+          assign seo_suffix = 'suntneew_seo.home_suffix' | t
+        when 'journal_suffix'
+          assign seo_suffix = 'suntneew_seo.journal_suffix' | t
+        when 'contact_suffix'
+          assign seo_suffix = 'suntneew_seo.contact_suffix' | t
+        when 'legal_suffix'
+          assign seo_suffix = 'suntneew_seo.legal_suffix' | t
+        when 'shipping_suffix'
+          assign seo_suffix = 'suntneew_seo.shipping_suffix' | t
+        when 'returns_suffix'
+          assign seo_suffix = 'suntneew_seo.returns_suffix' | t
+        else
+          assign seo_suffix = 'suntneew_seo.product_suffix' | t
+      endcase
       assign seo_description = seo_description | append: ' ' | append: seo_suffix
     endif
 
