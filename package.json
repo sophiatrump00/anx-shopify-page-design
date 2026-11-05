@@ -1,0 +1,15 @@
+{
+  "name": "suntneew-shopify-theme-checks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tools/g31-mobile.test.mjs tools/pdp-bundle-selector.test.mjs tools/shogun-integration.test.mjs",
+    "check:structure": "node tools/validate-theme.mjs",
+    "check:theme": "shopify theme check --fail-level error"
+  },
+  "devDependencies": {
+    "@shopify/cli": "5.0.1",
+    "jsdom": "26.1.0",
+    "liquidjs": "10.29.0"
+  }
+}
