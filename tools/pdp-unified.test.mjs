@@ -111,6 +111,22 @@ test('all thirteen remaining public PDPs use native purchasing and model-specifi
   const a3 = read('templates/product.a3.json'); assert.doesNotMatch(a3, /suntneew-a3-sales/); assert.match(a3, /suntneew-a3-ul2743-test-report-v20.pdf/);
 });
 
+test('quantity preset offers match the captured active Shopify discount eligibility', () => {
+  const live = JSON.parse(read('tools/fixtures/pdp-multi-pack-20261105.json'));
+  const offers = new Map(live.levels[0].handles.map(handle => [handle, live.levels[0].percent]));
+  const handles = {
+    a20: 'suntneew-a20-jump-starter-8000mah', a3: 'suntneew-a3-jump-starter-16000mah',
+    u23: 'suntneew-u23-portable-car-jump-starter-8-000mah', u32: 'suntneew-u32-portable-car-jump-starter-10-000mah'
+  };
+  for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'home-wl5a', 'home-wl10b', 'home-vh', 'u23', 'u32', 'kb700', 'oj02']) {
+    const template = JSON.parse(read(`templates/product.${name}.json`).replace(/\/\*[\s\S]*?\*\//g, ''));
+    const preset = Object.values(template.sections.main.blocks).find(block => block.type === 'suntneew_bundle_selector').settings;
+    assert.equal(preset.enabled, true, name);
+    assert.equal(preset.show_savings, offers.has(handles[name]), name);
+    if (preset.show_savings) assert.equal(preset.discount_percent, offers.get(handles[name]), name);
+  }
+});
+
 test('in-page links and browser hash navigation reveal the requested detail panel', t => {
   const dom = new JSDOM('<nav class="sn-pdp-nav"><a data-pdp-tab="features" href="#features">Features</a><a data-pdp-tab="manuals" href="#manuals">Documents</a></nav><section data-pdp-panel="features"><a id="manual-link" href="#manuals">Read the manual</a></section><section data-pdp-panel="manuals">Manual PDF</section>', { runScripts: 'outside-only', url: 'https://example.com/products/a3' });
   t.after(() => dom.window.close());

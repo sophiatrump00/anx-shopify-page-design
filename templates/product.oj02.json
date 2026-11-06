@@ -32,11 +32,11 @@
         "bundle": {
           "type": "suntneew_bundle_selector",
           "settings": {
-            "enabled": false,
+            "enabled": true,
             "show_savings": false,
             "heading": "Choose a pack",
             "body": "",
-            "discount_percent": 1
+            "discount_percent": 3
           }
         },
         "buy_buttons": {
