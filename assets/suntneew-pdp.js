@@ -47,6 +47,20 @@
       });
     });
 
+    // Links in feature copy and FAQs must reveal the same panel as its tab.
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href^="#"]:not([data-pdp-tab])');
+      const target = link?.getAttribute('href').slice(1);
+      if (!targets.includes(target)) return;
+      event.preventDefault();
+      activate(target, true);
+      history.replaceState(null, '', `#${target}`);
+    });
+    window.addEventListener('hashchange', () => {
+      const target = window.location.hash.slice(1);
+      if (targets.includes(target)) activate(target, true);
+    });
+
     const hashTarget = window.location.hash.replace('#', '');
     activate(targets.includes(hashTarget) ? hashTarget : targets[0], false);
   };

@@ -110,3 +110,15 @@ test('all thirteen remaining public PDPs use native purchasing and model-specifi
   }
   const a3 = read('templates/product.a3.json'); assert.doesNotMatch(a3, /suntneew-a3-sales/); assert.match(a3, /suntneew-a3-ul2743-test-report-v20.pdf/);
 });
+
+test('in-page links and browser hash navigation reveal the requested detail panel', t => {
+  const dom = new JSDOM('<nav class="sn-pdp-nav"><a data-pdp-tab="features" href="#features">Features</a><a data-pdp-tab="manuals" href="#manuals">Documents</a></nav><section data-pdp-panel="features"><a id="manual-link" href="#manuals">Read the manual</a></section><section data-pdp-panel="manuals">Manual PDF</section>', { runScripts: 'outside-only', url: 'https://example.com/products/a3' });
+  t.after(() => dom.window.close());
+  const w = dom.window; w.matchMedia = () => ({ matches: true }); w.HTMLElement.prototype.scrollIntoView = () => {};
+  w.eval(read('assets/suntneew-pdp.js')); w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+  w.document.getElementById('manual-link').click();
+  assert.equal(w.document.querySelector('[data-pdp-panel="manuals"]').hidden, false);
+  assert.equal(w.document.querySelector('[data-pdp-panel="features"]').hidden, true);
+  w.history.replaceState(null, '', '#features'); w.dispatchEvent(new w.HashChangeEvent('hashchange'));
+  assert.equal(w.document.querySelector('[data-pdp-panel="features"]').hidden, false);
+});
