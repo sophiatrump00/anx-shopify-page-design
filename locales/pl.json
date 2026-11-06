@@ -484,5 +484,10 @@
   },
   "suntneew_auto": {
     "sc0dc6955a7a3": "Zestaw A20 zawiera po jednej sztuce: urządzenie A20, inteligentny zacisk z ochroną przed odwrotną polaryzacją, przewód USB do ładowania i skróconą instrukcję. Przeczytaj instrukcję przed pierwszym użyciem."
+  },
+  "suntneew_pdp": {
+    "options_error": "Options could not be updated. Please retry before purchasing.",
+    "retry": "Retry",
+    "quoted_delivery": "Delivery is quoted separately after ordering; it is not charged at checkout."
   }
 }

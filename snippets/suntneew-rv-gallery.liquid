@@ -9,6 +9,7 @@
   @param {string} mobile_carousel_control - Mobile carousel control style.
   @param {string} mobile_media_size - Mobile gallery width setting.
   @param {number} media_autoplay_interval - Image autoplay interval in seconds.
+  @param {boolean} unified_pdp - Use the shared non-autoplay gallery.
 {% enddoc %}
 
 {%- liquid
@@ -46,7 +47,7 @@
   form="{{ product_form_id }}"
   filtered-indexes="[]"
   data-suntneew-media-gallery
-  {% if rv_model == 'rv-g31' %}data-autoplay="false"{% endif %}
+  {% if rv_model == 'rv-g31' or unified_pdp %}data-autoplay="false"{% endif %}
   data-autoplay-interval="{{ media_autoplay_interval | default: 6 }}"
   {% if enable_image_zoom %}allow-zoom="{{ max_image_zoom_level }}"{% endif %}
   class="product-gallery suntneew-rv-gallery--{{ rv_model }} {% if mobile_carousel_control contains 'dots' %}product-gallery--mobile-dots{% endif %} product-gallery--desktop-carousel"
@@ -63,7 +64,7 @@
 
   <div class="product-gallery__ar-wrapper">
     <div class="product-gallery__media-list-wrapper">
-      {%- unless rv_model == 'rv-g31' -%}
+      {%- unless rv_model == 'rv-g31' or unified_pdp -%}
       <custom-cursor class="product-gallery__cursor">
         <div class="circle-button circle-button--fill circle-button--lg">
           {%- render 'icon' with 'chevron-right' -%}
@@ -119,7 +120,7 @@
     </div>
   </div>
 
-  {%- unless rv_model == 'rv-g31' -%}
+  {%- unless rv_model == 'rv-g31' or unified_pdp -%}
   <div class="suntneew-media-modes" role="tablist" aria-label="Product media">
     <button type="button" class="suntneew-media-modes__button" data-media-mode="image" role="tab" aria-selected="true">
       <span class="suntneew-media-modes__icon" aria-hidden="true">▣</span>

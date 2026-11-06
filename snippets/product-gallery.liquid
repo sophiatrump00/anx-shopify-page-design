@@ -66,6 +66,7 @@
 <product-gallery
   form="{{ product_form_id }}"
   filtered-indexes="{{ filtered_indexes | json }}"
+  {% if unified_pdp %}data-autoplay="false"{% endif %}
   {%- if section.settings.enable_image_zoom -%}
     allow-zoom="{{ section.settings.max_image_zoom_level }}"
   {% endif %}
@@ -87,7 +88,7 @@
 
   <div class="product-gallery__ar-wrapper">
     <div class="product-gallery__media-list-wrapper">
-      {%- if section.settings.desktop_media_layout contains 'carousel' and product.media.size > 1 -%}
+      {%- if section.settings.desktop_media_layout contains 'carousel' and product.media.size > 1 and unified_pdp != true -%}
         <custom-cursor
           class="product-gallery__cursor"
           {% if default_media.media_type != 'image' %}
@@ -140,7 +141,7 @@
             data-media-type="{{ media.media_type }}"
             data-media-id="{{ media.id }}"
             {% if media.media_type == 'image' %}
-              {%- assign zoom_image_width = media.preview_image.width | at_most: 960 -%}
+              {%- assign zoom_image_width = media.preview_image.width | at_most: 3000 -%}
               data-full-src="{{ media | image_url: width: zoom_image_width | escape }}"
               data-full-width="{{ zoom_image_width }}"
               data-full-height="{{ media.preview_image.height | times: zoom_image_width | divided_by: media.preview_image.width }}"
@@ -217,7 +218,7 @@
     {%- endif -%}
   </div>
 
-  {%- if section.settings.enable_suntneew_pdp_experience and product.media.size > 0 -%}
+  {%- if section.settings.enable_suntneew_pdp_experience and product.media.size > 0 and unified_pdp != true -%}
     <div class="suntneew-media-modes" role="tablist" aria-label="Product media">
       {%- if has_image_media -%}
         <button type="button" class="suntneew-media-modes__button" data-media-mode="image" role="tab" aria-selected="true">

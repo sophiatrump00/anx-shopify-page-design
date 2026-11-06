@@ -1,21 +1,8 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -32,14 +19,10 @@
             "show_taxes_notice": false
           }
         },
-        "separator": {
-          "type": "separator",
-          "settings": {}
-        },
         "intro": {
           "type": "text",
           "settings": {
-            "text": "<p>A display-led 12V jump starter for roadside readiness. U32 brings 1,000A starting current, 2,000A peak power, 10,000mAh / 37Wh stored energy, PD 18W recharging and a 5W emergency light into one carry-ready kit.</p>"
+            "text": "<p><strong>12V jump starting · 10,000mAh / 37Wh</strong></p><p>1,000A starting current, 2,000A peak current, PD18W recharging and a 5W emergency light, with a clear status display.</p>"
           }
         },
         "quantity_selector": {
@@ -51,8 +34,8 @@
           "settings": {
             "enabled": true,
             "show_savings": true,
-            "heading": "Build a U32 multi-pack",
-            "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.",
+            "heading": "Choose a pack",
+            "body": "",
             "discount_percent": 3
           }
         },
@@ -62,17 +45,22 @@
             "show_payment_button": false,
             "show_gift_card_recipient": false
           }
+        },
+        "reviews": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
         }
       },
       "block_order": [
-        "vendor",
         "title",
+        "reviews",
         "sku",
         "price",
-        "separator",
         "intro",
-        "quantity_selector",
         "bundle",
+        "quantity_selector",
         "buy_buttons"
       ],
       "settings": {
@@ -83,66 +71,11 @@
         "desktop_media_width": 50,
         "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots"
-      }
-    },
-    "gallery_fallback": {
-      "type": "suntneew-pdp-gallery-fallback",
-      "blocks": {
-        "image1": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-u32-2026-gallery-01-main.jpg",
-            "alt": "SuntNeew U32 jump starter with smart clamps and USB-C charging cable"
-          }
-        },
-        "image2": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-u32-2026-gallery-02-starting.jpg",
-            "alt": "SuntNeew U32 start performance and engine compatibility"
-          }
-        },
-        "image3": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-u32-2026-gallery-03-safeguards.jpg",
-            "alt": "SuntNeew U32 10AWG intelligent jumper clamps and six safeguards"
-          }
-        },
-        "image4": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-u32-2026-gallery-04-power.jpg",
-            "alt": "SuntNeew U32 USB device power and 5W emergency light"
-          }
-        },
-        "image5": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-u32-2026-gallery-05-display.jpg",
-            "alt": "SuntNeew U32 2.4-inch LCD display"
-          }
-        },
-        "image6": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-u32-2026-gallery-06-compact.png",
-            "alt": "Compact SuntNeew U32 jump starter with size and weight"
-          }
-        }
-      },
-      "block_order": [
-        "image1",
-        "image2",
-        "image3",
-        "image4",
-        "image5",
-        "image6"
-      ],
-      "settings": {
-        "eyebrow": "PRODUCT GALLERY",
-        "heading": "Product views, without the noise."
+        "mobile_carousel_control": "thumbnails",
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "suntneew_gallery_assets": "sn-pdp-20261105-u32-kit-1600.webp|suntneew-u32-2026-gallery-02-starting.jpg|suntneew-u32-2026-gallery-03-safeguards.jpg|suntneew-u32-2026-gallery-04-power.jpg|suntneew-u32-2026-gallery-05-display.jpg|suntneew-u32-2026-gallery-06-compact.png|suntneew-u32-2026-gallery-07-in-box.jpg",
+        "suntneew_gallery_alts": "SuntNeew U32 jump starter with smart clamps and USB-C charging cable|SuntNeew U32 start performance and engine compatibility|SuntNeew U32 10AWG intelligent jumper clamps and six safeguards|SuntNeew U32 USB device power and 5W emergency light|SuntNeew U32 2.4-inch LCD display|Compact SuntNeew U32 jump starter with size and weight|U32 kit and included accessories"
       }
     },
     "proof": {
@@ -802,7 +735,6 @@
   },
   "order": [
     "main",
-    "gallery_fallback",
     "proof",
     "demo_video",
     "anchor_nav",

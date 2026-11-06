@@ -32,11 +32,11 @@
   .suntneew-product-page--experience .product-gallery__thumbnail[aria-current="true"] { border-color: #e9653b; background: #fff; opacity: 1; }
   .suntneew-product-page--experience .product-gallery__thumbnail:after { display: none; }
 
-  .suntneew-product-page--experience .product-gallery:not(.suntneew-rv-gallery--rv-g31):not(:hover):not(:focus-within) .product-gallery__thumbnail-list { justify-content: center; gap: 0; width: 9px; padding: 0; overflow: hidden; }
-  .suntneew-product-page--experience .product-gallery:not(.suntneew-rv-gallery--rv-g31):not(:hover):not(:focus-within) .product-gallery__thumbnail { flex-basis: 0; width: 0; height: 0; border: 0; opacity: 0; pointer-events: none; }
-  .suntneew-product-page--experience .product-gallery:not(.suntneew-rv-gallery--rv-g31):not(:hover):not(:focus-within) .product-gallery__thumbnail[aria-current="true"] { flex-basis: 9px; width: 9px; height: 9px; border: 1px solid #e9653b; border-radius: 999px; background: #e9653b; opacity: 1; }
-  .suntneew-product-page--experience .product-gallery:not(.suntneew-rv-gallery--rv-g31):not(:hover):not(:focus-within) .product-gallery__thumbnail img,
-  .suntneew-product-page--experience .product-gallery:not(.suntneew-rv-gallery--rv-g31):not(:hover):not(:focus-within) .product-gallery__media-badge { opacity: 0; }
+  .suntneew-product-page--experience:not(.suntneew-product-page--unified) .product-gallery:not(.suntneew-rv-gallery--rv-g31):not(:hover):not(:focus-within) .product-gallery__thumbnail-list { justify-content: center; gap: 0; width: 9px; padding: 0; overflow: hidden; }
+  .suntneew-product-page--experience:not(.suntneew-product-page--unified) .product-gallery:not(.suntneew-rv-gallery--rv-g31):not(:hover):not(:focus-within) .product-gallery__thumbnail { flex-basis: 0; width: 0; height: 0; border: 0; opacity: 0; pointer-events: none; }
+  .suntneew-product-page--experience:not(.suntneew-product-page--unified) .product-gallery:not(.suntneew-rv-gallery--rv-g31):not(:hover):not(:focus-within) .product-gallery__thumbnail[aria-current="true"] { flex-basis: 9px; width: 9px; height: 9px; border: 1px solid #e9653b; border-radius: 999px; background: #e9653b; opacity: 1; }
+  .suntneew-product-page--experience:not(.suntneew-product-page--unified) .product-gallery:not(.suntneew-rv-gallery--rv-g31):not(:hover):not(:focus-within) .product-gallery__thumbnail img,
+  .suntneew-product-page--experience:not(.suntneew-product-page--unified) .product-gallery:not(.suntneew-rv-gallery--rv-g31):not(:hover):not(:focus-within) .product-gallery__media-badge { opacity: 0; }
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1199px) {

@@ -7,6 +7,7 @@ Renders the blocks that make up a product information panel.
 @param {object} recommendations - Shopify complementary-product recommendation results.
 @param {string} product_form_id - ID of the associated product form.
 @param {string} context - Rendering context: main_product, featured_product, or quick_buy.
+@param {boolean} unified_pdp - Use the shared G31-style product panel.
 {% enddoc %}
 
 <safe-sticky class="product-info">
@@ -132,7 +133,10 @@ Renders the blocks that make up a product information panel.
 
               {%- if context == 'main_product' or block.settings.show_taxes_notice -%}
                 <p class="text-sm text-subdued">
-                  {%- if localization.country.iso_code == 'DE' -%}
+                  {%- assign quoted_delivery = section.blocks | where: 'type', 'suntneew_shipping_note' | first -%}
+                  {%- if quoted_delivery != blank -%}
+                    {{ 'product.general.taxes_excluded' | t }} {{ 'suntneew_pdp.quoted_delivery' | t }}
+                  {%- elsif localization.country.iso_code == 'DE' -%}
                     {{ 'product.general.taxes_included' | t }}
 
                     {%- if shop.shipping_policy.body != blank -%}
@@ -155,7 +159,7 @@ Renders the blocks that make up a product information panel.
 
           {%- if previous_block.type != 'price' -%}
             <div class="product-info__rating">
-              {%- if context == 'main_product' and template.suffix == 'rv-g31' and product.handle == 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-31' -%}
+              {%- if unified_pdp or context == 'main_product' and template.suffix == 'rv-g31' and product.handle == 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-31' -%}
                 {%- render 'suntneew-g31-desktop-rating', product: product -%}
               {%- else -%}
                 {%- render 'product-rating', product: product, show_empty: block.settings.show_empty, block: block -%}

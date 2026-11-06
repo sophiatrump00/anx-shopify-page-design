@@ -1,0 +1,40 @@
+{
+  "capturedAt": "2026-11-06T01:37:45.795558+00:00",
+  "shop": "01dng7-ki.myshopify.com",
+  "source": "Shopify discountNodes readback; discounts unchanged",
+  "levels": [
+    {
+      "id": "gid://shopify/DiscountAutomaticNode/1701887148327",
+      "minimumQuantity": 2,
+      "percent": 3,
+      "handles": [
+        "suntneew-a20-jump-starter-8000mah",
+        "suntneew-a3-jump-starter-16000mah",
+        "suntneew-u23-portable-car-jump-starter-8-000mah",
+        "suntneew-u32-portable-car-jump-starter-10-000mah"
+      ]
+    },
+    {
+      "id": "gid://shopify/DiscountAutomaticNode/1701887181095",
+      "minimumQuantity": 3,
+      "percent": 6,
+      "handles": [
+        "suntneew-a20-jump-starter-8000mah",
+        "suntneew-a3-jump-starter-16000mah",
+        "suntneew-u23-portable-car-jump-starter-8-000mah",
+        "suntneew-u32-portable-car-jump-starter-10-000mah"
+      ]
+    },
+    {
+      "id": "gid://shopify/DiscountAutomaticNode/1701887246631",
+      "minimumQuantity": 4,
+      "percent": 9,
+      "handles": [
+        "suntneew-a20-jump-starter-8000mah",
+        "suntneew-a3-jump-starter-16000mah",
+        "suntneew-u23-portable-car-jump-starter-8-000mah",
+        "suntneew-u32-portable-car-jump-starter-10-000mah"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{% doc %}
+  Reviewed theme images with native thumbnail, swipe and PhotoSwipe controls.
+  @param {product} product - Product being shown.
+  @param {string} product_form_id - Native purchase form ID.
+  @param {section} section - Gallery settings and instance ID.
+{% enddoc %}
+{%- liquid
+  assign gallery_assets = section.settings.suntneew_gallery_assets | split: '|'
+  assign gallery_alts = section.settings.suntneew_gallery_alts | split: '|'
+  assign gallery_id = 'reviewed-gallery-' | append: section.id
+-%}
+<product-gallery form="{{ product_form_id }}" filtered-indexes="[]" data-suntneew-media-gallery data-autoplay="false" allow-zoom="{{ section.settings.max_image_zoom_level | default: 3 }}" class="product-gallery product-gallery--desktop-carousel">
+  <div class="product-gallery__ar-wrapper">
+    <div class="product-gallery__media-list-wrapper">
+      <media-carousel desktop-mode="carousel_thumbnails_bottom" initial-index="0" id="{{ gallery_id }}" class="product-gallery__media-list scroll-area snap-x">
+        {%- for asset_name in gallery_assets -%}
+          {%- assign image_alt = gallery_alts[forloop.index0] | default: product.title -%}
+          <div class="product-gallery__media snap-center" data-full-src="{% render 'suntneew-asset-url', asset_name: asset_name %}" data-media-type="image" data-media-id="{{ section.id }}-{{ forloop.index }}">
+            {%- if forloop.first -%}
+              {%- render 'suntneew-asset-image', asset_name: asset_name, alt: image_alt, loading: 'eager', fetchpriority: 'high', sizes: '(max-width: 999px) 100vw, 50vw' -%}
+            {%- else -%}
+              {%- render 'suntneew-asset-image', asset_name: asset_name, alt: image_alt, sizes: '(max-width: 999px) 100vw, 50vw' -%}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </media-carousel>
+      <div class="product-gallery__zoom">
+        <button type="button" is="product-zoom-button" class="circle-button circle-button--fill ring">
+          <span class="sr-only">{{ 'product.gallery.zoom' | t }}</span>
+          {%- render 'icon' with 'image-zoom' -%}
+        </button>
+      </div>
+    </div>
+  </div>
+  <scroll-shadow class="product-gallery__thumbnail-list-wrapper">
+    <page-dots align-selected class="product-gallery__thumbnail-list scroll-area" aria-controls="{{ gallery_id }}">
+      {%- for asset_name in gallery_assets -%}
+        <button type="button" class="product-gallery__thumbnail" aria-current="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="{{ 'general.accessibility.go_to_item' | t: index: forloop.index | escape }}" data-media-type="image" data-media-id="{{ section.id }}-{{ forloop.index }}">
+          {%- render 'suntneew-asset-image', asset_name: asset_name, alt: '', thumbnail: true -%}
+        </button>
+      {%- endfor -%}
+    </page-dots>
+  </scroll-shadow>
+</product-gallery>

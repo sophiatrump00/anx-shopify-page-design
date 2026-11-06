@@ -2896,74 +2896,57 @@ var ProductForm = class extends HTMLFormElement {
     this.addEventListener("submit", this._onSubmit);
   }
   connectedCallback() {
-    this.id.disabled = false;
+    this.elements.namedItem("id").disabled = false;
   }
   async _onSubmit(event) {
     event.preventDefault();
-    if (this.#submitting) {
-      return;
-    }
+    const variantInput = this.elements.namedItem("id");
+    if (this.#submitting || this.dataset.purchaseBusy === "true" || ["loading", "error"].includes(this.dataset.variantState) || !variantInput?.value || variantInput.disabled) return;
     if (!this.checkValidity()) {
       this.reportValidity();
       return;
     }
     const submitButtons = Array.from(this.elements).filter((button) => button.type === "submit");
-    submitButtons.forEach((submitButton) => {
-      submitButton.setAttribute("aria-busy", "true");
-    });
-    let sectionsToBundle = ["variant-added"];
-    document.documentElement.dispatchEvent(new CustomEvent("cart:prepare-bundled-sections", { bubbles: true, detail: { sections: sectionsToBundle } }));
-    const formData = new FormData(this);
-    formData.set("sections", sectionsToBundle.join(","));
-    formData.set("sections_url", `${Shopify.routes.root}variants/${this.id.value}`);
+    submitButtons.forEach((button) => button.setAttribute("aria-busy", "true"));
     this.#submitting = true;
-    const response = await fetch(`${Shopify.routes.root}cart/add.js`, {
-      body: formData,
-      method: "POST",
-      headers: {
-        "X-Requested-With": "XMLHttpRequest"
-        // Needed for Shopify to check inventory
+    this.dataset.purchaseBusy = "true";
+    let itemAdded = false;
+    try {
+      const sectionsToBundle = ["variant-added"];
+      document.documentElement.dispatchEvent(new CustomEvent("cart:prepare-bundled-sections", { bubbles: true, detail: { sections: sectionsToBundle } }));
+      const formData = new FormData(this);
+      formData.set("sections", sectionsToBundle.join(","));
+      formData.set("sections_url", `${Shopify.routes.root}variants/${variantInput.value}`);
+      const response = await fetch(`${Shopify.routes.root}cart/add.js`, {
+        body: formData,
+        method: "POST",
+        headers: { "X-Requested-With": "XMLHttpRequest" }
+      });
+      const responseJson = await response.json();
+      if (!response.ok) {
+        this.dispatchEvent(new CustomEvent("cart:error", { bubbles: true, detail: { error: responseJson.description || responseJson.message || "This item could not be added to the cart." } }));
+        document.dispatchEvent(new CustomEvent("cart:refresh"));
+        return;
       }
-    });
-    submitButtons.forEach((submitButton) => {
-      submitButton.removeAttribute("aria-busy");
-    });
-    this.#submitting = false;
-    const responseJson = await response.json();
-    if (response.ok) {
+      itemAdded = true;
       if (window.themeVariables.settings.cartType === "page" || window.themeVariables.settings.pageType === "cart") {
-        return window.location.href = `${Shopify.routes.root}cart`;
+        window.location.href = `${Shopify.routes.root}cart`;
+        return;
       }
-      const cartContent = await (await fetch(`${Shopify.routes.root}cart.js`)).json();
-      cartContent["sections"] = responseJson["sections"];
-      this.dispatchEvent(
-        new CustomEvent("variant:add", {
-          bubbles: true,
-          detail: {
-            items: responseJson.hasOwnProperty("items") ? responseJson["items"] : [responseJson],
-            cart: cartContent
-          }
-        })
-      );
-      document.documentElement.dispatchEvent(
-        new CustomEvent("cart:change", {
-          bubbles: true,
-          detail: {
-            baseEvent: "variant:add",
-            cart: cartContent
-          }
-        })
-      );
-    } else {
-      this.dispatchEvent(
-        new CustomEvent("cart:error", {
-          bubbles: true,
-          detail: {
-            error: responseJson["description"]
-          }
-        })
-      );
+      const cartResponse = await fetch(`${Shopify.routes.root}cart.js`);
+      if (!cartResponse.ok) throw new Error("Cart refresh failed");
+      const cartContent = await cartResponse.json();
+      cartContent.sections = responseJson.sections;
+      this.dispatchEvent(new CustomEvent("variant:add", { bubbles: true, detail: { items: responseJson.hasOwnProperty("items") ? responseJson.items : [responseJson], cart: cartContent } }));
+      document.documentElement.dispatchEvent(new CustomEvent("cart:change", { bubbles: true, detail: { baseEvent: "variant:add", cart: cartContent } }));
+    } catch (error) {
+      this.dispatchEvent(new CustomEvent("cart:error", { bubbles: true, detail: { error: itemAdded ? "Item added, but the cart could not be refreshed. Open your cart to check it." : "We could not confirm the cart update. Check your cart before trying again." } }));
       document.dispatchEvent(new CustomEvent("cart:refresh"));
+    } finally {
+      submitButtons.forEach((button) => button.removeAttribute("aria-busy"));
+      this.#submitting = false;
+      delete this.dataset.purchaseBusy;
+      this.dispatchEvent(new CustomEvent("purchase:idle"));
     }
   }
 };
@@ -3450,10 +3433,15 @@ var _VariantPicker = class _VariantPicker extends HTMLElement {
     __privateGet(this, _delegate).on("change", `input[data-option-position][form="${this.getAttribute("form-id")}"]`, __privateMethod(this, _VariantPicker_instances, onOptionChanged_fn).bind(this));
     __privateGet(this, _delegate).on("pointerenter", `input[data-option-position][form="${this.getAttribute("form-id")}"]:not(:checked) + label`, __privateMethod(this, _VariantPicker_instances, onOptionPreload_fn).bind(this), true);
     __privateGet(this, _delegate).on("touchstart", `input[data-option-position][form="${this.getAttribute("form-id")}"]:not(:checked) + label`, __privateMethod(this, _VariantPicker_instances, onOptionPreload_fn).bind(this), true);
+    this._suntneewRetry = (event) => {
+      if (event.target.closest("[data-variant-retry]")) this.selectCombination({ optionValues: __privateMethod(this, _VariantPicker_instances, getActiveOptionValues_fn).call(this), productChange: false });
+    };
+    this.addEventListener("click", this._suntneewRetry);
     __privateGet(this, _intersectionObserver).observe(this);
   }
   disconnectedCallback() {
     __privateGet(this, _delegate).off();
+    this.removeEventListener("click", this._suntneewRetry);
     __privateGet(this, _intersectionObserver).unobserve(this);
   }
   get selectedVariant() {
@@ -3470,41 +3458,51 @@ var _VariantPicker = class _VariantPicker extends HTMLElement {
    * in the case of a combination that does not exist
    */
   async selectCombination({ optionValues, productChange }) {
+    const form = __privateGet(this, _form);
+    const requestId = (form.suntneewVariantRequest || 0) + 1;
+    form.suntneewVariantRequest = requestId;
     const previousVariant = this.selectedVariant;
-    const newContent = document.createRange().createContextualFragment(await __privateMethod(this, _VariantPicker_instances, renderForCombination_fn).call(this, optionValues));
-    if (!productChange) {
-      const newVariantPicker = deepQuerySelector(newContent, `${this.tagName}[form-id="${this.getAttribute("form-id")}"]`);
-      const newVariant = JSON.parse(newVariantPicker.querySelector("script[data-variant]")?.textContent || "{}");
-      __privateSet(this, _selectedVariant, newVariant);
-      __privateGet(this, _form).id.value = __privateGet(this, _selectedVariant)?.id;
-      __privateGet(this, _form).id.dispatchEvent(new Event("change", { bubbles: true }));
-      if (this.updateUrl && __privateGet(this, _selectedVariant)?.id) {
-        const newUrl = new URL(window.location.href);
-        newUrl.searchParams.set("variant", __privateGet(this, _selectedVariant).id);
-        window.history.replaceState({ path: newUrl.toString() }, "", newUrl.toString());
-      }
-    }
-    __privateGet(this, _form).dispatchEvent(
-      new CustomEvent("product:rerender", {
-        detail: {
-          htmlFragment: newContent,
-          productChange
+    const feedback = this.querySelector("[data-variant-feedback]");
+    if (feedback) feedback.hidden = true;
+    form.dataset.variantState = "loading";
+    form.elements.namedItem("id").disabled = true;
+    Array.from(form.elements).filter((button) => button.type === "submit" || button.hasAttribute("data-suntneew-buy-now")).forEach((button) => button.disabled = true);
+    form.dispatchEvent(new CustomEvent("variant:loading", { bubbles: true }));
+    try {
+      const html = await __privateMethod(this, _VariantPicker_instances, renderForCombination_fn).call(this, optionValues);
+      if (form.suntneewVariantRequest !== requestId) return;
+      const newContent = document.createRange().createContextualFragment(html);
+      if (!productChange) {
+        const newVariantPicker = deepQuerySelector(newContent, `${this.tagName}[form-id="${this.getAttribute("form-id")}"]`);
+        if (!newVariantPicker) throw new Error("Missing product options");
+        const newVariant = JSON.parse(newVariantPicker.querySelector("script[data-variant]")?.textContent || "{}");
+        __privateSet(this, _selectedVariant, newVariant);
+        const variantInput = form.elements.namedItem("id");
+        variantInput.value = newVariant?.id || "";
+        variantInput.disabled = false;
+        variantInput.dispatchEvent(new Event("change", { bubbles: true }));
+        if (this.updateUrl) {
+          const newUrl = new URL(window.location.href);
+          if (newVariant?.id) newUrl.searchParams.set("variant", newVariant.id);
+          else newUrl.searchParams.delete("variant");
+          window.history.replaceState({ path: newUrl.toString() }, "", newUrl.toString());
         }
-      })
-    );
-    if (!productChange) {
-      __privateGet(this, _form).dispatchEvent(
-        new CustomEvent("variant:change", {
-          bubbles: true,
-          detail: {
-            formId: __privateGet(this, _form).id,
-            variant: __privateGet(this, _selectedVariant),
-            previousVariant
-          }
-        })
-      );
+      }
+      form.dispatchEvent(new CustomEvent("product:rerender", { detail: { htmlFragment: newContent, productChange } }));
+      form.dataset.variantState = "ready";
+      if (!productChange) {
+        form.dispatchEvent(new CustomEvent("variant:change", { bubbles: true, detail: { formId: form.getAttribute("id"), variant: this.selectedVariant, previousVariant } }));
+      }
+      form.dispatchEvent(new CustomEvent("variant:loaded", { bubbles: true }));
+      Shopify?.PaymentButton?.init();
+    } catch (error) {
+      if (form.suntneewVariantRequest !== requestId) return;
+      const hashKey = __privateMethod(this, _VariantPicker_instances, createHashKeyForHtml_fn).call(this, optionValues.join(","));
+      __privateGet(_VariantPicker, _preloadedHtml).delete(hashKey);
+      form.dataset.variantState = "error";
+      if (feedback) feedback.hidden = false;
+      form.dispatchEvent(new CustomEvent("variant:error", { bubbles: true }));
     }
-    Shopify?.PaymentButton?.init();
   }
 };
 _preloadedHtml = new WeakMap();
@@ -3539,7 +3537,7 @@ onOptionChanged_fn = async function(event) {
  * To improve the user experience, we preload a variant whenever the user hovers over a specific option
  */
 onOptionPreload_fn = function(event, target) {
-  __privateMethod(this, _VariantPicker_instances, renderForCombination_fn).call(this, __privateMethod(this, _VariantPicker_instances, getOptionValuesFromOption_fn).call(this, target.control));
+  __privateMethod(this, _VariantPicker_instances, renderForCombination_fn).call(this, __privateMethod(this, _VariantPicker_instances, getOptionValuesFromOption_fn).call(this, target.control)).catch(() => {});
 };
 /**
  * When the variant picker is intersecting the viewport, we preload the options to improve the user experience
@@ -3548,7 +3546,7 @@ onOptionPreload_fn = function(event, target) {
 onIntersection_fn = function(entries) {
   const prerenderOptions = () => {
     Array.from(__privateGet(this, _form).elements).filter((item) => item.matches("input[data-option-position]:not(:checked)")).forEach((input) => {
-      __privateMethod(this, _VariantPicker_instances, renderForCombination_fn).call(this, __privateMethod(this, _VariantPicker_instances, getOptionValuesFromOption_fn).call(this, input));
+      __privateMethod(this, _VariantPicker_instances, renderForCombination_fn).call(this, __privateMethod(this, _VariantPicker_instances, getOptionValuesFromOption_fn).call(this, input)).catch(() => {});
     });
   };
   if (entries[0].isIntersecting) {
@@ -3570,15 +3568,25 @@ renderForCombination_fn = async function(optionValues) {
       break;
     }
   }
-  if (!__privateGet(_VariantPicker, _preloadedHtml).has(hashKey)) {
+  const cache = __privateGet(_VariantPicker, _preloadedHtml);
+  const cached = cache.get(hashKey);
+  if (cached && Date.now() - cached.timestamp > CACHE_EVICTION_TIME) cache.delete(hashKey);
+  if (!cache.has(hashKey)) {
     const sectionQueryParam = this.getAttribute("context") === "quick_buy" ? "" : `&section_id=${this.getAttribute("section-id")}`;
-    const promise = new Promise(async (resolve) => {
-      resolve(await (await fetch(`${productUrl}?option_values=${optionValuesAsString}${sectionQueryParam}`)).text());
-    });
-    __privateGet(_VariantPicker, _preloadedHtml).set(hashKey, { htmlPromise: promise, timestamp: Date.now() });
-    if (__privateGet(_VariantPicker, _preloadedHtml).size > 100) {
-      __privateGet(_VariantPicker, _preloadedHtml).delete(Array.from(__privateGet(_VariantPicker, _preloadedHtml).keys())[0]);
-    }
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    const promise = fetch(`${productUrl}?option_values=${optionValuesAsString}${sectionQueryParam}`, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Product options: ${response.status}`);
+        return response.text();
+      })
+      .catch((error) => {
+        if (cache.get(hashKey)?.htmlPromise === promise) cache.delete(hashKey);
+        throw error;
+      })
+      .finally(() => clearTimeout(timeout));
+    cache.set(hashKey, { htmlPromise: promise, timestamp: Date.now() });
+    if (cache.size > 100) cache.delete(cache.keys().next().value);
   }
   return __privateGet(_VariantPicker, _preloadedHtml).get(hashKey).htmlPromise;
 };

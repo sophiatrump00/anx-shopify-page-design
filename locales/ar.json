@@ -4242,5 +4242,10 @@
     "s2c73c64df749": "مراجعة + مرجع",
     "sdb940472c935": "مراجعة فنية",
     "s13c736cf791b": "يتطلب هذا فحصًا خاصًا بالمشروع."
+  },
+  "suntneew_pdp": {
+    "options_error": "Options could not be updated. Please retry before purchasing.",
+    "retry": "Retry",
+    "quoted_delivery": "Delivery is quoted separately after ordering; it is not charged at checkout."
   }
 }

@@ -10,7 +10,9 @@
 
     const formId = button.getAttribute('form');
     const form = formId ? document.getElementById(formId) : button.closest('form');
-    if (!form || button.disabled || button.getAttribute('aria-busy') === 'true') return;
+    if (!form || button.disabled || button.getAttribute('aria-busy') === 'true' || form.dataset.purchaseBusy === 'true' || ['loading', 'error'].includes(form.dataset.variantState)) return;
+    const variantInput = form.elements.namedItem('id');
+    if (!variantInput?.value || variantInput.disabled) return;
 
     if (!form.checkValidity()) {
       form.reportValidity();
@@ -19,6 +21,7 @@
 
     button.setAttribute('aria-busy', 'true');
     button.disabled = true;
+    form.dataset.purchaseBusy = 'true';
 
     try {
       const formData = new FormData(form);
@@ -44,11 +47,13 @@
     } catch (error) {
       form.dispatchEvent(new CustomEvent('cart:error', {
         bubbles: true,
-        detail: { error: 'The checkout could not be opened. Please try again.' }
+          detail: { error: 'The checkout could not be opened. Check your cart before trying again.' }
       }));
     } finally {
       button.removeAttribute('aria-busy');
-      button.disabled = false;
+      button.disabled = ['loading', 'error'].includes(form.dataset.variantState) || variantInput.disabled;
+      delete form.dataset.purchaseBusy;
+      form.dispatchEvent(new CustomEvent('purchase:idle'));
     }
   });
 })();

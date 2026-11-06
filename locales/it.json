@@ -1126,5 +1126,10 @@
     "legal_suffix": "Consulta le informazioni sull’azienda, il fornitore e il negozio prima di ordinare da SuntNeew.",
     "shipping_suffix": "Trova informazioni su preparazione, consegna e assistenza prima di effettuare un ordine SuntNeew.",
     "returns_suffix": "Consulta requisiti, annullamento, rimborso e assistenza prima di richiedere un reso SuntNeew."
+  },
+  "suntneew_pdp": {
+    "options_error": "Options could not be updated. Please retry before purchasing.",
+    "retry": "Retry",
+    "quoted_delivery": "Delivery is quoted separately after ordering; it is not charged at checkout."
   }
 }
