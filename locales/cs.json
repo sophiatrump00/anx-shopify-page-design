@@ -466,5 +466,10 @@
         "other": "Podívejte se na {{ count }} recenzi tohoto produktu."
       }
     }
+  },
+  "suntneew_pdp": {
+    "options_error": "Options could not be updated. Please retry before purchasing.",
+    "retry": "Retry",
+    "quoted_delivery": "Delivery is quoted separately after ordering; it is not charged at checkout."
   }
 }

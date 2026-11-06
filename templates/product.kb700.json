@@ -1,21 +1,8 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -32,14 +19,10 @@
             "show_taxes_notice": false
           }
         },
-        "separator": {
-          "type": "separator",
-          "settings": {}
-        },
         "intro": {
           "type": "text",
           "settings": {
-            "text": "<p>KP700 combines a compact 12V jump starter, a three-speed air duster, USB device charging and an emergency light in one carry-ready kit.</p>"
+            "text": "<p><strong>12V jump starter · Three-speed air duster</strong></p><p>KP700 combines 7,200mAh / 26.64Wh stored energy, USB device charging and an emergency light in one compact kit.</p>"
           }
         },
         "quantity_selector": {
@@ -51,8 +34,8 @@
           "settings": {
             "enabled": true,
             "show_savings": true,
-            "heading": "Build a KP700 multi-pack",
-            "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.",
+            "heading": "Choose a pack",
+            "body": "",
             "discount_percent": 3
           }
         },
@@ -62,17 +45,22 @@
             "show_payment_button": false,
             "show_gift_card_recipient": false
           }
+        },
+        "reviews": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
         }
       },
       "block_order": [
-        "vendor",
         "title",
+        "reviews",
         "sku",
         "price",
-        "separator",
         "intro",
-        "quantity_selector",
         "bundle",
+        "quantity_selector",
         "buy_buttons"
       ],
       "settings": {
@@ -83,82 +71,11 @@
         "desktop_media_width": 50,
         "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots"
-      }
-    },
-    "gallery_fallback": {
-      "type": "suntneew-pdp-gallery-fallback",
-      "blocks": {
-        "image1": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-kb700-2026-gallery-01-main.jpg",
-            "alt": "SuntNeew KP700 Fan Portable Car Jump Starter with smart clamp, air nozzle and USB cable"
-          }
-        },
-        "image2": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-kb700-2026-gallery-02-starting.png",
-            "alt": "KP700 12V starting performance and engine compatibility"
-          }
-        },
-        "image3": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-kb700-2026-gallery-03-clamps.png",
-            "alt": "KP700 intelligent jumper clamp with reverse-polarity protection"
-          }
-        },
-        "image4": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-kb700-2026-gallery-04-wind.jpg",
-            "alt": "KP700 three-speed 105000 RPM maximum air duster"
-          }
-        },
-        "image5": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-kb700-2026-gallery-05-led.jpg",
-            "alt": "KP700 LED light with steady strobe and SOS modes"
-          }
-        },
-        "image6": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-kb700-2026-gallery-06-charging.png",
-            "alt": "KP700 Type-C input and USB-A device charging"
-          }
-        },
-        "image7": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-kb700-2026-gallery-07-scenarios.jpg",
-            "alt": "KP700 air duster for snow leaves seats and outdoor use"
-          }
-        },
-        "image8": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-kb700-2026-gallery-08-in-the-box.jpg",
-            "alt": "KP700 jump starter kit and included accessories"
-          }
-        }
-      },
-      "block_order": [
-        "image1",
-        "image2",
-        "image3",
-        "image4",
-        "image5",
-        "image6",
-        "image7",
-        "image8"
-      ],
-      "settings": {
-        "eyebrow": "PRODUCT GALLERY",
-        "heading": "A closer look at the kit."
+        "mobile_carousel_control": "thumbnails",
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "suntneew_gallery_assets": "sn-pdp-20261105-kp700-kit-2000.webp|suntneew-kb700-2026-gallery-02-starting.png|suntneew-kb700-2026-gallery-03-clamps.png|suntneew-kb700-2026-gallery-04-wind.jpg|suntneew-kb700-2026-gallery-05-led.jpg|suntneew-kb700-2026-gallery-06-charging.png|suntneew-kb700-2026-gallery-07-scenarios.jpg|suntneew-kb700-2026-gallery-08-in-the-box.jpg",
+        "suntneew_gallery_alts": "SuntNeew KP700 Fan Portable Car Jump Starter with smart clamp, air nozzle and USB cable|KP700 12V starting performance and engine compatibility|KP700 intelligent jumper clamp with reverse-polarity protection|KP700 three-speed 105000 RPM maximum air duster|KP700 LED light with steady strobe and SOS modes|KP700 Type-C input and USB-A device charging|KP700 air duster for snow leaves seats and outdoor use|KP700 jump starter kit and included accessories"
       }
     },
     "proof": {
@@ -842,7 +759,6 @@
   },
   "order": [
     "main",
-    "gallery_fallback",
     "proof",
     "anchor_nav",
     "features",

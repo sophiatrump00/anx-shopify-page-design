@@ -1,21 +1,8 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -32,14 +19,10 @@
             "show_taxes_notice": false
           }
         },
-        "separator": {
-          "type": "separator",
-          "settings": {}
-        },
         "intro": {
           "type": "text",
           "settings": {
-            "text": "<p>Choose the 12.8V 230Ah RV battery when output, weight and value matter more than maximum time between charges: 2,944Wh rated energy, 2,560W / 200A continuous output, 20.6kg weight and Bluetooth 5.0 monitoring.</p>"
+            "text": "<p><strong>12.8V 230Ah · 2,944Wh · Bluetooth 5.0</strong></p><p>2,560W / 200A continuous output in a 20.6kg RV battery. Check the 522 × 268 × 222mm enclosure and your charging setup.</p>"
           }
         },
         "quantity_selector": {
@@ -50,39 +33,48 @@
           "type": "suntneew_bundle_selector",
           "settings": {
             "enabled": true,
-            "heading": "Build a 230Ah multi-pack",
-            "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.",
+            "heading": "Choose a pack",
+            "body": "",
             "discount_percent": 3
           }
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_payment_button": true,
+            "show_payment_button": false,
             "show_gift_card_recipient": false
+          }
+        },
+        "reviews": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
           }
         }
       },
       "block_order": [
-        "vendor",
         "title",
+        "reviews",
         "sku",
         "price",
-        "separator",
         "intro",
-        "quantity_selector",
         "bundle",
+        "quantity_selector",
         "buy_buttons"
       ],
       "settings": {
-        "show_fixed_add_to_cart": true,
+        "show_fixed_add_to_cart": false,
         "enable_suntneew_pdp_experience": true,
         "suntneew_media_autoplay_interval": 6,
         "show_suntneew_pdp_promises": true,
         "desktop_media_width": 50,
         "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots"
+        "mobile_carousel_control": "thumbnails",
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "suntneew_gallery_assets": "sn-pdp-20261105-230ah-product-2000.webp|sn-pdp-20261105-230ah-terminals-2000.webp|sn-pdp-20261105-230ah-rear-2000.webp|suntneew-rv-230ah-final-upgrade-install.jpg|suntneew-rv-230ah-final-long-stay.jpg|suntneew-rv-230ah-gallery-dimensions-facts-v2.png",
+        "suntneew_gallery_alts": "SuntNeew 230ah LiFePO4 battery three-quarter view|SuntNeew 230ah LiFePO4 battery terminal detail|SuntNeew 230ah LiFePO4 battery rear label|SuntNeew 230ah LiFePO4 battery RV installation|SuntNeew 230ah LiFePO4 battery campsite use|SuntNeew 230ah LiFePO4 battery dimensions and terminals"
       }
     },
     "proof": {

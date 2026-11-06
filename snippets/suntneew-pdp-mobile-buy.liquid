@@ -1,0 +1,21 @@
+{% doc %}
+  Mobile actions bound to the same native form as the desktop panel.
+  @param {product} product - Product and current variant.
+  @param {string} product_form_id - Native purchase form ID.
+{% enddoc %}
+<suntneew-mobile-buy class="sn-mobile-buy" form="{{ product_form_id }}" data-currency="{{ localization.country.currency.iso_code }}" data-sold-out="{{ 'product.general.sold_out_button' | t | escape }}" data-unavailable="{{ 'product.general.unavailable_button' | t | escape }}" data-add-label="{{ 'product.general.add_to_cart_button' | t | escape }}" hidden>
+  <div class="sn-mobile-buy__summary" aria-live="polite">
+    <strong data-mobile-total>{{ product.selected_or_first_available_variant.price | money }}</strong>
+    <span data-mobile-quantity></span>
+  </div>
+  <p class="sn-mobile-buy__tax">
+    {%- assign shipping_note = section.blocks | where: 'type', 'suntneew_shipping_note' | first -%}
+    {%- if shipping_note != blank -%}{{ 'suntneew_pdp.quoted_delivery' | t }}{%- else -%}{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}{%- endif -%}
+  </p>
+  <p data-mobile-feedback role="status" aria-live="polite" hidden></p>
+  <div class="sn-mobile-buy__actions">
+    <button type="submit" class="button" form="{{ product_form_id }}" data-mobile-add>{{ 'product.general.add_to_cart_button' | t }}</button>
+    <button type="button" class="button" form="{{ product_form_id }}" data-suntneew-buy-now>Buy Now</button>
+  </div>
+  <script type="application/json" data-mobile-variants>{{ product.variants | json }}</script>
+</suntneew-mobile-buy>

@@ -182,5 +182,9 @@
         {%- endif -%}
       </fieldset>
     {%- endfor -%}
+    <div class="sn-variant-feedback" data-variant-feedback role="status" aria-live="polite" hidden>
+      <span>{{ 'suntneew_pdp.options_error' | t }}</span>
+      <button type="button" data-variant-retry>{{ 'suntneew_pdp.retry' | t }}</button>
+    </div>
   </variant-picker>
 {%- endunless -%}

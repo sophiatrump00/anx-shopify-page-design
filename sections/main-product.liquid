@@ -11,12 +11,17 @@
 
 {%- liquid
   assign g31_desktop = false
+  assign unified_pdp = true
   if product.handle == 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-31' and template.suffix == 'rv-g31'
     assign g31_desktop = true
+    assign unified_pdp = false
   endif
 -%}
 {%- if g31_desktop -%}
   {{ 'suntneew-g31-desktop.css' | asset_url | stylesheet_tag }}
+{%- else -%}
+  {{ 'suntneew-pdp-unified.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'suntneew-pdp-unified.js' | asset_url }}" defer></script>
 {%- endif -%}
 
 <style>
@@ -60,12 +65,14 @@
 
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
-<div class="suntneew-product-page{% if section.settings.enable_suntneew_pdp_experience %} suntneew-product-page--experience suntneew-product-page--media-{{ section.settings.desktop_media_layout | replace: '_', '-' }}{% endif %}{% if g31_desktop %} suntneew-product-page--g31{% endif %}{% if product.handle == 'suntneew-a3-jump-starter-16000mah' %} suntneew-product-page--a3{% endif %}" {% render 'section-properties', tight: true %}>
+<div class="suntneew-product-page{% if section.settings.enable_suntneew_pdp_experience %} suntneew-product-page--experience suntneew-product-page--media-{{ section.settings.desktop_media_layout | replace: '_', '-' }}{% endif %}{% if g31_desktop %} suntneew-product-page--g31{% endif %}{% if unified_pdp %} suntneew-product-page--unified{% endif %}" {% render 'section-properties', tight: true %}>
   <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
     <div class="product">
-      {%- if product.media.size > 0 -%}
+      {%- if product.media.size > 0 or section.settings.suntneew_gallery_assets != blank -%}
         <div class="suntneew-pdp-media-column">
-          {%- if template.suffix contains 'rv-' -%}
+          {%- if unified_pdp and section.settings.suntneew_gallery_assets != blank -%}
+            {%- render 'suntneew-pdp-gallery', product: product, product_form_id: product_form_id, section: section -%}
+          {%- elsif template.suffix contains 'rv-' -%}
             {%- render 'suntneew-rv-gallery',
               product: product,
               product_form_id: product_form_id,
@@ -74,23 +81,28 @@
               max_image_zoom_level: section.settings.max_image_zoom_level,
               mobile_carousel_control: section.settings.mobile_carousel_control,
               mobile_media_size: section.settings.mobile_media_size,
-              media_autoplay_interval: section.settings.suntneew_media_autoplay_interval
+              media_autoplay_interval: section.settings.suntneew_media_autoplay_interval,
+              unified_pdp: unified_pdp
             -%}
           {%- else -%}
-            {%- render 'product-gallery', product: product, product_form_id: product_form_id -%}
+            {%- render 'product-gallery', product: product, product_form_id: product_form_id, unified_pdp: unified_pdp -%}
           {%- endif -%}
         </div>
       {%- endif -%}
 
-      {%- render 'product-info', section: section, recommendations: recommendations, product: product, update_url: true, product_form_id: product_form_id, context: 'main_product' -%}
+      {%- render 'product-info', section: section, recommendations: recommendations, product: product, update_url: true, product_form_id: product_form_id, context: 'main_product', unified_pdp: unified_pdp -%}
     </div>
 
   </product-rerender>
 </div>
 
+{%- if unified_pdp -%}
+  {%- render 'suntneew-pdp-mobile-buy', product: product, product_form_id: product_form_id -%}
+{%- endif -%}
+
 {%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
 
-{%- if section.settings.show_fixed_add_to_cart and product.available and buy_buttons_block != blank -%}
+{%- if section.settings.show_fixed_add_to_cart and product.available and buy_buttons_block != blank and unified_pdp == false -%}
   <product-rerender id="{{ product_form_id }}-sticky-bar" observe-form="{{ product_form_id }}">
     {%- if product.selected_or_first_available_variant.available -%}
       <product-quick-add form="{{ product_form_id }}" class="product-quick-add">
@@ -2068,6 +2080,8 @@
     }
   ],
   "settings": [
+    {"type":"textarea","id":"suntneew_gallery_assets","label":"Reviewed gallery assets","info":"Pipe-separated theme asset filenames. Leave empty to use variant-aware product media."},
+    {"type":"textarea","id":"suntneew_gallery_alts","label":"Reviewed gallery alt text","info":"Pipe-separated descriptions in the same order as the gallery assets."},
     {
       "type": "checkbox",
       "id": "full_width",

@@ -1,21 +1,8 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {}
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -32,14 +19,10 @@
             "show_taxes_notice": false
           }
         },
-        "separator": {
-          "type": "separator",
-          "settings": {}
-        },
         "intro": {
           "type": "text",
           "settings": {
-            "text": "<p>OBD2 diagnostics and emergency starting for compatible 12V vehicles, in one compact carry-ready unit.</p>"
+            "text": "<p><strong>12V jump starting · OBD2 diagnostics</strong></p><p>A compact 8,000mAh / 29.6Wh unit with smart clamps and vehicle diagnostics. Confirm compatibility before connecting to your vehicle.</p>"
           }
         },
         "quantity_selector": {
@@ -51,7 +34,7 @@
           "settings": {
             "enabled": false,
             "show_savings": false,
-            "heading": "",
+            "heading": "Choose a pack",
             "body": "",
             "discount_percent": 1
           }
@@ -62,17 +45,22 @@
             "show_payment_button": false,
             "show_gift_card_recipient": false
           }
+        },
+        "reviews": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
         }
       },
       "block_order": [
-        "vendor",
         "title",
+        "reviews",
         "sku",
         "price",
-        "separator",
         "intro",
-        "quantity_selector",
         "bundle",
+        "quantity_selector",
         "buy_buttons"
       ],
       "settings": {
@@ -83,50 +71,11 @@
         "desktop_media_width": 50,
         "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots"
-      }
-    },
-    "gallery_fallback": {
-      "type": "suntneew-pdp-gallery-fallback",
-      "blocks": {
-        "image1": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-oj02-gallery-01-main.jpg",
-            "alt": "SuntNeew OJ02 OBD2 Portable Car Jump Starter with smart clamps and accessories"
-          }
-        },
-        "image2": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-oj02-gallery-02-obd.jpg",
-            "alt": "SuntNeew OJ02 connected for OBD2 vehicle diagnostics"
-          }
-        },
-        "image3": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-oj02-feature-clamp.jpg",
-            "alt": "SuntNeew OJ02 connected to a compatible 12V vehicle battery with the smart clamp"
-          }
-        },
-        "image4": {
-          "type": "image",
-          "settings": {
-            "asset_name": "suntneew-oj02-feature-obd-mobile.jpg",
-            "alt": "SuntNeew OJ02 OBD2 diagnostic interface in a vehicle"
-          }
-        }
-      },
-      "block_order": [
-        "image1",
-        "image2",
-        "image3",
-        "image4"
-      ],
-      "settings": {
-        "eyebrow": "PRODUCT GALLERY",
-        "heading": "OJ02 from every working angle."
+        "mobile_carousel_control": "thumbnails",
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "suntneew_gallery_assets": "sn-pdp-20261105-oj02-kit-2000.webp|suntneew-oj02-gallery-02-obd.jpg|suntneew-oj02-feature-clamp.jpg|suntneew-oj02-feature-obd-mobile.jpg",
+        "suntneew_gallery_alts": "SuntNeew OJ02 OBD2 Portable Car Jump Starter with smart clamps and accessories|SuntNeew OJ02 connected for OBD2 vehicle diagnostics|SuntNeew OJ02 connected to a compatible 12V vehicle battery with the smart clamp|SuntNeew OJ02 OBD2 diagnostic interface in a vehicle"
       }
     },
     "proof": {
@@ -668,7 +617,6 @@
   },
   "order": [
     "main",
-    "gallery_fallback",
     "proof",
     "anchor_nav",
     "features",

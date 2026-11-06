@@ -30,6 +30,7 @@ Renders preset multi-pack quantities that update the product form quantity.
     data-suntneew-bundle-selector
     data-form-id="{{ product_form_id }}"
     data-currency="{{ localization.country.currency.iso_code | escape }}"
+    data-discount-step="{% if savings_enabled %}{{ discount_step }}{% else %}0{% endif %}"
     data-unavailable-label="{{ 'product.general.unavailable_button' | t | escape }}"
     data-sold-out-label="{{ 'product.general.sold_out_button' | t | escape }}"
     data-selection-state="{% if selected_variant.available %}available{% elsif selected_variant %}sold-out{% else %}unavailable{% endif %}"

@@ -1126,5 +1126,10 @@
     "legal_suffix": "SuntNeewの会社情報、事業者情報、ショップに関する案内をご注文前にご確認いただけます。",
     "shipping_suffix": "ご注文前に、注文処理、配送、お問い合わせ先など、SuntNeewの配送情報をご確認いただけます。",
     "returns_suffix": "返品条件、キャンセル、返金、サポートの手順を確認してからSuntNeewへ返品を申請できます。"
+  },
+  "suntneew_pdp": {
+    "options_error": "Options could not be updated. Please retry before purchasing.",
+    "retry": "Retry",
+    "quoted_delivery": "Delivery is quoted separately after ordering; it is not charged at checkout."
   }
 }
