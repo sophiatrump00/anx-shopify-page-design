@@ -1,0 +1,199 @@
+[
+  {
+    "asset": "assets/logo.webp",
+    "source": "assets/suntneew-logo-ai-dark.png",
+    "sourceSha256": "ba870b7611fbb7b48111bdad36b1c2137032f84d409ba79444d984b4198792fd",
+    "width": 600,
+    "height": 101,
+    "bytes": 14022
+  },
+  {
+    "asset": "assets/logo-light.webp",
+    "source": "assets/suntneew-logo-orange-white-clean.png",
+    "sourceSha256": "adca853f3df1a4ebeadc0fd573464f1eb0a4e2483df949f42e03557dcb488f51",
+    "width": 600,
+    "height": 97,
+    "bytes": 7248
+  },
+  {
+    "asset": "assets/a20-main.webp",
+    "source": "assets/suntneew-a20-2026-gallery-01-main.jpg",
+    "sourceSha256": "e1d1089f9417a3af15602f269d9c3ea642d6fb79290cafeddc0a1343876014c0",
+    "width": 1200,
+    "height": 1200,
+    "bytes": 73150
+  },
+  {
+    "asset": "assets/a20-product.webp",
+    "source": "assets/suntneew-shop-white-a20.jpg",
+    "sourceSha256": "dfc9ac6297ae897bed70cedbb04bdd9252e68d953f9da98e8358a186b2138816",
+    "width": 900,
+    "height": 900,
+    "bytes": 32764
+  },
+  {
+    "asset": "assets/a20-hero.webp",
+    "source": "assets/suntneew-hero-a20-desktop.jpg",
+    "sourceSha256": "044a241efab4baed7029a5d17300e6b62ff6697430bb354bc0d574d371fa1c67",
+    "width": 2200,
+    "height": 786,
+    "bytes": 155608
+  },
+  {
+    "asset": "assets/a20-hero-mobile.webp",
+    "source": "assets/suntneew-hero-a20-mobile.jpg",
+    "sourceSha256": "64a56dc706956f11bdb1d50cbc72a76d87d15a60c0655d0ba58120dab9908a32",
+    "width": 900,
+    "height": 1200,
+    "bytes": 94152
+  },
+  {
+    "asset": "assets/a20-clamp.webp",
+    "source": "assets/suntneew-a20-a-plus-safety.jpg",
+    "sourceSha256": "44b3e813dbbecc4ef470542c3805b6ee33e1e96277b3e3d8d0e69812efce0b1c",
+    "width": 1400,
+    "height": 1050,
+    "bytes": 87270
+  },
+  {
+    "asset": "assets/a20-device-power.webp",
+    "source": "assets/suntneew-a20-2026-pdp-04-pd18w.jpg",
+    "sourceSha256": "af63a9e1324e7d854e9d1a1098041e8a09439a487f7e3535e34de8631c83284c",
+    "width": 760,
+    "height": 377,
+    "bytes": 35078,
+    "crop": [
+      385,
+      20,
+      1145,
+      397
+    ],
+    "transformNote": "Crop excludes the embedded PD18W text; USB-C input and USB-A output roles are stated separately in live page copy."
+  },
+  {
+    "asset": "assets/a20-light.webp",
+    "source": "assets/suntneew-a20-2026-pdp-05-led.jpg",
+    "sourceSha256": "14167140f0b9116c78f86d608146c58873d0e08eae11b9eec7d1b8e16e951185",
+    "width": 1464,
+    "height": 600,
+    "bytes": 58586
+  },
+  {
+    "asset": "assets/a20-compact.webp",
+    "source": "assets/suntneew-a20-2026-gallery-06-compact.jpg",
+    "sourceSha256": "924f5d1c513765fbd2a7ca84ab7eef3592ab16e42ccdc7fdeb1d61dc189cb32f",
+    "width": 1000,
+    "height": 1000,
+    "bytes": 84774
+  },
+  {
+    "asset": "assets/a20-display.webp",
+    "source": "assets/suntneew-a20-2026-gallery-08-display.jpg",
+    "sourceSha256": "577cd5e1347a2c8aa1ed7d31d69e017a63df37c473b587f28bec55947976969e",
+    "width": 1000,
+    "height": 1000,
+    "bytes": 52690
+  },
+  {
+    "asset": "assets/a20-kit.webp",
+    "source": "assets/suntneew-a20-2026-gallery-07-in-box.jpg",
+    "sourceSha256": "7359d05a9d87bb3d357320730174c9ea6c6e448b51e7c9dc75772a59c241940f",
+    "width": 1100,
+    "height": 1100,
+    "bytes": 84874
+  },
+  {
+    "asset": "assets/a20-video.webp",
+    "source": "assets/suntneew-a20-2026-pdp-demo-poster.webp",
+    "sourceSha256": "09b04850871903b71cd51fb0cfa6adcdbedc9c076b1138d1727844d666dbeb6a",
+    "width": 1280,
+    "height": 720,
+    "bytes": 91552
+  },
+  {
+    "asset": "assets/a20-steps.webp",
+    "source": "assets/suntneew-a20-2026-pdp-09-steps.jpg",
+    "sourceSha256": "b20a427eec9ed85b5e2d57342d1d5d48481d01246d67ec290278ba68bad2a9b1",
+    "width": 1464,
+    "height": 600,
+    "bytes": 151478
+  },
+  {
+    "asset": "assets/g31-main.webp",
+    "source": "assets/suntneew-rv-g31-cutout.png",
+    "sourceSha256": "9bf237abeb6129581b90a34ffd9f789e0ce97e281a3ea1e15d54eb842a63a41e",
+    "width": 1200,
+    "height": 981,
+    "bytes": 85668
+  },
+  {
+    "asset": "assets/g31-hero.webp",
+    "source": "assets/suntneew-rv-g31-final-feature-lifestyle-v2.jpg",
+    "sourceSha256": "9c2bd487149d106196ea152c292bee0434a5f8365ce766b602a81befbc013323",
+    "width": 2200,
+    "height": 1467,
+    "bytes": 177404
+  },
+  {
+    "asset": "assets/g31-hero-mobile.webp",
+    "source": "assets/suntneew-rv-g31-final-gallery-lifestyle-v2.jpg",
+    "sourceSha256": "5a350502958d13d3383d222f5ff45ab84f134bb34e429e749804d669904601b0",
+    "width": 1000,
+    "height": 1000,
+    "bytes": 81728
+  },
+  {
+    "asset": "assets/g31-install.webp",
+    "source": "assets/suntneew-rv-g31-final-feature-install-v2.jpg",
+    "sourceSha256": "b14c53e7f5259d566c90908574bb3ddd771892eb521e08c9f900db9ac54ee3cd",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 95968
+  },
+  {
+    "asset": "assets/g31-bluetooth.webp",
+    "source": "assets/suntneew-rv-g31-final-feature-bluetooth-v2.jpg",
+    "sourceSha256": "2ffba53469ba6dcca8c34b760e601f88ae23daf129d1efeb73b372ba3f71ef45",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 246716
+  },
+  {
+    "asset": "assets/g31-lightweight.webp",
+    "source": "assets/suntneew-rv-g31-final-feature-lightweight-v2.jpg",
+    "sourceSha256": "214198e90f665f58c0faa2980a91dac60319fbd33db707700613ba1349686ba4",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 117352
+  },
+  {
+    "asset": "assets/g31-protection.webp",
+    "source": "assets/suntneew-rv-g31-pdp-protection-desktop.jpg",
+    "sourceSha256": "43bf2b872f0ddaaa028182f9f7170a46959c5d7a35f19feae400336c99b3ed5b",
+    "width": 1464,
+    "height": 976,
+    "bytes": 164330
+  },
+  {
+    "asset": "assets/g31-kit.webp",
+    "source": "assets/suntneew-rv-g31-final-gallery-in-box-v2.jpg",
+    "sourceSha256": "d134442a9a35d36b6471157da95bab76f55c46788b27a7c201ec89a5d027ba39",
+    "width": 1200,
+    "height": 1200,
+    "bytes": 74740
+  },
+  {
+    "asset": "assets/a20-manual.pdf",
+    "source": "assets/suntneew-a20-user-manual-en-fr-de.pdf",
+    "sourceSha256": "f9a43211ccd5069fccc2da1abba4fbac05e30343e02b96e0bf0029205052ce8a",
+    "bytes": 1414667,
+    "kind": "product-manual"
+  },
+  {
+    "asset": "assets/g31-manual.pdf",
+    "source": "assets/suntneew-rv-g31-manual-en-fr-de.pdf",
+    "sourceSha256": "b49db08bfc9249cc9be28e99a06793274faafcc1d2001c571797264ebff7191e",
+    "bytes": 2167211,
+    "kind": "product-manual"
+  }
+]
