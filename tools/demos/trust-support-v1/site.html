@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'self'">
+  <title>SuntNeew — Product care preview</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="i-return" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 9M4 4v6h6"/><path d="M12 8v5l3 2"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 16V5h12v11M15 9h4l3 4v4h-3M15 17H8"/><circle cx="5.5" cy="17" r="2.5"/><circle cx="17" cy="17" r="2.5"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><path d="M4 17V9a8 8 0 0 1 16 0v8M4 11H2v7h4v-7H4Zm16 0h2v7h-4v-7h2Zm0 7v1c0 2-3 2-6 2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5c-3-2-7-2-10 0v15c3-2 7-2 10 0 3-2 7-2 10 0V5c-3-2-7-2-10 0Zm0 0v15"/></symbol>
+    <symbol id="i-tools" viewBox="0 0 24 24"><path d="M14 4a6 6 0 0 0-7 7L2 16a3 3 0 0 0 4 4l5-5a6 6 0 0 0 7-7l-4 4-3-3 3-5Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 6 9 7 9-7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M4 7h16l1 14H3L4 7Zm4 0V6a4 4 0 0 1 8 0v1"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V6a4 4 0 0 1 8 0v4"/></symbol>
+  </defs></svg>
+  <div class="announcement">Free standard shipping · 48 U.S. states + DC</div>
+  <header class="store-header"><a href="#product" class="brand" aria-label="SuntNeew product page"><img src="assets/logo.png" alt="SuntNeew" width="1667" height="269"></a><nav aria-label="Store navigation"><a href="#product">Shop A3</a><a href="#resources">Product support</a><a href="#support">Contact us</a></nav><button class="icon-button" id="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><svg><use href="#i-menu"/></svg></button></header>
+  <div class="mobile-menu" id="mobile-menu" hidden><a href="#product">Shop A3</a><a href="#resources">Product support</a><a href="#support">Contact us</a></div>
+  <main id="app"></main>
+  <footer class="store-footer"><img src="assets/logo.png" alt="SuntNeew" width="1667" height="269"><p>Power for life, on the road &amp; beyond.</p><a href="#support">Contact product support <svg class="icon"><use href="#i-arrow"/></svg></a><div><button data-policy="warranty" type="button">Warranty</button><button data-policy="returns" type="button">Returns</button><button data-policy="shipping" type="button">Shipping</button></div><small>© 2026 SuntNeew</small></footer>
+  <div class="demo-stamp">INTERACTIVE PREVIEW · No orders or requests are sent</div>
+  <dialog id="policy-dialog" class="policy-dialog" aria-labelledby="dialog-title"><div class="sheet-handle"></div><div class="dialog-heading"><span class="eyebrow">SUNTNEEW CARE</span><button type="button" class="icon-button" id="close-dialog" aria-label="Close details"><svg><use href="#i-close"/></svg></button></div><div id="dialog-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="site.js"></script>
+</body>
+</html>
