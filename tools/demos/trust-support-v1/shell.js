@@ -9,6 +9,7 @@ function selectRoute(route, notifyFrame = true) {
   document.getElementById('screen-label').textContent = labels[route];
   document.getElementById('caption').textContent = captions[route];
   document.querySelector('.standalone').href = `site.html#${route}`;
+  window.scrollTo({top: 0, behavior: 'instant'});
   if (notifyFrame) frame.contentWindow.postMessage({type: 'suntneew-route', route}, location.origin);
 }
 document.querySelectorAll('[data-route]').forEach(button => button.addEventListener('click', () => selectRoute(button.dataset.route)));
@@ -18,6 +19,9 @@ document.querySelectorAll('[data-device]').forEach(button => button.addEventList
   toolbar.classList.toggle('wide', desktop);
   document.querySelectorAll('[data-device]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
   document.getElementById('size-label').textContent = desktop ? 'RESPONSIVE · DESKTOP' : '416 PX · MOBILE';
+  window.scrollTo({top: 0, behavior: 'instant'});
+  const route = document.querySelector('.routes [aria-pressed="true"]').dataset.route;
+  requestAnimationFrame(() => frame.contentWindow.postMessage({type: 'suntneew-route', route}, location.origin));
 }));
 window.addEventListener('message', event => {
   if (event.origin !== location.origin || event.data?.type !== 'suntneew-route-changed') return;
