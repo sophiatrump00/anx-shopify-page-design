@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#ffffff">
+    <title>G31 mobile preview | {{ shop.name | escape }}</title>
+    <link rel="canonical" href="{{ canonical_url }}">
+    {{ content_for_header }}
+    {{ 'suntneew-g31-mobile-preview.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'suntneew-g31-mobile-preview.js' | asset_url }}" defer></script>
+  </head>
+  {%- assign g31_variant = product.selected_or_first_available_variant -%}
+  <body data-unit-price="{{ g31_variant.price }}" data-compare-price="{{ g31_variant.compare_at_price | default: 0 }}" data-currency="{{ cart.currency.iso_code | default: shop.currency }}" data-available="{{ g31_variant.available }}">
+    {{ content_for_layout }}
+  </body>
+</html>
