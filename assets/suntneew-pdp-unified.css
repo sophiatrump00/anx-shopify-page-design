@@ -175,3 +175,6 @@ body:has(.suntneew-product-page--unified) .sn-pdp-resource-card--primary p { col
   body:has(.suntneew-product-page--unified) .sn-pdp-story__copy p { font-size: 14px; }
   body:has(.suntneew-product-page--unified) .sn-pdp-specs__row { grid-template-columns: 43% minmax(0, 1fr); font-size: 12px; }
 }
+
+.suntneew-product-page--unified .suntneew-bundle-selector:not([data-discount-step="0"]) [data-bundle-savings]:not([hidden]) { display: inline; font-size: 10px; }
+.suntneew-product-page--unified product-rerender:has(form[data-variant-state="loading"]) .product-info__price { opacity: .45; }

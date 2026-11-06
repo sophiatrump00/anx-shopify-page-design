@@ -544,7 +544,7 @@
           "type": "question",
           "settings": {
             "question": "Will A3 work with my vehicle?",
-            "answer": "<p>A3 is for compatible 12V vehicle systems, with an engine reference of up to 8.0L Gas / 5.5L Diesel. Battery condition, temperature and engine condition affect starting. Use the <a class=\"text-link\" href=\"/pages/power-calculator?scenario=jump&amp;product=a3-16000\" target=\"_blank\" rel=\"noopener\">Vehicle Fit Check</a> and follow the product and vehicle instructions.</p>"
+            "answer": "<p>A3 is for compatible 12V vehicle systems, with an engine reference of up to 8.0L Gas / 5.5L Diesel. Battery condition, temperature and engine condition affect starting. Use the <a href=\"/pages/power-calculator?scenario=jump&amp;product=a3-16000\">Vehicle Fit Check</a> and follow the product and vehicle instructions.</p>"
           }
         },
         "q1": {
@@ -565,7 +565,7 @@
           "type": "question",
           "settings": {
             "question": "What if the vehicle still won’t start?",
-            "answer": "<p>Wait at least one minute between attempts and stop after three unsuccessful attempts. Follow the manual for disconnection and check the vehicle battery. See <a class=\"text-link\" href=\"/pages/support-a3\">starting help</a> or contact us with your vehicle details and clamp status.</p>"
+            "answer": "<p>Wait at least one minute between attempts and stop after three unsuccessful attempts. Follow the manual for disconnection and check the vehicle battery. See <a href=\"/pages/support-a3\">starting help</a> or contact us with your vehicle details and clamp status.</p>"
           }
         },
         "q4": {
@@ -579,14 +579,14 @@
           "type": "question",
           "settings": {
             "question": "What happens if my order arrives damaged or incorrect?",
-            "answer": "<p>Email info@suntneew.com with your order number and clear photos so we can review the issue and provide instructions. Under our return policy, we cover return shipping for items that arrive damaged, defective or incorrect. <a class=\"text-link\" href=\"/pages/return-policy\" target=\"_blank\" rel=\"noopener\">Read the return policy</a>.</p>"
+            "answer": "<p>Email info@suntneew.com with your order number and clear photos so we can review the issue and provide instructions. Under our return policy, we cover return shipping for items that arrive damaged, defective or incorrect. <a href=\"/pages/return-policy\">Read the return policy</a>.</p>"
           }
         },
         "q6": {
           "type": "question",
           "settings": {
             "question": "What comes in the case?",
-            "answer": "<p>The kit includes the A3 unit, intelligent jumper clamps, a PD60W USB-C cable, an EVA carry case and a user manual. See <a class=\"text-link\" href=\"#in-the-box\">In the box</a> for the full list.</p>"
+            "answer": "<p>The kit includes the A3 unit, intelligent jumper clamps, a PD60W USB-C cable, an EVA carry case and a user manual. See <a href=\"#in-the-box\">In the box</a> for the full list.</p>"
           }
         },
         "q7": {
