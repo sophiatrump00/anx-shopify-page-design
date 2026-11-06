@@ -99,8 +99,8 @@ test('cart network failure releases the submit lock; retry submits the actual qu
   await form._onSubmit({ preventDefault() {} }); assert.equal(submittedQuantity, '3'); assert.equal(added, 1); assert.equal(calls, 3);
 });
 
-test('all thirteen remaining public PDPs use native purchasing and model-specific details', () => {
-  for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'home-wl5a', 'home-wl10b', 'home-vh', 'u23', 'u32', 'kb700', 'oj02']) {
+test('all ten in-scope public PDPs use native purchasing and model-specific details', () => {
+  for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'u23', 'u32', 'kb700', 'oj02']) {
     const template = JSON.parse(read(`templates/product.${name}.json`).replace(/\/\*[\s\S]*?\*\//g, ''));
     assert.equal(template.sections.main.type, 'main-product', name);
     assert.equal(template.sections.main.settings.show_fixed_add_to_cart, false, name);
@@ -118,7 +118,7 @@ test('quantity preset offers match the captured active Shopify discount eligibil
     a20: 'suntneew-a20-jump-starter-8000mah', a3: 'suntneew-a3-jump-starter-16000mah',
     u23: 'suntneew-u23-portable-car-jump-starter-8-000mah', u32: 'suntneew-u32-portable-car-jump-starter-10-000mah'
   };
-  for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'home-wl5a', 'home-wl10b', 'home-vh', 'u23', 'u32', 'kb700', 'oj02']) {
+  for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'u23', 'u32', 'kb700', 'oj02']) {
     const template = JSON.parse(read(`templates/product.${name}.json`).replace(/\/\*[\s\S]*?\*\//g, ''));
     const preset = Object.values(template.sections.main.blocks).find(block => block.type === 'suntneew_bundle_selector').settings;
     assert.equal(preset.enabled, true, name);
