@@ -1,8 +1,21 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-product",
       "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "settings": {}
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -18,6 +31,10 @@
           "settings": {
             "show_taxes_notice": false
           }
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
         },
         "intro": {
           "type": "text",
@@ -43,16 +60,15 @@
           "type": "suntneew_bundle_selector",
           "settings": {
             "enabled": true,
-            "heading": "Choose a pack",
-            "body": "",
-            "discount_percent": 3,
-            "show_savings": false
+            "heading": "Build a VH multi-pack",
+            "body": "Choose 1, 2, 5 or 10 units, or use a custom quantity.",
+            "discount_percent": 3
           }
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_payment_button": false,
+            "show_payment_button": true,
             "show_gift_card_recipient": false
           }
         },
@@ -62,37 +78,30 @@
             "heading": "Shipping note",
             "text": "this is a bulky item (over 31.5 kg). Delivery is quoted separately after your order — our team will contact you with the shipping cost before dispatch, and checkout does not charge delivery for it."
           }
-        },
-        "reviews": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
         }
       },
       "block_order": [
+        "vendor",
         "title",
-        "reviews",
         "sku",
         "price",
+        "separator",
         "intro",
         "variant_picker",
-        "bundle",
         "quantity_selector",
-        "shipping_note",
-        "buy_buttons"
+        "bundle",
+        "buy_buttons",
+        "shipping_note"
       ],
       "settings": {
-        "show_fixed_add_to_cart": false,
+        "show_fixed_add_to_cart": true,
         "enable_suntneew_pdp_experience": true,
         "suntneew_media_autoplay_interval": 6,
         "show_suntneew_pdp_promises": true,
         "desktop_media_width": 50,
         "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "contained",
-        "mobile_carousel_control": "thumbnails",
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3
+        "mobile_carousel_control": "dots"
       }
     },
     "proof": {
@@ -550,7 +559,7 @@
         "anchor_id": "specifications",
         "eyebrow": "Configuration data",
         "heading": "VH10A and VH15A specifications",
-        "lede": "<p>Review the electrical limits, inverter compatibility and installation requirements for the selected configuration.</p>",
+        "lede": "<p>The four decision-making numbers stay visible above. Open a category only when you need deeper electrical or installation detail.</p>",
         "primary_group_heading": "Capacity & output",
         "system_group_heading": "System architecture",
         "installation_group_heading": "Installation & environment",

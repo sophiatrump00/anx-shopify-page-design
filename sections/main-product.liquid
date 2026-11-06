@@ -11,7 +11,11 @@
 
 {%- liquid
   assign g31_desktop = false
-  assign unified_pdp = true
+  assign unified_pdp = false
+  assign unified_templates = 'ad19,a3,a20,rv-g24,rv-230ah,rv-314ah,u23,u32,kb700,oj02' | split: ','
+  if unified_templates contains template.suffix
+    assign unified_pdp = true
+  endif
   if product.handle == 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-31' and template.suffix == 'rv-g31'
     assign g31_desktop = true
     assign unified_pdp = false
@@ -19,7 +23,7 @@
 -%}
 {%- if g31_desktop -%}
   {{ 'suntneew-g31-desktop.css' | asset_url | stylesheet_tag }}
-{%- else -%}
+{%- elsif unified_pdp -%}
   {{ 'suntneew-pdp-unified.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'suntneew-pdp-unified.js' | asset_url }}" defer></script>
 {%- endif -%}
