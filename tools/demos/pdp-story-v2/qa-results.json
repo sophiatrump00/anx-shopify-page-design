@@ -1,0 +1,81 @@
+{
+  "version": "pdp-story-v2",
+  "checkedOn": "2026-11-06",
+  "formalRelease": false,
+  "scope": [
+    "A20 8000mAh orange",
+    "G31 12.8V 100Ah"
+  ],
+  "browser": "Codex in-app browser",
+  "viewports": [
+    "1280x720 desktop",
+    "390x844 mobile emulation",
+    "320x760 narrow mobile emulation"
+  ],
+  "checks": {
+    "a20AndG31NarrowViewportHorizontalOverflow": "0px observed",
+    "mobilePreviewIframeWidth": "390px content viewport; browser scrollbar consumes 15px in this environment",
+    "previewProductAndUrlSync": "passed in both directions, including navigation inside iframe",
+    "deviceSwitchResetsProductScroll": "passed",
+    "galleryAndImageDialog": "passed on A20",
+    "featureTabs": "passed on A20 and G31",
+    "featureKeyboardNavigation": "passed on A20",
+    "narrowFeatureTabHeight": "48px observed on G31 at 320px",
+    "quantityAndCartSubtotal": "A20 quantity 2 produced $99.98; local demo notice visible",
+    "stickyAddToCart": "A20 quantity 1 produced $49.99 in local preview cart",
+    "singleVisibleSalePrice": "main price in viewport: sticky hidden; main price fully above viewport: sticky visible",
+    "policyDialogs": "A20 warranty/shipping and G31 model-specific warranty opened; close button and Escape checked",
+    "moreSpecifications": "A20 expanded",
+    "faq": "A20 USB-C question expanded with correct input/output explanation",
+    "video": "A20 dialog and YouTube player loaded; full playback not tested",
+    "g31SupportDestination": "https://www.suntneew.com/pages/support-rv-g31 returned HTTP 200"
+  },
+  "mechanical": {
+    "nodeSyntaxChecks": [
+      "content.js",
+      "site.js",
+      "preview.js"
+    ],
+    "sourceAssetHashesMatched": 24,
+    "webpDecodePassed": 22,
+    "manualCopiesMatched": 2,
+    "localHttpResourcesPassed": 31,
+    "webpBytes": 2067152,
+    "ownPageConsoleWarningsOrErrorsObservedBeforeVideo": 0
+  },
+  "screenshotsWorkspaceRelative": "06_归档/2026-09_工具输出与临时文件/PDP故事Demo_v2_20261105/",
+  "notExecuted": [
+    "Real-device QA",
+    "Safari and cross-browser QA",
+    "Full video playback",
+    "Real Shopify cart/checkout/payment",
+    "Shopify production theme deployment"
+  ],
+  "productionFollowUp": [
+    "Approve the layout and copy direction",
+    "Connect real product variants/prices/stock/review components",
+    "Complete and approve G31 warranty coverage text and destination links",
+    "Review final production assets and accessibility",
+    "Validate the Shopify implementation separately"
+  ],
+  "repositoryRegression": {
+    "npmTest": {
+      "passed": 26,
+      "failed": 0
+    },
+    "structureCheck": {
+      "templates": 56,
+      "customSections": 44,
+      "referencedAssets": 164,
+      "warnings": 0,
+      "errors": 0
+    },
+    "themeCheck": {
+      "files": 331,
+      "errors": 0,
+      "warnings": 8,
+      "exitCode": 0,
+      "note": "Existing theme warnings; no Liquid or theme JSON modified by this demo."
+    }
+  }
+}
