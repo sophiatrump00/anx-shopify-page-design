@@ -9,7 +9,7 @@ Renders a small muted shipping or delivery note below the buy buttons.
 {%- if block.settings.text != blank -%}
   <div class="sn-shipping-note">
     {%- if block.settings.heading != blank -%}
-      <span class="sn-shipping-note__label">{{ block.settings.heading }}:</span>
+      <span class="sn-shipping-note__label">{{ block.settings.heading }}:&nbsp;</span>
     {%- endif -%}
     <span class="sn-shipping-note__text">{{ block.settings.text }}</span>
   </div>

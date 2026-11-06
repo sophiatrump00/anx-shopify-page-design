@@ -1,3 +1,4 @@
+{%- assign quoted_delivery = section.blocks | where: 'type', 'suntneew_shipping_note' | first -%}
 <div class="suntneew-purchase-panel" aria-label="Payment and purchase support">
   {%- if shop.enabled_payment_types.size > 0 -%}
     <div class="suntneew-purchase-panel__payments">
@@ -42,6 +43,7 @@
       <p>{{ 'suntneew_auto.see8fd77a1038' | t }} <a href="{{ pages['return-policy'].url }}">{{ 'suntneew_auto.se2efa887c446' | t }}</a>.</p>
     </details>
 
+    {%- unless quoted_delivery != blank -%}
     <details>
       <summary>
         <span class="suntneew-purchase-panel__icon" aria-hidden="true">
@@ -55,6 +57,7 @@
       </summary>
       <p>{{ 'suntneew_auto.s1f526316f256' | t }} <a href="{{ pages['shipping-policy'].url }}">{{ 'suntneew_auto.s19395f8897f6' | t }}</a>.</p>
     </details>
+    {%- endunless -%}
 
     <details>
       <summary>
@@ -62,12 +65,17 @@
           <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h18M12 3v18"/><path d="m6 6 12 12M18 6 6 18"/></svg>
         </span>
         <span>
-          <strong>{{ 'suntneew_auto.sdded2d61be13' | t }}</strong>
-          <small>{{ 'suntneew_auto.s3c2377995930' | t }}</small>
+          {%- if quoted_delivery != blank -%}
+            <strong>{{ 'suntneew_auto.s19395f8897f6' | t }}</strong>
+            <small>{{ 'suntneew_pdp.quoted_delivery' | t }}</small>
+          {%- else -%}
+            <strong>{{ 'suntneew_auto.sdded2d61be13' | t }}</strong>
+            <small>{{ 'suntneew_auto.s3c2377995930' | t }}</small>
+          {%- endif -%}
         </span>
         <span class="suntneew-purchase-panel__chevron" aria-hidden="true"></span>
       </summary>
-      <p>{{ 'suntneew_auto.sc5d249b0a8b1' | t }} <a href="{{ pages['shipping-policy'].url }}">{{ 'suntneew_auto.s39faf044dc50' | t }}</a>.</p>
+      <p>{%- if quoted_delivery != blank -%}{{ quoted_delivery.settings.text }}{% else %}{{ 'suntneew_auto.sc5d249b0a8b1' | t }}{% endif %} <a href="{{ pages['shipping-policy'].url }}">{{ 'suntneew_auto.s39faf044dc50' | t }}</a>.</p>
     </details>
 
     <details>
