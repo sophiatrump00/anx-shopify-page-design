@@ -601,8 +601,8 @@
 .sn-g31-pdp .g31-buy-now .icon{width:17px;height:17px}
 .sn-g31-pdp .g31-price-quantity,.sn-g31-pdp .g31-cart-feedback,.sn-g31-pdp .g31-cart-link{font-size:12px;line-height:1.6;margin-top:10px}
 .sn-g31-pdp .g31-cart-link{display:inline-block;text-decoration:underline}
-.sn-g31-pdp .product-nav{top:var(--sticky-area-height,0px);z-index:4}
-.sn-g31-pdp :is([id],.g31-legacy-anchor){scroll-margin-top:calc(var(--sticky-area-height,0px) + var(--g31-nav-height) + 16px)}
+.sn-g31-pdp .product-nav{top:calc(var(--header-is-visible,1)*var(--sticky-area-height,0px));z-index:4}
+.sn-g31-pdp :is([id],.g31-legacy-anchor){scroll-margin-top:calc(var(--g31-nav-height) - 4px)}
 .sn-g31-pdp .g31-legacy-anchor{position:absolute;inset-block-start:0;pointer-events:none}
 .sn-g31-pdp :is(.specs-section,.box-section,.care-section){position:relative}
 .sn-g31-pdp .g31-documents{margin-top:24px;padding-top:22px;border-top:1px solid #ddd}
