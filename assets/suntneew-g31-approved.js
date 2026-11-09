@@ -51,9 +51,11 @@
       const reservedHeader = pixels('--header-height') * pixels('--sticky-header-enabled') + pixels('--announcement-bar-height') * pixels('--sticky-announcement-bar-enabled');
       const offset = Math.max((nav?.getBoundingClientRect().bottom || 0) + 30, reservedHeader + (nav?.offsetHeight || 0) + 20);
       let active = root.querySelector('.nav-links a');
+      let nearestTop = -Infinity;
       root.querySelectorAll('.nav-links a').forEach(link => {
         const target = root.querySelector(link.getAttribute('href'));
-        if (target && target.getBoundingClientRect().top <= offset) active = link;
+        const top = target?.getBoundingClientRect().top;
+        if (top <= offset && top > nearestTop) { active = link; nearestTop = top; }
       });
       root.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.toggle('active', link === active);
