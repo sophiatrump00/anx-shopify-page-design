@@ -623,3 +623,4 @@ html:has(.sn-g31-pdp dialog[open]){overflow:hidden}
 @media(prefers-reduced-motion:reduce){.sn-g31-pdp *{scroll-behavior:auto!important}}
 
 body:has(.sn-g31-pdp){padding-bottom:80px}
+html:has(.sn-g31-pdp){scroll-behavior:auto}
