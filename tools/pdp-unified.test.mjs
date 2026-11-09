@@ -100,6 +100,8 @@ test('cart network failure releases the submit lock; retry submits the actual qu
 });
 
 test('all ten approved PDPs retain model-specific specifications, available documents and real review widgets', () => {
+  const schema = JSON.parse(read('sections/suntneew-pdp-approved.liquid').split('{% schema %}')[1].split('{% endschema %}')[0]);
+  for (const block of schema.blocks) if (block.name) assert.ok(block.name.length <= 25, block.name);
   for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'u23', 'u32', 'kb700', 'oj02']) {
     const template = JSON.parse(read(`templates/product.${name}.json`));
     const section = template.sections.main;
