@@ -1,0 +1,153 @@
+{
+  "version": "pdp-story-v3",
+  "formalRelease": false,
+  "status": "verified preview; not deployed to Shopify",
+  "browserChecksOn": "2026-11-06",
+  "finalReadbackOn": "2026-11-08",
+  "mechanicalIntegrityRecheckedOn": "2026-11-08",
+  "scope": [
+    "G31 purchase-area five-point copy",
+    "Shared Overview removal; A20 purchase copy unchanged"
+  ],
+  "browser": "Codex in-app browser",
+  "viewportNote": "1280x720, 390x844 and 320x760 browser sizes; scrollbar consumes 15px (content widths 1265, 375 and 305px).",
+  "checks": {
+    "overviewRemoval": "No Overview navigation, #story hero or overview card section; Features immediately follows the product navigation.",
+    "g31FivePoints": "Five bold-title + short-description entries from the owned Amazon listing, above the main price.",
+    "singleVisibleSalePrice": "Desktop and mobile: sticky purchase hidden while main price is in view; shown after main price is entirely above the viewport.",
+    "featureAnchorAndTab": "Features anchor and Bluetooth monitoring tab passed on G31.",
+    "a20Compatibility": "Three original purchase highlights retained; no G31 titles; Overview removed; zero overflow at 320px.",
+    "previewProductAndDeviceSwitch": "A20/G31 selection and mobile/desktop mode passed; current mobile content viewport 375px."
+  },
+  "browserEvidence": {
+    "desktop": {
+      "height": 720,
+      "highlightCount": 5,
+      "mainPriceBottom": 674.609375,
+      "overflow": 0,
+      "overviewCount": 0,
+      "stickyHidden": true,
+      "width": 1265
+    },
+    "features": {
+      "activeNav": "Features",
+      "afterNav": "features",
+      "mainPriceBottom": -293.390625,
+      "selectedTab": "Bluetooth monitoring",
+      "stickyHidden": false
+    },
+    "mobile390": {
+      "height": 844,
+      "highlightCount": 5,
+      "listHeight": 268.765625,
+      "listRight": 357,
+      "overflow": 0,
+      "stickyHidden": true,
+      "width": 375,
+      "purchase": {
+        "height": 844.21875,
+        "top": 517.375
+      },
+      "priceInView": {
+        "mainPriceBottom": 542.15625,
+        "mainPriceTop": 506.15625,
+        "stickyHidden": true
+      }
+    },
+    "mobile320": {
+      "height": 760,
+      "highlightCount": 5,
+      "listHeight": 372.75,
+      "listRight": 291,
+      "listTop": 88.6875,
+      "mainPriceBottom": 520.4375,
+      "mainPriceTop": 484.4375,
+      "overflow": 0,
+      "stickyHidden": true,
+      "width": 305
+    },
+    "mobilePriceAfterFeatures": {
+      "mainPriceBottom": -322.5625,
+      "stickyHidden": false
+    },
+    "a20Mobile320": {
+      "afterNav": "features",
+      "highlightCount": 3,
+      "highlightTitles": 0,
+      "overflow": 0,
+      "overviewCount": 0,
+      "width": 305
+    },
+    "consoleErrors": [],
+    "shellA20": "For compatible 12V vehicles: up to 6L gas / 3L diesel\nSmart clamp with reverse-polarity & short-circuit protection\nUSB-C charging input · dual USB-A device outputs",
+    "shellMobile": {
+      "count": 5,
+      "overflow": 0,
+      "width": 375
+    }
+  },
+  "finalReadback": {
+    "afterNav": "features",
+    "height": 720,
+    "highlightCount": 5,
+    "navigation": [
+      "Features",
+      "Specifications",
+      "In the box",
+      "Support",
+      "FAQ"
+    ],
+    "overflow": 0,
+    "overviewCount": 0,
+    "stickyHidden": true,
+    "width": 1265
+  },
+  "mechanical": {
+    "sourceAssetHashesMatched": 24,
+    "v2AssetCopiesUnchanged": 24,
+    "webpDecodePassed": 22,
+    "manualCopiesMatched": 2,
+    "localHttpResourcesPassed": 31,
+    "nodeSyntaxChecks": [
+      "content.js",
+      "site.js",
+      "preview.js"
+    ]
+  },
+  "repositoryRegression": {
+    "checkedOn": "2026-11-06",
+    "npmTest": {
+      "passed": 26,
+      "failed": 0
+    },
+    "structureCheck": {
+      "templates": 56,
+      "customSections": 44,
+      "referencedAssets": 164,
+      "warnings": 0,
+      "errors": 0
+    },
+    "themeCheck": {
+      "files": 335,
+      "warnings": 8,
+      "errors": 0,
+      "exitCode": 0,
+      "note": "Existing warnings; no production theme files modified."
+    }
+  },
+  "screenshotsWorkspaceRelative": [
+    "06_归档/2026-09_工具输出与临时文件/PDP五点Demo_v3_20261106/",
+    "06_归档/2026-09_工具输出与临时文件/PDP五点Demo_v3_20261108/"
+  ],
+  "notExecuted": [
+    "Real-device QA",
+    "Safari/cross-browser QA",
+    "Full video playback",
+    "Real Shopify cart/checkout/payment",
+    "Shopify production theme deployment"
+  ],
+  "productionFollowUp": [
+    "Connect real product data and review components when implementing the approved layout.",
+    "Carry forward the G31 warranty policy/entry-point work recorded in v2."
+  ]
+}

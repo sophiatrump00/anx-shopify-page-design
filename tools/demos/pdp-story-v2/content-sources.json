@@ -1,0 +1,76 @@
+{
+  "version": "pdp-story-v2",
+  "formalRelease": false,
+  "specificationSource": {
+    "workspaceFile": "02_产品资产/00_全站共用/07_产品组合与经营策略/新能源/独立站产品知识库/新能源独立站产品知识库_v2.sqlite3",
+    "sha256": "5c5eb9dece52ea633f3de0b48e27d279e4d0d30c153d29420e28be5efb4e7ebf",
+    "models": [
+      "A20-8000",
+      "ESS-LFP12100BG31"
+    ]
+  },
+  "sources": [
+    {
+      "workspaceFile": "05_项目与交付/2026-11_SuntNeew网页修正与布局对标/信任售后_现站与竞品观察_20261105/suntneew-a20.json",
+      "sha256": "742a65ab44f9cd9d9c6bb1b6d3afd347e9ca98f5cb7dcb6c0082567989735ecc",
+      "url": "https://www.suntneew.com/products/suntneew-a20-jump-starter-8000mah",
+      "capturedAt": "2026-11-06T03:43:03.213Z",
+      "role": "owned product or policy snapshot"
+    },
+    {
+      "workspaceFile": "05_项目与交付/2026-11_SuntNeew网页修正与布局对标/信任售后_现站与竞品观察_20261105/suntneew-g31-current.json",
+      "sha256": "3b7f42163de46203dade1a73fa5b10906bc3fc0001fe0bc913ab18d7284772da",
+      "url": "https://www.suntneew.com/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-31#support-certificates",
+      "capturedAt": "2026-11-06T03:45:44.765Z",
+      "role": "owned product or policy snapshot"
+    },
+    {
+      "workspaceFile": "05_项目与交付/2026-11_SuntNeew网页修正与布局对标/信任售后_现站与竞品观察_20261105/suntneew-g31-support.json",
+      "sha256": "2f32f85ce01c9c11772acd52909c3055c620237362fba0122792f5d11b2a1a07",
+      "url": "https://www.suntneew.com/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-31#support-certificates",
+      "capturedAt": null,
+      "role": "owned product or policy snapshot"
+    },
+    {
+      "workspaceFile": "05_项目与交付/2026-11_SuntNeew网页修正与布局对标/信任售后_现站与竞品观察_20261105/suntneew-warranty.json",
+      "sha256": "8625618f6c193fb84b79f1bafa55a52853c17b29a868faedb9731810ac9e6c68",
+      "url": "https://www.suntneew.com/pages/warranty",
+      "capturedAt": "2026-11-06T03:41:47.167Z",
+      "role": "owned product or policy snapshot"
+    },
+    {
+      "workspaceFile": "05_项目与交付/2026-11_SuntNeew网页修正与布局对标/信任售后_现站与竞品观察_20261105/suntneew-returns.json",
+      "sha256": "d30c64062c6f10a4cebeca97a9f4d58513d1ca36fcfb3a242fdea320fdc25cda",
+      "url": "https://www.suntneew.com/pages/return-policy",
+      "capturedAt": "2026-11-06T03:42:34.542Z",
+      "role": "owned product or policy snapshot"
+    },
+    {
+      "workspaceFile": "05_项目与交付/2026-11_SuntNeew网页修正与布局对标/信任售后_现站与竞品观察_20261105/suntneew-shipping.json",
+      "sha256": "46a029ba319ed09d7e6252aaa60ef0e81e4951c4ca0a987c56db94786971eeee",
+      "url": "https://www.suntneew.com/pages/shipping-policy",
+      "capturedAt": "2026-11-06T03:43:03.235Z",
+      "role": "owned product or policy snapshot"
+    },
+    {
+      "workspaceFile": "05_项目与交付/2026-11_SuntNeew网页修正与布局对标/信任售后_现站与竞品观察_20261105/suntneew-contact.json",
+      "sha256": "4968a5782c3abda18bfe28ba54b1bf7c10669d32cd762f24d7fc19b135f9c271",
+      "url": "https://www.suntneew.com/pages/contact-us",
+      "capturedAt": "2026-11-06T03:43:47.995Z",
+      "role": "owned product or policy snapshot"
+    },
+    {
+      "workspaceFile": "05_项目与交付/2026-11_SuntNeew网页修正与布局对标/信任售后_现站与竞品观察_20261105/renogy-pdp.json",
+      "sha256": "389a9ec57af36d4ccd0b103283f0ee6216cbe948150416061864cb182c67908c",
+      "url": "https://www.renogy.com/products/pro-s1-12v-120ah-240ah-lifepo4-battery",
+      "capturedAt": "2026-11-06T03:35:46.787Z",
+      "role": "design reference only"
+    }
+  ],
+  "notes": [
+    "Prices, compare-at prices, ratings and review counts are snapshots, not live Shopify values.",
+    "G31 warranty scope needs completion in production; the jump-starter warranty exclusions are not applied to G31 in this demo.",
+    "Competitor structure is a design reference; competitor claims and images are not imported.",
+    "Original product assets are unchanged; derivative asset transformations are recorded separately."
+  ]
+}
