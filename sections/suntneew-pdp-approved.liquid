@@ -1,0 +1,560 @@
+{% comment %}Approved responsive PDP layout. Model copy is configured per template; purchasing, stock and reviews stay native to Shopify.{% endcomment %}
+{{ 'suntneew-pdp-approved.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'suntneew-pdp-approved.js' | asset_url }}" defer></script>
+<script src="{{ 'suntneew-purchase-panel.js' | asset_url }}" defer></script>
+{%- liquid
+ assign selected_variant = product.selected_or_first_available_variant
+ assign product_form_id = 'approved-product-form-' | append: section.id
+ assign min_quantity = selected_variant.quantity_rule.min | default: 1
+ assign quantity_step = selected_variant.quantity_rule.increment | default: 1
+ assign max_quantity = selected_variant.quantity_rule.max | default: 999
+ if selected_variant.inventory_management != blank and selected_variant.inventory_policy == 'deny'
+  assign max_quantity = max_quantity | at_most: selected_variant.inventory_quantity | at_least: min_quantity
+ endif
+ assign gallery_assets = section.settings.gallery_assets | split: '|'
+ assign gallery_alts = section.settings.gallery_alts | split: '|'
+ assign first_asset = gallery_assets | first
+ assign first_alt = gallery_alts | first | default: product.title
+ assign feature_blocks = section.blocks | where: 'type', 'feature'
+ assign included_blocks = section.blocks | where: 'type', 'included'
+ assign download_blocks = section.blocks | where: 'type', 'download'
+ assign colour_index = -1
+ for option in product.options_with_values
+  assign option_name = option.name | downcase
+  if option_name == 'color' or option_name == 'colour'
+   assign colour_index = forloop.index0
+  endif
+ endfor
+ assign initial_image = selected_variant.featured_image | default: product.featured_image
+-%}
+<div class="sn-approved-pdp" data-pdp-approved data-form="{{ product_form_id }}" data-model="{{ section.settings.model | escape }}" data-currency="{{ cart.currency.iso_code | default: shop.currency }}" data-colour-index="{{ colour_index }}" data-add-label="{{ 'product.general.add_to_cart_button' | t | escape }}" data-sold-out-label="{{ 'product.general.sold_out_button' | t | escape }}" data-unavailable-label="{{ 'product.general.unavailable_button' | t | escape }}">
+ <script type="application/json" data-approved-variants>[
+ {%- for variant in product.variants -%}
+  {%- liquid
+   assign variant_min = variant.quantity_rule.min | default: 1
+   assign variant_max = variant.quantity_rule.max | default: 999
+   if variant.inventory_management != blank and variant.inventory_policy == 'deny'
+    assign variant_max = variant_max | at_most: variant.inventory_quantity
+   endif
+  -%}
+  {"id":{{ variant.id | json }},"title":{{ variant.title | json }},"options":{{ variant.options | json }},"available":{{ variant.available | json }},"price":{{ variant.price | json }},"compare":{{ variant.compare_at_price | default: 0 | json }},"min":{{ variant_min | json }},"max":{{ variant_max | json }},"step":{{ variant.quantity_rule.increment | default: 1 | json }},"imageId":{{ variant.featured_image.id | default: 0 | json }}}{% unless forloop.last %},{% endunless %}
+ {%- endfor -%}]</script>
+<svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="sn-approved-icon-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7"></path></symbol>
+  <symbol id="sn-approved-icon-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></symbol>
+  <symbol id="sn-approved-icon-bag" viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7Z"></path><path d="M8 8V6a4 4 0 0 1 8 0v2"></path></symbol>
+  <symbol id="sn-approved-icon-shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 5-4 8-8 11-4-3-8-6-8-11V5l8-3Z"></path><path d="m8 12 3 3 5-6"></path></symbol>
+  <symbol id="sn-approved-icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></symbol>
+  <symbol id="sn-approved-icon-return" viewBox="0 0 24 24"><path d="m6 3-4 4 4 4M3 7h11a7 7 0 0 1 0 14H8"></path></symbol>
+  <symbol id="sn-approved-icon-truck" viewBox="0 0 24 24"><path d="M1 4h13v13H1zM14 9h5l4 5v3h-9"></path><circle cx="6" cy="18" r="3"></circle><circle cx="19" cy="18" r="3"></circle></symbol>
+  <symbol id="sn-approved-icon-help" viewBox="0 0 24 24"><path d="M4 13v-2a8 8 0 0 1 16 0v2M4 12H2v7h4v-7H4ZM20 12h2v7h-4v-7h2ZM19 19v3h-6"></path></symbol>
+  <symbol id="sn-approved-icon-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-8l1-7Z"></path></symbol>
+  <symbol id="sn-approved-icon-usb" viewBox="0 0 24 24"><path d="M12 22V3m-3 3 3-4 3 4M12 15l-6-4V7m6 11 6-4V9"></path><circle cx="6" cy="5" r="2"></circle><path d="M16 5h4v4h-4z"></path></symbol>
+  <symbol id="sn-approved-icon-light" viewBox="0 0 24 24"><path d="M7 3h10v5l-3 4v9h-4v-9L7 8V3ZM7 7h10M9 15h6M2 4H0m24 0h-2M4 0 3 1m18-1-1 1"></path></symbol>
+  <symbol id="sn-approved-icon-screen" viewBox="0 0 24 24"><rect x="5" y="1" width="14" height="22" rx="3"></rect><path d="M9 18h6M9 8l2-2 2 4 2-3"></path></symbol>
+  <symbol id="sn-approved-icon-fit" viewBox="0 0 24 24"><path d="M2 8V2h6m8 0h6v6M2 16v6h6m8 0h6v-6M7 7h10v10H7z"></path></symbol>
+  <symbol id="sn-approved-icon-drop" viewBox="0 0 24 24"><path d="M12 2C10 7 4 11 4 16a8 8 0 0 0 16 0c0-5-6-9-8-14Z"></path><path d="M8 16a4 4 0 0 0 4 4"></path></symbol>
+  <symbol id="sn-approved-icon-book" viewBox="0 0 24 24"><path d="M12 5C8 2 5 2 2 3v17c4-1 7-1 10 2 3-3 6-3 10-2V3c-3-1-6-1-10 2v17"></path></symbol>
+  <symbol id="sn-approved-icon-download" viewBox="0 0 24 24"><path d="M12 2v14m-5-5 5 5 5-5M3 15v7h18v-7"></path></symbol>
+  <symbol id="sn-approved-icon-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7V5Z"></path></symbol>
+  <symbol id="sn-approved-icon-zoom" viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"></circle><path d="m15 15 7 7M6 10h8m-4-4v8"></path></symbol>
+</defs></svg>
+ <div class="container breadcrumb"><a href="{{ routes.root_url }}">Home</a><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-chevron"/></svg><span>{{ section.settings.category | escape }}</span><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-chevron"/></svg><span>{{ section.settings.model | escape }}</span></div>
+ <section class="container product-grid" id="purchase" aria-label="{{ section.settings.model | escape }} product and purchase">
+  <div class="product-gallery">
+   <div class="gallery-stage"><span class="gallery-tag">{{ section.settings.model | escape }}</span>
+    {%- if first_asset != blank -%}{% render 'suntneew-approved-image', source: first_asset, alt: first_alt, class: 'main-image', loading: 'eager' %}
+    {%- else -%}{% render 'suntneew-approved-image', image: initial_image, alt: product.title, class: 'main-image', loading: 'eager' %}{%- endif -%}
+    <button class="zoom-button" data-zoom type="button" aria-label="Enlarge product image"><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-zoom"/></svg></button><span class="image-count"><b data-gallery-index>01</b> / <span data-gallery-count>{% if first_asset != blank %}{{ gallery_assets.size }}{% else %}{{ product.images.size }}{% endif %}</span></span>
+   </div>
+   <div class="gallery-thumbnails" aria-label="Product images">
+    {%- if first_asset != blank -%}
+     {%- for asset in gallery_assets -%}{%- assign image_alt = gallery_alts[forloop.index0] | default: product.title -%}
+      <button type="button" data-gallery="{{ forloop.index0 }}" aria-label="{{ image_alt | escape }}" aria-pressed="{{ forloop.first }}" data-full="{{ asset | asset_url }}" data-srcset="{{ asset | replace: '-1400.webp', '-320.webp' | asset_url }} 320w, {{ asset | replace: '-1400.webp', '-640.webp' | asset_url }} 640w, {{ asset | asset_url }} 1400w" data-alt="{{ image_alt | escape }}">{% render 'suntneew-approved-image', source: asset, alt: '', sizes: '80px' %}</button>
+     {%- endfor -%}
+    {%- else -%}
+     {%- for gallery_image in product.images -%}
+      {%- liquid
+       assign image_colour = ''
+       if gallery_image.alt contains '#Color_'
+        assign image_colour = gallery_image.alt | split: '#Color_' | last | split: ' ' | first
+       endif
+       assign image_alt = gallery_image.alt | split: '#Color_' | first | default: product.title
+       assign selected_colour = selected_variant.options[colour_index]
+      -%}
+      <button type="button" data-gallery="{{ forloop.index0 }}" data-image-id="{{ gallery_image.id }}" data-image-colour="{{ image_colour | escape }}" data-full="{{ gallery_image | image_url: width: 1400 }}" data-srcset="{{ gallery_image | image_url: width: 320 }} 320w, {{ gallery_image | image_url: width: 640 }} 640w, {{ gallery_image | image_url: width: 1400 }} 1400w" data-alt="{{ image_alt | escape }}" aria-label="{{ image_alt | escape }}" aria-pressed="{% if gallery_image.id == initial_image.id %}true{% else %}false{% endif %}" {% if image_colour != blank and image_colour != selected_colour %}hidden{% endif %}>{% render 'suntneew-approved-image', image: gallery_image, alt: '', sizes: '80px' %}</button>
+     {%- endfor -%}
+    {%- endif -%}
+   </div><p class="gallery-caption">{{ section.settings.gallery_caption | escape }}</p>
+  </div>
+  <div class="purchase-panel">
+   <p class="eyebrow">{{ section.settings.eyebrow | escape }}</p><h1>{{ section.settings.heading | default: product.title | escape | newline_to_br }}</h1>
+   {%- assign rating = product.metafields.reviews.rating.value -%}{%- assign reviews = product.metafields.reviews.rating_count.value | default: 0 -%}
+   {%- if reviews > 0 and rating != blank -%}<a class="rating-link" href="#judgeme_product_reviews"><span class="stars" aria-label="{{ rating.rating }} out of {{ rating.scale_max }} stars" style="--rating-fill: {{ rating.rating | times: 100.0 | divided_by: rating.scale_max }}%">★★★★★</span><strong>{{ rating.rating | round: 1 }}</strong><span>{{ 'product.rating_count' | t: count: reviews }}</span><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-chevron"/></svg></a>{%- endif -%}
+   <p class="product-description">{{ section.settings.introduction | escape }}</p>
+   <ul class="product-highlights product-highlights-detailed" aria-label="Product highlights">
+    {%- for block in section.blocks -%}{%- if block.type == 'selling_point' -%}<li data-variant-match="{{ block.settings.variant_match | escape }}" {% if block.settings.variant_match != blank %}{% unless selected_variant.title contains block.settings.variant_match %}hidden{% endunless %}{% endif %} {{ block.shopify_attributes }}><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-check"/></svg><span><strong>{{ block.settings.heading | escape }}.</strong> {{ block.settings.text | escape }}</span></li>{%- endif -%}{%- endfor -%}
+   </ul>
+   <div class="product-price" data-main-price><strong data-approved-price>{{ selected_variant.price | money }}</strong><del data-approved-compare {% unless selected_variant.compare_at_price > selected_variant.price %}hidden{% endunless %}>{{ selected_variant.compare_at_price | money }}</del><span data-approved-saving {% unless selected_variant.compare_at_price > selected_variant.price %}hidden{% endunless %}>Save {{ selected_variant.compare_at_price | minus: selected_variant.price | money }}</span></div><p class="approved-price-quantity" data-approved-price-quantity hidden></p><p class="tax-note">Taxes calculated at checkout.</p>
+   {%- unless product.has_only_default_variant -%}
+    <div class="approved-options" aria-label="Choose your options">{%- for option in product.options_with_values -%}<label for="approved-option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name | escape }}<select id="approved-option-{{ section.id }}-{{ forloop.index0 }}" data-approved-option="{{ forloop.index0 }}">{%- for value in option.values -%}<option value="{{ value | escape }}" {% if value.selected or option.selected_value == value %}selected{% endif %}>{{ value | escape }}</option>{%- endfor -%}</select></label>{%- endfor -%}</div>
+   {%- else -%}<div class="configuration"><span>Your {{ section.settings.model | escape }}</span><strong>{{ section.settings.configuration | escape }}</strong></div>{%- endunless -%}
+   <p class="approved-availability" data-approved-availability role="status" {% if selected_variant.available %}hidden{% endif %}>{% unless selected_variant.available %}{{ 'product.general.sold_out_button' | t }}{% endunless %}</p>
+   <div class="buy-row"><div class="quantity"><button type="button" data-approved-quantity="-1" aria-label="Decrease quantity" disabled>−</button><label class="sr-only" for="approved-quantity-{{ section.id }}">Quantity</label><input id="approved-quantity-{{ section.id }}" name="quantity" type="number" value="{{ min_quantity }}" min="{{ min_quantity }}" max="{{ max_quantity }}" step="{{ quantity_step }}" inputmode="numeric" form="{{ product_form_id }}" aria-label="Quantity"><button type="button" data-approved-quantity="1" aria-label="Increase quantity" {% unless selected_variant.available %}disabled{% endunless %}>+</button></div>
+    <div class="approved-native-buy">{% render 'buy-buttons', product: product, form_id: product_form_id, show_payment_button: false, show_gift_card_recipient: false, show_suntneew_purchase_panel: false, button_size: 'lg' %}</div>
+   </div>
+   <button type="button" class="approved-buy-now" form="{{ product_form_id }}" data-suntneew-buy-now {% unless selected_variant.available %}disabled{% endunless %}>Buy now <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-arrow"/></svg></button>
+   <p class="approved-cart-feedback" role="status" aria-live="polite" hidden></p><a class="approved-cart-link" href="{{ routes.cart_url }}" hidden>View your cart →</a><a class="fit-help" href="#specs">Check specifications &amp; compatibility <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-arrow"/></svg></a>
+   <div class="purchase-care"><p>Buy with confidence.</p><div class="care-grid"><button type="button" data-policy="warranty"><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-shield"/></svg><span><strong>{{ section.settings.warranty_label | escape }}</strong><small>View model terms</small></span></button><button type="button" data-policy="returns"><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-return"/></svg><span><strong>14-day returns</strong><small>Eligibility applies</small></span></button><button type="button" data-policy="shipping"><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-truck"/></svg><span><strong>Free U.S. shipping</strong><small>48 states + DC</small></span></button><button type="button" data-policy="support"><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-help"/></svg><span><strong>Product support</strong><small>Before &amp; after purchase</small></span></button></div></div>
+  </div>
+ </section>
+ <nav class="product-nav" aria-label="Product information"><div class="container"><span class="nav-product">{{ section.settings.model | escape }}</span><div class="nav-links"><a class="active" href="#features">Features</a><a href="#specs">Specifications</a><a href="#box">{{ section.settings.box_heading | escape }}</a><a href="#support">Support</a><a href="#faq">FAQ</a></div><a class="nav-up" href="#purchase">Choose {{ section.settings.model | escape }} ↑</a></div></nav>
+ <section class="section features-section" id="features"><div class="container"><div class="center-heading"><p class="eyebrow">DESIGNED TO BE USEFUL</p><h2>{{ section.settings.features_heading | escape | newline_to_br }}</h2><p>{{ section.settings.features_intro | escape }}</p></div>
+  <div class="feature-tabs" role="tablist" aria-label="{{ section.settings.model | escape }} features">{%- for block in feature_blocks -%}<button type="button" role="tab" id="approved-tab-{{ block.id }}" data-feature="{{ forloop.index0 }}" aria-selected="{{ forloop.first }}" aria-controls="approved-panel-{{ block.id }}" tabindex="{% if forloop.first %}0{% else %}-1{% endif %}">{{ block.settings.tab_label | escape }}</button>{%- endfor -%}</div>
+  {%- for block in feature_blocks -%}<div class="feature-panel" role="tabpanel" id="approved-panel-{{ block.id }}" aria-labelledby="approved-tab-{{ block.id }}" {% unless forloop.first %}hidden{% endunless %} {{ block.shopify_attributes }}><div class="feature-copy"><p class="eyebrow">0{{ forloop.index }} / {{ block.settings.tab_label | escape }}</p><h3>{{ block.settings.heading | escape | newline_to_br }}</h3><div class="approved-richtext">{{ block.settings.body }}</div></div><div class="feature-image" data-image-fit="{{ block.settings.image_fit }}">{% render 'suntneew-approved-image', source: block.settings.image_asset, alt: block.settings.image_alt %}</div></div>{%- endfor -%}
+ </div></section>
+ {%- assign story_number = 0 -%}{%- for block in section.blocks -%}{%- if block.type == 'story' -%}{%- assign story_number = story_number | plus: 1 -%}
+  <section class="approved-story-wrap {% if story_number == 2 %}practical-section{% endif %}" {{ block.shopify_attributes }}><div class="section container reliability approved-story {% if story_number == 2 %}approved-story-reverse{% endif %}"><div class="split-media" data-image-fit="{{ block.settings.image_fit }}">{% render 'suntneew-approved-image', source: block.settings.image_asset, alt: block.settings.image_alt %}</div><div class="split-copy"><p class="eyebrow">{{ block.settings.tab_label | escape }}</p><h2>{{ block.settings.heading | escape | newline_to_br }}</h2><div class="approved-richtext">{{ block.settings.body }}</div><a class="text-link" href="#specs">Explore the specifications <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-arrow"/></svg></a></div></div></section>
+ {%- endif -%}{%- endfor -%}
+ <section class="section setup-section"><div class="container"><div class="section-heading"><h2>{{ section.settings.setup_heading | escape }}</h2></div><div class="setup-grid">{%- for i in (1..4) -%}{%- assign heading_key = 'setup_heading_' | append: i -%}{%- assign text_key = 'setup_text_' | append: i -%}<article><span>0{{ i }}</span><h3>{{ section.settings[heading_key] | escape }}</h3><p>{{ section.settings[text_key] | escape }}</p></article>{%- endfor -%}</div><a class="text-link" href="#manuals">Read the model instructions <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-book"/></svg></a></div></section>
+ {% if section.settings.video_url != blank %}<section class="section container approved-video"><div><p class="eyebrow">SEE IT IN USE</p><h2>{{ section.settings.video_heading | escape }}</h2><p>{{ section.settings.video_caption | escape }}</p><a class="button button-dark" href="{{ section.settings.video_url }}" target="_blank" rel="noopener">Watch the product video <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-play"/></svg></a></div><div class="box-image">{% if section.settings.video_url contains '.mp4' %}<video controls playsinline preload="none" poster="{{ section.settings.video_poster | asset_url }}">{% if section.settings.video_mobile_url != blank %}<source src="{{ section.settings.video_mobile_url }}" type="video/mp4" media="(max-width: 650px)">{% endif %}<source src="{{ section.settings.video_url }}" type="video/mp4"></video>{% else %}{% render 'suntneew-approved-image', source: section.settings.box_image, alt: section.settings.model %}{% endif %}</div></section>{% endif %}
+ <section class="section container box-section" id="box"><div class="box-image">{% render 'suntneew-approved-image', source: section.settings.box_image, alt: section.settings.box_heading %}</div><div><p class="eyebrow">THE DETAILS, TOGETHER</p><h2>{{ section.settings.box_heading | escape }}</h2><p class="approved-box-note">{{ section.settings.box_note | escape }}</p><ul class="kit-list">{%- for block in included_blocks -%}<li data-variant-match="{{ block.settings.variant_match | escape }}" {% if block.settings.variant_match != blank %}{% unless selected_variant.title contains block.settings.variant_match %}hidden{% endunless %}{% endif %} {{ block.shopify_attributes }}><span>0{{ forloop.index }}</span>{{ block.settings.item | escape }}</li>{%- endfor -%}</ul><a class="text-link" href="#manuals">Manuals &amp; product support <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-arrow"/></svg></a></div></section>
+ <section class="section specs-section" id="specs"><span class="approved-legacy-anchor" id="specifications" aria-hidden="true"></span><div class="container specs-layout"><div><p class="eyebrow">KNOW YOUR {{ section.settings.model | escape }}</p><h2>Made clear.<br>Down to the details.</h2><p>{{ section.settings.specs_intro | escape }}</p><a class="text-link" href="#manuals">Manuals &amp; documents <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-download"/></svg></a></div><div class="specs-table"><dl>{%- for block in section.blocks -%}{%- if block.type == 'spec' and block.settings.group == 'primary' -%}<div data-variant-match="{{ block.settings.variant_match | escape }}" {% if block.settings.variant_match != blank %}{% unless selected_variant.title contains block.settings.variant_match %}hidden{% endunless %}{% endif %} {{ block.shopify_attributes }}><dt>{{ block.settings.label | escape }}</dt><dd>{{ block.settings.value | escape }}</dd></div>{%- endif -%}{%- endfor -%}</dl>
+  <details class="more-specs"><summary>More specifications <span>+</span></summary><dl>{%- for block in section.blocks -%}{%- if block.type == 'spec' and block.settings.group != 'primary' -%}<div data-variant-match="{{ block.settings.variant_match | escape }}" {% if block.settings.variant_match != blank %}{% unless selected_variant.title contains block.settings.variant_match %}hidden{% endunless %}{% endif %} {{ block.shopify_attributes }}><dt>{{ block.settings.label | escape }}</dt><dd>{{ block.settings.value | escape }}</dd></div>{%- endif -%}{%- endfor -%}</dl></details>
+  <details class="approved-documents" id="manuals"><summary>Manuals &amp; documents <span>+</span></summary><div>{%- for block in download_blocks -%}{%- assign doc_url = block.settings.link -%}{%- if block.settings.asset_name != blank -%}{%- assign doc_url = block.settings.asset_name | asset_url -%}{%- endif -%}{%- if doc_url != blank -%}<div data-variant-match="{{ block.settings.variant_match | escape }}" {% if block.settings.variant_match != blank %}{% unless selected_variant.title contains block.settings.variant_match %}hidden{% endunless %}{% endif %} {{ block.shopify_attributes }}><a href="{{ doc_url }}" target="_blank" rel="noopener">{{ block.settings.label | escape }}<svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-download"/></svg></a>{% if block.settings.description != blank %}<p>{{ block.settings.description | escape }}</p>{% endif %}</div>{%- endif -%}{%- endfor -%}<a href="{{ pages[section.settings.support_handle].url | default: '/pages/contact-us' }}">{{ section.settings.model | escape }} instructions &amp; product support <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-arrow"/></svg></a></div></details>
+ </div></div></section>
+ <section class="section reviews-section" id="reviews"><div class="container"><p class="eyebrow">REAL EXPERIENCES</p><h2>{{ section.settings.reviews_heading | escape }}</h2><div class="approved-live-reviews">{%- for block in section.blocks -%}{%- if block.type == '@app' -%}{% render block %}{%- endif -%}{%- endfor -%}</div></div></section>
+ <section class="care-section" id="support"><span class="approved-legacy-anchor" id="support-certificates" aria-hidden="true"></span><div class="container care-layout"><div class="care-promise"><p class="eyebrow">SUNTNEEW, AFTER THE SALE</p>{% if section.settings.warranty_years != blank %}<span class="warranty-number">{{ section.settings.warranty_years | escape }}<span>YEAR</span></span>{% else %}<svg class="icon approved-care-icon" aria-hidden="true"><use href="#sn-approved-icon-help"/></svg>{% endif %}<h2>{{ section.settings.care_heading | escape }}</h2><p>{{ section.settings.warranty_text | escape }}</p><button type="button" class="text-link" data-policy="warranty">Warranty &amp; service details <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-arrow"/></svg></button></div><div class="care-details"><h3>A little more peace of mind.</h3><button type="button" data-policy="shipping"><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-truck"/></svg><span><strong>Free U.S. standard shipping.</strong><small>To the contiguous 48 states and Washington, DC.</small></span><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-chevron"/></svg></button><button type="button" data-policy="returns"><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-return"/></svg><span><strong>14 days to request a return.</strong><small>For eligible items. Contact us for approval before returning.</small></span><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-chevron"/></svg></button><button type="button" data-policy="support"><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-help"/></svg><span><strong>Questions now. Support later.</strong><small>Help with product selection, setup and use.</small></span><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-chevron"/></svg></button><a class="button button-dark" href="{{ pages['contact-us'].url | default: '/pages/contact-us' }}">Talk to SuntNeew <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-arrow"/></svg></a></div></div></section>
+ <section class="section container faq-section" id="faq"><div><p class="eyebrow">BEFORE YOU GO</p><h2>A few useful answers.</h2><p>More questions about your {{ section.settings.model | escape }}?</p><button type="button" class="text-link" data-policy="support">We’re here to help <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-arrow"/></svg></button></div><div class="faq-group">{%- for block in section.blocks -%}{%- if block.type == 'question' -%}<details {{ block.shopify_attributes }}><summary>{{ block.settings.question | escape }}<span>+</span></summary><div class="approved-answer">{{ block.settings.answer }}</div></details>{%- endif -%}{%- endfor -%}</div></section>
+ <section class="closing-banner"><div class="container"><div><p class="eyebrow">SUNTNEEW / {{ section.settings.model | escape }}</p><h2>{{ section.settings.closing_heading | escape }}</h2></div><a class="button button-primary" href="#purchase">Choose your {{ section.settings.model | escape }} <svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-arrow"/></svg></a></div></section>
+ <aside class="sticky-buy" aria-label="Quick purchase" hidden><div class="container"><div class="sticky-product">{% if first_asset != blank %}{% render 'suntneew-approved-image', source: first_asset, alt: '', sizes: '44px' %}{% else %}{% render 'suntneew-approved-image', image: initial_image, alt: '', sizes: '44px' %}{% endif %}<span><strong>{{ section.settings.model | escape }}</strong><small data-approved-selected>{% unless product.has_only_default_variant %}{{ selected_variant.title | escape }}{% else %}{{ section.settings.configuration | escape }}{% endunless %}</small></span></div><strong class="sticky-price" data-approved-price>{{ selected_variant.price | money }}</strong><button type="submit" class="button button-primary" form="{{ product_form_id }}" data-approved-sticky-add {% unless selected_variant.available %}disabled{% endunless %}><span data-approved-button-label>{% if selected_variant.available %}{{ 'product.general.add_to_cart_button' | t }}{% else %}{{ 'product.general.sold_out_button' | t }}{% endif %}</span><svg class="icon" aria-hidden="true"><use href="#sn-approved-icon-bag"/></svg></button></div></aside>
+ {% render 'suntneew-approved-policies', section: section %}
+ <dialog class="modal image-modal" id="approved-image-dialog" aria-labelledby="approved-image-dialog-title"><button type="button" class="modal-close" data-approved-close aria-label="Close image">×</button><h2 class="sr-only" id="approved-image-dialog-title">Product image</h2><img alt="" width="1400" height="1400" decoding="async"></dialog>
+</div>
+
+{% schema %}
+{
+  "name": "Approved product page",
+  "tag": "section",
+  "class": "approved-product-section",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type": "text",
+      "id": "model",
+      "label": "Model"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "category",
+      "label": "Category"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "textarea",
+      "id": "introduction",
+      "label": "Introduction"
+    },
+    {
+      "type": "text",
+      "id": "configuration",
+      "label": "Configuration"
+    },
+    {
+      "type": "textarea",
+      "id": "gallery_assets",
+      "label": "Gallery assets"
+    },
+    {
+      "type": "textarea",
+      "id": "gallery_alts",
+      "label": "Gallery alts"
+    },
+    {
+      "type": "textarea",
+      "id": "gallery_caption",
+      "label": "Gallery caption"
+    },
+    {
+      "type": "textarea",
+      "id": "features_heading",
+      "label": "Features heading"
+    },
+    {
+      "type": "textarea",
+      "id": "features_intro",
+      "label": "Features intro"
+    },
+    {
+      "type": "text",
+      "id": "box_image",
+      "label": "Box image"
+    },
+    {
+      "type": "text",
+      "id": "box_heading",
+      "label": "Box heading"
+    },
+    {
+      "type": "textarea",
+      "id": "box_note",
+      "label": "Box note"
+    },
+    {
+      "type": "textarea",
+      "id": "specs_intro",
+      "label": "Specs intro"
+    },
+    {
+      "type": "text",
+      "id": "reviews_heading",
+      "label": "Reviews heading"
+    },
+    {
+      "type": "text",
+      "id": "support_handle",
+      "label": "Support handle"
+    },
+    {
+      "type": "text",
+      "id": "warranty_label",
+      "label": "Warranty label"
+    },
+    {
+      "type": "text",
+      "id": "warranty_years",
+      "label": "Warranty years"
+    },
+    {
+      "type": "textarea",
+      "id": "warranty_text",
+      "label": "Warranty text"
+    },
+    {
+      "type": "text",
+      "id": "care_heading",
+      "label": "Care heading"
+    },
+    {
+      "type": "text",
+      "id": "closing_heading",
+      "label": "Closing heading"
+    },
+    {
+      "type": "text",
+      "id": "setup_heading",
+      "label": "Setup heading"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video url"
+    },
+    {
+      "type": "text",
+      "id": "video_heading",
+      "label": "Video heading"
+    },
+    {
+      "type": "text",
+      "id": "video_caption",
+      "label": "Video caption"
+    },
+    {
+      "type": "text",
+      "id": "setup_heading_1",
+      "label": "Setup heading 1"
+    },
+    {
+      "type": "textarea",
+      "id": "setup_text_1",
+      "label": "Setup text 1"
+    },
+    {
+      "type": "text",
+      "id": "setup_heading_2",
+      "label": "Setup heading 2"
+    },
+    {
+      "type": "textarea",
+      "id": "setup_text_2",
+      "label": "Setup text 2"
+    },
+    {
+      "type": "text",
+      "id": "setup_heading_3",
+      "label": "Setup heading 3"
+    },
+    {
+      "type": "textarea",
+      "id": "setup_text_3",
+      "label": "Setup text 3"
+    },
+    {
+      "type": "text",
+      "id": "setup_heading_4",
+      "label": "Setup heading 4"
+    },
+    {
+      "type": "textarea",
+      "id": "setup_text_4",
+      "label": "Setup text 4"
+    },
+    {
+      "type": "url",
+      "id": "video_mobile_url",
+      "label": "Mobile video URL"
+    },
+    {
+      "type": "text",
+      "id": "video_poster",
+      "label": "Video poster asset"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "selling_point",
+      "name": "Purchase selling point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "variant_match",
+          "label": "Variant match"
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "name": "Feature tab",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab label"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Body"
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Image asset"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt"
+        },
+        {
+          "type": "select",
+          "id": "image_fit",
+          "label": "Image fit",
+          "options": [
+            {
+              "value": "contain",
+              "label": "Show full image"
+            },
+            {
+              "value": "cover",
+              "label": "Fill frame"
+            }
+          ],
+          "default": "contain"
+        }
+      ]
+    },
+    {
+      "type": "story",
+      "name": "Product story",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab label"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Body"
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Image asset"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt"
+        },
+        {
+          "type": "select",
+          "id": "image_fit",
+          "label": "Image fit",
+          "options": [
+            {
+              "value": "contain",
+              "label": "Show full image"
+            },
+            {
+              "value": "cover",
+              "label": "Fill frame"
+            }
+          ],
+          "default": "contain"
+        }
+      ]
+    },
+    {
+      "type": "spec",
+      "name": "Specification",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "textarea",
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "type": "select",
+          "id": "group",
+          "label": "Group",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Key specifications"
+            },
+            {
+              "value": "system",
+              "label": "System & charging"
+            },
+            {
+              "value": "installation",
+              "label": "Physical & operating limits"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "text",
+          "id": "variant_match",
+          "label": "Variant match"
+        }
+      ]
+    },
+    {
+      "type": "included",
+      "name": "Package / preparation item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "item",
+          "label": "Item"
+        },
+        {
+          "type": "text",
+          "id": "variant_match",
+          "label": "Variant match"
+        }
+      ]
+    },
+    {
+      "type": "download",
+      "name": "Available document",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "asset_name",
+          "label": "Asset name"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "variant_match",
+          "label": "Variant match"
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

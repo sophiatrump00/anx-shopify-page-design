@@ -1,0 +1,16 @@
+{%- comment -%}Selected product artwork. Local WebP sources have matching responsive derivatives; native Shopify images use the image CDN.{%- endcomment -%}
+{%- liquid
+ assign image_loading = loading | default: 'lazy'
+ assign image_sizes = sizes | default: '(max-width: 650px) 100vw, 50vw'
+ assign image_alt = alt | default: product.title
+ assign native_image = image
+ if source contains 'shopify://shop_images/'
+  assign native_name = source | remove: 'shopify://shop_images/'
+  assign native_image = images[native_name]
+ endif
+-%}
+{%- if native_image != blank -%}
+ <img class="{{ class | escape }}" src="{{ native_image | image_url: width: 1400 }}" srcset="{{ native_image | image_url: width: 320 }} 320w, {{ native_image | image_url: width: 640 }} 640w, {{ native_image | image_url: width: 1400 }} 1400w" sizes="{{ image_sizes }}" width="{{ native_image.width }}" height="{{ native_image.height }}" alt="{{ image_alt | escape }}" loading="{{ image_loading }}" decoding="async" {% if image_loading == 'eager' %}fetchpriority="high"{% endif %}>
+{%- elsif source != blank -%}
+ <img class="{{ class | escape }}" src="{{ source | asset_url }}" {% if source contains 'sn-approved-' %}srcset="{{ source | replace: '-1400.webp', '-320.webp' | asset_url }} 320w, {{ source | replace: '-1400.webp', '-640.webp' | asset_url }} 640w, {{ source | asset_url }} 1400w" sizes="{{ image_sizes }}"{% endif %} width="1400" height="1400" alt="{{ image_alt | escape }}" loading="{{ image_loading }}" decoding="async" {% if image_loading == 'eager' %}fetchpriority="high"{% endif %}>
+{%- endif -%}

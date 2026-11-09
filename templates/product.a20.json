@@ -1,479 +1,365 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-product",
-      "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h1"
-          }
-        },
-        "sku": {
-          "type": "sku",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>12V jump starting · USB device power · Emergency light</strong></p><p>Choose your capacity and color. Engine fit and starting output depend on the selected capacity; see its specifications below.</p>"
-          }
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "block_swatch",
-            "variant_image_options": "Color"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "bundle": {
-          "type": "suntneew_bundle_selector",
-          "settings": {
-            "enabled": true,
-            "show_savings": true,
-            "heading": "Choose a pack",
-            "body": "",
-            "discount_percent": 3
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "reviews": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "reviews",
-        "sku",
-        "price",
-        "intro",
-        "variant_picker",
-        "bundle",
-        "quantity_selector",
-        "buy_buttons"
-      ],
+      "type": "suntneew-pdp-approved",
       "settings": {
-        "show_fixed_add_to_cart": false,
-        "enable_suntneew_pdp_experience": true,
-        "suntneew_media_autoplay_interval": 6,
-        "show_suntneew_pdp_promises": true,
-        "desktop_media_width": 50,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "thumbnails",
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3
-      }
-    },
-    "proof": {
-      "type": "suntneew-pdp-proof",
+        "model": "A20",
+        "heading": "A20\nPortable Jump Starter",
+        "introduction": "Choose your capacity. Keep starting power, USB charging and a light close at hand.",
+        "features_heading": "Ready for the everyday.\nThere for the unexpected.",
+        "features_intro": "A portable 12V starting kit, with useful power beyond the engine bay.",
+        "configuration": "12V · USB-C input · Dual USB-A output",
+        "box_image": "sn-approved-09c036d1ea6f-1400.webp",
+        "category": "Jump Starters",
+        "eyebrow": "READY FOR THE ROAD",
+        "box_heading": "In the box",
+        "box_note": "Keep the supplied items together and read the instructions before first use.",
+        "specs_intro": "Choose a capacity above to view its matching specifications.",
+        "reviews_heading": "From our customers.",
+        "support_handle": "support-a20",
+        "warranty_label": "5-year warranty",
+        "warranty_years": "5",
+        "warranty_text": "Five years from delivery for manufacturing defects and component failure under normal use. Keep your proof of purchase and follow the model instructions.",
+        "care_heading": "Here for the road ahead.",
+        "closing_heading": "Ready for what comes next.",
+        "gallery_caption": "Images show the 8,000mAh model; check the selected specifications.",
+        "setup_heading": "Before you need it.",
+        "setup_heading_1": "Check the unit",
+        "setup_text_1": "Charge before use and inspect the unit, supplied clamp and cables.",
+        "setup_heading_2": "Confirm 12V fit",
+        "setup_text_2": "Check the vehicle battery, engine reference and model instructions.",
+        "setup_heading_3": "Follow the clamp",
+        "setup_text_3": "Connect in the specified order and confirm the correct status indication.",
+        "setup_heading_4": "Keep it ready",
+        "setup_text_4": "Disconnect as directed after starting, recharge after use and store dry.",
+        "video_url": "https://www.youtube.com/watch?v=cZLH2Q9gKlc",
+        "video_heading": "See how the A20 clamps on to a real car battery",
+        "video_caption": "Canyon Life on Amazon Live"
+      },
       "blocks": {
-        "common_io": {
-          "type": "metric",
+        "point0": {
+          "type": "selling_point",
           "settings": {
-            "value": "USB-C + 2x USB-A",
-            "label": "Charge the unit and power everyday devices",
+            "heading": "Starting power for your vehicle",
+            "text": "1,500A peak and 750A starting current for compatible 12V vehicles.",
+            "variant_match": "8000mAh"
+          }
+        },
+        "point1": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "Starting power for your vehicle",
+            "text": "3,000A peak and 1,500A starting current for compatible 12V vehicles.",
+            "variant_match": "12000mAh"
+          }
+        },
+        "point2": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "Starting power for your vehicle",
+            "text": "4,000A peak and 2,000A starting current for compatible 12V vehicles.",
+            "variant_match": "16000mAh"
+          }
+        },
+        "point3": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "Power beyond the engine bay",
+            "text": "Two USB-A outputs keep compatible phones and small devices supplied.",
             "variant_match": ""
           }
         },
-        "a20_8_peak": {
-          "type": "metric",
+        "point4": {
+          "type": "selling_point",
           "settings": {
-            "value": "1500A",
-            "label": "Peak current",
-            "variant_match": "8000mAh"
+            "heading": "Recharge through USB-C",
+            "text": "5V/2A or 9V/2A input, using a compatible power source.",
+            "variant_match": ""
           }
         },
-        "a20_8_capacity": {
-          "type": "metric",
+        "point5": {
+          "type": "selling_point",
           "settings": {
-            "value": "8,000mAh",
-            "label": "Rated capacity",
-            "variant_match": "8000mAh"
+            "heading": "Connection safeguards",
+            "text": "The supplied smart clamp includes reverse-polarity and short-circuit protection.",
+            "variant_match": ""
           }
         },
-        "a20_8_energy": {
-          "type": "metric",
+        "point6": {
+          "type": "selling_point",
           "settings": {
-            "value": "29.6Wh",
-            "label": "Rated energy",
-            "variant_match": "8000mAh"
+            "heading": "A light when you need it",
+            "text": "Steady, flashing and SOS modes help with roadside visibility.",
+            "variant_match": ""
           }
         },
-        "a20_12_peak": {
-          "type": "metric",
+        "feature0": {
+          "type": "feature",
           "settings": {
-            "value": "3000A",
-            "label": "Peak current",
-            "variant_match": "12000mAh"
+            "tab_label": "12V starting",
+            "eyebrow": "12V starting",
+            "heading": "A little backup\nfor a no-start moment.",
+            "body": "<p>Choose the capacity for your vehicle, then check its starting current and operating limits. Vehicle condition, battery condition and temperature affect the result.</p>",
+            "image_asset": "sn-approved-bf2ed3ad0c0b-1400.webp",
+            "image_alt": "A little backup\nfor a no-start moment.",
+            "image_fit": "contain"
           }
         },
-        "a20_12_capacity": {
-          "type": "metric",
+        "feature1": {
+          "type": "feature",
           "settings": {
-            "value": "12,000mAh",
-            "label": "Rated capacity",
-            "variant_match": "12000mAh"
+            "tab_label": "Device power",
+            "eyebrow": "Device power",
+            "heading": "Useful power,\nbetween the unexpected stops.",
+            "body": "<p>Recharge the A20 through USB-C and use its two USB-A outputs for compatible everyday devices. The selected capacity determines stored energy.</p>",
+            "image_asset": "sn-approved-f1ecfe154fb7-1400.webp",
+            "image_alt": "Useful power,\nbetween the unexpected stops.",
+            "image_fit": "contain"
           }
         },
-        "a20_12_energy": {
-          "type": "metric",
+        "feature2": {
+          "type": "feature",
           "settings": {
-            "value": "44.4Wh",
-            "label": "Rated energy",
-            "variant_match": "12000mAh"
+            "tab_label": "Smart clamp",
+            "eyebrow": "Smart clamp",
+            "heading": "A clearer connection\nbefore you start.",
+            "body": "<p>Follow the supplied clamp indicators and connection sequence. Reverse-polarity and short-circuit protection support careful use; always read the product and vehicle instructions.</p>",
+            "image_asset": "sn-approved-5ef9b2882ab6-1400.webp",
+            "image_alt": "A clearer connection\nbefore you start.",
+            "image_fit": "contain"
           }
         },
-        "a20_16_peak": {
-          "type": "metric",
+        "story0": {
+          "type": "story",
           "settings": {
-            "value": "4000A",
-            "label": "Peak current",
-            "variant_match": "16000mAh"
+            "tab_label": "Emergency light",
+            "eyebrow": "Emergency light",
+            "heading": "See the connection.\nSignal the situation.",
+            "body": "<p>A20 brings steady, flashing and SOS lighting together with starting and USB power. Keep the unit charged so it is ready when your plans change.</p>",
+            "image_asset": "sn-approved-2138044d58dc-1400.webp",
+            "image_alt": "See the connection.\nSignal the situation.",
+            "image_fit": "contain"
           }
         },
-        "a20_16_capacity": {
-          "type": "metric",
+        "story1": {
+          "type": "story",
           "settings": {
-            "value": "16,000mAh",
-            "label": "Rated capacity",
-            "variant_match": "16000mAh"
+            "tab_label": "Keep it together",
+            "eyebrow": "Keep it together",
+            "heading": "The essentials,\nin one portable kit.",
+            "body": "<p>Keep the jump starter, smart clamp and USB cable together. Inspect the connections before use and store within the operating limits.</p>",
+            "image_asset": "sn-approved-09c036d1ea6f-1400.webp",
+            "image_alt": "The essentials,\nin one portable kit.",
+            "image_fit": "contain"
           }
         },
-        "a20_16_energy": {
-          "type": "metric",
-          "settings": {
-            "value": "59.2Wh",
-            "label": "Rated energy",
-            "variant_match": "16000mAh"
-          }
-        }
-      },
-      "block_order": [
-        "a20_8_peak",
-        "a20_8_capacity",
-        "a20_8_energy",
-        "a20_12_peak",
-        "a20_12_capacity",
-        "a20_12_energy",
-        "a20_16_peak",
-        "a20_16_capacity",
-        "a20_16_energy",
-        "common_io"
-      ],
-      "settings": {
-        "accessibility_label": "A20 selected variant highlights"
-      }
-    },
-    "demo_video": {
-      "type": "suntneew-pdp-video-band",
-      "settings": {
-        "eyebrow": "Real footage",
-        "heading": "See how the A20 clamps on to a real car battery",
-        "lede": "Filmed on camera, start to finish: clamps on red first, the smart-clamp indicator already lit, the 12V readout and the USB output. No studio, no staged rescue.",
-        "video_url": "https://www.youtube.com/watch?v=cZLH2Q9gKlc",
-        "poster_alt": "SuntNeew A20 jump starter connected to a car battery in an engine bay",
-        "caption": "Canyon Life on Amazon Live",
-        "play_label": "Play the A20 demo video",
-        "cta_label": "Choose your A20",
-        "cta_link": "#main",
-        "cta_note": "",
-        "anchor_id": "demo"
-      }
-    },
-    "anchor_nav": {
-      "type": "suntneew-pdp-anchor-nav",
-      "blocks": {
-        "features": {
-          "type": "link",
-          "settings": {
-            "label": "Features",
-            "target_id": "features"
-          }
-        },
-        "specs": {
-          "type": "link",
-          "settings": {
-            "label": "Specifications",
-            "target_id": "specifications"
-          }
-        },
-        "box": {
-          "type": "link",
-          "settings": {
-            "label": "In the Box",
-            "target_id": "in-the-box"
-          }
-        },
-        "manuals": {
-          "type": "link",
-          "settings": {
-            "label": "Documents",
-            "target_id": "manuals"
-          }
-        },
-        "faq": {
-          "type": "link",
-          "settings": {
-            "label": "FAQ",
-            "target_id": "faq"
-          }
-        }
-      },
-      "block_order": [
-        "features",
-        "specs",
-        "box",
-        "manuals",
-        "faq"
-      ],
-      "settings": {}
-    },
-    "features": {
-      "type": "suntneew-a20-experience",
-      "settings": {}
-    },
-    "details": {
-      "type": "suntneew-pdp-details",
-      "blocks": {
-        "cap8": {
+        "detail_cap8": {
           "type": "spec",
           "settings": {
             "label": "Rated capacity",
             "value": "8,000mAh",
-            "group": "primary",
-            "variant_match": "8000mAh"
+            "variant_match": "8000mAh",
+            "group": "primary"
           }
         },
-        "energy8": {
+        "detail_energy8": {
           "type": "spec",
           "settings": {
             "label": "Rated energy",
             "value": "29.6Wh",
-            "group": "primary",
-            "variant_match": "8000mAh"
+            "variant_match": "8000mAh",
+            "group": "primary"
           }
         },
-        "start8": {
+        "detail_start8": {
           "type": "spec",
           "settings": {
             "label": "Starting current",
             "value": "750A",
-            "group": "primary",
-            "variant_match": "8000mAh"
+            "variant_match": "8000mAh",
+            "group": "primary"
           }
         },
-        "peak8": {
+        "detail_peak8": {
           "type": "spec",
           "settings": {
             "label": "Peak current",
             "value": "1500A",
-            "group": "primary",
-            "variant_match": "8000mAh"
+            "variant_match": "8000mAh",
+            "group": "primary"
           }
         },
-        "weight8": {
+        "detail_weight8": {
           "type": "spec",
           "settings": {
             "label": "Shipping weight",
             "value": "0.75kg",
-            "group": "installation",
-            "variant_match": "8000mAh"
+            "variant_match": "8000mAh",
+            "group": "installation"
           }
         },
-        "cap12": {
+        "detail_cap12": {
           "type": "spec",
           "settings": {
             "label": "Rated capacity",
             "value": "12,000mAh",
-            "group": "primary",
-            "variant_match": "12000mAh"
+            "variant_match": "12000mAh",
+            "group": "primary"
           }
         },
-        "energy12": {
+        "detail_energy12": {
           "type": "spec",
           "settings": {
             "label": "Rated energy",
             "value": "44.4Wh",
-            "group": "primary",
-            "variant_match": "12000mAh"
+            "variant_match": "12000mAh",
+            "group": "primary"
           }
         },
-        "start12": {
+        "detail_start12": {
           "type": "spec",
           "settings": {
             "label": "Starting current",
             "value": "1500A",
-            "group": "primary",
-            "variant_match": "12000mAh"
+            "variant_match": "12000mAh",
+            "group": "primary"
           }
         },
-        "peak12": {
+        "detail_peak12": {
           "type": "spec",
           "settings": {
             "label": "Peak current",
             "value": "3000A",
-            "group": "primary",
-            "variant_match": "12000mAh"
+            "variant_match": "12000mAh",
+            "group": "primary"
           }
         },
-        "weight12": {
+        "detail_weight12": {
           "type": "spec",
           "settings": {
             "label": "Shipping weight",
             "value": "0.83kg",
-            "group": "installation",
-            "variant_match": "12000mAh"
+            "variant_match": "12000mAh",
+            "group": "installation"
           }
         },
-        "cap16": {
+        "detail_cap16": {
           "type": "spec",
           "settings": {
             "label": "Rated capacity",
             "value": "16,000mAh",
-            "group": "primary",
-            "variant_match": "16000mAh"
+            "variant_match": "16000mAh",
+            "group": "primary"
           }
         },
-        "energy16": {
+        "detail_energy16": {
           "type": "spec",
           "settings": {
             "label": "Rated energy",
             "value": "59.2Wh",
-            "group": "primary",
-            "variant_match": "16000mAh"
+            "variant_match": "16000mAh",
+            "group": "primary"
           }
         },
-        "start16": {
+        "detail_start16": {
           "type": "spec",
           "settings": {
             "label": "Starting current",
             "value": "2000A",
-            "group": "primary",
-            "variant_match": "16000mAh"
+            "variant_match": "16000mAh",
+            "group": "primary"
           }
         },
-        "peak16": {
+        "detail_peak16": {
           "type": "spec",
           "settings": {
             "label": "Peak current",
             "value": "4000A",
-            "group": "primary",
-            "variant_match": "16000mAh"
+            "variant_match": "16000mAh",
+            "group": "primary"
           }
         },
-        "weight16": {
+        "detail_weight16": {
           "type": "spec",
           "settings": {
             "label": "Shipping weight",
             "value": "0.94kg",
-            "group": "installation",
-            "variant_match": "16000mAh"
+            "variant_match": "16000mAh",
+            "group": "installation"
           }
         },
-        "input": {
+        "detail_input": {
           "type": "spec",
           "settings": {
             "label": "Input",
             "value": "USB-C: 5V/2A, 9V/2A",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "output": {
+        "detail_output": {
           "type": "spec",
           "settings": {
             "label": "Output",
             "value": "2x USB-A: 5V/2A (3A max)",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "cycles": {
+        "detail_cycles": {
           "type": "spec",
           "settings": {
             "label": "Cycle-life reference",
             "value": "300 cycles",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "temperature": {
+        "detail_temperature": {
           "type": "spec",
           "settings": {
             "label": "Discharge temperature",
             "value": "-20 C to 60 C",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "box1": {
+        "detail_box1": {
           "type": "included",
           "settings": {
             "item": "A20 main unit x1",
             "variant_match": ""
           }
         },
-        "box2": {
+        "detail_box2": {
           "type": "included",
           "settings": {
             "item": "Smart clamp x1",
             "variant_match": ""
           }
         },
-        "box3": {
+        "detail_box3": {
           "type": "included",
           "settings": {
             "item": "USB cable x1",
             "variant_match": ""
           }
         },
-        "box4": {
+        "detail_box4": {
           "type": "included",
           "settings": {
             "item": "Manual x1",
             "variant_match": ""
           }
         },
-        "box5": {
+        "detail_box5": {
           "type": "included",
           "settings": {
             "item": "Color box x1",
             "variant_match": ""
           }
         },
-        "manual8": {
+        "detail_manual8": {
           "type": "download",
           "settings": {
             "label": "8,000mAh product pack (PDF)",
@@ -481,7 +367,7 @@
             "variant_match": "8000mAh"
           }
         },
-        "manual12": {
+        "detail_manual12": {
           "type": "download",
           "settings": {
             "label": "12,000mAh product pack (PDF)",
@@ -489,7 +375,7 @@
             "variant_match": "12000mAh"
           }
         },
-        "manual16": {
+        "detail_manual16": {
           "type": "download",
           "settings": {
             "label": "16,000mAh product pack (PDF)",
@@ -497,157 +383,35 @@
             "variant_match": "16000mAh"
           }
         },
-        "fcc": {
-          "type": "download",
-          "settings": {
-            "label": "FCC Supplier's Declaration of Conformity — CY-A20 family",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "FCC",
-            "description": "Model-family FCC documentation for CY-A20 8,000mAh / 12,000mAh / 16,000mAh variants.",
-            "public_copy_ready": true
-          }
-        },
-        "ul2743": {
-          "type": "download",
-          "settings": {
-            "label": "UL 2743 test report — A20 family",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "UL 2743 test report",
-            "description": "Product-level safety test report for the selected A20 model. This is a test report, not a UL Listing or certification.",
-            "public_copy_ready": false
-          }
-        },
-        "un38": {
-          "type": "download",
-          "settings": {
-            "label": "UN38.3 Summary — A20 family",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "UN38.3",
-            "description": "Transport-test summary for the A20 family; upload only a model-matched public copy.",
-            "public_copy_ready": false
-          }
-        },
-        "sds": {
-          "type": "download",
-          "settings": {
-            "label": "SDS — A20 family",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "SDS",
-            "description": "Safety data sheet for the A20 battery pack; upload only the approved public copy.",
-            "public_copy_ready": false
-          }
-        }
-      },
-      "block_order": [
-        "cap8",
-        "energy8",
-        "start8",
-        "peak8",
-        "weight8",
-        "cap12",
-        "energy12",
-        "start12",
-        "peak12",
-        "weight12",
-        "cap16",
-        "energy16",
-        "start16",
-        "peak16",
-        "weight16",
-        "input",
-        "output",
-        "cycles",
-        "temperature",
-        "box1",
-        "box2",
-        "box3",
-        "box4",
-        "box5",
-        "manual8",
-        "manual12",
-        "manual16",
-        "fcc",
-        "ul2743",
-        "un38",
-        "sds"
-      ],
-      "settings": {
-        "anchor_id": "specifications",
-        "eyebrow": "Product details",
-        "heading": "Specifications that follow your selected capacity",
-        "lede": "<p>Open only the category you need. The selected capacity controls the performance figures shown on this page.</p>",
-        "primary_group_heading": "Starting performance",
-        "system_group_heading": "Charging & outputs",
-        "installation_group_heading": "Physical & operating limits",
-        "included_heading": "In the box",
-        "download_heading": "Manuals & Documents",
-        "manuals_group_heading": "User Manuals",
-        "compliance_group_heading": "Safety & Compliance",
-        "compliance_note": "A20 uses one product page for the 8,000mAh, 12,000mAh and 16,000mAh family. Each compliance card states the model scope; public copies are added only after redaction review.",
-        "compliance_link_label": "View public copy",
-        "compliance_pending_label": "Public copy pending"
-      }
-    },
-    "faq": {
-      "type": "suntneew-pdp-faq",
-      "blocks": {
-        "q1": {
+        "faq_q1": {
           "type": "question",
           "settings": {
             "question": "How many A20 variants are there?",
-            "answer": "<p>The unified page has four sellable combinations: 8,000mAh Orange, 8,000mAh Red, 12,000mAh Orange and 16,000mAh Orange.</p>"
+            "answer": "<p>Choose from 8,000mAh Orange or Red, 12,000mAh Orange and 16,000mAh Orange. The price and stock status follow your selection.</p>"
           }
         },
-        "q2": {
+        "faq_q2": {
           "type": "question",
           "settings": {
             "question": "How should I choose an A20 capacity?",
             "answer": "<p>Start with the selected capacity's rated energy and peak current, then confirm 12V vehicle fit in the product manual. Do not choose from a generic engine-size promise alone.</p>"
           }
         },
-        "q3": {
+        "faq_q3": {
           "type": "question",
           "settings": {
             "question": "Can the A20 charge a phone?",
             "answer": "<p>Yes. The A20 has two USB-A outputs for everyday device charging, in addition to its USB-C input.</p>"
           }
         },
-        "q4": {
+        "faq_q4": {
           "type": "question",
           "settings": {
             "question": "What should I do before jump-starting?",
             "answer": "<p>Read the product manual, confirm correct clamp polarity, and follow the vehicle manufacturer's instructions. Product condition and vehicle battery condition affect results.</p>"
           }
-        }
-      },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4"
-      ],
-      "settings": {
-        "anchor_id": "faq",
-        "eyebrow": "A20 support",
-        "heading": "Frequently asked questions"
-      }
-    },
-    "judge_me_reviews": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_a20": {
+        },
+        "reviews": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
@@ -658,26 +422,54 @@
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_a20"
-      ],
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
+        "point0",
+        "point1",
+        "point2",
+        "point3",
+        "point4",
+        "point5",
+        "point6",
+        "feature0",
+        "feature1",
+        "feature2",
+        "story0",
+        "story1",
+        "detail_cap8",
+        "detail_energy8",
+        "detail_start8",
+        "detail_peak8",
+        "detail_weight8",
+        "detail_cap12",
+        "detail_energy12",
+        "detail_start12",
+        "detail_peak12",
+        "detail_weight12",
+        "detail_cap16",
+        "detail_energy16",
+        "detail_start16",
+        "detail_peak16",
+        "detail_weight16",
+        "detail_input",
+        "detail_output",
+        "detail_cycles",
+        "detail_temperature",
+        "detail_box1",
+        "detail_box2",
+        "detail_box3",
+        "detail_box4",
+        "detail_box5",
+        "detail_manual8",
+        "detail_manual12",
+        "detail_manual16",
+        "faq_q1",
+        "faq_q2",
+        "faq_q3",
+        "faq_q4",
+        "reviews"
+      ]
     }
   },
   "order": [
-    "main",
-    "proof",
-    "demo_video",
-    "anchor_nav",
-    "features",
-    "details",
-    "faq",
-    "judge_me_reviews"
+    "main"
   ]
 }

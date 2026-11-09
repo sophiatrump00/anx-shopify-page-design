@@ -1,405 +1,353 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-product",
-      "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h1"
-          }
-        },
-        "sku": {
-          "type": "sku",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>12V jump starting · OBD2 diagnostics</strong></p><p>A compact 8,000mAh / 29.6Wh unit with smart clamps and vehicle diagnostics. Confirm compatibility before connecting to your vehicle.</p>"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "bundle": {
-          "type": "suntneew_bundle_selector",
-          "settings": {
-            "enabled": true,
-            "show_savings": false,
-            "heading": "Choose a pack",
-            "body": "",
-            "discount_percent": 3
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "reviews": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "reviews",
-        "sku",
-        "price",
-        "intro",
-        "bundle",
-        "quantity_selector",
-        "buy_buttons"
-      ],
+      "type": "suntneew-pdp-approved",
       "settings": {
-        "show_fixed_add_to_cart": false,
-        "enable_suntneew_pdp_experience": true,
-        "suntneew_media_autoplay_interval": 6,
-        "show_suntneew_pdp_promises": true,
-        "desktop_media_width": 50,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "thumbnails",
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "suntneew_gallery_assets": "sn-pdp-20261105-oj02-kit-2000.webp|suntneew-oj02-gallery-02-obd.jpg|suntneew-oj02-feature-clamp.jpg|suntneew-oj02-feature-obd-mobile.jpg",
-        "suntneew_gallery_alts": "SuntNeew OJ02 OBD2 Portable Car Jump Starter with smart clamps and accessories|SuntNeew OJ02 connected for OBD2 vehicle diagnostics|SuntNeew OJ02 connected to a compatible 12V vehicle battery with the smart clamp|SuntNeew OJ02 OBD2 diagnostic interface in a vehicle"
-      }
-    },
-    "proof": {
-      "type": "suntneew-pdp-proof",
-      "blocks": {
-        "peak": {
-          "type": "metric",
-          "settings": {
-            "value": "1,500A",
-            "label": "Peak current",
-            "variant_match": ""
-          }
-        },
-        "start": {
-          "type": "metric",
-          "settings": {
-            "value": "700A",
-            "label": "Starting current",
-            "variant_match": ""
-          }
-        },
-        "capacity": {
-          "type": "metric",
-          "settings": {
-            "value": "8,000mAh",
-            "label": "Rated capacity",
-            "variant_match": ""
-          }
-        },
-        "obd": {
-          "type": "metric",
-          "settings": {
-            "value": "9",
-            "label": "OBD2 diagnostic functions",
-            "variant_match": ""
-          }
-        }
+        "model": "OJ02",
+        "heading": "OJ02\nJump Starter & OBD2 Reader",
+        "introduction": "12V starting support and OBD2 checks, together in one portable kit.",
+        "features_heading": "Start with power.\nLook a little closer.",
+        "features_intro": "A jump starter when you need backup. An OBD2 reader when you need more information.",
+        "configuration": "12V · 8,000mAh · OBD2",
+        "box_image": "sn-approved-a47a1f4fb67a-1400.webp",
+        "category": "Jump Starters",
+        "eyebrow": "READY FOR THE ROAD",
+        "box_heading": "In the box",
+        "box_note": "Keep the supplied items together and read the instructions before first use.",
+        "specs_intro": "Use the model instructions for the complete operating limits.",
+        "reviews_heading": "From our customers.",
+        "support_handle": "support-oj02",
+        "warranty_label": "5-year warranty",
+        "warranty_years": "5",
+        "warranty_text": "Five years from delivery for manufacturing defects and component failure under normal use. Keep your proof of purchase and follow the model instructions.",
+        "care_heading": "Here for the road ahead.",
+        "closing_heading": "Ready for what comes next.",
+        "gallery_assets": "sn-approved-a47a1f4fb67a-1400.webp|sn-approved-f40001faf2ed-1400.webp|sn-approved-d5f3c8077028-1400.webp|sn-approved-f2c16fdfa760-1400.webp",
+        "gallery_alts": "SuntNeew OJ02 OBD2 Portable Car Jump Starter with smart clamps and accessories|SuntNeew OJ02 connected for OBD2 vehicle diagnostics|SuntNeew OJ02 connected to a compatible 12V vehicle battery with the smart clamp|SuntNeew OJ02 OBD2 diagnostic interface in a vehicle",
+        "gallery_caption": "12V · 8,000mAh · OBD2",
+        "setup_heading": "Before you need it.",
+        "setup_heading_1": "Check the unit",
+        "setup_text_1": "Charge before use and inspect the unit, supplied clamp and cables.",
+        "setup_heading_2": "Confirm 12V fit",
+        "setup_text_2": "Check the vehicle battery, engine reference and model instructions.",
+        "setup_heading_3": "Follow the clamp",
+        "setup_text_3": "Connect in the specified order and confirm the correct status indication.",
+        "setup_heading_4": "Keep it ready",
+        "setup_text_4": "Disconnect as directed after starting, recharge after use and store dry."
       },
-      "block_order": [
-        "peak",
-        "start",
-        "capacity",
-        "obd"
-      ],
-      "settings": {
-        "accessibility_label": "OJ02 product highlights"
-      }
-    },
-    "anchor_nav": {
-      "type": "suntneew-pdp-anchor-nav",
       "blocks": {
-        "features": {
-          "type": "link",
+        "point0": {
+          "type": "selling_point",
           "settings": {
-            "label": "Features",
-            "target_id": "features"
+            "heading": "12V emergency starting",
+            "text": "700A starting current and 1,500A peak for compatible vehicle batteries.",
+            "variant_match": ""
           }
         },
-        "specs": {
-          "type": "link",
+        "point1": {
+          "type": "selling_point",
           "settings": {
-            "label": "Specifications",
-            "target_id": "specifications"
+            "heading": "OBD2 checks in the same kit",
+            "text": "Nine diagnostic functions, nine supported protocols and 12 languages.",
+            "variant_match": ""
           }
         },
-        "box": {
-          "type": "link",
+        "point2": {
+          "type": "selling_point",
           "settings": {
-            "label": "In the Box",
-            "target_id": "in-the-box"
+            "heading": "8,000mAh / 29.6Wh",
+            "text": "Portable energy for starting support and compatible devices.",
+            "variant_match": ""
           }
         },
-        "manuals": {
-          "type": "link",
+        "point3": {
+          "type": "selling_point",
           "settings": {
-            "label": "Documents",
-            "target_id": "manuals"
+            "heading": "USB-A power up to 36W",
+            "text": "Check the supported output profile and device requirements before connecting.",
+            "variant_match": ""
           }
         },
-        "faq": {
-          "type": "link",
+        "point4": {
+          "type": "selling_point",
           "settings": {
-            "label": "FAQ",
-            "target_id": "faq"
+            "heading": "Clear information at hand",
+            "text": "A status display, supplied smart clamp and emergency lighting support roadside use.",
+            "variant_match": ""
           }
-        }
-      },
-      "block_order": [
-        "features",
-        "specs",
-        "box",
-        "manuals",
-        "faq"
-      ],
-      "settings": {}
-    },
-    "features": {
-      "type": "suntneew-oj02-experience",
-      "settings": {}
-    },
-    "details": {
-      "type": "suntneew-pdp-details",
-      "blocks": {
-        "capacity": {
+        },
+        "feature0": {
+          "type": "feature",
+          "settings": {
+            "tab_label": "12V starting",
+            "eyebrow": "12V starting",
+            "heading": "Backup power\nfor a no-start moment.",
+            "body": "<p>Use the supplied smart clamp on a compatible 12V vehicle battery. Check polarity, status indications and the manual before attempting a start.</p>",
+            "image_asset": "sn-approved-d5f3c8077028-1400.webp",
+            "image_alt": "Backup power\nfor a no-start moment.",
+            "image_fit": "contain"
+          }
+        },
+        "feature1": {
+          "type": "feature",
+          "settings": {
+            "tab_label": "OBD2 checks",
+            "eyebrow": "OBD2 checks",
+            "heading": "Read the clues.\nUnderstand the next step.",
+            "body": "<p>Review supported OBD2 information through nine diagnostic functions, nine protocols and 12 languages. Confirm protocol compatibility with the vehicle before use.</p>",
+            "image_asset": "sn-approved-d35dd5637fe7-1400.webp",
+            "image_alt": "Read the clues.\nUnderstand the next step.",
+            "image_fit": "contain"
+          }
+        },
+        "feature2": {
+          "type": "feature",
+          "settings": {
+            "tab_label": "Device power",
+            "eyebrow": "Device power",
+            "heading": "Power for the devices\nyou keep close.",
+            "body": "<p>The 8,000mAh / 29.6Wh battery supports compatible USB devices, with USB-A output up to 36W under the supported profiles.</p>",
+            "image_asset": "sn-approved-4ce83c3754ca-1400.webp",
+            "image_alt": "Power for the devices\nyou keep close.",
+            "image_fit": "contain"
+          }
+        },
+        "story0": {
+          "type": "story",
+          "settings": {
+            "tab_label": "Status at a glance",
+            "eyebrow": "Status at a glance",
+            "heading": "Keep the essentials\nin view.",
+            "body": "<p>Read the display and clamp indicators before starting. The built-in light is useful when the connection is difficult to see.</p>",
+            "image_asset": "sn-approved-d35dd5637fe7-1400.webp",
+            "image_alt": "Keep the essentials\nin view.",
+            "image_fit": "contain"
+          }
+        },
+        "story1": {
+          "type": "story",
+          "settings": {
+            "tab_label": "Ready to carry",
+            "eyebrow": "Ready to carry",
+            "heading": "One kit for the\nunexpected stop.",
+            "body": "<p>Keep the OJ02, smart clamps and supplied accessories together. Use the model-specific instructions for starting and OBD2 operation.</p>",
+            "image_asset": "sn-approved-a47a1f4fb67a-1400.webp",
+            "image_alt": "One kit for the\nunexpected stop.",
+            "image_fit": "contain"
+          }
+        },
+        "detail_capacity": {
           "type": "spec",
           "settings": {
             "label": "Rated capacity",
             "value": "8,000mAh",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "energy": {
+        "detail_energy": {
           "type": "spec",
           "settings": {
             "label": "Rated energy",
             "value": "29.6Wh",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "starting": {
+        "detail_starting": {
           "type": "spec",
           "settings": {
             "label": "Starting current",
             "value": "700A",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "peak": {
+        "detail_peak": {
           "type": "spec",
           "settings": {
             "label": "Peak current",
             "value": "1,500A",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "range": {
+        "detail_range": {
           "type": "spec",
           "settings": {
             "label": "Engine reference",
             "value": "Up to 6.0L gasoline / 3.0L diesel",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "obd_functions": {
+        "detail_obd_functions": {
           "type": "spec",
           "settings": {
             "label": "OBD2 functions",
             "value": "9 diagnostic functions",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "obd_protocols": {
+        "detail_obd_protocols": {
           "type": "spec",
           "settings": {
             "label": "Vehicle protocols",
             "value": "9 major protocols; 12 languages",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "input": {
+        "detail_input": {
           "type": "spec",
           "settings": {
             "label": "Type-C input",
             "value": "5V/2A",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "output": {
+        "detail_output": {
           "type": "spec",
           "settings": {
             "label": "USB-A output",
             "value": "5V/3A, 9V/3A, 12V/3A; 36W max",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "display": {
+        "detail_display": {
           "type": "spec",
           "settings": {
             "label": "Charge display",
             "value": "1% increments",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "light_spec": {
+        "detail_light_spec": {
           "type": "spec",
           "settings": {
             "label": "Emergency light",
             "value": "Steady, warning flash and SOS",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "clamp": {
+        "detail_clamp": {
           "type": "spec",
           "settings": {
             "label": "Smart clamp",
             "value": "EC5; 10AWG cable; 50cm",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "dimension": {
+        "detail_dimension": {
           "type": "spec",
           "settings": {
             "label": "Product size",
             "value": "160 × 90 × 40mm",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "weight": {
+        "detail_weight": {
           "type": "spec",
           "settings": {
             "label": "Net weight",
             "value": "450g / 0.99lb",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "temperature": {
+        "detail_temperature": {
           "type": "spec",
           "settings": {
             "label": "Operating temperature",
             "value": "-20°C–60°C",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "storage_temperature": {
+        "detail_storage_temperature": {
           "type": "spec",
           "settings": {
             "label": "Storage temperature",
             "value": "-20°C–35°C",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "package_size": {
+        "detail_package_size": {
           "type": "spec",
           "settings": {
             "label": "Retail package size",
             "value": "195 × 130 × 100mm",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "package_weight": {
+        "detail_package_weight": {
           "type": "spec",
           "settings": {
             "label": "Retail package gross weight",
             "value": "1.1kg / 2.43lb",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "box1": {
+        "detail_box1": {
           "type": "included",
           "settings": {
             "item": "OJ02 main unit x1",
             "variant_match": ""
           }
         },
-        "box2": {
+        "detail_box2": {
           "type": "included",
           "settings": {
             "item": "50cm EC5 smart clamp x1",
             "variant_match": ""
           }
         },
-        "box3": {
+        "detail_box3": {
           "type": "included",
           "settings": {
             "item": "OBD connection cable x1",
             "variant_match": ""
           }
         },
-        "box4": {
+        "detail_box4": {
           "type": "included",
           "settings": {
             "item": "USB charging cable x1",
             "variant_match": ""
           }
         },
-        "box5": {
+        "detail_box5": {
           "type": "included",
           "settings": {
             "item": "User manual x1",
             "variant_match": ""
           }
         },
-        "box6": {
+        "detail_box6": {
           "type": "included",
           "settings": {
             "item": "Carrying pouch x1",
             "variant_match": ""
           }
         },
-        "box7": {
+        "detail_box7": {
           "type": "included",
           "settings": {
             "item": "Retail box x1",
             "variant_match": ""
           }
         },
-        "manual": {
+        "detail_manual": {
           "type": "download",
           "settings": {
             "label": "OJ02 user manual — EN · FR · DE (PDF)",
@@ -408,200 +356,109 @@
             "variant_match": ""
           }
         },
-        "fcc": {
+        "detail_fcc": {
           "type": "download",
           "settings": {
             "label": "FCC Supplier's Declaration of Conformity — OJ02",
             "link": "",
             "asset_name": "suntneew-oj02-fcc-sdoc.pdf",
             "variant_match": "",
-            "document_group": "compliance",
-            "standard": "FCC",
-            "description": "Model-matched FCC Supplier's Declaration of Conformity identifying OJ02.",
-            "public_copy_ready": true
+            "description": "Model-matched FCC Supplier's Declaration of Conformity identifying OJ02."
           }
         },
-        "ce": {
+        "detail_ce": {
           "type": "download",
           "settings": {
             "label": "CE-EMC certificate — OJ02",
             "link": "",
             "asset_name": "suntneew-oj02-ce-emc-certificate.pdf",
             "variant_match": "",
-            "document_group": "compliance",
-            "standard": "CE-EMC",
-            "description": "Model-matched CE-EMC certificate identifying OJ02.",
-            "public_copy_ready": true
+            "description": "Model-matched CE-EMC certificate identifying OJ02."
           }
         },
-        "rohs": {
+        "detail_rohs": {
           "type": "download",
           "settings": {
             "label": "RoHS certificate — OJ02",
             "link": "",
             "asset_name": "suntneew-oj02-rohs-certificate.pdf",
             "variant_match": "",
-            "document_group": "compliance",
-            "standard": "RoHS",
-            "description": "Model-matched RoHS certificate identifying OJ02.",
-            "public_copy_ready": true
+            "description": "Model-matched RoHS certificate identifying OJ02."
           }
         },
-        "ul2743": {
+        "detail_ul2743": {
           "type": "download",
           "settings": {
             "label": "UL 2743 test report — OJ02",
             "link": "",
             "asset_name": "suntneew-oj02-ul2743-test-report.pdf",
             "variant_match": "",
-            "document_group": "compliance",
-            "standard": "Tested to UL 2743",
-            "description": "Product-level OJ02 test report evaluated against UL 2743 requirements. This is not a UL Listing or UL certification.",
-            "public_copy_ready": true
+            "description": "Product-level OJ02 test report evaluated against UL 2743 requirements. This is not a UL Listing or UL certification."
           }
         },
-        "un38": {
+        "detail_un38": {
           "type": "download",
           "settings": {
             "label": "UN38.3 transport test report — OJ02",
             "link": "",
             "asset_name": "suntneew-oj02-un38-3-summary.pdf",
             "variant_match": "",
-            "document_group": "compliance",
-            "standard": "UN38.3",
-            "description": "Model-matched battery transport test report identifying OJ02.",
-            "public_copy_ready": true
+            "description": "Model-matched battery transport test report identifying OJ02."
           }
         },
-        "sds": {
+        "detail_sds": {
           "type": "download",
           "settings": {
             "label": "Safety data sheet — OJ02",
             "link": "",
             "asset_name": "suntneew-oj02-sds.pdf",
             "variant_match": "",
-            "document_group": "compliance",
-            "standard": "SDS",
-            "description": "Safety data sheet for the battery used in OJ02.",
-            "public_copy_ready": true
+            "description": "Safety data sheet for the battery used in OJ02."
           }
-        }
-      },
-      "block_order": [
-        "capacity",
-        "energy",
-        "starting",
-        "peak",
-        "range",
-        "obd_functions",
-        "obd_protocols",
-        "input",
-        "output",
-        "display",
-        "light_spec",
-        "clamp",
-        "dimension",
-        "weight",
-        "temperature",
-        "storage_temperature",
-        "package_size",
-        "package_weight",
-        "box1",
-        "box2",
-        "box3",
-        "box4",
-        "box5",
-        "box6",
-        "box7",
-        "manual",
-        "fcc",
-        "ce",
-        "rohs",
-        "ul2743",
-        "un38",
-        "sds"
-      ],
-      "settings": {
-        "anchor_id": "specifications",
-        "eyebrow": "Product details",
-        "heading": "OJ02 technical specifications",
-        "lede": "<p>Values shown here follow the OJ02 product information workbook. Follow the user manual and the vehicle compatibility guidance before every use.</p>",
-        "primary_group_heading": "Starting & diagnostic performance",
-        "system_group_heading": "Charging, ports & clamp",
-        "installation_group_heading": "Physical & operating limits",
-        "included_heading": "In the box",
-        "download_heading": "Manuals & Documents",
-        "manuals_group_heading": "User Manual",
-        "compliance_group_heading": "Safety & Compliance",
-        "compliance_note": "Each document identifies OJ02 and its document type. Check the model and scope before use. The UL 2743 item is a test report, not a UL Listing or UL certification.",
-        "compliance_link_label": "View PDF",
-        "compliance_pending_label": "Public copy pending"
-      }
-    },
-    "faq": {
-      "type": "suntneew-pdp-faq",
-      "blocks": {
-        "q1": {
+        },
+        "faq_q1": {
           "type": "question",
           "settings": {
             "question": "Which vehicles is OJ02 designed to support?",
             "answer": "<p>OJ02 is for compatible 12V vehicles, with a stated reference of up to 6.0L gasoline or 3.0L diesel engines. Confirm the vehicle, battery condition and manual before use.</p>"
           }
         },
-        "q2": {
+        "faq_q2": {
           "type": "question",
           "settings": {
             "question": "What do the 700A and 1,500A figures mean?",
             "answer": "<p>OJ02 is specified with 700A starting current and 1,500A peak current. Actual results vary with vehicle type, battery condition, engine condition and temperature.</p>"
           }
         },
-        "q3": {
+        "faq_q3": {
           "type": "question",
           "settings": {
             "question": "What can the OBD2 function do?",
             "answer": "<p>OJ02 provides 9 diagnostic functions, including reading and clearing fault codes, live data, I/M readiness and supported sensor checks. It supports 9 major protocols and 12 languages; vehicle compatibility should be confirmed before use.</p>"
           }
         },
-        "q4": {
+        "faq_q4": {
           "type": "question",
           "settings": {
             "question": "What does the smart clamp include?",
             "answer": "<p>The EC5 clamp uses a 10AWG, 50cm cable with status lights and audible guidance. Connect red to positive and black to negative, then follow the indicator and manual sequence.</p>"
           }
         },
-        "q5": {
+        "faq_q5": {
           "type": "question",
           "settings": {
             "question": "Can OJ02 charge a phone or small device?",
             "answer": "<p>Yes. The USB output supports 5V/3A, 9V/3A and 12V/3A, up to 36W maximum for compatible devices.</p>"
           }
         },
-        "q6": {
+        "faq_q6": {
           "type": "question",
           "settings": {
             "question": "What light modes does OJ02 have?",
             "answer": "<p>The built-in LED supports steady illumination, red warning flashes and SOS signaling for roadside and outdoor emergencies.</p>"
           }
-        }
-      },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5",
-        "q6"
-      ],
-      "settings": {
-        "anchor_id": "faq",
-        "eyebrow": "OJ02 SUPPORT",
-        "heading": "Frequently asked questions"
-      }
-    },
-    "judge_me_reviews": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_oj02": {
+        },
+        "reviews": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
@@ -612,25 +469,59 @@
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_oj02"
-      ],
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
+        "point0",
+        "point1",
+        "point2",
+        "point3",
+        "point4",
+        "feature0",
+        "feature1",
+        "feature2",
+        "story0",
+        "story1",
+        "detail_capacity",
+        "detail_energy",
+        "detail_starting",
+        "detail_peak",
+        "detail_range",
+        "detail_obd_functions",
+        "detail_obd_protocols",
+        "detail_input",
+        "detail_output",
+        "detail_display",
+        "detail_light_spec",
+        "detail_clamp",
+        "detail_dimension",
+        "detail_weight",
+        "detail_temperature",
+        "detail_storage_temperature",
+        "detail_package_size",
+        "detail_package_weight",
+        "detail_box1",
+        "detail_box2",
+        "detail_box3",
+        "detail_box4",
+        "detail_box5",
+        "detail_box6",
+        "detail_box7",
+        "detail_manual",
+        "detail_fcc",
+        "detail_ce",
+        "detail_rohs",
+        "detail_ul2743",
+        "detail_un38",
+        "detail_sds",
+        "faq_q1",
+        "faq_q2",
+        "faq_q3",
+        "faq_q4",
+        "faq_q5",
+        "faq_q6",
+        "reviews"
+      ]
     }
   },
   "order": [
-    "main",
-    "proof",
-    "anchor_nav",
-    "features",
-    "details",
-    "faq",
-    "judge_me_reviews"
+    "main"
   ]
 }

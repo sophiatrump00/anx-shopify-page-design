@@ -1,222 +1,140 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-product",
-      "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h1"
-          }
-        },
-        "sku": {
-          "type": "sku",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>80 × 60 infrared · 1.83-inch touchscreen</strong></p><p>A compact thermal camera for quick visual checks at home, in vehicles and around everyday equipment. USB-C charging and built-in image capture in a 40g body.</p>"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "bundle": {
-          "type": "suntneew_bundle_selector",
-          "settings": {
-            "enabled": true,
-            "show_savings": false,
-            "heading": "Choose a pack",
-            "body": "",
-            "discount_percent": 3
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "reviews": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "reviews",
-        "sku",
-        "price",
-        "intro",
-        "bundle",
-        "quantity_selector",
-        "buy_buttons"
-      ],
+      "type": "suntneew-pdp-approved",
       "settings": {
-        "show_fixed_add_to_cart": false,
-        "enable_suntneew_pdp_experience": true,
-        "suntneew_media_autoplay_interval": 6,
-        "show_suntneew_pdp_promises": true,
-        "desktop_media_width": 50,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "thumbnails",
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3
-      }
-    },
-    "proof": {
-      "type": "suntneew-pdp-proof",
-      "settings": {},
-      "blocks": {
-        "resolution": {
-          "type": "metric",
-          "settings": {
-            "value": "80 × 60",
-            "label": "Infrared resolution",
-            "variant_match": ""
-          }
-        },
-        "screen": {
-          "type": "metric",
-          "settings": {
-            "value": "1.83-inch",
-            "label": "IPS touchscreen",
-            "variant_match": ""
-          }
-        },
-        "palettes": {
-          "type": "metric",
-          "settings": {
-            "value": "18",
-            "label": "Color palettes",
-            "variant_match": ""
-          }
-        },
-        "weight": {
-          "type": "metric",
-          "settings": {
-            "value": "40g",
-            "label": "Body weight",
-            "variant_match": ""
-          }
-        }
-      },
-      "block_order": [
-        "resolution",
-        "screen",
-        "palettes",
-        "weight"
-      ]
-    },
-    "anchor_nav": {
-      "type": "suntneew-pdp-anchor-nav",
-      "blocks": {
-        "features": {
-          "type": "link",
-          "settings": {
-            "label": "Features",
-            "target_id": "features"
-          }
-        },
-        "specs": {
-          "type": "link",
-          "settings": {
-            "label": "Specifications",
-            "target_id": "specifications"
-          }
-        },
-        "box": {
-          "type": "link",
-          "settings": {
-            "label": "In the Box",
-            "target_id": "in-the-box"
-          }
-        },
-        "manuals": {
-          "type": "link",
-          "settings": {
-            "label": "Documents",
-            "target_id": "manuals"
-          }
-        },
-        "faq": {
-          "type": "link",
-          "settings": {
-            "label": "FAQ",
-            "target_id": "faq"
-          }
-        }
-      },
-      "block_order": [
-        "features",
-        "specs",
-        "box",
-        "manuals",
-        "faq"
-      ],
-      "settings": {}
-    },
-    "features": {
-      "type": "suntneew-pdp-story",
-      "settings": {
-        "anchor_id": "features",
-        "eyebrow": "SUGAR MINI LY-AD19",
-        "heading": "See the temperature pattern",
-        "lede": "<p>A compact inspection tool for everyday visual checks.</p>",
-        "layout_mode": "split"
+        "model": "AD19",
+        "heading": "AD19\nCompact Thermal Camera",
+        "introduction": "A pocket-size view of temperature patterns around everyday equipment.",
+        "features_heading": "See the pattern.\nTake a closer look.",
+        "features_intro": "A compact tool for basic visual checks at home, in the vehicle and around everyday equipment.",
+        "configuration": "80 × 60 IR · 1.83-inch screen · 40g",
+        "box_image": "sn-approved-33b03fd3746d-1400.webp",
+        "category": "Thermal Cameras",
+        "eyebrow": "A CLOSER LOOK",
+        "box_heading": "In the box",
+        "box_note": "Keep the supplied items together and read the instructions before first use.",
+        "specs_intro": "Use the model instructions for the complete operating limits.",
+        "reviews_heading": "From our customers.",
+        "support_handle": "contact-us",
+        "warranty_label": "Warranty & service",
+        "warranty_years": "",
+        "warranty_text": "Contact our team with your model and order details for the applicable warranty and service terms.",
+        "care_heading": "Here when you need help.",
+        "closing_heading": "Take a closer look.",
+        "gallery_caption": "80 × 60 IR · 1.83-inch screen · 40g",
+        "setup_heading": "Before your first check.",
+        "setup_heading_1": "Read the instructions",
+        "setup_text_1": "Review the supplied instruction card and measurement limits before use.",
+        "setup_heading_2": "Check the conditions",
+        "setup_text_2": "Surface, distance and surroundings affect the reading.",
+        "setup_heading_3": "Keep the right distance",
+        "setup_text_3": "The recommended precise measuring distance is within 1.5m.",
+        "setup_heading_4": "Interpret carefully",
+        "setup_text_4": "Use patterns for basic checks and seek professional testing when needed."
       },
       "blocks": {
+        "point0": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "A thermal view of everyday equipment",
+            "text": "80 × 60 infrared sensor with a 1600 × 1200 visible-light camera.",
+            "variant_match": ""
+          }
+        },
+        "point1": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "A view you can adjust",
+            "text": "1.83-inch IPS touchscreen and 18 selectable color palettes.",
+            "variant_match": ""
+          }
+        },
+        "point2": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "Check temperature patterns",
+            "text": "Approximately −10°C to 450°C within the stated accuracy ranges.",
+            "variant_match": ""
+          }
+        },
+        "point3": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "Keep the distance in mind",
+            "text": "Recommended precise measuring distance is within 1.5m.",
+            "variant_match": ""
+          }
+        },
+        "point4": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "Easy to carry and recharge",
+            "text": "40g body, USB-C charging and built-in image capture.",
+            "variant_match": ""
+          }
+        },
         "feature0": {
           "type": "feature",
           "settings": {
+            "tab_label": "Everyday checks",
+            "eyebrow": "Everyday checks",
             "heading": "Check everyday equipment.",
             "body": "<p>Use the infrared view for basic checks of circuit boards, underfloor heating patterns, cooking temperatures and vehicle troubleshooting. AD19 is not a substitute for professional diagnostic equipment.</p>",
-            "image_fit": "contain",
-            "image": "shopify://shop_images/5_c6cdc066-2e1e-40f5-9883-f5c23134bf20.jpg",
-            "image_alt": "SUGAR MINI LY-AD19 thermal camera and imaging display"
+            "image_asset": "shopify://shop_images/5_c6cdc066-2e1e-40f5-9883-f5c23134bf20.jpg",
+            "image_alt": "SUGAR MINI LY-AD19 thermal camera and imaging display",
+            "image_fit": "contain"
           }
         },
         "feature1": {
           "type": "feature",
           "settings": {
+            "tab_label": "Display & palettes",
+            "eyebrow": "Display & palettes",
             "heading": "Choose the view that helps.",
             "body": "<p>The 1.83-inch IPS touchscreen offers 18 selectable color palettes, alongside an 80 × 60 infrared sensor and a 1600 × 1200 visible-light camera.</p>",
-            "image_fit": "contain",
-            "image": "shopify://shop_images/2_0a605139-8580-46f8-8687-968327ce17be.jpg",
-            "image_alt": "SUGAR MINI LY-AD19 thermal camera and imaging display"
+            "image_asset": "shopify://shop_images/2_0a605139-8580-46f8-8687-968327ce17be.jpg",
+            "image_alt": "SUGAR MINI LY-AD19 thermal camera and imaging display",
+            "image_fit": "contain"
           }
-        }
-      },
-      "block_order": [
-        "feature0",
-        "feature1"
-      ]
-    },
-    "details": {
-      "type": "suntneew-pdp-details",
-      "blocks": {
-        "s0": {
+        },
+        "feature2": {
+          "type": "feature",
+          "settings": {
+            "tab_label": "Pocket size",
+            "eyebrow": "Pocket size",
+            "heading": "A small tool\nto keep close.",
+            "body": "<p>The 40g body and USB-C charging make AD19 easy to keep with everyday tools. Use the built-in image capture to record a pattern for closer review.</p>",
+            "image_asset": "sn-approved-33b03fd3746d-1400.webp",
+            "image_alt": "A small tool\nto keep close.",
+            "image_fit": "contain"
+          }
+        },
+        "story0": {
+          "type": "story",
+          "settings": {
+            "tab_label": "Interpreting the view",
+            "eyebrow": "Interpreting the view",
+            "heading": "Look for the pattern.\nCheck the conditions.",
+            "body": "<p>Temperature readings depend on the surface, distance and conditions. Stay within the stated measurement limits and follow the supplied instruction card.</p>",
+            "image_asset": "shopify://shop_images/4_0c64a761-d06e-4f8a-bff5-ecc22aee4d17.jpg",
+            "image_alt": "Look for the pattern.\nCheck the conditions.",
+            "image_fit": "contain"
+          }
+        },
+        "story1": {
+          "type": "story",
+          "settings": {
+            "tab_label": "Simple visual checks",
+            "eyebrow": "Simple visual checks",
+            "heading": "A closer look\nat everyday equipment.",
+            "body": "<p>Use AD19 for basic checks of heating patterns, circuit boards, cooking and vehicle equipment. It is not a substitute for professional diagnostic equipment.</p>",
+            "image_asset": "shopify://shop_images/5_c6cdc066-2e1e-40f5-9883-f5c23134bf20.jpg",
+            "image_alt": "A closer look\nat everyday equipment.",
+            "image_fit": "contain"
+          }
+        },
+        "detail_s0": {
           "type": "spec",
           "settings": {
             "label": "Infrared resolution",
@@ -224,7 +142,7 @@
             "group": "primary"
           }
         },
-        "s1": {
+        "detail_s1": {
           "type": "spec",
           "settings": {
             "label": "Visible-light camera",
@@ -232,7 +150,7 @@
             "group": "primary"
           }
         },
-        "s2": {
+        "detail_s2": {
           "type": "spec",
           "settings": {
             "label": "Temperature range",
@@ -240,7 +158,7 @@
             "group": "primary"
           }
         },
-        "s3": {
+        "detail_s3": {
           "type": "spec",
           "settings": {
             "label": "Recommended precise measuring distance",
@@ -248,7 +166,7 @@
             "group": "primary"
           }
         },
-        "s4": {
+        "detail_s4": {
           "type": "spec",
           "settings": {
             "label": "Display",
@@ -256,7 +174,7 @@
             "group": "system"
           }
         },
-        "s5": {
+        "detail_s5": {
           "type": "spec",
           "settings": {
             "label": "Color palettes",
@@ -264,7 +182,7 @@
             "group": "system"
           }
         },
-        "s6": {
+        "detail_s6": {
           "type": "spec",
           "settings": {
             "label": "Charging",
@@ -272,7 +190,7 @@
             "group": "system"
           }
         },
-        "s7": {
+        "detail_s7": {
           "type": "spec",
           "settings": {
             "label": "Image capture",
@@ -280,7 +198,7 @@
             "group": "system"
           }
         },
-        "s8": {
+        "detail_s8": {
           "type": "spec",
           "settings": {
             "label": "Body weight",
@@ -288,117 +206,64 @@
             "group": "installation"
           }
         },
-        "i0": {
+        "detail_i0": {
           "type": "included",
           "settings": {
             "item": "LY-AD19 thermal camera"
           }
         },
-        "i1": {
+        "detail_i1": {
           "type": "included",
           "settings": {
             "item": "USB-C cable"
           }
         },
-        "i2": {
+        "detail_i2": {
           "type": "included",
           "settings": {
             "item": "Wrist strap"
           }
         },
-        "i3": {
+        "detail_i3": {
           "type": "included",
           "settings": {
             "item": "Cleaning cloth"
           }
         },
-        "i4": {
+        "detail_i4": {
           "type": "included",
           "settings": {
             "item": "Instruction card"
           }
         },
-        "i5": {
+        "detail_i5": {
           "type": "included",
           "settings": {
             "item": "Storage pouch"
           }
-        }
-      },
-      "block_order": [
-        "s0",
-        "s1",
-        "s2",
-        "s3",
-        "s4",
-        "s5",
-        "s6",
-        "s7",
-        "s8",
-        "i0",
-        "i1",
-        "i2",
-        "i3",
-        "i4",
-        "i5"
-      ],
-      "settings": {
-        "anchor_id": "specifications",
-        "eyebrow": "Product details",
-        "heading": "LY-AD19 technical specifications",
-        "lede": "<p>Use the stated measuring range and distance for basic inspection. Conditions affect the result.</p>",
-        "primary_group_heading": "Imaging & measurement",
-        "system_group_heading": "Display & charging",
-        "installation_group_heading": "Physical details",
-        "included_heading": "In the box",
-        "download_heading": "Manuals & Documents",
-        "manuals_group_heading": "User Manual",
-        "compliance_group_heading": "Safety & Compliance",
-        "compliance_note": "Contact support for model-matched instructions and documentation before relying on a measurement.",
-        "compliance_link_label": "View PDF",
-        "compliance_pending_label": "Public copy pending"
-      }
-    },
-    "faq": {
-      "type": "suntneew-pdp-faq",
-      "settings": {
-        "anchor_id": "faq",
-        "heading": "LY-AD19 questions, answered",
-        "eyebrow": "Need to know"
-      },
-      "blocks": {
-        "q0": {
+        },
+        "faq_q0": {
           "type": "question",
           "settings": {
             "question": "What can I use AD19 to check?",
             "answer": "<p>Basic visual temperature checks around circuits, heating patterns, cooking and vehicles. It is a compact inspection tool and does not replace professional diagnostic equipment.</p>"
           }
         },
-        "q1": {
+        "faq_q1": {
           "type": "question",
           "settings": {
             "question": "How close should the camera be?",
             "answer": "<p>The recommended precise measuring distance is within 1.5m. Use the product instructions and stay within its stated measurement limits.</p>"
           }
         },
-        "q2": {
+        "faq_q2": {
           "type": "question",
           "settings": {
             "question": "What comes in the box?",
             "answer": "<p>The thermal camera, USB-C cable, wrist strap, cleaning cloth, instruction card and storage pouch.</p>"
           }
-        }
-      },
-      "block_order": [
-        "q0",
-        "q1",
-        "q2"
-      ]
-    },
-    "judge_me_reviews": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_oj02": {
+        },
+        "reviews": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
@@ -409,25 +274,39 @@
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_oj02"
-      ],
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
+        "point0",
+        "point1",
+        "point2",
+        "point3",
+        "point4",
+        "feature0",
+        "feature1",
+        "feature2",
+        "story0",
+        "story1",
+        "detail_s0",
+        "detail_s1",
+        "detail_s2",
+        "detail_s3",
+        "detail_s4",
+        "detail_s5",
+        "detail_s6",
+        "detail_s7",
+        "detail_s8",
+        "detail_i0",
+        "detail_i1",
+        "detail_i2",
+        "detail_i3",
+        "detail_i4",
+        "detail_i5",
+        "faq_q0",
+        "faq_q1",
+        "faq_q2",
+        "reviews"
+      ]
     }
   },
   "order": [
-    "main",
-    "proof",
-    "anchor_nav",
-    "features",
-    "details",
-    "faq",
-    "judge_me_reviews"
+    "main"
   ]
 }

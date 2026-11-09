@@ -99,32 +99,24 @@ test('cart network failure releases the submit lock; retry submits the actual qu
   await form._onSubmit({ preventDefault() {} }); assert.equal(submittedQuantity, '3'); assert.equal(added, 1); assert.equal(calls, 3);
 });
 
-test('all ten in-scope public PDPs use native purchasing and model-specific details', () => {
+test('all ten approved PDPs retain model-specific specifications, available documents and real review widgets', () => {
   for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'u23', 'u32', 'kb700', 'oj02']) {
-    const template = JSON.parse(read(`templates/product.${name}.json`).replace(/\/\*[\s\S]*?\*\//g, ''));
-    assert.equal(template.sections.main.type, 'main-product', name);
-    assert.equal(template.sections.main.settings.show_fixed_add_to_cart, false, name);
-    assert.ok(template.sections.main.block_order.includes('reviews'), name);
-    assert.ok(template.sections.details.block_order.length > 0, name);
-    for (const asset of (template.sections.main.settings.suntneew_gallery_assets || '').split('|').filter(Boolean)) assert.ok(fs.existsSync(new URL('../assets/' + asset, import.meta.url)), `${name}: ${asset}`);
+    const template = JSON.parse(read(`templates/product.${name}.json`));
+    const section = template.sections.main;
+    assert.equal(section.type, 'suntneew-pdp-approved', name);
+    const blocks = Object.values(section.blocks);
+    assert.ok(blocks.some(block => block.type === 'spec'), name);
+    assert.ok(blocks.some(block => block.type.startsWith('shopify://apps/judge-me-reviews/')), name);
+    assert.ok(blocks.length <= 50, name);
+    for (const asset of (section.settings.gallery_assets || '').split('|').filter(Boolean)) assert.ok(fs.existsSync(new URL('../assets/' + asset, import.meta.url)), `${name}: ${asset}`);
+    for (const block of blocks.filter(block => block.type === 'download')) {
+      assert.ok(block.settings.asset_name || block.settings.link, name);
+      if (block.settings.asset_name) assert.ok(fs.existsSync(new URL('../assets/' + block.settings.asset_name, import.meta.url)), `${name}: ${block.settings.asset_name}`);
+    }
   }
   const a3 = read('templates/product.a3.json'); assert.doesNotMatch(a3, /suntneew-a3-sales/); assert.match(a3, /suntneew-a3-ul2743-test-report-v20.pdf/);
-});
-
-test('quantity preset offers match the captured active Shopify discount eligibility', () => {
-  const live = JSON.parse(read('tools/fixtures/pdp-multi-pack-20261105.json'));
-  const offers = new Map(live.levels[0].handles.map(handle => [handle, live.levels[0].percent]));
-  const handles = {
-    a20: 'suntneew-a20-jump-starter-8000mah', a3: 'suntneew-a3-jump-starter-16000mah',
-    u23: 'suntneew-u23-portable-car-jump-starter-8-000mah', u32: 'suntneew-u32-portable-car-jump-starter-10-000mah'
-  };
-  for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'u23', 'u32', 'kb700', 'oj02']) {
-    const template = JSON.parse(read(`templates/product.${name}.json`).replace(/\/\*[\s\S]*?\*\//g, ''));
-    const preset = Object.values(template.sections.main.blocks).find(block => block.type === 'suntneew_bundle_selector').settings;
-    assert.equal(preset.enabled, true, name);
-    assert.equal(preset.show_savings, offers.has(handles[name]), name);
-    if (preset.show_savings) assert.equal(preset.discount_percent, offers.get(handles[name]), name);
-  }
+  for (const model of ['u23', 'u32']) assert.match(read(`templates/product.${model}.json`), /10\.5V/);
+  assert.match(read('templates/product.rv-314ah.json'), /157A/);
 });
 
 test('in-page links and browser hash navigation reveal the requested detail panel', t => {
