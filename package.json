@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tools/g31-mobile.test.mjs tools/g31-desktop.test.mjs tools/pdp-bundle-selector.test.mjs tools/shogun-integration.test.mjs tools/pdp-unified.test.mjs",
+    "test": "node --test tools/g31-mobile.test.mjs tools/g31-desktop.test.mjs tools/pdp-bundle-selector.test.mjs tools/shogun-integration.test.mjs tools/pdp-unified.test.mjs tools/g31-approved.test.mjs",
     "check:structure": "node tools/validate-theme.mjs",
     "check:theme": "shopify theme check --fail-level error"
   },

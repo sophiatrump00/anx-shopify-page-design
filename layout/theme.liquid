@@ -1,4 +1,3 @@
-{% include 'shogun-content-handler' %}
 {% assign shogun_content_for_header = blank %}
 {% assign shogun_content_for_layout = blank %}
 {% # theme-check-disable-next-line DeprecatedTag %}
@@ -13,9 +12,7 @@
 {%- endcomment -%}
 
 {%- assign g31_mobile_live = false -%}
-{%- if product.handle == 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-31' and template.suffix == 'rv-g31' -%}
-  {%- assign g31_mobile_live = true -%}
-{%- endif -%}
+{% comment %}The rv-g31 template now renders a single responsive approved PDP; the legacy split mobile shell remains disabled.{% endcomment %}
 <!doctype html>
 
 <html lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
