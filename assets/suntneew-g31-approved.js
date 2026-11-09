@@ -46,7 +46,10 @@
       if (!root.isConnected) return;
       // Do not show a second price while the main price remains in the viewport.
       sticky.hidden = !available || mainPrice.getBoundingClientRect().bottom > 0 || !!root.querySelector('dialog[open]');
-      const offset = (nav?.getBoundingClientRect().bottom || 0) + 30;
+      const shell = getComputedStyle(document.documentElement);
+      const pixels = name => parseFloat(shell.getPropertyValue(name)) || 0;
+      const reservedHeader = pixels('--header-height') * pixels('--sticky-header-enabled') + pixels('--announcement-bar-height') * pixels('--sticky-announcement-bar-enabled');
+      const offset = Math.max((nav?.getBoundingClientRect().bottom || 0) + 30, reservedHeader + (nav?.offsetHeight || 0) + 20);
       let active = root.querySelector('.nav-links a');
       root.querySelectorAll('.nav-links a').forEach(link => {
         const target = root.querySelector(link.getAttribute('href'));
