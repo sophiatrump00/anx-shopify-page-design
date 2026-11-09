@@ -670,3 +670,5 @@ html:has(.sn-approved-pdp){scroll-behavior:auto}
 }
 
 .sn-approved-pdp .approved-video video{width:100%;height:100%;object-fit:contain;background:#202020}
+
+.sn-approved-pdp .approved-options>div{display:grid;gap:7px;min-width:0}
