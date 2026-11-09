@@ -61,6 +61,20 @@
     function queueLayout() { if (!frame) frame = requestAnimationFrame(layout); }
     on(window, 'scroll', queueLayout, { passive: true });
     on(window, 'resize', queueLayout, { passive: true });
+    // Own in-page navigation so the theme's delegated smooth scroll cannot
+    // race the native anchor jump or leave the section halfway into view.
+    on(root, 'click', event => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const hash = link.getAttribute('href');
+      if (!/^#[a-zA-Z][\w-]*$/.test(hash)) return;
+      const target = root.querySelector(hash);
+      if (!target) return;
+      event.preventDefault();
+      if (location.hash !== hash) history.pushState(null, '', hash);
+      target.scrollIntoView({ block: 'start', behavior: 'auto' });
+      queueLayout();
+    });
     on(quantity, 'change', sync);
     root.querySelectorAll('[data-g31-quantity]').forEach(button => on(button, 'click', () => {
       quantity.value = String(Number(quantity.value) + Number(button.dataset.g31Quantity) * step);
