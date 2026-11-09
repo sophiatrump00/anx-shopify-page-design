@@ -74,6 +74,27 @@ test('gallery and keyboard tabs reveal actual content and reinitialization does 
   assert.equal(root.querySelector('[data-feature="1"]').getAttribute('aria-selected'), 'true');
   w.document.dispatchEvent(new w.Event('shopify:section:load')); root.querySelector('[data-g31-quantity="1"]').click(); assert.equal(quantity.value, '2');
 });
+test('section links prevent competing theme scrolling and retain the URL hash', t => {
+  const { w, root } = setup(t);
+  let localScrolls = 0, themeScrolls = 0;
+  root.querySelector('#panel-1').scrollIntoView = options => { assert.equal(options.behavior, 'auto'); localScrolls++; };
+  w.document.addEventListener('click', event => { if (!event.defaultPrevented) themeScrolls++; });
+  root.querySelector('a[href="#panel-1"]').click();
+  assert.equal(localScrolls, 1); assert.equal(themeScrolls, 0); assert.equal(w.location.hash, '#panel-1');
+});
+test('section highlight follows page position when menu order differs from content order', async t => {
+  const { w, root } = setup(t);
+  w.document.documentElement.style.setProperty('--header-height', '87px');
+  w.document.documentElement.style.setProperty('--sticky-header-enabled', '1');
+  const nav = root.querySelector('.product-nav');
+  nav.getBoundingClientRect = () => ({ bottom: 51 });
+  Object.defineProperty(nav, 'offsetHeight', { value: 51 });
+  root.querySelector('#panel-0').getBoundingClientRect = () => ({ top: 152 });
+  root.querySelector('#panel-1').getBoundingClientRect = () => ({ top: -536 });
+  w.dispatchEvent(new w.Event('scroll'));
+  await new Promise(resolve => w.requestAnimationFrame(resolve));
+  assert.equal(root.querySelector('[aria-current="location"]').getAttribute('href'), '#panel-0');
+});
 test('G31 template has one responsive product section, five selling points and one real review app', () => {
   const template = JSON.parse(read('templates/product.rv-g31.json'));
   assert.deepEqual(template.order, ['main']);
