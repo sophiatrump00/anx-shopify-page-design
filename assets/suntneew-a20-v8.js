@@ -270,11 +270,9 @@ const A20Sales = (() => {
  };
  const header=document.querySelector('store-header') || document.querySelector('header');
  if(header)new ResizeObserver(updateBar).observe(header);updateBar();window.addEventListener('resize',updateBar,{passive:true});
- // Hide the extra price whenever any of the main price is in view.
- const stickyObserver = new IntersectionObserver(entries => {
-  const entry = entries[0];
-  byId('sticky-buy').hidden = entry.isIntersecting || entry.boundingClientRect.bottom > 0;
- }, {threshold:0});
+ // Instant anchor jumps can move the price across the viewport without an intersection event.
+ function updateSticky() {byId('sticky-buy').hidden = byId('total-price').getBoundingClientRect().bottom > 0;}
+ const stickyObserver = new IntersectionObserver(updateSticky, {threshold:0});
  stickyObserver.observe(byId('total-price'));
  function openTarget(hash) {
   if (!hash || hash === '#') return;
@@ -287,7 +285,7 @@ const A20Sales = (() => {
  openTarget(location.hash);
  const navLinks = [...root.querySelectorAll('.product-nav a')];
  let frame;
- function updateNav(){frame=undefined;const offset=root.querySelector('.product-nav').getBoundingClientRect().bottom+30;let active=navLinks[0],nearest=-Infinity;for(const link of navLinks){const target=root.querySelector(link.hash);const top=target?.getBoundingClientRect().top;if(top<=offset && top>nearest){active=link;nearest=top;}}navLinks.forEach(link=>{link.classList.toggle('active',link===active);if(link===active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}
+ function updateNav(){frame=undefined;updateSticky();const offset=root.querySelector('.product-nav').getBoundingClientRect().bottom+30;let active=navLinks[0],nearest=-Infinity;for(const link of navLinks){const target=root.querySelector(link.hash);const top=target?.getBoundingClientRect().top;if(top<=offset && top>nearest){active=link;nearest=top;}}navLinks.forEach(link=>{link.classList.toggle('active',link===active);if(link===active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}
  const schedule=()=>{if(!frame)frame=requestAnimationFrame(updateNav);};window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});updateNav();
  window.addEventListener('hashchange',()=>openTarget(location.hash));
 })();
