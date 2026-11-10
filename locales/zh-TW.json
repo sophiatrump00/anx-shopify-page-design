@@ -133,8 +133,8 @@
       },
       "standard_price": "標準價格",
       "save_percent": "節省 {{ percent }}%",
-      "custom_quantity": "自訂數量",
-      "custom_quantity_hint": "使用數量控制輸入其他數量",
+      "custom_quantity": "任意件數",
+      "custom_quantity_hint": "在下方輸入數量",
       "discount_ladder_note": "購買 2 件及以上省 {{ two }}%，3 件及以上省 {{ three }}%，4 件及以上省 {{ four }}%。最終適用價格將在結帳時顯示。"
     },
     "volume_pricing": {

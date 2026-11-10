@@ -2,14 +2,34 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import { JSDOM } from 'jsdom';
+import { Liquid } from 'liquidjs';
 
 const read = name => fs.readFileSync(new URL('../' + name, import.meta.url), 'utf8');
 const code = read('assets/suntneew-g31-approved.js');
 const theme = read('assets/theme.js');
 const formCode = theme.slice(theme.indexOf('var ProductForm ='), theme.indexOf('// js/common/product/product-form-listeners.js'));
-function setup(t, available = true) {
+const translations = JSON.parse(read('locales/en.default.json').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, ''));
+const engine = new Liquid();
+engine.registerFilter('money', cents => `$${(Number(cents) / 100).toFixed(2)}`);
+engine.registerFilter('json', value => JSON.stringify(value));
+engine.registerFilter('t', (key, ...args) => {
+  const values = Object.fromEntries(args);
+  let text = key.split('.').reduce((node, part) => node?.[part], translations);
+  if (typeof text === 'object') text = text[Number(values.count) === 1 ? 'one' : 'other'];
+  for (const [name, value] of args) text = text.replaceAll(`{{ ${name} }}`, String(value));
+  return text;
+});
+function setup(t, available = true, withPacks = false) {
+  const variants = [
+    { id: 51847422509351, option1: '1 unit', price: 22999, inventory_quantity: 5 },
+    { id: 102, option1: '2 units', price: 44998, inventory_quantity: 2 },
+    { id: 104, option1: '4 units', price: 87996, inventory_quantity: 1 },
+    { id: 199, option1: 'Any quantity', price: 22999, inventory_quantity: 5 },
+  ].map(variant => ({ ...variant, available, requires_components: true, sku: `G31-${variant.id}`, quantity_rule: { min: 1, increment: 1 } }));
+  const choices = withPacks ? engine.parseAndRenderSync(read('snippets/suntneew-g31-quantity-options.liquid'), { product: { variants, selected_or_first_available_variant: variants[0] }, section_id: 'test' }) : '';
   const dom = new JSDOM(`<div data-g31-approved data-form="g31" data-unit-price="24000" data-compare-price="32999" data-currency="USD" data-available="${available}">
     <div id="main-price"><strong data-g31-price></strong><del data-g31-compare></del><span data-g31-saving></span></div><p data-g31-price-quantity hidden></p>
+    ${choices}
     <input name="quantity" form="g31" value="1" min="1" max="5" step="1"><button data-g31-quantity="-1"></button><button data-g31-quantity="1"></button>
     <form is="product-form" id="g31"><input name="id" value="51847422509351"><button type="submit">Add</button></form>
     <button data-suntneew-buy-now form="g31"></button><aside class="sticky-buy" hidden><strong data-g31-price></strong><button data-g31-sticky-add type="submit" form="g31">Add</button></aside>
@@ -32,6 +52,35 @@ test('approved page quantity is associated with the real form and clamps to inve
   assert.equal(quantity.value, '5'); assert.equal(root.querySelector('[data-g31-quantity="1"]').disabled, true);
   quantity.value = '-1'; quantity.dispatchEvent(new w.Event('change'));
   assert.equal(quantity.value, '1'); assert.equal(root.querySelector('[data-g31-quantity="-1"]').disabled, true);
+});
+test('G31 pack buttons select separate SKU IDs and submit one pack instead of multiplying quantity', async t => {
+  const { w, root, form, quantity } = setup(t, true, true);
+  const choices = [...root.querySelectorAll('[data-g31-variant]')];
+  assert.equal(choices.length, 4);
+  let submitted;
+  w.fetch = async (url, options) => {
+    if (url === '/cart/add.js') { submitted = [options.body.get('id'), options.body.get('quantity')]; return { ok: true, json: async () => ({ id: 102, quantity: 1 }) }; }
+    return { ok: true, json: async () => ({ item_count: 1, items: [] }) };
+  };
+  root.querySelector('[data-g31-pack="2"]').click();
+  assert.equal(form.elements.namedItem('id').value, '102');
+  assert.equal(quantity.value, '1');
+  assert.equal(root.querySelector('[data-g31-price]').textContent, '$449.98');
+  assert.equal(w.location.search, '?variant=102');
+  await form._onSubmit({ preventDefault() {} });
+  assert.deepEqual(submitted, ['102', '1']);
+  root.querySelector('[data-g31-custom]').click();
+  quantity.value = '3'; quantity.dispatchEvent(new w.Event('change'));
+  assert.equal(new w.FormData(form).get('id'), '199');
+  assert.equal(new w.FormData(form).get('quantity'), '3');
+  root.querySelector('[data-g31-pack="4"]').click();
+  assert.equal(form.elements.namedItem('id').value, '104');
+  assert.equal(quantity.value, '1');
+  assert.equal(quantity.max, '1', 'inventory is measured in four-unit packs');
+});
+test('sold-out G31 pack variants remain disabled', t => {
+  const { root } = setup(t, false, true);
+  assert.ok([...root.querySelectorAll('[data-g31-variant]')].every(button => button.disabled));
 });
 test('native purchase locks prevent double submits, preserve quantity, and recover after an error', async t => {
   const { w, form, quantity, root } = setup(t);
@@ -96,7 +145,7 @@ test('section highlight follows page position when menu order differs from conte
   assert.equal(root.querySelector('[aria-current="location"]').getAttribute('href'), '#panel-0');
 });
 test('G31 template has one responsive product section, five selling points and one real review app', () => {
-  const template = JSON.parse(read('templates/product.rv-g31.json'));
+  const template = JSON.parse(read('templates/product.rv-g31.json').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, ''));
   assert.deepEqual(template.order, ['main']);
   assert.equal(template.sections.main.type, 'suntneew-g31-approved');
   assert.equal(Object.values(template.sections.main.blocks).filter(b => b.type === 'selling_point').length, 5);

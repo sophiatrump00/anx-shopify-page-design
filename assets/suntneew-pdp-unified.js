@@ -9,6 +9,14 @@
       this.controller = new AbortController();
       const signal = this.controller.signal;
       const sync = () => this.sync();
+      this.form.addEventListener('variant:change', (event) => {
+        const pack = event.detail?.variant?.[this.dataset.packOption];
+        const quantity = this.form.elements.namedItem('quantity');
+        if (pack && pack !== 'Any quantity' && quantity) {
+          quantity.value = quantity.min || '1';
+          quantity.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+      }, { signal });
       document.addEventListener('input', sync, { signal });
       document.addEventListener('change', sync, { signal });
       for (const event of ['variant:change', 'variant:loading', 'variant:loaded', 'variant:error', 'purchase:idle']) this.form.addEventListener(event, sync, { signal });

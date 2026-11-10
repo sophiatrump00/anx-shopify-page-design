@@ -133,8 +133,8 @@
       },
       "standard_price": "Standard price",
       "save_percent": "Save {{ percent }}%",
-      "custom_quantity": "Custom quantity",
-      "custom_quantity_hint": "Use the quantity control for another amount",
+      "custom_quantity": "Any quantity",
+      "custom_quantity_hint": "Enter quantity below",
       "discount_ladder_note": "2 or more units save {{ two }}%, 3 or more save {{ three }}%, and 4 or more save {{ four }}%. Checkout shows the final eligible price."
     },
     "volume_pricing": {

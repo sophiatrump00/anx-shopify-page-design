@@ -3,7 +3,8 @@
   @param {product} product - Product and current variant.
   @param {string} product_form_id - Native purchase form ID.
 {% enddoc %}
-<suntneew-mobile-buy class="sn-mobile-buy" form="{{ product_form_id }}" data-currency="{{ localization.country.currency.iso_code }}" data-sold-out="{{ 'product.general.sold_out_button' | t | escape }}" data-unavailable="{{ 'product.general.unavailable_button' | t | escape }}" data-add-label="{{ 'product.general.add_to_cart_button' | t | escape }}" hidden>
+{%- capture pack_option -%}{%- for option in product.options_with_values -%}{%- if option.name == 'Pack' -%}option{{ option.position }}{%- endif -%}{%- endfor -%}{%- endcapture -%}
+<suntneew-mobile-buy class="sn-mobile-buy" form="{{ product_form_id }}" data-pack-option="{{ pack_option }}" data-currency="{{ localization.country.currency.iso_code }}" data-sold-out="{{ 'product.general.sold_out_button' | t | escape }}" data-unavailable="{{ 'product.general.unavailable_button' | t | escape }}" data-add-label="{{ 'product.general.add_to_cart_button' | t | escape }}" hidden>
   <div class="sn-mobile-buy__summary" aria-live="polite">
     <strong data-mobile-total>{{ product.selected_or_first_available_variant.price | money }}</strong>
     <span data-mobile-quantity></span>

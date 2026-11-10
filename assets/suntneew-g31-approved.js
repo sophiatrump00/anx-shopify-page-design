@@ -11,14 +11,12 @@
     root.dataset.initialized = 'true';
     const signal = new AbortController();
     const on = (element, event, listener, options = {}) => element?.addEventListener(event, listener, { ...options, signal: signal.signal });
-    const available = root.dataset.available === 'true';
-    const price = Number(root.dataset.unitPrice);
-    const compare = Number(root.dataset.comparePrice);
+    const variantInput = form.elements.namedItem('id');
+    const variantsData = root.querySelector('[data-g31-variants]');
+    const variants = variantsData ? JSON.parse(variantsData.textContent) : [{ id: variantInput.value, price: Number(root.dataset.unitPrice), compare_at_price: Number(root.dataset.comparePrice), available: root.dataset.available === 'true', pack_size: 1, quantity_rule: { min: quantity.min, max: quantity.max, increment: quantity.step } }];
+    const selectedVariant = () => variants.find(variant => String(variant.id) === variantInput.value);
     const money = cents => new Intl.NumberFormat(document.documentElement.lang || 'en-US', { style: 'currency', currency: root.dataset.currency || 'USD' }).format(cents / 100);
-    const min = Math.max(1, Number(quantity.min) || 1);
-    const step = Math.max(1, Number(quantity.step) || 1);
-    const max = Math.max(min, Number(quantity.max) || 999);
-    const maxValid = min + Math.floor((max - min) / step) * step;
+    const choices = [...root.querySelectorAll('[data-g31-variant]')];
     const feedback = root.querySelector('.g31-cart-feedback');
     const cartLink = root.querySelector('.g31-cart-link');
     const sticky = root.querySelector('.sticky-buy');
@@ -28,6 +26,15 @@
     let frame;
 
     function sync() {
+      const variant = selectedVariant();
+      const available = variant?.available === true;
+      const price = Number(variant?.price || 0);
+      const compare = Number(variant?.compare_at_price || 0);
+      const min = Math.max(1, Number(variant?.quantity_rule.min) || 1);
+      const step = Math.max(1, Number(variant?.quantity_rule.increment) || 1);
+      const max = Math.max(min, Number(variant?.quantity_rule.max) || 0);
+      const maxValid = min + Math.floor((max - min) / step) * step;
+      quantity.min = String(min); quantity.max = String(maxValid); quantity.step = String(step);
       const raw = Number(quantity.value);
       const count = Math.min(maxValid, Math.max(min, min + Math.round(((Number.isFinite(raw) ? raw : min) - min) / step) * step));
       quantity.value = String(count);
@@ -35,17 +42,27 @@
       root.querySelectorAll('[data-g31-compare]').forEach(node => { node.hidden = compare <= price; node.textContent = money(compare * count); });
       root.querySelectorAll('[data-g31-saving]').forEach(node => { node.hidden = compare <= price; node.textContent = `Save ${money((compare - price) * count)}`; });
       const note = root.querySelector('[data-g31-price-quantity]');
-      if (note) { note.hidden = count === 1; note.textContent = `${count} batteries · ${money(price)} each, before any checkout discounts`; }
+      if (note) {
+        note.hidden = count === 1 && !variant?.custom_quantity;
+        note.textContent = variant?.custom_quantity ? `${count} batteries · ${money(price)} each, before any checkout discounts` : `${count} × ${variant?.pack_size || 1}-unit pack · ${(variant?.pack_size || 1) * count} batteries`;
+      }
       const busy = form.dataset.purchaseBusy === 'true' || ['loading', 'error'].includes(form.dataset.variantState);
       purchaseButtons.forEach(button => { button.disabled = !available || busy; });
       root.querySelectorAll('[data-g31-quantity]').forEach(button => { button.disabled = !available || busy || (Number(button.dataset.g31Quantity) < 0 ? count <= min : count >= maxValid); });
       quantity.disabled = !available || busy;
+      choices.forEach(button => {
+        const choice = variants.find(item => String(item.id) === button.dataset.g31Variant);
+        button.disabled = !choice?.available || busy;
+        const selected = button.dataset.g31Variant === variantInput.value;
+        button.classList.toggle('is-selected', selected);
+        button.setAttribute('aria-pressed', String(selected));
+      });
     }
     function layout() {
       frame = undefined;
       if (!root.isConnected) return;
       // Do not show a second price while the main price remains in the viewport.
-      sticky.hidden = !available || mainPrice.getBoundingClientRect().bottom > 0 || !!root.querySelector('dialog[open]');
+      sticky.hidden = !selectedVariant()?.available || mainPrice.getBoundingClientRect().bottom > 0 || !!root.querySelector('dialog[open]');
       const shell = getComputedStyle(document.documentElement);
       const pixels = name => parseFloat(shell.getPropertyValue(name)) || 0;
       const reservedHeader = pixels('--header-height') * pixels('--sticky-header-enabled') + pixels('--announcement-bar-height') * pixels('--sticky-announcement-bar-enabled');
@@ -81,8 +98,20 @@
       queueLayout();
     });
     on(quantity, 'change', sync);
+    choices.forEach(button => on(button, 'click', () => {
+      const previousVariant = selectedVariant();
+      variantInput.value = button.dataset.g31Variant;
+      quantity.value = String(selectedVariant()?.quantity_rule.min || 1);
+      const url = new URL(location.href);
+      url.searchParams.set('variant', variantInput.value);
+      history.replaceState(null, '', url);
+      sync(); layout();
+      form.dispatchEvent(new Event('change', { bubbles: true }));
+      form.dispatchEvent(new CustomEvent('variant:change', { bubbles: true, detail: { variant: selectedVariant(), previousVariant } }));
+      if (selectedVariant()?.custom_quantity) { quantity.focus(); quantity.select(); }
+    }));
     root.querySelectorAll('[data-g31-quantity]').forEach(button => on(button, 'click', () => {
-      quantity.value = String(Number(quantity.value) + Number(button.dataset.g31Quantity) * step);
+      quantity.value = String(Number(quantity.value) + Number(button.dataset.g31Quantity) * (Number(quantity.step) || 1));
       sync();
       quantity.dispatchEvent(new Event('change', { bubbles: true }));
     }));

@@ -51,8 +51,8 @@
         "bundle": {
           "type": "suntneew_bundle_selector",
           "settings": {
-            "enabled": true,
-            "show_savings": true,
+            "enabled": false,
+            "show_savings": false,
             "heading": "Choose a pack",
             "body": "",
             "discount_percent": 3

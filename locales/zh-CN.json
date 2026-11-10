@@ -133,8 +133,8 @@
       },
       "standard_price": "标准价格",
       "save_percent": "节省 {{ percent }}%",
-      "custom_quantity": "自定义数量",
-      "custom_quantity_hint": "使用数量控件输入其他数量",
+      "custom_quantity": "任意件数",
+      "custom_quantity_hint": "在下方输入数量",
       "discount_ladder_note": "购买 2 件及以上省 {{ two }}%，3 件及以上省 {{ three }}%，4 件及以上省 {{ four }}%。最终适用价格将在结账时显示。"
     },
     "volume_pricing": {

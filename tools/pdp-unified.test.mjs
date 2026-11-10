@@ -82,6 +82,33 @@ test('mobile totals use the actual form, the 3/6/9 percent ladder and current av
   form.dataset.variantState = 'ready'; form.dataset.purchaseBusy = 'true'; dock.sync(); assert.equal(dock.querySelector('button').disabled, true);
 });
 
+test('A20 native Pack selection changes SKU ID and resets the form to one pack', async t => {
+  const { w, p, form } = setup(t);
+  const variants = [
+    { ...variant(1), option3: '1 unit', price: 4599, sku: 'A20-1' },
+    { ...variant(2), option3: '2 units', price: 8598, sku: 'A20-2PK' },
+    { ...variant(4), option3: '4 units', price: 17196, sku: 'A20-4PK' },
+    { ...variant(9), option3: 'Any quantity', price: 4599, sku: 'A20-CUSTOM' },
+  ];
+  const dock = w.document.createElement('suntneew-mobile-buy');
+  dock.setAttribute('form', 'p');
+  Object.assign(dock.dataset, { packOption: 'option3', currency: 'USD', soldOut: 'Sold out', unavailable: 'Unavailable', addLabel: 'Add to cart' });
+  dock.innerHTML = `<strong data-mobile-total></strong><span data-mobile-quantity></span><p data-mobile-feedback hidden></p><button data-mobile-add></button><button data-suntneew-buy-now></button><script data-mobile-variants>${JSON.stringify(variants)}</script>`;
+  w.document.body.append(dock); w.eval(read('assets/suntneew-pdp-unified.js'));
+  const quantity = form.elements.namedItem('quantity');
+  quantity.value = '7';
+  w.fetch = async () => response(variants[1]);
+  await p.selectCombination({ optionValues: ['8000', 'orange', '2units'] });
+  assert.equal(new w.FormData(form).get('id'), '2');
+  assert.equal(new w.FormData(form).get('quantity'), '1');
+  assert.equal(dock.querySelector('[data-mobile-total]').textContent, '$85.98');
+  w.fetch = async () => response(variants[2]);
+  await p.selectCombination({ optionValues: ['8000', 'orange', '4units'] });
+  assert.equal(new w.FormData(form).get('id'), '4');
+  assert.equal(new w.FormData(form).get('quantity'), '1');
+  assert.equal(dock.querySelector('[data-mobile-total]').textContent, '$171.96');
+});
+
 test('cart network failure releases the submit lock; retry submits the actual quantity', async t => {
   const dom = new JSDOM('<form is="product-form" id="cart-form"><input name="id" value="1"><input name="quantity" value="3"><button type="submit">Add</button></form>', { runScripts: 'outside-only', url: 'https://example.com/products/a20' });
   t.after(() => dom.window.close());
@@ -121,6 +148,11 @@ test('quantity preset offers match the captured active Shopify discount eligibil
   for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'u23', 'u32', 'kb700', 'oj02']) {
     const template = JSON.parse(read(`templates/product.${name}.json`).replace(/\/\*[\s\S]*?\*\//g, ''));
     const preset = Object.values(template.sections.main.blocks).find(block => block.type === 'suntneew_bundle_selector').settings;
+    if (name === 'a20') {
+      assert.equal(preset.enabled, false, 'A20 uses native Pack variants');
+      assert.equal(preset.show_savings, false, 'fixed pack SKU prices include the pack price');
+      continue;
+    }
     assert.equal(preset.enabled, true, name);
     assert.equal(preset.show_savings, offers.has(handles[name]), name);
     if (preset.show_savings) assert.equal(preset.discount_percent, offers.get(handles[name]), name);

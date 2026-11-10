@@ -1,0 +1,36 @@
+{%- assign selected = product.selected_or_first_available_variant -%}
+<div class="g31-quantity-choices">
+  <p class="g31-quantity-choices__label">Pack</p>
+  <div class="g31-quantity-choices__options" role="group" aria-label="Choose a pack">
+    {%- for variant in product.variants -%}
+      {%- liquid
+        assign count = variant.option1 | split: ' ' | first | plus: 0 | at_least: 1
+        assign custom = false
+        if variant.option1 == 'Any quantity'
+          assign custom = true
+        endif
+      -%}
+      <button type="button" class="g31-quantity-choices__option{% if variant.id == selected.id %} is-selected{% endif %}" data-g31-variant="{{ variant.id }}" {% if custom %}data-g31-custom{% else %}data-g31-pack="{{ count }}"{% endif %} aria-pressed="{% if variant.id == selected.id %}true{% else %}false{% endif %}"{% unless variant.available %} disabled{% endunless %}>
+        <strong>{% if custom %}{{ 'product.quantity.custom_quantity' | t }}{% else %}{{ 'product.quantity.unit_count' | t: count: count }}{% endif %}</strong>
+        {% if custom %}<small>{{ 'product.quantity.custom_quantity_hint' | t }}</small>{% else %}<span>{{ variant.price | money }}</span>{% endif %}
+      </button>
+    {%- endfor -%}
+  </div>
+  <script type="application/json" data-g31-variants>[
+    {%- for variant in product.variants -%}
+      {%- liquid
+        assign count = variant.option1 | split: ' ' | first | plus: 0 | at_least: 1
+        assign custom = false
+        if variant.option1 == 'Any quantity'
+          assign custom = true
+        endif
+        assign minimum = variant.quantity_rule.min | default: 1
+        assign maximum = variant.quantity_rule.max | default: 999
+        if variant.requires_components or variant.inventory_management != blank and variant.inventory_policy == 'deny'
+          assign maximum = maximum | at_most: variant.inventory_quantity
+        endif
+      -%}
+      {"id":{{ variant.id | json }},"sku":{{ variant.sku | json }},"price":{{ variant.price | json }},"compare_at_price":{{ variant.compare_at_price | default: 0 | json }},"available":{{ variant.available | json }},"pack_size":{{ count }},"custom_quantity":{{ custom | json }},"quantity_rule":{"min":{{ minimum }},"max":{{ maximum }},"increment":{{ variant.quantity_rule.increment | default: 1 }}}}{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]</script>
+</div>
