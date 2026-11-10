@@ -23,7 +23,7 @@ function setup(t, catalog = variants) {
  <img class="main-image"><b data-gallery-index>01</b><span data-gallery-count></span><button data-gallery="0" data-image-id="10" data-image-colour="Orange" data-full="orange.webp" data-alt="Orange"></button><button data-gallery="1" data-image-id="20" data-image-colour="Red" data-full="red.webp" data-alt="Red"></button>
  <div data-variant-match="8000mAh">8000 spec / manual</div><div data-variant-match="12000mAh">12000 spec / manual</div>
  <nav class="product-nav"><div class="nav-links"><a href="#features">Features</a><a href="#specs">Specifications</a><a href="#box">In the box</a></div></nav>
- <section id="features"><button data-feature="0" aria-controls="f0"></button><button data-feature="1" aria-controls="f1"></button><div id="f0"></div><div id="f1" hidden></div></section><section id="box"></section><section id="specs"><details id="manuals"><summary>Manuals</summary>Actual manual</details></section><a id="manual-link" href="#manuals">Manual</a></div>`, { runScripts: 'outside-only', pretendToBeVisual: true, url: 'https://example.com/products/a20' });
+ <section id="features"><article class="feature-panel"></article><article class="feature-panel"></article></section><section id="box"></section><section id="specs"><details id="manuals"><summary>Manuals</summary>Actual manual</details></section><a id="manual-link" href="#manuals">Manual</a></div>`, { runScripts: 'outside-only', pretendToBeVisual: true, url: 'https://example.com/products/a20' });
  t.after(() => dom.window.close()); const w = dom.window;
  w.Shopify = { routes: { root: '/' } }; w.themeVariables = { settings: { cartType: 'drawer', pageType: 'product' } };
  w.HTMLElement.prototype.scrollIntoView = () => {};
@@ -83,6 +83,4 @@ test('documents open from their link and active navigation follows the actual se
  root.querySelector('#specs').getBoundingClientRect = () => ({ top: -100 });
  w.dispatchEvent(new w.Event('scroll')); await new Promise(resolve => w.requestAnimationFrame(resolve));
  assert.equal(root.querySelector('.nav-links a.active').getAttribute('href'), '#specs');
- root.querySelector('[data-feature="0"]').dispatchEvent(new w.KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
- assert.equal(root.querySelector('#f0').hidden, true); assert.equal(root.querySelector('#f1').hidden, false);
 });

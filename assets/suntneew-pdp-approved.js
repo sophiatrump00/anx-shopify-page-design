@@ -184,24 +184,6 @@
       if (cartLink) cartLink.hidden = false;
       sync();
     });
-    const tabs = [...root.querySelectorAll('[data-feature]')];
-    const selectTab = tab => {
-      tabs.forEach(item => {
-        const selected = item === tab;
-        item.setAttribute('aria-selected', String(selected));
-        item.tabIndex = selected ? 0 : -1;
-        root.querySelector(`#${item.getAttribute('aria-controls')}`).hidden = !selected;
-      });
-      queueLayout();
-    };
-    tabs.forEach((tab, index) => {
-      on(tab, 'click', () => selectTab(tab));
-      on(tab, 'keydown', event => {
-        const target = { ArrowRight: (index + 1) % tabs.length, ArrowLeft: (index + tabs.length - 1) % tabs.length, Home: 0, End: tabs.length - 1 }[event.key];
-        if (target === undefined) return;
-        event.preventDefault(); selectTab(tabs[target]); tabs[target].focus();
-      });
-    });
     function openDialog(dialog) {
       if (dialog?.showModal && !dialog.open) { dialog.showModal(); layout(); }
     }
