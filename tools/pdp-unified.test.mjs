@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { JSDOM } from 'jsdom';
 import { Liquid } from 'liquidjs';
@@ -111,7 +112,7 @@ test('A20 native Pack selection changes SKU ID and resets the form to one pack',
 });
 
 test('A20 pack prices render for the selected capacity and color without falling back to another SKU', t => {
-  const engine = new Liquid({ root: new URL('../snippets', import.meta.url).pathname, extname: '.liquid' });
+  const engine = new Liquid({ root: fileURLToPath(new URL('../snippets', import.meta.url)), extname: '.liquid' });
   engine.registerFilter('money', cents => `$${(Number(cents) / 100).toFixed(2)}`);
   engine.registerFilter('t', (key, ...args) => key === 'product.quantity.unit_count' ? `${Object.fromEntries(args).count} units` : key);
   const optionValues = ['1 unit', '2 units', '4 units', 'Any quantity'].map((name, index) => ({ name, id: 10 + index, selected: index === 0, available: true }));
@@ -194,6 +195,7 @@ test('cart network failure releases the submit lock; retry submits the actual qu
 test('all ten in-scope public PDPs use native purchasing and model-specific details', () => {
   for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'u23', 'u32', 'kb700', 'oj02']) {
     const template = JSON.parse(read(`templates/product.${name}.json`).replace(/\/\*[\s\S]*?\*\//g, ''));
+    if(name==='a20'){assert.equal(template.sections.main.type,'suntneew-a20-v8');assert.ok(Object.values(template.sections.main.blocks).some(b=>b.type.startsWith('shopify://apps/judge-me-reviews/')));continue;}
     assert.equal(template.sections.main.type, 'main-product', name);
     assert.equal(template.sections.main.settings.show_fixed_add_to_cart, false, name);
     assert.ok(template.sections.main.block_order.includes('reviews'), name);
@@ -212,12 +214,8 @@ test('quantity preset offers match the captured active Shopify discount eligibil
   };
   for (const name of ['ad19', 'a3', 'a20', 'rv-g24', 'rv-230ah', 'rv-314ah', 'u23', 'u32', 'kb700', 'oj02']) {
     const template = JSON.parse(read(`templates/product.${name}.json`).replace(/\/\*[\s\S]*?\*\//g, ''));
+    if(name==='a20'){assert.equal(template.sections.main.type,'suntneew-a20-v8');assert.doesNotMatch(read('assets/suntneew-a20-v8.js'),/discount_percent|discountStep/);continue;}
     const preset = Object.values(template.sections.main.blocks).find(block => block.type === 'suntneew_bundle_selector').settings;
-    if (name === 'a20') {
-      assert.equal(preset.enabled, false, 'A20 uses native Pack variants');
-      assert.equal(preset.show_savings, false, 'fixed pack SKU prices include the pack price');
-      continue;
-    }
     assert.equal(preset.enabled, true, name);
     assert.equal(preset.show_savings, offers.has(handles[name]), name);
     if (preset.show_savings) assert.equal(preset.discount_percent, offers.get(handles[name]), name);

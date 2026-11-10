@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { JSDOM } from 'jsdom';
 import { Liquid } from 'liquidjs';
@@ -9,7 +10,7 @@ const code = read('assets/suntneew-g31-approved.js');
 const theme = read('assets/theme.js');
 const formCode = theme.slice(theme.indexOf('var ProductForm ='), theme.indexOf('// js/common/product/product-form-listeners.js'));
 const translations = JSON.parse(read('locales/en.default.json').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, ''));
-const engine = new Liquid({ root: new URL('../snippets', import.meta.url).pathname, extname: '.liquid' });
+const engine = new Liquid({ root: fileURLToPath(new URL('../snippets', import.meta.url)), extname: '.liquid' });
 engine.registerFilter('money', cents => `$${(Number(cents) / 100).toFixed(2)}`);
 engine.registerFilter('json', value => JSON.stringify(value));
 engine.registerFilter('t', (key, ...args) => {
