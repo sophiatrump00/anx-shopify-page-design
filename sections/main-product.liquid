@@ -25,6 +25,9 @@
   {{ 'suntneew-g31-desktop.css' | asset_url | stylesheet_tag }}
 {%- elsif unified_pdp -%}
   {{ 'suntneew-pdp-unified.css' | asset_url | stylesheet_tag }}
+  {%- if product.handle == 'suntneew-a20-jump-starter-8000mah' -%}
+    {{ 'suntneew-pack-pricing.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
   <script src="{{ 'suntneew-pdp-unified.js' | asset_url }}" defer></script>
 {%- endif -%}
 

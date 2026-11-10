@@ -625,7 +625,7 @@ html:has(.sn-g31-pdp dialog[open]){overflow:hidden}
 .sn-g31-pdp .g31-quantity-choices{margin-top:18px}
 .sn-g31-pdp .g31-quantity-choices__label{font-size:13px;font-weight:600;margin-bottom:8px}
 .sn-g31-pdp .g31-quantity-choices__options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.sn-g31-pdp .g31-quantity-choices__option{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:76px;padding:10px 6px;border:1px solid #ddd;border-radius:4px;background:#fff;text-align:center;font-size:12px;line-height:1.4}
+.sn-g31-pdp .g31-quantity-choices__option{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:146px;padding:14px 6px;border:1px solid #ddd;border-radius:4px;background:#fff;text-align:center;font-size:12px;line-height:1.4}
 .sn-g31-pdp .g31-quantity-choices__option strong{font-size:13px}
 .sn-g31-pdp .g31-quantity-choices__option small{font-size:11px;color:#707070}
 .sn-g31-pdp .g31-quantity-choices__option:is(:hover,:focus-visible,.is-selected){border-color:var(--orange);background:#fff6ef}

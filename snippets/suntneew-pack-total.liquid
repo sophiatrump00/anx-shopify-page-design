@@ -1,0 +1,8 @@
+<div class="sn-pack-total" data-sn-pack-summary data-form="{{ form_id }}" aria-live="polite" aria-atomic="true">
+  <p class="sn-pack-total__label">Total price</p>
+  <div class="sn-pack-total__amounts">
+    <strong data-sn-pack-total{% if g31 %} data-g31-price{% endif %}>{{ variant.price | money }}</strong>
+    <del data-sn-pack-compare{% if g31 %} data-g31-compare{% endif %}{% unless variant.compare_at_price > variant.price %} hidden{% endunless %}>{{ variant.compare_at_price | money }}</del>
+  </div>
+  <p class="sn-pack-total__saving" data-sn-pack-saving{% if g31 %} data-g31-saving{% endif %}{% unless variant.compare_at_price > variant.price %} hidden{% endunless %}>You save {{ variant.compare_at_price | minus: variant.price | money }} in total vs. regular price</p>
+</div>

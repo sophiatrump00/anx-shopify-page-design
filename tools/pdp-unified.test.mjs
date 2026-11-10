@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import test from 'node:test';
 import { JSDOM } from 'jsdom';
+import { Liquid } from 'liquidjs';
 
 const read = name => fs.readFileSync(new URL('../' + name, import.meta.url), 'utf8');
 const theme = read('assets/theme.js');
@@ -107,6 +108,70 @@ test('A20 native Pack selection changes SKU ID and resets the form to one pack',
   assert.equal(new w.FormData(form).get('id'), '4');
   assert.equal(new w.FormData(form).get('quantity'), '1');
   assert.equal(dock.querySelector('[data-mobile-total]').textContent, '$171.96');
+});
+
+test('A20 pack prices render for the selected capacity and color without falling back to another SKU', t => {
+  const engine = new Liquid({ root: new URL('../snippets', import.meta.url).pathname, extname: '.liquid' });
+  engine.registerFilter('money', cents => `$${(Number(cents) / 100).toFixed(2)}`);
+  engine.registerFilter('t', (key, ...args) => key === 'product.quantity.unit_count' ? `${Object.fromEntries(args).count} units` : key);
+  const optionValues = ['1 unit', '2 units', '4 units', 'Any quantity'].map((name, index) => ({ name, id: 10 + index, selected: index === 0, available: true }));
+  const catalog = optionValues.map((option, index) => ({ id: index + 1, available: true, options: ['8000mAh', 'Orange', option.name], price: [4599, 8598, 17196, 4599][index], compare_at_price: [6699, 13398, 26796, 6699][index] }));
+  catalog.push({ id: 99, available: true, options: ['8000mAh', 'Red', '2 units'], price: 99998, compare_at_price: 199998 });
+  const product = { variants: catalog, options_with_values: [{ name: 'Capacity', position: 1, selected_value: '8000mAh' }, { name: 'Color', position: 2, selected_value: 'Orange' }, { name: 'Pack', position: 3, selected_value: '1 unit' }] };
+  const render = (option_value, source = product) => engine.renderFileSync('suntneew-pack-option', { product: source, section: { id: 'main' }, option_value, option_position: 3, param_name: 'p-option3', form_id: 'p' });
+  for (const [index, unit, saved, total] of [[1, '$42.99 / unit', 'Save $24.00 / unit', 'Total $85.98'], [2, '$42.99 / unit', 'Save $24.00 / unit', 'Total $171.96']]) {
+    const dom = new JSDOM(`<form id="p"></form>${render(optionValues[index])}`);
+    t.after(() => dom.window.close());
+    const d = dom.window.document;
+    assert.equal(d.querySelector('.sn-pack-prices__price').textContent, unit);
+    assert.equal(d.querySelector('del').textContent, '$66.99 / unit');
+    assert.equal(d.querySelector('.sn-pack-prices__saving').textContent, saved);
+    assert.equal(d.querySelector('.sn-pack-prices__total').textContent, total);
+    assert.equal(d.querySelector('input').form.id, 'p');
+    assert.equal(d.querySelector('input').dataset.optionPosition, '3');
+    assert.equal(d.querySelector('label').htmlFor, d.querySelector('input').id);
+  }
+  const regular = render(optionValues[1], { ...product, variants: catalog.map(item => ({ ...item, compare_at_price: null })) });
+  assert.doesNotMatch(regular, /<del\b|sn-pack-prices__saving/);
+  const absent = render(optionValues[1], { ...product, options_with_values: product.options_with_values.map(option => option.name === 'Capacity' ? { ...option, selected_value: '12000mAh' } : option) });
+  assert.doesNotMatch(absent, /sn-pack-prices__price|\$42.99|\$999.98/);
+  assert.match(absent, /product.general.unavailable_button/);
+  assert.doesNotMatch(render(optionValues[3]), /sn-pack-prices__price|<del\b/);
+});
+
+test('A20 desktop and mobile savings track the actual pack price and hide when there is no discount', t => {
+  const { w, form } = setup(t);
+  const variants = [
+    { ...variant(1), option3: '1 unit', price: 4599, compare_at_price: 6699 },
+    { ...variant(2), option3: '2 units', price: 8598, compare_at_price: 13398 },
+    { ...variant(4), option3: '4 units', price: 17196, compare_at_price: 26796 },
+    { ...variant(8), option3: '2 units', price: 13398, compare_at_price: null },
+  ];
+  const summary = w.document.createElement('div');
+  summary.dataset.snPackSummary = ''; summary.dataset.form = 'p';
+  summary.innerHTML = '<strong data-sn-pack-total></strong><del data-sn-pack-compare></del><p data-sn-pack-saving></p>';
+  w.document.body.append(summary);
+  const dock = w.document.createElement('suntneew-mobile-buy');
+  dock.setAttribute('form', 'p');
+  Object.assign(dock.dataset, { packOption: 'option3', currency: 'USD', soldOut: 'Sold out', unavailable: 'Unavailable', addLabel: 'Add to cart' });
+  dock.innerHTML = `<strong data-mobile-total></strong><del data-mobile-compare></del><span data-mobile-quantity></span><p data-mobile-saving></p><p data-mobile-feedback hidden></p><button data-mobile-add></button><button data-suntneew-buy-now></button><script data-mobile-variants>${JSON.stringify(variants)}</script>`;
+  w.document.body.append(dock); w.eval(read('assets/suntneew-pdp-unified.js'));
+  const choose = id => { form.elements.namedItem('id').value = String(id); form.elements.namedItem('quantity').value = '1'; dock.sync(); };
+  choose(2);
+  assert.equal(summary.querySelector('strong').textContent, '$85.98');
+  assert.equal(summary.querySelector('del').textContent, '$133.98');
+  assert.equal(summary.querySelector('[data-sn-pack-saving]').textContent, 'You save $48.00 in total vs. regular price');
+  choose(4);
+  assert.equal(dock.querySelector('[data-mobile-saving]').textContent, 'You save $96.00 in total vs. regular price');
+  form.elements.namedItem('quantity').value = '2'; dock.sync();
+  assert.equal(summary.querySelector('strong').textContent, '$343.92');
+  assert.equal(summary.querySelector('[data-sn-pack-saving]').textContent, 'You save $192.00 in total vs. regular price');
+  choose(8);
+  assert.equal(summary.querySelector('del').hidden, true);
+  assert.equal(summary.querySelector('[data-sn-pack-saving]').hidden, true);
+  assert.equal(dock.querySelector('[data-mobile-saving]').hidden, true);
+  choose(2); form.dataset.variantState = 'loading'; dock.sync();
+  assert.equal(summary.querySelector('[data-sn-pack-saving]').hidden, true);
 });
 
 test('cart network failure releases the submit lock; retry submits the actual quantity', async t => {

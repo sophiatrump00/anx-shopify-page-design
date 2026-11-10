@@ -1,0 +1,34 @@
+{%- liquid
+  assign pack_variant = nil
+  assign pack_size = option_value.name | split: ' ' | first | plus: 0 | at_least: 1
+  for candidate in product.variants
+    assign matches = true
+    for option in product.options_with_values
+      assign option_index = option.position | minus: 1
+      assign expected_value = option.selected_value
+      if option.position == option_position
+        assign expected_value = option_value.name
+      endif
+      if candidate.options[option_index] != expected_value
+        assign matches = false
+        break
+      endif
+    endfor
+    if matches
+      assign pack_variant = candidate
+      break
+    endif
+  endfor
+-%}
+{%- capture id -%}pack-option-{{ section.id }}-{{ param_name }}-{{ option_value.id }}{%- endcapture -%}
+<input class="sr-only" type="radio" id="{{ id | escape }}" name="{{ param_name }}" value="{{ option_value.id }}" form="{{ form_id }}" data-option-position="{{ option_position }}"{% if option_value.selected %} checked{% endif %}{% if hide_if_disabled and option_value.available == false and option_value.selected == false %} disabled{% endif %}>
+<label class="block-swatch sn-pack-choice{% unless pack_variant.available %} is-disabled{% endunless %}" for="{{ id | escape }}">
+  <strong>{% if option_value.name == 'Any quantity' %}{{ 'product.quantity.custom_quantity' | t }}{% else %}{{ 'product.quantity.unit_count' | t: count: pack_size }}{% endif %}</strong>
+  {%- if pack_variant == nil -%}
+    <small>{{ 'product.general.unavailable_button' | t }}</small>
+  {%- elsif option_value.name == 'Any quantity' -%}
+    <small>{{ 'product.quantity.custom_quantity_hint' | t }}</small>
+  {%- else -%}
+    {% render 'suntneew-pack-price', variant: pack_variant, pack_size: pack_size %}
+  {%- endif -%}
+</label>

@@ -49,6 +49,25 @@
       const validQuantity = Number.isInteger(quantity) && quantity > 0 && (!quantityInput || quantityInput.checkValidity());
       const available = Boolean(variant?.available && !pending && !busy && !variantInput?.disabled && validQuantity);
       this.querySelector('[data-mobile-total]').textContent = pending ? '…' : variant ? this.format.format(total / 100) : this.dataset.unavailable;
+      if (this.dataset.packOption) {
+        const showSaving = Boolean(variant && !pending && validQuantity && variant.compare_at_price > variant.price);
+        const compareTotal = Number(variant?.compare_at_price || 0) * quantity;
+        const saving = `You save ${this.format.format((compareTotal - total) / 100)} in total vs. regular price`;
+        const compare = this.querySelector('[data-mobile-compare]');
+        if (compare) { compare.hidden = !showSaving; compare.textContent = showSaving ? this.format.format(compareTotal / 100) : ''; }
+        const savings = this.querySelector('[data-mobile-saving]');
+        if (savings) { savings.hidden = !showSaving; savings.textContent = showSaving ? saving : ''; }
+        document.querySelectorAll('[data-sn-pack-summary]').forEach(summary => {
+          if (summary.dataset.form !== this.getAttribute('form')) return;
+          summary.querySelector('[data-sn-pack-total]').textContent = this.querySelector('[data-mobile-total]').textContent;
+          const original = summary.querySelector('[data-sn-pack-compare]');
+          original.hidden = !showSaving;
+          original.textContent = showSaving ? this.format.format(compareTotal / 100) : '';
+          const saved = summary.querySelector('[data-sn-pack-saving]');
+          saved.hidden = !showSaving;
+          saved.textContent = showSaving ? saving : '';
+        });
+      }
       this.querySelector('[data-mobile-quantity]').textContent = Number.isFinite(quantity) ? `${quantity} ×` : '';
       this.querySelector('[data-mobile-add]').textContent = pending || busy ? '…' : !variant ? this.dataset.unavailable : !variant.available ? this.dataset.soldOut : this.dataset.addLabel;
       this.querySelectorAll('button').forEach((button) => { if (button.disabled === available) button.disabled = !available; });

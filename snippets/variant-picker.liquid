@@ -43,6 +43,10 @@
       {% liquid
         assign option_downcase = option.name | downcase
         assign resolved_option_selector_style = block.settings.selector_style
+        assign pack_pricing = false
+        if pack_pricing_enabled and product.handle == 'suntneew-a20-jump-starter-8000mah' and option.name == 'Pack'
+          assign pack_pricing = true
+        endif
 
         assign swatch_count = option.values | map: 'swatch' | compact | size
 
@@ -65,9 +69,12 @@
         if variant_image_options contains option_downcase
           assign resolved_option_selector_style = 'variant_image'
         endif
+        if pack_pricing
+          assign resolved_option_selector_style = 'block'
+        endif
       %}
 
-      <fieldset class="variant-picker__option">
+      <fieldset class="variant-picker__option{% if pack_pricing %} variant-picker__option--pack{% endif %}">
         <div class="variant-picker__option-info">
           <div class="h-stack gap-2">
             <legend class="text-subdued">{{ option.name }}:</legend>
@@ -171,7 +178,11 @@
                     when 'swatch'
                       render 'option-value', type: 'swatch', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index
                     when 'block'
-                      render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index
+                      if pack_pricing
+                        render 'suntneew-pack-option', product: product, form_id: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants
+                      else
+                        render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index
+                      endif
                     when 'block_swatch'
                       render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, show_swatch: true, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index
                   endcase

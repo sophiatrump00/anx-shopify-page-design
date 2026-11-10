@@ -12,7 +12,11 @@
       -%}
       <button type="button" class="g31-quantity-choices__option{% if variant.id == selected.id %} is-selected{% endif %}" data-g31-variant="{{ variant.id }}" {% if custom %}data-g31-custom{% else %}data-g31-pack="{{ count }}"{% endif %} aria-pressed="{% if variant.id == selected.id %}true{% else %}false{% endif %}"{% unless variant.available %} disabled{% endunless %}>
         <strong>{% if custom %}{{ 'product.quantity.custom_quantity' | t }}{% else %}{{ 'product.quantity.unit_count' | t: count: count }}{% endif %}</strong>
-        {% if custom %}<small>{{ 'product.quantity.custom_quantity_hint' | t }}</small>{% else %}<span>{{ variant.price | money }}</span>{% endif %}
+        {% if custom %}
+          <small>{{ 'product.quantity.custom_quantity_hint' | t }}</small>
+        {% else %}
+          {% render 'suntneew-pack-price', variant: variant, pack_size: count %}
+        {% endif %}
       </button>
     {%- endfor -%}
   </div>

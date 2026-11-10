@@ -40,7 +40,7 @@
       quantity.value = String(count);
       root.querySelectorAll('[data-g31-price]').forEach(node => { node.textContent = money(price * count); });
       root.querySelectorAll('[data-g31-compare]').forEach(node => { node.hidden = compare <= price; node.textContent = money(compare * count); });
-      root.querySelectorAll('[data-g31-saving]').forEach(node => { node.hidden = compare <= price; node.textContent = `Save ${money((compare - price) * count)}`; });
+      root.querySelectorAll('[data-g31-saving]').forEach(node => { node.hidden = compare <= price; node.textContent = `You save ${money((compare - price) * count)} in total vs. regular price`; });
       const note = root.querySelector('[data-g31-price-quantity]');
       if (note) {
         note.hidden = count === 1 && !variant?.custom_quantity;

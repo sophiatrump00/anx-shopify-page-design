@@ -1,0 +1,17 @@
+{%- if variant -%}
+  {%- liquid
+    assign pack_size = pack_size | default: 1 | at_least: 1
+    assign unit_price = variant.price | times: 1.0 | divided_by: pack_size
+    assign unit_compare = variant.compare_at_price | times: 1.0 | divided_by: pack_size
+  -%}
+  <span class="sn-pack-prices">
+    {%- if variant.compare_at_price > variant.price -%}
+      <del class="sn-pack-prices__compare">{{ unit_compare | money }} / unit</del>
+    {%- endif -%}
+    <span class="sn-pack-prices__price">{{ unit_price | money }} <small>/ unit</small></span>
+    {%- if variant.compare_at_price > variant.price -%}
+      <span class="sn-pack-prices__saving">Save {{ unit_compare | minus: unit_price | money }} / unit</span>
+    {%- endif -%}
+    <small class="sn-pack-prices__total">Total {{ variant.price | money }}</small>
+  </span>
+{%- endif -%}

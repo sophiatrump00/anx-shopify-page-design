@@ -7,8 +7,10 @@
 <suntneew-mobile-buy class="sn-mobile-buy" form="{{ product_form_id }}" data-pack-option="{{ pack_option }}" data-currency="{{ localization.country.currency.iso_code }}" data-sold-out="{{ 'product.general.sold_out_button' | t | escape }}" data-unavailable="{{ 'product.general.unavailable_button' | t | escape }}" data-add-label="{{ 'product.general.add_to_cart_button' | t | escape }}" hidden>
   <div class="sn-mobile-buy__summary" aria-live="polite">
     <strong data-mobile-total>{{ product.selected_or_first_available_variant.price | money }}</strong>
+    {%- if product.handle == 'suntneew-a20-jump-starter-8000mah' -%}<del data-mobile-compare hidden></del>{%- endif -%}
     <span data-mobile-quantity></span>
   </div>
+  {%- if product.handle == 'suntneew-a20-jump-starter-8000mah' -%}<p data-mobile-saving hidden></p>{%- endif -%}
   <p class="sn-mobile-buy__tax">
     {%- assign shipping_note = section.blocks | where: 'type', 'suntneew_shipping_note' | first -%}
     {%- if shipping_note != blank -%}{{ 'suntneew_pdp.quoted_delivery' | t }}{%- else -%}{{ 'cart.general.taxes_and_shipping_at_checkout' | t }}{%- endif -%}
