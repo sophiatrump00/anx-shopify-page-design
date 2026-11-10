@@ -160,6 +160,7 @@ test('A20 has no expired ANX15 promotion and its CTA targets the existing purcha
   for (const file of ['templates/product.a20.json', 'sections/suntneew-pdp-video-band.liquid']) {
     assert.doesNotMatch(fs.readFileSync(path.join(root, file), 'utf8'), /ANX15|2026-10-20|2026-10-21|discount=ANX15/i, file);
   }
-  assert.match(fs.readFileSync(path.join(root, 'templates/product.a20.json'), 'utf8'), /"cta_link": "#main"/);
+  assert.match(fs.readFileSync(path.join(root, 'sections/suntneew-pdp-approved.liquid'), 'utf8'), /id="purchase"/);
+  assert.match(fs.readFileSync(path.join(root, 'sections/suntneew-pdp-approved.liquid'), 'utf8'), /href="#purchase"/);
   assert.match(fs.readFileSync(path.join(root, 'layout/theme.liquid'), 'utf8'), /id="main"/);
 });

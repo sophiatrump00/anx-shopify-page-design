@@ -1,554 +1,362 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-product",
-      "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h1"
-          }
-        },
-        "sku": {
-          "type": "sku",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>12V jump starter · Three-speed air duster</strong></p><p>KP700 combines 7,200mAh / 26.64Wh stored energy, USB device charging and an emergency light in one compact kit.</p>"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "bundle": {
-          "type": "suntneew_bundle_selector",
-          "settings": {
-            "enabled": true,
-            "show_savings": false,
-            "heading": "Choose a pack",
-            "body": "",
-            "discount_percent": 3
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "reviews": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "reviews",
-        "sku",
-        "price",
-        "intro",
-        "bundle",
-        "quantity_selector",
-        "buy_buttons"
-      ],
+      "type": "suntneew-pdp-approved",
       "settings": {
-        "show_fixed_add_to_cart": false,
-        "enable_suntneew_pdp_experience": true,
-        "suntneew_media_autoplay_interval": 6,
-        "show_suntneew_pdp_promises": true,
-        "desktop_media_width": 50,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "thumbnails",
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "suntneew_gallery_assets": "sn-pdp-20261105-kp700-kit-2000.webp|suntneew-kb700-2026-gallery-02-starting.png|suntneew-kb700-2026-gallery-03-clamps.png|suntneew-kb700-2026-gallery-04-wind.jpg|suntneew-kb700-2026-gallery-05-led.jpg|suntneew-kb700-2026-gallery-06-charging.png|suntneew-kb700-2026-gallery-07-scenarios.jpg|suntneew-kb700-2026-gallery-08-in-the-box.jpg",
-        "suntneew_gallery_alts": "SuntNeew KP700 Fan Portable Car Jump Starter with smart clamp, air nozzle and USB cable|KP700 12V starting performance and engine compatibility|KP700 intelligent jumper clamp with reverse-polarity protection|KP700 three-speed 105000 RPM maximum air duster|KP700 LED light with steady strobe and SOS modes|KP700 Type-C input and USB-A device charging|KP700 air duster for snow leaves seats and outdoor use|KP700 jump starter kit and included accessories"
-      }
-    },
-    "proof": {
-      "type": "suntneew-pdp-proof",
-      "blocks": {
-        "peak": {
-          "type": "metric",
-          "settings": {
-            "value": "1,000A",
-            "label": "Peak current",
-            "variant_match": ""
-          }
-        },
-        "starting": {
-          "type": "metric",
-          "settings": {
-            "value": "500A",
-            "label": "Starting current",
-            "variant_match": ""
-          }
-        },
-        "capacity": {
-          "type": "metric",
-          "settings": {
-            "value": "7,200mAh",
-            "label": "Rated capacity",
-            "variant_match": ""
-          }
-        },
-        "fan": {
-          "type": "metric",
-          "settings": {
-            "value": "105,000 RPM",
-            "label": "Maximum fan speed",
-            "variant_match": ""
-          }
-        }
+        "model": "KP700",
+        "heading": "KP700\nJump Starter & Air Duster",
+        "introduction": "12V starting support and a compact air duster, with USB power and an emergency light.",
+        "features_heading": "Start the drive.\nClear the little things.",
+        "features_intro": "A practical combination for the car, everyday gear and the unexpected stop.",
+        "configuration": "12V · 7,200mAh · Air duster",
+        "box_image": "sn-approved-a5da87f49224-1400.webp",
+        "category": "Jump Starters",
+        "eyebrow": "READY FOR THE ROAD",
+        "box_heading": "In the box",
+        "box_note": "Keep the supplied items together and read the instructions before first use.",
+        "specs_intro": "Use the model instructions for the complete operating limits.",
+        "reviews_heading": "From our customers.",
+        "support_handle": "support-kb700",
+        "warranty_label": "5-year warranty",
+        "warranty_years": "5",
+        "warranty_text": "Five years from delivery for manufacturing defects and component failure under normal use. Keep your proof of purchase and follow the model instructions.",
+        "care_heading": "Here for the road ahead.",
+        "closing_heading": "Ready for what comes next.",
+        "gallery_assets": "sn-approved-a5da87f49224-1400.webp|sn-approved-93f2c2a97415-1400.webp|sn-approved-7b58c26fd6c0-1400.webp|sn-approved-23f650d1ed90-1400.webp|sn-approved-c60950117cd4-1400.webp|sn-approved-478851b86d5f-1400.webp",
+        "gallery_alts": "SuntNeew KP700 Fan Portable Car Jump Starter with smart clamp, air nozzle and USB cable|KP700 12V starting performance and engine compatibility|KP700 intelligent jumper clamp with reverse-polarity protection|KP700 three-speed 105000 RPM maximum air duster|KP700 LED light with steady strobe and SOS modes|KP700 Type-C input and USB-A device charging",
+        "gallery_caption": "12V · 7,200mAh · Air duster",
+        "setup_heading": "Before you need it.",
+        "setup_heading_1": "Check the unit",
+        "setup_text_1": "Charge before use and inspect the unit, supplied clamp and cables.",
+        "setup_heading_2": "Confirm 12V fit",
+        "setup_text_2": "Check the vehicle battery, engine reference and model instructions.",
+        "setup_heading_3": "Follow the clamp",
+        "setup_text_3": "Connect in the specified order and confirm the correct status indication.",
+        "setup_heading_4": "Keep it ready",
+        "setup_text_4": "Disconnect as directed after starting, recharge after use and store dry."
       },
-      "block_order": [
-        "peak",
-        "starting",
-        "capacity",
-        "fan"
-      ],
-      "settings": {
-        "accessibility_label": "KP700 product highlights"
-      }
-    },
-    "anchor_nav": {
-      "type": "suntneew-pdp-anchor-nav",
       "blocks": {
-        "features": {
-          "type": "link",
+        "point0": {
+          "type": "selling_point",
           "settings": {
-            "label": "Features",
-            "target_id": "features"
-          }
-        },
-        "specs": {
-          "type": "link",
-          "settings": {
-            "label": "Specifications",
-            "target_id": "specifications"
-          }
-        },
-        "box": {
-          "type": "link",
-          "settings": {
-            "label": "In the Box",
-            "target_id": "in-the-box"
-          }
-        },
-        "manuals": {
-          "type": "link",
-          "settings": {
-            "label": "Documents",
-            "target_id": "manuals"
-          }
-        },
-        "faq": {
-          "type": "link",
-          "settings": {
-            "label": "FAQ",
-            "target_id": "faq"
-          }
-        }
-      },
-      "block_order": [
-        "features",
-        "specs",
-        "box",
-        "manuals",
-        "faq"
-      ],
-      "settings": {}
-    },
-    "features": {
-      "type": "suntneew-pdp-story",
-      "blocks": {
-        "overview": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "suntneew-kb700-2026-pdp-01-overview.webp",
-            "image_alt": "KP700 Fan Portable Car Jump Starter overview",
-            "image_fit": "cover",
-            "eyebrow": "Four tools, one kit",
-            "heading": "A practical companion for the moments you did not plan for.",
-            "body": "<p>KP700 combines a 12V jump starter, high-speed air duster, USB device charging and 2W emergency light. The product visual stays focused on the device; the supporting details below explain exactly what each function does.</p>",
+            "heading": "12V emergency starting",
+            "text": "500A starting current and 1,000A peak; engine reference up to 6.0L gas / 4.0L diesel.",
             "variant_match": ""
           }
         },
-        "specifications": {
-          "type": "feature",
+        "point1": {
+          "type": "selling_point",
           "settings": {
-            "image_asset": "suntneew-kb700-2026-pdp-02-specifications.webp",
-            "image_alt": "KP700 core specifications",
-            "image_fit": "cover",
-            "eyebrow": "Core specifications",
-            "heading": "The documented essentials, in one place.",
-            "body": "<p>KP700 is specified at <strong>7,200mAh / 26.64Wh</strong>, <strong>1,000A peak</strong>, <strong>500A starting current</strong> and up to <strong>105,000 RPM</strong> of air-duster speed. Use the full Specifications panel for temperature, ports and physical dimensions.</p>",
+            "heading": "Three airflow settings",
+            "text": "Brushless air duster with a maximum specification up to 105,000 RPM.",
             "variant_match": ""
           }
         },
-        "starting": {
+        "point2": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "7,200mAh / 26.64Wh",
+            "text": "Stored energy for starting, dusting and compatible device power.",
+            "variant_match": ""
+          }
+        },
+        "point3": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "Everyday USB power",
+            "text": "Type-C 5V/2A recharging and USB-A 5V/2A output.",
+            "variant_match": ""
+          }
+        },
+        "point4": {
+          "type": "selling_point",
+          "settings": {
+            "heading": "A kit worth keeping close",
+            "text": "Smart clamps, air nozzle and a 2W emergency light for practical use.",
+            "variant_match": ""
+          }
+        },
+        "feature0": {
           "type": "feature",
           "settings": {
-            "image_asset": "suntneew-kb700-2026-pdp-03-starting.webp",
-            "image_alt": "KP700 12V engine compatibility",
-            "image_fit": "cover",
+            "tab_label": "12V starting",
             "eyebrow": "12V starting support",
             "heading": "Ready for compatible gas and diesel vehicles.",
             "body": "<p>For compatible 12V vehicle batteries, KP700 is documented for engines up to <strong>6.0L Gas</strong> or <strong>4.0L Diesel</strong>, with <strong>1,000A peak</strong> and <strong>500A starting current</strong>. A full charge is rated for <strong>up to 25 starts</strong>; actual results vary with vehicle, battery health and temperature.</p>",
-            "variant_match": ""
+            "image_asset": "sn-approved-35e15fc8352c-1400.webp",
+            "image_alt": "KP700 12V engine compatibility",
+            "image_fit": "contain"
           }
         },
-        "wind": {
+        "feature1": {
           "type": "feature",
           "settings": {
-            "image_asset": "suntneew-kb700-2026-pdp-04-wind.webp",
-            "image_alt": "KP700 three-speed air duster motor",
-            "image_fit": "cover",
+            "tab_label": "Air duster",
             "eyebrow": "Three-speed air duster",
             "heading": "Choose the airflow that suits the job.",
             "body": "<p>The brushless fan has three documented speed levels: <strong>30,000 RPM</strong> for up to 18 minutes, <strong>70,000 RPM</strong> for up to 8 minutes and <strong>100,000 RPM</strong> for up to 4.5 minutes. Maximum specification: <strong>105,000 RPM / 360W / 550g wind pressure</strong>.</p>",
-            "variant_match": ""
+            "image_asset": "sn-approved-8afae73e418f-1400.webp",
+            "image_alt": "KP700 three-speed air duster motor",
+            "image_fit": "contain"
           }
         },
-        "vehicle_cleaning": {
+        "feature2": {
           "type": "feature",
           "settings": {
-            "image_asset": "suntneew-kb700-2026-pdp-05-vehicle-cleaning.jpg",
-            "image_alt": "KP700 outdoor and vehicle cleaning uses",
-            "image_fit": "cover",
-            "eyebrow": "Outdoor cleanup",
-            "heading": "Clear leaves, light snow and loose debris before the drive.",
-            "body": "<p>Use the air-duster function for light, dry debris around the vehicle and outdoor gear. Keep the jump starter, clamps and ports dry; this product is not presented as waterproof or IP rated.</p>",
-            "variant_match": ""
-          }
-        },
-        "detail_cleaning": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "suntneew-kb700-2026-pdp-06-detail-cleaning.jpg",
-            "image_alt": "KP700 detailed cleaning of vents and window tracks",
-            "image_fit": "cover",
-            "eyebrow": "Detail cleaning",
-            "heading": "A compact way to reach the places cloths miss.",
-            "body": "<p>The included air nozzle helps direct airflow for car vents, window tracks, seats and dry dusty surfaces. Start at a lower setting and avoid blowing debris toward eyes, moving parts or electronics.</p>",
-            "variant_match": ""
-          }
-        },
-        "controls": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "suntneew-kb700-2026-pdp-07-controls.jpg",
-            "image_alt": "KP700 controls ports and jump-start connection",
-            "image_fit": "cover",
-            "eyebrow": "Controls and ports",
-            "heading": "Everything you need is marked on the device.",
-            "body": "<p>KP700 has a Type-C charging input, USB-A device output, EC5 jump-start port, fan control, lighting control and power key. The below specification table gives the supported <strong>5V/2A</strong> input and output limits.</p>",
-            "variant_match": ""
-          }
-        },
-        "safeguards": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "suntneew-kb700-2026-pdp-08-safeguards.jpg",
-            "image_alt": "KP700 smart clamp safeguards",
-            "image_fit": "cover",
-            "eyebrow": "Intelligent clamp protection",
-            "heading": "Clear clamp guidance before you start.",
-            "body": "<p>The EC5 smart clamp uses a <strong>10AWG</strong> cable and status/buzzer guidance. Its documented protection logic includes reverse polarity, short circuit, overcharge, over-discharge, over-current, overheating, high/low input voltage and timeout conditions.</p>",
-            "variant_match": ""
-          }
-        },
-        "steps": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "suntneew-kb700-2026-pdp-09-steps.jpg",
-            "image_alt": "Four KP700 jump-start steps",
-            "image_fit": "cover",
-            "eyebrow": "Four-step starting",
-            "heading": "Connect carefully, then start the vehicle.",
-            "body": "<p>Make sure KP700 is at least <strong>50%</strong> charged. Insert the clamp plug, connect red to positive and black to negative, wait for the green indication and start. Remove the clamp within 30 seconds after the vehicle starts.</p>",
-            "variant_match": ""
-          }
-        },
-        "charging": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "suntneew-kb700-2026-pdp-10-charging.webp",
-            "image_alt": "KP700 USB device charging scene",
-            "image_fit": "cover",
+            "tab_label": "Device power",
             "eyebrow": "Device charging",
             "heading": "Keep a phone or small device within reach.",
             "body": "<p>USB-A output supports everyday emergency charging at <strong>5V/2A</strong>. Recharge KP700 through the Type-C port at <strong>5V/2A</strong> in about four hours. Use the supplied USB-A to Type-C cable or an equivalent compatible cable.</p>",
-            "variant_match": ""
+            "image_asset": "sn-approved-d76f5adaa202-1400.webp",
+            "image_alt": "KP700 USB device charging scene",
+            "image_fit": "contain"
           }
-        }
-      },
-      "block_order": [
-        "overview",
-        "specifications",
-        "starting",
-        "wind",
-        "vehicle_cleaning",
-        "detail_cleaning",
-        "controls",
-        "safeguards",
-        "steps",
-        "charging"
-      ],
-      "settings": {
-        "anchor_id": "features",
-        "eyebrow": "KP700 FEATURES",
-        "heading": "Feature visuals with the details that make them useful.",
-        "lede": "<p>Each visual keeps the product and its useful in-image information intact. The text below each section adds the confirmed specification, operating context and safe-use guidance in a consistent SuntNeew reading style.</p>",
-        "layout_mode": "full_width_below"
-      }
-    },
-    "details": {
-      "type": "suntneew-pdp-details",
-      "blocks": {
-        "capacity": {
+        },
+        "story0": {
+          "type": "story",
+          "settings": {
+            "tab_label": "Directed airflow",
+            "eyebrow": "Detail cleaning",
+            "heading": "A compact way to reach the places cloths miss.",
+            "body": "<p>The included air nozzle helps direct airflow for car vents, window tracks, seats and dry dusty surfaces. Start at a lower setting and avoid blowing debris toward eyes, moving parts or electronics.</p>",
+            "image_asset": "sn-approved-27a86cdd6c44-1400.webp",
+            "image_alt": "KP700 detailed cleaning of vents and window tracks",
+            "image_fit": "contain"
+          }
+        },
+        "story1": {
+          "type": "story",
+          "settings": {
+            "tab_label": "Smart clamp",
+            "eyebrow": "Intelligent clamp protection",
+            "heading": "Clear clamp guidance before you start.",
+            "body": "<p>The EC5 smart clamp uses a <strong>10AWG</strong> cable and status/buzzer guidance. Its documented protection logic includes reverse polarity, short circuit, overcharge, over-discharge, over-current, overheating, high/low input voltage and timeout conditions.</p>",
+            "image_asset": "sn-approved-69cef5136877-1400.webp",
+            "image_alt": "KP700 smart clamp safeguards",
+            "image_fit": "contain"
+          }
+        },
+        "detail_capacity": {
           "type": "spec",
           "settings": {
             "label": "Rated capacity",
             "value": "7,200mAh",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "energy": {
+        "detail_energy": {
           "type": "spec",
           "settings": {
             "label": "Rated energy",
             "value": "26.64Wh",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "starting": {
+        "detail_starting": {
           "type": "spec",
           "settings": {
             "label": "Starting current",
             "value": "500A",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "peak": {
+        "detail_peak": {
           "type": "spec",
           "settings": {
             "label": "Peak current",
             "value": "1,000A",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "range": {
+        "detail_range": {
           "type": "spec",
           "settings": {
             "label": "Engine reference",
             "value": "Up to 6.0L Gas / 4.0L Diesel",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "starts": {
+        "detail_starts": {
           "type": "spec",
           "settings": {
             "label": "Starting reference",
             "value": "Up to 25 starts per charge",
-            "group": "primary",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "primary"
           }
         },
-        "fan_speed": {
+        "detail_fan_speed": {
           "type": "spec",
           "settings": {
             "label": "Maximum fan speed",
             "value": "105,000 RPM (±10%)",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "fan_power": {
+        "detail_fan_power": {
           "type": "spec",
           "settings": {
             "label": "High-speed fan",
             "value": "360W; 550g wind pressure",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "fan_levels": {
+        "detail_fan_levels": {
           "type": "spec",
           "settings": {
             "label": "Fan levels",
             "value": "30,000 / 70,000 / 100,000 RPM",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "input": {
+        "detail_input": {
           "type": "spec",
           "settings": {
             "label": "Type-C input",
             "value": "5V/2A",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "output": {
+        "detail_output": {
           "type": "spec",
           "settings": {
             "label": "USB-A output",
             "value": "5V/2A",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "charge": {
+        "detail_charge": {
           "type": "spec",
           "settings": {
             "label": "Recharge time",
             "value": "About 4 hours",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "light": {
+        "detail_light": {
           "type": "spec",
           "settings": {
             "label": "Emergency light",
             "value": "2W; Steady, Flashing and SOS",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "clamp": {
+        "detail_clamp": {
           "type": "spec",
           "settings": {
             "label": "Smart clamp",
             "value": "EC5; 10AWG cable; 50cm span",
-            "group": "system",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "system"
           }
         },
-        "shell": {
+        "detail_shell": {
           "type": "spec",
           "settings": {
             "label": "Housing",
             "value": "ABS + PC",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "dimension": {
+        "detail_dimension": {
           "type": "spec",
           "settings": {
             "label": "Product size",
             "value": "203 × 85 × 36mm",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "weight": {
+        "detail_weight": {
           "type": "spec",
           "settings": {
             "label": "Net weight",
             "value": "465g / 1.0lb",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "temperature": {
+        "detail_temperature": {
           "type": "spec",
           "settings": {
             "label": "Discharge operating range",
             "value": "-20°C–60°C",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "charge_temp": {
+        "detail_charge_temp": {
           "type": "spec",
           "settings": {
             "label": "Charging temperature",
             "value": "0°C–45°C",
-            "group": "installation",
-            "variant_match": ""
+            "variant_match": "",
+            "group": "installation"
           }
         },
-        "box1": {
+        "detail_box1": {
           "type": "included",
           "settings": {
             "item": "KP700 Fan Portable Car Jump Starter x1",
             "variant_match": ""
           }
         },
-        "box2": {
+        "detail_box2": {
           "type": "included",
           "settings": {
             "item": "EC5 smart jumper clamp x1",
             "variant_match": ""
           }
         },
-        "box3": {
+        "detail_box3": {
           "type": "included",
           "settings": {
             "item": "USB-A to Type-C cable x1",
             "variant_match": ""
           }
         },
-        "box4": {
+        "detail_box4": {
           "type": "included",
           "settings": {
             "item": "Air nozzle x1",
             "variant_match": ""
           }
         },
-        "box5": {
+        "detail_box5": {
           "type": "included",
           "settings": {
             "item": "EVA storage case x1",
             "variant_match": ""
           }
         },
-        "box6": {
+        "detail_box6": {
           "type": "included",
           "settings": {
             "item": "English user manual x1",
             "variant_match": ""
           }
         },
-        "box7": {
+        "detail_box7": {
           "type": "included",
           "settings": {
             "item": "Color box x1",
             "variant_match": ""
           }
         },
-        "manual": {
+        "detail_manual": {
           "type": "download",
           "settings": {
             "label": "KP700 user manual — EN · FR · DE (PDF)",
@@ -557,193 +365,56 @@
             "variant_match": ""
           }
         },
-        "ul2743": {
-          "type": "download",
-          "settings": {
-            "label": "UL 2743 test report — KP700 / KP-700",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "UL 2743 test report",
-            "description": "Product-level safety testing for the KP700 / KP-700 model family.",
-            "public_copy_ready": false
-          }
-        },
-        "fcc": {
-          "type": "download",
-          "settings": {
-            "label": "FCC — KP700 / KP-700",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "FCC",
-            "description": "Electromagnetic compatibility information for KP700 / KP-700.",
-            "public_copy_ready": false
-          }
-        },
-        "un38": {
-          "type": "download",
-          "settings": {
-            "label": "UN38.3 — KP700 / KP-700",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "UN38.3",
-            "description": "Battery transport-test information for the model-matched battery pack.",
-            "public_copy_ready": false
-          }
-        },
-        "sds": {
-          "type": "download",
-          "settings": {
-            "label": "SDS — KP700 / KP-700",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "SDS",
-            "description": "Battery safety, storage and handling information.",
-            "public_copy_ready": false
-          }
-        }
-      },
-      "block_order": [
-        "capacity",
-        "energy",
-        "starting",
-        "peak",
-        "range",
-        "starts",
-        "fan_speed",
-        "fan_power",
-        "fan_levels",
-        "input",
-        "output",
-        "charge",
-        "light",
-        "clamp",
-        "shell",
-        "dimension",
-        "weight",
-        "temperature",
-        "charge_temp",
-        "box1",
-        "box2",
-        "box3",
-        "box4",
-        "box5",
-        "box6",
-        "box7",
-        "manual",
-        "ul2743",
-        "fcc",
-        "un38",
-        "sds"
-      ],
-      "settings": {
-        "anchor_id": "specifications",
-        "eyebrow": "Product details",
-        "heading": "KP700 technical specifications",
-        "lede": "<p>Specifications are drawn from the KP700 English manual and approved product documentation. Follow the manual’s operating sequence and safety limits before every use.</p>",
-        "primary_group_heading": "Starting performance",
-        "system_group_heading": "Fan, charging & clamp",
-        "installation_group_heading": "Physical & operating limits",
-        "included_heading": "In the box",
-        "download_heading": "Manuals & Documents",
-        "manuals_group_heading": "User Manuals",
-        "pdf_card_eyebrow": "ORIGINAL ENGLISH FILE",
-        "pdf_card_description": "Keep the original seven-page PDF for download, printing or offline reference.",
-        "pdf_card_action": "Download PDF",
-        "online_manual_eyebrow": "MOBILE & MULTILINGUAL",
-        "online_manual_label": "Multilingual online manual",
-        "online_manual_description": "Read responsive instructions in the language selected on the store.",
-        "online_manual_action": "Read online",
-        "certifications_eyebrow": "MODEL-MATCHED INFORMATION",
-        "certifications_label": "View certifications",
-        "certifications_description": "See all four KP700 / KP-700 safety and compliance categories with plain-language explanations.",
-        "certifications_action": "View in Support",
-        "compliance_eyebrow": "WHAT THE DOCUMENTS COVER",
-        "compliance_group_heading": "Safety & Compliance",
-        "compliance_note": "Four document categories help explain product safety, electromagnetic compatibility, battery transport and handling information.",
-        "compliance_link_label": "View certifications",
-        "compliance_pending_label": "Public copy pending"
-      }
-    },
-    "faq": {
-      "type": "suntneew-pdp-faq",
-      "blocks": {
-        "q1": {
+        "faq_q1": {
           "type": "question",
           "settings": {
             "question": "Which vehicles can KP700 support?",
             "answer": "<p>KP700 is for compatible 12V vehicle batteries, with a documented reference of up to 6.0L gasoline or 4.0L diesel engines. Do not attempt to jump-start a higher-rated engine or a battery with a different voltage.</p>"
           }
         },
-        "q2": {
+        "faq_q2": {
           "type": "question",
           "settings": {
             "question": "What does up to 25 starts mean?",
             "answer": "<p>The up-to-25-starts reference is based on the product documentation for a typical 1.5L passenger vehicle under a full charge. Results vary with engine size, battery condition, temperature and vehicle condition.</p>"
           }
         },
-        "q3": {
+        "faq_q3": {
           "type": "question",
           "settings": {
             "question": "How do I use KP700 to jump-start a vehicle?",
             "answer": "<p>Charge the unit to at least 50%, insert the clamp plug, connect red to the positive terminal and black to the negative terminal, wait for the green indication, then start the vehicle. Remove the clamps within 30 seconds after the vehicle starts.</p>"
           }
         },
-        "q4": {
+        "faq_q4": {
           "type": "question",
           "settings": {
             "question": "What are the three air-duster speeds?",
             "answer": "<p>The documented three levels are 30,000 RPM for up to 18 minutes, 70,000 RPM for up to 8 minutes and 100,000 RPM for up to 4.5 minutes. The maximum fan speed specification is 105,000 RPM (±10%).</p>"
           }
         },
-        "q5": {
+        "faq_q5": {
           "type": "question",
           "settings": {
             "question": "Can I charge a phone with KP700?",
             "answer": "<p>Yes. The USB-A output supports emergency device charging at 5V/2A. Recharge KP700 through its Type-C input at 5V/2A; typical recharge time is about four hours.</p>"
           }
         },
-        "q6": {
+        "faq_q6": {
           "type": "question",
           "settings": {
             "question": "What light modes are available?",
             "answer": "<p>The 2W LED has Steady, Flashing and SOS modes. Turn the unit on, then press the lighting key to move through the modes.</p>"
           }
         },
-        "q7": {
+        "faq_q7": {
           "type": "question",
           "settings": {
             "question": "Can I use KP700 in rain or rinse it clean?",
             "answer": "<p>No. Keep the unit, clamps and ports dry. The product is not marketed as waterproof or IP rated; do not rinse, submerge or use it when wet.</p>"
           }
-        }
-      },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5",
-        "q6",
-        "q7"
-      ],
-      "settings": {
-        "anchor_id": "faq",
-        "eyebrow": "KP700 SUPPORT",
-        "heading": "Frequently asked questions"
-      }
-    },
-    "judge_me_reviews": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_kb700": {
+        },
+        "reviews": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
@@ -754,25 +425,55 @@
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_kb700"
-      ],
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
+        "point0",
+        "point1",
+        "point2",
+        "point3",
+        "point4",
+        "feature0",
+        "feature1",
+        "feature2",
+        "story0",
+        "story1",
+        "detail_capacity",
+        "detail_energy",
+        "detail_starting",
+        "detail_peak",
+        "detail_range",
+        "detail_starts",
+        "detail_fan_speed",
+        "detail_fan_power",
+        "detail_fan_levels",
+        "detail_input",
+        "detail_output",
+        "detail_charge",
+        "detail_light",
+        "detail_clamp",
+        "detail_shell",
+        "detail_dimension",
+        "detail_weight",
+        "detail_temperature",
+        "detail_charge_temp",
+        "detail_box1",
+        "detail_box2",
+        "detail_box3",
+        "detail_box4",
+        "detail_box5",
+        "detail_box6",
+        "detail_box7",
+        "detail_manual",
+        "faq_q1",
+        "faq_q2",
+        "faq_q3",
+        "faq_q4",
+        "faq_q5",
+        "faq_q6",
+        "faq_q7",
+        "reviews"
+      ]
     }
   },
   "order": [
-    "main",
-    "proof",
-    "anchor_nav",
-    "features",
-    "details",
-    "faq",
-    "judge_me_reviews"
+    "main"
   ]
 }
