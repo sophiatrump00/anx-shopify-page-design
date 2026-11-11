@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>SuntNeew · 信任与售后 Demo</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#e9e8e3;color:#222825;font-family:Arial,"Noto Sans",sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer;font:inherit}button:focus-visible,a:focus-visible{outline:3px solid #e96b28;outline-offset:4px}.toolbar{min-height:76px;background:#fafaf7;border-bottom:1px solid #d8d9d3;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 32px}.identity{display:flex;align-items:center;gap:14px}.identity img{width:145px;height:auto}.line{width:1px;height:25px;background:#d9dcd6}.identity strong{font-size:14px;font-weight:600}.version{font-size:10px;letter-spacing:1px;border:1px solid #cdd2c8;padding:5px 7px;margin-left:9px;color:#627060}.devices{display:flex;background:#edeee8;border-radius:7px;padding:4px;gap:3px}.devices button{border:0;background:none;padding:9px 15px;border-radius:4px;color:#697267;font-size:12px}.devices button[aria-pressed=true]{background:#fff;box-shadow:0 1px 4px #0000000f;color:#253226}.workspace{max-width:1200px;margin:auto;display:grid;grid-template-columns:270px minmax(0,1fr);gap:70px;padding:38px 38px 24px}.sidebar{padding-top:38px}.eyebrow{font-size:10px;letter-spacing:2.4px;color:#71806f;margin:0 0 18px}.sidebar h1{font-size:34px;line-height:1.4;letter-spacing:-1px;font-weight:500;margin:0 0 19px}.lede{font-size:13px;color:#697568;line-height:1.9;margin:0 0 35px}.routes{display:grid;gap:10px}.route{width:100%;display:grid;grid-template-columns:28px 1fr 18px;align-items:center;text-align:left;border:1px solid transparent;border-radius:8px;background:transparent;padding:16px 13px;gap:9px;color:#687566}.route[aria-pressed=true]{background:#fcfcf9;border-color:#dce0d6;box-shadow:0 3px 15px #29392704;color:#263323}.number{font-size:10px;letter-spacing:1px;color:#8b9688}.route[aria-pressed=true] .number{color:#e45f1c}.route strong{display:block;font-size:14px;font-weight:600}.route small{display:block;margin-top:5px;font-size:11px;font-weight:400;color:#86917f}.arrow{font-size:16px}.sidebar-note{margin-top:36px;border-top:1px solid #d6d9cf;padding-top:18px;color:#76816f;font-size:11px;line-height:1.9}.sidebar-note b{color:#475442;font-weight:500}.canvas{display:flex;flex-direction:column;align-items:center;gap:13px;min-width:0}.frame-label{width:430px;max-width:100%;display:flex;justify-content:space-between;font-size:10px;letter-spacing:1.5px;color:#73816d}.frame-label span:last-child{letter-spacing:0}.device{width:430px;max-width:100%;height:min(780px,calc(100dvh - 175px));min-height:530px;border:7px solid #f9f9f6;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 18px 60px #29362618,0 1px 4px #29362612}.device iframe{display:block;width:100%;height:100%;border:0;background:#fff}.caption{font-size:11px;color:#7a8575;letter-spacing:.2px;text-align:center;margin:0}.standalone{font-size:11px;color:#65755d;text-underline-offset:4px}.workspace.is-desktop{display:block;max-width:1600px;padding:24px}.is-desktop .sidebar{display:none}.is-desktop .device{width:100%;height:calc(100vh - 165px);min-height:650px;border-width:4px;border-radius:12px}.is-desktop .frame-label{width:100%}.is-desktop .canvas{gap:9px}.desktop-routes{display:none;align-items:center;gap:4px}.desktop-routes button{border:0;background:transparent;font-size:12px;color:#687765;padding:8px 13px}.desktop-routes button[aria-pressed=true]{color:#e56321}.toolbar.wide .desktop-routes{display:flex}
+    @media(max-width:900px){.workspace{gap:25px;grid-template-columns:220px minmax(0,1fr);padding:25px 20px}.sidebar h1{font-size:28px}.toolbar{padding:14px 20px}.identity strong{font-size:12px}.version{display:none}.desktop-routes{gap:0}.desktop-routes button{padding:7px}.toolbar.wide .identity .line,.toolbar.wide .identity strong{display:none}}
+    @media(max-width:650px){.toolbar{min-height:64px;padding:12px 14px;gap:8px}.identity{gap:9px}.identity img{width:118px}.identity strong{font-size:11px}.devices button{font-size:11px;padding:8px}.workspace{display:flex;flex-direction:column;padding:16px 12px;gap:17px}.sidebar{padding:0}.eyebrow,.sidebar h1,.lede,.sidebar-note{display:none}.routes{display:flex;gap:4px}.route{display:flex;justify-content:center;padding:13px 8px;gap:7px;border-radius:5px}.route strong{font-size:12px}.route small,.route .arrow{display:none}.number{font-size:9px}.canvas{width:100%;gap:10px}.frame-label{padding:0 4px;letter-spacing:.8px}.device{width:100%;height:calc(100dvh - 201px);min-height:540px;border-width:4px;border-radius:14px}.caption{font-size:10px}.standalone{display:none}.devices{display:none}.workspace.is-desktop{padding:16px 12px}.is-desktop .sidebar{display:block}.is-desktop .device{height:calc(100dvh - 201px);min-height:540px}.toolbar.wide .desktop-routes{display:none}}
+  </style>
+</head>
+<body>
+  <header class="toolbar" id="toolbar">
+    <div class="identity"><img src="assets/logo.png" alt="SuntNeew"><span class="line"></span><strong>信任与售后<span class="version">DEMO 01</span></strong></div>
+    <nav class="desktop-routes" aria-label="演示页面">
+      <button type="button" data-route="product" aria-pressed="true">购买保障</button><button type="button" data-route="support" aria-pressed="false">售后申请</button><button type="button" data-route="resources" aria-pressed="false">型号支持</button>
+    </nav>
+    <div class="devices" aria-label="预览尺寸"><button type="button" data-device="mobile" aria-pressed="true">手机预览</button><button type="button" data-device="desktop" aria-pressed="false">桌面预览</button></div>
+  </header>
+  <main class="workspace" id="workspace">
+    <aside class="sidebar">
+      <p class="eyebrow">SUNTNEEW / CUSTOMER CARE</p>
+      <h1>放心下单。<br>买后有人管。</h1>
+      <p class="lede">从购买按钮旁的保障，到产品上手与售后，连成一条清楚的路径。</p>
+      <nav class="routes" aria-label="选择体验">
+        <button type="button" class="route" data-route="product" aria-pressed="true"><span class="number">01</span><span><strong>购买保障</strong><small>点卡片，展开具体承诺</small></span><span class="arrow">↗</span></button>
+        <button type="button" class="route" data-route="support" aria-pressed="false"><span class="number">02</span><span><strong>售后申请</strong><small>带入型号，按问题提供帮助</small></span><span class="arrow">↗</span></button>
+        <button type="button" class="route" data-route="resources" aria-pressed="false"><span class="number">03</span><span><strong>型号支持</strong><small>上手、排障、售后同一入口</small></span><span class="arrow">↗</span></button>
+      </nav>
+      <p class="sidebar-note"><b>A3 样例 · 独立预览</b><br>表单只在本页预览，不会发送。<br>保修与退货文案依据当前线上政策；<br>A3 原件参数核定、客服履约待实施时确认。</p>
+    </aside>
+    <section class="canvas" aria-label="交互预览">
+      <div class="frame-label"><span id="screen-label">01 / 购买保障</span><span id="size-label">416 PX · MOBILE</span></div>
+      <div class="device" id="device"><iframe id="preview" title="SuntNeew 信任与售后交互演示" src="site.html#product"></iframe></div>
+      <p class="caption" id="caption">卡片可以点击，页面可以滚动；保障说明会在当前页面展开。</p>
+      <a class="standalone" href="site.html#product" target="_blank" rel="noopener">在独立窗口体验 ↗</a>
+    </section>
+  </main>
+  <script src="shell.js"></script>
+</body>
+</html>
