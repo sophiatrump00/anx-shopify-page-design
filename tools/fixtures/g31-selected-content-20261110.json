@@ -1,0 +1,23 @@
+{
+  "gallery": [
+    {"id":"G01","purpose":"Group 31 battery with Bluetooth monitoring"},
+    {"id":"G02","purpose":"Battery status on your phone"},
+    {"id":"G03","purpose":"LiFePO4 cycle life"},
+    {"id":"G04","purpose":"Low-temperature charge protection"},
+    {"id":"G05","purpose":"Series and parallel expansion"},
+    {"id":"G06","purpose":"Trolling motor power"},
+    {"id":"G08","purpose":"Dimensions and weight"},
+    {"id":"G07","purpose":"Three ways to recharge your G31"}
+  ],
+  "features": [
+    {"group":"01","kind":"opening","images":[{"id":"A02","purpose":"G31 features at a glance"}]},
+    {"group":"02","eyebrow":"01 / MADE FOR REPEAT TRIPS","heading":"More trips between battery replacements.","body":"From weekend camping to days on the water, G31 is built for repeated deep-cycle use. Its LiFePO4 cells are rated for 4,000+ cycles at 100% depth of discharge.","note":"Cycle-life references: 4,000+ cycles at 100% DoD, 6,000 at 80% DoD and 15,000 at 60% DoD. Actual life depends on charging, temperature and use.","images":[{"id":"A03","purpose":"LiFePO4 cells and cycle life"}]},
+    {"group":"03","eyebrow":"02 / CHECK FROM YOUR PHONE","heading":"Know what’s left before you head out.","body":"Check charge level, voltage, current and temperature through the Bluetooth connection. A quick look at your phone helps you plan the next leg of the trip.","images":[{"id":"A04","purpose":"Bluetooth battery monitoring"}]},
+    {"group":"04","kind":"pair","eyebrow":"03 / BUILT-IN PROTECTION","heading":"Ready for changing conditions.","body":"The 100A BMS monitors charging and discharge, with protection against overcharge, over-discharge, overcurrent and short circuits. Low-temperature charge protection helps protect the cells when the weather turns cold.","note":"IP65 protects against dust and water jets; it is not an immersion rating. Charging: 32°F–131°F (0°C–55°C). Discharging: −4°F–140°F (−20°C–60°C).","images":[{"id":"A05","purpose":"100A BMS protections"},{"id":"A08","purpose":"Temperature limits and IP65 enclosure"}]},
+    {"group":"05","eyebrow":"04 / ROOM TO GROW","heading":"Build the battery bank your setup needs.","body":"Start with one 12.8V 100Ah battery, then expand with matched batteries as your power needs grow. G31 supports up to four in series and four in parallel, with a maximum 4P4S configuration.","note":"Use matched batteries and follow the manual for balancing, wiring and system protection. Maximum 4P4S bank: 51.2V 400Ah (20.48kWh).","images":[{"id":"A06","purpose":"Series and parallel battery banks"}]},
+    {"group":"06","eyebrow":"05 / EASIER TO HANDLE","heading":"Less weight in the battery bay.","body":"At about 21.2 lb, G31 is easier to lift, position and install. Check the 13.34 × 7.28 × 8.58 in case dimensions, terminal clearance and hold-down before ordering.","images":[{"id":"A09","purpose":"Weight and lead-acid comparison"}]},
+    {"group":"07","eyebrow":"06 / RECHARGE YOUR WAY","heading":"Plug in. Drive on. Catch some sun.","body":"Recharge through a compatible LiFePO4 charger, solar charge controller or DC-to-DC charging setup. Choose the right equipment and charging profile for your system.","note":"Use 14.4–14.6V LiFePO4 charging. Solar panels and a vehicle alternator require suitable charging equipment; do not connect them directly to the battery.","images":[{"id":"A10","purpose":"Three compatible charging methods"}]},
+    {"group":"08","kind":"pair","eyebrow":"07 / TAKE YOUR POWER FURTHER","heading":"For the campsite, the lake and beyond.","body":"Keep RV house loads, a compatible trolling motor or an off-grid solar setup supplied. G31 provides 1,280Wh of nominal stored energy in each battery.","note":"For auxiliary and energy-storage use. G31 is not an engine-starting battery. Runtime depends on the load and system losses.","images":[{"id":"A11","purpose":"RV and trolling motor applications"},{"id":"A12","purpose":"Solar storage and outdoor power"}]},
+    {"group":"09","eyebrow":"08 / BEFORE YOU INSTALL","heading":"Get to know your G31.","body":"Check the model documents, charging requirements and installation instructions before building your system. Our product support team can help with setup questions.","images":[{"id":"A15","purpose":"G31 product document references"}]}
+  ]
+}
