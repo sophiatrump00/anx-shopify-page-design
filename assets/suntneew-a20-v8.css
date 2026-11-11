@@ -628,11 +628,12 @@
 .sn-a20-pdp .buy-now{cursor:pointer}
 .sn-a20-pdp form{margin:0}
 .sn-a20-pdp .cart-feedback,.sn-a20-pdp .cart-feedback-link{font-size:12px;line-height:1.7;margin-top:12px}
-.sn-a20-pdp .product-nav{top:var(--review-height)}
+/* Follow Impact's header visibility so its collapsed space cannot expose content above this bar. */
+.sn-a20-pdp .product-nav{top:calc(var(--header-height,0px)*var(--sticky-header-enabled,0)*var(--header-is-visible,1) + var(--announcement-bar-height,0px)*var(--sticky-announcement-bar-enabled,0));transition:top .2s ease}
 .sn-a20-pdp .product-nav a{scroll-margin-inline:20px}
 .sn-a20-pdp .product-summary button:focus-visible,.sn-a20-pdp input:focus-visible{outline:3px solid #edab75;outline-offset:3px}
 .sn-a20-pdp .buy-now small{display:none}
 .sn-a20-pdp .feature-section,.sn-a20-pdp .feature-opening{scroll-margin-top:calc(var(--review-height) + 80px)}
 .sn-a20-pdp #gallery{scroll-margin-top:calc(var(--review-height) + 16px)}
 @container features (min-width:1000px){.sn-a20-pdp .product-gallery .gallery-pair{max-width:min(100%,max(260px,calc(100dvh - var(--review-height) - var(--gallery-chrome-height) - 36px)))}}
-@media(prefers-reduced-motion:reduce){.sn-a20-pdp *{scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){.sn-a20-pdp *{scroll-behavior:auto!important}.sn-a20-pdp .product-nav{transition:none}}
