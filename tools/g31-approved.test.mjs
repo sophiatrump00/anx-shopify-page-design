@@ -172,8 +172,8 @@ test('section highlight follows page position when menu order differs from conte
   await new Promise(resolve => w.requestAnimationFrame(resolve));
   assert.equal(root.querySelector('[aria-current="location"]').getAttribute('href'), '#panel-0');
 });
-test('G31 template has one responsive product section, five selling points and one real review app', () => {
-  const template = JSON.parse(read('templates/product.rv-g31.json').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, ''));
+test('frozen approved G31 source preserves five selling points, specifications and its review app', () => {
+  const template = JSON.parse(read('tools/fixtures/g31-approved-template-source-20261110.json').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, ''));
   assert.deepEqual(template.order, ['main']);
   assert.equal(template.sections.main.type, 'suntneew-g31-approved');
   assert.equal(Object.values(template.sections.main.blocks).filter(b => b.type === 'selling_point').length, 5);

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the isolated G31 preview section from the approved image sequence."""
+"""Generate the G31 section from the approved image sequence and frozen source settings."""
 import json
 import re
 from html import escape
@@ -10,7 +10,7 @@ content = json.loads((repo / 'tools/fixtures/g31-selected-content-20261110.json'
 manifest = json.loads((repo / 'tools/fixtures/g31-selected-assets-20261110.json').read_text())
 assets = {row['id']:row for row in manifest['assets']}
 a20 = (repo / 'sections/suntneew-a20-v8.liquid').read_text()
-old = (repo / 'templates/product.rv-g31.json').read_text()
+old = (repo / 'tools/fixtures/g31-approved-template-source-20261110.json').read_text()
 template = json.loads(re.sub(r'^\s*/\*[\s\S]*?\*/\s*','',old))
 
 def asset_url(name):
@@ -66,8 +66,8 @@ for key in template['sections']['main']['block_order']:
 review_source="""{% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}"""
 rating=a20[a20.index('{%- assign rating ='):a20.index('<p class="product-description">')]
 dialog=a20[a20.index('<dialog id="image-dialog"'):a20.index('<noscript>')].replace('A20','G31')
-schema={'name':'G31 selected PDP preview','tag':'section','class':'g31-selected-product-section','settings':[],'blocks':[{'type':'@app'}],'max_blocks':5}
-section="""{% comment %}Isolated G31 preview. Shared SHOP images and the assigned rv-g31 template stay unchanged.{% endcomment %}
+schema={'name':'G31 selected PDP','tag':'section','class':'g31-selected-product-section','settings':[],'blocks':[{'type':'@app'}],'max_blocks':5}
+section="""{% comment %}G31 selected PDP. Shared SHOP product images are preserved; reviews render through the existing app block.{% endcomment %}
 {{ 'suntneew-g31-selected.css' | asset_url | stylesheet_tag }}
 <script src={{ 'suntneew-g31-selected.js' | asset_url | json }} defer></script>
 <script src={{ 'suntneew-purchase-panel.js' | asset_url | json }} defer></script>
@@ -131,4 +131,4 @@ preview = {'sections':{'main':{'type':'suntneew-g31-selected','blocks':{'g31_rev
 css=(repo/'assets/suntneew-a20-v8.css').read_text().replace('.sn-a20-pdp','.sn-g31-pdp').replace('.a20-approved-product-section','.g31-selected-product-section')
 css += '\n/* G31 images retain their original aspect ratios without cropping. */\n.sn-g31-pdp .gallery-pair .image-module,.sn-g31-pdp .gallery-pair .image-button{height:100%}\n.sn-g31-pdp .gallery-pair .image-button img{width:100%;height:100%;object-fit:contain}\n.sn-g31-pdp .gallery-lightbox .zoom-scroll img{object-fit:contain}\n.sn-g31-pdp .feature-card .image-button img{background:#fff}\n'
 (repo/'assets/suntneew-g31-selected.css').write_text(css)
-print('Built isolated G31 section, styles and unassigned preview template.')
+print('Built G31 section, styles and unassigned preview template.')

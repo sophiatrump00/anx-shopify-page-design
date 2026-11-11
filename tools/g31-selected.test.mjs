@@ -63,8 +63,8 @@ test('sticky price hides above and throughout the main price viewport, and while
  root.querySelector('.image-button').click();assert.equal(root.querySelector('#sticky-buy').hidden,true);
  root.querySelector('[data-close]').click();assert.equal(root.querySelector('#sticky-buy').hidden,false);
 });
-test('every selected original retains its recorded hash; the live template remains the approved section',()=>{
+test('every selected original retains its recorded hash; the production template routes to the selected PDP and its real review app',()=>{
  const manifest=JSON.parse(read('tools/fixtures/g31-selected-assets-20261110.json'));
  for(const row of manifest.assets){const bytes=fs.readFileSync(new URL('../assets/'+row.full_asset,import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),row.original_sha256);}
- const live=JSON.parse(read('templates/product.rv-g31.json').replace(/^\s*\/\*[\s\S]*?\*\/\s*/,''));assert.equal(live.sections.main.type,'suntneew-g31-approved');
+ const live=JSON.parse(read('templates/product.rv-g31.json').replace(/^\s*\/\*[\s\S]*?\*\/\s*/,''));assert.deepEqual(live.order,['main']);assert.equal(live.sections.main.type,'suntneew-g31-selected');assert.equal(Object.values(live.sections.main.blocks).filter(block=>block.type.startsWith('shopify://apps/judge-me-reviews/')).length,1);
 });

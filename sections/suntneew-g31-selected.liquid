@@ -1,4 +1,4 @@
-{% comment %}Isolated G31 preview. Shared SHOP images and the assigned rv-g31 template stay unchanged.{% endcomment %}
+{% comment %}G31 selected PDP. Shared SHOP product images are preserved; reviews render through the existing app block.{% endcomment %}
 {{ 'suntneew-g31-selected.css' | asset_url | stylesheet_tag }}
 <script src={{ 'suntneew-g31-selected.js' | asset_url | json }} defer></script>
 <script src={{ 'suntneew-purchase-panel.js' | asset_url | json }} defer></script>
@@ -57,7 +57,7 @@
 <noscript><p>Enable JavaScript to browse images and choose your G31 pack.</p></noscript></div>
 {% schema %}
 {
-  "name": "G31 selected PDP preview",
+  "name": "G31 selected PDP",
   "tag": "section",
   "class": "g31-selected-product-section",
   "settings": [],
