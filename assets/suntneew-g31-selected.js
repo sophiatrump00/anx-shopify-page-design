@@ -388,7 +388,9 @@
     root.querySelector('[data-suntneew-buy-now]').disabled = true;
     $('quantity-summary').textContent = selected.pack === 'Any quantity' ? `Minimum ${minimumFor(selected)} batteries at ${money(selected.priceCents)} each.` : `Enter a whole number from ${input.min} to ${input.max}.`;
   });
-  $('quantity').addEventListener('change', () => { count = Number($('quantity').value); updatePrice(); });
+  const normalizeQuantity = () => { count = Number($('quantity').value); updatePrice(); };
+  $('quantity').addEventListener('change', normalizeQuantity);
+  $('quantity').addEventListener('blur', normalizeQuantity);
   const validateQuantity = event => {
     if (!$('quantity').checkValidity() || $('quantity').value === '') {
       event.preventDefault(); event.stopImmediatePropagation(); $('quantity').reportValidity();

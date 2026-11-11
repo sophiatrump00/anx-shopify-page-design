@@ -60,8 +60,13 @@ test('custom quantities below five cannot reach add-to-cart or buy-now handlers,
  assert.equal(form.dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true})),false);
  assert.equal(root.querySelector('[data-suntneew-buy-now]').dispatchEvent(new w.MouseEvent('click',{bubbles:true,cancelable:true})),false);
  await tick();assert.equal(calls,0);
- root.querySelector('#quantity').dispatchEvent(new w.Event('change'));
+ root.querySelector('#quantity').dispatchEvent(new w.Event('blur'));
  assert.equal(root.querySelector('#quantity').value,'5');assert.equal(root.querySelector('#purchase-button').disabled,false);
+ root.querySelector('#quantity').value='1';root.querySelector('#quantity').dispatchEvent(new w.Event('input'));
+ assert.equal(root.querySelector('#quantity').value,'1');assert.equal(root.querySelector('#purchase-button').disabled,true);
+ root.querySelector('#quantity').value='10';root.querySelector('#quantity').dispatchEvent(new w.Event('input'));
+ root.querySelector('#quantity').dispatchEvent(new w.Event('blur'));
+ assert.equal(root.querySelector('#quantity').value,'10');assert.equal(root.querySelector('#total-price').textContent,'$2,180.00');assert.equal(root.querySelector('#purchase-button').disabled,false);
 });
 test('native cart lock preserves pack quantity, prevents duplicate requests and recovers after an inventory error',async t=>{
  const{w,root,form,choose}=await setup(t);choose('2 units');root.querySelector('#quantity-plus').click();let finish,submitted,calls=0;
