@@ -307,7 +307,8 @@
   });
 
   const packSize = variant => variant.pack === 'Any quantity' ? 1 : Math.max(1, Number.parseInt(variant.pack, 10) || 1);
-  const isAvailable = () => selected?.available === true;
+  const minimumFor = variant => Math.max(variant?.pack === 'Any quantity' ? 5 : 1, Number(variant?.min) || 1);
+  const isAvailable = () => selected?.available === true && Number(selected.max) >= minimumFor(selected);
   const isBusy = () => form?.dataset.purchaseBusy === 'true' || ['loading', 'error'].includes(form?.dataset.variantState);
   function updateSticky() {
     const price = $('total-price').getBoundingClientRect();
@@ -316,7 +317,7 @@
     $('sticky-buy').hidden = priceVisible || price.top >= innerHeight || !!root.querySelector('dialog[open]');
   }
   function updatePrice() {
-    const minimum = Math.max(1, Number(selected?.min) || 1);
+    const minimum = minimumFor(selected);
     const increment = Math.max(1, Number(selected?.step) || 1);
     const maximum = Math.max(minimum, Number(selected?.max) || minimum);
     const maxValid = minimum + Math.floor((maximum - minimum) / increment) * increment;
@@ -324,6 +325,7 @@
     const size = packSize(selected);
     const onSale = Number(selected?.compareAtCents) > Number(selected?.priceCents);
     const available = isAvailable();
+    $('quantity').setCustomValidity('');
     $('quantity').value = String(count);
     $('quantity').min = String(minimum); $('quantity').max = String(maxValid); $('quantity').step = String(increment); $('quantity').disabled = !available || isBusy();
     $('selected-variant').value = selected?.id || '';
@@ -332,7 +334,7 @@
     $('compare-price').hidden = !onSale; $('compare-price').textContent = onSale ? money(Number(selected.compareAtCents) * count) : '';
     $('total-saving').hidden = !onSale; $('total-saving').textContent = onSale ? `You save ${money((selected.compareAtCents - selected.priceCents) * count)} in total vs. regular price` : '';
     $('quantity-label').textContent = size > 1 ? 'Number of packs' : 'Number of units';
-    $('quantity-summary').textContent = size > 1 ? `${count} x ${size}-unit ${count === 1 ? 'pack' : 'packs'} - ${size * count} batteries in total` : `${count} ${count === 1 ? 'battery' : 'batteries'} - ${money(selected.priceCents)} per battery`;
+    $('quantity-summary').textContent = size > 1 ? `${count} x ${size}-unit ${count === 1 ? 'pack' : 'packs'} - ${size * count} batteries in total` : `${count} ${count === 1 ? 'battery' : 'batteries'} - ${money(selected.priceCents)} per battery${selected.pack === 'Any quantity' ? ` · Minimum ${minimum} batteries` : ''}`;
     $('quantity-minus').disabled = !available || isBusy() || count <= minimum;
     $('quantity-plus').disabled = !available || isBusy() || count >= maxValid;
     $('purchase-button').disabled = !available || isBusy();
@@ -350,7 +352,7 @@
     const fragment = document.createDocumentFragment();
     product.variants.forEach(variant => {
       const label = document.createElement('label');
-      label.className = 'sn-pack-choice'; label.classList.toggle('is-disabled', !variant.available);
+      label.className = 'sn-pack-choice'; label.classList.toggle('is-disabled', !variant.available || Number(variant.max) < minimumFor(variant));
       const input = document.createElement('input');
       input.type = 'radio'; input.name = 'pack'; input.value = variant.pack; input.dataset.variantId = variant.id; input.dataset.sku = variant.sku;
       const card = document.createElement('span'); card.className = 'sn-pack-choice__body';
@@ -360,8 +362,8 @@
       if (onSale) { const compare = document.createElement('del'); compare.className = 'sn-pack-prices__compare'; compare.textContent = `${money(variant.compareAtCents / size)} / unit`; prices.append(compare); }
       const price = document.createElement('span'); price.className = 'sn-pack-prices__price'; price.append(document.createTextNode(money(variant.priceCents / size))); const unit = document.createElement('small'); unit.textContent = ' / unit'; price.append(unit); prices.append(price);
       if (onSale) { const saving = document.createElement('span'); saving.className = 'sn-pack-prices__saving'; saving.textContent = `Save ${money((variant.compareAtCents - variant.priceCents) / size)} / unit`; prices.append(saving); }
-      const total = document.createElement('span'); total.className = 'sn-pack-prices__total'; total.textContent = variant.pack === 'Any quantity' ? 'Enter your quantity below' : `Total ${money(variant.priceCents)}`; prices.append(total); card.append(prices);
-      if (!variant.available) { const sold = document.createElement('small'); sold.textContent = 'Sold out'; card.append(sold); }
+      const total = document.createElement('span'); total.className = 'sn-pack-prices__total'; total.textContent = variant.pack === 'Any quantity' ? `Minimum ${minimumFor(variant)} batteries` : `Total ${money(variant.priceCents)}`; prices.append(total); card.append(prices);
+      if (!variant.available || Number(variant.max) < minimumFor(variant)) { const sold = document.createElement('small'); sold.textContent = 'Sold out'; card.append(sold); }
       input.addEventListener('change', () => {
         if (isBusy()) return;
         const previousVariant = selected;
@@ -375,7 +377,25 @@
   const changeQuantity = delta => { if (!isAvailable() || isBusy()) return; count = Number($('quantity').value) + delta * Math.max(1, Number(selected.step) || 1); updatePrice(); };
   $('quantity-minus').addEventListener('click', () => changeQuantity(-1));
   $('quantity-plus').addEventListener('click', () => changeQuantity(1));
+  $('quantity').addEventListener('input', () => {
+    const input = $('quantity');
+    input.setCustomValidity('');
+    if (input.checkValidity() && input.value !== '') {
+      count = Number(input.value); updatePrice(); return;
+    }
+    input.setCustomValidity(`Enter a whole number from ${input.min} to ${input.max}.`);
+    $('purchase-button').disabled = true;
+    root.querySelector('[data-suntneew-buy-now]').disabled = true;
+    $('quantity-summary').textContent = selected.pack === 'Any quantity' ? `Minimum ${minimumFor(selected)} batteries at ${money(selected.priceCents)} each.` : `Enter a whole number from ${input.min} to ${input.max}.`;
+  });
   $('quantity').addEventListener('change', () => { count = Number($('quantity').value); updatePrice(); });
+  const validateQuantity = event => {
+    if (!$('quantity').checkValidity() || $('quantity').value === '') {
+      event.preventDefault(); event.stopImmediatePropagation(); $('quantity').reportValidity();
+    }
+  };
+  form.addEventListener('submit', validateQuantity, true);
+  root.querySelector('[data-suntneew-buy-now]').addEventListener('click', validateQuantity, true);
   form.addEventListener('submit', () => queueMicrotask(updatePrice));
   root.querySelector('[data-suntneew-buy-now]').addEventListener('click', () => queueMicrotask(updatePrice));
   form.addEventListener('purchase:idle', updatePrice);
