@@ -74,10 +74,17 @@ section="""{% comment %}G31 selected PDP. Shared SHOP product images are preserv
 {% liquid
  assign selected_variant = product.selected_or_first_available_variant
  assign product_form_id = 'g31-selected-form-' | append: section.id
+ assign selected_min = selected_variant.quantity_rule.min | default: 1
+ if selected_variant.option1 == 'Any quantity'
+  assign selected_min = selected_min | at_least: 5
+ endif
 %}
 <div class="sn-g31-pdp" data-g31-pdp data-form="{{ product_form_id }}">
 <script type="application/json" data-g31-product>{"currency":{{ cart.currency.iso_code | default: shop.currency | json }},"selectedId":{{ selected_variant.id | append: '' | json }},"variants":[{% for variant in product.variants %}{% liquid
  assign variant_min = variant.quantity_rule.min | default: 1
+ if variant.option1 == 'Any quantity'
+  assign variant_min = variant_min | at_least: 5
+ endif
  assign variant_max = variant.quantity_rule.max | default: 999
  if variant.requires_components or variant.inventory_management != blank and variant.inventory_policy == 'deny'
   assign variant_max = variant_max | at_most: variant.inventory_quantity
@@ -99,7 +106,7 @@ section="""{% comment %}G31 selected PDP. Shared SHOP product images are preserv
       <div class="product-options"><fieldset class="pack-options"><legend>Pack: <span id="chosen-pack">{{ selected_variant.option1 | escape }}</span></legend><div class="pack-choices" id="pack-choices">{% for variant in product.variants %}<label class="sn-pack-choice"><input type="radio" name="pack" value="{{ variant.option1 | escape }}"{% if variant.id == selected_variant.id %} checked{% endif %}><span class="sn-pack-choice__body"><strong>{{ variant.option1 | escape }}</strong></span></label>{% endfor %}</div></fieldset></div>
       {% form 'product', product, is: 'product-form', id: product_form_id %}
         <p class="quantity-label"><label id="quantity-label" for="quantity">Number of units</label></p>
-        <div class="purchase-row"><div class="quantity-control"><button id="quantity-minus" type="button" aria-label="Decrease quantity" disabled>−</button><input id="quantity" name="quantity" type="number" min="1" step="1" value="1" inputmode="numeric" aria-describedby="quantity-summary" disabled><button id="quantity-plus" type="button" aria-label="Increase quantity" disabled>+</button></div><button id="purchase-button" class="purchase-button" type="submit"{% unless selected_variant.available %} disabled{% endunless %}><span id="purchase-label">{% if selected_variant.available %}Add to cart{% else %}Sold out{% endif %}</span></button></div>
+        <div class="purchase-row"><div class="quantity-control"><button id="quantity-minus" type="button" aria-label="Decrease quantity" disabled>−</button><input id="quantity" name="quantity" type="number" min="{{ selected_min }}" step="1" value="{{ selected_min }}" inputmode="numeric" aria-describedby="quantity-summary" disabled><button id="quantity-plus" type="button" aria-label="Increase quantity" disabled>+</button></div><button id="purchase-button" class="purchase-button" type="submit"{% unless selected_variant.available %} disabled{% endunless %}><span id="purchase-label">{% if selected_variant.available %}Add to cart{% else %}Sold out{% endif %}</span></button></div>
         <button type="button" class="buy-now" data-suntneew-buy-now{% unless selected_variant.available %} disabled{% endunless %}>Buy now</button><input type="hidden" name="id" id="selected-variant" value="{{ selected_variant.id }}">
       {% endform %}
       <p class="cart-feedback" role="status" aria-live="polite" hidden></p><a class="cart-feedback-link" href="{{ routes.cart_url }}" hidden>View your cart →</a>
