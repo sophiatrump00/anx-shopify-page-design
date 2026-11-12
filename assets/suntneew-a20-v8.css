@@ -637,3 +637,7 @@
 .sn-a20-pdp #gallery{scroll-margin-top:calc(var(--review-height) + 16px)}
 @container features (min-width:1000px){.sn-a20-pdp .product-gallery .gallery-pair{max-width:min(100%,max(260px,calc(100dvh - var(--review-height) - var(--gallery-chrome-height) - 36px)))}}
 @media(prefers-reduced-motion:reduce){.sn-a20-pdp *{scroll-behavior:auto!important}.sn-a20-pdp .product-nav{transition:none}}
+
+/* Center feature choices; navigate by tabs, dragging or swiping. */
+.sn-a20-pdp .feature-pair:not(.gallery-pair) .pair-tabs{justify-content:center;text-align:center}
+.sn-a20-pdp .feature-pair:not(.gallery-pair) .pair-arrows{display:none}
