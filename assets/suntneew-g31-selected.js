@@ -71,7 +71,7 @@
     const hint = paragraph('', 'pair-hint');
     const desktopHint = document.createElement('span');
     desktopHint.className = 'pair-hint-desktop';
-    desktopHint.textContent = 'Drag or use the arrows';
+    desktopHint.textContent = 'Drag to explore';
     const mobileHint = document.createElement('span');
     mobileHint.className = 'pair-hint-mobile';
     mobileHint.textContent = 'Swipe to explore';

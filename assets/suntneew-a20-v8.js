@@ -41,7 +41,7 @@ function pair(c,assets,{gallery=false}={}){
  const nav=document.createElement('div');nav.className='pair-tabs';nav.setAttribute('aria-label','Choose a feature');
  const track=document.createElement('div');track.className='pair-track';track.id='pair-'+c.group;track.tabIndex=0;track.setAttribute('role','region');track.setAttribute('aria-label',c.labels.join(' and '));
  const footer=document.createElement('div');footer.className='pair-controls';
- const hint=paragraph('','pair-hint');const desktopHint=document.createElement('span');desktopHint.className='pair-hint-desktop';desktopHint.textContent='Drag or use the arrows';const mobileHint=document.createElement('span');mobileHint.className='pair-hint-mobile';mobileHint.textContent='Swipe to explore';hint.append(desktopHint,mobileHint);
+ const hint=paragraph('','pair-hint');const desktopHint=document.createElement('span');desktopHint.className='pair-hint-desktop';desktopHint.textContent='Drag to explore';const mobileHint=document.createElement('span');mobileHint.className='pair-hint-mobile';mobileHint.textContent='Swipe to explore';hint.append(desktopHint,mobileHint);
  const counter=document.createElement('span');counter.className='pair-counter';counter.setAttribute('aria-live','polite');counter.setAttribute('aria-atomic','true');
  const arrows=document.createElement('div');arrows.className='pair-arrows';
  const previous=document.createElement('button');previous.type='button';previous.textContent='←';previous.setAttribute('aria-label',gallery?'Previous product image':'Previous feature');previous.setAttribute('aria-controls',track.id);

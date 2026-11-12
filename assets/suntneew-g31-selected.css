@@ -643,3 +643,7 @@
 .sn-g31-pdp .gallery-pair .image-button img{width:100%;height:100%;object-fit:contain}
 .sn-g31-pdp .gallery-lightbox .zoom-scroll img{object-fit:contain}
 .sn-g31-pdp .feature-card .image-button img{background:#fff}
+
+/* Center feature choices; navigate by tabs, dragging or swiping. */
+.sn-g31-pdp .feature-pair:not(.gallery-pair) .pair-tabs{justify-content:center;text-align:center}
+.sn-g31-pdp .feature-pair:not(.gallery-pair) .pair-arrows{display:none}
