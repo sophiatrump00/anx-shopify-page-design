@@ -5,5 +5,34 @@
   Ahrefs project "Suntneew" (project id 10320461). The data-key is the project's
   web_analytics_data_key. Loaded async so it never blocks rendering.
   Ahrefs verifies installation by finding this exact script tag in <head>.
+
+  Microsoft Clarity: full-site heatmaps, scroll depth, and session recordings for
+  the Clarity project "suntneew-US" (project id zec5egsg7g, suntneew.com).
+  Loaded async; records non-PII page context tags and dynamic storefront events
+  (variant switch, add to cart, cart/drawer open, errors) across all layouts.
 {%- endcomment -%}
 <script src="https://analytics.ahrefs.com/analytics.js" data-key="77c14Zcpth1DeytOOBqUeA" async></script>
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "zec5egsg7g");
+  try {
+    window.clarity("set", "page_type", {{ request.page_type | json }});
+    {%- if template.suffix != blank -%}
+      window.clarity("set", "template_suffix", {{ template.suffix | json }});
+    {%- endif -%}
+    {%- if product -%}
+      window.clarity("set", "product_handle", {{ product.handle | json }});
+    {%- endif -%}
+    {%- if collection -%}
+      window.clarity("set", "collection_handle", {{ collection.handle | json }});
+    {%- endif -%}
+    document.addEventListener("variant:change", function() { try { window.clarity("event", "variant_change"); } catch (_) {} }, { passive: true });
+    document.addEventListener("variant:add", function() { try { window.clarity("event", "add_to_cart"); } catch (_) {} }, { passive: true });
+    document.addEventListener("dialog:after-show", function() { try { window.clarity("event", "drawer_or_dialog_open"); } catch (_) {} }, { passive: true });
+    document.addEventListener("cart:error", function() { try { window.clarity("event", "cart_error"); } catch (_) {} }, { passive: true });
+    document.addEventListener("a20:colour", function() { try { window.clarity("event", "a20_colour_switch"); } catch (_) {} }, { passive: true });
+  } catch (_) {}
+</script>
