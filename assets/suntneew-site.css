@@ -1,4 +1,11 @@
 /* Global navigation for the product-series information architecture. */
+.shopify-section--announcement-bar .announcement-bar {
+  padding-block: 8px;
+  font-size: 12px;
+  letter-spacing: .03em;
+  line-height: 1.35;
+}
+
 .header {
   border-bottom: 1px solid rgba(27, 36, 51, .09);
 }

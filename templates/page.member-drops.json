@@ -27,7 +27,7 @@
         "next"
       ],
       "settings": {
-        "enabled": true,
+        "enabled": false,
         "next_enabled": false,
         "preview_state": "auto",
         "claim_mode": "native-codes",

@@ -10,7 +10,8 @@
   const form = document.getElementById(root.dataset.form);
   const money = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: product.currency || 'USD' }).format(Number(cents || 0) / 100);
   const params = new URLSearchParams(location.search);
-  let selected = product.variants.find(variant => String(variant.id) === (params.get('variant') || String(product.selectedId))) || product.variants[0];
+  const packVariants = product.variants.filter(variant => variant.pack !== 'Any quantity');
+  let selected = packVariants.find(variant => String(variant.id) === (params.get('variant') || String(product.selectedId))) || packVariants[0];
   let count = 1;
   let pairCleanups = [];
   let galleryController;
@@ -350,7 +351,7 @@
   }
   function renderPacks() {
     const fragment = document.createDocumentFragment();
-    product.variants.forEach(variant => {
+    packVariants.forEach(variant => {
       const label = document.createElement('label');
       label.className = 'sn-pack-choice'; label.classList.toggle('is-disabled', !variant.available || Number(variant.max) < minimumFor(variant));
       const input = document.createElement('input');
@@ -358,11 +359,9 @@
       const card = document.createElement('span'); card.className = 'sn-pack-choice__body';
       const title = document.createElement('strong'); title.textContent = variant.pack; card.append(title);
       const prices = document.createElement('span'); prices.className = 'sn-pack-prices';
-      const size = packSize(variant); const onSale = Number(variant.compareAtCents) > Number(variant.priceCents);
-      if (onSale) { const compare = document.createElement('del'); compare.className = 'sn-pack-prices__compare'; compare.textContent = `${money(variant.compareAtCents / size)} / unit`; prices.append(compare); }
+      const size = packSize(variant);
       const price = document.createElement('span'); price.className = 'sn-pack-prices__price'; price.append(document.createTextNode(money(variant.priceCents / size))); const unit = document.createElement('small'); unit.textContent = ' / unit'; price.append(unit); prices.append(price);
-      if (onSale) { const saving = document.createElement('span'); saving.className = 'sn-pack-prices__saving'; saving.textContent = `Save ${money((variant.compareAtCents - variant.priceCents) / size)} / unit`; prices.append(saving); }
-      const total = document.createElement('span'); total.className = 'sn-pack-prices__total'; total.textContent = variant.pack === 'Any quantity' ? `Minimum ${minimumFor(variant)} batteries` : `Total ${money(variant.priceCents)}`; prices.append(total); card.append(prices);
+      card.append(prices);
       if (!variant.available || Number(variant.max) < minimumFor(variant)) { const sold = document.createElement('small'); sold.textContent = 'Sold out'; card.append(sold); }
       input.addEventListener('change', () => {
         if (isBusy()) return;

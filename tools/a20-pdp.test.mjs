@@ -5,18 +5,23 @@ import { read, product, render } from './a20-pdp-fixture.mjs';
 const theme=read('assets/theme.js');
 const formCode=theme.slice(theme.indexOf('var ProductForm ='),theme.indexOf('// js/common/product/product-form-listeners.js'));
 const tick=()=>new Promise(resolve=>setTimeout(resolve,0));
-async function setup(t,available=true){
- const dom=new JSDOM(render(product(available)),{runScripts:'outside-only',pretendToBeVisual:true,url:'https://example.com/products/a20'});t.after(()=>dom.window.close());
+async function setup(t,available=true,url='https://example.com/products/a20'){
+ const dom=new JSDOM(render(product(available)),{runScripts:'outside-only',pretendToBeVisual:true,url});t.after(()=>dom.window.close());
  const intersections=[];const w=dom.window;w.ResizeObserver=class{observe(){}disconnect(){}};w.IntersectionObserver=class{constructor(callback){this.callback=callback;intersections.push(this);}observe(target){this.target=target;}disconnect(){}};w.matchMedia=()=>({matches:false});w.CSS={escape:s=>s};w.HTMLElement.prototype.scrollTo=function(){};w.HTMLElement.prototype.scrollIntoView=function(){};w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'));};
  w.Shopify={routes:{root:'/'}};w.themeVariables={settings:{cartType:'drawer',pageType:'product'}};w.eval(formCode);w.eval(read('assets/suntneew-a20-v8.js'));await tick();
  return {w,intersections,root:w.document.querySelector('[data-a20-pdp]'),form:w.document.forms[0],choose:(name,value)=>{const input=w.document.querySelector(`input[name="${name}"][value="${value}"]`);input.click();}};
 }
-test('A20 pack selection submits the matching SKU and number of packs, with live totals',async t=>{
- const{w,root,form,choose}=await setup(t);choose('pack','2 units');
+test('A20 pack selection shows streamlined 3-pack per-unit cards without Any quantity and submits matching SKU and totals',async t=>{
+ const{w,root,form,choose}=await setup(t);
+ assert.deepEqual([...root.querySelectorAll('#pack-choices input')].map(node=>node.value),['1 unit','2 units','4 units']);
+ assert.equal(root.querySelectorAll('.sn-pack-prices__compare,.sn-pack-prices__saving,.sn-pack-prices__total').length,0);
+ choose('pack','2 units');
  assert.equal(new w.FormData(form).get('id'),'101');assert.equal(new w.FormData(form).get('quantity'),'1');assert.equal(root.querySelector('#total-price').textContent,'$133.98');
  root.querySelector('#quantity-plus').click();assert.equal(new w.FormData(form).get('quantity'),'2');assert.equal(root.querySelector('#total-price').textContent,'$267.96');assert.match(root.querySelector('#quantity-summary').textContent,/4 units in total/);
  choose('pack','4 units');assert.equal(new w.FormData(form).get('id'),'102');assert.equal(new w.FormData(form).get('quantity'),'1');
- choose('pack','Any quantity');root.querySelector('#quantity').value='3';root.querySelector('#quantity').dispatchEvent(new w.Event('change'));assert.equal(new w.FormData(form).get('id'),'103');assert.equal(new w.FormData(form).get('quantity'),'3');assert.equal(root.querySelector('#total-price').textContent,'$200.97');assert.equal(root.querySelector('#compare-price').hidden,true);
+ const fallback=await setup(t,true,'https://example.com/products/a20?variant=103');
+ assert.equal(fallback.root.querySelector('#chosen-pack').textContent,'1 unit');
+ assert.equal(new fallback.w.FormData(fallback.form).get('id'),'100');
 });
 test('confirmed unavailable capacities block every purchase route and recover the correct color/SKU',async t=>{
  const{w,root,form,choose}=await setup(t);root.querySelector('[data-colour="red"]').click();choose('pack','2 units');assert.equal(form.elements.namedItem('id').value,'111');

@@ -4,6 +4,14 @@
 <script src={{ 'suntneew-purchase-panel.js' | asset_url | json }} defer></script>
 {% liquid
  assign selected_variant = product.selected_or_first_available_variant
+ if selected_variant.option3 == 'Any quantity'
+  for candidate in product.variants
+   if candidate.option1 == selected_variant.option1 and candidate.option2 == selected_variant.option2 and candidate.option3 != 'Any quantity'
+    assign selected_variant = candidate
+    break
+   endif
+  endfor
+ endif
  assign product_form_id = 'a20-product-form-' | append: section.id
 %}
 <div class="sn-a20-pdp" data-a20-pdp data-form="{{ product_form_id }}"><script type="application/json" data-a20-product>{"currency":{{ cart.currency.iso_code | default: shop.currency | json }},"selectedId":{{ selected_variant.id | append: '' | json }},"options":[{% for option in product.options_with_values %}{"name":{{ option.name | json }},"values":{{ option.values | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}],"variants":[{% for variant in product.variants %}{% liquid
@@ -42,7 +50,7 @@
         <button type="button" data-colour="orange" aria-pressed="true" aria-label="Orange"><span class="swatch-sample swatch-orange"></span><span>Orange</span></button>
         <button type="button" data-colour="red" aria-pressed="false" aria-label="Red"><span class="swatch-sample swatch-red"></span><span>Red</span></button>
        </div></fieldset>
-       <fieldset class="pack-options"><legend>Pack: <span id="chosen-pack">1 unit</span></legend><div class="pack-choices" id="pack-choices">{%- for value in product.options_with_values[2].values -%}<label class="sn-pack-choice"><input type="radio" name="pack" value="{{ value | escape }}"{% if selected_variant.option3 == value %} checked{% endif %}><span class="sn-pack-choice__body"><strong>{{ value | escape }}</strong></span></label>{%- endfor -%}</div></fieldset>
+       <fieldset class="pack-options"><legend>Pack: <span id="chosen-pack">1 unit</span></legend><div class="pack-choices" id="pack-choices">{%- for value in product.options_with_values[2].values -%}{%- unless value == 'Any quantity' -%}<label class="sn-pack-choice"><input type="radio" name="pack" value="{{ value | escape }}"{% if selected_variant.option3 == value %} checked{% endif %}><span class="sn-pack-choice__body"><strong>{{ value | escape }}</strong></span></label>{%- endunless -%}{%- endfor -%}</div></fieldset>
       </div>
       {% form 'product', product, is: 'product-form', id: product_form_id %}<p class="quantity-label"><label id="quantity-label" for="quantity">Number of units</label></p>
       <div class="purchase-row"><div class="quantity-control"><button id="quantity-minus" type="button" aria-label="Decrease quantity" disabled="">−</button><input id="quantity" type="number" min="1" step="1" value="1" inputmode="numeric" aria-describedby="quantity-summary" name="quantity" max="999" disabled=""><button id="quantity-plus" type="button" aria-label="Increase quantity">+</button></div><button id="purchase-button" class="purchase-button" type="submit" disabled=""><span id="purchase-label">Sold out</span></button></div>

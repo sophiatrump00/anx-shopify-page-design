@@ -11,10 +11,37 @@
   "type": "header",
   "name": "Header group",
   "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "bf_2026": {
+          "type": "message",
+          "settings": {
+            "text": "Black Friday is ON: Best Price of 2026!",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "bf_2026"
+      ],
+      "settings": {
+        "enable_sticky": false,
+        "show_on_homepage_only": false,
+        "navigation_mode": "scrolling",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "scrolling_speed": 12,
+        "text_size": "text-xs",
+        "background": "#C84300",
+        "background_gradient": "linear-gradient(90deg, #B83B00 0%, #D94B00 50%, #B83B00 100%)",
+        "text_color": "#FFFFFF"
+      }
+    },
     "header": {
       "type": "header",
       "settings": {
-        "member_drops_entry": true,
+        "member_drops_entry": false,
         "member_drops_page": "member-drops",
         "member_drops_label": "Member Drops",
         "enable_sticky": true,
@@ -45,6 +72,7 @@
     }
   },
   "order": [
+    "announcement-bar",
     "header"
   ]
 }

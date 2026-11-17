@@ -413,7 +413,7 @@ const A20Sales = (() => {
  function renderPacks() {
   el('chosen-pack').textContent = pack;
   const fragment = document.createDocumentFragment();
-  for (const option of data.options.find(o => o.name === 'Pack').values) {
+  for (const option of data.options.find(o => o.name === 'Pack').values.filter(v => v !== 'Any quantity')) {
    const current = A20Sales.findVariant(data.variants, capacity, colour, option), pricing = A20Sales.line(current);
    const label = document.createElement('label');
    label.className = 'sn-pack-choice';
@@ -425,16 +425,8 @@ const A20Sales = (() => {
    const title = document.createElement('strong'); title.textContent = option; card.append(title);
    if (pricing) {
     const prices = document.createElement('span'); prices.className = 'sn-pack-prices';
-    if (pricing.compareUnit) {
-     const compare = document.createElement('del'); compare.className = 'sn-pack-prices__compare'; compare.textContent = `${money(pricing.compareUnit)} / unit`; prices.append(compare);
-    }
     const price = document.createElement('span'); price.className = 'sn-pack-prices__price';
     const unit = document.createElement('small'); unit.textContent = ' / unit'; price.append(document.createTextNode(money(pricing.unitPrice)), unit); prices.append(price);
-    if (pricing.unitSaving) {
-     const saving = document.createElement('span'); saving.className = 'sn-pack-prices__saving'; saving.textContent = `Save ${money(pricing.unitSaving)} / unit`; prices.append(saving);
-    }
-    const total = document.createElement('span'); total.className = 'sn-pack-prices__total';
-    total.textContent = pricing.custom ? 'Enter your quantity below' : `Total ${money(current.priceCents)}`; prices.append(total);
     card.append(prices);
     if (!current.available) {const sold = document.createElement('small'); sold.textContent = outOfStockCapacities.has(capacity) ? 'Out of stock' : 'Sold out'; card.append(sold);}
    } else {const missing = document.createElement('small'); missing.textContent = 'Unavailable'; card.append(missing);}
@@ -475,10 +467,10 @@ const A20Sales = (() => {
  Promise.resolve(JSON.parse(root.querySelector('[data-a20-product]').textContent)).then(snapshot => {
   data = {...snapshot, variants: snapshot.variants.map(current => outOfStockCapacities.has(current.capacity) ? {...current, available: false} : current)};
   const requested = data.variants.find(v => v.id === (query.get('variant') || snapshot.selectedId));
-  if (requested) ({capacity, colour, pack} = requested);
+  if (requested) { ({capacity, colour, pack} = requested); if (pack === 'Any quantity') pack = '1 unit'; }
   else {
    if (data.options.find(o => o.name === 'Capacity').values.includes(query.get('capacity'))) capacity = query.get('capacity');
-   const requestedPack = {'1':'1 unit','2':'2 units','4':'4 units','any':'Any quantity'}[query.get('pack')];
+   const requestedPack = {'1':'1 unit','2':'2 units','4':'4 units'}[query.get('pack')];
    if (requestedPack) pack = requestedPack;
    if (!variant()) colour = 'orange';
   }
@@ -510,7 +502,7 @@ const A20Sales = (() => {
   busyObserver.observe(form,{attributes:true,attributeFilter:['data-purchase-busy']});
   form.addEventListener('cart:error',event=>{const note=root.querySelector('.cart-feedback');note.textContent=event.detail?.error || 'Check your cart before trying again.';note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;});
   form.addEventListener('variant:add',()=>{const note=root.querySelector('.cart-feedback');note.textContent='Added to your cart.';note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;});
-  window.addEventListener('popstate',()=>{const requested=data.variants.find(v=>v.id===new URLSearchParams(location.search).get('variant'));if(requested){({capacity,colour,pack}=requested);count=1;root.dispatchEvent(new CustomEvent('a20:colour',{detail:{colour}}));renderOptions();}});
+  window.addEventListener('popstate',()=>{const requested=data.variants.find(v=>v.id===new URLSearchParams(location.search).get('variant'));if(requested){({capacity,colour,pack}=requested);if(pack==='Any quantity')pack='1 unit';count=1;root.dispatchEvent(new CustomEvent('a20:colour',{detail:{colour}}));renderOptions();}});
  }).catch(error => {console.error(error);form.dataset.variantState='error';el('selected-variant').disabled=true;el('purchase-button').disabled=true;buyNow.disabled=true;const note=root.querySelector('.cart-feedback');note.hidden=false;note.textContent='Product options could not be loaded. Please refresh the page.';});
 })();
 

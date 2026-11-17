@@ -29,20 +29,17 @@ test('merchant image order and five purchase highlights survive rendering, with 
   root.querySelector('[data-close]').click();
  }
 });
-test('fixed packs submit number of packs; custom quantity submits individual batteries and clamps to shared inventory',async t=>{
- const{w,root,form,choose}=await setup(t);choose('2 units');
+test('fixed packs show streamlined per-unit cards without Any quantity, submit number of packs, and clamp to inventory',async t=>{
+ const{w,root,form,choose}=await setup(t);
+ assert.deepEqual([...root.querySelectorAll('#pack-choices input')].map(node=>node.value),['1 unit','2 units','4 units']);
+ assert.equal(root.querySelectorAll('.sn-pack-prices__compare,.sn-pack-prices__saving,.sn-pack-prices__total').length,0);
+ assert.deepEqual([...root.querySelectorAll('.sn-pack-prices__price')].map(node=>node.textContent),['$229.99 / unit','$224.99 / unit','$219.99 / unit']);
+ choose('2 units');
  assert.equal(new w.FormData(form).get('id'),'101');assert.equal(new w.FormData(form).get('quantity'),'1');assert.equal(root.querySelector('#total-price').textContent,'$449.98');
+ assert.equal(root.querySelector('#compare-price').hidden,false);assert.equal(root.querySelector('#total-saving').hidden,false);
  root.querySelector('#quantity-plus').click();assert.equal(new w.FormData(form).get('quantity'),'2');assert.equal(root.querySelector('#total-price').textContent,'$899.96');assert.match(root.querySelector('#quantity-summary').textContent,/4 batteries in total/);
  choose('4 units');assert.equal(new w.FormData(form).get('id'),'102');assert.equal(root.querySelector('#quantity').max,'3');
  root.querySelector('#quantity').value='100';root.querySelector('#quantity').dispatchEvent(new w.Event('change'));assert.equal(root.querySelector('#quantity').value,'3');
- choose('Any quantity');
- assert.equal(root.querySelector('#quantity').min,'5');assert.equal(root.querySelector('#quantity').value,'5');assert.equal(root.querySelector('#quantity-minus').disabled,true);
- assert.equal(new w.FormData(form).get('id'),'103');assert.equal(new w.FormData(form).get('quantity'),'5');assert.equal(root.querySelector('#total-price').textContent,'$1,090.00');
- root.querySelector('#quantity').value='4';root.querySelector('#quantity').dispatchEvent(new w.Event('input'));
- assert.equal(root.querySelector('#purchase-button').disabled,true);assert.equal(root.querySelector('[data-suntneew-buy-now]').disabled,true);
- root.querySelector('#quantity').dispatchEvent(new w.Event('change'));assert.equal(root.querySelector('#quantity').value,'5');
- root.querySelector('#quantity').value='10';root.querySelector('#quantity').dispatchEvent(new w.Event('input'));
- assert.equal(new w.FormData(form).get('quantity'),'10');assert.equal(root.querySelector('#total-price').textContent,'$2,180.00');
  choose('1 unit');assert.equal(root.querySelector('#quantity').min,'1');assert.equal(root.querySelector('#quantity').value,'1');assert.equal(root.querySelector('#total-price').textContent,'$229.99');
 });
 test('sold-out packs remain browsable but all native purchase routes stay disabled',async t=>{
@@ -52,21 +49,18 @@ test('sold-out packs remain browsable but all native purchase routes stay disabl
  for(const node of root.querySelectorAll('#quantity,#quantity-plus,#quantity-minus,#purchase-button,[data-suntneew-buy-now]'))assert.equal(node.disabled,true);
  assert.ok([...root.querySelectorAll('.sn-pack-choice__body')].every(card=>card.textContent.includes('Sold out')));
 });
-test('custom quantities below five cannot reach add-to-cart or buy-now handlers, including a direct variant URL',async t=>{
+test('direct legacy Any quantity variant URL safely falls back to 1 unit and validates whole quantities',async t=>{
  const{w,root,form}=await setup(t,true,'https://example.com/products/g31?variant=103');let calls=0;
  w.fetch=async()=>{calls++;throw new Error('An invalid quantity reached the cart.');};
- assert.equal(root.querySelector('#quantity').value,'5');assert.equal(root.querySelector('#total-price').textContent,'$1,090.00');
- root.querySelector('#quantity').value='4';
+ assert.equal(root.querySelector('#chosen-pack').textContent,'1 unit');
+ assert.equal(new w.FormData(form).get('id'),'100');
+ assert.equal(root.querySelector('#quantity').value,'1');assert.equal(root.querySelector('#total-price').textContent,'$229.99');
+ root.querySelector('#quantity').value='0';
  assert.equal(form.dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true})),false);
  assert.equal(root.querySelector('[data-suntneew-buy-now]').dispatchEvent(new w.MouseEvent('click',{bubbles:true,cancelable:true})),false);
  await tick();assert.equal(calls,0);
  root.querySelector('#quantity').dispatchEvent(new w.Event('blur'));
- assert.equal(root.querySelector('#quantity').value,'5');assert.equal(root.querySelector('#purchase-button').disabled,false);
- root.querySelector('#quantity').value='1';root.querySelector('#quantity').dispatchEvent(new w.Event('input'));
- assert.equal(root.querySelector('#quantity').value,'1');assert.equal(root.querySelector('#purchase-button').disabled,true);
- root.querySelector('#quantity').value='10';root.querySelector('#quantity').dispatchEvent(new w.Event('input'));
- root.querySelector('#quantity').dispatchEvent(new w.Event('blur'));
- assert.equal(root.querySelector('#quantity').value,'10');assert.equal(root.querySelector('#total-price').textContent,'$2,180.00');assert.equal(root.querySelector('#purchase-button').disabled,false);
+ assert.equal(root.querySelector('#quantity').value,'1');assert.equal(root.querySelector('#purchase-button').disabled,false);
 });
 test('native cart lock preserves pack quantity, prevents duplicate requests and recovers after an inventory error',async t=>{
  const{w,root,form,choose}=await setup(t);choose('2 units');root.querySelector('#quantity-plus').click();let finish,submitted,calls=0;
