@@ -67,20 +67,20 @@ test('sticky purchase bar syncs selected pack/quantity and submits native form d
 test('progressive FAQ initially shows top 3 questions, reveals related answers on click, and toggles all',async t=>{
  const{root}=await setup(t);
  const all=[...root.querySelectorAll('#faq [data-progressive-faq] details')];
- assert.equal(all.length,8);
+ assert.equal(all.length,9);
  assert.equal(all.filter(d=>!d.hidden).length,3);
  const toggleBtn=root.querySelector('[data-faq-toggle-all]');
- assert.equal(toggleBtn.textContent,'Show all 8 questions (+5)');
+ assert.equal(toggleBtn.textContent,'Show all 9 questions (+6)');
  root.querySelector('#faq details[data-faq-id="a20-q2"] summary').click();
  await tick();
  assert.equal(all.filter(d=>!d.hidden).length,5);
- assert.equal(toggleBtn.textContent,'Show all 8 questions (+3)');
+ assert.equal(toggleBtn.textContent,'Show all 9 questions (+4)');
  toggleBtn.click();
- assert.equal(all.filter(d=>!d.hidden).length,8);
+ assert.equal(all.filter(d=>!d.hidden).length,9);
  assert.equal(toggleBtn.textContent,'Show fewer questions');
  toggleBtn.click();
  assert.equal(all.filter(d=>!d.hidden).length,3);
- assert.equal(toggleBtn.textContent,'Show all 8 questions (+5)');
+ assert.equal(toggleBtn.textContent,'Show all 9 questions (+6)');
 });
 test('all breadcrumb items are clickable links including current product anchor',async t=>{
  const{root}=await setup(t);

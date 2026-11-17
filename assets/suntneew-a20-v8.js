@@ -290,7 +290,7 @@ const A20Sales = (() => {
  openTarget(location.hash);
  const navLinks = [...root.querySelectorAll('.product-nav a')];
  let frame;
- function updateNav(){frame=undefined;updateSticky();const offset=root.querySelector('.product-nav').getBoundingClientRect().bottom+30;let active=navLinks[0],nearest=-Infinity;for(const link of navLinks){const target=root.querySelector(link.hash);const top=target?.getBoundingClientRect().top;if(top<=offset && top>nearest){active=link;nearest=top;}}navLinks.forEach(link=>{link.classList.toggle('active',link===active);if(link===active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}
+ function updateNav(){frame=undefined;updateSticky();const offset=root.querySelector('.product-nav').getBoundingClientRect().bottom+30;let active=navLinks[0],nearest=-Infinity;for(const link of navLinks){const target=root.querySelector(link.hash);const top=target?.getBoundingClientRect().top;if(top<=offset && top>nearest){active=link;nearest=top;}}const doc=document.documentElement;if(doc.scrollHeight>innerHeight+100&&innerHeight+scrollY>=doc.scrollHeight-48)active=navLinks[navLinks.length-1];navLinks.forEach(link=>{link.classList.toggle('active',link===active);if(link===active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}
  const schedule=()=>{if(!frame)frame=requestAnimationFrame(updateNav);};window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule,{passive:true});updateNav();
  window.addEventListener('hashchange',()=>openTarget(location.hash));
 })();

@@ -463,6 +463,8 @@
     const offset = root.querySelector('.product-nav').getBoundingClientRect().bottom + 30;
     let active = navLinks[0]; let nearest = -Infinity;
     navLinks.forEach(link => { const top = root.querySelector(link.hash)?.getBoundingClientRect().top; if (top <= offset && top > nearest) { active = link; nearest = top; } });
+    const doc = document.documentElement;
+    if (doc.scrollHeight > window.innerHeight + 100 && window.innerHeight + window.scrollY >= doc.scrollHeight - 48) { active = navLinks[navLinks.length - 1]; }
     navLinks.forEach(link => { link.classList.toggle('active', link === active); if (link === active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
   }
   const scheduleNav = () => { if (!navRaf) navRaf = requestAnimationFrame(updateNav); };
