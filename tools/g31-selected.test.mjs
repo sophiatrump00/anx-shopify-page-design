@@ -114,6 +114,15 @@ test('progressive FAQ initially shows top 3 questions, reveals related answers o
  assert.equal(all.filter(d=>!d.hidden).length,3);
  assert.equal(toggleBtn.textContent,'Show all 9 questions (+6)');
 });
+test('all breadcrumb items are clickable links including current product anchor and valid shop section',async t=>{
+ const{root}=await setup(t);
+ const links=[...root.querySelectorAll('.breadcrumb a')];
+ assert.deepEqual(links.map(a=>a.textContent),['Home','RV Batteries','Group 31']);
+ assert.equal(links[0].getAttribute('href'),'/');
+ assert.equal(links[1].getAttribute('href'),'/pages/shop#shop-rv-batteries');
+ assert.equal(links[2].getAttribute('href'),'#sales-summary');
+ assert.equal(links[2].getAttribute('aria-current'),'page');
+});
 test('every selected original retains its recorded hash; the production template routes to the selected PDP and its real review app',()=>{
  const manifest=JSON.parse(read('tools/fixtures/g31-selected-assets-20261110.json'));
  for(const row of manifest.assets){const bytes=fs.readFileSync(new URL('../assets/'+row.full_asset,import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),row.original_sha256);}

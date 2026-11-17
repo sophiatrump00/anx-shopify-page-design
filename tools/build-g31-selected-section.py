@@ -106,7 +106,7 @@ section="""{% comment %}G31 selected PDP. Shared SHOP product images are preserv
 %}{"id":{{ variant.id | append: '' | json }},"sku":{{ variant.sku | json }},"pack":{{ variant.option1 | json }},"available":{{ variant.available | json }},"priceCents":{{ variant.price | json }},"compareAtCents":{{ variant.compare_at_price | default: 0 | json }},"min":{{ variant_min | json }},"max":{{ variant_max | json }},"step":{{ variant.quantity_rule.increment | default: 1 | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}]}</script>
 """+f'<script type="application/json" data-g31-assets>{asset_data}</script>\n'+"""
 <div class="preview-frame" id="frame"><div class="storefront" id="top">
-  <div class="breadcrumb content"><a href="{{ routes.root_url }}">Home</a><span>›</span><a href="/pages/shop#rv-batteries">RV Batteries</a><span>›</span><span>Group 31</span></div>
+  <div class="breadcrumb content" role="navigation" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">›</span><a href="/pages/shop#shop-rv-batteries">RV Batteries</a><span aria-hidden="true">›</span><a href="#sales-summary" aria-current="page">Group 31</a></div>
   <section id="gallery" class="product-hero" aria-labelledby="product-title">
     <div class="product-gallery"><div id="gallery-content" aria-busy="false">"""+gallery+"""</div><p class="gallery-help"><span class="gallery-help-desktop">Move over the image to browse photos. Click to enlarge.</span><span class="gallery-help-mobile">Swipe to explore · Tap an image to enlarge.</span></p><div class="gallery-assurances-slot" id="gallery-assurances-slot">"""+assurances+"""</div></div>
     <div class="product-summary" id="sales-summary">
