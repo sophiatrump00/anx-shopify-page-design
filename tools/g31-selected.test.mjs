@@ -80,6 +80,22 @@ test('sticky price hides above and throughout the main price viewport, and while
  root.querySelector('.image-button').click();assert.equal(root.querySelector('#sticky-buy').hidden,true);
  root.querySelector('[data-close]').click();assert.equal(root.querySelector('#sticky-buy').hidden,false);
 });
+test('sticky purchase bar syncs selected pack/quantity and submits native form directly',async t=>{
+ const{w,root,form,choose}=await setup(t);
+ choose('2 units');root.querySelector('#quantity-plus').click();
+ assert.equal(root.querySelector('#sticky-total').textContent,'$899.96');
+ assert.equal(root.querySelector('#sticky-options').textContent,'2 units × 2');
+ assert.equal(root.querySelector('#sticky-purchase-button').getAttribute('form'),form.id);
+ assert.equal(root.querySelector('#sticky-buy-now').getAttribute('form'),form.id);
+ assert.equal(root.querySelector('#sticky-purchase-button').disabled,false);
+ assert.equal(root.querySelector('#sticky-buy-now').disabled,false);
+ let submitted;
+ w.fetch=async(url,options)=>{if(String(url).includes('cart/add.js')){submitted=[options.body.get('id'),options.body.get('quantity')];return{ok:true,json:async()=>({items:[{id:101}],sections:{}})};}return{ok:true,json:async()=>({items:[]})};};
+ root.querySelector('#sticky-purchase-button').click();
+ await tick();await tick();
+ assert.deepEqual(submitted,['101','2']);
+ assert.equal(root.querySelector('#sticky-feedback').textContent,'Added to your cart.');
+});
 test('every selected original retains its recorded hash; the production template routes to the selected PDP and its real review app',()=>{
  const manifest=JSON.parse(read('tools/fixtures/g31-selected-assets-20261110.json'));
  for(const row of manifest.assets){const bytes=fs.readFileSync(new URL('../assets/'+row.full_asset,import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),row.original_sha256);}

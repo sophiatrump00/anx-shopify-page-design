@@ -48,3 +48,19 @@ test('each color keeps all selected gallery and story assets with full-resolutio
  const{root}=await setup(t);for(const color of ['orange','red']){root.querySelector(`[data-colour="${color}"]`).click();assert.equal(root.querySelectorAll('.gallery-thumbnails button').length,8);assert.equal(root.querySelectorAll('#feature-content img').length,10);assert.equal(root.querySelectorAll('#feature-content .pair-track').length,2);assert.ok([...root.querySelectorAll('#feature-content img')].every(img=>img.src.includes(color)||img.src.includes('orange-aplus-10')));root.querySelector('.gallery-pair .image-button').click();assert.match(root.querySelector('#zoom-image').src,/-full\.jpg$/);assert.equal(root.querySelector('#image-dialog').open,true);root.querySelector('#image-dialog [data-close]').click();}
  assert.equal(root.querySelectorAll('[data-capacity-match="8000mAh"]:not([hidden])').length>0,true);
 });
+test('sticky purchase bar syncs selected pack/quantity and submits native form directly',async t=>{
+ const{w,root,form,choose}=await setup(t);
+ choose('pack','2 units');root.querySelector('#quantity-plus').click();
+ assert.equal(root.querySelector('#sticky-total').textContent,'$267.96');
+ assert.equal(root.querySelector('#sticky-options').textContent,'8,000mAh · Orange · 2 units × 2');
+ assert.equal(root.querySelector('#sticky-purchase-button').getAttribute('form'),form.id);
+ assert.equal(root.querySelector('#sticky-buy-now').getAttribute('form'),form.id);
+ assert.equal(root.querySelector('#sticky-purchase-button').disabled,false);
+ assert.equal(root.querySelector('#sticky-buy-now').disabled,false);
+ let submitted;
+ w.fetch=async(url,options)=>{if(String(url).includes('cart/add.js')){submitted=[options.body.get('id'),options.body.get('quantity')];return{ok:true,json:async()=>({items:[{id:101}],sections:{}})};}return{ok:true,json:async()=>({items:[]})};};
+ root.querySelector('#sticky-purchase-button').click();
+ await tick();await tick();
+ assert.deepEqual(submitted,['101','2']);
+ assert.equal(root.querySelector('#sticky-feedback').textContent,'Added to your cart.');
+});

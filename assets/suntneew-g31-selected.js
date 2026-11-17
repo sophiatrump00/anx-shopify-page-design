@@ -311,6 +311,8 @@
   const minimumFor = variant => Math.max(variant?.pack === 'Any quantity' ? 5 : 1, Number(variant?.min) || 1);
   const isAvailable = () => selected?.available === true && Number(selected.max) >= minimumFor(selected);
   const isBusy = () => form?.dataset.purchaseBusy === 'true' || ['loading', 'error'].includes(form?.dataset.variantState);
+  const buyNowButtons = [...root.querySelectorAll('[data-suntneew-buy-now]')];
+  let stickyFeedbackTimer;
   function updateSticky() {
     const price = $('total-price').getBoundingClientRect();
     const nav = root.querySelector('.product-nav')?.getBoundingClientRect();
@@ -340,9 +342,11 @@
     $('quantity-plus').disabled = !available || isBusy() || count >= maxValid;
     $('purchase-button').disabled = !available || isBusy();
     $('purchase-label').textContent = available ? 'Add to cart' : 'Sold out';
-    root.querySelector('[data-suntneew-buy-now]').disabled = !available || isBusy();
+    if ($('sticky-purchase-button')) $('sticky-purchase-button').disabled = !available || isBusy();
+    if ($('sticky-purchase-label')) $('sticky-purchase-label').textContent = available ? 'Add to cart' : 'Sold out';
+    buyNowButtons.forEach(button => { button.disabled = !available || isBusy(); });
     $('stock-status').hidden = available; $('stock-status').textContent = 'This pack is currently sold out.';
-    $('sticky-total').textContent = $('total-price').textContent; $('sticky-options').textContent = selected.pack;
+    $('sticky-total').textContent = $('total-price').textContent; $('sticky-options').textContent = count > 1 ? `${selected.pack} × ${count}` : selected.pack;
     $('box-quantity-note').textContent = size * count > 1 ? `Contents shown per battery. Your selection contains ${size * count} batteries.` : 'Package contents listed per battery.';
     $('chosen-pack').textContent = selected.pack;
     root.querySelectorAll('#pack-choices input').forEach(input => { input.checked = input.dataset.variantId === String(selected.id); input.disabled = isBusy(); });
@@ -384,7 +388,8 @@
     }
     input.setCustomValidity(`Enter a whole number from ${input.min} to ${input.max}.`);
     $('purchase-button').disabled = true;
-    root.querySelector('[data-suntneew-buy-now]').disabled = true;
+    if ($('sticky-purchase-button')) $('sticky-purchase-button').disabled = true;
+    buyNowButtons.forEach(button => { button.disabled = true; });
     $('quantity-summary').textContent = selected.pack === 'Any quantity' ? `Minimum ${minimumFor(selected)} batteries at ${money(selected.priceCents)} each.` : `Enter a whole number from ${input.min} to ${input.max}.`;
   });
   const normalizeQuantity = () => { count = Number($('quantity').value); updatePrice(); };
@@ -396,20 +401,36 @@
     }
   };
   form.addEventListener('submit', validateQuantity, true);
-  root.querySelector('[data-suntneew-buy-now]').addEventListener('click', validateQuantity, true);
+  buyNowButtons.forEach(button => {
+    button.addEventListener('click', validateQuantity, true);
+    button.addEventListener('click', () => queueMicrotask(updatePrice));
+  });
   form.addEventListener('submit', () => queueMicrotask(updatePrice));
-  root.querySelector('[data-suntneew-buy-now]').addEventListener('click', () => queueMicrotask(updatePrice));
   form.addEventListener('purchase:idle', updatePrice);
   new MutationObserver(updatePrice).observe(form, { attributes: true, attributeFilter: ['data-purchase-busy', 'data-variant-state'] });
   form.addEventListener('variant:add', () => {
     const message = root.querySelector('.cart-feedback');
     message.textContent = 'Added to your cart.'; message.hidden = false;
-    root.querySelector('.cart-feedback-link').hidden = false; updatePrice();
+    root.querySelector('.cart-feedback-link').hidden = false;
+    const stickyMessage = $('sticky-feedback');
+    if (stickyMessage) {
+      stickyMessage.textContent = 'Added to your cart.'; stickyMessage.hidden = false;
+      clearTimeout(stickyFeedbackTimer);
+      stickyFeedbackTimer = setTimeout(() => { stickyMessage.hidden = true; }, 4000);
+    }
+    updatePrice();
   });
   form.addEventListener('cart:error', event => {
+    const errorText = event.detail?.error || 'Check your cart before trying again.';
     const message = root.querySelector('.cart-feedback');
-    message.textContent = event.detail?.error || 'Check your cart before trying again.'; message.hidden = false;
-    root.querySelector('.cart-feedback-link').hidden = false; updatePrice();
+    message.textContent = errorText; message.hidden = false;
+    root.querySelector('.cart-feedback-link').hidden = false;
+    const stickyMessage = $('sticky-feedback');
+    if (stickyMessage) {
+      clearTimeout(stickyFeedbackTimer);
+      stickyMessage.textContent = errorText; stickyMessage.hidden = false;
+    }
+    updatePrice();
   });
 
   const assurances = $('purchase-assurances');

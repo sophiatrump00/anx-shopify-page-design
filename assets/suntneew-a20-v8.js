@@ -257,7 +257,8 @@ const A20Sales = (() => {
   const capacity = detail.capacity || '8000mAh';
   root.querySelectorAll('.pdp-section [data-capacity-match]').forEach(row => {row.hidden = !!row.dataset.capacityMatch && row.dataset.capacityMatch !== capacity;});
   byId('sticky-total').textContent = byId('total-price').textContent;
-  byId('sticky-options').textContent = `${Number.parseInt(capacity, 10).toLocaleString('en-US')}mAh · ${detail.colour === 'red' ? 'Red' : 'Orange'} · ${detail.pack || '1 unit'}`;
+  const qtySuffix = detail.count > 1 ? ` × ${detail.count}` : '';
+  byId('sticky-options').textContent = `${Number.parseInt(capacity, 10).toLocaleString('en-US')}mAh · ${detail.colour === 'red' ? 'Red' : 'Orange'} · ${detail.pack || '1 unit'}${qtySuffix}`;
   byId('box-quantity-note').textContent = detail.pricing && detail.pricing.totalUnits > 1 ? `The list shows one unit’s package. Your selection contains ${detail.pricing.totalUnits} units.` : 'Package contents listed per unit.';
  }
  root.addEventListener('a20:sale-update', event => synchronize(event.detail));
@@ -271,9 +272,10 @@ const A20Sales = (() => {
  const header=document.querySelector('store-header') || document.querySelector('header');
  if(header)new ResizeObserver(updateBar).observe(header);updateBar();window.addEventListener('resize',updateBar,{passive:true});
  // Instant anchor jumps can move the price across the viewport without an intersection event.
- function updateSticky() {byId('sticky-buy').hidden = byId('total-price').getBoundingClientRect().bottom > 0;}
+ function updateSticky() {byId('sticky-buy').hidden = byId('total-price').getBoundingClientRect().bottom > 0 || !!root.querySelector('dialog[open]');}
  const stickyObserver = new IntersectionObserver(updateSticky, {threshold:0});
  stickyObserver.observe(byId('total-price'));
+ root.querySelectorAll('dialog').forEach(d => { d.addEventListener('close', updateSticky); new MutationObserver(updateSticky).observe(d, {attributes:true,attributeFilter:['open']}); });
  function openTarget(hash) {
   if (!hash || hash === '#') return;
   const target = root.querySelector('#'+CSS.escape(hash.slice(1)));
@@ -354,9 +356,10 @@ const A20Sales = (() => {
 'use strict';
 (() => {
  const form=root.querySelector('form[is="product-form"]');
- const buyNow=root.querySelector('[data-suntneew-buy-now]');
+ const buyNowButtons=[...root.querySelectorAll('[data-suntneew-buy-now]')];
  const busy=()=>form.dataset.purchaseBusy==='true';
  const el = id => root.querySelector('#'+id);
+ let stickyFeedbackTimer;
  const query = new URLSearchParams(location.search);
  // Merchant-confirmed unavailable capacities; 8000mAh follows live Shopify availability.
  const outOfStockCapacities = new Set(['12000mAh', '16000mAh']);
@@ -398,9 +401,12 @@ const A20Sales = (() => {
   el('quantity-summary').textContent = !pricing ? '' : pricing.packSize > 1
    ? `${count} × ${pricing.packSize}-unit ${count === 1 ? 'pack' : 'packs'} · ${pricing.totalUnits} units in total`
    : `${count} ${count === 1 ? 'unit' : 'units'} · ${money(pricing.unitPrice)} per unit`;
-  el('purchase-label').textContent = !current ? 'Unavailable' : !available ? (outOfStockCapacities.has(capacity) ? 'Out of stock' : 'Sold out') : 'Add to cart';
+  const labelText = !current ? 'Unavailable' : !available ? (outOfStockCapacities.has(capacity) ? 'Out of stock' : 'Sold out') : 'Add to cart';
+  el('purchase-label').textContent = labelText;
+  if (el('sticky-purchase-label')) el('sticky-purchase-label').textContent = labelText;
   el('purchase-button').disabled=!available || busy();
-  buyNow.disabled=!available || busy();
+  if (el('sticky-purchase-button')) el('sticky-purchase-button').disabled=!available || busy();
+  buyNowButtons.forEach(btn => { btn.disabled = !available || busy(); });
   el('selected-variant').disabled=!current || !available;
   form.dataset.variantState=current ? 'ready' : 'error';
   root.querySelectorAll('.capacity-choices input').forEach(input=>{input.disabled=busy();});
@@ -500,10 +506,10 @@ const A20Sales = (() => {
   form.addEventListener('purchase:idle',()=>{renderOptions();});
   const busyObserver=new MutationObserver(()=>{renderPacks();updatePrice();});
   busyObserver.observe(form,{attributes:true,attributeFilter:['data-purchase-busy']});
-  form.addEventListener('cart:error',event=>{const note=root.querySelector('.cart-feedback');note.textContent=event.detail?.error || 'Check your cart before trying again.';note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;});
-  form.addEventListener('variant:add',()=>{const note=root.querySelector('.cart-feedback');note.textContent='Added to your cart.';note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;});
+  form.addEventListener('cart:error',event=>{const err=event.detail?.error || 'Check your cart before trying again.';const note=root.querySelector('.cart-feedback');note.textContent=err;note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;const sNote=el('sticky-feedback');if(sNote){clearTimeout(stickyFeedbackTimer);sNote.textContent=err;sNote.hidden=false;}});
+  form.addEventListener('variant:add',()=>{const note=root.querySelector('.cart-feedback');note.textContent='Added to your cart.';note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;const sNote=el('sticky-feedback');if(sNote){sNote.textContent='Added to your cart.';sNote.hidden=false;clearTimeout(stickyFeedbackTimer);stickyFeedbackTimer=setTimeout(()=>{sNote.hidden=true;},4000);}});
   window.addEventListener('popstate',()=>{const requested=data.variants.find(v=>v.id===new URLSearchParams(location.search).get('variant'));if(requested){({capacity,colour,pack}=requested);if(pack==='Any quantity')pack='1 unit';count=1;root.dispatchEvent(new CustomEvent('a20:colour',{detail:{colour}}));renderOptions();}});
- }).catch(error => {console.error(error);form.dataset.variantState='error';el('selected-variant').disabled=true;el('purchase-button').disabled=true;buyNow.disabled=true;const note=root.querySelector('.cart-feedback');note.hidden=false;note.textContent='Product options could not be loaded. Please refresh the page.';});
+ }).catch(error => {console.error(error);form.dataset.variantState='error';el('selected-variant').disabled=true;el('purchase-button').disabled=true;if(el('sticky-purchase-button'))el('sticky-purchase-button').disabled=true;buyNowButtons.forEach(btn=>{btn.disabled=true;});const note=root.querySelector('.cart-feedback');note.hidden=false;note.textContent='Product options could not be loaded. Please refresh the page.';});
 })();
 
 })();
