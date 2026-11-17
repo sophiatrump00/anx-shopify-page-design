@@ -280,8 +280,11 @@ const A20Sales = (() => {
   if (!hash || hash === '#') return;
   const target = root.querySelector('#'+CSS.escape(hash.slice(1)));
   if (!target) return;
-  if (target.tagName === 'DETAILS') target.open = true;
-  target.closest('details')?.setAttribute('open', '');
+  const detailsEl = target.tagName === 'DETAILS' ? target : target.closest('details');
+  if (detailsEl) {
+   detailsEl.hidden = false;
+   detailsEl.open = true;
+  }
  }
  root.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {if(event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)return;const target=root.querySelector('#'+CSS.escape(link.hash.slice(1)));if(!target)return;event.preventDefault();openTarget(link.hash);if(location.hash!==link.hash)history.pushState(null,'',link.hash);target.scrollIntoView({block:'start',behavior:'auto'});}));
  openTarget(location.hash);

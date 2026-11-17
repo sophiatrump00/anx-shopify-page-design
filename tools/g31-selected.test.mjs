@@ -11,7 +11,7 @@ async function setup(t,available=true,url='https://example.com/products/g31'){
  const dom=new JSDOM(render(product(available)),{runScripts:'outside-only',pretendToBeVisual:true,url});t.after(()=>dom.window.close());
  const w=dom.window;w.ResizeObserver=class{observe(){}disconnect(){}};w.matchMedia=()=>({matches:false});w.CSS={escape:s=>s};w.HTMLElement.prototype.scrollTo=function(){};w.HTMLElement.prototype.scrollIntoView=function(){};
  w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'));};
- w.Shopify={routes:{root:'/'}};w.themeVariables={settings:{cartType:'drawer',pageType:'product'}};w.eval(native);w.eval(read('assets/suntneew-g31-selected.js'));await tick();
+ w.Shopify={routes:{root:'/'}};w.themeVariables={settings:{cartType:'drawer',pageType:'product'}};w.eval(native);w.eval(read('assets/suntneew-g31-selected.js'));w.eval(read('assets/suntneew-progressive-faq.js'));await tick();
  return{w,root:w.document.querySelector('[data-g31-pdp]'),form:w.document.forms[0],choose:pack=>w.document.querySelector(`input[name="pack"][value="${pack}"]`).click()};
 }
 test('merchant image order and five purchase highlights survive rendering, with original gallery and feature zoom',async t=>{
@@ -95,6 +95,24 @@ test('sticky purchase bar syncs selected pack/quantity and submits native form d
  await tick();await tick();
  assert.deepEqual(submitted,['101','2']);
  assert.equal(root.querySelector('#sticky-feedback').textContent,'Added to your cart.');
+});
+test('progressive FAQ initially shows top 3 questions, reveals related answers on click, and toggles all',async t=>{
+ const{root}=await setup(t);
+ const all=[...root.querySelectorAll('#faq [data-progressive-faq] details')];
+ assert.equal(all.length,9);
+ assert.equal(all.filter(d=>!d.hidden).length,3);
+ const toggleBtn=root.querySelector('[data-faq-toggle-all]');
+ assert.equal(toggleBtn.textContent,'Show all 9 questions (+6)');
+ root.querySelector('#faq details[data-faq-id="g31-q1"] summary').click();
+ await tick();
+ assert.equal(all.filter(d=>!d.hidden).length,5);
+ assert.equal(toggleBtn.textContent,'Show all 9 questions (+4)');
+ toggleBtn.click();
+ assert.equal(all.filter(d=>!d.hidden).length,9);
+ assert.equal(toggleBtn.textContent,'Show fewer questions');
+ toggleBtn.click();
+ assert.equal(all.filter(d=>!d.hidden).length,3);
+ assert.equal(toggleBtn.textContent,'Show all 9 questions (+6)');
 });
 test('every selected original retains its recorded hash; the production template routes to the selected PDP and its real review app',()=>{
  const manifest=JSON.parse(read('tools/fixtures/g31-selected-assets-20261110.json'));

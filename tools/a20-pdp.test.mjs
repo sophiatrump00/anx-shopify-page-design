@@ -8,7 +8,7 @@ const tick=()=>new Promise(resolve=>setTimeout(resolve,0));
 async function setup(t,available=true,url='https://example.com/products/a20'){
  const dom=new JSDOM(render(product(available)),{runScripts:'outside-only',pretendToBeVisual:true,url});t.after(()=>dom.window.close());
  const intersections=[];const w=dom.window;w.ResizeObserver=class{observe(){}disconnect(){}};w.IntersectionObserver=class{constructor(callback){this.callback=callback;intersections.push(this);}observe(target){this.target=target;}disconnect(){}};w.matchMedia=()=>({matches:false});w.CSS={escape:s=>s};w.HTMLElement.prototype.scrollTo=function(){};w.HTMLElement.prototype.scrollIntoView=function(){};w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'));};
- w.Shopify={routes:{root:'/'}};w.themeVariables={settings:{cartType:'drawer',pageType:'product'}};w.eval(formCode);w.eval(read('assets/suntneew-a20-v8.js'));await tick();
+ w.Shopify={routes:{root:'/'}};w.themeVariables={settings:{cartType:'drawer',pageType:'product'}};w.eval(formCode);w.eval(read('assets/suntneew-a20-v8.js'));w.eval(read('assets/suntneew-progressive-faq.js'));await tick();
  return {w,intersections,root:w.document.querySelector('[data-a20-pdp]'),form:w.document.forms[0],choose:(name,value)=>{const input=w.document.querySelector(`input[name="${name}"][value="${value}"]`);input.click();}};
 }
 test('A20 pack selection shows streamlined 3-pack per-unit cards without Any quantity and submits matching SKU and totals',async t=>{
@@ -63,4 +63,22 @@ test('sticky purchase bar syncs selected pack/quantity and submits native form d
  await tick();await tick();
  assert.deepEqual(submitted,['101','2']);
  assert.equal(root.querySelector('#sticky-feedback').textContent,'Added to your cart.');
+});
+test('progressive FAQ initially shows top 3 questions, reveals related answers on click, and toggles all',async t=>{
+ const{root}=await setup(t);
+ const all=[...root.querySelectorAll('#faq [data-progressive-faq] details')];
+ assert.equal(all.length,8);
+ assert.equal(all.filter(d=>!d.hidden).length,3);
+ const toggleBtn=root.querySelector('[data-faq-toggle-all]');
+ assert.equal(toggleBtn.textContent,'Show all 8 questions (+5)');
+ root.querySelector('#faq details[data-faq-id="a20-q2"] summary').click();
+ await tick();
+ assert.equal(all.filter(d=>!d.hidden).length,5);
+ assert.equal(toggleBtn.textContent,'Show all 8 questions (+3)');
+ toggleBtn.click();
+ assert.equal(all.filter(d=>!d.hidden).length,8);
+ assert.equal(toggleBtn.textContent,'Show fewer questions');
+ toggleBtn.click();
+ assert.equal(all.filter(d=>!d.hidden).length,3);
+ assert.equal(toggleBtn.textContent,'Show all 8 questions (+5)');
 });
