@@ -9,9 +9,28 @@
   </style>
 
   <div {% render 'section-properties' %}>
-    {%- for block in section.blocks -%}
-      {%- render block -%}
-    {%- endfor -%}
+    {%- assign pdp_panel = section.settings.pdp_tab_panel | handleize -%}
+    {%- if pdp_panel != blank -%}
+      <section id="{{ pdp_panel }}" class="sn-pdp sn-pdp-reviews sn-pdp__section" role="tabpanel" data-pdp-panel="{{ pdp_panel }}">
+        <div class="sn-pdp__shell">
+          {%- if section.settings.pdp_eyebrow != blank or section.settings.pdp_heading != blank -%}
+            <div class="sn-pdp-reviews__head">
+              {%- if section.settings.pdp_eyebrow != blank -%}<p class="sn-pdp__eyebrow">{{ section.settings.pdp_eyebrow | escape }}</p>{%- endif -%}
+              {%- if section.settings.pdp_heading != blank -%}<h2 class="sn-pdp__heading">{{ section.settings.pdp_heading | escape }}</h2>{%- endif -%}
+            </div>
+          {%- endif -%}
+          <div class="sn-pdp-reviews__widget">
+            {%- for block in section.blocks -%}
+              {%- render block -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </section>
+    {%- else -%}
+      {%- for block in section.blocks -%}
+        {%- render block -%}
+      {%- endfor -%}
+    {%- endif -%}
   </div>
 {%- endif -%}
 
@@ -61,6 +80,21 @@
       "type": "color",
       "id": "text_color",
       "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "pdp_tab_panel",
+      "label": "PDP tab panel ID (optional)"
+    },
+    {
+      "type": "text",
+      "id": "pdp_eyebrow",
+      "label": "PDP panel eyebrow (optional)"
+    },
+    {
+      "type": "text",
+      "id": "pdp_heading",
+      "label": "PDP panel heading (optional)"
     }
   ],
   "blocks": [

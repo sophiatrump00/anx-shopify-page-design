@@ -495,24 +495,142 @@
   document.addEventListener('pointerdown', event => { if (frame.clientWidth >= 1000 && !assurances.contains(event.target)) assurances.querySelectorAll('details[open]').forEach(details => { details.open = false; }); });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && !root.querySelector('dialog[open]')) assurances.querySelectorAll('details[open]').forEach(details => { details.open = false; }); });
 
-  const navLinks = [...root.querySelectorAll('.product-nav a')];
-  let navRaf;
-  function updateNav() {
-    navRaf = undefined; updateSticky();
-    const offset = root.querySelector('.product-nav').getBoundingClientRect().bottom + 30;
-    let active = navLinks[0]; let nearest = -Infinity;
-    navLinks.forEach(link => { const top = root.querySelector(link.hash)?.getBoundingClientRect().top; if (top <= offset && top > nearest) { active = link; nearest = top; } });
-    const doc = document.documentElement;
-    if (doc.scrollHeight > window.innerHeight + 100 && window.innerHeight + window.scrollY >= doc.scrollHeight - 48) { active = navLinks[navLinks.length - 1]; }
-    navLinks.forEach(link => { link.classList.toggle('active', link === active); if (link === active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
+  const frameEl = frame;
+  const nav = root.querySelector('.product-nav');
+  const navTabs = [...root.querySelectorAll('.product-nav [data-pdp-tab]')];
+  const tabPanels = [...root.querySelectorAll('.pdp-tab-panel[data-tab-panel]')];
+  const nextTabLinks = [...root.querySelectorAll('[data-pdp-next]')];
+  const panelsContainer = root.querySelector('.pdp-tab-panels');
+  const defaultTabId = navTabs[0]?.dataset.pdpTab || 'features';
+  const mobileMedia = window.matchMedia?.('(max-width: 700px)');
+  const isMobileLayout = () => Boolean(mobileMedia?.matches || frameEl?.classList.contains('is-mobile') || (frameEl?.clientWidth > 0 && frameEl.clientWidth <= 700));
+  let mobileSpecsCollapsedOnce = false;
+  let stickyRaf;
+  const scheduleSticky = () => { if (!stickyRaf) stickyRaf = requestAnimationFrame(() => { stickyRaf = undefined; updateSticky(); }); };
+  window.addEventListener('scroll', scheduleSticky, { passive: true });
+  window.addEventListener('resize', scheduleSticky, { passive: true });
+
+  function updateNavOffset() {
+    if (nav && nav.offsetHeight > 0) {
+      root.style.setProperty('--nav-offset', `${nav.offsetHeight}px`);
+    }
   }
-  const scheduleNav = () => { if (!navRaf) navRaf = requestAnimationFrame(updateNav); };
-  window.addEventListener('scroll', scheduleNav, { passive: true }); window.addEventListener('resize', scheduleNav, { passive: true });
+
+  function collapseMobileSpecsIfNeeded() {
+    if (isMobileLayout() && !mobileSpecsCollapsedOnce) {
+      mobileSpecsCollapsedOnce = true;
+      root.querySelectorAll('#specs details.more-details[open]').forEach((detail) => { detail.open = false; });
+    }
+    updateNavOffset();
+  }
+
+  function syncLayoutMode() {
+    collapseMobileSpecsIfNeeded();
+    requestAnimationFrame(updateNavOffset);
+  }
+
+  function activateTab(tabId, { scroll = false, updateHash = false } = {}) {
+    const activeTab = navTabs.find(tab => tab.dataset.pdpTab === tabId);
+    if (!activeTab) return false;
+    navTabs.forEach(tab => {
+      const isCurrent = tab === activeTab;
+      tab.classList.toggle('active', isCurrent);
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-selected', String(isCurrent));
+      tab.setAttribute('tabindex', isCurrent ? '0' : '-1');
+      if (isCurrent) tab.setAttribute('aria-current', 'location');
+      else tab.removeAttribute('aria-current');
+    });
+    tabPanels.forEach(panel => {
+      panel.setAttribute('role', 'tabpanel');
+      panel.hidden = panel.dataset.tabPanel !== tabId;
+    });
+    nextTabLinks.forEach(item => {
+      item.hidden = item.dataset.pdpNext === tabId;
+    });
+    updateNavOffset();
+    if (!isMobileLayout() && nav && typeof nav.scrollTo === 'function') {
+      const left = Math.max(0, activeTab.offsetLeft - nav.clientWidth / 2 + activeTab.clientWidth / 2);
+      const behavior = Math.abs(nav.scrollLeft - left) < 4 ? 'auto' : (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth');
+      nav.scrollTo({ left, behavior });
+    }
+    const targetHash = '#' + tabId;
+    if (updateHash && location.hash !== targetHash) history.pushState(null, '', targetHash);
+    if (scroll) panelsContainer?.scrollIntoView({ block: 'start', behavior: 'auto' });
+    updateSticky();
+    return true;
+  }
+
+  function syncFromHash(hash) {
+    if (!hash || hash === '#') return false;
+    const id = hash.slice(1);
+    const directTab = navTabs.find(tab => tab.dataset.pdpTab === id || tab.hash === hash);
+    if (directTab) return activateTab(directTab.dataset.pdpTab, { scroll: false, updateHash: false });
+    const target = root.querySelector('#' + CSS.escape(id));
+    if (!target) return false;
+    const ownerPanel = target.closest('[data-tab-panel]');
+    if (ownerPanel) activateTab(ownerPanel.dataset.tabPanel, { scroll: false, updateHash: false });
+    const detailsEl = target.tagName === 'DETAILS' ? target : target.closest('details');
+    if (detailsEl) { detailsEl.hidden = false; detailsEl.open = true; }
+    return true;
+  }
+
+  nav?.setAttribute('role', 'tablist');
+  nav?.addEventListener('keydown', event => {
+    const index = navTabs.indexOf(document.activeElement);
+    if (index === -1 || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? navTabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + navTabs.length) % navTabs.length;
+    const nextTab = navTabs[nextIndex];
+    if (!nextTab) return;
+    nextTab.focus({ preventScroll: true });
+    activateTab(nextTab.dataset.pdpTab, { scroll: false, updateHash: true });
+  });
   root.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const jumpTab = link.dataset.pdpTab || link.dataset.pdpNext;
+    if (jumpTab) {
+      event.preventDefault();
+      activateTab(jumpTab, { scroll: true, updateHash: true });
+      return;
+    }
     const target = link.hash.length > 1 && root.querySelector('#' + CSS.escape(link.hash.slice(1))); if (!target) return;
-    event.preventDefault(); const detailsEl = target.tagName === 'DETAILS' ? target : target.closest('details'); if (detailsEl) { detailsEl.hidden = false; detailsEl.open = true; } if (location.hash !== link.hash) history.pushState(null, '', link.hash); target.scrollIntoView({ block: 'start', behavior: link.getAttribute('href') === '#sales-summary' && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'smooth' : 'auto' }); scheduleNav();
+    event.preventDefault();
+    const ownerPanel = target.closest('[data-tab-panel]');
+    if (ownerPanel) activateTab(ownerPanel.dataset.tabPanel, { scroll: false, updateHash: false });
+    const detailsEl = target.tagName === 'DETAILS' ? target : target.closest('details'); if (detailsEl) { detailsEl.hidden = false; detailsEl.open = true; }
+    if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+    updateNavOffset();
+    target.scrollIntoView({ block: 'start', behavior: link.getAttribute('href') === '#sales-summary' && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'smooth' : 'auto' });
+    updateSticky();
   }));
+  root.querySelectorAll('[data-manual-download]').forEach(link => link.addEventListener('click', async event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const href = link.href || link.getAttribute('href');
+    if (!href || typeof window.fetch !== 'function' || typeof URL.createObjectURL !== 'function') return;
+    event.preventDefault();
+    try {
+      const response = await window.fetch(href, { mode: 'cors' });
+      if (!response.ok) throw new Error('Download failed');
+      const blobUrl = URL.createObjectURL(await response.blob());
+      const temp = document.createElement('a');
+      temp.href = blobUrl;
+      temp.download = link.getAttribute('download') || 'user-manual.pdf';
+      temp.style.display = 'none';
+      document.body.append(temp);
+      temp.click();
+      temp.remove();
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 1500);
+    } catch {
+      window.open(href, '_blank', 'noopener');
+    }
+  }));
+  window.addEventListener('hashchange', () => syncFromHash(location.hash));
+  window.addEventListener('popstate', () => {
+    if (!syncFromHash(location.hash)) {
+      activateTab(defaultTabId, { scroll: false, updateHash: false });
+    }
+  });
 
   function measureHeader() {
     const shell = getComputedStyle(document.documentElement);
@@ -526,5 +644,19 @@
   renderImages();
   renderPacks();
   updatePrice();
-  updateNav();
+  if (frameEl && typeof MutationObserver === 'function') {
+    new MutationObserver(syncLayoutMode).observe(frameEl, { attributes: true, attributeFilter: ['class'] });
+  }
+  if (frameEl && typeof ResizeObserver === 'function') {
+    new ResizeObserver(syncLayoutMode).observe(frameEl);
+  }
+  if (nav && typeof ResizeObserver === 'function') {
+    new ResizeObserver(updateNavOffset).observe(nav);
+  }
+  if (mobileMedia?.addEventListener) mobileMedia.addEventListener('change', syncLayoutMode);
+  else mobileMedia?.addListener?.(syncLayoutMode);
+  window.addEventListener('resize', syncLayoutMode, { passive: true });
+  syncLayoutMode();
+  if (!syncFromHash(location.hash)) activateTab(defaultTabId, { scroll: false, updateHash: false });
+  updateSticky();
 })();

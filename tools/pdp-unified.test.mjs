@@ -233,3 +233,127 @@ test('in-page links and browser hash navigation reveal the requested detail pane
   w.history.replaceState(null, '', '#features'); w.dispatchEvent(new w.HashChangeEvent('hashchange'));
   assert.equal(w.document.querySelector('[data-pdp-panel="features"]').hidden, false);
 });
+
+test('all 11 storefront shared PDPs enable 6-tab LiTime pill navigation and reviews panel while ad19 stays untouched', () => {
+  const inBox = ['a3', 'kb700', 'oj02', 'u23', 'u32', 'rv-g24'];
+  const install = ['rv-230ah', 'rv-314ah', 'home-wl5a', 'home-wl10b', 'home-vh'];
+  for (const name of [...inBox, ...install]) {
+    const tpl = JSON.parse(read(`templates/product.${name}.json`).replace(/\/\*[\s\S]*?\*\//g, ''));
+    const nav = tpl.sections.anchor_nav;
+    assert.equal(nav.settings.litime_tabs, true, `${name}: litime_tabs`);
+    assert.deepEqual(nav.block_order, ['features', 'specs', 'box', 'manuals', 'reviews', 'faq'], name);
+    assert.deepEqual(
+      nav.block_order.map(k => nav.blocks[k].settings.target_id),
+      ['features', 'specifications', 'in-the-box', 'manuals', 'reviews', 'faq'],
+      name
+    );
+    assert.equal(nav.blocks.specs.settings.label, 'Specs', name);
+    assert.equal(nav.blocks.box.settings.label, install.includes(name) ? 'Installation' : 'In the box', name);
+    assert.equal(nav.blocks.manuals.settings.label, 'Manual', name);
+    assert.equal(nav.blocks.reviews.settings.label, 'Reviews', name);
+    const jm = tpl.sections.judge_me_reviews.settings;
+    assert.equal(jm.pdp_tab_panel, 'reviews', name);
+    assert.equal(jm.remove_vertical_spacing, true, name);
+  }
+  const rvg24 = JSON.parse(read('templates/product.rv-g24.json').replace(/\/\*[\s\S]*?\*\//g, ''));
+  assert.equal(rvg24.sections.service_proof.settings.panel_id, 'features');
+  assert.equal(rvg24.order.indexOf('service_proof'), rvg24.order.indexOf('features') + 1);
+
+  const ad19 = JSON.parse(read('templates/product.ad19.json').replace(/\/\*[\s\S]*?\*\//g, ''));
+  assert.notEqual(ad19.sections.anchor_nav.settings?.litime_tabs, true);
+  assert.equal(ad19.sections.anchor_nav.block_order.length, 5);
+  assert.equal(ad19.sections.judge_me_reviews.settings?.pdp_tab_panel, undefined);
+});
+
+test('LiTime-mode shared PDP nav renders Liquid badges, isolates Shopify sections, mounts next-tab strip, and routes review/internal hashes', t => {
+  const engine = new Liquid();
+  engine.registerFilter('asset_url', v => `/assets/${v}`);
+  engine.registerFilter('stylesheet_tag', v => `<link rel="stylesheet" href="${v}">`);
+  engine.registerFilter('handleize', v => String(v || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
+  const navTemplate = read('sections/suntneew-pdp-anchor-nav.liquid').split('{% schema %}')[0];
+  const storyTemplate = read('sections/suntneew-pdp-story.liquid').split('{% schema %}')[0]
+    .replace(/\{\{-\s*'suntneew_auto\.[^']+'\s*\|\s*t\s*-\}\}|\{\{\s*section\.settings\.(\w+)\s*\}\}/g, (_, k) => k || 'Story');
+  const appsTemplate = read('sections/apps.liquid').split('{% schema %}')[0]
+    .replace(/\{%-?\s*render\s+'section-[^']+'\s*-?%\}/g, '')
+    .replace(/\{%-?\s*render\s+block\s*-?%\}/g, '<div id="judgeme_product_reviews">Widget</div>');
+
+  const blocks = [
+    { id: 'b1', shopify_attributes: '', settings: { label: 'Features', target_id: 'features', subtext: 'Product story & warranty' } },
+    { id: 'b2', shopify_attributes: '', settings: { label: 'Specs', target_id: 'specifications', subtext: 'Ratings & dimensions' } },
+    { id: 'b3', shopify_attributes: '', settings: { label: 'Installation', target_id: 'in-the-box', subtext: 'Pre-install checks' } },
+    { id: 'b4', shopify_attributes: '', settings: { label: 'Manual', target_id: 'manuals', subtext: 'View online or download' } },
+    { id: 'b5', shopify_attributes: '', settings: { label: 'Reviews', target_id: 'reviews', subtext: 'Customer feedback' } },
+    { id: 'b6', shopify_attributes: '', settings: { label: 'FAQ', target_id: 'faq', subtext: 'Setup Q&A' } },
+  ];
+  const navHtml = engine.parseAndRenderSync(navTemplate, {
+    section: { id: 'nav1', settings: { litime_tabs: true }, blocks },
+    product: { metafields: { reviews: { rating_count: { value: 12 } } } },
+  });
+  const featHtml = engine.parseAndRenderSync(storyTemplate, {
+    section: { id: 'feat', settings: { anchor_id: 'features', eyebrow: 'STORY', heading: 'Built tough', lede: '', layout_mode: 'split' }, blocks: [] },
+  });
+  const certHtml = engine.parseAndRenderSync(storyTemplate, {
+    section: { id: 'cert', settings: { anchor_id: 'support-certificates', panel_id: 'features', eyebrow: 'CERTS', heading: 'Certifications', lede: '', layout_mode: 'split' }, blocks: [] },
+  });
+  const reviewsHtml = engine.parseAndRenderSync(appsTemplate, {
+    section: { id: 'jm', settings: { remove_vertical_spacing: true, remove_horizontal_spacing: true, pdp_tab_panel: 'reviews', pdp_eyebrow: 'CUSTOMER REVIEWS', pdp_heading: 'Customer Reviews' }, blocks: ['<div id="judgeme_product_reviews">Widget</div>'] },
+  });
+  const html = `
+    <div id="shopify-section-nav" class="shopify-section">${navHtml}<a id="support-link" href="#support-certificates">Certs</a><a id="jm-link" href="#judgeme_product_reviews">Reviews</a></div>
+    <div id="shopify-section-feat" class="shopify-section">${featHtml}</div>
+    <div id="shopify-section-cert" class="shopify-section">${certHtml}</div>
+    <div id="shopify-section-details" class="shopify-section"><section data-pdp-panel-host><div id="specifications" data-pdp-panel="specifications">Specs</div><div id="in-the-box" data-pdp-panel="in-the-box">Install</div><div id="manuals" data-pdp-panel="manuals">Manuals</div></section></div>
+    <div id="shopify-section-faq" class="shopify-section"><section id="faq" data-pdp-panel="faq">FAQ</section></div>
+    <div id="shopify-section-reviews" class="shopify-section">${reviewsHtml}</div>
+  `;
+  const dom = new JSDOM(html, { runScripts: 'outside-only', url: 'https://example.com/products/rv-g24' });
+  t.after(() => dom.window.close());
+  const w = dom.window;
+  const scrolled = [];
+  w.matchMedia = () => ({ matches: true });
+  w.HTMLElement.prototype.scrollIntoView = function () { scrolled.push(this.id || this.dataset.pdpPanel || this.tagName); };
+  w.eval(read('assets/suntneew-pdp.js'));
+  w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+
+  const navTabs = [...w.document.querySelectorAll('.sn-pdp-nav [data-pdp-tab]')];
+  assert.deepEqual(navTabs.map(a => a.textContent.replace(/\s+/g, ' ').trim()), ['Features', 'Specs', 'Installation', 'Manual PDF', '★ Reviews (12)', 'FAQ']);
+  assert.equal(navTabs.find(a => a.dataset.pdpTab === 'specifications').textContent.trim(), 'Specs');
+
+  // Strict single-panel + section wrapper isolation at initial load
+  assert.equal(w.document.getElementById('shopify-section-feat').hidden, false);
+  assert.equal(w.document.getElementById('shopify-section-cert').hidden, false);
+  assert.equal(w.document.getElementById('shopify-section-details').hidden, true);
+  assert.equal(w.document.getElementById('shopify-section-faq').hidden, true);
+  assert.equal(w.document.getElementById('shopify-section-reviews').hidden, true);
+
+  // Dynamically mounted bottom next-tab strip
+  const nextNav = w.document.querySelector('[data-pdp-next-nav]');
+  assert.ok(nextNav);
+  assert.equal(w.document.getElementById('shopify-section-reviews').nextElementSibling, nextNav);
+  const visibleNext = () => [...nextNav.querySelectorAll('[data-pdp-next]:not([hidden])')].map(a => a.dataset.pdpNext);
+  assert.deepEqual(visibleNext(), ['specifications', 'in-the-box', 'manuals', 'reviews', 'faq']);
+
+  // Click bottom strip Reviews card -> switches panel, isolates other sections, fires resize
+  let resizeEvents = 0;
+  w.addEventListener('resize', () => { resizeEvents++; });
+  nextNav.querySelector('[data-pdp-next="reviews"]').click();
+  assert.equal(w.document.getElementById('shopify-section-reviews').hidden, false);
+  assert.equal(w.document.getElementById('shopify-section-feat').hidden, true);
+  assert.equal(w.document.getElementById('shopify-section-cert').hidden, true);
+  assert.equal(resizeEvents >= 1, true);
+  assert.deepEqual(visibleNext(), ['features', 'specifications', 'in-the-box', 'manuals', 'faq']);
+  assert.equal(scrolled.at(-1), 'reviews');
+
+  // Internal #support-certificates link re-opens features and scrolls directly to support-certificates
+  w.document.getElementById('support-link').click();
+  assert.equal(w.document.getElementById('shopify-section-feat').hidden, false);
+  assert.equal(w.document.getElementById('shopify-section-cert').hidden, false);
+  assert.equal(w.document.getElementById('shopify-section-reviews').hidden, true);
+  assert.equal(scrolled.at(-1), 'support-certificates');
+
+  // Judge.me hash jumps cleanly to reviews
+  w.history.replaceState(null, '', '#judgeme_product_reviews');
+  w.dispatchEvent(new w.HashChangeEvent('hashchange'));
+  assert.equal(w.document.getElementById('shopify-section-reviews').hidden, false);
+  assert.equal(w.document.getElementById('shopify-section-feat').hidden, true);
+});

@@ -151,46 +151,62 @@
           "type": "link",
           "settings": {
             "label": "Features",
-            "target_id": "features"
+            "target_id": "features",
+            "subtext": "Product story & key highlights"
           }
         },
         "specs": {
           "type": "link",
           "settings": {
-            "label": "Specifications",
-            "target_id": "specifications"
+            "label": "Specs",
+            "target_id": "specifications",
+            "subtext": "Ratings, dimensions & specs"
           }
         },
-        "install": {
+        "box": {
           "type": "link",
           "settings": {
-            "label": "Before installation",
-            "target_id": "in-the-box"
+            "label": "Installation",
+            "target_id": "in-the-box",
+            "subtext": "Pre-install checks & wiring"
           }
         },
         "manuals": {
           "type": "link",
           "settings": {
-            "label": "Documents",
-            "target_id": "manuals"
+            "label": "Manual",
+            "target_id": "manuals",
+            "subtext": "View online or download guide"
+          }
+        },
+        "reviews": {
+          "type": "link",
+          "settings": {
+            "label": "Reviews",
+            "target_id": "reviews",
+            "subtext": "Customer feedback"
           }
         },
         "faq": {
           "type": "link",
           "settings": {
             "label": "FAQ",
-            "target_id": "faq"
+            "target_id": "faq",
+            "subtext": "Compatibility & setup Q&A"
           }
         }
       },
       "block_order": [
         "features",
         "specs",
-        "install",
+        "box",
         "manuals",
+        "reviews",
         "faq"
       ],
-      "settings": {}
+      "settings": {
+        "litime_tabs": true
+      }
     },
     "features": {
       "type": "suntneew-rv-experience",
@@ -864,11 +880,14 @@
       ],
       "settings": {
         "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
         "background": "",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "",
+        "pdp_tab_panel": "reviews",
+        "pdp_eyebrow": "CUSTOMER REVIEWS",
+        "pdp_heading": "Customer Reviews"
       }
     }
   },

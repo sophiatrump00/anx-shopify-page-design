@@ -1,5 +1,8 @@
 {{ 'suntneew-pdp.css' | asset_url | stylesheet_tag }}
-<nav class="sn-pdp sn-pdp-nav" aria-label="Product information">
+<script src="{{ 'suntneew-pdp.js' | asset_url }}" defer></script>
+{%- assign is_litime = section.settings.litime_tabs -%}
+{%- assign review_count = product.metafields.reviews.rating_count.value | default: 0 | plus: 0 -%}
+<nav class="sn-pdp sn-pdp-nav"{% if is_litime %} data-litime-tabs{% endif %} aria-label="Product information">
   <div class="sn-pdp-nav__inner" role="tablist" aria-label="Product sections">
     {%- for block in section.blocks -%}
       {%- assign target_id = block.settings.target_id | handleize -%}
@@ -13,18 +16,77 @@
         tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
         data-pdp-tab="{{ target_id }}"
         {{ block.shopify_attributes }}
-      >{{ block.settings.label }}</a>
+      >
+        {%- if is_litime and target_id == 'manuals' -%}
+          {{ block.settings.label | escape }} <span class="sn-pdp-nav__badge">PDF</span>
+        {%- elsif is_litime and target_id == 'reviews' -%}
+          <span class="sn-pdp-nav__star" aria-hidden="true">★</span> {{ block.settings.label | escape }}{% if review_count > 0 %} <span class="sn-pdp-nav__count">({{ review_count }})</span>{% endif %}
+        {%- else -%}
+          {{ block.settings.label | escape }}
+        {%- endif -%}
+      </a>
     {%- endfor -%}
   </div>
 </nav>
+{%- if is_litime -%}
+  <template data-pdp-next-template>
+    <nav class="sn-pdp sn-pdp-next" data-pdp-next-nav aria-label="Explore more product details">
+      <div class="sn-pdp-next__box">
+        <div class="sn-pdp-next__head">
+          <p class="sn-pdp__eyebrow">MORE PRODUCT DETAILS</p>
+          <p class="sn-pdp-next__title">Check specs, manual or reviews</p>
+        </div>
+        <div class="sn-pdp-next__grid">
+          {%- for block in section.blocks -%}
+            {%- assign target_id = block.settings.target_id | handleize -%}
+            {%- assign next_label = block.settings.label | escape -%}
+            {%- if target_id == 'specifications' and block.settings.label == 'Specs' -%}
+              {%- assign next_label = 'Specifications' -%}
+            {%- endif -%}
+            {%- assign card_sub = block.settings.subtext | strip -%}
+            {%- if card_sub == blank -%}
+              {%- case target_id -%}
+                {%- when 'features' -%}{%- assign card_sub = 'Product story & key highlights' -%}
+                {%- when 'specifications' -%}{%- assign card_sub = 'Ratings, dimensions & BMS' -%}
+                {%- when 'in-the-box' -%}{%- assign card_sub = 'Included parts & kit details' -%}
+                {%- when 'manuals' -%}{%- assign card_sub = 'View online or download guide' -%}
+                {%- when 'reviews' -%}{%- assign card_sub = 'Customer feedback' -%}
+                {%- when 'faq' -%}{%- assign card_sub = 'Compatibility & setup Q&A' -%}
+              {%- endcase -%}
+            {%- endif -%}
+            <a class="sn-pdp-next__card" href="#{{ target_id }}" data-pdp-next="{{ target_id }}"{% if forloop.first %} hidden{% endif %}>
+              <span class="sn-pdp-next__top">
+                <span class="sn-pdp-next__label">
+                  {%- if target_id == 'manuals' -%}
+                    {{ next_label }} <span class="sn-pdp-nav__badge">PDF</span>
+                  {%- elsif target_id == 'reviews' -%}
+                    <span class="sn-pdp-nav__star" aria-hidden="true">★</span> {{ next_label }}{% if review_count > 0 %} <span class="sn-pdp-nav__count">({{ review_count }})</span>{% endif %}
+                  {%- else -%}
+                    {{ next_label }}
+                  {%- endif -%}
+                </span>
+                <span class="sn-pdp-next__arrow" aria-hidden="true">→</span>
+              </span>
+              {%- if card_sub != blank -%}<span class="sn-pdp-next__sub">{{ card_sub | escape }}</span>{%- endif -%}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    </nav>
+  </template>
+{%- endif -%}
 
 {% schema %}
 {
   "name":"SuntNeew PDP anchor nav",
+  "settings":[
+    {"type":"checkbox","id":"litime_tabs","label":"LiTime pill tabs and bottom next-tab cards","default":false}
+  ],
   "blocks":[
     {"type":"link","name":"Anchor link","settings":[
       {"type":"text","id":"label","label":"Label","default":"Features"},
-      {"type":"text","id":"target_id","label":"Section ID","default":"features"}
+      {"type":"text","id":"target_id","label":"Section ID","default":"features"},
+      {"type":"text","id":"subtext","label":"Bottom card subtitle (optional)"}
     ]}
   ],
   "max_blocks": 6,

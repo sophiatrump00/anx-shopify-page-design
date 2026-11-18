@@ -123,8 +123,98 @@ test('all breadcrumb items are clickable links including current product anchor 
  assert.equal(links[2].getAttribute('href'),'#sales-summary');
  assert.equal(links[2].getAttribute('aria-current'),'page');
 });
+test('LiTime-style 6-tab bar switches panels only on click, never on scroll, isolates Support inside Features, syncs bottom next-tab strip, and reveals manual buttons',async t=>{
+ const{w,root}=await setup(t);
+ const tabs=[...root.querySelectorAll('.product-nav [data-pdp-tab]')];
+ assert.deepEqual(tabs.map(a=>a.textContent.replace(/\s+/g,' ').trim()),['Features','Specs','In the box','Manual PDF','★ Reviews','FAQ']);
+ const panels=[...root.querySelectorAll('.pdp-tab-panel[data-tab-panel]')];
+ const visibleNextIds=()=>[...root.querySelectorAll('[data-pdp-next]:not([hidden])')].map(a=>a.dataset.pdpNext);
+ assert.equal(panels.length,6);
+ assert.equal(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel).join(','),'features');
+ assert.equal(visibleNextIds().length,5);
+ assert.equal(visibleNextIds().includes('features'),false);
+ assert.equal(root.querySelector('#support').closest('[hidden]'),null);
+ assert.equal(root.querySelector('.closing-banner').closest('[hidden]'),null);
+ w.dispatchEvent(new w.Event('scroll'));
+ await new Promise(resolve=>w.requestAnimationFrame(()=>w.requestAnimationFrame(resolve)));
+ assert.equal(tabs[0].classList.contains('active'),true);
+ assert.equal(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel).join(','),'features');
+ for(const tab of tabs){
+  tab.click();
+  const visible=panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel);
+  assert.deepEqual(visible,[tab.dataset.pdpTab]);
+  assert.equal(tab.getAttribute('aria-selected'),'true');
+  const nextIds=visibleNextIds();
+  assert.equal(nextIds.length,5);
+  assert.equal(nextIds.includes(tab.dataset.pdpTab),false);
+  const isFeatures=tab.dataset.pdpTab==='features';
+  assert.equal(root.querySelector('#support').closest('[hidden]')===null,isFeatures);
+  assert.equal(root.querySelector('.closing-banner').closest('[hidden]')===null,isFeatures);
+ }
+ root.querySelector('[data-pdp-next="faq"]').click();
+ assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),['faq']);
+ assert.equal(root.querySelector('.product-nav [data-pdp-tab="faq"]').classList.contains('active'),true);
+ assert.equal(visibleNextIds().includes('faq'),false);
+ assert.equal(visibleNextIds().length,5);
+ root.querySelector('[data-pdp-next="features"]').click();
+ assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),['features']);
+ assert.equal(root.querySelector('.product-nav [data-pdp-tab="features"]').classList.contains('active'),true);
+ assert.equal(visibleNextIds().includes('features'),false);
+ assert.equal(visibleNextIds().length,5);
+ root.querySelector('.fit-help[href="#specs"]').click();
+ assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),['specs']);
+ root.querySelector('.product-links a[href="#manuals"]').click();
+ assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),['manuals']);
+ const manualActions=[...root.querySelectorAll('#manuals .sn-manual-card__actions a')].map(a=>a.textContent);
+ assert.ok(manualActions.some(text=>text.includes('View Online')));
+ assert.ok(manualActions.some(text=>text.includes('Download PDF')));
+});
 test('every selected original retains its recorded hash; the production template routes to the selected PDP and its real review app',()=>{
  const manifest=JSON.parse(read('tools/fixtures/g31-selected-assets-20261110.json'));
  for(const row of manifest.assets){const bytes=fs.readFileSync(new URL('../assets/'+row.full_asset,import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),row.original_sha256);}
  const live=JSON.parse(read('templates/product.rv-g31.json').replace(/^\s*\/\*[\s\S]*?\*\/\s*/,''));assert.deepEqual(live.order,['main']);assert.equal(live.sections.main.type,'suntneew-g31-selected');assert.equal(Object.values(live.sections.main.blocks).filter(block=>block.type.startsWith('shopify://apps/judge-me-reviews/')).length,1);
+});
+test('mobile 3x2 tabs keep strict single-panel isolation without cross-tab bleed, sync bottom next-tab strip, and collapse More specifications',async t=>{
+ const{w,root}=await setup(t);
+ const frame=root.querySelector('#frame');
+ const nav=root.querySelector('.product-nav');
+ const tabs=[...root.querySelectorAll('.product-nav [data-pdp-tab]')];
+ const panels=[...root.querySelectorAll('.pdp-tab-panel[data-tab-panel]')];
+ const visibleNextIds=()=>[...root.querySelectorAll('[data-pdp-next]:not([hidden])')].map(a=>a.dataset.pdpNext);
+ frame.classList.add('is-mobile');
+ await tick();
+ assert.equal(nav.getAttribute('role'),'tablist');
+ assert.equal(root.querySelectorAll('.pdp-mobile-acc-btn').length,0);
+ assert.equal(root.querySelector('#specs details.more-details').open,false);
+ assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),['features']);
+ for(const tab of tabs){
+  tab.click();
+  assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),[tab.dataset.pdpTab]);
+  assert.equal(tab.classList.contains('active'),true);
+  assert.equal(tab.getAttribute('aria-selected'),'true');
+  const nextIds=visibleNextIds();
+  assert.equal(nextIds.length,5);
+  assert.equal(nextIds.includes(tab.dataset.pdpTab),false);
+  const isFeatures=tab.dataset.pdpTab==='features';
+  assert.equal(root.querySelector('#support').closest('[hidden]')===null,isFeatures);
+  assert.equal(root.querySelector('.closing-banner').closest('[hidden]')===null,isFeatures);
+ }
+ root.querySelector('[data-pdp-next="faq"]').click();
+ assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),['faq']);
+ assert.equal(root.querySelector('.product-nav [data-pdp-tab="faq"]').classList.contains('active'),true);
+ assert.equal(visibleNextIds().includes('faq'),false);
+ assert.equal(visibleNextIds().length,5);
+ root.querySelector('[data-pdp-next="features"]').click();
+ assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),['features']);
+ assert.equal(root.querySelector('.product-nav [data-pdp-tab="features"]').classList.contains('active'),true);
+ assert.equal(visibleNextIds().includes('features'),false);
+ assert.equal(visibleNextIds().length,5);
+ root.querySelector('.fit-help[href="#specs"]').click();
+ assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),['specs']);
+ root.querySelector('.product-links a[href="#manuals"]').click();
+ assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),['manuals']);
+ frame.classList.remove('is-mobile');
+ await tick();
+ assert.equal(nav.getAttribute('role'),'tablist');
+ assert.deepEqual(panels.filter(p=>!p.hidden).map(p=>p.dataset.tabPanel),['manuals']);
 });

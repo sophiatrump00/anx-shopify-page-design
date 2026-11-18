@@ -138,42 +138,48 @@
           "type": "link",
           "settings": {
             "label": "Features",
-            "target_id": "features"
+            "target_id": "features",
+            "subtext": "Product story, support & certs"
           }
         },
         "specs": {
           "type": "link",
           "settings": {
-            "label": "Specifications",
-            "target_id": "specifications"
+            "label": "Specs",
+            "target_id": "specifications",
+            "subtext": "Ratings, dimensions & specs"
           }
         },
         "box": {
           "type": "link",
           "settings": {
             "label": "In the box",
-            "target_id": "in-the-box"
-          }
-        },
-        "support": {
-          "type": "link",
-          "settings": {
-            "label": "Support & certificates",
-            "target_id": "support-certificates"
+            "target_id": "in-the-box",
+            "subtext": "Included parts & kit details"
           }
         },
         "manuals": {
           "type": "link",
           "settings": {
-            "label": "Documents",
-            "target_id": "manuals"
+            "label": "Manual",
+            "target_id": "manuals",
+            "subtext": "View online or download guide"
+          }
+        },
+        "reviews": {
+          "type": "link",
+          "settings": {
+            "label": "Reviews",
+            "target_id": "reviews",
+            "subtext": "Customer feedback"
           }
         },
         "faq": {
           "type": "link",
           "settings": {
             "label": "FAQ",
-            "target_id": "faq"
+            "target_id": "faq",
+            "subtext": "Compatibility & setup Q&A"
           }
         }
       },
@@ -181,11 +187,13 @@
         "features",
         "specs",
         "box",
-        "support",
         "manuals",
+        "reviews",
         "faq"
       ],
-      "settings": {}
+      "settings": {
+        "litime_tabs": true
+      }
     },
     "features": {
       "type": "suntneew-rv-experience",
@@ -767,7 +775,8 @@
         "eyebrow": "SUPPORT & CERTIFICATES",
         "heading": "Support, service and the documents behind G24.",
         "lede": "<p>Warranty coverage and 24/7 support are available across the RV range. The downloadable files below identify their exact G24, RV-series or confirmed G24/G31 shared-design scope.</p>",
-        "layout_mode": "full_width_below"
+        "layout_mode": "full_width_below",
+        "panel_id": "features"
       }
     },
     "faq": {
@@ -872,11 +881,14 @@
       ],
       "settings": {
         "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
         "background": "",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "",
+        "pdp_tab_panel": "reviews",
+        "pdp_eyebrow": "CUSTOMER REVIEWS",
+        "pdp_heading": "Customer Reviews"
       }
     }
   },
@@ -885,8 +897,8 @@
     "proof",
     "anchor_nav",
     "features",
-    "details",
     "service_proof",
+    "details",
     "faq",
     "judge_me_reviews"
   ]
