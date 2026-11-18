@@ -1,1 +1,101 @@
-{"type":"custom.overlay","name":"Overlay group","sections":{"newsletter-popup":{"type":"newsletter-popup","disabled":true,"settings":{"apparition_delay":5,"show_only_on_index":true,"show_only_for_visitors":true,"show_only_once":true,"title":"Signup for our newsletter","button_text":"Subscribe","subtext":"Describe what your customers will receive when subscribing to your newsletter."}},"privacy-banner":{"type":"privacy-banner","disabled":true,"settings":{"privacy_bar_title":"Cookie policy","privacy_bar_content":"<p>We use cookies and similar technologies to provide the best experience on our website. Refer to our Privacy Policy for more information.<\/p>"}},"cart-drawer":{"type":"cart-drawer","settings":{"show_cart_note":false,"show_shipping_text":true,"allow_discount_application":false,"show_view_cart_button":true,"show_checkout_button":true,"recommendations_title":"Trending this month","products":[],"product_card_background":"#f2f2f2","product_card_text_color":""}},"search-drawer":{"type":"search-drawer","settings":{"full_width":false,"show_article_category":true,"search_menu":"","search_menu_show_title":true}}},"order":["newsletter-popup","privacy-banner","cart-drawer","search-drawer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "custom.overlay",
+  "name": "Overlay group",
+  "sections": {
+    "newsletter-popup": {
+      "type": "newsletter-popup",
+      "disabled": true,
+      "settings": {
+        "apparition_delay": 5,
+        "show_only_on_index": true,
+        "show_only_for_visitors": true,
+        "show_only_once": true,
+        "title": "Signup for our newsletter",
+        "button_text": "Subscribe",
+        "subtext": "Describe what your customers will receive when subscribing to your newsletter."
+      }
+    },
+    "privacy-banner": {
+      "type": "privacy-banner",
+      "disabled": true,
+      "settings": {
+        "privacy_bar_title": "Cookie policy",
+        "privacy_bar_content": "<p>We use cookies and similar technologies to provide the best experience on our website. Refer to our Privacy Policy for more information.</p>"
+      }
+    },
+    "cart-drawer": {
+      "type": "cart-drawer",
+      "settings": {
+        "show_cart_note": true,
+        "show_shipping_text": true,
+        "allow_discount_application": false,
+        "show_view_cart_button": true,
+        "show_checkout_button": true,
+        "recommendations_title": "Trending this month",
+        "products": [],
+        "product_card_background": "#f2f2f2",
+        "product_card_text_color": ""
+      }
+    },
+    "search-drawer": {
+      "type": "search-drawer",
+      "settings": {
+        "full_width": false,
+        "show_article_category": true,
+        "search_menu": "",
+        "search_menu_show_title": true
+      }
+    },
+    "suntneew-auth-prompt": {
+      "type": "suntneew-auth-prompt",
+      "settings": {
+        "enable_prompt": true,
+        "apparition_delay": 4,
+        "cooldown_days": 1,
+        "hide_on_cart": true,
+        "eyebrow": "New Member Perk",
+        "title": "Sign In to Unlock 6% OFF Your First Order",
+        "show_offer_highlight": true,
+        "offer_badge": "6% OFF",
+        "offer_highlight_text": "Welcome Code",
+        "offer_locked_code": "SN6-•••••",
+        "offer_locked_hint": "Unlock ↓",
+        "offer_code": "SN6-K8M4P, SN6-R3W9X, SN6-V7D2N, SN6-H5J8Q, SN6-T4F6L, SN6-B9C2Y, SN6-M3P7G, SN6-W8Z4K, SN6-N6X3R, SN6-D2V9M, SN6-Q7H4T, SN6-L5B8W, SN6-G9N2F, SN6-Y3K6P, SN6-Z7R4C, SN6-F2M8X, SN6-P6D3H, SN6-C8T5V, SN6-J4W7B, SN6-X9L2Q",
+        "unlocked_eyebrow": "6% OFF Unlocked",
+        "unlocked_title": "Your Welcome Code Is Ready & Applied!",
+        "unlocked_subtext": "First-Order Code",
+        "unlocked_guide_1": "Auto-applied at checkout — add any item to cart to see 6% OFF",
+        "unlocked_guide_2": "Tap Copy as backup · Valid once on your 1st order while signed in",
+        "unlocked_cta_label": "Got It — Shop with 6% OFF",
+        "perk_1": "Pick Google (1-click) or Email (6-digit code, no password) below",
+        "perk_2": "Code reveals right on this page & auto-applies at checkout",
+        "google_button_label": "Continue with Google",
+        "google_button_badge": "1-click",
+        "show_facebook_button": false,
+        "facebook_button_label": "Continue with Facebook",
+        "secondary_button_label": "Sign in with Email or Shop",
+        "secondary_button_badge": "6-digit code",
+        "show_marketing_consent": true,
+        "marketing_consent_default": true,
+        "marketing_consent_label": "Email me member-only deals & order updates",
+        "close_label": "Close sign-in prompt"
+      }
+    }
+  },
+  "order": [
+    "newsletter-popup",
+    "privacy-banner",
+    "cart-drawer",
+    "search-drawer",
+    "suntneew-auth-prompt"
+  ]
+}

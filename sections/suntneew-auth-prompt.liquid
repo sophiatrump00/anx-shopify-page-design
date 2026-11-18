@@ -1,0 +1,544 @@
+{%- if shop.customer_accounts_enabled and section.settings.enable_prompt -%}
+  {%- unless request.page_type == 'captcha' -%}
+    {%- liquid
+      assign customer_orders = customer.orders_count | default: 0 | plus: 0
+      assign is_signed_in = false
+      if customer
+        assign is_signed_in = true
+      endif
+      assign is_unlocked_member = false
+      if is_signed_in and customer_orders == 0 and section.settings.show_offer_highlight
+        assign is_unlocked_member = true
+      endif
+      assign should_render_prompt = false
+      if is_signed_in == false or is_unlocked_member or request.design_mode
+        assign should_render_prompt = true
+      endif
+      assign cart_suppressed = false
+      if section.settings.hide_on_cart and request.page_type == 'cart' and request.design_mode == false and is_unlocked_member == false
+        assign cart_suppressed = true
+      endif
+    -%}
+    {%- if should_render_prompt and cart_suppressed == false -%}
+      {{- 'suntneew-auth-prompt.css' | asset_url | stylesheet_tag -}}
+      <script src="{{ 'suntneew-auth-prompt.js' | asset_url }}" defer></script>
+
+      {%- liquid
+        if is_unlocked_member
+          assign auth_state = 'unlocked'
+          assign raw_codes = section.settings.offer_code | split: ','
+          assign first_code = raw_codes.first | strip
+        else
+          assign auth_state = 'guest'
+          assign base_login_url = routes.storefront_login_url | default: routes.account_login_url
+          assign login_joiner = '?'
+          if base_login_url contains '?'
+            assign login_joiner = '&'
+          endif
+          assign return_path = request.path | default: '/'
+          assign encoded_return = return_path | url_param_escape
+          assign consent_query = ''
+          if section.settings.show_marketing_consent
+            if section.settings.marketing_consent_default
+              assign consent_query = '&marketing_consent=true'
+            else
+              assign consent_query = '&marketing_consent=false'
+            endif
+          endif
+          assign google_href = base_login_url | append: login_joiner | append: 'return_to=' | append: encoded_return | append: '&acr_values=provider%3Agoogle' | append: consent_query
+          assign facebook_href = base_login_url | append: login_joiner | append: 'return_to=' | append: encoded_return | append: '&acr_values=provider%3Afacebook' | append: consent_query
+          assign other_href = base_login_url | append: login_joiner | append: 'return_to=' | append: encoded_return | append: consent_query
+        endif
+      -%}
+
+      <suntneew-auth-prompt
+        hidden
+        data-section-id="{{ section.id }}"
+        data-auth-state="{{ auth_state }}"
+        data-signed-in="{% if is_signed_in %}true{% else %}false{% endif %}"
+        data-design-mode="{% if request.design_mode %}true{% else %}false{% endif %}"
+        data-delay-ms="{{ section.settings.apparition_delay | times: 1000 }}"
+        data-cooldown-days="{{ section.settings.cooldown_days }}"
+        {% if is_unlocked_member %}
+          data-customer-id="{{ customer.id }}"
+          data-offer-codes="{{ section.settings.offer_code | escape }}"
+        {% else %}
+          data-login-url="{{ base_login_url | escape }}"
+        {% endif %}
+        data-open="false"
+        data-suspended="false"
+      >
+        <div
+          class="sn-auth-prompt__card"
+          role="dialog"
+          aria-modal="false"
+          aria-labelledby="SnAuthPromptTitle-{{ section.id }}"
+        >
+          <div class="sn-auth-prompt__accent" aria-hidden="true"></div>
+          <div class="sn-auth-prompt__grabber" aria-hidden="true"></div>
+
+          {%- if is_unlocked_member -%}
+            <div class="sn-auth-prompt__header">
+              {%- if section.settings.unlocked_eyebrow != blank -%}
+                <span class="sn-auth-prompt__eyebrow sn-auth-prompt__eyebrow--unlocked">
+                  <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3.5 8.5 6.5 11.5 12.5 4.5"/>
+                  </svg>
+                  {{- section.settings.unlocked_eyebrow | escape -}}
+                </span>
+              {%- else -%}
+                <span></span>
+              {%- endif -%}
+
+              <button
+                type="button"
+                class="sn-auth-prompt__close"
+                data-auth-close
+                aria-label="{{ section.settings.close_label | default: 'Close sign-in prompt' | escape }}"
+              >
+                <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                  <path d="M5 5l10 10M15 5L5 15"/>
+                </svg>
+              </button>
+            </div>
+
+            <h2 class="sn-auth-prompt__title" id="SnAuthPromptTitle-{{ section.id }}">
+              {{- section.settings.unlocked_title | default: 'Your Welcome Code Is Ready & Applied!' | escape -}}
+            </h2>
+
+            {%- if section.settings.unlocked_subtext != blank or first_code != blank -%}
+              <div class="sn-auth-prompt__offer sn-auth-prompt__offer--unlocked">
+                <div class="sn-auth-prompt__offer-main">
+                  {%- if section.settings.offer_badge != blank -%}
+                    <span class="sn-auth-prompt__offer-pill">{{- section.settings.offer_badge | escape -}}</span>
+                  {%- endif -%}
+                  {%- if section.settings.unlocked_subtext != blank -%}
+                    <span class="sn-auth-prompt__offer-text">{{- section.settings.unlocked_subtext | escape -}}</span>
+                  {%- endif -%}
+                </div>
+                {%- if first_code != blank -%}
+                  <button
+                    type="button"
+                    class="sn-auth-prompt__code-btn"
+                    data-offer-copy
+                    data-offer-code="{{ first_code | escape }}"
+                    data-default-label="Copy"
+                    data-copied-label="Copied ✓"
+                    aria-label="Copy discount code {{ first_code | escape }}"
+                  >
+                    <code class="sn-auth-prompt__code-val" data-offer-code-text>{{- first_code | escape -}}</code>
+                    <span class="sn-auth-prompt__code-action" data-offer-copy-label>Copy</span>
+                  </button>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.unlocked_guide_1 != blank or section.settings.unlocked_guide_2 != blank -%}
+              <ul class="sn-auth-prompt__perks sn-auth-prompt__perks--unlocked">
+                {%- if section.settings.unlocked_guide_1 != blank -%}
+                  <li class="sn-auth-prompt__perk">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M3.5 8.5 6.5 11.5 12.5 4.5"/>
+                    </svg>
+                    <span>{{- section.settings.unlocked_guide_1 | escape -}}</span>
+                  </li>
+                {%- endif -%}
+                {%- if section.settings.unlocked_guide_2 != blank -%}
+                  <li class="sn-auth-prompt__perk">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M3.5 8.5 6.5 11.5 12.5 4.5"/>
+                    </svg>
+                    <span>{{- section.settings.unlocked_guide_2 | escape -}}</span>
+                  </li>
+                {%- endif -%}
+              </ul>
+            {%- endif -%}
+
+            <div class="sn-auth-prompt__actions">
+              <button
+                type="button"
+                class="sn-auth-prompt__btn sn-auth-prompt__btn--primary"
+                data-unlock-continue
+              >
+                <span>{{- section.settings.unlocked_cta_label | default: 'Got It — Shop with 6% OFF' | escape -}}</span>
+              </button>
+            </div>
+          {%- else -%}
+            <div class="sn-auth-prompt__header">
+              {%- if section.settings.eyebrow != blank -%}
+                <span class="sn-auth-prompt__eyebrow">
+                  <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true">
+                    <path d="M9.1 1.3 3.2 8.9h4.3l-.7 5.8 6-7.6H8.4l.7-5.8Z"/>
+                  </svg>
+                  {{- section.settings.eyebrow | escape -}}
+                </span>
+              {%- else -%}
+                <span></span>
+              {%- endif -%}
+
+              <button
+                type="button"
+                class="sn-auth-prompt__close"
+                data-auth-close
+                aria-label="{{ section.settings.close_label | default: 'Close sign-in prompt' | escape }}"
+              >
+                <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                  <path d="M5 5l10 10M15 5L5 15"/>
+                </svg>
+              </button>
+            </div>
+
+            <h2 class="sn-auth-prompt__title" id="SnAuthPromptTitle-{{ section.id }}">
+              {{- section.settings.title | escape -}}
+            </h2>
+
+            {%- if section.settings.show_offer_highlight -%}
+              <div class="sn-auth-prompt__offer">
+                <div class="sn-auth-prompt__offer-main">
+                  {%- if section.settings.offer_badge != blank -%}
+                    <span class="sn-auth-prompt__offer-pill">{{- section.settings.offer_badge | escape -}}</span>
+                  {%- endif -%}
+                  {%- if section.settings.offer_highlight_text != blank -%}
+                    <span class="sn-auth-prompt__offer-text">{{- section.settings.offer_highlight_text | escape -}}</span>
+                  {%- endif -%}
+                </div>
+                <button
+                  type="button"
+                  class="sn-auth-prompt__code-locked"
+                  data-offer-locked
+                  aria-label="Sign in below to unlock your 6% OFF welcome code"
+                >
+                  <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="7" width="10" height="7" rx="1.8"/>
+                    <path d="M5.2 7V5.2a2.8 2.8 0 0 1 5.6 0V7"/>
+                  </svg>
+                  <code class="sn-auth-prompt__code-val sn-auth-prompt__code-val--masked">{{- section.settings.offer_locked_code | default: 'SN6-•••••' | escape -}}</code>
+                  <span class="sn-auth-prompt__lock-hint">{{- section.settings.offer_locked_hint | default: 'Unlock ↓' | escape -}}</span>
+                </button>
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.perk_1 != blank or section.settings.perk_2 != blank -%}
+              {%- assign step_idx = 1 -%}
+              <ul class="sn-auth-prompt__perks">
+                {%- if section.settings.perk_1 != blank -%}
+                  <li class="sn-auth-prompt__perk">
+                    <span class="sn-auth-prompt__step-num" aria-hidden="true">{{- step_idx -}}</span>
+                    <span>{{- section.settings.perk_1 | escape -}}</span>
+                  </li>
+                  {%- assign step_idx = step_idx | plus: 1 -%}
+                {%- endif -%}
+                {%- if section.settings.perk_2 != blank -%}
+                  <li class="sn-auth-prompt__perk">
+                    <span class="sn-auth-prompt__step-num" aria-hidden="true">{{- step_idx -}}</span>
+                    <span>{{- section.settings.perk_2 | escape -}}</span>
+                  </li>
+                {%- endif -%}
+              </ul>
+            {%- endif -%}
+
+            <div class="sn-auth-prompt__actions" data-auth-actions>
+              <a
+                class="sn-auth-prompt__btn sn-auth-prompt__btn--primary"
+                href="{{ google_href | escape }}"
+                data-auth-google
+                data-provider="google"
+                target="_top"
+                data-no-instant
+              >
+                <span class="sn-auth-prompt__google-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="15" height="15">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09Z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23Z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62Z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53Z" fill="#EA4335"/>
+                  </svg>
+                </span>
+                <span>{{- section.settings.google_button_label | default: 'Continue with Google' | escape -}}</span>
+                {%- if section.settings.google_button_badge != blank -%}
+                  <span class="sn-auth-prompt__btn-tag">{{- section.settings.google_button_badge | escape -}}</span>
+                {%- endif -%}
+              </a>
+
+              {%- if section.settings.show_facebook_button -%}
+                <a
+                  class="sn-auth-prompt__btn sn-auth-prompt__btn--facebook"
+                  href="{{ facebook_href | escape }}"
+                  data-auth-facebook
+                  data-provider="facebook"
+                  target="_top"
+                  data-no-instant
+                >
+                  <span class="sn-auth-prompt__btn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+                      <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.098 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.098 24 12.073Z"/>
+                    </svg>
+                  </span>
+                  <span>{{- section.settings.facebook_button_label | default: 'Continue with Facebook' | escape -}}</span>
+                </a>
+              {%- endif -%}
+
+              <a
+                class="sn-auth-prompt__btn sn-auth-prompt__btn--secondary"
+                href="{{ other_href | escape }}"
+                data-auth-other
+                data-provider="other"
+                target="_top"
+                data-no-instant
+              >
+                <span class="sn-auth-prompt__btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2.5" y="4.5" width="15" height="11" rx="2"/>
+                    <path d="m3.5 6 6.5 4.8L16.5 6"/>
+                  </svg>
+                </span>
+                <span>{{- section.settings.secondary_button_label | default: 'Sign in with Email or Shop' | escape -}}</span>
+                {%- if section.settings.secondary_button_badge != blank -%}
+                  <span class="sn-auth-prompt__btn-tag">{{- section.settings.secondary_button_badge | escape -}}</span>
+                {%- endif -%}
+              </a>
+            </div>
+
+            {%- if section.settings.show_marketing_consent -%}
+              <label class="sn-auth-prompt__consent">
+                <input
+                  type="checkbox"
+                  data-auth-consent
+                  {% if section.settings.marketing_consent_default %}
+                    checked
+                  {% endif %}
+                >
+                <span>{{- section.settings.marketing_consent_label | escape -}}</span>
+              </label>
+            {%- endif -%}
+
+            {%- if shop.privacy_policy.url != blank or shop.terms_of_service.url != blank -%}
+              <p class="sn-auth-prompt__legal">
+                By continuing, you agree to SuntNeew's
+                {% if shop.privacy_policy.url != blank %}
+                  <a href="{{ shop.privacy_policy.url }}">Privacy Policy</a>
+                {% endif %}
+                {% if shop.privacy_policy.url != blank and shop.terms_of_service.url != blank %} and {% endif %}
+                {% if shop.terms_of_service.url != blank %}
+                  <a href="{{ shop.terms_of_service.url }}">Terms of Service</a>
+                {% endif %}.
+              </p>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </suntneew-auth-prompt>
+    {%- endif -%}
+  {%- endunless -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Quick sign-in prompt",
+  "class": "shopify-section--auth-prompt",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_prompt",
+      "label": "Enable quick sign-in prompt",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "apparition_delay",
+      "min": 1,
+      "max": 15,
+      "step": 1,
+      "unit": "sec",
+      "label": "Delay before appearing",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "cooldown_days",
+      "min": 0,
+      "max": 14,
+      "step": 1,
+      "unit": "day",
+      "label": "Days to wait after closing",
+      "info": "0 hides only for the current browser session.",
+      "default": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_cart",
+      "label": "Hide on cart page",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Membership copy & welcome code"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow badge",
+      "default": "New Member Perk"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Sign In to Unlock 6% OFF Your First Order"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_offer_highlight",
+      "label": "Show welcome offer highlight",
+      "info": "Enable only when a matching active welcome discount is configured in Shopify.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "offer_badge",
+      "label": "Welcome offer badge",
+      "default": "6% OFF"
+    },
+    {
+      "type": "text",
+      "id": "offer_highlight_text",
+      "label": "Welcome offer text",
+      "default": "Welcome Code"
+    },
+    {
+      "type": "text",
+      "id": "offer_locked_code",
+      "label": "Masked code placeholder (guest)",
+      "default": "SN6-•••••"
+    },
+    {
+      "type": "text",
+      "id": "offer_locked_hint",
+      "label": "Locked code hint (guest)",
+      "default": "Unlock ↓"
+    },
+    {
+      "type": "textarea",
+      "id": "offer_code",
+      "label": "Discount codes (comma-separated, unlocked after sign-in)",
+      "default": "SN6-K8M4P, SN6-R3W9X, SN6-V7D2N, SN6-H5J8Q, SN6-T4F6L, SN6-B9C2Y, SN6-M3P7G, SN6-W8Z4K, SN6-N6X3R, SN6-D2V9M, SN6-Q7H4T, SN6-L5B8W, SN6-G9N2F, SN6-Y3K6P, SN6-Z7R4C, SN6-F2M8X, SN6-P6D3H, SN6-C8T5V, SN6-J4W7B, SN6-X9L2Q"
+    },
+    {
+      "type": "text",
+      "id": "unlocked_eyebrow",
+      "label": "Unlocked badge (post-login)",
+      "default": "6% OFF Unlocked"
+    },
+    {
+      "type": "text",
+      "id": "unlocked_title",
+      "label": "Unlocked heading (post-login)",
+      "default": "Your Welcome Code Is Ready & Applied!"
+    },
+    {
+      "type": "text",
+      "id": "unlocked_subtext",
+      "label": "Unlocked subtext (post-login)",
+      "default": "First-Order Code"
+    },
+    {
+      "type": "text",
+      "id": "unlocked_guide_1",
+      "label": "Unlocked guide step 1",
+      "default": "Auto-applied at checkout — add any item to cart to see 6% OFF"
+    },
+    {
+      "type": "text",
+      "id": "unlocked_guide_2",
+      "label": "Unlocked guide step 2",
+      "default": "Tap Copy as backup · Valid once on your 1st order while signed in"
+    },
+    {
+      "type": "text",
+      "id": "unlocked_cta_label",
+      "label": "Unlocked CTA button label",
+      "default": "Got It — Shop with 6% OFF"
+    },
+    {
+      "type": "text",
+      "id": "perk_1",
+      "label": "Step 1 guidance",
+      "default": "Pick Google (1-click) or Email (6-digit code, no password) below"
+    },
+    {
+      "type": "text",
+      "id": "perk_2",
+      "label": "Step 2 guidance",
+      "default": "Code reveals right on this page & auto-applies at checkout"
+    },
+    {
+      "type": "header",
+      "content": "Sign-in buttons"
+    },
+    {
+      "type": "text",
+      "id": "google_button_label",
+      "label": "Google button label",
+      "default": "Continue with Google"
+    },
+    {
+      "type": "text",
+      "id": "google_button_badge",
+      "label": "Google button badge",
+      "default": "1-click"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_facebook_button",
+      "label": "Show Facebook button",
+      "info": "Enable after connecting Facebook Login under Settings -> Customer accounts.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "facebook_button_label",
+      "label": "Facebook button label",
+      "default": "Continue with Facebook"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "label": "Email / Shop button label",
+      "default": "Sign in with Email or Shop"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_badge",
+      "label": "Email / Shop badge",
+      "default": "6-digit code"
+    },
+    {
+      "type": "header",
+      "content": "Consent & accessibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_marketing_consent",
+      "label": "Show email marketing checkbox",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "marketing_consent_default",
+      "label": "Pre-check email marketing checkbox",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "marketing_consent_label",
+      "label": "Marketing consent label",
+      "default": "Email me member-only deals & order updates"
+    },
+    {
+      "type": "text",
+      "id": "close_label",
+      "label": "Close button label",
+      "default": "Close sign-in prompt"
+    }
+  ]
+}
+{% endschema %}
