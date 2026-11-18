@@ -13,13 +13,19 @@ const config=[
  {group:'06',kind:'pair',labels:['Temperature range','8,000mAh battery'],eyebrow:'05 / CHECK & RECHARGE',heading:'Check the charge.<br>Then hit the road.',body:'The digital display shows how much charge is left. Top off the 8,000mAh battery before a trip, and recharge after use so it’s ready for the next drive.',note:'Discharge temperature: −4°F to 140°F (−20°C to 60°C). Charging and storage limits differ; see the A20 manual.'},
  {group:'07',kind:'instructions',eyebrow:'06 / WHAT’S INCLUDED',heading:'In the box',body:'A20 comes with smart jumper clamps, a USB-C charging cable and a user manual. Get familiar with the kit at home, before you need it on the road.'}
 ];
-let selection, colour='orange', focusReturn;
-let disposePairs=[];
+let selection, colour='orange', galleryPack='1 unit', focusReturn;
+let disposePairs=[], disposeGallery=null;
 let galleryController, galleryZoomRows=[], galleryZoomIndex=0;
 const params=new URLSearchParams(location.search);
 const initialProduct=JSON.parse(root.querySelector('[data-a20-product]').textContent);
 const selectedInitial=initialProduct.variants.find(v=>v.id===(params.get('variant') || initialProduct.selectedId));
-if(selectedInitial)colour=selectedInitial.colour;
+if(selectedInitial){
+ colour=selectedInitial.colour;
+ if(selectedInitial.pack && selectedInitial.pack!=='Any quantity')galleryPack=selectedInitial.pack;
+}
+if(params.get('colour')==='red'||params.get('colour')==='orange')colour=params.get('colour');
+const initParamPack={'1':'1 unit','2':'2 units','4':'4 units'}[params.get('pack')];
+if(initParamPack && !params.get('variant'))galleryPack=initParamPack;
 
 
 function paragraph(text,className){const p=document.createElement('p');p.textContent=text;if(className)p.className=className;return p;}
@@ -29,7 +35,7 @@ function picture(asset,eager=false){
  button.setAttribute('aria-label',`Enlarge ${asset.purpose} image`);
  const im=document.createElement('img');im.src=asset.src;im.width=asset.width;im.height=asset.height;im.alt=`SuntNeew A20 ${colour} 8000mAh — ${asset.purpose}`;im.loading=eager?'eager':'lazy';im.decoding='async';im.draggable=false;
  if(eager)im.fetchPriority='high';
- const icon=document.createElement('span');icon.className='zoom-label';icon.setAttribute('aria-hidden','true');
+ const icon=document.createElement('span');icon.className='zoom-label';icon.textContent='+';icon.setAttribute('aria-hidden','true');
  button.append(im,icon);button.addEventListener('click',()=>zoom(asset,button));f.append(button);return f;
 }
 function heading(c){
@@ -49,8 +55,7 @@ function pair(c,assets,{gallery=false}={}){
  arrows.append(previous,next);footer.append(hint,counter,arrows);
  const caption=paragraph('','gallery-current');
  if(gallery){nav.classList.add('gallery-thumbnails');nav.setAttribute('aria-label','Product image thumbnails');track.setAttribute('aria-label','A20 product images');}
- const cards=[],tabs=[];let active=-1,frame=0,cachedStep=0;
- function measureStep(){if(cards.length>1){const delta=cards[1].getBoundingClientRect().left-cards[0].getBoundingClientRect().left;if(delta>0)cachedStep=delta;}return cachedStep||1;}
+ const cards=[],tabs=[];let active=-1,frame=0;
  function update(index){
   const current=Math.max(0,Math.min(cards.length-1,index));if(current===active)return;active=current;
   tabs.forEach((tab,i)=>tab.setAttribute('aria-pressed',String(i===active)));
@@ -64,8 +69,7 @@ function pair(c,assets,{gallery=false}={}){
  }
  function go(index){
   const target=Math.max(0,Math.min(cards.length-1,index));
-  const stepWidth=cachedStep||measureStep();
-  const left=cards.length>1&&cachedStep>0?target*stepWidth:cards[target].getBoundingClientRect().left-cards[0].getBoundingClientRect().left;
+  const left=cards[target].getBoundingClientRect().left-cards[0].getBoundingClientRect().left;
   track.scrollTo({left,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
  }
  assets.forEach((asset,i)=>{
@@ -86,14 +90,14 @@ function pair(c,assets,{gallery=false}={}){
  });
  function onScroll(){
   cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{
-   const step=cachedStep||measureStep();
+   const step=cards.length>1?cards[1].getBoundingClientRect().left-cards[0].getBoundingClientRect().left:1;
    update(Math.round(track.scrollLeft/Math.max(step,1)));
   });
  }
  track.addEventListener('scroll',onScroll,{passive:true});
  // Touch and trackpad use native scrolling. Add mouse dragging without opening zoom.
  let drag=null,suppressClick=false;
- function step(){return cachedStep||measureStep();}
+ function step(){return cards[1].getBoundingClientRect().left-cards[0].getBoundingClientRect().left;}
  track.addEventListener('pointerdown',event=>{
   suppressClick=false;
   if(event.pointerType!=='mouse'||event.button!==0)return;
@@ -121,8 +125,9 @@ function pair(c,assets,{gallery=false}={}){
   wrapper.addEventListener('focusin',()=>requestAnimationFrame(centerActiveThumbnail));
   galleryController={go,focusAt:index=>cards[index]?.querySelector('.image-button').focus({preventScroll:true})};
  }
- const observer=new ResizeObserver(()=>{cachedStep=0;measureStep();onScroll();});observer.observe(track);
- disposePairs.push(()=>{observer.disconnect();cancelAnimationFrame(frame);});
+ const observer=new ResizeObserver(onScroll);observer.observe(track);
+ const cleanup=()=>{observer.disconnect();cancelAnimationFrame(frame);};
+ if(gallery){if(disposeGallery)disposeGallery();disposeGallery=cleanup;}else disposePairs.push(cleanup);
  update(0);if(gallery)wrapper.append(track,caption,footer,nav);else wrapper.append(nav,track,footer);return wrapper;
 }
 function instructions(assets){
@@ -136,11 +141,21 @@ function instructions(assets){
  const body=document.createElement('div');body.className='starting-content';body.append(paragraph('Read the model instructions before use. Check vehicle compatibility and follow the smart clamp indicators.','steps-note'),picture(procedure));
  details.append(summary,body);wrapper.append(details);return wrapper;
 }
+function getGalleryRows(){
+ const baseRows=selection.gallery_assets.filter(a=>a.colour===colour);
+ const packOverride=selection.pack_gallery_assets?.[`${colour}:${galleryPack}`];
+ if(!packOverride || !baseRows.length)return baseRows;
+ return [{...baseRows[0],...packOverride},...baseRows.slice(1)];
+}
+function renderGalleryOnly(){
+ if(!selection)return;
+ const galleryRows=getGalleryRows();
+ $('gallery-content').replaceChildren(pair({group:'gallery',labels:galleryRows.map(a=>a.purpose)},galleryRows,{gallery:true}));$('gallery-content').setAttribute('aria-busy','false');
+}
 function render(){
  disposePairs.forEach(dispose=>dispose());disposePairs=[];
  const rows=selection.assets.filter(a=>a.colour===colour);
- const galleryRows=selection.gallery_assets.filter(a=>a.colour===colour);
- $('gallery-content').replaceChildren(pair({group:'gallery',labels:galleryRows.map(a=>a.purpose)},galleryRows,{gallery:true}));$('gallery-content').setAttribute('aria-busy','false');
+ renderGalleryOnly();
  const fragment=document.createDocumentFragment();
  for(const c of config){
   const assets=rows.filter(a=>a.group===c.group);const section=document.createElement('section');section.dataset.group=c.group;section.id='feature-'+c.group;section.setAttribute('aria-label',c.kind==='opening'?'A20 product introduction':c.heading.replace(/<br>/g,' '));
@@ -165,7 +180,7 @@ function render(){
 function zoom(asset,trigger){
  focusReturn=trigger;
  if(asset.group==='gallery'){
-  galleryZoomRows=selection.gallery_assets.filter(a=>a.colour===colour);
+  galleryZoomRows=getGalleryRows();
   galleryZoomIndex=galleryZoomRows.findIndex(a=>a.asset_id===asset.asset_id);
   $('image-dialog').classList.add('gallery-lightbox');
   root.querySelector('.zoom-gallery-controls').hidden=false;
@@ -215,6 +230,13 @@ zoomScroller.addEventListener('pointerup',event=>{
 });
 zoomScroller.addEventListener('pointercancel',()=>{zoomDrag=null;});
 root.addEventListener('a20:colour',event=>{colour=event.detail.colour;if(selection)render();});
+root.addEventListener('a20:sale-update',event=>{
+ const nextPack=event.detail?.pack;
+ const nextColour=event.detail?.colour;
+ if(!nextPack)return;
+ if(nextColour && nextColour!==colour){colour=nextColour;galleryPack=nextPack;if(selection)render();return;}
+ if(nextPack!==galleryPack){galleryPack=nextPack;renderGalleryOnly();}
+});
 for(const d of root.querySelectorAll('dialog')){d.querySelector('[data-close]').addEventListener('click',()=>d.close());d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});d.addEventListener('close',()=>{
  if(d.classList.contains('gallery-lightbox')){
   d.classList.remove('gallery-lightbox','is-zoomed');document.querySelector('.zoom-gallery-controls').hidden=true;
@@ -288,7 +310,7 @@ const A20Sales = (() => {
    detailsEl.open = true;
   }
  }
- root.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {if(event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)return;const target=root.querySelector('#'+CSS.escape(link.hash.slice(1)));if(!target)return;event.preventDefault();openTarget(link.hash);if(location.hash!==link.hash)history.pushState(null,'',link.hash);target.scrollIntoView({block:'start',behavior:link.getAttribute('href')==='#sales-summary'&&!matchMedia('(prefers-reduced-motion: reduce)').matches?'smooth':'auto'});}));
+ root.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {if(event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)return;const target=root.querySelector('#'+CSS.escape(link.hash.slice(1)));if(!target)return;event.preventDefault();openTarget(link.hash);if(location.hash!==link.hash)history.pushState(null,'',link.hash);target.scrollIntoView({block:'start',behavior:'auto'});}));
  openTarget(location.hash);
  const navLinks = [...root.querySelectorAll('.product-nav a')];
  let frame;
@@ -477,26 +499,17 @@ const A20Sales = (() => {
  }
  Promise.resolve(JSON.parse(root.querySelector('[data-a20-product]').textContent)).then(snapshot => {
   data = {...snapshot, variants: snapshot.variants.map(current => outOfStockCapacities.has(current.capacity) ? {...current, available: false} : current)};
-  const requestedByVariant = query.get('variant') ? data.variants.find(v => v.id === query.get('variant')) : null;
-  const requested = requestedByVariant || data.variants.find(v => v.id === snapshot.selectedId);
-  const capacityValues = data.options.find(o => o.name === 'Capacity').values;
-  if (requestedByVariant) { ({capacity, colour, pack} = requestedByVariant); if (pack === 'Any quantity') pack = '1 unit'; }
+  const requested = data.variants.find(v => v.id === (query.get('variant') || snapshot.selectedId));
+  if (requested) { ({capacity, colour, pack} = requested); if (pack === 'Any quantity') pack = '1 unit'; }
   else {
-   if (requested) { ({capacity, colour, pack} = requested); if (pack === 'Any quantity') pack = '1 unit'; }
-   if (capacityValues.includes(query.get('capacity'))) capacity = query.get('capacity');
+   if (data.options.find(o => o.name === 'Capacity').values.includes(query.get('capacity'))) capacity = query.get('capacity');
    const requestedPack = {'1':'1 unit','2':'2 units','4':'4 units'}[query.get('pack')];
    if (requestedPack) pack = requestedPack;
-   if (!variant()) {
-    const fallbackVariant = data.variants.find(v => v.capacity === capacity && v.pack === pack);
-    colour = fallbackVariant ? fallbackVariant.colour : 'orange';
-   }
+   if (!variant()) colour = 'orange';
   }
   count = A20Sales.quantity(query.get('quantity'));
-  const visibleCapacities = capacityValues.filter(value => !outOfStockCapacities.has(value) || value === capacity);
-  const capFieldset = el('capacity-choices').closest('fieldset');
-  if (capFieldset) capFieldset.hidden = visibleCapacities.length <= 1;
   el('capacity-choices').replaceChildren();
-  for (const value of visibleCapacities) {
+  for (const value of data.options.find(o => o.name === 'Capacity').values) {
    const label = document.createElement('label'), input = document.createElement('input'), body = document.createElement('span');
    label.classList.toggle('is-out-of-stock', outOfStockCapacities.has(value));
    input.type = 'radio'; input.name = 'capacity'; input.value = value;
@@ -520,8 +533,8 @@ const A20Sales = (() => {
   form.addEventListener('purchase:idle',()=>{renderOptions();});
   const busyObserver=new MutationObserver(()=>{renderPacks();updatePrice();});
   busyObserver.observe(form,{attributes:true,attributeFilter:['data-purchase-busy']});
-  form.addEventListener('cart:error',event=>{const err=event.detail?.error || 'Check your cart before trying again.';const note=root.querySelector('.cart-feedback');note.textContent=err;note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;const checkoutLink=root.querySelector('.cart-checkout-link');if(checkoutLink)checkoutLink.hidden=true;const stickyCheckout=root.querySelector('.sticky-checkout-link');if(stickyCheckout)stickyCheckout.hidden=true;const sNote=el('sticky-feedback');if(sNote){clearTimeout(stickyFeedbackTimer);sNote.textContent=err;sNote.hidden=false;}});
-  form.addEventListener('variant:add',()=>{const note=root.querySelector('.cart-feedback');note.textContent='Added to your cart.';note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;const checkoutLink=root.querySelector('.cart-checkout-link');if(checkoutLink)checkoutLink.hidden=false;const stickyCheckout=root.querySelector('.sticky-checkout-link');if(stickyCheckout)stickyCheckout.hidden=false;const sNote=el('sticky-feedback');if(sNote){sNote.textContent='Added to your cart.';sNote.hidden=false;clearTimeout(stickyFeedbackTimer);stickyFeedbackTimer=setTimeout(()=>{sNote.hidden=true;},4000);}try{const drawer=document.getElementById('cart-drawer');if(drawer&&typeof drawer.show==='function'&&!drawer.open)drawer.show();}catch(_){}});
+  form.addEventListener('cart:error',event=>{const err=event.detail?.error || 'Check your cart before trying again.';const note=root.querySelector('.cart-feedback');note.textContent=err;note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;const sNote=el('sticky-feedback');if(sNote){clearTimeout(stickyFeedbackTimer);sNote.textContent=err;sNote.hidden=false;}});
+  form.addEventListener('variant:add',()=>{const note=root.querySelector('.cart-feedback');note.textContent='Added to your cart.';note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;const sNote=el('sticky-feedback');if(sNote){sNote.textContent='Added to your cart.';sNote.hidden=false;clearTimeout(stickyFeedbackTimer);stickyFeedbackTimer=setTimeout(()=>{sNote.hidden=true;},4000);}});
   window.addEventListener('popstate',()=>{const requested=data.variants.find(v=>v.id===new URLSearchParams(location.search).get('variant'));if(requested){({capacity,colour,pack}=requested);if(pack==='Any quantity')pack='1 unit';count=1;root.dispatchEvent(new CustomEvent('a20:colour',{detail:{colour}}));renderOptions();}});
  }).catch(error => {console.error(error);form.dataset.variantState='error';el('selected-variant').disabled=true;el('purchase-button').disabled=true;if(el('sticky-purchase-button'))el('sticky-purchase-button').disabled=true;buyNowButtons.forEach(btn=>{btn.disabled=true;});const note=root.querySelector('.cart-feedback');note.hidden=false;note.textContent='Product options could not be loaded. Please refresh the page.';});
 })();
