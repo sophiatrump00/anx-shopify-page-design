@@ -2,6 +2,31 @@
   if (window.suntneewPurchasePanelReady) return;
   window.suntneewPurchasePanelReady = true;
 
+  const resetFormPurchaseState = (form) => {
+    if (!form) return;
+    const variantInput = form.elements.namedItem('id');
+    const isBlocked = ['loading', 'error'].includes(form.dataset.variantState) || Boolean(variantInput?.disabled);
+    const id = form.getAttribute('id');
+    const buttons = [
+      ...form.querySelectorAll('[data-suntneew-buy-now]'),
+      ...(id ? document.querySelectorAll(`[data-suntneew-buy-now][form="${id}"]`) : []),
+    ];
+    buttons.forEach((btn) => {
+      btn.removeAttribute('aria-busy');
+      btn.disabled = isBlocked;
+    });
+    delete form.dataset.purchaseBusy;
+    form.dispatchEvent(new CustomEvent('purchase:idle'));
+  };
+
+  window.addEventListener('pageshow', () => {
+    document.querySelectorAll('form[data-purchase-busy]').forEach(resetFormPurchaseState);
+    document.querySelectorAll('[data-suntneew-buy-now][aria-busy="true"]').forEach((btn) => {
+      const formId = btn.getAttribute('form');
+      resetFormPurchaseState(formId ? document.getElementById(formId) : btn.closest('form'));
+    });
+  });
+
   document.addEventListener('click', async (event) => {
     const button = event.target.closest('[data-suntneew-buy-now]');
     if (!button) return;
@@ -19,41 +44,36 @@
       return;
     }
 
+    const qtyInput = form.elements.namedItem('quantity');
+    const qty = Math.max(1, Math.floor(Number(qtyInput?.value || 1)));
+    if (!Number.isFinite(qty) || qty < 1) return;
+
     button.setAttribute('aria-busy', 'true');
     button.disabled = true;
     form.dataset.purchaseBusy = 'true';
 
+    let fallbackTimer;
     try {
-      const formData = new FormData(form);
-      const response = await fetch(`${Shopify.routes.root}cart/add.js`, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          Accept: 'application/json',
-          'X-Requested-With': 'XMLHttpRequest'
-        }
-      });
-      const responseJson = await response.json();
-
-      if (!response.ok) {
-        form.dispatchEvent(new CustomEvent('cart:error', {
+      try {
+        window.clarity?.('set', 'buy_now_variant', String(variantInput.value));
+        form.dispatchEvent(new CustomEvent('suntneew:buy-now', {
           bubbles: true,
-          detail: { error: responseJson.description || responseJson.message || 'This item could not be added to the cart.' }
+          detail: { variantId: String(variantInput.value), quantity: qty }
         }));
-        return;
-      }
+      } catch (_) {}
 
-      window.location.assign(`${Shopify.routes.root}checkout`);
+      await new Promise((resolve) => setTimeout(resolve, 80));
+      const rootRoute = window.Shopify?.routes?.root || '/';
+      const checkoutUrl = `${rootRoute}cart/${encodeURIComponent(String(variantInput.value))}:${encodeURIComponent(String(qty))}?checkout`;
+      fallbackTimer = setTimeout(() => resetFormPurchaseState(form), 3500);
+      window.location.assign(checkoutUrl);
     } catch (error) {
+      if (fallbackTimer) clearTimeout(fallbackTimer);
       form.dispatchEvent(new CustomEvent('cart:error', {
         bubbles: true,
-          detail: { error: 'The checkout could not be opened. Check your cart before trying again.' }
+        detail: { error: 'The checkout could not be opened. Check your cart before trying again.' }
       }));
-    } finally {
-      button.removeAttribute('aria-busy');
-      button.disabled = ['loading', 'error'].includes(form.dataset.variantState) || variantInput.disabled;
-      delete form.dataset.purchaseBusy;
-      form.dispatchEvent(new CustomEvent('purchase:idle'));
+      resetFormPurchaseState(form);
     }
   });
 })();

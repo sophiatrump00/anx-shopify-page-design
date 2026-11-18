@@ -29,7 +29,7 @@ function picture(asset,eager=false){
  button.setAttribute('aria-label',`Enlarge ${asset.purpose} image`);
  const im=document.createElement('img');im.src=asset.src;im.width=asset.width;im.height=asset.height;im.alt=`SuntNeew A20 ${colour} 8000mAh — ${asset.purpose}`;im.loading=eager?'eager':'lazy';im.decoding='async';im.draggable=false;
  if(eager)im.fetchPriority='high';
- const icon=document.createElement('span');icon.className='zoom-label';icon.textContent='+';icon.setAttribute('aria-hidden','true');
+ const icon=document.createElement('span');icon.className='zoom-label';icon.setAttribute('aria-hidden','true');
  button.append(im,icon);button.addEventListener('click',()=>zoom(asset,button));f.append(button);return f;
 }
 function heading(c){
@@ -49,7 +49,8 @@ function pair(c,assets,{gallery=false}={}){
  arrows.append(previous,next);footer.append(hint,counter,arrows);
  const caption=paragraph('','gallery-current');
  if(gallery){nav.classList.add('gallery-thumbnails');nav.setAttribute('aria-label','Product image thumbnails');track.setAttribute('aria-label','A20 product images');}
- const cards=[],tabs=[];let active=-1,frame=0;
+ const cards=[],tabs=[];let active=-1,frame=0,cachedStep=0;
+ function measureStep(){if(cards.length>1){const delta=cards[1].getBoundingClientRect().left-cards[0].getBoundingClientRect().left;if(delta>0)cachedStep=delta;}return cachedStep||1;}
  function update(index){
   const current=Math.max(0,Math.min(cards.length-1,index));if(current===active)return;active=current;
   tabs.forEach((tab,i)=>tab.setAttribute('aria-pressed',String(i===active)));
@@ -63,7 +64,8 @@ function pair(c,assets,{gallery=false}={}){
  }
  function go(index){
   const target=Math.max(0,Math.min(cards.length-1,index));
-  const left=cards[target].getBoundingClientRect().left-cards[0].getBoundingClientRect().left;
+  const stepWidth=cachedStep||measureStep();
+  const left=cards.length>1&&cachedStep>0?target*stepWidth:cards[target].getBoundingClientRect().left-cards[0].getBoundingClientRect().left;
   track.scrollTo({left,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
  }
  assets.forEach((asset,i)=>{
@@ -84,14 +86,14 @@ function pair(c,assets,{gallery=false}={}){
  });
  function onScroll(){
   cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{
-   const step=cards.length>1?cards[1].getBoundingClientRect().left-cards[0].getBoundingClientRect().left:1;
+   const step=cachedStep||measureStep();
    update(Math.round(track.scrollLeft/Math.max(step,1)));
   });
  }
  track.addEventListener('scroll',onScroll,{passive:true});
  // Touch and trackpad use native scrolling. Add mouse dragging without opening zoom.
  let drag=null,suppressClick=false;
- function step(){return cards[1].getBoundingClientRect().left-cards[0].getBoundingClientRect().left;}
+ function step(){return cachedStep||measureStep();}
  track.addEventListener('pointerdown',event=>{
   suppressClick=false;
   if(event.pointerType!=='mouse'||event.button!==0)return;
@@ -119,7 +121,7 @@ function pair(c,assets,{gallery=false}={}){
   wrapper.addEventListener('focusin',()=>requestAnimationFrame(centerActiveThumbnail));
   galleryController={go,focusAt:index=>cards[index]?.querySelector('.image-button').focus({preventScroll:true})};
  }
- const observer=new ResizeObserver(onScroll);observer.observe(track);
+ const observer=new ResizeObserver(()=>{cachedStep=0;measureStep();onScroll();});observer.observe(track);
  disposePairs.push(()=>{observer.disconnect();cancelAnimationFrame(frame);});
  update(0);if(gallery)wrapper.append(track,caption,footer,nav);else wrapper.append(nav,track,footer);return wrapper;
 }
@@ -286,7 +288,7 @@ const A20Sales = (() => {
    detailsEl.open = true;
   }
  }
- root.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {if(event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)return;const target=root.querySelector('#'+CSS.escape(link.hash.slice(1)));if(!target)return;event.preventDefault();openTarget(link.hash);if(location.hash!==link.hash)history.pushState(null,'',link.hash);target.scrollIntoView({block:'start',behavior:'auto'});}));
+ root.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {if(event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)return;const target=root.querySelector('#'+CSS.escape(link.hash.slice(1)));if(!target)return;event.preventDefault();openTarget(link.hash);if(location.hash!==link.hash)history.pushState(null,'',link.hash);target.scrollIntoView({block:'start',behavior:link.getAttribute('href')==='#sales-summary'&&!matchMedia('(prefers-reduced-motion: reduce)').matches?'smooth':'auto'});}));
  openTarget(location.hash);
  const navLinks = [...root.querySelectorAll('.product-nav a')];
  let frame;
@@ -475,17 +477,26 @@ const A20Sales = (() => {
  }
  Promise.resolve(JSON.parse(root.querySelector('[data-a20-product]').textContent)).then(snapshot => {
   data = {...snapshot, variants: snapshot.variants.map(current => outOfStockCapacities.has(current.capacity) ? {...current, available: false} : current)};
-  const requested = data.variants.find(v => v.id === (query.get('variant') || snapshot.selectedId));
-  if (requested) { ({capacity, colour, pack} = requested); if (pack === 'Any quantity') pack = '1 unit'; }
+  const requestedByVariant = query.get('variant') ? data.variants.find(v => v.id === query.get('variant')) : null;
+  const requested = requestedByVariant || data.variants.find(v => v.id === snapshot.selectedId);
+  const capacityValues = data.options.find(o => o.name === 'Capacity').values;
+  if (requestedByVariant) { ({capacity, colour, pack} = requestedByVariant); if (pack === 'Any quantity') pack = '1 unit'; }
   else {
-   if (data.options.find(o => o.name === 'Capacity').values.includes(query.get('capacity'))) capacity = query.get('capacity');
+   if (requested) { ({capacity, colour, pack} = requested); if (pack === 'Any quantity') pack = '1 unit'; }
+   if (capacityValues.includes(query.get('capacity'))) capacity = query.get('capacity');
    const requestedPack = {'1':'1 unit','2':'2 units','4':'4 units'}[query.get('pack')];
    if (requestedPack) pack = requestedPack;
-   if (!variant()) colour = 'orange';
+   if (!variant()) {
+    const fallbackVariant = data.variants.find(v => v.capacity === capacity && v.pack === pack);
+    colour = fallbackVariant ? fallbackVariant.colour : 'orange';
+   }
   }
   count = A20Sales.quantity(query.get('quantity'));
+  const visibleCapacities = capacityValues.filter(value => !outOfStockCapacities.has(value) || value === capacity);
+  const capFieldset = el('capacity-choices').closest('fieldset');
+  if (capFieldset) capFieldset.hidden = visibleCapacities.length <= 1;
   el('capacity-choices').replaceChildren();
-  for (const value of data.options.find(o => o.name === 'Capacity').values) {
+  for (const value of visibleCapacities) {
    const label = document.createElement('label'), input = document.createElement('input'), body = document.createElement('span');
    label.classList.toggle('is-out-of-stock', outOfStockCapacities.has(value));
    input.type = 'radio'; input.name = 'capacity'; input.value = value;
@@ -509,8 +520,8 @@ const A20Sales = (() => {
   form.addEventListener('purchase:idle',()=>{renderOptions();});
   const busyObserver=new MutationObserver(()=>{renderPacks();updatePrice();});
   busyObserver.observe(form,{attributes:true,attributeFilter:['data-purchase-busy']});
-  form.addEventListener('cart:error',event=>{const err=event.detail?.error || 'Check your cart before trying again.';const note=root.querySelector('.cart-feedback');note.textContent=err;note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;const sNote=el('sticky-feedback');if(sNote){clearTimeout(stickyFeedbackTimer);sNote.textContent=err;sNote.hidden=false;}});
-  form.addEventListener('variant:add',()=>{const note=root.querySelector('.cart-feedback');note.textContent='Added to your cart.';note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;const sNote=el('sticky-feedback');if(sNote){sNote.textContent='Added to your cart.';sNote.hidden=false;clearTimeout(stickyFeedbackTimer);stickyFeedbackTimer=setTimeout(()=>{sNote.hidden=true;},4000);}});
+  form.addEventListener('cart:error',event=>{const err=event.detail?.error || 'Check your cart before trying again.';const note=root.querySelector('.cart-feedback');note.textContent=err;note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;const checkoutLink=root.querySelector('.cart-checkout-link');if(checkoutLink)checkoutLink.hidden=true;const stickyCheckout=root.querySelector('.sticky-checkout-link');if(stickyCheckout)stickyCheckout.hidden=true;const sNote=el('sticky-feedback');if(sNote){clearTimeout(stickyFeedbackTimer);sNote.textContent=err;sNote.hidden=false;}});
+  form.addEventListener('variant:add',()=>{const note=root.querySelector('.cart-feedback');note.textContent='Added to your cart.';note.hidden=false;root.querySelector('.cart-feedback-link').hidden=false;const checkoutLink=root.querySelector('.cart-checkout-link');if(checkoutLink)checkoutLink.hidden=false;const stickyCheckout=root.querySelector('.sticky-checkout-link');if(stickyCheckout)stickyCheckout.hidden=false;const sNote=el('sticky-feedback');if(sNote){sNote.textContent='Added to your cart.';sNote.hidden=false;clearTimeout(stickyFeedbackTimer);stickyFeedbackTimer=setTimeout(()=>{sNote.hidden=true;},4000);}try{const drawer=document.getElementById('cart-drawer');if(drawer&&typeof drawer.show==='function'&&!drawer.open)drawer.show();}catch(_){}});
   window.addEventListener('popstate',()=>{const requested=data.variants.find(v=>v.id===new URLSearchParams(location.search).get('variant'));if(requested){({capacity,colour,pack}=requested);if(pack==='Any quantity')pack='1 unit';count=1;root.dispatchEvent(new CustomEvent('a20:colour',{detail:{colour}}));renderOptions();}});
  }).catch(error => {console.error(error);form.dataset.variantState='error';el('selected-variant').disabled=true;el('purchase-button').disabled=true;if(el('sticky-purchase-button'))el('sticky-purchase-button').disabled=true;buyNowButtons.forEach(btn=>{btn.disabled=true;});const note=root.querySelector('.cart-feedback');note.hidden=false;note.textContent='Product options could not be loaded. Please refresh the page.';});
 })();

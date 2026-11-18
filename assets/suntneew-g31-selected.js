@@ -19,6 +19,7 @@
   let zoomIndex = 0;
   let zoomIsGallery = false;
   let focusReturn;
+  const existingButtons = new Map();
 
   const paragraph = (text, className) => {
     const node = document.createElement('p');
@@ -28,6 +29,19 @@
   };
 
   function picture(asset, eager = false) {
+    const existing = existingButtons.get(asset.id);
+    if (existing) {
+      const module = existing.closest('.image-module') || document.createElement('div');
+      module.className = 'image-module';
+      if (existing.parentElement !== module) module.append(existing);
+      const image = existing.querySelector('img');
+      if (image) image.dataset.imageId = asset.id;
+      if (!existing.dataset.zoomBound) {
+        existing.dataset.zoomBound = 'true';
+        existing.addEventListener('click', () => openZoom(asset, existing));
+      }
+      return module;
+    }
     const module = document.createElement('div');
     module.className = 'image-module';
     const button = document.createElement('button');
@@ -47,9 +61,9 @@
     if (eager) image.fetchPriority = 'high';
     const zoom = document.createElement('span');
     zoom.className = 'zoom-label';
-    zoom.textContent = '+';
     zoom.setAttribute('aria-hidden', 'true');
     button.append(image, zoom);
+    button.dataset.zoomBound = 'true';
     button.addEventListener('click', () => openZoom(asset, button));
     module.append(button);
     return module;
@@ -129,10 +143,20 @@
       tabs.append(tab);
     });
 
+    let cachedStep = 0;
+    const measureStep = () => {
+      if (cards.length > 1) {
+        const delta = cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left;
+        if (delta > 0) cachedStep = delta;
+      }
+      return cachedStep || 1;
+    };
     const go = index => {
       const target = Math.max(0, Math.min(cards.length - 1, index));
-      const first = cards[0]?.getBoundingClientRect().left || 0;
-      const left = (cards[target]?.getBoundingClientRect().left || first) - first;
+      const stepWidth = cachedStep || measureStep();
+      const left = cards.length > 1 && cachedStep > 0
+        ? target * stepWidth
+        : (cards[target]?.getBoundingClientRect().left || 0) - (cards[0]?.getBoundingClientRect().left || 0);
       track.scrollTo({ left, behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
     };
     const update = index => {
@@ -151,7 +175,7 @@
     const onScroll = () => {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
-        const step = cards.length > 1 ? cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left : 1;
+        const step = cachedStep || measureStep();
         update(Math.round(track.scrollLeft / Math.max(step, 1)));
       });
     };
@@ -187,7 +211,7 @@
       if (!drag || drag.id !== event.pointerId) return;
       const moved = drag.moved;
       const distance = track.scrollLeft - drag.left;
-      const step = cards.length > 1 ? cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left : 1;
+      const step = cachedStep || measureStep();
       const index = Math.abs(distance) > Math.min(60, step * .15) ? Math.round(drag.left / step) + Math.sign(distance) : Math.round(track.scrollLeft / step);
       drag = undefined;
       if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
@@ -199,7 +223,7 @@
     track.addEventListener('click', event => {
       if (suppressClick) { event.preventDefault(); event.stopPropagation(); suppressClick = false; }
     }, true);
-    const resize = new ResizeObserver(onScroll);
+    const resize = new ResizeObserver(() => { cachedStep = 0; measureStep(); onScroll(); });
     resize.observe(track);
     pairCleanups.push(() => { resize.disconnect(); cancelAnimationFrame(raf); track.removeEventListener('scroll', onScroll); });
     update(0);
@@ -213,6 +237,9 @@
   }
 
   function renderImages() {
+    root.querySelectorAll('#gallery-content .image-button[data-image-id], #feature-content .image-button[data-image-id]').forEach(btn => {
+      if (!existingButtons.has(btn.dataset.imageId)) existingButtons.set(btn.dataset.imageId, btn);
+    });
     pairCleanups.forEach(cleanup => cleanup());
     pairCleanups = [];
     const galleryRows = selection.gallery_assets;
@@ -412,12 +439,20 @@
     const message = root.querySelector('.cart-feedback');
     message.textContent = 'Added to your cart.'; message.hidden = false;
     root.querySelector('.cart-feedback-link').hidden = false;
+    const checkoutLink = root.querySelector('.cart-checkout-link');
+    if (checkoutLink) checkoutLink.hidden = false;
+    const stickyCheckout = root.querySelector('.sticky-checkout-link');
+    if (stickyCheckout) stickyCheckout.hidden = false;
     const stickyMessage = $('sticky-feedback');
     if (stickyMessage) {
       stickyMessage.textContent = 'Added to your cart.'; stickyMessage.hidden = false;
       clearTimeout(stickyFeedbackTimer);
       stickyFeedbackTimer = setTimeout(() => { stickyMessage.hidden = true; }, 4000);
     }
+    try {
+      const drawer = document.getElementById('cart-drawer');
+      if (drawer && typeof drawer.show === 'function' && !drawer.open) drawer.show();
+    } catch (_) {}
     updatePrice();
   });
   form.addEventListener('cart:error', event => {
@@ -425,6 +460,10 @@
     const message = root.querySelector('.cart-feedback');
     message.textContent = errorText; message.hidden = false;
     root.querySelector('.cart-feedback-link').hidden = false;
+    const checkoutLink = root.querySelector('.cart-checkout-link');
+    if (checkoutLink) checkoutLink.hidden = true;
+    const stickyCheckout = root.querySelector('.sticky-checkout-link');
+    if (stickyCheckout) stickyCheckout.hidden = true;
     const stickyMessage = $('sticky-feedback');
     if (stickyMessage) {
       clearTimeout(stickyFeedbackTimer);
@@ -472,7 +511,7 @@
   root.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const target = link.hash.length > 1 && root.querySelector('#' + CSS.escape(link.hash.slice(1))); if (!target) return;
-    event.preventDefault(); const detailsEl = target.tagName === 'DETAILS' ? target : target.closest('details'); if (detailsEl) { detailsEl.hidden = false; detailsEl.open = true; } if (location.hash !== link.hash) history.pushState(null, '', link.hash); target.scrollIntoView({ block: 'start', behavior: 'auto' }); scheduleNav();
+    event.preventDefault(); const detailsEl = target.tagName === 'DETAILS' ? target : target.closest('details'); if (detailsEl) { detailsEl.hidden = false; detailsEl.open = true; } if (location.hash !== link.hash) history.pushState(null, '', link.hash); target.scrollIntoView({ block: 'start', behavior: link.getAttribute('href') === '#sales-summary' && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'smooth' : 'auto' }); scheduleNav();
   }));
 
   function measureHeader() {

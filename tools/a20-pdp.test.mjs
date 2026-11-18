@@ -23,10 +23,19 @@ test('A20 pack selection shows streamlined 3-pack per-unit cards without Any qua
  assert.equal(fallback.root.querySelector('#chosen-pack').textContent,'1 unit');
  assert.equal(new fallback.w.FormData(fallback.form).get('id'),'100');
 });
-test('confirmed unavailable capacities block every purchase route and recover the correct color/SKU',async t=>{
- const{w,root,form,choose}=await setup(t);root.querySelector('[data-colour="red"]').click();choose('pack','2 units');assert.equal(form.elements.namedItem('id').value,'111');
- for(const capacity of ['12000mAh','16000mAh']){choose('capacity',capacity);assert.equal(root.querySelector('#stock-status').textContent,`${Number.parseInt(capacity).toLocaleString('en-US')}mAh is currently out of stock.`);for(const node of root.querySelectorAll('#purchase-button,[data-suntneew-buy-now],#quantity,#quantity-minus,#quantity-plus'))assert.equal(node.disabled,true);assert.equal(form.elements.namedItem('id').disabled,true);assert.equal(new w.FormData(form).get('id'),null);assert.equal(root.querySelector('[data-colour="red"]').disabled,true);assert.ok([...root.querySelectorAll('.sn-pack-choice__body')].every(card=>card.textContent.includes('Out of stock')));}
- choose('capacity','8000mAh');assert.equal(form.elements.namedItem('id').value,'101');assert.equal(form.elements.namedItem('id').disabled,false);assert.equal(root.querySelector('#purchase-button').disabled,false);assert.equal(root.querySelector('#quantity').value,'1');
+test('confirmed unavailable capacities stay hidden by default, block every purchase route via direct URL, and recover the correct color/SKU',async t=>{
+ const defaultView=await setup(t);
+ assert.equal(defaultView.root.querySelector('fieldset.capacity-options').hidden,true);
+ assert.deepEqual([...defaultView.root.querySelectorAll('#capacity-choices input')].map(n=>n.value),['8000mAh']);
+ for(const capacity of ['12000mAh','16000mAh']){
+  const{w,root,form,choose}=await setup(t,true,`https://example.com/products/a20?capacity=${capacity}`);
+  assert.equal(root.querySelector('fieldset.capacity-options').hidden,false);
+  assert.equal(root.querySelector('#stock-status').textContent,`${Number.parseInt(capacity).toLocaleString('en-US')}mAh is currently out of stock.`);
+  for(const node of root.querySelectorAll('#purchase-button,[data-suntneew-buy-now],#quantity,#quantity-minus,#quantity-plus'))assert.equal(node.disabled,true);
+  assert.equal(form.elements.namedItem('id').disabled,true);assert.equal(new w.FormData(form).get('id'),null);assert.equal(root.querySelector('[data-colour="red"]').disabled,true);
+  assert.ok([...root.querySelectorAll('.sn-pack-choice__body')].every(card=>card.textContent.includes('Out of stock')));
+  choose('capacity','8000mAh');assert.equal(form.elements.namedItem('id').value,'100');assert.equal(form.elements.namedItem('id').disabled,false);assert.equal(root.querySelector('#purchase-button').disabled,false);assert.equal(root.querySelector('#quantity').value,'1');
+ }
 });
 test('Shopify sold-out state remains authoritative for 8000mAh',async t=>{const{root,form}=await setup(t,false);assert.equal(root.querySelector('#purchase-button').disabled,true);assert.equal(root.querySelector('[data-suntneew-buy-now]').disabled,true);assert.equal(form.elements.namedItem('id').disabled,true);assert.equal(root.querySelector('#purchase-label').textContent,'Sold out');});
 test('returning from Features to the gallery hides the lower price before the main price is reached',async t=>{

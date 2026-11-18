@@ -34,5 +34,14 @@
     document.addEventListener("dialog:after-show", function() { try { window.clarity("event", "drawer_or_dialog_open"); } catch (_) {} }, { passive: true });
     document.addEventListener("cart:error", function() { try { window.clarity("event", "cart_error"); } catch (_) {} }, { passive: true });
     document.addEventListener("a20:colour", function() { try { window.clarity("event", "a20_colour_switch"); } catch (_) {} }, { passive: true });
+    document.addEventListener("suntneew:buy-now", function() { try { window.clarity("event", "buy_now_click"); } catch (_) {} }, { passive: true });
+    var sp = new URLSearchParams(window.location.search || "");
+    var medium = (sp.get("utm_medium") || "").toLowerCase();
+    var isPaidGoogle = !!(sp.get("gclid") || sp.get("gad_source") || sp.get("wbraid") || sp.get("gbraid") || medium === "cpc" || medium === "ppc" || medium === "paid");
+    window.clarity("set", "traffic_bucket", isPaidGoogle ? "google_paid" : "organic_or_direct");
+    var ua = navigator.userAgent || "";
+    var isIpadDisguise = (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) || /iPad/i.test(ua);
+    var isMobileTouch = !isIpadDisguise && (/Mobi|Android|iPhone|iPod/i.test(ua) || (navigator.maxTouchPoints > 1 && window.innerWidth <= 767));
+    window.clarity("set", "device_hint", isIpadDisguise ? "ipad_touch" : (isMobileTouch ? "mobile_touch" : "desktop_pointer"));
   } catch (_) {}
 </script>

@@ -34,6 +34,7 @@
 .sn-a20-pdp .image-button img{display:block;width:100%;height:auto;object-fit:contain;background:#2c2c2c}
 .sn-a20-pdp .image-button:focus-visible{outline:3px solid #edab75;outline-offset:5px}
 .sn-a20-pdp .zoom-label{position:absolute;bottom:12px;right:12px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:400;border:1px solid #ffffff66;border-radius:50%;background:#1f1f1f80;opacity:0;transition:opacity .16s}
+.sn-a20-pdp .zoom-label::before{content:'+'}
 .sn-a20-pdp .image-button:hover .zoom-label,.sn-a20-pdp .image-button:focus-visible .zoom-label{opacity:1}
 .sn-a20-pdp .feature-section{margin-top:72px}
 .sn-a20-pdp .section-heading{max-width:1192px;padding:0 44px;margin:0 auto 30px;display:grid;grid-template-columns:1fr 1fr;column-gap:60px;align-items:end}
@@ -434,9 +435,9 @@
 .sn-a20-pdp .fit-help{display:inline-block;font-size:11px;color:#666;margin:17px 0 0;text-decoration:none;border-bottom:1px solid #bbb;padding-bottom:4px}
 .sn-a20-pdp .purchase-trust{margin-top:23px}
 .sn-a20-pdp .payment-title{margin:0 0 8px;font-size:10px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:#777}
-.sn-a20-pdp .payment-icons{display:flex;flex-wrap:wrap;gap:5px;list-style:none;padding:0;margin:0 0 14px}
-.sn-a20-pdp .payment-icons li{display:grid;place-items:center;width:42px;height:28px;border:1px solid #e2e2e2;border-radius:4px;background:#fff;overflow:hidden}
-.sn-a20-pdp .payment-icons svg{width:36px;height:22px;max-width:100%}
+.sn-a20-pdp .payment-icons{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:0 0 14px;pointer-events:none;user-select:none;opacity:.82}
+.sn-a20-pdp .payment-icons li{display:grid;place-items:center;width:38px;height:24px;border:1px solid #ededed;border-radius:3px;background:#fafafa;overflow:hidden}
+.sn-a20-pdp .payment-icons svg{width:32px;height:18px;max-width:100%}
 .sn-a20-pdp .assurances{border:1px solid #ddd;border-radius:5px;overflow:hidden;background:#fafafa}
 .sn-a20-pdp .assurances details+details{border-top:1px solid #ddd}
 .sn-a20-pdp .assurances summary{display:grid;grid-template-columns:22px 1fr 12px;align-items:center;gap:11px;list-style:none;padding:13px 14px;cursor:pointer}
@@ -694,3 +695,11 @@
 /* Center feature choices; navigate by tabs, dragging or swiping. */
 .sn-a20-pdp .feature-pair:not(.gallery-pair) .pair-tabs{justify-content:center;text-align:center}
 .sn-a20-pdp .feature-pair:not(.gallery-pair) .pair-arrows{display:none}
+.sn-a20-pdp .cart-feedback-bar:has(:not([hidden])){margin-top:12px}
+.sn-a20-pdp .cart-feedback-bar .cart-feedback{margin-top:0}
+.sn-a20-pdp .cart-feedback-actions{display:none}
+.sn-a20-pdp .cart-feedback-actions:has(a:not([hidden])){display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:8px}
+.sn-a20-pdp .cart-feedback-actions .cart-feedback-link{margin-top:0}
+.sn-a20-pdp .cart-checkout-link,.sn-a20-pdp .sticky-checkout-link{display:inline-flex;align-items:center;justify-content:center;padding:8px 14px;border-radius:4px;background:#222;color:#fff;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap}
+.sn-a20-pdp .sticky-checkout-link{min-height:40px;padding:9px 12px}
+.sn-a20-pdp #specs,.sn-a20-pdp #box,.sn-a20-pdp #support,.sn-a20-pdp #faq{content-visibility:auto;contain-intrinsic-size:auto 640px}
