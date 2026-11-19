@@ -1,4 +1,8 @@
 {%- assign newsletter_block = section.blocks | where: 'type', 'newsletter' | first -%}
+{%- assign footer_social_rendered_in_brand = false -%}
+{%- if section.settings.show_social_media -%}
+  {%- capture footer_social_media -%}{%- render 'social-media' -%}{%- endcapture -%}
+{%- endif -%}
 
 {{ 'suntneew-footer.css' | asset_url | stylesheet_tag }}
 
@@ -62,6 +66,13 @@
                           <p>{{ block.settings.contact_address | escape }}</p>
                         {%- endif -%}
                       </address>
+                    {%- endif -%}
+
+                    {%- if footer_social_media != blank and footer_social_rendered_in_brand == false -%}
+                      {%- assign footer_social_rendered_in_brand = true -%}
+                      <div class="sn-footer__social">
+                        {{- footer_social_media -}}
+                      </div>
                     {%- endif -%}
 
                     {%- if shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
@@ -176,8 +187,8 @@
           ----------------------------------------------------------------------------------------------------------------
         {%- endcomment -%}
 
-        {%- if section.settings.show_social_media -%}
-          {%- capture social_media -%}{%- render 'social-media' -%}{%- endcapture -%}
+        {%- if section.settings.show_social_media and footer_social_rendered_in_brand == false -%}
+          {%- assign social_media = footer_social_media -%}
         {%- endif -%}
 
         {%- if section.settings.show_country_selector and localization.available_countries.size > 1 -%}
