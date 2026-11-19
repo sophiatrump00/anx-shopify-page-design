@@ -7,6 +7,7 @@
   const $ = id => root.querySelector(`#${id}`);
   const product = JSON.parse(root.querySelector('[data-g31-product]').textContent);
   const selection = JSON.parse(root.querySelector('[data-g31-assets]').textContent);
+  const originalGalleryFirst = { ...selection.gallery_assets[0] };
   const form = document.getElementById(root.dataset.form);
   const money = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: product.currency || 'USD' }).format(Number(cents || 0) / 100);
   const params = new URLSearchParams(location.search);
@@ -228,7 +229,27 @@
     pairCleanups.push(() => { resize.disconnect(); cancelAnimationFrame(raf); track.removeEventListener('scroll', onScroll); });
     update(0);
     if (isGallery) {
-      galleryController = { go, focusAt: index => cards[index]?.querySelector('.image-button')?.focus({ preventScroll: true }) };
+      galleryController = {
+        go,
+        focusAt: index => cards[index]?.querySelector('.image-button')?.focus({ preventScroll: true }),
+        refreshFirst: () => {
+          const asset = assets[0];
+          const button = cards[0]?.querySelector('.image-button');
+          const image = button?.querySelector('img');
+          const thumb = tabButtons[0]?.querySelector('img');
+          if (image) {
+            image.src = asset.src;
+            image.alt = `SuntNeew G31 - ${asset.purpose}`;
+          }
+          button?.setAttribute('aria-label', `Enlarge ${asset.purpose} image`);
+          if (thumb) thumb.src = asset.thumb_src;
+          tabButtons[0]?.setAttribute('aria-label', `Show image 1: ${asset.purpose}`);
+          if (tabButtons[0]) tabButtons[0].title = asset.purpose;
+          track.setAttribute('aria-label', assets.map(row => row.purpose).join(' and '));
+          if (active === 0) caption.textContent = asset.purpose;
+          go(0);
+        },
+      };
       wrapper.append(track, caption, controls, tabs);
     } else {
       wrapper.append(tabs, track, controls);
@@ -335,6 +356,18 @@
   });
 
   const packSize = variant => variant.pack === 'Any quantity' ? 1 : Math.max(1, Number.parseInt(variant.pack, 10) || 1);
+  function updateGalleryImage() {
+    const asset = selection.gallery_assets[0];
+    if (!asset) return;
+    const image = packSize(selected) > 1 ? selected.image : null;
+    Object.assign(asset, originalGalleryFirst, image?.src ? {
+      src: image.src,
+      zoom_src: image.zoom_src || image.src,
+      thumb_src: image.thumb_src || image.src,
+      purpose: `Group 31 battery - ${selected.pack}`,
+    } : {});
+    galleryController?.refreshFirst();
+  }
   const minimumFor = variant => Math.max(variant?.pack === 'Any quantity' ? 5 : 1, Number(variant?.min) || 1);
   const isAvailable = () => selected?.available === true && Number(selected.max) >= minimumFor(selected);
   const isBusy = () => form?.dataset.purchaseBusy === 'true' || ['loading', 'error'].includes(form?.dataset.variantState);
@@ -397,7 +430,7 @@
       input.addEventListener('change', () => {
         if (isBusy()) return;
         const previousVariant = selected;
-        selected = variant; count = 1; updatePrice();
+        selected = variant; count = 1; updatePrice(); updateGalleryImage();
         form.dispatchEvent(new CustomEvent('variant:change', { bubbles: true, detail: { variant: { id: selected.id, available: selected.available, price: selected.priceCents }, previousVariant } }));
       });
       label.append(input, card); fragment.append(label);
@@ -644,6 +677,7 @@
   renderImages();
   renderPacks();
   updatePrice();
+  updateGalleryImage();
   if (frameEl && typeof MutationObserver === 'function') {
     new MutationObserver(syncLayoutMode).observe(frameEl, { attributes: true, attributeFilter: ['class'] });
   }

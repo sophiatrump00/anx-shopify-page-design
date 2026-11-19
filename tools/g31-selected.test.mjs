@@ -7,8 +7,8 @@ import {product,read,render} from './g31-selected-fixture.mjs';
 const tick=()=>new Promise(resolve=>setTimeout(resolve,0));
 const theme=read('assets/theme.js');
 const native=theme.slice(theme.indexOf('var ProductForm ='),theme.indexOf('// js/common/product/product-form-listeners.js'));
-async function setup(t,available=true,url='https://example.com/products/g31'){
- const dom=new JSDOM(render(product(available)),{runScripts:'outside-only',pretendToBeVisual:true,url});t.after(()=>dom.window.close());
+async function setup(t,available=true,url='https://example.com/products/g31',source=product(available)){
+ const dom=new JSDOM(render(source),{runScripts:'outside-only',pretendToBeVisual:true,url});t.after(()=>dom.window.close());
  const w=dom.window;w.ResizeObserver=class{observe(){}disconnect(){}};w.matchMedia=()=>({matches:false});w.CSS={escape:s=>s};w.HTMLElement.prototype.scrollTo=function(){};w.HTMLElement.prototype.scrollIntoView=function(){};
  w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'));};
  w.Shopify={routes:{root:'/'}};w.themeVariables={settings:{cartType:'drawer',pageType:'product'}};w.eval(native);w.eval(read('assets/suntneew-g31-selected.js'));w.eval(read('assets/suntneew-progressive-faq.js'));await tick();
@@ -28,6 +28,53 @@ test('merchant image order and five purchase highlights survive rendering, with 
   root.querySelector('#zoom-size').click();assert.equal(root.querySelector('#image-dialog').classList.contains('is-zoomed'),true);
   root.querySelector('[data-close]').click();
  }
+});
+test('changing packs updates the first gallery image, thumbnail and zoom while preserving the other images',async t=>{
+ const{w,root,choose}=await setup(t);
+ const image=root.querySelector('#gallery-content .image-button img');
+ const button=image.closest('button');
+ const thumb=root.querySelector('.gallery-thumbnails button');
+ const otherImages=[...root.querySelectorAll('#gallery-content .image-button img')].slice(1).map(node=>node.src);
+ const track=root.querySelector('#pair-gallery');
+ [...track.children].forEach((card,index)=>{card.getBoundingClientRect=()=>({left:index*100-track.scrollLeft});});
+ track.scrollTo=({left})=>{track.scrollLeft=left;track.dispatchEvent(new w.Event('scroll'));};
+ root.querySelectorAll('.gallery-thumbnails button')[1].click();
+ assert.equal(track.scrollLeft,100);
+ for(const [pack,filename] of [['2 units','g31-2-pack.jpg'],['4 units','g31-4-pack.jpg']]){
+  choose(pack);
+  assert.equal(track.scrollLeft,0);
+  assert.ok(image.src.endsWith(`${filename}?width=1600`));
+  assert.ok(thumb.querySelector('img').src.endsWith(`${filename}?width=176`));
+  assert.match(image.alt,new RegExp(pack));
+  assert.match(button.getAttribute('aria-label'),new RegExp(pack));
+  assert.match(thumb.getAttribute('aria-label'),new RegExp(pack));
+  button.click();
+  assert.ok(root.querySelector('#zoom-image').src.endsWith(`${filename}?width=2000`));
+  root.querySelector('#zoom-next').click();
+  assert.match(root.querySelector('#zoom-image').src,/g02-full\.jpg$/);
+  root.querySelector('#zoom-previous').click();
+  assert.ok(root.querySelector('#zoom-image').src.endsWith(`${filename}?width=2000`));
+  root.querySelector('[data-close]').click();
+ }
+ choose('1 unit');
+ assert.match(image.src,/sn-g31-selected-g01\.webp$/);
+ assert.match(thumb.querySelector('img').src,/sn-g31-selected-g01-thumb\.webp$/);
+ button.click();assert.match(root.querySelector('#zoom-image').src,/sn-g31-selected-g01-full\.jpg$/);root.querySelector('[data-close]').click();
+ assert.deepEqual([...root.querySelectorAll('#gallery-content .image-button img')].slice(1).map(node=>node.src),otherImages);
+});
+test('direct variant links display the matching pack image on first render',async t=>{
+ for(const [id,pack,filename] of [['100','1 unit','sn-g31-selected-g01.webp'],['101','2 units','g31-2-pack.jpg?width=1600'],['102','4 units','g31-4-pack.jpg?width=1600']]){
+  const{root}=await setup(t,true,`https://example.com/products/g31?variant=${id}`);
+  assert.equal(root.querySelector('#chosen-pack').textContent,pack);
+  assert.ok(root.querySelector('#gallery-content .image-button img').src.endsWith(filename));
+ }
+});
+test('a pack without its own image falls back to the original gallery image',async t=>{
+ const source=product();source.variants[2].image=null;
+ const{root,choose}=await setup(t,true,'https://example.com/products/g31',source);
+ choose('2 units');assert.match(root.querySelector('#gallery-content .image-button img').src,/g31-2-pack\.jpg\?width=1600$/);
+ choose('4 units');assert.match(root.querySelector('#gallery-content .image-button img').src,/sn-g31-selected-g01\.webp$/);
+ root.querySelector('#gallery-content .image-button').click();assert.match(root.querySelector('#zoom-image').src,/sn-g31-selected-g01-full\.jpg$/);
 });
 test('fixed packs show streamlined per-unit cards without Any quantity, submit number of packs, and clamp to inventory',async t=>{
  const{w,root,form,choose}=await setup(t);
