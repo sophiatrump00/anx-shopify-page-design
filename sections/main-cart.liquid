@@ -207,6 +207,8 @@
               {%- endfor -%}
             </form>
 
+            {%- render 'suntneew-cart-trust' -%}
+
             {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
               <div class="v-stack gap-4">
                 <span class="text-xs text-subdued text-center">{{ 'cart.general.we_accept' | t }}</span>

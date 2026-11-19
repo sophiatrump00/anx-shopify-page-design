@@ -62,7 +62,7 @@
       {title: 'Your order confirmation', copy: 'Keep your confirmation email and order number. They make delivery questions and support easier to resolve.', label: 'Order questions ↗', href: 'mailto:info@suntneew.com?subject=A3%20order%20question'},
       {title: 'Dispatch and tracking', copy: 'Free Standard shipping from our U.S. warehouses to the contiguous 48 states and Washington, DC. Processing takes 2 business days; transit after dispatch takes 2–5 business days (Monday–Friday). See the shipping policy for conditions and estimates.', label: 'Shipping policy ↗', href: '/pages/shipping-policy'},
       {title: 'Set up your A3', copy: 'Check the kit, charge A3 and read the supplied guide. Confirm vehicle fit and follow the clamp connection sequence before starting.', label: 'Open A3 guide ↗', href: root.dataset.manualUrl},
-      {title: 'Help after delivery', copy: 'For an issue, send your order number and clear photos. Request eligible returns within 14 days of delivery; contact us before sending anything back.', label: 'Contact support ↗', href: 'mailto:info@suntneew.com?subject=A3%20after-sales%20support'}
+      {title: 'Help after delivery', copy: 'For an issue, send your order number and clear photos. Request eligible returns within 30 days of delivery; contact us before sending anything back.', label: 'Contact support ↗', href: 'mailto:info@suntneew.com?subject=A3%20after-sales%20support'}
     ];
     const stepButtons = all('[data-journey-step]');
     stepButtons.forEach((button) => button.addEventListener('click', () => {

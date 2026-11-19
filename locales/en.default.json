@@ -850,8 +850,8 @@
     "sf4681dc9b69f": "Check the model page and documentation before relying on a warranty term.",
     "scc9765615167": "Ask support",
     "s8ccd2f7ff579": "if you need confirmation.",
-    "seb5d6dcaea71": "14-Day Returns",
-    "s9b35ac5e37ec": "Request an eligible return within 14 days after delivery.",
+    "seb5d6dcaea71": "30-Day Returns",
+    "s9b35ac5e37ec": "Request an eligible return within 30 days after delivery.",
     "see8fd77a1038": "Returns require prior approval and the correct warehouse instructions.",
     "se2efa887c446": "Read the return policy",
     "s428a3ab7e1ba": "U.S. Warehouse Delivery",
@@ -880,14 +880,14 @@
     "s7be0fa9cd5a0": "Power draw",
     "s866325cfb20b": "Daily run time",
     "sa8fa4190ac76": "May run with other selected loads",
-    "sd107bdb5458e": "Effective date: August 19, 2026 · Last updated: September 21, 2026",
+    "sd107bdb5458e": "Effective date: August 19, 2026 · Last updated: November 19, 2026",
     "s5a44564b18aa": "1. Order cancellation",
     "sfbb315aa6188": "We accept cancellation requests before an order has shipped or been produced. Contact",
     "sf088e4d71856": "info@suntneew.com",
     "sfc916df03a73": "with your order number. Once an order has shipped, please follow the return procedure below.",
-    "s5f78370c6a80": "2. 14-day returns",
+    "s5f78370c6a80": "2. 30-day returns",
     "s76de15139345": "You may request a return within",
-    "s52ae1d4c01b7": "14 days after delivery",
+    "s52ae1d4c01b7": "30 days after delivery",
     "s3a0addfcd9e5": ". Contact us before sending anything back. Do not send a package until the return has been reviewed, an RMA has been approved, and we have confirmed the correct warehouse.",
     "s1729dd36fd6b": "3. Return conditions",
     "s47951fa84992": "Items must be unused, in resalable condition, and returned with original packaging, accessories, manuals, and included materials.",
@@ -1131,5 +1131,20 @@
     "options_error": "Options could not be updated. Please retry before purchasing.",
     "retry": "Retry",
     "quoted_delivery": "Delivery is quoted separately after ordering; it is not charged at checkout."
+  },
+  "shopify": {
+    "checkout": {
+      "contact": {
+        "phone_label": "Phone (for carrier delivery updates only)",
+        "phone_placeholder": "Phone (for carrier delivery updates only)",
+        "phone_tooltip": "Required by FedEx/UPS in case the driver needs to reach you about your delivery. Never used for marketing."
+      },
+      "shipping": {
+        "shipping_method_notice": "Dispatched from US local warehouses (Hebron, KY & Walnut, CA) within 2 business days · Backed by 30-Day Local US Returns."
+      },
+      "payment": {
+        "card_security_notice": "All transactions are 256-bit SSL encrypted · 30-Day Local US Returns (KY & CA) · Official Warranty · 24h Support: info@suntneew.com"
+      }
+    }
   }
 }

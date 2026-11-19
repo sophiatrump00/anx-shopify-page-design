@@ -1,0 +1,131 @@
+{%- comment -%} LiTime-style pre-checkout guarantee card rendered below Checkout CTA (Basic plan compliant). {%- endcomment -%}
+<style>
+  .sn-cart-trust {
+    margin-top: 0.75rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(26, 26, 26, 0.12);
+    border-radius: 10px;
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+  .sn-cart-trust__title {
+    margin: 0 0 0.65rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+  }
+  .sn-cart-trust__list {
+    display: grid;
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sn-cart-trust__item {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 0.6rem;
+    align-items: start;
+  }
+  .sn-cart-trust__icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    color: #f46b22;
+    flex-shrink: 0;
+  }
+  .sn-cart-trust__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #1a1a1a;
+  }
+  .sn-cart-trust__carriers {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .sn-cart-trust__carrier {
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
+    border: 1px solid rgba(26, 26, 26, 0.14);
+    background: #fafafa;
+  }
+  .sn-cart-trust__carrier--fedex {
+    color: #4d148c;
+  }
+  .sn-cart-trust__carrier--ups {
+    color: #351c15;
+    background: #ffbe00;
+    border-color: #e6ab00;
+  }
+  .sn-cart-trust__desc {
+    margin: 0.15rem 0 0;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: #555555;
+  }
+</style>
+
+<div class="sn-cart-trust" aria-label="SuntNeew purchase guarantees">
+  <p class="sn-cart-trust__title">Why Choose SuntNeew</p>
+  <ul class="sn-cart-trust__list">
+    <li class="sn-cart-trust__item">
+      <svg class="sn-cart-trust__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 5h16v11H7l-3 3V5Z"></path>
+        <path d="M8 9h8M8 12.5h5"></path>
+      </svg>
+      <div>
+        <div class="sn-cart-trust__head">Direct Support (24h Reply)</div>
+        <p class="sn-cart-trust__desc">Email info@suntneew.com (Mon–Fri) for product, setup, or order help.</p>
+      </div>
+    </li>
+    <li class="sn-cart-trust__item">
+      <svg class="sn-cart-trust__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"></path>
+        <circle cx="7.5" cy="17.5" r="1.75"></circle>
+        <circle cx="17.5" cy="17.5" r="1.75"></circle>
+      </svg>
+      <div>
+        <div class="sn-cart-trust__head">
+          <span>Speed Guarantee</span>
+          <span class="sn-cart-trust__carriers" aria-label="Shipped via FedEx or UPS">
+            <span class="sn-cart-trust__carrier sn-cart-trust__carrier--fedex">FedEx</span>
+            <span class="sn-cart-trust__carrier sn-cart-trust__carrier--ups">UPS</span>
+          </span>
+        </div>
+        <p class="sn-cart-trust__desc">Free shipping from US warehouses (KY &amp; CA) · 2–5 business days transit after 2-day dispatch.</p>
+      </div>
+    </li>
+    <li class="sn-cart-trust__item">
+      <svg class="sn-cart-trust__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3 20 6v5c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6Z"></path>
+        <path d="m8.8 12 2.2 2.2 4.5-4.8"></path>
+      </svg>
+      <div>
+        <div class="sn-cart-trust__head">Official Warranty</div>
+        <p class="sn-cart-trust__desc">Backed by SuntNeew manufacturer warranty &amp; verified safety documentation.</p>
+      </div>
+    </li>
+    <li class="sn-cart-trust__item">
+      <svg class="sn-cart-trust__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 14 4 9l5-5"></path>
+        <path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"></path>
+      </svg>
+      <div>
+        <div class="sn-cart-trust__head">30-Day Local US Returns</div>
+        <p class="sn-cart-trust__desc">Return any unused item within 30 days to our KY or CA warehouse. Free return shipping if our fault.</p>
+      </div>
+    </li>
+  </ul>
+</div>
