@@ -1,0 +1,14 @@
+{
+  "description": "SHA-256 of the full-size gallery assets recorded after the Shopify theme update. Original source hashes remain in g31-selected-assets-20261110.json.",
+  "sourceCommit": "6774320d0708077621d2ac8e0ab422b257b67b8d",
+  "assets": {
+    "G01": "085be4d984e121a0d5989480ed71082192a8ed4a91e967fac421eecf6bd4e68b",
+    "G02": "2da91392833d259a9a0de3a6ca6820abf8e69fbe7b1a63a0b6962e8e96ed02eb",
+    "G03": "d3c916de246438fbb4cf6c38363d0ecc962c91e2c8bfe6c971c7a965ad721d41",
+    "G04": "2aa83b052eb637d98d013e4140e5392f9b35a9338496e8bd3a63e9e0efcd661d",
+    "G05": "554e1a21c1bad82c3a37631b3a2e597e027ae5f307d1812262a2e8ad7ab8e415",
+    "G06": "b875a8ab4dc6a559b862650653294297744807bb1002e8ea4b4c2a95c2b0e7d5",
+    "G08": "9894fac8c3d802639223a59699b22781be6ae5ea99a19415390782f6fcba35b4",
+    "G07": "f1bb7e9c96f6eb8dd12b6338ea64e18c8d763fb6e045bd533bcf2d9cf9f5ee5e"
+  }
+}
