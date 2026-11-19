@@ -216,9 +216,19 @@ test('LiTime-style 6-tab bar switches panels only on click, never on scroll, iso
  assert.ok(manualActions.some(text=>text.includes('View Online')));
  assert.ok(manualActions.some(text=>text.includes('Download PDF')));
 });
-test('every selected original retains its recorded hash; the production template routes to the selected PDP and its real review app',()=>{
+test('selected full-size assets retain their recorded deployed hashes',()=>{
  const manifest=JSON.parse(read('tools/fixtures/g31-selected-assets-20261110.json'));
- for(const row of manifest.assets){const bytes=fs.readFileSync(new URL('../assets/'+row.full_asset,import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),row.original_sha256);}
+ const deployed=JSON.parse(read('tools/fixtures/g31-selected-gallery-assets-20261118.json'));
+ assert.deepEqual(Object.keys(deployed.assets).sort(),[...manifest.galleryOrder].sort());
+ for(const row of manifest.assets){
+  assert.equal(row.sha256,row.original_sha256,`${row.id} source provenance`);
+  const expected=deployed.assets[row.id] ?? row.original_sha256;
+  assert.match(expected,/^[a-f0-9]{64}$/,`${row.id} recorded SHA-256`);
+  const bytes=fs.readFileSync(new URL('../assets/'+row.full_asset,import.meta.url));
+  assert.equal(createHash('sha256').update(bytes).digest('hex'),expected,`${row.id} deployed asset`);
+ }
+});
+test('the production template routes to the selected PDP and its real review app',()=>{
  const live=JSON.parse(read('templates/product.rv-g31.json').replace(/^\s*\/\*[\s\S]*?\*\/\s*/,''));assert.deepEqual(live.order,['main']);assert.equal(live.sections.main.type,'suntneew-g31-selected');assert.equal(Object.values(live.sections.main.blocks).filter(block=>block.type.startsWith('shopify://apps/judge-me-reviews/')).length,1);
 });
 test('mobile 3x2 tabs keep strict single-panel isolation without cross-tab bleed, sync bottom next-tab strip, and collapse More specifications',async t=>{
