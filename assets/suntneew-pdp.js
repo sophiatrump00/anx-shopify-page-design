@@ -35,6 +35,11 @@
     let nextNav = null;
     let nextCards = [];
     if (isLitime) {
+      const navSection = nav.closest('.shopify-section');
+      if (navSection) {
+        navSection.dataset.pdpStickyNav = 'true';
+        navSection.classList.add('is-visible');
+      }
       const nextTemplate =
         nav.parentElement?.querySelector('template[data-pdp-next-template]') ||
         document.querySelector('template[data-pdp-next-template]');
@@ -90,6 +95,7 @@
         );
         sec.hidden = !hasActive;
         sec.toggleAttribute('data-pdp-section-hidden', !hasActive);
+        if (isLitime && hasActive) sec.classList.add('is-visible');
       });
       if (nextCards.length) {
         nextCards.forEach((card) => {

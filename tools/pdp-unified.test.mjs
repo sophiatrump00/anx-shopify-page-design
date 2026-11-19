@@ -320,6 +320,8 @@ test('LiTime-mode shared PDP nav renders Liquid badges, isolates Shopify section
   assert.equal(navTabs.find(a => a.dataset.pdpTab === 'specifications').textContent.trim(), 'Specs');
 
   // Strict single-panel + section wrapper isolation at initial load
+  assert.equal(w.document.getElementById('shopify-section-nav').dataset.pdpStickyNav, 'true');
+  assert.equal(w.document.getElementById('shopify-section-nav').classList.contains('is-visible'), true);
   assert.equal(w.document.getElementById('shopify-section-feat').hidden, false);
   assert.equal(w.document.getElementById('shopify-section-cert').hidden, false);
   assert.equal(w.document.getElementById('shopify-section-details').hidden, true);
@@ -338,6 +340,7 @@ test('LiTime-mode shared PDP nav renders Liquid badges, isolates Shopify section
   w.addEventListener('resize', () => { resizeEvents++; });
   nextNav.querySelector('[data-pdp-next="reviews"]').click();
   assert.equal(w.document.getElementById('shopify-section-reviews').hidden, false);
+  assert.equal(w.document.getElementById('shopify-section-reviews').classList.contains('is-visible'), true);
   assert.equal(w.document.getElementById('shopify-section-feat').hidden, true);
   assert.equal(w.document.getElementById('shopify-section-cert').hidden, true);
   assert.equal(resizeEvents >= 1, true);
