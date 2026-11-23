@@ -306,6 +306,11 @@ const A20Sales = (() => {
    highlightsToggle.textContent = isCollapsed ? 'Show fewer highlights ▴' : '+ 2 more highlights ▾';
   });
  }
+ root.querySelectorAll('[data-open-auth-prompt]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+   document.dispatchEvent(new CustomEvent('suntneew:open-auth-prompt'));
+  });
+ });
  const stickyAnchor = byId('purchase-button') || byId('total-price');
  function updateSticky() {
   const stickyBar = byId('sticky-buy');

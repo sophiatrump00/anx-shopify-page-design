@@ -1,5 +1,6 @@
 (() => {
   const DISMISS_KEY = 'sn_auth_prompt_dismissed_until';
+  const AUTO_POPUP_UNTIL_KEY = 'sn_auth_auto_popup_until';
   const ACTED_SESSION_KEY = 'sn_auth_prompt_acted';
   const PENDING_UNLOCK_KEY = 'sn_auth_pending_unlock';
   const WELCOME_CODE_KEY = 'sn_auth_welcome_code';
@@ -135,10 +136,90 @@
 
       if (this.isDesignMode()) return;
 
-      if (this.isSuppressed()) return;
+      this._onExternalOpen = () => this.open(true);
+      document.addEventListener('suntneew:open-auth-prompt', this._onExternalOpen);
 
-      // Non-intrusive mode: show compact bottom-left 6% OFF launcher pill instead of auto-opening a blocking card.
+      // A + B Hybrid: show compact launcher pill immediately (0s zero-obstruction);
+      // gently auto-open once on Exit-Intent (desktop) or 20s dwell + 50% scroll (7-day auto-open cooldown).
       this.showLauncher();
+      if (!this.isSuppressed() && !this.isAutoPopupCooledDown()) {
+        this.armGentleAutoOpen();
+      }
+    }
+
+    isAutoPopupCooledDown() {
+      const until = Number(safeGet(window.localStorage, AUTO_POPUP_UNTIL_KEY) || 0);
+      return Number.isFinite(until) && until > Date.now();
+    }
+
+    markAutoPopupCooldown() {
+      safeSet(window.localStorage, AUTO_POPUP_UNTIL_KEY, String(Date.now() + 7 * 86400_000));
+    }
+
+    armGentleAutoOpen() {
+      this._dwellReady = false;
+      this._scrollReady = false;
+      this._exitArmed = false;
+
+      const checkDwellAndScroll = () => {
+        const doc = document.documentElement;
+        const maxScroll = Math.max(1, doc.scrollHeight - window.innerHeight);
+        if (window.scrollY / maxScroll >= 0.45) {
+          this._scrollReady = true;
+        }
+        if (this._dwellReady && this._scrollReady) {
+          this.triggerGentleAutoOpen();
+        }
+      };
+
+      this._dwellTimer = window.setTimeout(() => {
+        this._dwellReady = true;
+        checkDwellAndScroll();
+      }, 20000);
+
+      this._exitArmTimer = window.setTimeout(() => {
+        this._exitArmed = true;
+      }, 5000);
+
+      this._onGentleScroll = () => checkDwellAndScroll();
+      window.addEventListener('scroll', this._onGentleScroll, { passive: true });
+
+      if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        this._onExitIntent = (event) => {
+          if (!this._exitArmed) return;
+          if (event.clientY <= 4 && !event.relatedTarget) {
+            this.triggerGentleAutoOpen();
+          }
+        };
+        document.addEventListener('mouseout', this._onExitIntent);
+      }
+    }
+
+    disarmGentleAutoOpen() {
+      if (this._dwellTimer) {
+        window.clearTimeout(this._dwellTimer);
+        this._dwellTimer = null;
+      }
+      if (this._exitArmTimer) {
+        window.clearTimeout(this._exitArmTimer);
+        this._exitArmTimer = null;
+      }
+      if (this._onGentleScroll) {
+        window.removeEventListener('scroll', this._onGentleScroll);
+        this._onGentleScroll = null;
+      }
+      if (this._onExitIntent) {
+        document.removeEventListener('mouseout', this._onExitIntent);
+        this._onExitIntent = null;
+      }
+    }
+
+    triggerGentleAutoOpen() {
+      this.disarmGentleAutoOpen();
+      if (this.dataset.open === 'true' || this.isCustomerSignedIn() || this.isAutoPopupCooledDown()) return;
+      if (document.querySelector('cart-drawer[open], search-drawer[open], navigation-drawer[open], dialog[open]')) return;
+      this.markAutoPopupCooldown();
+      this.open(true);
     }
 
     showLauncher() {
@@ -158,6 +239,11 @@
 
     disconnectedCallback() {
       this.clearOpenTimer();
+      this.disarmGentleAutoOpen();
+      if (this._onExternalOpen) {
+        document.removeEventListener('suntneew:open-auth-prompt', this._onExternalOpen);
+        this._onExternalOpen = null;
+      }
       if (this._copyResetTimer) {
         window.clearTimeout(this._copyResetTimer);
         this._copyResetTimer = null;
@@ -502,6 +588,7 @@
 
     open(force) {
       this.clearOpenTimer();
+      this.disarmGentleAutoOpen();
       if (!force && (this.isCustomerSignedIn() || this.isSuppressed())) return;
       this.syncUrls();
       this.showCard();
@@ -543,6 +630,7 @@
         this.acknowledgeUnlock();
         return;
       }
+      this.markAutoPopupCooldown();
       if (this._launcherBtn && !this.isDesignMode()) {
         this.showLauncher();
         return;
@@ -551,10 +639,6 @@
     }
 
     updateBottomOffset() {
-      if (window.innerWidth >= 750 && this.dataset.launcher !== 'true') {
-        this.style.setProperty('--sn-auth-sticky-offset', '0px');
-        return;
-      }
       const bars = document.querySelectorAll('.sticky-buy, .mobile-purchase');
       let maxOffset = 0;
       for (const bar of bars) {
