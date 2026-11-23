@@ -143,6 +143,10 @@
 
     showLauncher() {
       this.clearOpenTimer();
+      if (this._openRaf) {
+        window.cancelAnimationFrame(this._openRaf);
+        this._openRaf = null;
+      }
       this.hidden = false;
       this.dataset.open = 'false';
       this.dataset.launcher = 'true';
@@ -489,7 +493,9 @@
       this.updateBottomOffset();
       this.syncOverlaySuspension();
       this.attachOpenListeners();
-      window.requestAnimationFrame(() => {
+      if (this._openRaf) window.cancelAnimationFrame(this._openRaf);
+      this._openRaf = window.requestAnimationFrame(() => {
+        this._openRaf = null;
         this.dataset.open = 'true';
       });
     }
@@ -508,6 +514,10 @@
 
     hide(persistCooldown) {
       this.clearOpenTimer();
+      if (this._openRaf) {
+        window.cancelAnimationFrame(this._openRaf);
+        this._openRaf = null;
+      }
       this.dataset.open = 'false';
       this.dataset.launcher = 'false';
       if (this._launcherBtn) this._launcherBtn.setAttribute('aria-expanded', 'false');

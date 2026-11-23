@@ -34,12 +34,19 @@ suntneew-auth-prompt[data-launcher='true'][data-open='false'] {
   opacity: 1;
   transform: translate3d(0, 0, 0);
   top: auto;
-  inset-inline-end: auto;
-  inset-inline-start: 14px;
+  inset-inline-start: auto;
+  inset-inline-end: 14px;
   bottom: calc(var(--sn-auth-sticky-offset, 0px) + 12px + env(safe-area-inset-bottom, 0px));
   width: auto;
   max-width: none;
   margin: 0;
+}
+
+@media (min-width: 1000px) {
+  suntneew-auth-prompt[data-launcher='true'][data-open='false'] {
+    inset-inline-start: 14px;
+    inset-inline-end: auto;
+  }
 }
 
 suntneew-auth-prompt[data-launcher='true'][data-open='false'] .sn-auth-prompt__card {
