@@ -155,6 +155,13 @@ Renders the blocks that make up a product information panel.
                   {%- endif -%}
                 </p>
               {%- endif -%}
+              {%- if context == 'main_product' and customer == nil -%}
+                <button type="button" class="sn-inline-perk" id="inline-welcome-perk" data-open-auth-prompt>
+                  <span class="sn-inline-perk__badge">⚡ 6% OFF</span>
+                  <span class="sn-inline-perk__text">New member first-order discount</span>
+                  <span class="sn-inline-perk__cta">Unlock →</span>
+                </button>
+              {%- endif -%}
             </div>
           {%- endif -%}
 

@@ -139,6 +139,15 @@
       this._onExternalOpen = () => this.open(true);
       document.addEventListener('suntneew:open-auth-prompt', this._onExternalOpen);
 
+      this._onDelegatedTrigger = (event) => {
+        const trigger = event.target && event.target.closest ? event.target.closest('[data-open-auth-prompt]') : null;
+        if (trigger) {
+          event.preventDefault();
+          this.open(true);
+        }
+      };
+      document.addEventListener('click', this._onDelegatedTrigger);
+
       // Click backdrop (outside card) to dismiss mobile bottom sheet
       this.addEventListener('click', (event) => {
         if (this.dataset.open === 'true' && event.target === this) {
@@ -253,6 +262,10 @@
       if (this._onExternalOpen) {
         document.removeEventListener('suntneew:open-auth-prompt', this._onExternalOpen);
         this._onExternalOpen = null;
+      }
+      if (this._onDelegatedTrigger) {
+        document.removeEventListener('click', this._onDelegatedTrigger);
+        this._onDelegatedTrigger = null;
       }
       if (this._copyResetTimer) {
         window.clearTimeout(this._copyResetTimer);
