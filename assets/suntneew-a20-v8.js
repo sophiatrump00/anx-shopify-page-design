@@ -35,9 +35,10 @@ function picture(asset,eager=false,deferLoad=false){
  const button=document.createElement('button');button.className='image-button';button.type='button';
  button.setAttribute('aria-label',`Enlarge ${asset.purpose} image`);
  const im=document.createElement('img');
- if(deferLoad){im.src=BLANK_IMG;im.dataset.src=asset.src;}else{im.src=asset.src;}
- im.width=asset.width;im.height=asset.height;im.alt=`SuntNeew A20 ${colour} 8000mAh — ${asset.purpose}`;im.loading=eager?'eager':'lazy';im.decoding='async';im.draggable=false;
+ im.loading=eager?'eager':'lazy';im.decoding='async';im.draggable=false;
  if(eager)im.fetchPriority='high';
+ im.width=asset.width;im.height=asset.height;im.alt=`SuntNeew A20 ${colour} 8000mAh — ${asset.purpose}`;
+ if(deferLoad){im.src=BLANK_IMG;im.dataset.src=asset.src;}else{im.src=asset.src;}
  const icon=document.createElement('span');icon.className='zoom-label';icon.textContent='+';icon.setAttribute('aria-hidden','true');
  button.append(im,icon);button.addEventListener('click',()=>zoom(asset,button));f.append(button);return f;
 }
@@ -61,7 +62,7 @@ function pair(c,assets,{gallery=false}={}){
  const cards=[],tabs=[];let active=-1,frame=0;
  function hydrateNear(index){
   if(!gallery)return;
-  const from=Math.max(0,index-1),to=Math.min(cards.length-1,index+2);
+  const from=Math.max(0,index-1),to=Math.min(cards.length-1,index+1);
   for(let j=from;j<=to;j++){
    const im=cards[j]?.querySelector('img[data-src]');
    if(im&&im.dataset.src){im.src=im.dataset.src;im.removeAttribute('data-src');}
@@ -92,7 +93,7 @@ function pair(c,assets,{gallery=false}={}){
   const tab=document.createElement('button');tab.type='button';tab.setAttribute('aria-controls',card.id);
   if(gallery){
    tab.setAttribute('aria-label',`Show image ${i+1}: ${c.labels[i]}`);tab.title=c.labels[i];
-   const thumb=document.createElement('img');thumb.src=asset.thumb_src;thumb.alt='';thumb.width=88;thumb.height=88;thumb.loading='lazy';thumb.decoding='async';thumb.draggable=false;tab.append(thumb);
+   const thumb=document.createElement('img');thumb.loading='lazy';thumb.decoding='async';thumb.draggable=false;thumb.alt='';thumb.width=88;thumb.height=88;thumb.src=asset.thumb_src;tab.append(thumb);
   }else tab.textContent=c.labels[i];
   tab.addEventListener('click',()=>go(i));tabs.push(tab);nav.append(tab);
  });
