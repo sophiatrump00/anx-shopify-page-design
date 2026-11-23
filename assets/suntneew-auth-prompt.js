@@ -139,10 +139,20 @@
       this._onExternalOpen = () => this.open(true);
       document.addEventListener('suntneew:open-auth-prompt', this._onExternalOpen);
 
-      // A + B Hybrid: show compact launcher pill immediately (0s zero-obstruction);
-      // gently auto-open once on Exit-Intent (desktop) or 20s dwell + 50% scroll (7-day auto-open cooldown).
+      // Click backdrop (outside card) to dismiss mobile bottom sheet
+      this.addEventListener('click', (event) => {
+        if (this.dataset.open === 'true' && event.target === this) {
+          this.dismiss();
+        }
+      });
+
+      // A + B Hybrid with AOV-aware mobile rule:
+      // Low-AOV (<$120, e.g. A20) on mobile = pure manual trigger (zero auto-popup);
+      // High-AOV (>=$120, e.g. G24/G31) or Desktop = gentle Exit-Intent / 20s+50% scroll once per 7 days.
       this.showLauncher();
-      if (!this.isSuppressed() && !this.isAutoPopupCooledDown()) {
+      const isMobileViewport = window.innerWidth <= 749;
+      const allowAutoOnThisDevice = !isMobileViewport || this.dataset.autoMobile !== 'false';
+      if (allowAutoOnThisDevice && !this.isSuppressed() && !this.isAutoPopupCooledDown()) {
         this.armGentleAutoOpen();
       }
     }

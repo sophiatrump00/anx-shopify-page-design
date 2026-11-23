@@ -742,46 +742,69 @@ suntneew-auth-prompt[data-auth-state='unlocked'] .sn-auth-prompt__accent {
 }
 
 @media (max-width: 749px) {
+  body:has(#inline-welcome-perk) suntneew-auth-prompt[data-launcher='true'][data-open='false'] {
+    display: none;
+  }
+  suntneew-auth-prompt[data-open='true'] {
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: rgba(15, 23, 42, 0.42);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    transform: none;
+  }
   suntneew-auth-prompt .sn-auth-prompt__card {
-    padding: 8px 11px 9px;
-    border-radius: 12px;
+    width: 100%;
+    max-width: none;
+    border-radius: 18px 18px 0 0;
+    border: 0;
+    border-top: 1px solid rgba(27, 36, 51, 0.08);
+    box-shadow: 0 -12px 36px rgba(15, 23, 42, 0.22);
+    padding: 10px 18px calc(18px + env(safe-area-inset-bottom, 0px));
   }
   suntneew-auth-prompt .sn-auth-prompt__grabber {
-    margin-bottom: 5px;
+    width: 38px;
+    height: 4px;
+    margin: 0 auto 10px;
   }
   suntneew-auth-prompt .sn-auth-prompt__header {
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   suntneew-auth-prompt .sn-auth-prompt__eyebrow {
-    font-size: 10px;
-    padding: 2px 7px;
+    font-size: 10.5px;
+    padding: 3px 8px;
   }
   suntneew-auth-prompt .sn-auth-prompt__title {
-    font-size: 13.5px;
-    margin-bottom: 6px;
+    font-size: 16px;
+    margin-bottom: 10px;
   }
   suntneew-auth-prompt .sn-auth-prompt__offer {
-    margin-bottom: 6px;
-    padding: 5px 8px;
+    margin-bottom: 10px;
+    padding: 8px 10px;
   }
   suntneew-auth-prompt .sn-auth-prompt__perks {
     display: none;
   }
   suntneew-auth-prompt .sn-auth-prompt__actions {
-    gap: 6px;
+    gap: 8px;
   }
   suntneew-auth-prompt .sn-auth-prompt__btn {
-    min-height: 35px;
-    padding: 6px 10px;
-    font-size: 12px;
-    border-radius: 8px;
+    min-height: 42px;
+    padding: 8px 12px;
+    font-size: 13.5px;
+    border-radius: 10px;
   }
   suntneew-auth-prompt .sn-auth-prompt__consent {
-    margin-top: 6px;
-    font-size: 10.5px;
+    margin-top: 10px;
+    font-size: 11.5px;
   }
   suntneew-auth-prompt .sn-auth-prompt__legal {
-    margin-top: 4px;
-    font-size: 9.5px;
+    margin-top: 6px;
+    font-size: 10.5px;
   }
 }

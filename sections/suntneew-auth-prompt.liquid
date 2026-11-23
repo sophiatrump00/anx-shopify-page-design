@@ -68,6 +68,7 @@
         data-open="false"
         data-launcher="false"
         data-suspended="false"
+        data-auto-mobile="{% if request.page_type == 'product' and product.price < 12000 %}false{% else %}true{% endif %}"
       >
         <button
           type="button"
