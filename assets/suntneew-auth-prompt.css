@@ -662,3 +662,126 @@ suntneew-auth-prompt[data-auth-state='unlocked'] .sn-auth-prompt__accent {
     animation: none;
   }
 }
+
+/* Final-cascade responsive compact sizing per device class */
+@media (min-width: 1024px) {
+  suntneew-auth-prompt .sn-auth-prompt__card {
+    padding: 12px 14px 11px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__header {
+    margin-bottom: 5px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__title {
+    font-size: 14.5px;
+    margin-bottom: 6px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__offer {
+    margin-bottom: 8px;
+    padding: 6px 8px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__perks {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__perk {
+    font-size: 11.5px;
+    line-height: 1.32;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__actions {
+    gap: 6px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__btn {
+    min-height: 38px;
+    padding: 7px 12px;
+    font-size: 12.5px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__consent {
+    margin-top: 8px;
+    font-size: 11px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__legal {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1023px) {
+  suntneew-auth-prompt .sn-auth-prompt__card {
+    padding: 11px 13px 10px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__header {
+    margin-bottom: 5px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__title {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__offer {
+    margin-bottom: 7px;
+    padding: 6px 8px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__perks {
+    display: none;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__actions {
+    gap: 6px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__btn {
+    min-height: 36px;
+    padding: 6px 10px;
+    font-size: 12.5px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__consent {
+    margin-top: 7px;
+    font-size: 11px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__legal {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 749px) {
+  suntneew-auth-prompt .sn-auth-prompt__card {
+    padding: 8px 11px 9px;
+    border-radius: 12px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__grabber {
+    margin-bottom: 5px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__header {
+    margin-bottom: 4px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__eyebrow {
+    font-size: 10px;
+    padding: 2px 7px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__title {
+    font-size: 13.5px;
+    margin-bottom: 6px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__offer {
+    margin-bottom: 6px;
+    padding: 5px 8px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__perks {
+    display: none;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__actions {
+    gap: 6px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__btn {
+    min-height: 35px;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__consent {
+    margin-top: 6px;
+    font-size: 10.5px;
+  }
+  suntneew-auth-prompt .sn-auth-prompt__legal {
+    margin-top: 4px;
+    font-size: 9.5px;
+  }
+}
