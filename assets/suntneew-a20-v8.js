@@ -295,10 +295,30 @@ const A20Sales = (() => {
  };
  const header=document.querySelector('store-header') || document.querySelector('header');
  if(header)new ResizeObserver(updateBar).observe(header);updateBar();window.addEventListener('resize',updateBar,{passive:true});
- // Instant anchor jumps can move the price across the viewport without an intersection event.
- function updateSticky() {byId('sticky-buy').hidden = byId('total-price').getBoundingClientRect().bottom > 0 || !!root.querySelector('dialog[open]');}
+ // Instant anchor jumps can move the purchase button across the viewport without an intersection event.
+ const highlightsList = byId('product-highlights');
+ const highlightsToggle = byId('highlights-toggle');
+ if (highlightsList && highlightsToggle) {
+  highlightsToggle.addEventListener('click', () => {
+   const isCollapsed = highlightsList.dataset.collapsed === 'true';
+   highlightsList.dataset.collapsed = isCollapsed ? 'false' : 'true';
+   highlightsToggle.setAttribute('aria-expanded', isCollapsed ? 'true' : 'false');
+   highlightsToggle.textContent = isCollapsed ? 'Show fewer highlights ▴' : '+ 2 more highlights ▾';
+  });
+ }
+ const stickyAnchor = byId('purchase-button') || byId('total-price');
+ function updateSticky() {
+  const stickyBar = byId('sticky-buy');
+  if (!stickyBar || !stickyAnchor) return;
+  if (root.querySelector('dialog[open]')) { stickyBar.hidden = true; return; }
+  const rect = stickyAnchor.getBoundingClientRect();
+  const isCompactViewport = window.innerWidth < 1000 || Boolean(root.querySelector('.preview-frame.is-mobile'));
+  const inViewport = rect.bottom > 0 && rect.top < window.innerHeight;
+  stickyBar.hidden = isCompactViewport ? inViewport : rect.bottom > 0;
+ }
  const stickyObserver = new IntersectionObserver(updateSticky, {threshold:0});
- stickyObserver.observe(byId('total-price'));
+ if (stickyAnchor) stickyObserver.observe(stickyAnchor);
+ updateSticky();
  root.querySelectorAll('dialog').forEach(d => { d.addEventListener('close', updateSticky); new MutationObserver(updateSticky).observe(d, {attributes:true,attributeFilter:['open']}); });
  let stickyFrame;
  const scheduleSticky = () => { if (!stickyFrame) stickyFrame = requestAnimationFrame(() => { stickyFrame = undefined; updateSticky(); }); };

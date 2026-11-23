@@ -88,6 +88,7 @@
       this._otherBtn = this.querySelector('[data-auth-other]');
       this._consentInput = this.querySelector('[data-auth-consent]');
       this._closeBtn = this.querySelector('[data-auth-close]');
+      this._launcherBtn = this.querySelector('[data-auth-launcher]');
       this._copyBtn = this.querySelector('[data-offer-copy]');
       this._copyCodeText = this.querySelector('[data-offer-code-text]');
       this._copyActionLabel = this.querySelector('[data-offer-copy-label]');
@@ -136,8 +137,19 @@
 
       if (this.isSuppressed()) return;
 
-      const delayMs = Math.max(0, Number(this.dataset.delayMs || 4000));
-      this._openTimer = window.setTimeout(() => this.open(false), delayMs);
+      // Non-intrusive mode: show compact bottom-left 6% OFF launcher pill instead of auto-opening a blocking card.
+      this.showLauncher();
+    }
+
+    showLauncher() {
+      this.clearOpenTimer();
+      this.hidden = false;
+      this.dataset.open = 'false';
+      this.dataset.launcher = 'true';
+      if (this._launcherBtn) this._launcherBtn.setAttribute('aria-expanded', 'false');
+      this.updateBottomOffset();
+      this.syncOverlaySuspension();
+      this.attachOpenListeners();
     }
 
     disconnectedCallback() {
@@ -347,6 +359,9 @@
 
     bindGuestEvents() {
       this.bindCommonEvents();
+      if (this._launcherBtn) {
+        this._launcherBtn.addEventListener('click', () => this.open(true));
+      }
       if (this._consentInput) {
         this._consentInput.addEventListener('change', () => this.syncUrls());
       }
@@ -469,6 +484,8 @@
 
     showCard() {
       this.removeAttribute('hidden');
+      this.dataset.launcher = 'false';
+      if (this._launcherBtn) this._launcherBtn.setAttribute('aria-expanded', 'true');
       this.updateBottomOffset();
       this.syncOverlaySuspension();
       this.attachOpenListeners();
@@ -492,6 +509,8 @@
     hide(persistCooldown) {
       this.clearOpenTimer();
       this.dataset.open = 'false';
+      this.dataset.launcher = 'false';
+      if (this._launcherBtn) this._launcherBtn.setAttribute('aria-expanded', 'false');
       this.teardownOpenListeners();
       if (persistCooldown) {
         const days = Math.max(0, Number(this.dataset.cooldownDays || 1));
@@ -514,11 +533,15 @@
         this.acknowledgeUnlock();
         return;
       }
+      if (this._launcherBtn && !this.isDesignMode()) {
+        this.showLauncher();
+        return;
+      }
       this.hide(true);
     }
 
     updateBottomOffset() {
-      if (window.innerWidth >= 750) {
+      if (window.innerWidth >= 750 && this.dataset.launcher !== 'true') {
         this.style.setProperty('--sn-auth-sticky-offset', '0px');
         return;
       }

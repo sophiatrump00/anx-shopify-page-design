@@ -53,20 +53,21 @@
       <p class="eyebrow" id="model-eyebrow">A20 / 8,000mAh</p><h1 id="product-title">A20 Portable Jump Starter</h1>
       <p class="product-spec-line" id="product-specs">12V · 1,500A peak · 8,000mAh</p>
       {%- assign rating = product.metafields.reviews.rating.value -%}{%- assign review_count = product.metafields.reviews.rating_count.value | default: 0 -%}{%- if rating != blank and review_count > 0 -%}<a class="rating-link" href="#reviews"><span class="stars" aria-label="{{ rating.rating }} out of {{ rating.scale_max }} stars">★★★★★</span><strong>{{ rating.rating | round: 1 }}</strong><span>{{ 'product.rating_count' | t: count: review_count }}</span></a>{%- endif -%}
-      <p class="product-description">Choose your capacity. Keep starting power, USB charging and a light close at hand.</p>
-      <ul class="product-highlights" id="product-highlights" aria-label="Product highlights"><li data-capacity-match="8000mAh"><span><strong>Starting power for your vehicle.</strong> 1,500A peak and 750A starting current for compatible 12V vehicles.</span></li>
-<li data-capacity-match="12000mAh" hidden=""><span><strong>Starting power for your vehicle.</strong> 3,000A peak and 1,500A starting current for compatible 12V vehicles.</span></li>
-<li data-capacity-match="16000mAh" hidden=""><span><strong>Starting power for your vehicle.</strong> 4,000A peak and 2,000A starting current for compatible 12V vehicles.</span></li>
-<li data-capacity-match=""><span><strong>Power beyond the engine bay.</strong> Two USB-A outputs keep compatible phones and small devices supplied.</span></li>
-<li data-capacity-match=""><span><strong>Recharge through USB-C.</strong> 5V/2A or 9V/2A input, using a compatible power source.</span></li>
-<li data-capacity-match=""><span><strong>Connection safeguards.</strong> The supplied smart clamp includes reverse-polarity and short-circuit protection.</span></li>
-<li data-capacity-match=""><span><strong>A light when you need it.</strong> Steady, flashing and SOS modes help with roadside visibility.</span></li></ul>
       <div class="sn-pack-total" aria-live="polite" aria-atomic="true">
        <p class="sn-pack-total__label">Total price</p>
        <div class="sn-pack-total__amounts"><strong id="total-price">{{ selected_variant.price | money }}</strong><del id="compare-price" hidden=""></del><span>USD</span></div>
        <p class="sn-pack-total__saving" id="total-saving" hidden=""></p>
       </div>
       <p class="product-tax">Taxes calculated at checkout.</p>
+      <p class="product-description">Choose your capacity. Keep starting power, USB charging and a light close at hand.</p>
+      <ul class="product-highlights" id="product-highlights" data-collapsed="true" aria-label="Product highlights"><li data-capacity-match="8000mAh"><span><strong>Starting power for your vehicle.</strong> 1,500A peak and 750A starting current for compatible 12V vehicles.</span></li>
+<li data-capacity-match="12000mAh" hidden=""><span><strong>Starting power for your vehicle.</strong> 3,000A peak and 1,500A starting current for compatible 12V vehicles.</span></li>
+<li data-capacity-match="16000mAh" hidden=""><span><strong>Starting power for your vehicle.</strong> 4,000A peak and 2,000A starting current for compatible 12V vehicles.</span></li>
+<li data-capacity-match=""><span><strong>Connection safeguards.</strong> The supplied smart clamp includes reverse-polarity and short-circuit protection.</span></li>
+<li data-capacity-match=""><span><strong>Power beyond the engine bay.</strong> Two USB-A outputs keep compatible phones and small devices supplied.</span></li>
+<li data-capacity-match="" class="sn-highlight-extra"><span><strong>Recharge through USB-C.</strong> 5V/2A or 9V/2A input, using a compatible power source.</span></li>
+<li data-capacity-match="" class="sn-highlight-extra"><span><strong>A light when you need it.</strong> Steady, flashing and SOS modes help with roadside visibility.</span></li></ul>
+      <button type="button" class="sn-highlights-toggle" id="highlights-toggle" aria-controls="product-highlights" aria-expanded="false">+ 2 more highlights ▾</button>
       <div class="product-options">
        <fieldset class="capacity-options"><legend>Capacity</legend><div class="capacity-choices" id="capacity-choices">{%- for value in product.options_with_values[0].values -%}<label{% if value == '12000mAh' or value == '16000mAh' %} class="is-out-of-stock"{% endif %}><input type="radio" name="capacity" value="{{ value | escape }}"{% if selected_variant.option1 == value %} checked{% endif %}><span><span>{{ value | escape }}</span>{% if value == '12000mAh' or value == '16000mAh' %}<small>Out of stock</small>{% endif %}</span></label>{%- endfor -%}</div></fieldset>
        <fieldset class="colour-options"><legend>Color: <span id="chosen-colour">Orange</span></legend><div class="colour-swatches">

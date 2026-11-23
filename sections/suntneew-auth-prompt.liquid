@@ -66,8 +66,21 @@
           data-login-url="{{ base_login_url | escape }}"
         {% endif %}
         data-open="false"
+        data-launcher="false"
         data-suspended="false"
       >
+        <button
+          type="button"
+          class="sn-auth-prompt__launcher"
+          data-auth-launcher
+          aria-expanded="false"
+          aria-label="Unlock {{ section.settings.offer_badge | default: '6% OFF' | escape }} first order perk"
+        >
+          <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true">
+            <path d="M9.1 1.3 3.2 8.9h4.3l-.7 5.8 6-7.6H8.4l.7-5.8Z"/>
+          </svg>
+          <span>{{- section.settings.offer_badge | default: '6% OFF' | escape -}}</span>
+        </button>
         <div
           class="sn-auth-prompt__card"
           role="dialog"
