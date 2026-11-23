@@ -28,12 +28,15 @@ const initParamPack={'1':'1 unit','2':'2 units','4':'4 units'}[params.get('pack'
 if(initParamPack && !params.get('variant'))galleryPack=initParamPack;
 
 
+const BLANK_IMG="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'/%3E";
 function paragraph(text,className){const p=document.createElement('p');p.textContent=text;if(className)p.className=className;return p;}
-function picture(asset,eager=false){
+function picture(asset,eager=false,deferLoad=false){
  const f=document.createElement('div');f.className='image-module';
  const button=document.createElement('button');button.className='image-button';button.type='button';
  button.setAttribute('aria-label',`Enlarge ${asset.purpose} image`);
- const im=document.createElement('img');im.src=asset.src;im.width=asset.width;im.height=asset.height;im.alt=`SuntNeew A20 ${colour} 8000mAh — ${asset.purpose}`;im.loading=eager?'eager':'lazy';im.decoding='async';im.draggable=false;
+ const im=document.createElement('img');
+ if(deferLoad){im.src=BLANK_IMG;im.dataset.src=asset.src;}else{im.src=asset.src;}
+ im.width=asset.width;im.height=asset.height;im.alt=`SuntNeew A20 ${colour} 8000mAh — ${asset.purpose}`;im.loading=eager?'eager':'lazy';im.decoding='async';im.draggable=false;
  if(eager)im.fetchPriority='high';
  const icon=document.createElement('span');icon.className='zoom-label';icon.textContent='+';icon.setAttribute('aria-hidden','true');
  button.append(im,icon);button.addEventListener('click',()=>zoom(asset,button));f.append(button);return f;
@@ -56,8 +59,17 @@ function pair(c,assets,{gallery=false}={}){
  const caption=paragraph('','gallery-current');
  if(gallery){nav.classList.add('gallery-thumbnails');nav.setAttribute('aria-label','Product image thumbnails');track.setAttribute('aria-label','A20 product images');}
  const cards=[],tabs=[];let active=-1,frame=0;
+ function hydrateNear(index){
+  if(!gallery)return;
+  const from=Math.max(0,index-1),to=Math.min(cards.length-1,index+2);
+  for(let j=from;j<=to;j++){
+   const im=cards[j]?.querySelector('img[data-src]');
+   if(im&&im.dataset.src){im.src=im.dataset.src;im.removeAttribute('data-src');}
+  }
+ }
  function update(index){
   const current=Math.max(0,Math.min(cards.length-1,index));if(current===active)return;active=current;
+  hydrateNear(active);
   tabs.forEach((tab,i)=>tab.setAttribute('aria-pressed',String(i===active)));
   counter.textContent=`${active+1} / ${cards.length}`;
   previous.disabled=active===0;next.disabled=active===cards.length-1;
@@ -69,13 +81,14 @@ function pair(c,assets,{gallery=false}={}){
  }
  function go(index){
   const target=Math.max(0,Math.min(cards.length-1,index));
+  hydrateNear(target);
   const left=cards[target].getBoundingClientRect().left-cards[0].getBoundingClientRect().left;
   track.scrollTo({left,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
  }
  assets.forEach((asset,i)=>{
   const card=document.createElement('article');card.className='feature-card';card.id=`feature-${c.group}-${asset.option.toLowerCase()}`;
   const label=document.createElement('h3');label.className='card-title';const number=document.createElement('span');number.className='card-number';number.textContent=String(i+1).padStart(2,'0');label.append(number,document.createTextNode(c.labels[i]));
-  card.append(label,picture(asset,gallery&&i===0));cards.push(card);track.append(card);
+  card.append(label,picture(asset,gallery&&i===0,gallery&&i>=2));cards.push(card);track.append(card);
   const tab=document.createElement('button');tab.type='button';tab.setAttribute('aria-controls',card.id);
   if(gallery){
    tab.setAttribute('aria-label',`Show image ${i+1}: ${c.labels[i]}`);tab.title=c.labels[i];
@@ -121,7 +134,8 @@ function pair(c,assets,{gallery=false}={}){
  track.addEventListener('click',event=>{if(suppressClick){event.preventDefault();event.stopPropagation();suppressClick=false;}},true);
  if(gallery){
   const centerActiveThumbnail=()=>{const tab=tabs[active];if(tab)nav.scrollTo({left:tab.offsetLeft-nav.offsetLeft-nav.clientWidth/2+tab.clientWidth/2,behavior:'instant'});};
-  wrapper.addEventListener('pointerenter',()=>requestAnimationFrame(centerActiveThumbnail));
+  wrapper.addEventListener('pointerenter',()=>{hydrateNear(Math.max(1,active));requestAnimationFrame(centerActiveThumbnail);});
+  wrapper.addEventListener('touchstart',()=>hydrateNear(Math.max(1,active)),{passive:true});
   wrapper.addEventListener('focusin',()=>requestAnimationFrame(centerActiveThumbnail));
   galleryController={go,focusAt:index=>cards[index]?.querySelector('.image-button').focus({preventScroll:true})};
  }

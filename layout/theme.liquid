@@ -1,7 +1,3 @@
-{% assign shogun_content_for_header = blank %}
-{% assign shogun_content_for_layout = blank %}
-{% # theme-check-disable-next-line DeprecatedTag %}
-{% include 'suntneew-shogun-content-handler' %}
 {%- comment -%}
   ------------------------------------------------------------------------------------------------------------------------
   NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing this theme as much as we did for
@@ -17,8 +13,6 @@
 
 <html lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
   <head>
-  {% comment %}Loads Shogun Analytics. Removing this will disrupt analytics data collection.{% endcomment %}
-  <script type="text/javascript" async src="https://na.shgcdn3.com/pixel-collector.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="theme-color" content="{{ settings.header_background }}">
@@ -68,19 +62,17 @@
     </script>
 
     {{ content_for_header }}
-    {{ shogun_content_for_header }}
 
     {{- 'theme-bundle-1.css' | asset_url | stylesheet_tag: preload: true -}}
-    {{- 'theme-bundle-2.css' | asset_url | stylesheet_tag: preload: true -}}
-    {{- 'theme-bundle-3.css' | asset_url | stylesheet_tag: preload: true -}}
-    {{- 'suntneew-site.css' | asset_url | stylesheet_tag: preload: true -}}
-    {{- 'suntneew-home.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'theme-bundle-2.css' | asset_url | stylesheet_tag -}}
+    {{- 'theme-bundle-3.css' | asset_url | stylesheet_tag -}}
+    {{- 'suntneew-site.css' | asset_url | stylesheet_tag -}}
+    {{- 'suntneew-home.css' | asset_url | stylesheet_tag -}}
     <script src="{{ 'suntneew-motion.js' | asset_url }}" defer></script>
     {%- if request.page_type == 'index' -%}
       <script src="{{ 'suntneew-home.js' | asset_url }}" defer></script>
     {%- endif -%}
-  
-  {% render 'shogun-head' %}
+
   {%- if g31_mobile_live -%}
     {{ 'suntneew-g31-mobile.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'suntneew-g31-mobile.js' | asset_url }}" defer></script>
@@ -121,11 +113,7 @@
     {%- endif -%}
 
     <main role="main" id="main" class="anchor">
-      {%- if shogun_content_for_layout != blank -%}
-        {{ shogun_content_for_layout }}
-      {%- else -%}
-        {{ content_for_layout }}
-      {%- endif -%}
+      {{ content_for_layout }}
 
       {%- comment -%}
         IMPLEMENTATION NOTE: due to the very complex logic of margin/padding collapsing in Impact, the footer group is
