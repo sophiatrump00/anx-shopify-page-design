@@ -11,7 +11,7 @@ const config=[
  {group:'04',kind:'storage',eyebrow:'03 / EASY TO STOW',heading:'Keep a jump-start<br>in your glove box.',body:'At just 0.9 lb, A20 is easy to tuck into a glove box or center console. Keep it with your driving essentials, without giving up trunk space.'},
  {group:'05',kind:'pair',labels:['Phone charging','LED flashlight'],eyebrow:'04 / CHARGE & LIGHT',heading:'Useful between jump-starts, too.',body:'Charge your phone through the USB outputs, or turn on the LED for a better look under the hood after dark. Choose steady, flashing or SOS mode.'},
  {group:'06',kind:'pair',labels:['Temperature range','8,000mAh battery'],eyebrow:'05 / CHECK & RECHARGE',heading:'Check the charge.<br>Then hit the road.',body:'The digital display shows how much charge is left. Top off the 8,000mAh battery before a trip, and recharge after use so it’s ready for the next drive.',note:'Discharge temperature: −4°F to 140°F (−20°C to 60°C). Charging and storage limits differ; see the A20 manual.'},
- {group:'07',kind:'instructions',eyebrow:'06 / WHAT’S INCLUDED',heading:'In the box',body:'A20 comes with smart jumper clamps, a USB-C charging cable and a user manual. Get familiar with the kit at home, before you need it on the road.'}
+ {group:'07',kind:'instructions',eyebrow:'06 / QUICK START GUIDE',heading:'How to jump-start in 4 easy steps.',body:'Follow the guided smart-clamp sequence before cranking your vehicle.'}
 ];
 let selection, colour='orange', galleryPack='1 unit', focusReturn;
 let disposePairs=[], disposeGallery=null;
@@ -147,8 +147,7 @@ function pair(c,assets,{gallery=false}={}){
 }
 function instructions(assets){
  const wrapper=document.createElement('div');wrapper.className='instructions-layout';
- const included=assets.find(a=>a.option==='B');const procedure=assets.find(a=>a.option==='A');
- wrapper.append(picture(included));
+ const procedure=assets.find(a=>a.option==='A');
  const details=document.createElement('details');details.className='starting-details';
  const summary=document.createElement('summary');
  const label=document.createElement('span');label.append(document.createTextNode('How to jump-start your vehicle'),paragraph('See the connection steps','details-caption'));
@@ -170,6 +169,7 @@ function renderGalleryOnly(){
 function render(){
  disposePairs.forEach(dispose=>dispose());disposePairs=[];
  const rows=selection.assets.filter(a=>a.colour===colour);
+ const casesBand=$('a20-cases');
  renderGalleryOnly();
  const fragment=document.createDocumentFragment();
  for(const c of config){
@@ -187,8 +187,12 @@ function render(){
    if(c.note)section.append(paragraph(c.note,'support-text'));
   }
   fragment.append(section);
+  if(c.group==='03'&&casesBand)fragment.append(casesBand);
  }
  $('feature-content').replaceChildren(fragment);$('feature-content').setAttribute('aria-busy','false');
+ const boxDiagram=$('a20-box-diagram');
+ const boxAsset=rows.find(a=>a.group==='07'&&a.option==='B');
+ if(boxDiagram&&boxAsset){boxDiagram.src=boxAsset.src;if(boxAsset.alt)boxDiagram.alt=boxAsset.alt;}
  $('chosen-colour').textContent=colour==='orange'?'Orange':'Red';
  root.querySelectorAll('[data-colour]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.colour===colour)));
 }

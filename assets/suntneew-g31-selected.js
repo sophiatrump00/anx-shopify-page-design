@@ -265,6 +265,7 @@
     pairCleanups = [];
     const galleryRows = selection.gallery_assets;
     $('gallery-content').replaceChildren(makePair({ group: 'gallery', labels: galleryRows.map(row => row.purpose) }, galleryRows, true));
+    const casesBand = $('g31-cases');
     const output = document.createDocumentFragment();
     for (const config of selection.config) {
       const rows = selection.assets.filter(asset => asset.group === config.group);
@@ -284,6 +285,7 @@
       else rows.forEach(row => section.append(picture(row)));
       if (config.note) section.append(paragraph(config.note, 'support-text'));
       output.append(section);
+      if (config.group === '04' && casesBand) output.append(casesBand);
     }
     $('feature-content').replaceChildren(output);
   }
