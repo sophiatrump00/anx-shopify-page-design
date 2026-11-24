@@ -351,6 +351,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -418,8 +419,10 @@
 
 .sn-g31-photo-card img {
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
