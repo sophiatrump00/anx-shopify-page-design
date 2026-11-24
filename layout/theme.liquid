@@ -68,6 +68,8 @@
     {{- 'theme-bundle-3.css' | asset_url | stylesheet_tag -}}
     {{- 'suntneew-site.css' | asset_url | stylesheet_tag -}}
     {{- 'suntneew-home.css' | asset_url | stylesheet_tag -}}
+    {{- 'suntneew-promo-bar.css' | asset_url | stylesheet_tag -}}
+    <script src="{{ 'suntneew-promo-bar.js' | asset_url }}" defer></script>
     <script src="{{ 'suntneew-motion.js' | asset_url }}" defer></script>
     {%- if request.page_type == 'index' -%}
       <script src="{{ 'suntneew-home.js' | asset_url }}" defer></script>

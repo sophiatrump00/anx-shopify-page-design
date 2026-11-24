@@ -59,7 +59,7 @@
        <p class="sn-pack-total__saving" id="total-saving" hidden=""></p>
       </div>
       <p class="product-tax">Taxes calculated at checkout.</p>
-      {%- unless customer -%}<button type="button" class="sn-inline-perk" id="inline-welcome-perk" data-open-auth-prompt><span class="sn-inline-perk__badge">⚡ 6% OFF</span><span class="sn-inline-perk__text">New member first-order discount</span><span class="sn-inline-perk__cta">Unlock →</span></button>{%- endunless -%}
+      {%- render 'suntneew-promo-bar', context: 'pdp' -%}
       <p class="product-description">Choose your capacity. Keep starting power, USB charging and a light close at hand.</p>
       <ul class="product-highlights" id="product-highlights" data-collapsed="true" aria-label="Product highlights"><li data-capacity-match="8000mAh"><span><strong>Starting power for your vehicle.</strong> 1,500A peak and 750A starting current for compatible 12V vehicles.</span></li>
 <li data-capacity-match="12000mAh" hidden=""><span><strong>Starting power for your vehicle.</strong> 3,000A peak and 1,500A starting current for compatible 12V vehicles.</span></li>

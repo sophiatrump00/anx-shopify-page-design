@@ -1,0 +1,111 @@
+{%- liquid
+  assign promo_context = context | default: 'pdp'
+  assign item_count = cart_item_count | default: cart.item_count | default: 0
+  assign applied_code = ''
+  assign applied_title = ''
+  assign applied_amount = 0
+
+  for app in cart.discount_applications
+    assign app_code_up = app.title | upcase | strip
+    if app_code_up == 'SN10' or app_code_up == 'SN175'
+      assign applied_code = app_code_up
+      assign applied_title = app.title | strip
+      assign applied_amount = app.total_allocated_amount | default: 0
+      break
+    endif
+  endfor
+-%}
+
+<div
+  class="sn-promo-bar{% if promo_context == 'cart' %} sn-promo-bar--cart{% endif %}"
+  data-sn-promo-bar
+  data-sn-context="{{ promo_context | escape }}"
+  data-sn-cart-applied-code="{{ applied_code | escape }}"
+>
+  <div class="sn-promo-bar__head">
+    <span class="sn-promo-bar__badge">BLACK FRIDAY</span>
+    {%- if promo_context == 'cart' and applied_code != blank and applied_amount > 0 -%}
+      <span class="sn-promo-bar__applied-banner">
+        ✓ {{ applied_title | escape }} applied (-{{ applied_amount | money }})
+      </span>
+    {%- else -%}
+      <span class="sn-promo-bar__meta">No sign-in needed · Applies at checkout</span>
+    {%- endif -%}
+  </div>
+
+  <div class="sn-promo-bar__chips">
+    {%- if promo_context == 'cart' -%}
+      {%- if item_count >= 2 -%}
+        <button
+          type="button"
+          class="sn-promo-chip{% if applied_code == 'SN175' %} is-applied{% endif %}"
+          data-sn-promo-apply="SN175"
+          aria-pressed="{% if applied_code == 'SN175' %}true{% else %}false{% endif %}"
+        >
+          <strong class="sn-promo-chip__amount">$17.50 OFF</strong>
+          <code class="sn-promo-chip__code">SN175</code>
+          <span class="sn-promo-chip__cond">2+ items in cart</span>
+          <span class="sn-promo-chip__cta" data-sn-promo-cta>
+            {%- if applied_code == 'SN175' -%}✓ Applied{%- else -%}Apply{%- endif -%}
+          </span>
+        </button>
+      {%- else -%}
+        <button
+          type="button"
+          class="sn-promo-chip{% if applied_code == 'SN10' %} is-applied{% endif %}"
+          data-sn-promo-apply="SN10"
+          aria-pressed="{% if applied_code == 'SN10' %}true{% else %}false{% endif %}"
+        >
+          <strong class="sn-promo-chip__amount">$10 OFF</strong>
+          <code class="sn-promo-chip__code">SN10</code>
+          <span class="sn-promo-chip__cond">Your order</span>
+          <span class="sn-promo-chip__cta" data-sn-promo-cta>
+            {%- if applied_code == 'SN10' -%}✓ Applied{%- else -%}Apply{%- endif -%}
+          </span>
+        </button>
+      {%- endif -%}
+    {%- else -%}
+      <button
+        type="button"
+        class="sn-promo-chip{% if applied_code == 'SN10' %} is-applied{% endif %}"
+        data-sn-promo-apply="SN10"
+        aria-pressed="{% if applied_code == 'SN10' %}true{% else %}false{% endif %}"
+      >
+        <strong class="sn-promo-chip__amount">$10 OFF</strong>
+        <code class="sn-promo-chip__code">SN10</code>
+        <span class="sn-promo-chip__cond">Any item</span>
+        <span class="sn-promo-chip__cta" data-sn-promo-cta>
+          {%- if applied_code == 'SN10' -%}✓ Applied{%- else -%}Apply{%- endif -%}
+        </span>
+      </button>
+
+      <button
+        type="button"
+        class="sn-promo-chip{% if applied_code == 'SN175' %} is-applied{% endif %}"
+        data-sn-promo-apply="SN175"
+        aria-pressed="{% if applied_code == 'SN175' %}true{% else %}false{% endif %}"
+      >
+        <strong class="sn-promo-chip__amount">$17.50 OFF</strong>
+        <code class="sn-promo-chip__code">SN175</code>
+        <span class="sn-promo-chip__cond">2+ items in cart</span>
+        <span class="sn-promo-chip__cta" data-sn-promo-cta>
+          {%- if applied_code == 'SN175' -%}✓ Applied{%- else -%}Apply{%- endif -%}
+        </span>
+      </button>
+    {%- endif -%}
+  </div>
+
+  {%- if promo_context == 'cart' and item_count < 2 -%}
+    <p class="sn-promo-bar__note">
+      <span>Add 1 more item &amp; tap</span>
+      <button
+        type="button"
+        class="sn-promo-bar__upsell-btn{% if applied_code == 'SN175' %} is-applied{% endif %}"
+        data-sn-promo-apply="SN175"
+        aria-pressed="{% if applied_code == 'SN175' %}true{% else %}false{% endif %}"
+      >SN175 ($17.50 OFF)</button>
+    </p>
+  {%- endif -%}
+
+  <p class="sn-promo-bar__status" data-sn-promo-status role="status" aria-live="polite" hidden></p>
+</div>

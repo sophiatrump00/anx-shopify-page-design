@@ -1,0 +1,221 @@
+/* Sitewide Black Friday no-login promo bar (SN10 / SN175) */
+.sn-promo-bar {
+  margin: 10px 0 0;
+  padding: 8px 10px;
+  border: 1px solid #fed7aa;
+  border-radius: 9px;
+  background: #fff7f2;
+  color: #431407;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.sn-promo-bar--cart {
+  margin: 0;
+  width: 100%;
+}
+
+.sn-promo-bar__head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+}
+
+.sn-promo-bar__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #de580d;
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sn-promo-bar__meta {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #7c2d12;
+}
+
+.sn-promo-bar__applied-banner {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #15803d;
+}
+
+.sn-promo-bar__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.sn-promo-chip {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 5px 9px;
+  min-height: 32px;
+  border: 1px solid #fdba74;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #431407;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.sn-promo-chip:hover {
+  background: #ffedd5;
+  border-color: #fb923c;
+}
+
+.sn-promo-chip:focus-visible {
+  outline: 2px solid #c84300;
+  outline-offset: 2px;
+}
+
+.sn-promo-chip.is-applied {
+  background: #f0fdf4;
+  border-color: #86efac;
+  color: #14532d;
+}
+
+.sn-promo-chip.is-applied:hover {
+  background: #dcfce7;
+  border-color: #4ade80;
+}
+
+.sn-promo-chip__amount {
+  font-weight: 700;
+  color: #9a3412;
+  white-space: nowrap;
+}
+
+.sn-promo-chip.is-applied .sn-promo-chip__amount {
+  color: #14532d;
+}
+
+.sn-promo-chip__code {
+  padding: 1px 5px;
+  border: 1px solid #fed7aa;
+  border-radius: 4px;
+  background: #fff7ed;
+  color: #9a3412;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.sn-promo-chip.is-applied .sn-promo-chip__code {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.sn-promo-chip__cond {
+  font-size: 11.5px;
+  color: #7c2d12;
+}
+
+.sn-promo-chip.is-applied .sn-promo-chip__cond {
+  color: #166534;
+}
+
+.sn-promo-chip__cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: #de580d;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sn-promo-chip.is-applied .sn-promo-chip__cta {
+  background: #15803d;
+  color: #ffffff;
+}
+
+.sn-promo-bar__note {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: #7c2d12;
+}
+
+.sn-promo-bar__upsell-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  min-height: 24px;
+  border: 1px solid #fdba74;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #9a3412;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.sn-promo-bar__upsell-btn:hover {
+  background: #ffedd5;
+  border-color: #fb923c;
+}
+
+.sn-promo-bar__upsell-btn:focus-visible {
+  outline: 2px solid #c84300;
+  outline-offset: 2px;
+}
+
+.sn-promo-bar__upsell-btn.is-applied {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.sn-promo-bar__status {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  line-height: 1.35;
+  font-weight: 600;
+  color: #166534;
+}
+
+.sn-promo-bar__status[hidden] {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .sn-promo-bar {
+    padding: 8px 9px;
+  }
+
+  .sn-promo-chip {
+    min-height: 36px;
+    padding: 6px 9px;
+    font-size: 11.5px;
+  }
+
+  .sn-promo-bar__upsell-btn {
+    min-height: 28px;
+  }
+}
