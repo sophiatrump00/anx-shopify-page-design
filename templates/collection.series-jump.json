@@ -128,6 +128,18 @@
             "model_handle": "suntneew-a3-jump-starter-16000mah"
           }
         },
+        "fit_20000": {
+          "type": "guide_row",
+          "settings": {
+            "model_label": "B21AP",
+            "capacity": "20000",
+            "start_current": "2500",
+            "peak_current": "5000",
+            "gasoline": "9",
+            "diesel": "6",
+            "model_handle": "suntneew-b21ap-5000a-jump-starter-air-compressor"
+          }
+        },
         "family_kb700": {
           "type": "family",
           "settings": {
@@ -231,6 +243,23 @@
             "spec_fit": "Up to 6.0L gas / 3.0L diesel",
             "link_label": "Open OJ02 details"
           }
+        },
+        "family_b21ap": {
+          "type": "family",
+          "settings": {
+            "product_handle": "suntneew-b21ap-5000a-jump-starter-air-compressor",
+            "asset_name": "suntneew-shop-white-b21ap.jpg",
+            "image_alt": "SuntNeew B21AP 5000A jump starter with 160 PSI air compressor",
+            "eyebrow": "B21AP · 20,000mAh",
+            "title": "SuntNeew B21AP 5000A Jump Starter with 160 PSI Air Compressor",
+            "summary": "All-in-one 12V jump starter with a 160 PSI auto-stop tire inflator, 2,500A starting current, 5,000A peak current, and PD 45W USB-C charging.",
+            "capacities": "20000",
+            "spec_capacity": "20,000mAh",
+            "spec_start": "2,500A",
+            "spec_peak": "5,000A",
+            "spec_fit": "Up to 9.0L gas / 6.0L diesel",
+            "link_label": "Open B21AP details"
+          }
         }
       },
       "block_order": [
@@ -242,12 +271,14 @@
         "fit_12000",
         "fit_16000",
         "fit_a3",
+        "fit_20000",
         "family_kb700",
         "family_a20",
         "family_u23",
         "family_u32",
         "family_a3",
-        "family_oj02"
+        "family_oj02",
+        "family_b21ap"
       ],
       "settings": {
         "eyebrow": "CHOOSE BY FIT",
