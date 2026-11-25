@@ -1,741 +1,134 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "suntneew-flagship-pdp",
       "blocks": {
-        "title": {
-          "type": "title",
+        "feat_01": {
+          "type": "feature_single",
           "settings": {
-            "heading_tag": "h1"
-          }
-        },
-        "sku": {
-          "type": "sku",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "intro": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>12V jump starting · 10,000mAh / 37Wh</strong></p><p>1,000A starting current, 2,000A peak current, PD18W recharging and a 5W emergency light, with a clear status display.</p>"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "bundle": {
-          "type": "suntneew_bundle_selector",
-          "settings": {
-            "enabled": true,
-            "show_savings": true,
-            "heading": "Choose a pack",
-            "body": "",
-            "discount_percent": 3
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "reviews": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "reviews",
-        "sku",
-        "price",
-        "intro",
-        "bundle",
-        "quantity_selector",
-        "buy_buttons"
-      ],
-      "settings": {
-        "show_fixed_add_to_cart": false,
-        "enable_suntneew_pdp_experience": true,
-        "suntneew_media_autoplay_interval": 6,
-        "show_suntneew_pdp_promises": true,
-        "desktop_media_width": 50,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "thumbnails",
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "suntneew_gallery_assets": "sn-pdp-20261105-u32-kit-2000.webp|suntneew-u32-2026-gallery-02-starting.jpg|suntneew-u32-2026-gallery-03-safeguards.jpg|suntneew-u32-2026-gallery-04-power.jpg|suntneew-u32-2026-gallery-05-display.jpg|suntneew-u32-2026-gallery-06-compact.png|suntneew-u32-2026-gallery-07-in-box.jpg",
-        "suntneew_gallery_alts": "SuntNeew U32 jump starter with smart clamps and USB-C charging cable|SuntNeew U32 start performance and engine compatibility|SuntNeew U32 10AWG intelligent jumper clamps and six safeguards|SuntNeew U32 USB device power and 5W emergency light|SuntNeew U32 2.4-inch LCD display|Compact SuntNeew U32 jump starter with size and weight|U32 kit and included accessories"
-      }
-    },
-    "proof": {
-      "type": "suntneew-pdp-proof",
-      "blocks": {
-        "peak": {
-          "type": "metric",
-          "settings": {
-            "value": "2,000A",
-            "label": "Peak current",
-            "variant_match": ""
-          }
-        },
-        "start": {
-          "type": "metric",
-          "settings": {
-            "value": "1,000A",
-            "label": "Starting current",
-            "variant_match": ""
-          }
-        },
-        "capacity": {
-          "type": "metric",
-          "settings": {
-            "value": "10,000mAh",
-            "label": "Rated capacity",
-            "variant_match": ""
-          }
-        },
-        "energy": {
-          "type": "metric",
-          "settings": {
-            "value": "37Wh",
-            "label": "Rated energy",
-            "variant_match": ""
-          }
-        }
-      },
-      "block_order": [
-        "peak",
-        "start",
-        "capacity",
-        "energy"
-      ],
-      "settings": {
-        "accessibility_label": "U32 product highlights"
-      }
-    },
-    "demo_video": {
-      "type": "suntneew-pdp-video-band",
-      "settings": {
-        "eyebrow": "Product film",
-        "heading": "From the glovebox to a started car",
-        "lede": "Fifty seconds, start to finish: the U32 comes out of the glovebox, the clamps go on the battery, and the car drives off. You also see the 100% charge display, the emergency LED and two devices charging from the USB ports.",
-        "hosted_video_url": "https://cdn.shopify.com/videos/c/vp/3314835de5a647f19f0bfaacd00e44e4/3314835de5a647f19f0bfaacd00e44e4.HD-1080p-3.3Mbps-95039375.mp4",
-        "hosted_video_url_mobile": "https://cdn.shopify.com/videos/c/vp/3314835de5a647f19f0bfaacd00e44e4/3314835de5a647f19f0bfaacd00e44e4.HD-720p-2.1Mbps-95039375.mp4",
-        "poster_asset": "suntneew-u32-2026-pdp-demo-poster.jpg",
-        "poster_alt": "SuntNeew U32 jump starter with smart clamps connected to a car battery",
-        "caption": "SuntNeew U32 product film",
-        "play_label": "Play the U32 product film",
-        "cta_label": "See the U32",
-        "cta_link": "https://www.suntneew.com/products/suntneew-u32-portable-car-jump-starter-10-000mah?utm_source=pdp&utm_medium=onsite&utm_campaign=u32_demo&utm_content=pdp_video_band",
-        "cta_note": "10,000mAh / 12V. Check your engine size and battery type before ordering.",
-        "anchor_id": "demo"
-      }
-    },
-    "anchor_nav": {
-      "type": "suntneew-pdp-anchor-nav",
-      "blocks": {
-        "features": {
-          "type": "link",
-          "settings": {
-            "label": "Features",
-            "target_id": "features",
-            "subtext": "Product story & key highlights"
-          }
-        },
-        "specs": {
-          "type": "link",
-          "settings": {
-            "label": "Specs",
-            "target_id": "specifications",
-            "subtext": "Ratings, dimensions & specs"
-          }
-        },
-        "box": {
-          "type": "link",
-          "settings": {
-            "label": "In the box",
-            "target_id": "in-the-box",
-            "subtext": "Included parts & kit details"
-          }
-        },
-        "manuals": {
-          "type": "link",
-          "settings": {
-            "label": "Manual",
-            "target_id": "manuals",
-            "subtext": "View online or download guide"
-          }
-        },
-        "reviews": {
-          "type": "link",
-          "settings": {
-            "label": "Reviews",
-            "target_id": "reviews",
-            "subtext": "Customer feedback"
-          }
-        },
-        "faq": {
-          "type": "link",
-          "settings": {
-            "label": "FAQ",
-            "target_id": "faq",
-            "subtext": "Compatibility & setup Q&A"
-          }
-        }
-      },
-      "block_order": [
-        "features",
-        "specs",
-        "box",
-        "manuals",
-        "reviews",
-        "faq"
-      ],
-      "settings": {
-        "litime_tabs": true
-      }
-    },
-    "features": {
-      "type": "suntneew-pdp-story",
-      "blocks": {
-        "overview": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "suntneew-u32-2026-pdp-01-overview.jpg",
-            "image_alt": "SuntNeew U32 portable car jump starter overview",
-            "image_fit": "cover",
             "eyebrow": "U32 overview",
             "heading": "A larger display for the moment your vehicle will not start.",
-            "body": "<p>U32 brings emergency starting, device power and a practical roadside light together. The original product information keeps <strong>10,000mAh / 37Wh</strong>, <strong>2,000A peak</strong> and <strong>1,000A starting current</strong> visible at a glance.</p>",
-            "variant_match": ""
+            "body": "U32 brings emergency starting, device power and a practical roadside light together. The original product information keeps 10,000mAh / 37Wh, 2,000A peak and 1,000A starting current visible at a glance.",
+            "image_asset": "suntneew-u32-2026-pdp-01-overview.jpg",
+            "image_alt": "SuntNeew U32 portable car jump starter overview",
+            "support_text": ""
           }
         },
-        "specifications": {
-          "type": "feature",
+        "feat_02": {
+          "type": "feature_single",
           "settings": {
-            "image_asset": "suntneew-u32-2026-pdp-02-specifications.jpg",
-            "image_alt": "SuntNeew U32 verified product specifications",
-            "image_fit": "cover",
             "eyebrow": "Verified essentials",
             "heading": "The numbers that matter, in one view.",
-            "body": "<p>U32 is specified at <strong>150 × 75 × 25mm</strong> and <strong>480g</strong>, with ABS+PC housing, PD 18W Type-C recharging and a 5W emergency light. See the full Specifications panel for port limits and safe-use guidance.</p>",
-            "variant_match": ""
+            "body": "U32 is specified at 150 × 75 × 25mm and 480g, with ABS+PC housing, PD 18W Type-C recharging and a 5W emergency light. See the full Specifications panel for port limits and safe-use guidance.",
+            "image_asset": "suntneew-u32-2026-pdp-02-specifications.jpg",
+            "image_alt": "SuntNeew U32 verified product specifications",
+            "support_text": ""
           }
         },
-        "starting": {
-          "type": "feature",
+        "feat_03": {
+          "type": "feature_single",
           "settings": {
-            "image_asset": "suntneew-u32-2026-pdp-03-starting.jpg",
-            "image_alt": "SuntNeew U32 starting performance for compatible 12V vehicles",
-            "image_fit": "cover",
             "eyebrow": "Starting performance",
             "heading": "Built for the compatible 12V vehicle.",
-            "body": "<p>The documented engine reference is up to <strong>6.5L Gas</strong> or <strong>3.5L Diesel</strong>. The <strong>30+ starts</strong> reference is based on an internal 1.6L test vehicle at 23°C; battery health, temperature and vehicle condition affect results.</p>",
-            "variant_match": ""
+            "body": "The documented engine reference is up to 6.5L Gas or 3.5L Diesel. The 30+ starts reference is based on an internal 1.6L test vehicle at 23°C; battery health, temperature and vehicle condition affect results.",
+            "image_asset": "suntneew-u32-2026-pdp-03-starting.jpg",
+            "image_alt": "SuntNeew U32 starting performance for compatible 12V vehicles",
+            "support_text": ""
           }
         },
-        "smart_clamp": {
-          "type": "feature",
+        "feat_04": {
+          "type": "feature_single",
           "settings": {
-            "image_asset": "suntneew-u32-2026-pdp-04-smart-clamp.jpg",
-            "image_alt": "SuntNeew U32 intelligent smart clamp protection",
-            "image_fit": "cover",
             "eyebrow": "Smart clamp guidance",
             "heading": "A clear connection routine, built into the clamp.",
-            "body": "<p>The EC5 smart clamp uses a heavy-duty <strong>10AWG cable</strong> with buzzer and status guidance. Confirm the connection, wait for the green indication and follow the four-step sequence in the manual.</p>",
-            "variant_match": ""
+            "body": "The EC5 smart clamp uses a heavy-duty 10AWG cable with buzzer and status guidance. Confirm the connection, wait for the green indication and follow the four-step sequence in the manual.",
+            "image_asset": "suntneew-u32-2026-pdp-04-smart-clamp.jpg",
+            "image_alt": "SuntNeew U32 intelligent smart clamp protection",
+            "support_text": ""
           }
         },
-        "temperature": {
-          "type": "feature",
+        "feat_05": {
+          "type": "feature_single",
           "settings": {
-            "image_asset": "suntneew-u32-2026-pdp-05-temperature.jpg",
-            "image_alt": "SuntNeew U32 operating temperature range",
-            "image_fit": "cover",
             "eyebrow": "All-season readiness",
             "heading": "Designed for cold starts and hot-road days.",
-            "body": "<p>U32 has a documented operating temperature range of <strong>-20°C–60°C</strong>. Keep the unit clean and dry, and do not rinse or use it as a waterproof device.</p>",
-            "variant_match": ""
+            "body": "U32 has a documented operating temperature range of -20°C–60°C. Keep the unit clean and dry, and do not rinse or use it as a waterproof device.",
+            "image_asset": "suntneew-u32-2026-pdp-05-temperature.jpg",
+            "image_alt": "SuntNeew U32 operating temperature range",
+            "support_text": ""
           }
         },
-        "capacity": {
-          "type": "feature",
+        "feat_06": {
+          "type": "feature_single",
           "settings": {
-            "image_asset": "suntneew-u32-2026-pdp-06-capacity.jpg",
-            "image_alt": "SuntNeew U32 10000mAh capacity feature",
-            "image_fit": "cover",
             "eyebrow": "Stored energy",
             "heading": "Power that stays ready between trips.",
-            "body": "<p>The 10,000mAh / 37Wh battery supports repeated roadside readiness and everyday USB device power. Recharge after use and at least once every three months during long-term storage.</p>",
-            "variant_match": ""
+            "body": "The 10,000mAh / 37Wh battery supports repeated roadside readiness and everyday USB device power. Recharge after use and at least once every three months during long-term storage.",
+            "image_asset": "suntneew-u32-2026-pdp-06-capacity.jpg",
+            "image_alt": "SuntNeew U32 10000mAh capacity feature",
+            "support_text": ""
           }
         },
-        "safeguards": {
-          "type": "feature",
+        "feat_07": {
+          "type": "feature_single",
           "settings": {
-            "image_asset": "suntneew-u32-2026-pdp-07-safeguards.jpg",
-            "image_alt": "SuntNeew U32 six-in-one safety safeguards",
-            "image_fit": "cover",
             "eyebrow": "Six visible safeguards",
             "heading": "Protection made visible before you start.",
-            "body": "<p>The original six-in-one protection graphic is retained: reverse polarity, short circuit, over-voltage, over-current, overheat and over-discharge. Product safety documentation for U32, including the UL 2743 test-report scope, is listed under Safety &amp; Compliance.</p>",
-            "variant_match": ""
+            "body": "The original six-in-one protection graphic is retained: reverse polarity, short circuit, over-voltage, over-current, overheat and over-discharge. Product safety documentation for U32, including the UL 2743 test-report scope, is listed under Safety & Compliance.",
+            "image_asset": "suntneew-u32-2026-pdp-07-safeguards.jpg",
+            "image_alt": "SuntNeew U32 six-in-one safety safeguards",
+            "support_text": ""
           }
         },
-        "scenarios": {
-          "type": "feature",
+        "feat_08": {
+          "type": "feature_single",
           "settings": {
-            "image_asset": "suntneew-u32-2026-pdp-08-scenarios.jpg",
-            "image_alt": "SuntNeew U32 daily driving and outdoor scenarios",
-            "image_fit": "cover",
             "eyebrow": "Ready where you park",
             "heading": "A small emergency kit for ordinary and unexpected stops.",
-            "body": "<p>Keep U32 accessible for commutes, road trips, outdoor weekends and low-battery moments. Inspect the clamps before use and always work with a compatible 12V vehicle battery.</p>",
-            "variant_match": ""
+            "body": "Keep U32 accessible for commutes, road trips, outdoor weekends and low-battery moments. Inspect the clamps before use and always work with a compatible 12V vehicle battery.",
+            "image_asset": "suntneew-u32-2026-pdp-08-scenarios.jpg",
+            "image_alt": "SuntNeew U32 daily driving and outdoor scenarios",
+            "support_text": ""
           }
         },
-        "led": {
-          "type": "feature",
+        "feat_09": {
+          "type": "feature_single",
           "settings": {
-            "image_asset": "suntneew-u32-2026-pdp-09-led.jpg",
-            "image_alt": "SuntNeew U32 5W LED emergency light",
-            "image_fit": "cover",
             "eyebrow": "Emergency light",
             "heading": "See the connection, signal the situation.",
-            "body": "<p>The <strong>5W LED</strong> has <strong>Steady, Flashing and SOS</strong> modes. Hold the power key for two seconds or double-click to turn the light on or off, then short-press to cycle modes.</p>",
-            "variant_match": ""
+            "body": "The 5W LED has Steady, Flashing and SOS modes. Hold the power key for two seconds or double-click to turn the light on or off, then short-press to cycle modes.",
+            "image_asset": "suntneew-u32-2026-pdp-09-led.jpg",
+            "image_alt": "SuntNeew U32 5W LED emergency light",
+            "support_text": ""
           }
         },
-        "steps": {
-          "type": "feature",
+        "feat_10": {
+          "type": "feature_single",
           "settings": {
-            "image_asset": "suntneew-u32-2026-pdp-10-steps.jpg",
-            "image_alt": "Four U32 jump-start steps",
-            "image_fit": "cover",
             "eyebrow": "Four-step start",
             "heading": "Connect deliberately. Start with confidence.",
-            "body": "<p>Charge U32 to at least 50%, insert the EC5 smart clamp, connect red to positive and black to negative, then start within 30 seconds after the clamp shows green. Disconnect once the vehicle has started.</p>",
-            "variant_match": ""
-          }
-        }
-      },
-      "block_order": [
-        "overview",
-        "specifications",
-        "starting",
-        "smart_clamp",
-        "temperature",
-        "capacity",
-        "safeguards",
-        "scenarios",
-        "led",
-        "steps"
-      ],
-      "settings": {
-        "anchor_id": "features",
-        "eyebrow": "U32 FEATURES",
-        "heading": "Every feature, with the original product detail intact.",
-        "lede": "<p>Original A+ visuals carry the product story; the page adds a consistent reading order, confirmed specifications and the operating context that matters.</p>",
-        "layout_mode": "full_width_below"
-      }
-    },
-    "details": {
-      "type": "suntneew-pdp-details",
-      "blocks": {
-        "capacity": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated capacity",
-            "value": "10,000mAh",
-            "group": "primary",
-            "variant_match": ""
+            "body": "Charge U32 to at least 50%, insert the EC5 smart clamp, connect red to positive and black to negative, then start within 30 seconds after the clamp shows green. Disconnect once the vehicle has started.",
+            "image_asset": "suntneew-u32-2026-pdp-10-steps.jpg",
+            "image_alt": "Four U32 jump-start steps",
+            "support_text": ""
           }
         },
-        "energy": {
-          "type": "spec",
+        "vid_u32_01": {
+          "type": "video_clip",
           "settings": {
-            "label": "Rated energy",
-            "value": "37Wh",
-            "group": "primary",
-            "variant_match": ""
+            "is_featured": true,
+            "tag": "Parking rescue",
+            "duration": "0:50",
+            "short_label": "Real rescue",
+            "title": "Parking-lot dead battery test: inside-car perspective with U32",
+            "thumb_sub": "Real owner no-start recovery",
+            "description": "Watch a real driver stranded in a parking lot rely on SuntNeew U32 to bring a drained 12V sedan battery right back to life without waiting for roadside assistance.",
+            "modal_title": "SuntNeew U32 — Real Parking-Lot Jump Start",
+            "video_url": "https://cdn.shopify.com/videos/c/vp/b791cf60756e460f8e7d24603c01ab98/b791cf60756e460f8e7d24603c01ab98.HD-1080p-2.5Mbps-102646528.mp4",
+            "poster_asset": "sn-pdp-u32-vid01-poster.webp"
           }
         },
-        "starting": {
-          "type": "spec",
-          "settings": {
-            "label": "Starting current",
-            "value": "1,000A",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "peak": {
-          "type": "spec",
-          "settings": {
-            "label": "Peak current",
-            "value": "2,000A",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "range": {
-          "type": "spec",
-          "settings": {
-            "label": "Engine reference",
-            "value": "Up to 6.5L Gas / 3.5L Diesel",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "starts": {
-          "type": "spec",
-          "settings": {
-            "label": "Starting reference",
-            "value": "30+ starts (1.6L test vehicle at 23°C)",
-            "group": "primary",
-            "variant_match": ""
-          }
-        },
-        "input": {
-          "type": "spec",
-          "settings": {
-            "label": "Type-C input",
-            "value": "5V/2A, 9V/2A (PD 18W)",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "output": {
-          "type": "spec",
-          "settings": {
-            "label": "USB-A output",
-            "value": "Two ports; 5V/2.4A total max",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "charge": {
-          "type": "spec",
-          "settings": {
-            "label": "Recharge time",
-            "value": "3–5 hours",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "light_spec": {
-          "type": "spec",
-          "settings": {
-            "label": "Emergency light",
-            "value": "5W; Steady, Flashing and SOS",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "clamp": {
-          "type": "spec",
-          "settings": {
-            "label": "Smart clamp",
-            "value": "EC5; 10AWG cable; six visible safeguards",
-            "group": "system",
-            "variant_match": ""
-          }
-        },
-        "shell": {
-          "type": "spec",
-          "settings": {
-            "label": "Housing",
-            "value": "ABS + PC",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "dimension": {
-          "type": "spec",
-          "settings": {
-            "label": "Product size",
-            "value": "150 × 75 × 25mm",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "weight": {
-          "type": "spec",
-          "settings": {
-            "label": "Net weight",
-            "value": "480g / 1.06lb",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "temperature": {
-          "type": "spec",
-          "settings": {
-            "label": "Operating temperature",
-            "value": "-20°C–60°C",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "water": {
-          "type": "spec",
-          "settings": {
-            "label": "Water exposure",
-            "value": "Not waterproof; keep dry and do not rinse",
-            "group": "installation",
-            "variant_match": ""
-          }
-        },
-        "box1": {
-          "type": "included",
-          "settings": {
-            "item": "U32 main unit x1",
-            "variant_match": ""
-          }
-        },
-        "box2": {
-          "type": "included",
-          "settings": {
-            "item": "Smart clamp x1",
-            "variant_match": ""
-          }
-        },
-        "box3": {
-          "type": "included",
-          "settings": {
-            "item": "USB-C charging cable x1",
-            "variant_match": ""
-          }
-        },
-        "box4": {
-          "type": "included",
-          "settings": {
-            "item": "User manual x1",
-            "variant_match": ""
-          }
-        },
-        "box5": {
-          "type": "included",
-          "settings": {
-            "item": "Color box x1",
-            "variant_match": ""
-          }
-        },
-        "box6": {
-          "type": "included",
-          "settings": {
-            "item": "Tool bag / carrying pouch x1",
-            "variant_match": ""
-          }
-        },
-        "manual": {
-          "type": "download",
-          "settings": {
-            "label": "U32 user manual — EN · FR · DE (PDF)",
-            "link": "",
-            "asset_name": "suntneew-u32-user-manual-en-fr-de.pdf",
-            "variant_match": ""
-          }
-        },
-        "ul2743": {
-          "type": "download",
-          "settings": {
-            "label": "UL 2743 test report — U32",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "UL 2743 test report",
-            "description": "Product-level safety test report for the selected U32 model. This is a test report, not a UL Listing or certification.",
-            "public_copy_ready": false
-          }
-        },
-        "fcc": {
-          "type": "download",
-          "settings": {
-            "label": "FCC SDoC — U32",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "FCC",
-            "description": "Model-matched FCC documentation for U32.",
-            "public_copy_ready": true
-          }
-        },
-        "un38": {
-          "type": "download",
-          "settings": {
-            "label": "UN38.3 Summary — U32",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "UN38.3",
-            "description": "Transport-test summary for U32; upload only an approved public copy.",
-            "public_copy_ready": false
-          }
-        },
-        "sds": {
-          "type": "download",
-          "settings": {
-            "label": "SDS — U32",
-            "link": "",
-            "asset_name": "",
-            "variant_match": "",
-            "document_group": "compliance",
-            "standard": "SDS",
-            "description": "Safety data sheet for the U32 battery pack; upload only the approved public copy.",
-            "public_copy_ready": false
-          }
-        }
-      },
-      "block_order": [
-        "capacity",
-        "energy",
-        "starting",
-        "peak",
-        "range",
-        "starts",
-        "input",
-        "output",
-        "charge",
-        "light_spec",
-        "clamp",
-        "shell",
-        "dimension",
-        "weight",
-        "temperature",
-        "water",
-        "box1",
-        "box2",
-        "box3",
-        "box4",
-        "box5",
-        "box6",
-        "manual",
-        "ul2743",
-        "fcc",
-        "un38",
-        "sds"
-      ],
-      "settings": {
-        "anchor_id": "specifications",
-        "eyebrow": "Product details",
-        "heading": "U32 technical specifications",
-        "lede": "<p>Confirmed values are drawn from the U32 English manual, approved A+ materials and the documented start-count test. Follow the manual’s operating sequence and safety limits before every use.</p>",
-        "primary_group_heading": "Starting performance",
-        "system_group_heading": "Charging, ports & clamp",
-        "installation_group_heading": "Physical & operating limits",
-        "included_heading": "In the box",
-        "download_heading": "Manuals & Documents",
-        "manuals_group_heading": "User Manuals",
-        "compliance_group_heading": "Safety & Compliance",
-        "compliance_note": "The safety card lists the UL 2743 test report available for U32. It is a test report, not a UL Listing or certification.",
-        "compliance_link_label": "View public copy",
-        "compliance_pending_label": "Public copy pending"
-      }
-    },
-    "faq": {
-      "type": "suntneew-pdp-faq",
-      "blocks": {
-        "q1": {
-          "type": "question",
-          "settings": {
-            "question": "Which vehicles is U32 designed to support?",
-            "answer": "<p>U32 is for compatible 12V vehicles, with a stated reference of up to 6.5L gasoline or 3.5L diesel engines. Confirm the vehicle, battery condition and manual before use.</p>"
-          }
-        },
-        "q2": {
-          "type": "question",
-          "settings": {
-            "question": "What does 30+ starts mean?",
-            "answer": "<p>The 30+ start reference is based on a 1.6L test vehicle at 23°C. Actual results vary with vehicle type, battery health, engine condition and temperature.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "What can the Type-C and USB-A ports do?",
-            "answer": "<p>Recharge U32 through Type-C at 5V/2A or 9V/2A PD 18W. The two USB-A ports support everyday device charging with a shared 5V/2.4A total maximum output.</p>"
-          }
-        },
-        "q4": {
-          "type": "question",
-          "settings": {
-            "question": "What light modes does U32 have?",
-            "answer": "<p>The 5W emergency light has Steady, Flashing and SOS modes. Hold the power key for two seconds or double-click to turn it on or off, then short-press to cycle modes.</p>"
-          }
-        },
-        "q5": {
-          "type": "question",
-          "settings": {
-            "question": "What safety protection does the smart clamp provide?",
-            "answer": "<p>The original 6-in-1 protection graphic shows reverse polarity, short circuit, over-voltage, over-current, overheat and over-discharge safeguards. Always confirm the clamp’s green indication before starting.</p>"
-          }
-        },
-        "q6": {
-          "type": "question",
-          "settings": {
-            "question": "Can I use U32 in rain or rinse it clean?",
-            "answer": "<p>No. U32 is not waterproof. Keep the unit, clamp and ports dry; do not submerge or rinse the product.</p>"
-          }
-        },
-        "q7": {
-          "type": "question",
-          "settings": {
-            "question": "What if my car battery is completely flat?",
-            "answer": "<p>The smart clamp checks the vehicle battery before it sends power. If it reads below our protective threshold &mdash; 10.5V &plusmn;0.3V as specified for this clamp &mdash; the clamp will not output: you will see the red light and hear the buzzer instead of a steady green light. That is the protection working, not a fault. Charge the battery first, or connect another vehicle for a few minutes to lift the voltage; U32 then works normally.</p><p>We deliberately did not add a Boost or Force Start button. Overriding this protection also disables reverse-polarity and short-circuit protection, and forcing sustained current past the clamp rating can heat the jaws enough to weld them to the battery terminal.</p>"
-          }
-        },
-        "q8": {
-          "type": "question",
-          "settings": {
-            "question": "What does the 5-year warranty cover?",
-            "answer": "<p>Five years from the delivery date, against manufacturing defects and failure under normal use. If it fails, email <a href='mailto:info@suntneew.com'>info@suntneew.com</a> with your order number and we will repair or replace it. See the <a href='/pages/warranty'>full warranty terms</a>.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5",
-        "q6",
-        "q7",
-        "q8"
-      ],
-      "settings": {
-        "anchor_id": "faq",
-        "eyebrow": "U32 SUPPORT",
-        "heading": "Frequently asked questions"
-      }
-    },
-    "judge_me_reviews": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_u32": {
+        "judge_me_reviews": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
@@ -743,32 +136,145 @@
             "show_shop_reviews": false,
             "empty_state": "empty_widget"
           }
+        },
+        "faq_01": {
+          "type": "faq_item",
+          "settings": {
+            "is_primary": true,
+            "question": "Which vehicles is U32 designed to support?",
+            "answer": "<p>U32 is for compatible 12V vehicles, with a stated reference of up to 6.5L gasoline or 3.5L diesel engines. Confirm the vehicle, battery condition and manual before use.</p>"
+          }
+        },
+        "faq_02": {
+          "type": "faq_item",
+          "settings": {
+            "is_primary": true,
+            "question": "What does 30+ starts mean?",
+            "answer": "<p>The 30+ start reference is based on a 1.6L test vehicle at 23°C. Actual results vary with vehicle type, battery health, engine condition and temperature.</p>"
+          }
+        },
+        "faq_03": {
+          "type": "faq_item",
+          "settings": {
+            "is_primary": true,
+            "question": "What can the Type-C and USB-A ports do?",
+            "answer": "<p>Recharge U32 through Type-C at 5V/2A or 9V/2A PD 18W. The two USB-A ports support everyday device charging with a shared 5V/2.4A total maximum output.</p>"
+          }
+        },
+        "faq_04": {
+          "type": "faq_item",
+          "settings": {
+            "is_primary": false,
+            "question": "What light modes does U32 have?",
+            "answer": "<p>The 5W emergency light has Steady, Flashing and SOS modes. Hold the power key for two seconds or double-click to turn it on or off, then short-press to cycle modes.</p>"
+          }
+        },
+        "faq_05": {
+          "type": "faq_item",
+          "settings": {
+            "is_primary": false,
+            "question": "What safety protection does the smart clamp provide?",
+            "answer": "<p>The original 6-in-1 protection graphic shows reverse polarity, short circuit, over-voltage, over-current, overheat and over-discharge safeguards. Always confirm the clamp’s green indication before starting.</p>"
+          }
+        },
+        "faq_06": {
+          "type": "faq_item",
+          "settings": {
+            "is_primary": false,
+            "question": "Can I use U32 in rain or rinse it clean?",
+            "answer": "<p>No. U32 is not waterproof. Keep the unit, clamp and ports dry; do not submerge or rinse the product.</p>"
+          }
+        },
+        "faq_07": {
+          "type": "faq_item",
+          "settings": {
+            "is_primary": false,
+            "question": "What if my car battery is completely flat?",
+            "answer": "<p>The smart clamp checks the vehicle battery before it sends power. If it reads below our protective threshold &mdash; 10.5V &plusmn;0.3V as specified for this clamp &mdash; the clamp will not output: you will see the red light and hear the buzzer instead of a steady green light. That is the protection working, not a fault. Charge the battery first, or connect another vehicle for a few minutes to lift the voltage; U32 then works normally.</p><p>We deliberately did not add a Boost or Force Start button. Overriding this protection also disables reverse-polarity and short-circuit protection, and forcing sustained current past the clamp rating can heat the jaws enough to weld them to the battery terminal.</p>"
+          }
+        },
+        "faq_08": {
+          "type": "faq_item",
+          "settings": {
+            "is_primary": false,
+            "question": "What does the 5-year warranty cover?",
+            "answer": "<p>Five years from the delivery date, against manufacturing defects and failure under normal use. If it fails, email <a href='mailto:info@suntneew.com'>info@suntneew.com</a> with your order number and we will repair or replace it. See the <a href='/pages/warranty'>full warranty terms</a>.</p>"
+          }
         }
       },
       "block_order": [
-        "judge_me_reviews_review_widget_u32"
+        "feat_01",
+        "feat_02",
+        "feat_03",
+        "feat_04",
+        "feat_05",
+        "feat_06",
+        "feat_07",
+        "feat_08",
+        "feat_09",
+        "feat_10",
+        "vid_u32_01",
+        "judge_me_reviews",
+        "faq_01",
+        "faq_02",
+        "faq_03",
+        "faq_04",
+        "faq_05",
+        "faq_06",
+        "faq_07",
+        "faq_08"
       ],
       "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": true,
-        "remove_horizontal_spacing": true,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "pdp_tab_panel": "reviews",
-        "pdp_eyebrow": "CUSTOMER REVIEWS",
-        "pdp_heading": "Customer Reviews"
+        "model_code": "U32",
+        "category_label": "Jump Starters",
+        "category_url": "/pages/shop",
+        "hero_eyebrow": "SUNTNEEW U32 · 10,000mAh / 2,000A PEAK JUMP STARTER",
+        "spec_line": "1,000A Starting · 2,000A Peak · PD18W Recharge · Large Digital Screen",
+        "sticky_subtitle": "10,000mAh · 2,000A Peak",
+        "fit_note": "Fits 12V vehicles up to 6.5L gas / 3.5L diesel with large digital screen, PD18W USB-C recharge, and 5W 3-mode LED light.",
+        "headline_sub": "More capacity than entry-level pocket packs—pair 2,000A peak cranking power and a crystal-clear digital screen with glovebox portability.",
+        "highlights_lines": "1,000A starting / 2,000A peak output | Steps up smoothly for colder mornings and larger everyday 12V vehicles.\n10,000mAh / 37Wh reserve + PD18W USB-C | Holds multiple starts between top-ups and recharges faster via PD18W.\nLarge digital readout | Shows clear battery level and status at a glance in bright sun or dark garages.\nSmart clamps with 6 visible safeguards | Reverse polarity, short-circuit, over-voltage, over-current, overheat, and over-discharge alerts.\n5W 3-mode LED roadside light | Switch cleanly between steady work beam, flashing beacon, and SOS.",
+        "gallery_video_url": "https://cdn.shopify.com/videos/c/vp/3314835de5a647f19f0bfaacd00e44e4/3314835de5a647f19f0bfaacd00e44e4.HD-1080p-3.3Mbps-95039375.mp4",
+        "gallery_video_poster_asset": "suntneew-u32-2026-pdp-demo-poster.jpg",
+        "gallery_video_label": "Official Demo",
+        "gallery_video_caption": "SuntNeew U32 overview — 10,000mAh power, smart clamp steps & digital display.",
+        "features_eyebrow": "U32 FEATURES",
+        "features_heading": "2,000A peak cranking power with a clearer view.",
+        "features_lead": "Extra reserve, rugged cold/heat range, and a clear digital screen designed for stress-free starts.",
+        "cases_after_index": 2,
+        "cases_sub": "Watch a real driver use SuntNeew U32 for a dead-battery parking-lot rescue.",
+        "show_planner_banner": false,
+        "planner_eyebrow": "230AH OR 314AH?",
+        "planner_heading": "",
+        "planner_body": "",
+        "planner_url": "/pages/power-calculator?scenario=rv",
+        "planner_cta": "Compare in Power Planner ↗",
+        "assurance_warranty_label": "5-year warranty",
+        "warranty_number": "5",
+        "warranty_unit": "YEAR",
+        "warranty_copy": "Covered by SuntNeew's 5-year jump starter warranty from delivery date under normal vehicle-starting use.",
+        "support_url": "/pages/support",
+        "support_card_sub": "U32 charging times, smart clamp status & FCC SDoC documents.",
+        "closing_heading": "Extra 10,000mAh headroom. Still fits your glovebox.",
+        "specs_intro": "Verified U32 electrical specs (1,000A / 2,000A), 10,000mAh / 37Wh cell energy, PD18W recharge, and temperature range.",
+        "primary_specs": "Rated capacity | 10,000mAh\nRated energy | 37Wh\nStarting current | 1,000A\nPeak current | 2,000A\nEngine reference | Up to 6.5L Gas / 3.5L Diesel\nStarting reference | 30+ starts (1.6L test vehicle at 23°C)",
+        "more_specs": "Type-C input | 5V/2A, 9V/2A (PD 18W)\nUSB-A output | Two ports; 5V/2.4A total max\nRecharge time | 3–5 hours\nEmergency light | 5W; Steady, Flashing and SOS\nSmart clamp | EC5; 10AWG cable; six visible safeguards\nHousing | ABS + PC\nProduct size | 150 × 75 × 25mm\nNet weight | 480g / 1.06lb\nOperating temperature | -20°C–60°C\nWater exposure | Not waterproof; keep dry and do not rinse",
+        "box_tab_label": "In the box",
+        "box_heading": "In the box",
+        "box_intro": "Complete U32 emergency start kit packed cleanly for immediate vehicle storage.",
+        "box_items": "U32 main unit x1\nSmart clamp x1\nUSB-C charging cable x1\nUser manual x1\nColor box x1\nTool bag / carrying pouch x1",
+        "box_note": "Keep charge above 50% before attempting cold-weather starts.",
+        "box_diagram_asset": "suntneew-u32-2026-gallery-07-in-box.jpg",
+        "manuals_intro": "Download the U32 user manual and public FCC SDoC compliance record.",
+        "manual_en_asset": "suntneew-u32-user-manual-en.pdf",
+        "manual_en_desc": "Complete four-step start instructions, clamp indicator guide, and PD18W charging specs.",
+        "manual_multi_asset": "suntneew-u32-user-manual-en-fr-de.pdf",
+        "compliance_docs": "FCC Supplier's Declaration of Conformity — U32 | suntneew-u32-fcc-sdoc-public.pdf | Public FCC SDoC verification for SuntNeew U32.",
+        "faq_intro": "Quick answers covering 2,000A peak rating, PD18W recharge, clamp protections, and cold-weather starting."
       }
     }
   },
   "order": [
-    "main",
-    "proof",
-    "demo_video",
-    "anchor_nav",
-    "features",
-    "details",
-    "faq",
-    "judge_me_reviews"
+    "main"
   ]
 }

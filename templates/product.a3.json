@@ -1,160 +1,109 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "suntneew-flagship-pdp",
       "blocks": {
-        "title": {
-          "type": "title",
+        "feat_01": {
+          "type": "feature_single",
           "settings": {
-            "heading_tag": "h1"
+            "eyebrow": "12V emergency starting",
+            "heading": "Power for an unexpected stop.",
+            "body": "A3 is designed for compatible 12V vehicles, with an engine reference of up to 8.0L gas / 5.5L diesel. Battery condition, temperature and engine condition affect starting. Follow the product and vehicle instructions.",
+            "image_asset": "sn-pdp-20261105-a3-starting-1254.webp",
+            "image_alt": "A3 jump starter connected in an engine bay",
+            "support_text": ""
           }
         },
-        "sku": {
-          "type": "sku",
-          "settings": {}
-        },
-        "price": {
-          "type": "price",
+        "feat_02": {
+          "type": "feature_single",
           "settings": {
-            "show_taxes_notice": false
+            "eyebrow": "Smart clamp",
+            "heading": "Make every connection count.",
+            "body": "Status indicators, reverse-polarity and short-circuit protection help you follow the starting sequence. Check the clamp indicators and the manual before every attempt.",
+            "image_asset": "sn-pdp-20261105-a3-clamp-1254.webp",
+            "image_alt": "A3 intelligent jumper clamp and connectors",
+            "support_text": ""
           }
         },
-        "intro": {
-          "type": "text",
+        "feat_03": {
+          "type": "feature_single",
           "settings": {
-            "text": "<p><strong>12V jump starting · 16,000mAh / 59.2Wh</strong></p><p>PD60W USB-C input and output, smart clamps and a 150 lm emergency light in an EVA carry case. Check the engine reference and operating limits below.</p>"
+            "eyebrow": "USB-C PD60W",
+            "heading": "Power for your devices, too.",
+            "body": "The USB-C port supports PD60W input and output. Use a compatible USB-C PD cable and check the power requirements of the connected device. USB-A device-charging outputs are also included.",
+            "image_asset": "sn-pdp-20261105-a3-usbc-1254.webp",
+            "image_alt": "A3 USB-C charging port and cable",
+            "support_text": ""
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "bundle": {
-          "type": "suntneew_bundle_selector",
+        "feat_04": {
+          "type": "feature_single",
           "settings": {
-            "enabled": true,
-            "show_savings": true,
-            "heading": "Choose a pack",
-            "body": "",
-            "discount_percent": 3
+            "eyebrow": "Emergency light",
+            "heading": "A useful light when plans change.",
+            "body": "The 150 lm light offers steady, strobe and SOS modes for roadside visibility. Keep the unit charged and stored within the stated operating limits.",
+            "image_asset": "sn-pdp-20261105-a3-light-1254.webp",
+            "image_alt": "A3 emergency light detail",
+            "support_text": ""
           }
         },
-        "buy_buttons": {
-          "type": "buy_buttons",
+        "feat_05": {
+          "type": "feature_single",
           "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false
+            "eyebrow": "Ready to carry",
+            "heading": "A clear view of the essentials.",
+            "body": "The ABS and aluminum-alloy body measures 21 × 9 × 3.5cm and weighs 0.77kg. Keep the unit, clamps and USB-C cable together in the included EVA case.",
+            "image_asset": "sn-pdp-20261105-a3-display-1254.webp",
+            "image_alt": "A3 display and controls",
+            "support_text": ""
           }
         },
-        "reviews": {
-          "type": "rating",
+        "vid_a3_01": {
+          "type": "video_clip",
           "settings": {
-            "show_empty": false
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "reviews",
-        "sku",
-        "price",
-        "intro",
-        "bundle",
-        "quantity_selector",
-        "buy_buttons"
-      ],
-      "settings": {
-        "show_fixed_add_to_cart": false,
-        "enable_suntneew_pdp_experience": true,
-        "suntneew_media_autoplay_interval": 6,
-        "show_suntneew_pdp_promises": true,
-        "desktop_media_width": 50,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "thumbnails",
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "suntneew_gallery_assets": "sn-pdp-20261105-a3-kit-2000.webp|sn-pdp-20261105-a3-starting-1254.webp|sn-pdp-20261105-a3-clamp-1254.webp|sn-pdp-20261105-a3-usbc-1254.webp|sn-pdp-20261105-a3-light-1254.webp|sn-pdp-20261105-a3-display-1254.webp",
-        "suntneew_gallery_alts": "SuntNeew A3 jump starter, clamps, USB-C cable and EVA case|A3 connected in a vehicle engine bay|A3 smart clamp detail|A3 USB-C charging detail|A3 emergency light|A3 status display"
-      }
-    },
-    "anchor_nav": {
-      "type": "suntneew-pdp-anchor-nav",
-      "blocks": {
-        "features": {
-          "type": "link",
-          "settings": {
-            "label": "Features",
-            "target_id": "features",
-            "subtext": "Product story & key highlights"
+            "is_featured": true,
+            "tag": "Real car check",
+            "duration": "0:30",
+            "short_label": "Backseat kit",
+            "title": "Hands-on clamp check & trunk readiness walk-around",
+            "thumb_sub": "Driver shows A3 readout & heavy-duty clamps",
+            "description": "See the physical scale of SuntNeew A3, its digital battery readout, and heavy-duty smart clamps before keeping it in the trunk or back seat.",
+            "modal_title": "SuntNeew A3 — Hands-On Clamp & Readiness Check",
+            "video_url": "https://cdn.shopify.com/videos/c/vp/e8ba8675abae4d4799ebaac44e26b8fc/e8ba8675abae4d4799ebaac44e26b8fc.HD-1080p-2.5Mbps-102646522.mp4",
+            "poster_asset": "sn-pdp-a3-vid01-poster.webp"
           }
         },
-        "specs": {
-          "type": "link",
+        "vid_a3_02": {
+          "type": "video_clip",
           "settings": {
-            "label": "Specs",
-            "target_id": "specifications",
-            "subtext": "Ratings, dimensions & specs"
+            "is_featured": false,
+            "tag": "Creator review",
+            "duration": "0:42",
+            "short_label": "PD60W + Case",
+            "title": "Hard EVA case unboxing & 60W USB-C power bank overview",
+            "thumb_sub": "Inside the zipped kit + port layout",
+            "description": "Close-up look at A3's digital screen, 60W USB-C port for laptops and phones, LED emergency light, and organized EVA travel case.",
+            "modal_title": "SuntNeew A3 — Case Kit & PD60W Walkthrough",
+            "video_url": "https://cdn.shopify.com/videos/c/vp/fc3f63fc0b484e5f99234cb96b732010/fc3f63fc0b484e5f99234cb96b732010.HD-1080p-2.5Mbps-102646523.mp4",
+            "poster_asset": "sn-pdp-a3-vid02-poster.webp"
           }
         },
-        "box": {
-          "type": "link",
+        "vid_a3_03": {
+          "type": "video_clip",
           "settings": {
-            "label": "In the box",
-            "target_id": "in-the-box",
-            "subtext": "Included parts & kit details"
+            "is_featured": false,
+            "tag": "Owner backup",
+            "duration": "0:52",
+            "short_label": "No tow wait",
+            "title": "Why real drivers switch from jumper cables to A3",
+            "thumb_sub": "Independent start without a second car",
+            "description": "Real-owner story on ditching long jumper cables and roadside waits with an independent 16,000mAh jump starter ready in the cab.",
+            "modal_title": "SuntNeew A3 — Independent Roadside Backup Story",
+            "video_url": "https://cdn.shopify.com/videos/c/vp/f73a889624ee49e6b41ed5b847a8df38/f73a889624ee49e6b41ed5b847a8df38.HD-1080p-2.5Mbps-102646524.mp4",
+            "poster_asset": "sn-pdp-a3-vid03-poster.webp"
           }
         },
-        "manuals": {
-          "type": "link",
-          "settings": {
-            "label": "Manual",
-            "target_id": "manuals",
-            "subtext": "View online or download guide"
-          }
-        },
-        "reviews": {
-          "type": "link",
-          "settings": {
-            "label": "Reviews",
-            "target_id": "reviews",
-            "subtext": "Customer feedback"
-          }
-        },
-        "faq": {
-          "type": "link",
-          "settings": {
-            "label": "FAQ",
-            "target_id": "faq",
-            "subtext": "Compatibility & setup Q&A"
-          }
-        }
-      },
-      "block_order": [
-        "features",
-        "specs",
-        "box",
-        "manuals",
-        "reviews",
-        "faq"
-      ],
-      "settings": {
-        "litime_tabs": true
-      }
-    },
-    "judge_me_reviews": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_oj02": {
+        "judge_me_reviews": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
@@ -162,488 +111,142 @@
             "show_shop_reviews": false,
             "empty_state": "empty_widget"
           }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_oj02"
-      ],
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": true,
-        "remove_horizontal_spacing": true,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "pdp_tab_panel": "reviews",
-        "pdp_eyebrow": "CUSTOMER REVIEWS",
-        "pdp_heading": "Customer Reviews"
-      }
-    },
-    "proof": {
-      "type": "suntneew-pdp-proof",
-      "blocks": {
-        "capacity": {
-          "type": "metric",
-          "settings": {
-            "value": "16,000mAh",
-            "label": "Rated capacity",
-            "variant_match": ""
-          }
         },
-        "peak": {
-          "type": "metric",
+        "faq_01": {
+          "type": "faq_item",
           "settings": {
-            "value": "2,500A",
-            "label": "Peak current",
-            "variant_match": ""
-          }
-        },
-        "starting": {
-          "type": "metric",
-          "settings": {
-            "value": "800A",
-            "label": "Starting current",
-            "variant_match": ""
-          }
-        },
-        "charging": {
-          "type": "metric",
-          "settings": {
-            "value": "PD60W",
-            "label": "USB-C input / output",
-            "variant_match": ""
-          }
-        }
-      },
-      "block_order": [
-        "capacity",
-        "peak",
-        "starting",
-        "charging"
-      ],
-      "settings": {
-        "accessibility_label": "A3 product highlights"
-      }
-    },
-    "features": {
-      "type": "suntneew-pdp-story",
-      "settings": {
-        "anchor_id": "features",
-        "eyebrow": "A3 in everyday use",
-        "heading": "Ready for the unexpected",
-        "lede": "<p>Emergency starting, device power and a practical light in one portable kit.</p>",
-        "layout_mode": "split"
-      },
-      "blocks": {
-        "starting": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "sn-pdp-20261105-a3-starting-1254.webp",
-            "image_alt": "A3 jump starter connected in an engine bay",
-            "image_fit": "contain",
-            "eyebrow": "12V emergency starting",
-            "heading": "Power for an unexpected stop.",
-            "body": "<p>A3 is designed for compatible 12V vehicles, with an engine reference of up to 8.0L gas / 5.5L diesel. Battery condition, temperature and engine condition affect starting. Follow the product and vehicle instructions.</p>"
-          }
-        },
-        "clamp": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "sn-pdp-20261105-a3-clamp-1254.webp",
-            "image_alt": "A3 intelligent jumper clamp and connectors",
-            "image_fit": "contain",
-            "eyebrow": "Smart clamp",
-            "heading": "Make every connection count.",
-            "body": "<p>Status indicators, reverse-polarity and short-circuit protection help you follow the starting sequence. Check the clamp indicators and the manual before every attempt.</p>"
-          }
-        },
-        "charging": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "sn-pdp-20261105-a3-usbc-1254.webp",
-            "image_alt": "A3 USB-C charging port and cable",
-            "image_fit": "contain",
-            "eyebrow": "USB-C PD60W",
-            "heading": "Power for your devices, too.",
-            "body": "<p>The USB-C port supports PD60W input and output. Use a compatible USB-C PD cable and check the power requirements of the connected device. USB-A device-charging outputs are also included.</p>"
-          }
-        },
-        "light": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "sn-pdp-20261105-a3-light-1254.webp",
-            "image_alt": "A3 emergency light detail",
-            "image_fit": "contain",
-            "eyebrow": "Emergency light",
-            "heading": "A useful light when plans change.",
-            "body": "<p>The 150 lm light offers steady, strobe and SOS modes for roadside visibility. Keep the unit charged and stored within the stated operating limits.</p>"
-          }
-        },
-        "display": {
-          "type": "feature",
-          "settings": {
-            "image_asset": "sn-pdp-20261105-a3-display-1254.webp",
-            "image_alt": "A3 display and controls",
-            "image_fit": "contain",
-            "eyebrow": "Ready to carry",
-            "heading": "A clear view of the essentials.",
-            "body": "<p>The ABS and aluminum-alloy body measures 21 × 9 × 3.5cm and weighs 0.77kg. Keep the unit, clamps and USB-C cable together in the included EVA case.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "starting",
-        "clamp",
-        "charging",
-        "light",
-        "display"
-      ]
-    },
-    "details": {
-      "type": "suntneew-pdp-details",
-      "blocks": {
-        "spec0": {
-          "type": "spec",
-          "settings": {
-            "label": "Vehicle system",
-            "value": "12V",
-            "group": "primary"
-          }
-        },
-        "spec1": {
-          "type": "spec",
-          "settings": {
-            "label": "Engine fit",
-            "value": "Up to 8.0L Gas / 5.5L Diesel",
-            "group": "primary"
-          }
-        },
-        "spec2": {
-          "type": "spec",
-          "settings": {
-            "label": "Peak current",
-            "value": "2500A Peak",
-            "group": "primary"
-          }
-        },
-        "spec3": {
-          "type": "spec",
-          "settings": {
-            "label": "Starting current",
-            "value": "800A Starting",
-            "group": "primary"
-          }
-        },
-        "spec4": {
-          "type": "spec",
-          "settings": {
-            "label": "Rated capacity / energy",
-            "value": "16,000mAh / 59.2Wh",
-            "group": "primary"
-          }
-        },
-        "spec5": {
-          "type": "spec",
-          "settings": {
-            "label": "Starts per full charge",
-            "value": "50+ starts*",
-            "group": "primary"
-          }
-        },
-        "spec6": {
-          "type": "spec",
-          "settings": {
-            "label": "USB-C",
-            "value": "PD60W input / output",
-            "group": "system"
-          }
-        },
-        "spec7": {
-          "type": "spec",
-          "settings": {
-            "label": "USB-A",
-            "value": "Device-charging outputs",
-            "group": "system"
-          }
-        },
-        "spec8": {
-          "type": "spec",
-          "settings": {
-            "label": "Emergency light",
-            "value": "150 lm · steady, strobe, SOS",
-            "group": "system"
-          }
-        },
-        "spec9": {
-          "type": "spec",
-          "settings": {
-            "label": "Smart clamps",
-            "value": "Status indicators, reverse-polarity and short-circuit protection",
-            "group": "system"
-          }
-        },
-        "spec10": {
-          "type": "spec",
-          "settings": {
-            "label": "Body",
-            "value": "ABS + aluminum alloy",
-            "group": "installation"
-          }
-        },
-        "spec11": {
-          "type": "spec",
-          "settings": {
-            "label": "Dimensions",
-            "value": "21 × 9 × 3.5 cm",
-            "group": "installation"
-          }
-        },
-        "spec12": {
-          "type": "spec",
-          "settings": {
-            "label": "Net weight",
-            "value": "0.77 kg / 1.7 lb",
-            "group": "installation"
-          }
-        },
-        "spec13": {
-          "type": "spec",
-          "settings": {
-            "label": "Discharge temperature",
-            "value": "−20°C to 60°C",
-            "group": "installation"
-          }
-        },
-        "included0": {
-          "type": "included",
-          "settings": {
-            "item": "A3 jump starter"
-          }
-        },
-        "included1": {
-          "type": "included",
-          "settings": {
-            "item": "Intelligent jumper clamps"
-          }
-        },
-        "included2": {
-          "type": "included",
-          "settings": {
-            "item": "PD60W USB-C cable"
-          }
-        },
-        "included3": {
-          "type": "included",
-          "settings": {
-            "item": "EVA carry case"
-          }
-        },
-        "included4": {
-          "type": "included",
-          "settings": {
-            "item": "User manual"
-          }
-        },
-        "docoperating-guide": {
-          "type": "download",
-          "settings": {
-            "label": "A3 operating guide",
-            "asset_name": "suntneew-a3-operating-guide-v20.pdf",
-            "document_group": "manuals",
-            "description": "A3 operating sequence, charging and safety limits.",
-            "public_copy_ready": true
-          }
-        },
-        "docfcc-sdoc": {
-          "type": "download",
-          "settings": {
-            "label": "FCC SDoC — CY-A3",
-            "asset_name": "suntneew-a3-fcc-sdoc-v20.pdf",
-            "document_group": "compliance",
-            "description": "Supplier declaration of conformity.",
-            "public_copy_ready": true
-          }
-        },
-        "docun38-3-test-report": {
-          "type": "download",
-          "settings": {
-            "label": "UN38.3 test report — CY-A3",
-            "asset_name": "suntneew-a3-un38-3-test-report-v20.pdf",
-            "document_group": "compliance",
-            "description": "Battery transport tests.",
-            "public_copy_ready": true
-          }
-        },
-        "docsds": {
-          "type": "download",
-          "settings": {
-            "label": "SDS / MSDS — CY-A3",
-            "asset_name": "suntneew-a3-sds-v20.pdf",
-            "document_group": "compliance",
-            "description": "Safety data sheet.",
-            "public_copy_ready": true
-          }
-        },
-        "docce-emc": {
-          "type": "download",
-          "settings": {
-            "label": "CE-EMC — A3",
-            "asset_name": "suntneew-a3-ce-emc-v20.pdf",
-            "document_group": "compliance",
-            "description": "Electromagnetic compatibility.",
-            "public_copy_ready": true
-          }
-        },
-        "docrohs": {
-          "type": "download",
-          "settings": {
-            "label": "RoHS — A3",
-            "asset_name": "suntneew-a3-rohs-v20.pdf",
-            "document_group": "compliance",
-            "description": "Restriction of hazardous substances.",
-            "public_copy_ready": true
-          }
-        },
-        "docul2743-test-report": {
-          "type": "download",
-          "settings": {
-            "label": "UL2743 test report — CY-A3",
-            "asset_name": "suntneew-a3-ul2743-test-report-v20.pdf",
-            "document_group": "compliance",
-            "description": "Test report, not a UL Listing.",
-            "public_copy_ready": true
-          }
-        }
-      },
-      "block_order": [
-        "spec0",
-        "spec1",
-        "spec2",
-        "spec3",
-        "spec4",
-        "spec5",
-        "spec6",
-        "spec7",
-        "spec8",
-        "spec9",
-        "spec10",
-        "spec11",
-        "spec12",
-        "spec13",
-        "included0",
-        "included1",
-        "included2",
-        "included3",
-        "included4",
-        "docoperating-guide",
-        "docfcc-sdoc",
-        "docun38-3-test-report",
-        "docsds",
-        "docce-emc",
-        "docrohs",
-        "docul2743-test-report"
-      ],
-      "settings": {
-        "anchor_id": "specifications",
-        "eyebrow": "Product details",
-        "heading": "A3 technical specifications",
-        "lede": "<p>Follow the A3 operating guide and vehicle instructions. The stated 50+ starts reference depends on the engine, battery condition, temperature, remaining charge and connection setup.</p>",
-        "primary_group_heading": "Starting performance",
-        "system_group_heading": "Charging, light & protection",
-        "installation_group_heading": "Construction & operating limits",
-        "included_heading": "In the box",
-        "download_heading": "Manuals & Documents",
-        "manuals_group_heading": "User Manual",
-        "compliance_group_heading": "Safety & Compliance",
-        "compliance_note": "Documents identify A3 / CY-A3 and their scope. The UL2743 item is a test report, not a UL Listing or UL certification.",
-        "compliance_link_label": "View PDF",
-        "compliance_pending_label": "Public copy pending"
-      }
-    },
-    "faq": {
-      "type": "suntneew-pdp-faq",
-      "settings": {
-        "anchor_id": "faq",
-        "eyebrow": "Need to know",
-        "heading": "A3 questions, answered"
-      },
-      "blocks": {
-        "q0": {
-          "type": "question",
-          "settings": {
+            "is_primary": true,
             "question": "Will A3 work with my vehicle?",
             "answer": "<p>A3 is for compatible 12V vehicle systems, with an engine reference of up to 8.0L Gas / 5.5L Diesel. Battery condition, temperature and engine condition affect starting. Use the <a href=\"/pages/power-calculator?scenario=jump&amp;product=a3-16000\">Vehicle Fit Check</a> and follow the product and vehicle instructions.</p>"
           }
         },
-        "q1": {
-          "type": "question",
+        "faq_02": {
+          "type": "faq_item",
           "settings": {
+            "is_primary": true,
             "question": "What do 2500A Peak and 800A Starting mean?",
             "answer": "<p>2500A Peak is the brief maximum output. 800A Starting is the rated starting current. Peak current is not continuous output; the vehicle and battery condition still affect the result.</p>"
           }
         },
-        "q2": {
-          "type": "question",
+        "faq_03": {
+          "type": "faq_item",
           "settings": {
+            "is_primary": true,
             "question": "How many starts can I expect from one charge?",
             "answer": "<p>50+ starts is the stated capability per full charge. Your actual number of starts depends on the engine, vehicle battery, temperature, remaining charge and connection setup.</p>"
           }
         },
-        "q3": {
-          "type": "question",
+        "faq_04": {
+          "type": "faq_item",
           "settings": {
+            "is_primary": false,
             "question": "What if the vehicle still won’t start?",
             "answer": "<p>Wait at least one minute between attempts and stop after three unsuccessful attempts. Follow the manual for disconnection and check the vehicle battery. See <a href=\"/pages/support-a3\">starting help</a> or contact us with your vehicle details and clamp status.</p>"
           }
         },
-        "q4": {
-          "type": "question",
+        "faq_05": {
+          "type": "faq_item",
           "settings": {
+            "is_primary": false,
             "question": "Can A3 charge my USB-C devices?",
             "answer": "<p>The USB-C port supports PD60W input and output. Check your device’s power requirements and use a compatible USB-C PD cable. USB-A outputs are also included.</p>"
           }
         },
-        "q5": {
-          "type": "question",
+        "faq_06": {
+          "type": "faq_item",
           "settings": {
+            "is_primary": false,
             "question": "What happens if my order arrives damaged or incorrect?",
             "answer": "<p>Email info@suntneew.com with your order number and clear photos so we can review the issue and provide instructions. Under our return policy, we cover return shipping for items that arrive damaged, defective or incorrect. <a href=\"/pages/return-policy\">Read the return policy</a>.</p>"
           }
         },
-        "q6": {
-          "type": "question",
+        "faq_07": {
+          "type": "faq_item",
           "settings": {
+            "is_primary": false,
             "question": "What comes in the case?",
             "answer": "<p>The kit includes the A3 unit, intelligent jumper clamps, a PD60W USB-C cable, an EVA carry case and a user manual. See <a href=\"#in-the-box\">In the box</a> for the full list.</p>"
           }
         },
-        "q7": {
-          "type": "question",
+        "faq_08": {
+          "type": "faq_item",
           "settings": {
+            "is_primary": false,
             "question": "Why do the documents say CY-A3?",
             "answer": "<p>A3 is the product name. CY-A3 is its model designation in the product and test documents.</p>"
           }
         }
       },
       "block_order": [
-        "q0",
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5",
-        "q6",
-        "q7"
-      ]
+        "feat_01",
+        "feat_02",
+        "feat_03",
+        "feat_04",
+        "feat_05",
+        "vid_a3_01",
+        "vid_a3_02",
+        "vid_a3_03",
+        "judge_me_reviews",
+        "faq_01",
+        "faq_02",
+        "faq_03",
+        "faq_04",
+        "faq_05",
+        "faq_06",
+        "faq_07",
+        "faq_08"
+      ],
+      "settings": {
+        "model_code": "A3",
+        "category_label": "Jump Starters",
+        "category_url": "/pages/shop",
+        "hero_eyebrow": "SUNTNEEW A3 · 12V JUMP STARTER & PD60W POWER BANK",
+        "spec_line": "16,000mAh / 59.2Wh · 2,500A Peak · 800A Starting · Two-Way USB-C PD60W",
+        "sticky_subtitle": "16,000mAh · PD60W USB-C",
+        "fit_note": "Heavy-duty 12V jump starter for sedans, pickups & SUVs up to 8.0L gas / 5.5L diesel—doubles as a 60W USB-C PD laptop power bank.",
+        "headline_sub": "Heavy-engine starting confidence plus two-way 60W USB-C charging in one hard EVA carry kit—so one pack covers roadside rescues and laptop emergencies alike.",
+        "highlights_lines": "2,500A peak (800A starting) for up to 8.0L gas / 5.5L diesel | Higher 16,000mAh / 59.2Wh reserve rated for 50+ starts per full charge.\nTwo-way USB-C PD60W fast charging | Rapidly recharge the pack or power laptops, tablets, and phones at up to 60W.\n10-layer smart clamp safeguards | Spark-proof EC5 clamp guards against reverse polarity, short circuits, and voltage spikes.\n150 lm 3-mode LED + 100% digital screen | Steady, warning strobe, and SOS lighting plus crisp percentage battery tracking.\nFull EVA carry case + UL 2743 tested | Organizes smart clamps, USB-C cable, and unit cleanly in your trunk or back seat.",
+        "gallery_video_url": "",
+        "gallery_video_poster_asset": "",
+        "gallery_video_label": "Official Film",
+        "gallery_video_caption": "",
+        "features_eyebrow": "SUNTNEEW A3 FEATURES",
+        "features_heading": "Larger-engine jump power + PD60W laptop bank.",
+        "features_lead": "Step up to 16,000mAh / 59.2Wh reserve, 2,500A peak power, and bi-directional 60W USB-C when a basic pocket booster isn't enough.",
+        "cases_after_index": 2,
+        "cases_sub": "Unedited owner and creator clips showing A3 smart clamps, digital readout, PD60W bank, and EVA case.",
+        "show_planner_banner": false,
+        "planner_eyebrow": "230AH OR 314AH?",
+        "planner_heading": "",
+        "planner_body": "",
+        "planner_url": "/pages/power-calculator?scenario=rv",
+        "planner_cta": "Compare in Power Planner ↗",
+        "assurance_warranty_label": "5-year warranty",
+        "warranty_number": "5",
+        "warranty_unit": "YEAR",
+        "warranty_copy": "Every SuntNeew jump starter is backed by our 5-year warranty from delivery plus direct U.S. support via info@suntneew.com.",
+        "support_url": "/pages/support",
+        "support_card_sub": "Operating guide, PD60W charging questions, and UL 2743 / UN38.3 docs.",
+        "closing_heading": "16,000mAh confidence. Ready in your trunk.",
+        "specs_intro": "Published A3 capacity (59.2Wh), 800A starting / 2,500A peak rating, up to 8.0L gas / 5.5L diesel fit, PD60W USB-C profile, and smart clamp tolerances.",
+        "primary_specs": "Vehicle system | 12V\nEngine fit | Up to 8.0L Gas / 5.5L Diesel\nPeak current | 2500A Peak\nStarting current | 800A Starting\nRated capacity / energy | 16,000mAh / 59.2Wh\nStarts per full charge | 50+ starts*",
+        "more_specs": "USB-C | PD60W input / output\nUSB-A | Device-charging outputs\nEmergency light | 150 lm · steady, strobe, SOS\nSmart clamps | Status indicators, reverse-polarity and short-circuit protection\nBody | ABS + aluminum alloy\nDimensions | 21 × 9 × 3.5 cm\nNet weight | 0.77 kg / 1.7 lb\nDischarge temperature | −20°C to 60°C",
+        "box_tab_label": "In the box",
+        "box_heading": "In the box",
+        "box_intro": "Everything arrives inside the structured EVA carry case so clamps, cables, and guide stay neatly packed together.",
+        "box_items": "A3 jump starter\nIntelligent jumper clamps\nPD60W USB-C cable\nEVA carry case\nUser manual",
+        "box_note": "Charge above 50% upon arrival and top up every 3 months for peak readiness.",
+        "box_diagram_asset": "suntneew-a3-rebuild-kit.webp",
+        "manuals_intro": "Download the A3 Operating Guide, multilingual manual, and full UL 2743 / FCC / UN38.3 / SDS safety files.",
+        "manual_en_asset": "suntneew-a3-operating-guide-v20.pdf",
+        "manual_en_desc": "Step-by-step clamp sequence, force-start precautions, PD60W recharging specs, and troubleshooting.",
+        "manual_multi_asset": "suntneew-a3-user-manual-en-fr-de.pdf",
+        "compliance_docs": "UL 2743 Test Report — CY-A3 | suntneew-a3-ul2743-test-report-v20.pdf | Verified UL 2743 safety test report for SuntNeew A3.\nFCC Supplier's Declaration of Conformity — CY-A3 | suntneew-a3-fcc-sdoc-v20.pdf | Public FCC SDoC document.\nCE-EMC Certificate — A3 | suntneew-a3-ce-emc-v20.pdf | CE electromagnetic compatibility test documentation.\nRoHS Certificate — A3 | suntneew-a3-rohs-v20.pdf | RoHS compliance verification.\nUN38.3 Transport Test Report — CY-A3 | suntneew-a3-un38-3-test-report-v20.pdf | Lithium battery transport safety report.\nSafety Data Sheet (SDS) — CY-A3 | suntneew-a3-sds-v20.pdf | Full material safety data sheet.",
+        "faq_intro": "Common questions on 8.0L gas / 5.5L diesel fit, PD60W laptop charging, and smart clamp indicators."
+      }
     }
   },
   "order": [
-    "main",
-    "proof",
-    "anchor_nav",
-    "features",
-    "details",
-    "faq",
-    "judge_me_reviews"
+    "main"
   ]
 }
