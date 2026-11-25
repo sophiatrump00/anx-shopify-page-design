@@ -432,6 +432,9 @@
 .sn-g31-pdp .purchase-button[disabled]{opacity:1}
 .sn-g31-pdp .buy-now{margin-top:10px;min-height:46px;width:100%;border:1px solid #222;border-radius:4px;background:#222;color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:14px;cursor:default}
 .sn-g31-pdp .buy-now small{font-size:9px;font-weight:400;opacity:.7}
+.sn-g31-pdp .sn-buynow-trust{display:flex;flex-wrap:wrap;gap:6px 12px;list-style:none;margin:10px 0 0;padding:8px 11px;border:1px solid #ecece8;border-radius:6px;background:#fafaf8;font-size:11px;line-height:1.35;color:#333;pointer-events:none;user-select:none}
+.sn-g31-pdp .sn-buynow-trust li{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.sn-g31-pdp .sn-buynow-trust li::before{content:"✓";color:#f46b22;font-weight:700}
 .sn-g31-pdp .fit-help{display:inline-block;font-size:11px;color:#666;margin:17px 0 0;text-decoration:none;border-bottom:1px solid #bbb;padding-bottom:4px}
 .sn-g31-pdp .purchase-trust{margin-top:23px}
 .sn-g31-pdp .payment-title{margin:0 0 8px;font-size:10px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:#777}

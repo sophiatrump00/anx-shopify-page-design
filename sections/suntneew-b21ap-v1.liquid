@@ -240,6 +240,7 @@
             <button type="button" class="buy-now"{% unless selected_variant.available %} disabled{% endunless %} data-suntneew-buy-now>Buy now</button>
             <input type="hidden" name="id" id="selected-variant" value="{{ selected_variant.id }}"{% unless selected_variant.available %} disabled{% endunless %}>
           {% endform %}
+          <ul class="sn-buynow-trust" aria-label="Direct checkout guarantees"><li>Free US Shipping (KY/CA · 2–5d)</li><li>30-Day Returns (RMA)</li><li>Official Warranty</li></ul>
 
           <div class="cart-feedback-bar">
             <p class="cart-feedback" role="status" aria-live="polite" hidden></p>
@@ -254,10 +255,12 @@
           <a class="fit-help" href="#specs">Check specifications &amp; compatibility →</a>
 
           <div class="purchase-trust" aria-label="Payment and purchase support">
-            <p class="payment-title">Pay securely with</p>
+            <p class="payment-title">Accepted at checkout · Free U.S. 48-state shipping</p>
             <ul class="payment-icons" aria-label="Accepted payment methods">
               {%- for type in shop.enabled_payment_types -%}
-                <li title="{{ type | replace: '_', ' ' | escape }}">{{ type | payment_type_svg_tag }}</li>
+                {%- unless type == 'generic' -%}
+                  <li title="{{ type | replace: '_', ' ' | escape }}">{{ type | payment_type_svg_tag }}</li>
+                {%- endunless -%}
               {%- endfor -%}
             </ul>
             <div class="mobile-assurances-slot" id="mobile-assurances-slot"></div>
