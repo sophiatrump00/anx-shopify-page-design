@@ -417,6 +417,8 @@
   }
   function renderPacks() {
     const fragment = document.createDocumentFragment();
+    const singleVariant = packVariants.find(variant => packSize(variant) === 1) || packVariants[0];
+    const singleUnitCents = singleVariant ? Number(singleVariant.priceCents) / packSize(singleVariant) : 0;
     packVariants.forEach(variant => {
       const label = document.createElement('label');
       label.className = 'sn-pack-choice'; label.classList.toggle('is-disabled', !variant.available || Number(variant.max) < minimumFor(variant));
@@ -428,6 +430,21 @@
       const size = packSize(variant);
       const price = document.createElement('span'); price.className = 'sn-pack-prices__price'; price.append(document.createTextNode(money(variant.priceCents / size))); const unit = document.createElement('small'); unit.textContent = ' / unit'; price.append(unit); prices.append(price);
       card.append(prices);
+      const bundleSavingCents = size > 1 && singleUnitCents > 0 ? Math.max(0, Math.round(singleUnitCents * size - Number(variant.priceCents))) : 0;
+      if (bundleSavingCents >= 100) {
+        const badge = document.createElement('span');
+        badge.className = 'sn-pack-badge';
+        badge.textContent = `Save ${money(bundleSavingCents)}`;
+        card.append(badge);
+      }
+      const sceneMap = { 1: '12V RV / Trailer', 2: '24V / 200Ah Bank', 4: '48V / 400Ah Bank' };
+      const sceneText = sceneMap[size];
+      if (sceneText) {
+        const scene = document.createElement('span');
+        scene.className = 'sn-pack-scene';
+        scene.textContent = sceneText;
+        card.append(scene);
+      }
       if (!variant.available || Number(variant.max) < minimumFor(variant)) { const sold = document.createElement('small'); sold.textContent = 'Sold out'; card.append(sold); }
       input.addEventListener('change', () => {
         if (isBusy()) return;

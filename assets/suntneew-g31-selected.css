@@ -670,6 +670,9 @@
 }
 .sn-g31-pdp .capacity-choices .is-out-of-stock input:not(:checked)+span{background:#f7f7f7;color:#777;border-style:dashed}
 .sn-g31-pdp .capacity-choices .is-out-of-stock small{color:#666}
+.sn-g31-pdp .sn-pack-badge{display:inline-block;padding:2px 7px;border-radius:999px;background:#fff0e6;color:#c94e0c;font-size:10px;font-weight:700;line-height:1.25}
+.sn-g31-pdp .sn-pack-scene{display:block;font-size:10.5px;font-weight:500;line-height:1.3;color:#666}
+.sn-g31-pdp .sn-g31-fit-note{margin:10px 0 0;padding:8px 11px;border-radius:5px;background:#f7f7f7;border:1px solid #e7e7e7;font-size:11.5px;line-height:1.5;color:#4f4f4f}
 
 /* Production shell and native purchase form. */
 .sn-motion-ready main .g31-selected-product-section.sn-scroll-reveal{opacity:1;transform:none;transition:none}

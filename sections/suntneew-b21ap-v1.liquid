@@ -6,6 +6,7 @@
 <style>
   .sn-b21ap-pdp .instructions-layout .starting-details:first-of-type { margin-top: 0; }
   .sn-b21ap-pdp .instructions-layout .starting-details + .starting-details { margin-top: 14px; }
+  .sn-b21ap-pdp .pair-tabs { flex-wrap: wrap; gap: 6px 20px; }
 </style>
 {% liquid
   assign selected_variant = product.selected_or_first_available_variant
@@ -54,7 +55,7 @@
           <div id="gallery-content" aria-busy="false">
             <div class="feature-pair gallery-pair" data-carousel="gallery">
               <div class="pair-track" id="pair-gallery" tabindex="0" role="region" aria-label="B21AP product images">
-                {%- assign gallery_labels = 'B21AP kit & nozzles|5,000A cold-weather start|20,000mAh / 74Wh battery|10-protection smart clamps|Roadside & outdoor scenarios' | split: '|' -%}
+                {%- assign gallery_labels = 'B21AP kit & nozzles|2-in-1 jump starter & 160 PSI pump|5,000A cold-weather start|20,000mAh / 74Wh battery|160 PSI auto-stop compressor|10-protection smart clamps|Roadside & outdoor scenarios|Complete kit contents' | split: '|' -%}
                 {%- if gallery_images.size > 0 -%}
                   {%- for media in gallery_images -%}
                     {%- assign slide_label = gallery_labels[forloop.index0] | default: media.alt | default: product.title -%}
@@ -324,8 +325,9 @@
                 <div class="pair-tabs" aria-label="Choose a tire inflation feature">
                   <button type="button" data-carousel-tab="0" aria-controls="feature-03-a" aria-pressed="true">Metal-Cylinder Pump</button>
                   <button type="button" data-carousel-tab="1" aria-controls="feature-03-b" aria-pressed="false">3–160 PSI Presets</button>
+                  <button type="button" data-carousel-tab="2" aria-controls="feature-03-c" aria-pressed="false">160 PSI All-Scenario</button>
                 </div>
-                <div class="pair-track" id="pair-03" tabindex="0" role="region" aria-label="Metal-Cylinder Pump and 3–160 PSI Presets">
+                <div class="pair-track" id="pair-03" tabindex="0" role="region" aria-label="Metal-Cylinder Pump, 3–160 PSI Presets, and 160 PSI All-Scenario">
                   <article class="feature-card" id="feature-03-a">
                     <h3 class="card-title"><span class="card-number">01</span>Metal-Cylinder Pump</h3>
                     <div class="image-module">
@@ -344,10 +346,19 @@
                       </button>
                     </div>
                   </article>
+                  <article class="feature-card" id="feature-03-c">
+                    <h3 class="card-title"><span class="card-number">03</span>160 PSI All-Scenario</h3>
+                    <div class="image-module">
+                      <button class="image-button" type="button" data-zoom-trigger data-zoom-src="https://cdn.shopify.com/s/files/1/0903/4815/9271/files/b21ap-aplus-03-fixed-160psi.jpg?v=1795569605" data-zoom-title="160 PSI Professional Air Compressor for All Scenarios" aria-label="Enlarge 160 PSI All-Scenario Compressor image">
+                        <img src="https://cdn.shopify.com/s/files/1/0903/4815/9271/files/b21ap-aplus-03-fixed-160psi.jpg?v=1795569605&amp;width=1200" width="1464" height="600" loading="lazy" decoding="async" alt="160 PSI Professional Air Compressor for All Scenarios" draggable="false">
+                        <span class="zoom-label" aria-hidden="true">+</span>
+                      </button>
+                    </div>
+                  </article>
                 </div>
                 <div class="pair-controls">
                   <p class="pair-hint"><span class="pair-hint-desktop">Drag or use the arrows</span><span class="pair-hint-mobile">Swipe to explore</span></p>
-                  <span class="pair-counter" aria-live="polite" aria-atomic="true">1 / 2</span>
+                  <span class="pair-counter" aria-live="polite" aria-atomic="true">1 / 3</span>
                   <div class="pair-arrows">
                     <button type="button" data-carousel-prev aria-label="Previous feature" aria-controls="pair-03" disabled>←</button>
                     <button type="button" data-carousel-next aria-label="Next feature" aria-controls="pair-03">→</button>
@@ -549,6 +560,14 @@
                 <li><span class="item-number">06</span><span>Heavy-Duty EVA Storage Case &amp; User Manual × 1</span></li>
               </ul>
               <p class="package-note">Package contents listed per unit.</p>
+              <div class="sn-box-diagram-wrap">
+                <div class="image-module">
+                  <button class="image-button" type="button" data-zoom-trigger data-zoom-src="https://cdn.shopify.com/s/files/1/0903/4815/9271/files/b21ap-main-08-fixed-box-contents.jpg?v=1795569573" data-zoom-title="What's in the Box — Complete B21AP Kit" aria-label="Enlarge B21AP kit contents diagram">
+                    <img id="b21ap-box-diagram" src="https://cdn.shopify.com/s/files/1/0903/4815/9271/files/b21ap-main-08-fixed-box-contents.jpg?v=1795569573&amp;width=1200" alt="What's in the box: EVA case, B21AP unit, manual, smart clamps, detachable air hose, 4-piece nozzle kit, Type-C cable" width="1200" height="1200" decoding="async" draggable="false">
+                    <span class="zoom-label" aria-hidden="true">+</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </section>
         </div>
