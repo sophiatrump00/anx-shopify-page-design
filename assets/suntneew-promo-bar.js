@@ -2,7 +2,10 @@
   'use strict';
 
   const SESSION_KEY = 'sn_bf_promo_code';
+  const DISMISSED_KEY = 'sn_bf_promo_dismissed';
   const ALLOWED_CODES = new Set(['SN10', 'SN175']);
+  let autoSyncInFlight = false;
+  let lastAutoSyncSignature = '';
 
   function safeGetSession(key) {
     try {
@@ -14,7 +17,11 @@
 
   function safeSetSession(key, value) {
     try {
-      window.sessionStorage.setItem(key, value);
+      if (value === '') {
+        window.sessionStorage.removeItem(key);
+      } else {
+        window.sessionStorage.setItem(key, value);
+      }
     } catch {
       // Ignore storage failures in restricted contexts.
     }
@@ -28,6 +35,10 @@
     } catch {
       // Ignore clipboard failures.
     }
+  }
+
+  function getRoot() {
+    return (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
   }
 
   function resolveActiveCode(preferredCode) {
@@ -68,17 +79,34 @@
     });
   }
 
-  async function applyPromoCode(btn) {
-    const code = String(btn.dataset.snPromoApply || '').trim().toUpperCase();
-    if (!ALLOWED_CODES.has(code)) return;
+  function syncPackHint() {
+    const packHints = document.querySelectorAll('[data-sn-pack-hint]');
+    if (!packHints.length) return;
 
-    const bar = btn.closest('[data-sn-promo-bar]');
-    const root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+    const checkedPack = document.querySelector('#pack-choices input[name="pack"]:checked');
+    const packValue = String(
+      checkedPack?.value || document.getElementById('chosen-pack')?.textContent || ''
+    ).trim();
+    const isMultiUnitPack = /\b([2-9]|\d{2,})\s*units?\b/i.test(packValue);
 
-    copyCodeSilently(code);
-    safeSetSession(SESSION_KEY, code);
-    syncAppliedUI(code);
+    const qtyInput = document.querySelector('form[action*="/cart/add"] input[name="quantity"], #quantity');
+    const qty = Math.max(1, Math.floor(Number(qtyInput?.value || 1)));
 
+    const showHint = isMultiUnitPack && qty < 2;
+    packHints.forEach((el) => {
+      if (showHint) {
+        el.textContent =
+          'Pack savings included · Extra $10 OFF (SN10) auto-applies at checkout (SN175 requires cart qty 2+).';
+        el.hidden = false;
+      } else {
+        el.textContent = '';
+        el.hidden = true;
+      }
+    });
+  }
+
+  async function postDiscountToCart(code) {
+    const root = getRoot();
     const cookieReq = fetch(`${root}discount/${encodeURIComponent(code)}`, {
       method: 'GET',
       credentials: 'same-origin',
@@ -98,6 +126,21 @@
       .catch(() => ({ ok: false, data: null }));
 
     const [, cartResult] = await Promise.all([cookieReq, cartReq]);
+    return cartResult;
+  }
+
+  async function applyPromoCode(btn) {
+    const code = String(btn.dataset.snPromoApply || '').trim().toUpperCase();
+    if (!ALLOWED_CODES.has(code)) return;
+
+    const bar = btn.closest('[data-sn-promo-bar]');
+
+    safeSetSession(DISMISSED_KEY, '');
+    copyCodeSilently(code);
+    safeSetSession(SESSION_KEY, code);
+    syncAppliedUI(code);
+
+    const cartResult = await postDiscountToCart(code);
     const cartData = cartResult && cartResult.data;
     const itemCount = Number(cartData?.item_count || 0);
     const hasInapplicable =
@@ -110,12 +153,12 @@
     if (needsMoreItems) {
       setStatus(
         bar,
-        '✓ SN175 saved & copied — add 2+ items to cart to get $17.50 OFF at checkout.'
+        '✓ SN175 saved — add qty 2+ to cart for $17.50 OFF (single item or 2-pack/4-pack auto-uses $10 OFF SN10 at checkout).'
       );
       return;
     }
 
-    setStatus(bar, `✓ ${code} applied & copied — discount will show automatically at checkout.`);
+    setStatus(bar, `✓ ${code} applied — discount will show automatically at checkout.`);
 
     if (!cartResult.ok || hasInapplicable || itemCount <= 0) return;
 
@@ -132,30 +175,143 @@
     }
   }
 
+  async function ensureOptimalCartDiscount(options = {}) {
+    if (autoSyncInFlight) return;
+    if (!document.querySelector('[data-sn-promo-bar]')) return;
+    if (safeGetSession(DISMISSED_KEY) === '1') return;
+
+    autoSyncInFlight = true;
+    try {
+      const root = getRoot();
+      const res = await fetch(`${root}cart.js`, {
+        method: 'GET',
+        credentials: 'same-origin',
+      }).catch(() => null);
+      if (!res || !res.ok) return;
+
+      const cart = await res.json().catch(() => null);
+      if (!cart) return;
+
+      const itemCount = Number(cart.item_count || 0);
+      if (itemCount <= 0) {
+        lastAutoSyncSignature = '';
+        return;
+      }
+
+      const existingCodes = Array.isArray(cart.discount_codes) ? cart.discount_codes : [];
+      const hasCustomApplicableCode = existingCodes.some((d) => {
+        const c = String(d?.code || '').trim().toUpperCase();
+        return Boolean(c && !ALLOWED_CODES.has(c) && d.applicable !== false);
+      });
+      if (hasCustomApplicableCode) return;
+
+      const targetCode = itemCount >= 2 ? 'SN175' : 'SN10';
+      const alreadyApplied = existingCodes.some((d) => {
+        const c = String(d?.code || '').trim().toUpperCase();
+        return c === targetCode && d.applicable !== false;
+      });
+
+      const sig = `${itemCount}:${targetCode}`;
+      if (alreadyApplied) {
+        safeSetSession(SESSION_KEY, targetCode);
+        syncAppliedUI(targetCode);
+        lastAutoSyncSignature = sig;
+        return;
+      }
+
+      if (!options.force && lastAutoSyncSignature === sig) return;
+      lastAutoSyncSignature = sig;
+
+      const updateResult = await postDiscountToCart(targetCode);
+      if (!updateResult || !updateResult.ok) return;
+
+      safeSetSession(SESSION_KEY, targetCode);
+      syncAppliedUI(targetCode);
+
+      const drawer = document.getElementById('cart-drawer');
+      if (drawer && (drawer.open || options.refreshDrawer)) {
+        drawer.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+      }
+
+      if (window.themeVariables?.settings?.pageType === 'cart') {
+        const cartBar = document.querySelector('[data-sn-promo-bar][data-sn-context="cart"]');
+        const renderedCode = String(cartBar?.dataset.snCartAppliedCode || '').trim().toUpperCase();
+        if (renderedCode !== targetCode) {
+          window.location.reload();
+        }
+      }
+    } finally {
+      autoSyncInFlight = false;
+    }
+  }
+
   document.addEventListener('click', (event) => {
-    const target = event.target && event.target.closest ? event.target.closest('[data-sn-promo-apply]') : null;
+    const removeBtn =
+      event.target && event.target.closest
+        ? event.target.closest('cart-discount-remove-button')
+        : null;
+    if (removeBtn) {
+      const removedCode = String(removeBtn.getAttribute('discount-code') || '').trim().toUpperCase();
+      if (ALLOWED_CODES.has(removedCode)) {
+        safeSetSession(DISMISSED_KEY, '1');
+        safeSetSession(SESSION_KEY, '');
+      }
+      return;
+    }
+
+    const target =
+      event.target && event.target.closest ? event.target.closest('[data-sn-promo-apply]') : null;
     if (!target) return;
     applyPromoCode(target);
   });
 
-  function scheduleSync() {
-    window.setTimeout(() => syncAppliedUI(), 80);
+  document.addEventListener('change', (event) => {
+    const t = event.target;
+    if (!t) return;
+    if (t.name === 'pack' || t.name === 'quantity' || t.id === 'quantity') {
+      window.setTimeout(syncPackHint, 20);
+    }
+  });
+
+  function scheduleSync(checkCart = false) {
+    window.setTimeout(() => {
+      syncAppliedUI();
+      syncPackHint();
+      if (checkCart) {
+        void ensureOptimalCartDiscount({ refreshDrawer: true });
+      }
+    }, 80);
+  }
+
+  function init() {
+    syncAppliedUI();
+    syncPackHint();
+    if (window.themeVariables?.settings?.pageType === 'cart') {
+      void ensureOptimalCartDiscount();
+    }
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => syncAppliedUI(), { once: true });
+    document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
-    syncAppliedUI();
+    init();
   }
 
-  document.addEventListener('cart:refresh', scheduleSync);
-  document.addEventListener('cart:change', scheduleSync);
+  document.addEventListener('variant:add', () => scheduleSync(true));
+  document.addEventListener('variant:change', () => window.setTimeout(syncPackHint, 20));
+  document.addEventListener('cart:refresh', () => scheduleSync(false));
+  document.addEventListener('cart:change', () => scheduleSync(true));
 
   function observeCartDrawer() {
     const drawer = document.getElementById('cart-drawer');
     if (!drawer || typeof MutationObserver !== 'function') return;
-    const observer = new MutationObserver(() => syncAppliedUI());
-    observer.observe(drawer, { childList: true });
+    const observer = new MutationObserver(() => {
+      syncAppliedUI();
+      if (drawer.open) {
+        void ensureOptimalCartDiscount({ refreshDrawer: true });
+      }
+    });
+    observer.observe(drawer, { childList: true, attributes: true, attributeFilter: ['open'] });
   }
 
   if (document.readyState === 'loading') {

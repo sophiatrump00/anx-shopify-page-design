@@ -29,7 +29,7 @@
         ✓ {{ applied_title | escape }} applied (-{{ applied_amount | money }})
       </span>
     {%- else -%}
-      <span class="sn-promo-bar__meta">No sign-in needed · Applies at checkout</span>
+      <span class="sn-promo-bar__meta">No sign-in needed · Auto-applies at checkout</span>
     {%- endif -%}
   </div>
 
@@ -73,7 +73,7 @@
       >
         <strong class="sn-promo-chip__amount">$10 OFF</strong>
         <code class="sn-promo-chip__code">SN10</code>
-        <span class="sn-promo-chip__cond">Any item</span>
+        <span class="sn-promo-chip__cond">Any item or pack</span>
         <span class="sn-promo-chip__cta" data-sn-promo-cta>
           {%- if applied_code == 'SN10' -%}✓ Applied{%- else -%}Apply{%- endif -%}
         </span>
@@ -87,7 +87,7 @@
       >
         <strong class="sn-promo-chip__amount">$17.50 OFF</strong>
         <code class="sn-promo-chip__code">SN175</code>
-        <span class="sn-promo-chip__cond">2+ items in cart</span>
+        <span class="sn-promo-chip__cond">Qty 2+ in cart</span>
         <span class="sn-promo-chip__cta" data-sn-promo-cta>
           {%- if applied_code == 'SN175' -%}✓ Applied{%- else -%}Apply{%- endif -%}
         </span>
@@ -95,9 +95,13 @@
     {%- endif -%}
   </div>
 
+  {%- if promo_context != 'cart' -%}
+    <p class="sn-promo-bar__pack-hint" data-sn-pack-hint hidden></p>
+  {%- endif -%}
+
   {%- if promo_context == 'cart' and item_count < 2 -%}
     <p class="sn-promo-bar__note">
-      <span>Add 1 more item &amp; tap</span>
+      <span>Add 1 more item in cart for</span>
       <button
         type="button"
         class="sn-promo-bar__upsell-btn{% if applied_code == 'SN175' %} is-applied{% endif %}"

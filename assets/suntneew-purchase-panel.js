@@ -64,7 +64,16 @@
 
       await new Promise((resolve) => setTimeout(resolve, 80));
       const rootRoute = window.Shopify?.routes?.root || '/';
-      const checkoutUrl = `${rootRoute}cart/${encodeURIComponent(String(variantInput.value))}:${encodeURIComponent(String(qty))}?checkout`;
+      let promoCode = '';
+      try {
+        const promoActive = Boolean(document.querySelector('[data-sn-promo-bar]'));
+        const dismissed = window.sessionStorage?.getItem('sn_bf_promo_dismissed') === '1';
+        if (promoActive && !dismissed) {
+          promoCode = qty >= 2 ? 'SN175' : 'SN10';
+        }
+      } catch (_) {}
+      const query = promoCode ? `discount=${encodeURIComponent(promoCode)}` : 'checkout';
+      const checkoutUrl = `${rootRoute}cart/${encodeURIComponent(String(variantInput.value))}:${encodeURIComponent(String(qty))}?${query}`;
       fallbackTimer = setTimeout(() => resetFormPurchaseState(form), 3500);
       window.location.assign(checkoutUrl);
     } catch (error) {

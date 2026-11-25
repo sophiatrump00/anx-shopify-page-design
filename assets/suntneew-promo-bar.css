@@ -192,6 +192,17 @@
   color: #166534;
 }
 
+.sn-promo-bar__pack-hint {
+  margin: 6px 0 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #7c2d12;
+}
+
+.sn-promo-bar__pack-hint[hidden] {
+  display: none;
+}
+
 .sn-promo-bar__status {
   margin: 6px 0 0;
   font-size: 11.5px;
