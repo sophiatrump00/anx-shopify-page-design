@@ -290,6 +290,13 @@
     $('feature-content').replaceChildren(output);
   }
 
+  const setZoomExpanded = expanded => {
+    $('image-dialog').classList.toggle('is-zoomed', expanded);
+    $('zoom-size').textContent = expanded ? '-' : '+';
+    $('zoom-size').setAttribute('aria-pressed', String(expanded));
+    $('zoom-size').setAttribute('aria-label', expanded ? 'Fit image to screen' : 'View at original size');
+    if (!expanded) root.querySelector('.zoom-scroll').scrollTo({ left: 0, top: 0, behavior: 'instant' });
+  };
   function openZoom(asset, trigger) {
     focusReturn = trigger;
     zoomIsGallery = asset.group === 'gallery';
@@ -300,6 +307,9 @@
     $('zoom-previous').hidden = !zoomIsGallery;
     $('zoom-next').hidden = !zoomIsGallery;
     $('zoom-counter').hidden = !zoomIsGallery;
+    root.querySelector('.zoom-hint').textContent = zoomIsGallery
+      ? 'Click image or + to zoom. Use arrows to browse. Press Esc to close.'
+      : 'Click image or + to view full resolution. Press Esc to close.';
     showZoom(zoomIndex);
     $('image-dialog').showModal();
     updateSticky();
@@ -317,20 +327,12 @@
     $('zoom-counter').textContent = `${zoomIndex + 1} / ${zoomRows.length}`;
     $('zoom-previous').disabled = zoomIndex === 0;
     $('zoom-next').disabled = zoomIndex === zoomRows.length - 1;
-    $('image-dialog').classList.remove('is-zoomed');
-    $('zoom-size').textContent = '+';
-    $('zoom-size').setAttribute('aria-pressed', 'false');
-    root.querySelector('.zoom-scroll').scrollTo({ left: 0, top: 0, behavior: 'instant' });
+    setZoomExpanded(false);
     if (zoomIsGallery) galleryController?.go(zoomIndex);
   }
   $('zoom-previous').addEventListener('click', () => showZoom(zoomIndex - 1));
   $('zoom-next').addEventListener('click', () => showZoom(zoomIndex + 1));
-  $('zoom-size').addEventListener('click', () => {
-    const expanded = $('image-dialog').classList.toggle('is-zoomed');
-    $('zoom-size').textContent = expanded ? '-' : '+';
-    $('zoom-size').setAttribute('aria-pressed', String(expanded));
-    $('zoom-size').setAttribute('aria-label', expanded ? 'Fit image to screen' : 'View at original size');
-  });
+  $('zoom-size').addEventListener('click', () => setZoomExpanded(!$('image-dialog').classList.contains('is-zoomed')));
   $('image-dialog').addEventListener('keydown', event => {
     if (!zoomIsGallery || $('image-dialog').classList.contains('is-zoomed')) return;
     if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
@@ -338,21 +340,29 @@
     showZoom(event.key === 'Home' ? 0 : event.key === 'End' ? zoomRows.length - 1 : zoomIndex + (event.key === 'ArrowRight' ? 1 : -1));
   });
   let zoomDrag;
+  let suppressNextZoomClick = false;
   const zoomScroller = root.querySelector('.zoom-scroll');
   zoomScroller.addEventListener('pointerdown', event => {
+    suppressNextZoomClick = false;
     if (zoomIsGallery && !$('image-dialog').classList.contains('is-zoomed') && event.button === 0) zoomDrag = { id: event.pointerId, x: event.clientX, y: event.clientY };
   });
   zoomScroller.addEventListener('pointerup', event => {
     if (!zoomDrag || zoomDrag.id !== event.pointerId) return;
     const dx = event.clientX - zoomDrag.x, dy = event.clientY - zoomDrag.y;
     zoomDrag = undefined;
+    if (Math.abs(dx) > 10 || Math.abs(dy) > 10) suppressNextZoomClick = true;
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.2) showZoom(zoomIndex + (dx < 0 ? 1 : -1));
   });
   zoomScroller.addEventListener('pointercancel', () => { zoomDrag = undefined; });
+  $('zoom-image').addEventListener('click', () => {
+    if (suppressNextZoomClick) { suppressNextZoomClick = false; return; }
+    setZoomExpanded(!$('image-dialog').classList.contains('is-zoomed'));
+  });
   $('image-dialog').querySelector('[data-close]').addEventListener('click', () => $('image-dialog').close());
   $('image-dialog').addEventListener('close', () => {
     $('image-dialog').classList.remove('gallery-lightbox', 'is-zoomed');
     zoomDrag = undefined;
+    suppressNextZoomClick = false;
     if (zoomIsGallery) galleryController?.focusAt(zoomIndex); else focusReturn?.focus({ preventScroll: true });
     updateSticky();
   });

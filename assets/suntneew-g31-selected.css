@@ -296,9 +296,9 @@
 .sn-g31-pdp .gallery-lightbox{width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;border-radius:0;background:#ffffff;overflow:hidden}
 .sn-g31-pdp .gallery-lightbox .dialog-bar{padding:16px 24px;min-height:68px;border-bottom:1px solid #efefef}
 .sn-g31-pdp .gallery-lightbox .zoom-scroll{display:flex;align-items:center;justify-content:center;width:100%;height:calc(100dvh - 168px);max-height:none;background:#ffffff;overflow:auto;touch-action:pan-y}
-.sn-g31-pdp .gallery-lightbox .zoom-scroll img{display:block;width:auto;height:auto;max-width:calc(100vw - 100px);max-height:calc(100dvh - 184px);object-fit:contain;user-select:none}
+.sn-g31-pdp .gallery-lightbox .zoom-scroll img{display:block;width:auto;height:auto;max-width:calc(100vw - 100px);max-height:calc(100dvh - 184px);object-fit:contain;user-select:none;cursor:zoom-in}
 .sn-g31-pdp .gallery-lightbox.is-zoomed .zoom-scroll{display:block;touch-action:auto}
-.sn-g31-pdp .gallery-lightbox.is-zoomed .zoom-scroll img{max-width:none;max-height:none;margin:auto}
+.sn-g31-pdp .gallery-lightbox.is-zoomed .zoom-scroll img{max-width:none;max-height:none;margin:auto;cursor:zoom-out}
 .sn-g31-pdp .zoom-gallery-controls{display:flex;align-items:center;justify-content:center;gap:18px;min-height:56px}
 .sn-g31-pdp .zoom-gallery-controls button{width:42px;height:42px;border:1px solid #e1e1e1;border-radius:50%;background:#ffffff;color:#3f3f3f;font-size:21px;line-height:1}
 .sn-g31-pdp .zoom-gallery-controls button:disabled{color:#c8c8c8;cursor:default}

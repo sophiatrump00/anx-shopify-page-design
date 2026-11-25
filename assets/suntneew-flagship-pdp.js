@@ -262,6 +262,7 @@
     zoomSizeBtn.setAttribute('aria-pressed', String(expanded));
     zoomSizeBtn.setAttribute('aria-label', expanded ? 'Fit image to screen' : 'View at original size');
     zoomSizeBtn.textContent = expanded ? '−' : '+';
+    if (!expanded) zoomScroll?.scrollTo({ left: 0, top: 0, behavior: 'instant' });
   };
 
   const showGalleryZoomAt = (idx) => {
@@ -277,7 +278,6 @@
     if (zoomPrev) zoomPrev.disabled = galleryZoomIdx === 0;
     if (zoomNext) zoomNext.disabled = galleryZoomIdx === galleryZoomItems.length - 1;
     setZoomExpanded(false);
-    zoomScroll?.scrollTo({ left: 0, top: 0, behavior: 'instant' });
     carousels.gallery?.go(galleryZoomIdx);
   };
 
@@ -288,12 +288,12 @@
       if (gIdx !== undefined) {
         dialog.classList.add('gallery-lightbox');
         if (zoomControls) zoomControls.hidden = false;
-        if (zoomHint) zoomHint.textContent = 'Use the arrows to browse. Select + for the full-resolution image.';
+        if (zoomHint) zoomHint.textContent = 'Click image or + to zoom. Use arrows to browse. Press Esc to close.';
         showGalleryZoomAt(Number(gIdx));
       } else {
         dialog.classList.remove('gallery-lightbox');
         if (zoomControls) zoomControls.hidden = true;
-        if (zoomHint) zoomHint.textContent = 'Use + to view the full-resolution image. Press Esc to close.';
+        if (zoomHint) zoomHint.textContent = 'Click image or + to view full resolution. Press Esc to close.';
         zoomImg.src = btn.dataset.zoomSrc;
         zoomImg.alt = btn.dataset.zoomTitle || `${modelLabel} feature image`;
         if (zoomTitle) zoomTitle.textContent = btn.dataset.zoomTitle || `${modelLabel} product image`;
@@ -306,6 +306,7 @@
   zoomPrev?.addEventListener('click', () => showGalleryZoomAt(galleryZoomIdx - 1));
   zoomNext?.addEventListener('click', () => showGalleryZoomAt(galleryZoomIdx + 1));
   zoomSizeBtn?.addEventListener('click', () => setZoomExpanded(!dialog?.classList.contains('is-zoomed')));
+  zoomImg?.addEventListener('click', () => setZoomExpanded(!dialog?.classList.contains('is-zoomed')));
   dialog?.querySelector('[data-close]')?.addEventListener('click', () => dialog.close());
   dialog?.addEventListener('click', (e) => {
     if (e.target !== dialog) return;

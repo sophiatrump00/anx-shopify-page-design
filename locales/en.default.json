@@ -1135,15 +1135,15 @@
   "shopify": {
     "checkout": {
       "contact": {
-        "phone_label": "Phone (for carrier delivery updates only)",
-        "phone_placeholder": "Phone (for carrier delivery updates only)",
-        "phone_tooltip": "Required by FedEx/UPS in case the driver needs to reach you about your delivery. Never used for marketing."
+        "phone_label": "Phone (optional — for carrier delivery updates only)",
+        "phone_placeholder": "Phone (optional — for carrier delivery updates only)",
+        "phone_tooltip": "Optional — only used by FedEx/UPS if the driver needs to reach you about your delivery. Never used for marketing."
       },
       "shipping": {
-        "shipping_method_notice": "Dispatched from US local warehouses (Hebron, KY & Walnut, CA) within 2 business days · Backed by 30-Day Local US Returns."
+        "shipping_method_notice": "FREE US Shipping · Dispatched from US warehouses (KY & CA) in 2 business days · 30-Day Returns (unused, RMA required)"
       },
       "payment": {
-        "card_security_notice": "All transactions are 256-bit SSL encrypted · 30-Day Local US Returns (KY & CA) · Official Warranty · 24h Support: info@suntneew.com"
+        "card_security_notice": "All transactions are 256-bit SSL encrypted · 30-Day Returns (Policy Applies) · Official Warranty · 24h Support: info@suntneew.com"
       }
     }
   }

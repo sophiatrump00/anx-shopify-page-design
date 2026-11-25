@@ -65,7 +65,8 @@
 .sn-a20-pdp .dialog-bar h2{font-size:14px;font-weight:500;margin:0;line-height:1.5}
 .sn-a20-pdp .dialog-bar button{font-size:26px;line-height:1;border:0;background:#f2f2f2;border-radius:50%;width:34px;height:34px;flex-shrink:0;color:#303030}
 .sn-a20-pdp .zoom-scroll{overflow:auto;max-height:calc(90dvh - 115px);overscroll-behavior:contain;-webkit-overflow-scrolling:touch;background:#2b2b2b}
-.sn-a20-pdp .zoom-scroll img{display:block;width:max(100%,900px);max-width:none;height:auto}
+.sn-a20-pdp .zoom-scroll img{display:block;width:max(100%,900px);max-width:none;height:auto;cursor:zoom-in}
+.sn-a20-pdp dialog.is-zoomed .zoom-scroll img{width:auto;max-width:none;max-height:none;margin:auto;cursor:zoom-out}
 .sn-a20-pdp .zoom-hint{font-size:11px;color:#808080;margin:12px 20px}
 .sn-a20-pdp #selection-dialog{width:540px;max-width:95vw;padding-bottom:24px}
 .sn-a20-pdp .record-intro,.sn-a20-pdp .record-note,.sn-a20-pdp .record-link{font-size:12px;color:#6d6d6d;margin:16px 24px;line-height:1.7}
@@ -296,9 +297,9 @@
 .sn-a20-pdp .gallery-lightbox{width:100vw;max-width:none;height:100dvh;max-height:none;margin:0;border-radius:0;background:#ffffff;overflow:hidden}
 .sn-a20-pdp .gallery-lightbox .dialog-bar{padding:16px 24px;min-height:68px;border-bottom:1px solid #efefef}
 .sn-a20-pdp .gallery-lightbox .zoom-scroll{display:flex;align-items:center;justify-content:center;width:100%;height:calc(100dvh - 168px);max-height:none;background:#ffffff;overflow:auto;touch-action:pan-y}
-.sn-a20-pdp .gallery-lightbox .zoom-scroll img{display:block;width:auto;height:auto;max-width:calc(100vw - 100px);max-height:calc(100dvh - 184px);object-fit:contain;user-select:none}
+.sn-a20-pdp .gallery-lightbox .zoom-scroll img{display:block;width:auto;height:auto;max-width:calc(100vw - 100px);max-height:calc(100dvh - 184px);object-fit:contain;user-select:none;cursor:zoom-in}
 .sn-a20-pdp .gallery-lightbox.is-zoomed .zoom-scroll{display:block;touch-action:auto}
-.sn-a20-pdp .gallery-lightbox.is-zoomed .zoom-scroll img{max-width:none;max-height:none;margin:auto}
+.sn-a20-pdp .gallery-lightbox.is-zoomed .zoom-scroll img{max-width:none;max-height:none;margin:auto;cursor:zoom-out}
 .sn-a20-pdp .zoom-gallery-controls{display:flex;align-items:center;justify-content:center;gap:18px;min-height:56px}
 .sn-a20-pdp .zoom-gallery-controls button{width:42px;height:42px;border:1px solid #e1e1e1;border-radius:50%;background:#ffffff;color:#3f3f3f;font-size:21px;line-height:1}
 .sn-a20-pdp .zoom-gallery-controls button:disabled{color:#c8c8c8;cursor:default}

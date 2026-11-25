@@ -196,6 +196,13 @@ function render(){
  $('chosen-colour').textContent=colour==='orange'?'Orange':'Red';
  root.querySelectorAll('[data-colour]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.colour===colour)));
 }
+const setZoomExpanded=expanded=>{
+ $('image-dialog').classList.toggle('is-zoomed',expanded);
+ $('zoom-size').setAttribute('aria-pressed',String(expanded));
+ $('zoom-size').setAttribute('aria-label',expanded?'Fit image to screen':'View at original size');
+ $('zoom-size').textContent=expanded?'−':'+';
+ if(!expanded)root.querySelector('.zoom-scroll').scrollTo({left:0,top:0,behavior:'instant'});
+};
 function zoom(asset,trigger){
  focusReturn=trigger;
  if(asset.group==='gallery'){
@@ -203,11 +210,14 @@ function zoom(asset,trigger){
   galleryZoomIndex=galleryZoomRows.findIndex(a=>a.asset_id===asset.asset_id);
   $('image-dialog').classList.add('gallery-lightbox');
   root.querySelector('.zoom-gallery-controls').hidden=false;
-  root.querySelector('.zoom-hint').textContent='Use the arrows to browse. Select + for the full-resolution image.';
+  root.querySelector('.zoom-hint').textContent='Click image or + to zoom. Use arrows to browse. Press Esc to close.';
   root.querySelector('.zoom-hint').lang='en';
   showGalleryZoom(galleryZoomIndex);
  }else{
   const im=$('zoom-image');im.src=asset.src;im.alt=`SuntNeew A20 — ${asset.purpose}`;im.width=asset.width;im.height=asset.height;$('image-title').textContent=asset.purpose;
+  setZoomExpanded(false);
+  root.querySelector('.zoom-hint').textContent='Click image or + to view full resolution. Press Esc to close.';
+  root.querySelector('.zoom-hint').lang='en';
  }
  $('image-dialog').showModal();
 }
@@ -220,34 +230,36 @@ function showGalleryZoom(index){
  $('zoom-counter').textContent=`${galleryZoomIndex+1} / ${galleryZoomRows.length}`;
  $('zoom-previous').disabled=galleryZoomIndex===0;
  $('zoom-next').disabled=galleryZoomIndex===galleryZoomRows.length-1;
- $('image-dialog').classList.remove('is-zoomed');
- $('zoom-size').setAttribute('aria-pressed','false');$('zoom-size').setAttribute('aria-label','View at original size');$('zoom-size').textContent='+';
- root.querySelector('.zoom-scroll').scrollTo({left:0,top:0,behavior:'instant'});
+ setZoomExpanded(false);
  galleryController?.go(galleryZoomIndex);
 }
 $('zoom-previous').addEventListener('click',()=>showGalleryZoom(galleryZoomIndex-1));
 $('zoom-next').addEventListener('click',()=>showGalleryZoom(galleryZoomIndex+1));
-$('zoom-size').addEventListener('click',()=>{
- const expanded=$('image-dialog').classList.toggle('is-zoomed');
- $('zoom-size').setAttribute('aria-pressed',String(expanded));$('zoom-size').setAttribute('aria-label',expanded?'Fit image to screen':'View at original size');$('zoom-size').textContent=expanded?'−':'+';
-});
+$('zoom-size').addEventListener('click',()=>setZoomExpanded(!$('image-dialog').classList.contains('is-zoomed')));
 $('image-dialog').addEventListener('keydown',event=>{
  if(!$('image-dialog').classList.contains('gallery-lightbox')||$('image-dialog').classList.contains('is-zoomed'))return;
  if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
  event.preventDefault();showGalleryZoom(event.key==='Home'?0:event.key==='End'?galleryZoomRows.length-1:galleryZoomIndex+(event.key==='ArrowRight'?1:-1));
 });
 let zoomDrag=null;
+let suppressNextZoomClick=false;
 const zoomScroller=root.querySelector('.zoom-scroll');
 zoomScroller.addEventListener('pointerdown',event=>{
+ suppressNextZoomClick=false;
  if(!$('image-dialog').classList.contains('gallery-lightbox')||$('image-dialog').classList.contains('is-zoomed')||event.button!==0)return;
  zoomDrag={id:event.pointerId,x:event.clientX,y:event.clientY};
 });
 zoomScroller.addEventListener('pointerup',event=>{
  if(!zoomDrag||zoomDrag.id!==event.pointerId)return;
  const dx=event.clientX-zoomDrag.x,dy=event.clientY-zoomDrag.y;zoomDrag=null;
+ if(Math.abs(dx)>10||Math.abs(dy)>10)suppressNextZoomClick=true;
  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.2)showGalleryZoom(galleryZoomIndex+(dx<0?1:-1));
 });
 zoomScroller.addEventListener('pointercancel',()=>{zoomDrag=null;});
+$('zoom-image').addEventListener('click',()=>{
+ if(suppressNextZoomClick){suppressNextZoomClick=false;return;}
+ setZoomExpanded(!$('image-dialog').classList.contains('is-zoomed'));
+});
 root.addEventListener('a20:colour',event=>{colour=event.detail.colour;if(selection)render();});
 root.addEventListener('a20:sale-update',event=>{
  const nextPack=event.detail?.pack;
