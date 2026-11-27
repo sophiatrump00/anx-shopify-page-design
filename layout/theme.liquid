@@ -41,6 +41,9 @@
     {%- unless settings.text_font.system? -%}
       {{ settings.text_font | font_url | preload_tag: as: 'font', type: 'font/woff2' }}
     {%- endunless -%}
+    {%- if request.page_type == 'product' and template.suffix == 'rv-g31' -%}
+      <link rel="preload" as="image" href="{{ 'sn-g31-selected-g01.webp' | asset_url }}" fetchpriority="high">
+    {%- endif -%}
 
     {%- render 'social-meta-tags' -%}
     {%- render 'microdata-schema' -%}
@@ -73,7 +76,9 @@
     {{- 'theme-bundle-2.css' | asset_url | stylesheet_tag -}}
     {{- 'theme-bundle-3.css' | asset_url | stylesheet_tag -}}
     {{- 'suntneew-site.css' | asset_url | stylesheet_tag -}}
-    {{- 'suntneew-home.css' | asset_url | stylesheet_tag -}}
+    {%- unless request.page_type == 'product' -%}
+      {{- 'suntneew-home.css' | asset_url | stylesheet_tag -}}
+    {%- endunless -%}
     {{- 'suntneew-promo-bar.css' | asset_url | stylesheet_tag -}}
     <script src="{{ 'suntneew-promo-bar.js' | asset_url }}" defer></script>
     <script src="{{ 'suntneew-motion.js' | asset_url }}" defer></script>
