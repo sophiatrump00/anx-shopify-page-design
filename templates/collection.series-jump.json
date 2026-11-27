@@ -9,267 +9,214 @@
  */
 {
   "sections": {
-    "banner": {
-      "type": "collection-banner",
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "show_collection_title": true,
-        "show_collection_description": true,
-        "show_collection_image": true,
-        "collection_title_size": "h0",
-        "image_size": "md",
-        "asset_image": "suntneew-hero-jump-light-desktop.webp",
-        "asset_image_alt": "SuntNeew jump starter connected in a vehicle engine bay",
-        "mobile_text_position": "place-self-center-start text-start",
-        "desktop_text_position": "sm:place-self-center-start sm:text-start",
-        "text_color": "#FFFFFF",
-        "overlay_color": "#102030",
-        "overlay_opacity": 62
-      }
-    },
     "guide": {
       "type": "suntneew-jump-starter-guide",
       "blocks": {
-        "fit_7200": {
-          "type": "guide_row",
-          "settings": {
-            "model_label": "KP700",
-            "capacity": "7200",
-            "start_current": "500",
-            "peak_current": "1000",
-            "gasoline": "6",
-            "diesel": "4",
-            "model_handle": "suntneew-kb700-fan-jump-starter-7-200mah"
-          }
-        },
-        "fit_8000": {
-          "type": "guide_row",
-          "settings": {
-            "model_label": "A20",
-            "capacity": "8000",
-            "start_current": "750",
-            "peak_current": "1500",
-            "gasoline": "6",
-            "diesel": "3",
-            "model_handle": "suntneew-a20-jump-starter-8000mah"
-          }
-        },
-        "fit_u23": {
-          "type": "guide_row",
-          "settings": {
-            "model_label": "U23",
-            "capacity": "8000",
-            "start_current": "700",
-            "peak_current": "1500",
-            "gasoline": "6",
-            "diesel": "3",
-            "model_handle": "suntneew-u23-portable-car-jump-starter-8-000mah"
-          }
-        },
-        "fit_oj02": {
-          "type": "guide_row",
-          "settings": {
-            "model_label": "OJ02",
-            "capacity": "8000",
-            "start_current": "700",
-            "peak_current": "1500",
-            "gasoline": "6",
-            "diesel": "3",
-            "model_handle": "suntneew-oj02-obd2-jump-starter"
-          }
-        },
-        "fit_10000": {
-          "type": "guide_row",
-          "settings": {
-            "model_label": "U32",
-            "capacity": "10000",
-            "start_current": "1000",
-            "peak_current": "2000",
-            "gasoline": "6.5",
-            "diesel": "3.5",
-            "model_handle": "suntneew-u32-portable-car-jump-starter-10-000mah"
-          }
-        },
-        "fit_a3": {
-          "type": "guide_row",
-          "settings": {
-            "model_label": "A3",
-            "capacity": "16000",
-            "start_current": "800",
-            "peak_current": "4000",
-            "gasoline": "8",
-            "diesel": "5.5",
-            "model_handle": "suntneew-a3-jump-starter-16000mah"
-          }
-        },
-        "fit_20000": {
-          "type": "guide_row",
-          "settings": {
-            "model_label": "B21AP",
-            "capacity": "20000",
-            "start_current": "2500",
-            "peak_current": "5000",
-            "gasoline": "9",
-            "diesel": "6",
-            "model_handle": "suntneew-b21ap-5000a-jump-starter-air-compressor"
-          }
-        },
-        "family_kb700": {
-          "type": "family",
-          "settings": {
-            "product_handle": "suntneew-kb700-fan-jump-starter-7-200mah",
-            "asset_name": "suntneew-shop-white-kb700.jpg",
-            "image_alt": "SuntNeew KP700 Fan Portable Car Jump Starter with smart clamp, air nozzle and USB cable",
-            "eyebrow": "KP700 | 7,200mAh",
-            "title": "SuntNeew KP700 Fan Portable Car Jump Starter",
-            "summary": "A 12V jump starter with a three-speed air duster, USB device charging and a 2W emergency light.",
-            "capacities": "7200",
-            "spec_capacity": "7,200mAh",
-            "spec_start": "500A",
-            "spec_peak": "1,000A",
-            "spec_fit": "Up to 6.0L gas / 4.0L diesel",
-            "link_label": "Open KP700 details"
-          }
-        },
         "family_a20": {
           "type": "family",
           "settings": {
+            "group": "everyday",
+            "also_heavy_duty": false,
+            "model_code": "A20",
             "product_handle": "suntneew-a20-jump-starter-8000mah",
-            "asset_name": "suntneew-shop-white-a20.jpg",
-            "image_alt": "SuntNeew A20 Portable Car Jump Starter family",
-            "eyebrow": "A20 | 8,000mAh",
-            "title": "SuntNeew A20 Portable Car Jump Starter",
-            "summary": "Compact glove-box backup in 8,000mAh with 750A starting current, 1,500A peak current and support up to 6.0L gas / 3.0L diesel.",
-            "capacities": "8000",
+            "asset_name": "suntneew-jump-card-a20-red.webp",
+            "alt_asset_name": "suntneew-jump-card-a20-orange.webp",
+            "image_alt": "SuntNeew A20 8,000mAh Portable Car Jump Starter",
+            "badge": "Best Value",
+            "badge_tone": "amber",
+            "eyebrow": "A20 · 8,000mAh",
+            "title": "SuntNeew A20 Jump Starter",
+            "summary": "Ultra-portable 8,000mAh glove-box backup for daily sedans.",
             "spec_capacity": "8,000mAh",
             "spec_start": "750A",
             "spec_peak": "1,500A",
-            "spec_fit": "Up to 6.0L gas / 3.0L diesel",
-            "link_label": "Open A20 details"
+            "spec_fit": "6.0L Gas / 3.0L Diesel",
+            "spec_highlight": "Glove-Box Size",
+            "meta_note": "8,000mAh in stock · 1–4 unit packs",
+            "enable_color_swatches": true,
+            "preview_only": false
           }
         },
         "family_u23": {
           "type": "family",
           "settings": {
+            "group": "everyday",
+            "also_heavy_duty": false,
+            "model_code": "U23",
             "product_handle": "suntneew-u23-portable-car-jump-starter-8-000mah",
-            "asset_name": "suntneew-shop-white-u23.jpg",
-            "image_alt": "SuntNeew U23 jump starter",
-            "eyebrow": "U23 | 8,000mAh",
+            "asset_name": "suntneew-jump-card-u23.webp",
+            "alt_asset_name": "",
+            "image_alt": "SuntNeew U23 8,000mAh Jump Starter",
+            "badge": "Ultra-Compact",
+            "badge_tone": "slate",
+            "eyebrow": "U23 · 8,000mAh",
             "title": "SuntNeew U23 Jump Starter",
-            "summary": "Compact 12V model with verified 700A starting current and 1,500A peak current.",
-            "capacities": "8000",
+            "summary": "Slim 12V everyday starter with reliable 700A cranking power.",
             "spec_capacity": "8,000mAh",
             "spec_start": "700A",
             "spec_peak": "1,500A",
-            "spec_fit": "Up to 6.0L gas",
-            "link_label": "Open U23 details",
-            "preview_only": true
+            "spec_fit": "6.0L Gas / 3.0L Diesel",
+            "spec_highlight": "Slim & Light",
+            "meta_note": "12V passenger cars & crossovers",
+            "enable_color_swatches": false,
+            "preview_only": false
           }
         },
         "family_u32": {
           "type": "family",
           "settings": {
+            "group": "everyday",
+            "also_heavy_duty": false,
+            "model_code": "U32",
             "product_handle": "suntneew-u32-portable-car-jump-starter-10-000mah",
-            "asset_name": "suntneew-shop-white-u32.jpg",
-            "image_alt": "SuntNeew U32 jump starter",
-            "eyebrow": "U32 | 10,000mAh",
+            "asset_name": "suntneew-jump-card-u32.webp",
+            "alt_asset_name": "",
+            "image_alt": "SuntNeew U32 10,000mAh Jump Starter",
+            "badge": "Large Display",
+            "badge_tone": "slate",
+            "eyebrow": "U32 · 10,000mAh",
             "title": "SuntNeew U32 Jump Starter",
-            "summary": "Large-display 12V model with verified 1,000A starting current and 2,000A peak current.",
-            "capacities": "10000",
+            "summary": "Upgraded 2,000A peak starter with oversized LED status screen.",
             "spec_capacity": "10,000mAh",
             "spec_start": "1,000A",
             "spec_peak": "2,000A",
-            "spec_fit": "Up to 6.5L gas",
-            "link_label": "Open U32 details",
-            "preview_only": true
+            "spec_fit": "6.5L Gas / 3.5L Diesel",
+            "spec_highlight": "Large LED Screen",
+            "meta_note": "Midsize SUVs & light V6/V8",
+            "enable_color_swatches": false,
+            "preview_only": false
           }
         },
-        "family_a3": {
+        "family_kb700": {
           "type": "family",
           "settings": {
-            "product_handle": "suntneew-a3-jump-starter-16000mah",
-            "asset_name": "suntneew-shop-white-a3.jpg",
-            "image_alt": "SuntNeew A3 Portable Car Jump Starter",
-            "eyebrow": "A3 · 16,000mAh",
-            "title": "SuntNeew A3 Portable Car Jump Starter",
-            "summary": "A 16,000mAh 12V jump starter with USB-C PD60W, 800A starting current and 4,000A peak current.",
-            "capacities": "16000",
-            "spec_capacity": "16,000mAh",
-            "spec_start": "800A",
-            "spec_peak": "4,000A",
-            "spec_fit": "Up to 8.0L gas / 5.5L diesel",
-            "link_label": "Open A3 details"
+            "group": "multitool",
+            "also_heavy_duty": false,
+            "model_code": "KP700",
+            "product_handle": "suntneew-kb700-fan-jump-starter-7-200mah",
+            "asset_name": "suntneew-jump-card-kb700.webp",
+            "alt_asset_name": "",
+            "image_alt": "SuntNeew KP700 Fan Jump Starter with 3-speed air duster",
+            "badge": "Air Duster 2-in-1",
+            "badge_tone": "teal",
+            "eyebrow": "KP700 · 7,200mAh",
+            "title": "SuntNeew KP700 Fan Jump Starter",
+            "summary": "2-in-1 roadside starter + 3-speed cordless high-speed air duster.",
+            "spec_capacity": "7,200mAh",
+            "spec_start": "500A",
+            "spec_peak": "1,000A",
+            "spec_fit": "6.0L Gas / 4.0L Diesel",
+            "spec_highlight": "3-Speed Air Duster",
+            "meta_note": "Includes blower nozzles & 2W light",
+            "enable_color_swatches": false,
+            "preview_only": false
           }
         },
         "family_oj02": {
           "type": "family",
           "settings": {
+            "group": "multitool",
+            "also_heavy_duty": false,
+            "model_code": "OJ02",
             "product_handle": "suntneew-oj02-obd2-jump-starter",
-            "asset_name": "suntneew-shop-white-oj02.jpg",
-            "image_alt": "SuntNeew OJ02 OBD2 jump starter with smart clamp and OBD2 cable",
+            "asset_name": "suntneew-jump-card-oj02.webp",
+            "alt_asset_name": "",
+            "image_alt": "SuntNeew OJ02 OBD2 Jump Starter with diagnostic scanner",
+            "badge": "OBD2 Scanner",
+            "badge_tone": "teal",
             "eyebrow": "OJ02 · 8,000mAh",
             "title": "SuntNeew OJ02 OBD2 Jump Starter",
-            "summary": "A 12V jump starter with OBD2 diagnostics, 700A starting current and 1,500A peak current.",
-            "capacities": "8000",
+            "summary": "Jump starter + built-in OBD2 diagnostic code reader & battery check.",
             "spec_capacity": "8,000mAh",
             "spec_start": "700A",
             "spec_peak": "1,500A",
-            "spec_fit": "Up to 6.0L gas / 3.0L diesel",
-            "link_label": "Open OJ02 details"
+            "spec_fit": "6.0L Gas / 3.0L Diesel",
+            "spec_highlight": "OBD2 Diagnostics",
+            "meta_note": "Read & clear engine fault codes",
+            "enable_color_swatches": false,
+            "preview_only": false
           }
         },
         "family_b21ap": {
           "type": "family",
           "settings": {
+            "group": "multitool",
+            "also_heavy_duty": true,
+            "model_code": "B21AP",
             "product_handle": "suntneew-b21ap-5000a-jump-starter-air-compressor",
-            "asset_name": "suntneew-shop-white-b21ap.jpg",
-            "image_alt": "SuntNeew B21AP 5000A jump starter with 160 PSI air compressor",
+            "asset_name": "suntneew-jump-card-b21ap.webp",
+            "alt_asset_name": "",
+            "image_alt": "SuntNeew B21AP 5000A Jump Starter with 160 PSI Air Compressor",
+            "badge": "Flagship · 160 PSI",
+            "badge_tone": "orange",
             "eyebrow": "B21AP · 20,000mAh",
-            "title": "SuntNeew B21AP 5000A Jump Starter with 160 PSI Air Compressor",
-            "summary": "All-in-one 12V jump starter with a 160 PSI auto-stop tire inflator, 2,500A starting current, 5,000A peak current, and PD 45W USB-C charging.",
-            "capacities": "20000",
+            "title": "SuntNeew B21AP 5000A + Air Compressor",
+            "summary": "Flagship 5,000A jump starter + 160 PSI auto-stop tire inflator.",
             "spec_capacity": "20,000mAh",
             "spec_start": "2,500A",
             "spec_peak": "5,000A",
-            "spec_fit": "Up to 9.0L gas / 6.0L diesel",
-            "link_label": "Open B21AP details"
+            "spec_fit": "9.0L Gas / 6.0L Diesel",
+            "spec_highlight": "160 PSI Inflator",
+            "meta_note": "PD 45W USB-C · Heavy trucks & RVs",
+            "enable_color_swatches": false,
+            "preview_only": false
+          }
+        },
+        "family_a3": {
+          "type": "family",
+          "settings": {
+            "group": "heavy",
+            "also_heavy_duty": true,
+            "model_code": "A3",
+            "product_handle": "suntneew-a3-jump-starter-16000mah",
+            "asset_name": "suntneew-jump-card-a3.webp",
+            "alt_asset_name": "",
+            "image_alt": "SuntNeew A3 4000A Jump Starter with USB-C PD60W",
+            "badge": "4000A · PD 60W",
+            "badge_tone": "navy",
+            "eyebrow": "A3 · 16,000mAh",
+            "title": "SuntNeew A3 Jump Starter",
+            "summary": "High-output 4,000A peak starter with fast USB-C PD60W charging.",
+            "spec_capacity": "16,000mAh",
+            "spec_start": "800A",
+            "spec_peak": "4,000A",
+            "spec_fit": "8.0L Gas / 5.5L Diesel",
+            "spec_highlight": "USB-C PD 60W",
+            "meta_note": "Full-size pickups, vans & laptops",
+            "enable_color_swatches": false,
+            "preview_only": false
           }
         }
       },
       "block_order": [
-        "fit_7200",
-        "fit_8000",
-        "fit_u23",
-        "fit_oj02",
-        "fit_10000",
-        "fit_a3",
-        "fit_20000",
-        "family_kb700",
         "family_a20",
         "family_u23",
         "family_u32",
-        "family_a3",
+        "family_kb700",
         "family_oj02",
-        "family_b21ap"
+        "family_b21ap",
+        "family_a3"
       ],
       "settings": {
-        "eyebrow": "CHOOSE BY FIT",
-        "heading": "Find the jump starter that fits the vehicle.",
-        "intro": "Compare the exact model and capacity. Equal battery capacity does not mean equal starting current or vehicle compatibility.",
-        "table_note": "Engine limits apply only to the named 12V model and capacity. Check the vehicle and the exact product page before use; a start is not guaranteed. Availability is shown on the product page.",
-        "compare_label": "Show matches",
-        "catalog_heading": "Compare product families",
-        "catalog_intro": "Not sure which jump starter fits your vehicle? Compare models below by engine displacement, starting current, and built-in tools like high-speed blowers or OBD2 scanners. For the A20, select your preferred capacity directly on its product page.",
-        "cards_label": "Cards",
-        "list_label": "List",
-        "empty_label": "No family is mapped to this capacity yet. Review the full catalog or confirm the product data before publishing a new mapping."
+        "hero_asset": "suntneew-hero-jump-light-desktop.webp",
+        "eyebrow": "12V JUMP STARTERS · 7 IN-STOCK MODELS",
+        "heading": "Pick the right jump starter in seconds.",
+        "intro": "Compare verified 12V engine coverage, peak starting current, and built-in tools like 160 PSI air inflation, air duster, or OBD2 diagnostics.",
+        "shelf1_kicker": "01 · COMPACT & VALUE",
+        "shelf1_heading": "Everyday Cars & SUVs (Up to 6.5L)",
+        "shelf1_desc": "Clear step-up ladder from pocket glove-box backup to a large-screen 2,000A starter.",
+        "shelf2_kicker": "02 · BUILT-IN ROADSIDE TOOLS",
+        "shelf2_heading": "2-in-1 Multi-Tool Emergency Kits",
+        "shelf2_desc": "Each model adds one dedicated roadside tool: cordless air duster, OBD2 diagnostics, or 160 PSI tire inflator.",
+        "shelf3_kicker": "03 · TRUCKS, VANS & DIESEL",
+        "shelf3_heading": "Heavy-Duty Gas (8L–9L) & Diesel (5.5L–6L)",
+        "shelf3_desc": "Side-by-side comparison between 4,000A PD60W fast-charging (A3) and 5,000A + 160 PSI Tire Inflator (B21AP).",
+        "compare_heading": "Compare All 7 Models Side-by-Side",
+        "table_note": "Engine limits apply to compatible 12V vehicles. Confirm exact model specifications and user manual before use."
       }
     }
   },
   "order": [
-    "banner",
     "guide"
   ]
 }
