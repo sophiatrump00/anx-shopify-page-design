@@ -66,10 +66,15 @@
       const rootRoute = window.Shopify?.routes?.root || '/';
       let promoCode = '';
       try {
-        const promoActive = Boolean(document.querySelector('[data-sn-promo-bar]'));
+        const promoBar = document.querySelector('[data-sn-promo-bar]');
         const dismissed = window.sessionStorage?.getItem('sn_bf_promo_dismissed') === '1';
-        if (promoActive && !dismissed) {
-          promoCode = qty >= 2 ? 'SN175' : 'SN10';
+        if (promoBar && !dismissed) {
+          const defaultCode = String(promoBar.dataset.snDefaultCode || '').trim().toUpperCase();
+          if (defaultCode === 'RV20' || defaultCode === 'JS10') {
+            promoCode = defaultCode;
+          } else {
+            promoCode = qty >= 2 ? 'SN175' : 'SN10';
+          }
         }
       } catch (_) {}
       const query = promoCode ? `discount=${encodeURIComponent(promoCode)}` : 'checkout';

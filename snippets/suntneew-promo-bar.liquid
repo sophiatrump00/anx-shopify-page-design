@@ -5,21 +5,54 @@
   assign applied_title = ''
   assign applied_amount = 0
 
+  assign js10_handles = 'suntneew-u23-portable-car-jump-starter-8-000mah,suntneew-u32-portable-car-jump-starter-10-000mah,suntneew-kb700-fan-jump-starter-7-200mah,suntneew-a3-jump-starter-16000mah,suntneew-b21ap-5000a-jump-starter-air-compressor' | split: ','
+  assign rv20_handles = 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-24,suntneew-12-8v-230ah-lifepo4-rv-battery' | split: ','
+
   for app in cart.discount_applications
     assign app_code_up = app.title | upcase | strip
-    if app_code_up == 'SN10' or app_code_up == 'SN175'
+    if app_code_up == 'SN10' or app_code_up == 'SN175' or app_code_up == 'JS10' or app_code_up == 'RV20'
       assign applied_code = app_code_up
       assign applied_title = app.title | strip
       assign applied_amount = app.total_allocated_amount | default: 0
       break
     endif
   endfor
+
+  assign pdp_group = 'sn'
+  assign default_code = 'SN10'
+  if promo_context != 'cart' and product != blank
+    if js10_handles contains product.handle
+      assign pdp_group = 'js10'
+      assign default_code = 'JS10'
+    elsif rv20_handles contains product.handle
+      assign pdp_group = 'rv20'
+      assign default_code = 'RV20'
+    endif
+  endif
+
+  assign has_rv20 = false
+  assign has_js10 = false
+  assign sn_qty = 0
+  if promo_context == 'cart'
+    for item in cart.items
+      assign h = item.product.handle | downcase
+      if rv20_handles contains h
+        assign has_rv20 = true
+      elsif js10_handles contains h
+        assign has_js10 = true
+      else
+        assign sn_qty = sn_qty | plus: item.quantity
+      endif
+    endfor
+  endif
 -%}
 
 <div
   class="sn-promo-bar{% if promo_context == 'cart' %} sn-promo-bar--cart{% endif %}"
   data-sn-promo-bar
   data-sn-context="{{ promo_context | escape }}"
+  data-sn-promo-group="{{ pdp_group | escape }}"
+  data-sn-default-code="{{ default_code | escape }}"
   data-sn-cart-applied-code="{{ applied_code | escape }}"
 >
   <div class="sn-promo-bar__head">
@@ -35,7 +68,21 @@
 
   <div class="sn-promo-bar__chips">
     {%- if promo_context == 'cart' -%}
-      {%- if item_count >= 2 -%}
+      {%- if has_rv20 -%}
+        <button
+          type="button"
+          class="sn-promo-chip{% if applied_code == 'RV20' %} is-applied{% endif %}"
+          data-sn-promo-apply="RV20"
+          aria-pressed="{% if applied_code == 'RV20' %}true{% else %}false{% endif %}"
+        >
+          <strong class="sn-promo-chip__amount">$20 OFF</strong>
+          <code class="sn-promo-chip__code">RV20</code>
+          <span class="sn-promo-chip__cond">G24 / 230Ah order</span>
+          <span class="sn-promo-chip__cta" data-sn-promo-cta>
+            {%- if applied_code == 'RV20' -%}✓ Applied{%- else -%}Apply{%- endif -%}
+          </span>
+        </button>
+      {%- elsif sn_qty >= 2 -%}
         <button
           type="button"
           class="sn-promo-chip{% if applied_code == 'SN175' %} is-applied{% endif %}"
@@ -44,9 +91,23 @@
         >
           <strong class="sn-promo-chip__amount">$17.50 OFF</strong>
           <code class="sn-promo-chip__code">SN175</code>
-          <span class="sn-promo-chip__cond">2+ items in cart</span>
+          <span class="sn-promo-chip__cond">2+ eligible items in cart</span>
           <span class="sn-promo-chip__cta" data-sn-promo-cta>
             {%- if applied_code == 'SN175' -%}✓ Applied{%- else -%}Apply{%- endif -%}
+          </span>
+        </button>
+      {%- elsif has_js10 and sn_qty == 0 -%}
+        <button
+          type="button"
+          class="sn-promo-chip{% if applied_code == 'JS10' %} is-applied{% endif %}"
+          data-sn-promo-apply="JS10"
+          aria-pressed="{% if applied_code == 'JS10' %}true{% else %}false{% endif %}"
+        >
+          <strong class="sn-promo-chip__amount">$10 OFF</strong>
+          <code class="sn-promo-chip__code">JS10</code>
+          <span class="sn-promo-chip__cond">Jump Starter order</span>
+          <span class="sn-promo-chip__cta" data-sn-promo-cta>
+            {%- if applied_code == 'JS10' -%}✓ Applied{%- else -%}Apply{%- endif -%}
           </span>
         </button>
       {%- else -%}
@@ -64,6 +125,34 @@
           </span>
         </button>
       {%- endif -%}
+    {%- elsif pdp_group == 'js10' -%}
+      <button
+        type="button"
+        class="sn-promo-chip{% if applied_code == 'JS10' %} is-applied{% endif %}"
+        data-sn-promo-apply="JS10"
+        aria-pressed="{% if applied_code == 'JS10' %}true{% else %}false{% endif %}"
+      >
+        <strong class="sn-promo-chip__amount">$10 OFF</strong>
+        <code class="sn-promo-chip__code">JS10</code>
+        <span class="sn-promo-chip__cond">Auto-applies at checkout</span>
+        <span class="sn-promo-chip__cta" data-sn-promo-cta>
+          {%- if applied_code == 'JS10' -%}✓ Applied{%- else -%}Apply{%- endif -%}
+        </span>
+      </button>
+    {%- elsif pdp_group == 'rv20' -%}
+      <button
+        type="button"
+        class="sn-promo-chip{% if applied_code == 'RV20' %} is-applied{% endif %}"
+        data-sn-promo-apply="RV20"
+        aria-pressed="{% if applied_code == 'RV20' %}true{% else %}false{% endif %}"
+      >
+        <strong class="sn-promo-chip__amount">$20 OFF</strong>
+        <code class="sn-promo-chip__code">RV20</code>
+        <span class="sn-promo-chip__cond">Auto-applies at checkout</span>
+        <span class="sn-promo-chip__cta" data-sn-promo-cta>
+          {%- if applied_code == 'RV20' -%}✓ Applied{%- else -%}Apply{%- endif -%}
+        </span>
+      </button>
     {%- else -%}
       <button
         type="button"
@@ -99,7 +188,7 @@
     <p class="sn-promo-bar__pack-hint" data-sn-pack-hint hidden></p>
   {%- endif -%}
 
-  {%- if promo_context == 'cart' and item_count < 2 -%}
+  {%- if promo_context == 'cart' and sn_qty > 0 and sn_qty < 2 and has_rv20 == false -%}
     <p class="sn-promo-bar__note">
       <span>Add 1 more item in cart for</span>
       <button

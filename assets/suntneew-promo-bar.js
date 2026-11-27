@@ -3,9 +3,52 @@
 
   const SESSION_KEY = 'sn_bf_promo_code';
   const DISMISSED_KEY = 'sn_bf_promo_dismissed';
-  const ALLOWED_CODES = new Set(['SN10', 'SN175']);
+  const ALLOWED_CODES = new Set(['SN10', 'SN175', 'JS10', 'RV20']);
+  const JS10_HANDLES = new Set([
+    'suntneew-u23-portable-car-jump-starter-8-000mah',
+    'suntneew-u32-portable-car-jump-starter-10-000mah',
+    'suntneew-kb700-fan-jump-starter-7-200mah',
+    'suntneew-a3-jump-starter-16000mah',
+    'suntneew-b21ap-5000a-jump-starter-air-compressor',
+  ]);
+  const RV20_HANDLES = new Set([
+    'suntneew-12-8v-100ah-lifepo4-rv-battery-group-24',
+    'suntneew-12-8v-230ah-lifepo4-rv-battery',
+  ]);
   let autoSyncInFlight = false;
   let lastAutoSyncSignature = '';
+
+  function extractItemHandle(item) {
+    const direct = String(item?.handle || '').trim().toLowerCase();
+    if (direct) return direct;
+    const url = String(item?.url || '');
+    const m = url.match(/\/products\/([^/?#]+)/i);
+    return m ? m[1].toLowerCase() : '';
+  }
+
+  function pickOptimalCartCode(cart) {
+    const items = Array.isArray(cart?.items) ? cart.items : [];
+    let hasRv20 = false;
+    let hasJs10 = false;
+    let snQty = 0;
+
+    for (const item of items) {
+      const h = extractItemHandle(item);
+      const q = Math.max(0, Number(item?.quantity || 0));
+      if (RV20_HANDLES.has(h)) {
+        hasRv20 = true;
+      } else if (JS10_HANDLES.has(h)) {
+        hasJs10 = true;
+      } else {
+        snQty += q;
+      }
+    }
+
+    if (hasRv20) return 'RV20';
+    if (snQty >= 2) return 'SN175';
+    if (hasJs10 && snQty === 0) return 'JS10';
+    return 'SN10';
+  }
 
   function safeGetSession(key) {
     try {
@@ -205,7 +248,7 @@
       });
       if (hasCustomApplicableCode) return;
 
-      const targetCode = itemCount >= 2 ? 'SN175' : 'SN10';
+      const targetCode = pickOptimalCartCode(cart);
       const alreadyApplied = existingCodes.some((d) => {
         const c = String(d?.code || '').trim().toUpperCase();
         return c === targetCode && d.applicable !== false;
