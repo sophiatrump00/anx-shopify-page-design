@@ -14,6 +14,6 @@ export function product(available=true) {
  return {id:10335382962471,variants,selected_or_first_available_variant:variants[0],options_with_values:[{name:'Capacity',values:['8000mAh','12000mAh','16000mAh']},{name:'Color',values:['Orange','Red']},{name:'Pack',values:['1 unit','2 units','4 units','Any quantity']}],metafields:{reviews:{rating:{value:{rating:4.72,scale_max:5}},rating_count:{value:18}}}};
 }
 export function render(source=product()) {
- let template=read('sections/suntneew-a20-v8.liquid').split('{% schema %}')[0].replace(/{% form [\s\S]*?%}/g,'<form is="product-form" id="{{ product_form_id }}">').replace(/{% endform %}/g,'</form>').replace(/{% for block in section.blocks %}[\s\S]*?{% endfor %}/,'<div id="judgeme_product_reviews">Customer reviews</div>');
+ let template=read('sections/suntneew-a20-v8.liquid').split('{% schema %}')[0].replace(/{%-?\s*render\s+'suntneew-promo-bar'[\s\S]*?-%}/g,'').replace(/{% form [\s\S]*?%}/g,'<form is="product-form" id="{{ product_form_id }}">').replace(/{% endform %}/g,'</form>').replace(/{% for block in section.blocks %}[\s\S]*?{% endfor %}/,'<div id="judgeme_product_reviews">Customer reviews</div>');
  return engine.parseAndRenderSync(template,{product:source,shop:{currency:'USD',enabled_payment_types:['visa','paypal']},cart:{currency:{iso_code:'USD'}},routes:{root_url:'/',cart_url:'/cart',collections_url:'/collections'},section:{id:'test',blocks:[]}});
 }

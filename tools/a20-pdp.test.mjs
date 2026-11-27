@@ -16,12 +16,31 @@ test('A20 pack selection shows streamlined 3-pack per-unit cards without Any qua
  assert.deepEqual([...root.querySelectorAll('#pack-choices input')].map(node=>node.value),['1 unit','2 units','4 units']);
  assert.equal(root.querySelectorAll('.sn-pack-prices__compare,.sn-pack-prices__saving,.sn-pack-prices__total').length,0);
  choose('pack','2 units');
- assert.equal(new w.FormData(form).get('id'),'101');assert.equal(new w.FormData(form).get('quantity'),'1');assert.equal(root.querySelector('#total-price').textContent,'$133.98');
+ assert.equal(new w.FormData(form).get('id'),'111');assert.equal(new w.FormData(form).get('quantity'),'1');assert.equal(root.querySelector('#total-price').textContent,'$133.98');
  root.querySelector('#quantity-plus').click();assert.equal(new w.FormData(form).get('quantity'),'2');assert.equal(root.querySelector('#total-price').textContent,'$267.96');assert.match(root.querySelector('#quantity-summary').textContent,/4 units in total/);
- choose('pack','4 units');assert.equal(new w.FormData(form).get('id'),'102');assert.equal(new w.FormData(form).get('quantity'),'1');
+ choose('pack','4 units');assert.equal(new w.FormData(form).get('id'),'112');assert.equal(new w.FormData(form).get('quantity'),'1');
  const fallback=await setup(t,true,'https://example.com/products/a20?variant=103');
  assert.equal(fallback.root.querySelector('#chosen-pack').textContent,'1 unit');
  assert.equal(new fallback.w.FormData(fallback.form).get('id'),'100');
+});
+test('default A20 view selects Red 1-unit, hides capacity picker in SSR and hydrated DOM, and preserves explicit Orange URL params',async t=>{
+ const ssrHtml=render(product(true));
+ const ssrDom=new JSDOM(ssrHtml);t.after(()=>ssrDom.window.close());
+ const ssrRoot=ssrDom.window.document.querySelector('[data-a20-pdp]');
+ assert.equal(ssrRoot.querySelector('fieldset.capacity-options').hidden,true);
+ assert.equal(ssrRoot.querySelector('#chosen-colour').textContent,'Red');
+ assert.equal(ssrRoot.querySelector('.product-description').textContent.includes('Choose your capacity.'),false);
+ const{w,root,form}=await setup(t);
+ assert.equal(new w.FormData(form).get('id'),'110');
+ assert.equal(root.querySelector('#chosen-colour').textContent,'Red');
+ assert.equal(root.querySelector('[data-colour="red"]').getAttribute('aria-pressed'),'true');
+ assert.equal(root.querySelector('[data-colour="orange"]').getAttribute('aria-pressed'),'false');
+ const byQuery=await setup(t,true,'https://example.com/products/a20?colour=orange');
+ assert.equal(new byQuery.w.FormData(byQuery.form).get('id'),'100');
+ assert.equal(byQuery.root.querySelector('#chosen-colour').textContent,'Orange');
+ const byVariant=await setup(t,true,'https://example.com/products/a20?variant=100');
+ assert.equal(new byVariant.w.FormData(byVariant.form).get('id'),'100');
+ assert.equal(byVariant.root.querySelector('#chosen-colour').textContent,'Orange');
 });
 test('confirmed unavailable capacities stay hidden by default, block every purchase route via direct URL, and recover the correct color/SKU',async t=>{
  const defaultView=await setup(t);
@@ -50,7 +69,7 @@ test('returning from Features to the gallery hides the lower price before the ma
 test('native cart lock sends one request, preserves pack quantity and recovers after an inventory error',async t=>{
  const{w,root,form,choose}=await setup(t);choose('pack','2 units');root.querySelector('#quantity-plus').click();let finish,calls=0,submitted;
  w.fetch=async(url,options)=>{calls++;submitted=[options.body.get('id'),options.body.get('quantity')];return new Promise(resolve=>{finish=resolve;});};
- const first=form._onSubmit({preventDefault(){}});await form._onSubmit({preventDefault(){}});await tick();assert.equal(calls,1);assert.deepEqual(submitted,['101','2']);assert.equal(root.querySelector('#purchase-button').disabled,true);
+ const first=form._onSubmit({preventDefault(){}});await form._onSubmit({preventDefault(){}});await tick();assert.equal(calls,1);assert.deepEqual(submitted,['111','2']);assert.equal(root.querySelector('#purchase-button').disabled,true);
  finish({ok:false,json:async()=>({description:'Inventory changed. Please try a smaller quantity.'})});await first;await tick();assert.match(root.querySelector('.cart-feedback').textContent,/Inventory changed/);assert.equal(root.querySelector('#purchase-button').disabled,false);assert.equal(root.querySelector('#quantity').value,'2');assert.equal(root.querySelector('#quantity').disabled,false);assert.equal(root.querySelector('input[name="capacity"]').disabled,false);
 });
 test('each color keeps all selected gallery and story assets with full-resolution zoom',async t=>{
@@ -61,16 +80,16 @@ test('sticky purchase bar syncs selected pack/quantity and submits native form d
  const{w,root,form,choose}=await setup(t);
  choose('pack','2 units');root.querySelector('#quantity-plus').click();
  assert.equal(root.querySelector('#sticky-total').textContent,'$267.96');
- assert.equal(root.querySelector('#sticky-options').textContent,'8,000mAh · Orange · 2 units × 2');
+ assert.equal(root.querySelector('#sticky-options').textContent,'8,000mAh · Red · 2 units × 2');
  assert.equal(root.querySelector('#sticky-purchase-button').getAttribute('form'),form.id);
  assert.equal(root.querySelector('#sticky-buy-now').getAttribute('form'),form.id);
  assert.equal(root.querySelector('#sticky-purchase-button').disabled,false);
  assert.equal(root.querySelector('#sticky-buy-now').disabled,false);
  let submitted;
- w.fetch=async(url,options)=>{if(String(url).includes('cart/add.js')){submitted=[options.body.get('id'),options.body.get('quantity')];return{ok:true,json:async()=>({items:[{id:101}],sections:{}})};}return{ok:true,json:async()=>({items:[]})};};
+ w.fetch=async(url,options)=>{if(String(url).includes('cart/add.js')){submitted=[options.body.get('id'),options.body.get('quantity')];return{ok:true,json:async()=>({items:[{id:111}],sections:{}})};}return{ok:true,json:async()=>({items:[]})};};
  root.querySelector('#sticky-purchase-button').click();
  await tick();await tick();
- assert.deepEqual(submitted,['101','2']);
+ assert.deepEqual(submitted,['111','2']);
  assert.equal(root.querySelector('#sticky-feedback').textContent,'Added to your cart.');
 });
 test('progressive FAQ initially shows top 3 questions, reveals related answers on click, and toggles all',async t=>{

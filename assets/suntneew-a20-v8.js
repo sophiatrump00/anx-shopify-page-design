@@ -13,7 +13,7 @@ const config=[
  {group:'06',kind:'pair',labels:['Temperature range','8,000mAh battery'],eyebrow:'05 / CHECK & RECHARGE',heading:'Check the charge.<br>Then hit the road.',body:'The digital display shows how much charge is left. Top off the 8,000mAh battery before a trip, and recharge after use so it’s ready for the next drive.',note:'Discharge temperature: −4°F to 140°F (−20°C to 60°C). Charging and storage limits differ; see the A20 manual.'},
  {group:'07',kind:'instructions',eyebrow:'06 / QUICK START GUIDE',heading:'How to jump-start in 4 easy steps.',body:'Follow the guided smart-clamp sequence before cranking your vehicle.'}
 ];
-let selection, colour='orange', galleryPack='1 unit', focusReturn;
+let selection, colour='red', galleryPack='1 unit', focusReturn;
 let disposePairs=[], disposeGallery=null;
 let galleryController, galleryZoomRows=[], galleryZoomIndex=0;
 const params=new URLSearchParams(location.search);
@@ -317,7 +317,7 @@ const A20Sales = (() => {
   byId('box-quantity-note').textContent = detail.pricing && detail.pricing.totalUnits > 1 ? `The list shows one unit’s package. Your selection contains ${detail.pricing.totalUnits} units.` : 'Package contents listed per unit.';
  }
  root.addEventListener('a20:sale-update', event => synchronize(event.detail));
- synchronize({capacity:new URLSearchParams(location.search).get('capacity') || '8000mAh',colour:new URLSearchParams(location.search).get('colour') || 'orange',pack:document.querySelector('#chosen-pack')?.textContent});
+ synchronize({capacity:new URLSearchParams(location.search).get('capacity') || '8000mAh',colour:new URLSearchParams(location.search).get('colour') || 'red',pack:document.querySelector('#chosen-pack')?.textContent});
  const updateBar = () => {
   const shell=getComputedStyle(document.documentElement);
   const pixels=name=>parseFloat(shell.getPropertyValue(name))||0;
@@ -583,7 +583,7 @@ const A20Sales = (() => {
  const query = new URLSearchParams(location.search);
  // Merchant-confirmed unavailable capacities; 8000mAh follows live Shopify availability.
  const outOfStockCapacities = new Set(['12000mAh', '16000mAh']);
- let data, capacity = '8000mAh', colour = query.get('colour') === 'red' ? 'red' : 'orange', pack = '1 unit', count = 1;
+ let data, capacity = '8000mAh', colour = query.get('colour') === 'orange' ? 'orange' : 'red', pack = '1 unit', count = 1;
  const money = cents => new Intl.NumberFormat('en-US', {style:'currency', currency:data.currency}).format(cents / 100);
  const capacityLabel = value => `${Number.parseInt(value, 10).toLocaleString('en-US')}mAh`;
  const variant = () => A20Sales.findVariant(data.variants, capacity, colour, pack);
@@ -698,12 +698,13 @@ const A20Sales = (() => {
   if (requestedByVariant) { ({capacity, colour, pack} = requestedByVariant); if (pack === 'Any quantity') pack = '1 unit'; }
   else {
    if (requested) { ({capacity, colour, pack} = requested); if (pack === 'Any quantity') pack = '1 unit'; }
+   if (query.get('colour') === 'red' || query.get('colour') === 'orange') colour = query.get('colour');
    if (capacityValues.includes(query.get('capacity'))) capacity = query.get('capacity');
    const requestedPack = {'1':'1 unit','2':'2 units','4':'4 units'}[query.get('pack')];
    if (requestedPack) pack = requestedPack;
    if (!variant()) {
     const fallbackVariant = data.variants.find(v => v.capacity === capacity && v.pack === pack);
-    colour = fallbackVariant ? fallbackVariant.colour : 'orange';
+    colour = fallbackVariant ? fallbackVariant.colour : 'red';
    }
   }
   count = A20Sales.quantity(query.get('quantity'));
