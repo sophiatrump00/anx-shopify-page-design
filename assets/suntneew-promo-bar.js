@@ -24,6 +24,11 @@
     ['suntneew-12-8v-230ah-lifepo4-rv-battery', { code: '230AHBF', amount: 94 }],
   ]);
 
+  const RV_BONUS_BATTERY_HANDLES = new Set([
+    'suntneew-12-8v-100ah-lifepo4-rv-battery-group-24',
+    'suntneew-12-8v-230ah-lifepo4-rv-battery',
+  ]);
+
   let autoSyncInFlight = false;
   let lastAutoSyncSignature = '';
   let drawerSafetyTimer = 0;
@@ -38,6 +43,9 @@
 
   function pickOptimalCartCode(cart) {
     const items = Array.isArray(cart?.items) ? cart.items : [];
+    const hasRvBonusBattery = items.some((item) =>
+      RV_BONUS_BATTERY_HANDLES.has(extractItemHandle(item))
+    );
     const dedicatedCodes = [];
     let dedicatedTotal = 0;
     let snQty = 0;
@@ -47,6 +55,9 @@
       const q = Math.max(0, Number(item?.quantity || 0));
       const spec = DEDICATED_COUPONS.get(h);
       if (spec) {
+        if (hasRvBonusBattery && spec.code === 'U32BF') {
+          continue;
+        }
         if (!dedicatedCodes.includes(spec.code)) {
           dedicatedCodes.push(spec.code);
           dedicatedTotal += spec.amount;
@@ -403,7 +414,55 @@
     }
   }
 
+  async function addRvBonusU32(btn) {
+    const variantId = Number(btn.dataset.snU32BonusAdd || 0);
+    if (!variantId || btn.disabled || btn.getAttribute('aria-busy') === 'true') return;
+
+    btn.setAttribute('aria-busy', 'true');
+    btn.disabled = true;
+    const prevText = btn.textContent;
+    btn.textContent = 'Adding...';
+
+    try {
+      const root = getRoot();
+      const addRes = await fetch(`${root}cart/add.js`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] }),
+      });
+      if (!addRes.ok) {
+        btn.textContent = prevText;
+        btn.disabled = false;
+        btn.removeAttribute('aria-busy');
+        return;
+      }
+
+      lastAutoSyncSignature = '';
+      await ensureOptimalCartDiscount({ refreshDrawer: true, force: true });
+
+      const drawer = document.getElementById('cart-drawer');
+      if (drawer && drawer.open) {
+        document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+      }
+      if (window.themeVariables?.settings?.pageType === 'cart') {
+        window.location.reload();
+      }
+    } catch {
+      btn.textContent = prevText;
+      btn.disabled = false;
+      btn.removeAttribute('aria-busy');
+    }
+  }
+
   document.addEventListener('click', (event) => {
+    const bonusBtn =
+      event.target && event.target.closest ? event.target.closest('[data-sn-u32-bonus-add]') : null;
+    if (bonusBtn) {
+      void addRvBonusU32(bonusBtn);
+      return;
+    }
+
     const removeBtn =
       event.target && event.target.closest
         ? event.target.closest('cart-discount-remove-button')

@@ -56,7 +56,16 @@
 
   assign cart_coupon_codes = ''
   assign sn_qty = 0
+  assign cart_has_rv_bonus = false
   if promo_context == 'cart'
+    for item in cart.items
+      assign h = item.product.handle | downcase | strip
+      if h == 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-24' or h == 'suntneew-12-8v-230ah-lifepo4-rv-battery'
+        assign cart_has_rv_bonus = true
+        break
+      endif
+    endfor
+
     for item in cart.items
       assign h = item.product.handle | downcase | strip
       assign matched_entry = ''
@@ -70,6 +79,9 @@
       if matched_entry != blank
         assign parts = matched_entry | split: ':'
         assign c_code = parts[1]
+        if cart_has_rv_bonus and c_code == 'U32BF'
+          continue
+        endif
         assign wrap_c = ',' | append: c_code | append: ','
         unless cart_coupon_codes contains wrap_c
           assign cart_coupon_codes = cart_coupon_codes | append: matched_entry | append: '|'
@@ -94,6 +106,10 @@
     if applied_codes_csv contains wrap_default
       assign is_applied = true
     endif
+    assign is_per_unit_coupon = false
+    if default_code == 'G24BF' or default_code == '230AHBF'
+      assign is_per_unit_coupon = true
+    endif
   -%}
   <div
     class="sn-coupon-bar"
@@ -103,6 +119,7 @@
     data-sn-default-code="{{ default_code | escape }}"
     data-sn-coupon-code="{{ default_code | escape }}"
     data-sn-coupon-off="{{ coupon_dollars }}"
+    data-sn-coupon-per-unit="{% if is_per_unit_coupon %}true{% else %}false{% endif %}"
     data-sn-cart-applied-code="{{ applied_codes_csv | escape }}"
   >
     <button
@@ -117,11 +134,15 @@
         <span class="sn-coupon-toggle__top">
           <span class="sn-coupon-toggle__tag" data-sn-coupon-tag>{%- if is_applied -%}Applied{%- else -%}Coupon{%- endif -%}</span>
           <strong class="sn-coupon-toggle__lead" data-sn-coupon-lead>
-            {%- if is_applied -%}${{ coupon_dollars }} coupon applied{%- else -%}Apply ${{ coupon_dollars }} coupon{%- endif -%}
+            {%- if is_per_unit_coupon -%}
+              {%- if is_applied -%}${{ coupon_dollars }}/unit coupon applied{%- else -%}Apply ${{ coupon_dollars }}/unit coupon{%- endif -%}
+            {%- else -%}
+              {%- if is_applied -%}${{ coupon_dollars }} coupon applied{%- else -%}Apply ${{ coupon_dollars }} coupon{%- endif -%}
+            {%- endif -%}
           </strong>
         </span>
         <span class="sn-coupon-toggle__final">
-          <span class="sn-coupon-toggle__sep" aria-hidden="true">· </span>Final <strong>{{ final_cents | money }}</strong><span class="sn-coupon-toggle__code-mob"> · {{ default_code }}</span>
+          <span class="sn-coupon-toggle__sep" aria-hidden="true">· </span>Final <strong>{{ final_cents | money }}</strong>{% if is_per_unit_coupon %}/unit{% endif %}<span class="sn-coupon-toggle__code-mob"> · {{ default_code }}</span>
         </span>
       </span>
       <code class="sn-coupon-toggle__code-desk" data-sn-coupon-code>{%- if is_applied -%}({{ default_code }}){%- else -%}{{ default_code }}{%- endif -%}</code>

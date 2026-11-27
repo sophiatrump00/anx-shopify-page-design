@@ -109,6 +109,7 @@
 
                   {%- when 'totals' -%}
                     <div class="cart-form__totals v-stack gap-2" {{ block.shopify_attributes }}>
+                      {%- render 'suntneew-rv-u32-bonus' -%}
                       {%- render 'suntneew-promo-bar', context: 'cart', cart_item_count: cart.item_count -%}
                       {%- if section.settings.allow_discount_application or cart.cart_level_discount_applications.size > 0 -%}
                         <div class="v-stack gap-2.5">

@@ -152,9 +152,19 @@
   const purchaseBtn = byId('purchase-button');
   const stickyPurchaseBtn = byId('sticky-purchase-button');
   const buyNowBtns = [...root.querySelectorAll('[data-suntneew-buy-now]')];
+  const rvPackButtons = [...root.querySelectorAll('[data-sn-pack-qty]')];
 
   let count = 1;
   const maxQty = Math.max(1, Number(variantData.maxQty || 999));
+
+  const syncPackCards = () => {
+    rvPackButtons.forEach((btn) => {
+      const q = Number(btn.dataset.snPackQty || 0);
+      const active = q === count;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  };
 
   const syncPrice = () => {
     const busy = form?.dataset.purchaseBusy === 'true';
@@ -193,7 +203,18 @@
     if (purchaseBtn) purchaseBtn.disabled = !avail || busy;
     if (stickyPurchaseBtn) stickyPurchaseBtn.disabled = !avail || busy;
     buyNowBtns.forEach((btn) => { btn.disabled = !avail || busy; });
+    syncPackCards();
   };
+
+  rvPackButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (!variantData.available || form?.dataset.purchaseBusy === 'true') return;
+      const parsed = Math.floor(Number(btn.dataset.snPackQty || 1));
+      if (!Number.isFinite(parsed) || parsed < 1) return;
+      count = Math.max(1, Math.min(maxQty, parsed));
+      syncPrice();
+    });
+  });
 
   minusBtn?.addEventListener('click', () => {
     if (count > 1) { count -= 1; syncPrice(); }

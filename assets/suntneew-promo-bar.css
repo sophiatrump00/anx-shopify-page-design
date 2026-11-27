@@ -490,3 +490,282 @@
     min-height: 28px;
   }
 }
+
+/* RV Battery 1 / 2 / 4 Pack Scenario Picker (G24 & 230Ah PDP) */
+.sn-rv-pack-picker {
+  margin: 18px 0 6px;
+}
+
+.sn-rv-pack-picker__label {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.sn-rv-pack-picker__label span {
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.sn-rv-pack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.sn-rv-pack-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  min-height: 92px;
+  padding: 10px 9px 9px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+
+.sn-rv-pack-card:hover {
+  border-color: #6b7280;
+  background: #f9fafb;
+}
+
+.sn-rv-pack-card:focus-visible {
+  outline: 2px solid #111827;
+  outline-offset: 2px;
+}
+
+.sn-rv-pack-card.is-active {
+  border: 2px solid #111827;
+  background: #f8fafc;
+  padding: 9px 8px 8px;
+  box-shadow: 0 1px 4px rgba(17, 24, 39, 0.08);
+}
+
+.sn-rv-pack-card__badge {
+  position: absolute;
+  top: -8px;
+  left: 8px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #d92d20;
+  color: #ffffff;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.sn-rv-pack-card__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+}
+
+.sn-rv-pack-card__sub {
+  font-size: 10.5px;
+  color: #6b7280;
+  line-height: 1.25;
+}
+
+.sn-rv-pack-card__price {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.sn-rv-pack-card__unit {
+  font-size: 10px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+}
+
+.sn-rv-pack-card__bonus {
+  margin-top: 3px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #fff7ed;
+  color: #9a3412;
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.sn-rv-pack-card__bonus.is-free {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+@media (max-width: 480px) {
+  .sn-rv-pack-grid {
+    gap: 6px;
+  }
+
+  .sn-rv-pack-card {
+    padding: 9px 7px 8px;
+    min-height: 88px;
+  }
+
+  .sn-rv-pack-card.is-active {
+    padding: 8px 6px 7px;
+  }
+
+  .sn-rv-pack-card__price {
+    font-size: 13px;
+  }
+
+  .sn-rv-pack-card__bonus {
+    font-size: 9px;
+  }
+}
+
+/* RV Battery + U32 Two-Tier Bonus Card (Cart Drawer & Main Cart) */
+.sn-rv-bonus-card {
+  border: 1px solid #fdba74;
+  border-radius: 9px;
+  background: #fff7ed;
+  padding: 10px 11px;
+  color: #431407;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.sn-rv-bonus-card.is-free {
+  border-color: #86efac;
+  background: #f0fdf4;
+  color: #14532d;
+}
+
+.sn-rv-bonus-card__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sn-rv-bonus-card__img {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  object-fit: cover;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.sn-rv-bonus-card__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sn-rv-bonus-card__badge {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #de580d;
+  color: #ffffff;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
+
+.sn-rv-bonus-card__badge.is-free {
+  background: #15803d;
+}
+
+.sn-rv-bonus-card__title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+}
+
+.sn-rv-bonus-card__price {
+  font-size: 11px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+}
+
+.sn-rv-bonus-card__price del {
+  color: #9ca3af;
+}
+
+.sn-rv-bonus-card__price strong {
+  color: #9a3412;
+  font-weight: 700;
+}
+
+.sn-rv-bonus-card__price strong.is-free {
+  color: #15803d;
+}
+
+.sn-rv-bonus-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 6px 11px;
+  border: 0;
+  border-radius: 6px;
+  background: #de580d;
+  color: #ffffff;
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 150ms ease;
+}
+
+.sn-rv-bonus-card__btn.is-free {
+  background: #15803d;
+}
+
+.sn-rv-bonus-card__btn:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+.sn-rv-bonus-card__btn:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+.sn-rv-bonus-banner {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9a3412;
+  line-height: 1.4;
+}
+
+.sn-rv-bonus-banner.is-free {
+  color: #15803d;
+}
+
+@media (max-width: 480px) {
+  .sn-rv-bonus-card__row {
+    flex-wrap: wrap;
+  }
+
+  .sn-rv-bonus-card__btn {
+    width: 100%;
+    min-height: 38px;
+  }
+}

@@ -304,6 +304,59 @@
           {%- endif -%}
 
           {% form 'product', product, is: 'product-form', id: product_form_id %}
+            {%- liquid
+              assign is_rv_pack_pdp = false
+              assign rv_coupon_cents = 0
+              assign rv_handle_lc = product.handle | default: '' | downcase | strip
+              if rv_handle_lc == 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-24'
+                assign is_rv_pack_pdp = true
+                assign rv_coupon_cents = 6000
+              elsif rv_handle_lc == 'suntneew-12-8v-230ah-lifepo4-rv-battery'
+                assign is_rv_pack_pdp = true
+                assign rv_coupon_cents = 9400
+              endif
+            -%}
+            {%- if is_rv_pack_pdp -%}
+              {%- liquid
+                assign rv_after_unit_cents = unit_price_cents | minus: rv_coupon_cents | at_least: 0
+                assign rv_p1_cents = rv_after_unit_cents
+                assign rv_p2_cents = rv_after_unit_cents | times: 2
+                assign rv_p4_cents = rv_after_unit_cents | times: 4
+                assign rv_p1_free = false
+                if unit_price_cents >= 37500
+                  assign rv_p1_free = true
+                endif
+              -%}
+              <div class="sn-rv-pack-picker" data-sn-rv-pack-picker>
+                <p class="sn-rv-pack-picker__label">System configuration <span>· Auto-updates quantity &amp; coupon</span></p>
+                <div class="sn-rv-pack-grid" role="group" aria-label="Battery system configuration">
+                  <button type="button" class="sn-rv-pack-card is-active" data-sn-pack-qty="1" aria-pressed="true">
+                    <span class="sn-rv-pack-card__title">1 Pack</span>
+                    <span class="sn-rv-pack-card__sub">12V Standard</span>
+                    <strong class="sn-rv-pack-card__price">{{ rv_p1_cents | money }}</strong>
+                    <span class="sn-rv-pack-card__unit">after coupon</span>
+                    <span class="sn-rv-pack-card__bonus{% if rv_p1_free %} is-free{% endif %}">
+                      {%- if rv_p1_free -%}+ FREE U32 ($74.99){%- else -%}+$29.99 U32 deal{%- endif -%}
+                    </span>
+                  </button>
+                  <button type="button" class="sn-rv-pack-card" data-sn-pack-qty="2" aria-pressed="false">
+                    <span class="sn-rv-pack-card__badge">Most Popular</span>
+                    <span class="sn-rv-pack-card__title">2 Pack</span>
+                    <span class="sn-rv-pack-card__sub">24V / Dual Bank</span>
+                    <strong class="sn-rv-pack-card__price">{{ rv_p2_cents | money }}</strong>
+                    <span class="sn-rv-pack-card__unit">{{ rv_after_unit_cents | money }}/unit</span>
+                    <span class="sn-rv-pack-card__bonus is-free">+ FREE U32 ($74.99)</span>
+                  </button>
+                  <button type="button" class="sn-rv-pack-card" data-sn-pack-qty="4" aria-pressed="false">
+                    <span class="sn-rv-pack-card__title">4 Pack</span>
+                    <span class="sn-rv-pack-card__sub">48V / Off-Grid</span>
+                    <strong class="sn-rv-pack-card__price">{{ rv_p4_cents | money }}</strong>
+                    <span class="sn-rv-pack-card__unit">{{ rv_after_unit_cents | money }}/unit</span>
+                    <span class="sn-rv-pack-card__bonus is-free">+ FREE U32 ($74.99)</span>
+                  </button>
+                </div>
+              </div>
+            {%- endif -%}
             <p class="quantity-label"><label id="quantity-label" for="quantity">Number of units</label></p>
             <div class="purchase-row">
               <div class="quantity-control">

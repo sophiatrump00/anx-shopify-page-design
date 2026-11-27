@@ -1,0 +1,66 @@
+{%- liquid
+  assign g24_handle = 'suntneew-12-8v-100ah-lifepo4-rv-battery-group-24'
+  assign rv230_handle = 'suntneew-12-8v-230ah-lifepo4-rv-battery'
+  assign u32_handle = 'suntneew-u32-portable-car-jump-starter-10-000mah'
+  assign u32_variant_id = '51873264828711'
+
+  assign has_rv_battery = false
+  assign has_u32 = false
+  assign rv_subtotal_cents = 0
+
+  for item in cart.items
+    assign h = item.product.handle | default: '' | downcase | strip
+    if h == g24_handle or h == rv230_handle
+      assign has_rv_battery = true
+      assign rv_subtotal_cents = rv_subtotal_cents | plus: item.original_line_price
+    elsif h == u32_handle
+      assign has_u32 = true
+    endif
+  endfor
+-%}
+
+{%- if has_rv_battery -%}
+  {%- liquid
+    assign is_free_unlocked = false
+    if rv_subtotal_cents >= 37500
+      assign is_free_unlocked = true
+    endif
+
+    assign u32_prod = all_products[u32_handle]
+    assign u32_img = 'https://cdn.shopify.com/s/files/1/0903/4815/9271/files/sn-us-js-u32-2000-20261118.jpg?v=1794986664'
+    if u32_prod != blank and u32_prod.featured_image != blank
+      assign u32_img = u32_prod.featured_image | image_url: width: 160
+    endif
+  -%}
+  <div class="sn-rv-bonus-card{% if is_free_unlocked %} is-free{% endif %}" data-sn-rv-bonus-card>
+    {%- if is_free_unlocked and has_u32 -%}
+      <div class="sn-rv-bonus-banner is-free">
+        <span>✓ FREE U32 Jump Starter unlocked ($0.00 auto-applied)</span>
+      </div>
+    {%- elsif is_free_unlocked -%}
+      <div class="sn-rv-bonus-card__row">
+        <img class="sn-rv-bonus-card__img" src="{{ u32_img }}" alt="SuntNeew U32 Portable Car Jump Starter" width="52" height="52" loading="lazy">
+        <div class="sn-rv-bonus-card__info">
+          <span class="sn-rv-bonus-card__badge is-free">FREE GIFT UNLOCKED</span>
+          <strong class="sn-rv-bonus-card__title">FREE SuntNeew U32 Jump Starter</strong>
+          <span class="sn-rv-bonus-card__price"><del>$74.99</del> <strong class="is-free">FREE</strong></span>
+        </div>
+        <button type="button" class="sn-rv-bonus-card__btn is-free" data-sn-u32-bonus-add="{{ u32_variant_id }}">Claim Free U32</button>
+      </div>
+    {%- elsif has_u32 -%}
+      <div class="sn-rv-bonus-banner">
+        <span>✓ U32 added at $29.99 · Add 1 more G24 to upgrade it to FREE!</span>
+      </div>
+    {%- else -%}
+      <div class="sn-rv-bonus-card__row">
+        <img class="sn-rv-bonus-card__img" src="{{ u32_img }}" alt="SuntNeew U32 Portable Car Jump Starter" width="52" height="52" loading="lazy">
+        <div class="sn-rv-bonus-card__info">
+          <span class="sn-rv-bonus-card__badge">RV ROADSIDE BONUS</span>
+          <strong class="sn-rv-bonus-card__title">Add U32 Jump Starter for $29.99</strong>
+          <span class="sn-rv-bonus-card__price"><del>$74.99</del> <strong>$29.99</strong> · Or add 1 more G24 to get it FREE!</span>
+        </div>
+        <button type="button" class="sn-rv-bonus-card__btn" data-sn-u32-bonus-add="{{ u32_variant_id }}">Add for $29.99</button>
+      </div>
+    {%- endif -%}
+  </div>
+{%- endif -%}
