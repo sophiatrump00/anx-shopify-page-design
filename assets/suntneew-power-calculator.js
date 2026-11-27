@@ -367,9 +367,10 @@
           priority: getSelectedRadio(form, '[data-jump-priority]') || 'compact'
         };
       }
+      var homeBackupField = form.querySelector('[data-home-backup-hours]');
       return {
         loads: collectLoads(form),
-        backupHours: form.querySelector('[data-home-backup-hours]').value,
+        backupHours: homeBackupField ? homeBackupField.value : '12',
         architecture: getSelectedRadio(form, '[data-home-architecture]') || 'auto'
       };
     }
@@ -712,7 +713,7 @@
       syncLoadCards(root);
       initializeRangeControls(root, true);
       forms.forEach(function (form) { updateFormLimits(form); });
-      if (saved.scenario === 'rv' || saved.scenario === 'jump' || saved.scenario === 'home') {
+      if (saved.scenario === 'rv' || saved.scenario === 'jump') {
         chooseScenario(saved.scenario, false);
         openScenario(saved.scenario, false, saved.stage === 'needs' ? 'needs' : 'setup');
       }

@@ -151,14 +151,24 @@ const jumpColdDieselLimits = core.getJumpInputLimits({
   voltage: '12v',
   environment: 'cold'
 });
-assert.equal(jumpColdDieselLimits.maxEngineLiters, 4.6);
+assert.equal(jumpColdDieselLimits.maxEngineLiters, 5.6);
 assert.equal(core.recommendJump({
   fuel: 'diesel',
-  engineLiters: 4.7,
+  engineLiters: 5.7,
   voltage: '12v',
   environment: 'cold',
   priority: 'reserve'
 }).status, 'invalid');
+
+const jumpB21apMatch = core.recommendJump({
+  fuel: 'gasoline',
+  engineLiters: 8.8,
+  voltage: '12v',
+  environment: 'standard',
+  priority: 'reserve'
+});
+assert.equal(jumpB21apMatch.status, 'match');
+assert.equal(jumpB21apMatch.productKey, 'jump-b21ap');
 
 const jumpUnsupportedVoltage = core.recommendJump({
   fuel: 'gasoline',
@@ -169,6 +179,13 @@ const jumpUnsupportedVoltage = core.recommendJump({
 });
 assert.equal(jumpUnsupportedVoltage.status, 'invalid');
 assert.equal(jumpUnsupportedVoltage.limits.available, false);
+
+core.configureCatalog([
+  { scenario: 'home', key: 'home-wl5a', id: 'wl5a', model: 'SuntNeew WL5A', architecture: 'low', capacityWh: 5120, maxUnits: 9, maxSystemOutputW: 12000 },
+  { scenario: 'home', key: 'home-wl10b', id: 'wl10b', model: 'SuntNeew WL10B', architecture: 'low', capacityWh: 10240, maxUnits: 9, maxSystemOutputW: 12000 },
+  { scenario: 'home', key: 'home-vh', id: 'vh-10', model: 'SuntNeew VH', variant: '10.24kWh configuration', architecture: 'high', capacityWh: 10240, maxUnits: 1, maxSystemOutputW: 12000 },
+  { scenario: 'home', key: 'home-vh', id: 'vh-15', model: 'SuntNeew VH', variant: '15.36kWh configuration', architecture: 'high', capacityWh: 15360, maxUnits: 1, maxSystemOutputW: 12000 }
+]);
 
 const homeLow = core.recommendHome({
   loads: [

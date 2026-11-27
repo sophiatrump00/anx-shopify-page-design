@@ -22,6 +22,10 @@
   }
 
   {%- for block in section.blocks -%}
+    {%- assign is_poster_slide = false -%}
+    {%- if block.settings.subheading == blank and block.settings.title == blank and block.settings.button_text == blank -%}
+      {%- assign is_poster_slide = true -%}
+    {%- endif -%}
     #block-{{ block.id }} {
       {%- if section.settings.controls_type == 'filled_arrows' -%}
         {%- assign controls_background = block.settings.button_background -%}
@@ -34,6 +38,16 @@
       --slideshow-slide-controls-background: {{ controls_background.rgb }};
       --slideshow-slide-controls-color: {{ controls_color.rgb }};
     }
+    {%- if is_poster_slide -%}
+      #block-{{ block.id }} .content-over-media {
+        --content-over-media-height: clamp(420px, 125vw, 560px);
+      }
+      @media screen and (min-width: 700px) {
+        #block-{{ block.id }} .content-over-media {
+          --content-over-media-height: clamp(500px, 50vw, 720px);
+        }
+      }
+    {%- endif -%}
   {%- endfor -%}
 </style>
 
@@ -108,7 +122,7 @@
                 {%- endif -%}
                 <img
                   src="{{ block.settings.image_asset | asset_url }}"
-                  alt="{{ block.settings.title | escape }}"
+                  alt="{{ block.settings.title | default: 'SuntNeew Black Friday Sale' | escape }}"
                   width="2800"
                   height="1000"
                   loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
@@ -143,25 +157,27 @@
           {%- endif -%}
 
           {%- comment -%}---------------- CONTENT ----------------{%- endcomment -%}
-          {%- capture content_class -%}{{ block.settings.mobile_text_position }} {{ block.settings.desktop_text_position }}{%- endcapture -%}
+          {%- if block.settings.subheading != blank or block.settings.title != blank or block.settings.button_text != blank -%}
+            {%- capture content_class -%}{{ block.settings.mobile_text_position }} {{ block.settings.desktop_text_position }}{%- endcapture -%}
 
-          <div {% render 'surface', class: content_class, text_color: block.settings.text_color %}>
-            <div class="prose">
-              {%- if block.settings.subheading != blank -%}
-                <p class="subheading" data-sequence="subheading">{{ block.settings.subheading | escape }}</p>
-              {%- endif -%}
+            <div {% render 'surface', class: content_class, text_color: block.settings.text_color %}>
+              <div class="prose">
+                {%- if block.settings.subheading != blank -%}
+                  <p class="subheading" data-sequence="subheading">{{ block.settings.subheading | escape }}</p>
+                {%- endif -%}
 
-              {%- if block.settings.title != blank -%}
-                <p class="{{ block.settings.heading_tag }}" data-sequence="heading">
-                  {%- render 'styled-text', content: block.settings.title, apparition_effect: true -%}
-                </p>
-              {%- endif -%}
+                {%- if block.settings.title != blank -%}
+                  <p class="{{ block.settings.heading_tag }}" data-sequence="heading">
+                    {%- render 'styled-text', content: block.settings.title, apparition_effect: true -%}
+                  </p>
+                {%- endif -%}
 
-              {%- if block.settings.button_text != blank -%}
-                {%- render 'button', href: block.settings.button_link, content: block.settings.button_text, size: 'xl', background: block.settings.button_background, text_color: block.settings.button_text_color -%}
-              {%- endif -%}
+                {%- if block.settings.button_text != blank -%}
+                  {%- render 'button', href: block.settings.button_link, content: block.settings.button_text, size: 'xl', background: block.settings.button_background, text_color: block.settings.button_text_color -%}
+                {%- endif -%}
+              </div>
             </div>
-          </div>
+          {%- endif -%}
         </div>
       {%- endcapture -%}
 

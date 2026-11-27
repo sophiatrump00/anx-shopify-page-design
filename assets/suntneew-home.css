@@ -169,6 +169,9 @@
 .sn-series-hub__card { min-width: 0; min-height: clamp(380px, 33vw, 520px); overflow: hidden; background: #1b2530; }
 .sn-series-hub__card:first-child { grid-column: span 6; }
 .sn-series-hub__card:nth-child(2), .sn-series-hub__card:nth-child(3) { grid-column: span 3; }
+.sn-series-hub__card:first-child:nth-last-child(2),
+.sn-series-hub__card:first-child:nth-last-child(2) ~ .sn-series-hub__card { grid-column: span 6; }
+.sn-series-hub__card:first-child:nth-last-child(2) ~ .sn-series-hub__card .sn-series-hub__card-content strong { font-size: clamp(27px, 2.9vw, 48px); }
 .sn-series-hub__card-link { position: relative; display: grid; height: 100%; min-height: inherit; color: #fff; text-decoration: none; isolation: isolate; }
 .sn-series-hub__media, .sn-series-hub__shade { position: absolute; inset: 0; }
 .sn-series-hub__media { display: block; overflow: hidden; background: #e8ecea; }

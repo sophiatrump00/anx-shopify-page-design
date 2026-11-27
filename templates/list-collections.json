@@ -37,26 +37,13 @@
             "link_label": "Explore jump starters",
             "link": "shopify://collections/jump-starters"
           }
-        },
-        "home": {
-          "type": "series",
-          "settings": {
-            "fallback_asset": "suntneew-home-hero-v3.webp",
-            "image_alt": "SuntNeew home energy storage system beside a solar home",
-            "eyebrow": "HOME ENERGY STORAGE",
-            "status": "SYSTEM PLANNING",
-            "title": "Home Energy Storage",
-            "text": "Plan compatible stored energy around essential circuits, energy needs and installation conditions.",
-            "link_label": "Explore home energy",
-            "link": "shopify://collections/home-energy-storage"
-          }
         }
       },
-      "block_order": ["rv", "jump", "home"],
+      "block_order": ["rv", "jump"],
       "settings": {
         "eyebrow": "PRODUCT SERIES",
         "heading": "Choose the power path that fits the life you lead.",
-        "body": "Three focused product series—each with its own products, fit guidance and model-specific support resources."
+        "body": "Two focused product series—each with its own products, fit guidance and model-specific support resources."
       }
     }
   },

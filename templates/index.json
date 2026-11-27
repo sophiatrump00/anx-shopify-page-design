@@ -12,6 +12,27 @@
     "main_slideshow": {
       "type": "slideshow",
       "blocks": {
+        "bf_slide": {
+          "type": "image",
+          "settings": {
+            "image_asset": "suntneew-hero-bf-desktop-v1.jpg",
+            "mobile_image_asset": "suntneew-hero-bf-mobile-v1.jpg",
+            "content_max_width": 560,
+            "mobile_text_position": "place-self-start text-start",
+            "desktop_text_position": "sm:place-self-start sm:text-start",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "shopify://collections",
+            "text_color": "#FFFFFF",
+            "button_background": "#FFFFFF",
+            "button_text_color": "#1B2433",
+            "overlay_color": "#0B0E18",
+            "overlay_opacity": 0,
+            "background": "#0B0E18"
+          }
+        },
         "rv_slide": {
           "type": "image",
           "settings": {
@@ -53,30 +74,9 @@
             "overlay_opacity": 35,
             "background": "#121721"
           }
-        },
-        "home_slide": {
-          "type": "image",
-          "settings": {
-            "image_asset": "suntneew-home-hero-v3.webp",
-            "mobile_image_asset": "suntneew-home-hero-v3.webp",
-            "content_max_width": 620,
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_text_position": "sm:place-self-center-start sm:text-start",
-            "subheading": "HOME ENERGY STORAGE",
-            "title": "Power at home, built around your system.",
-            "heading_tag": "h2",
-            "button_text": "Explore home energy series",
-            "button_link": "shopify://collections/home-energy-storage",
-            "text_color": "#FFFFFF",
-            "button_background": "#FFFFFF",
-            "button_text_color": "#1B2433",
-            "overlay_color": "#172033",
-            "overlay_opacity": 35,
-            "background": "#EEF5FF"
-          }
         }
       },
-      "block_order": ["rv_slide", "jump_slide", "home_slide"],
+      "block_order": ["bf_slide", "rv_slide", "jump_slide"],
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
@@ -99,10 +99,10 @@
             "mobile_fallback_asset": "suntneew-rv-230ah-feature-lifestyle-mobile.jpg",
             "image_alt": "RV campsite powered by a SuntNeew battery",
             "eyebrow": "RV BATTERIES",
-            "product_label": "4 PRODUCTS AVAILABLE",
-            "title": "RV power, ready for its next chapter.",
-            "text": "Four RV battery products are available now, with model-specific pages for fit, specifications and support.",
-            "link_label": "Explore RV series",
+            "product_label": "",
+            "title": "Off-grid LiFePO4 power.",
+            "text": "",
+            "link_label": "Shop RV Batteries",
             "link": "shopify://collections/rv-batteries"
           }
         },
@@ -112,34 +112,21 @@
             "fallback_asset": "suntneew-use-jump.jpg",
             "image_alt": "SuntNeew jump starter connected to a vehicle battery",
             "eyebrow": "JUMP STARTERS",
-            "product_label": "A20 / A3 / U23 / U32",
-            "title": "Start the vehicle and get back on the road.",
-            "text": "Starting power, charging and emergency support that stays close to the vehicle.",
-            "link_label": "Explore jump starter series",
+            "product_label": "",
+            "title": "Instant roadside rescue.",
+            "text": "",
+            "link_label": "Shop Jump Starters",
             "link": "shopify://collections/jump-starters"
-          }
-        },
-        "home": {
-          "type": "path",
-          "settings": {
-            "fallback_asset": "suntneew-use-home-energy.jpg",
-            "image_alt": "SuntNeew home energy storage system beside a solar-powered home",
-            "eyebrow": "HOME ENERGY STORAGE",
-            "product_label": "5.12 kWh / 10.24 kWh / High-voltage",
-            "title": "Keep essential home power within reach.",
-            "text": "Begin with the energy you need, then plan a compatible system around your home.",
-            "link_label": "Explore home energy series",
-            "link": "shopify://collections/home-energy-storage"
           }
         }
       },
-      "block_order": ["rv", "jump", "home"],
+      "block_order": ["rv", "jump"],
       "settings": {
         "anchor_id": "ways-to-power",
         "eyebrow": "POWER FOR REAL LIFE",
-        "heading": "Three ways to stay powered.",
-        "body": "RV travel, roadside recovery or power at home - start with the system you use every day.",
-        "columns": 3,
+        "heading": "Built for the road.",
+        "body": "",
+        "columns": 2,
         "card_height": 480,
         "dark_background": false,
         "link_label": "",
@@ -152,7 +139,7 @@
         "anchor_id": "power-planner-entry",
         "eyebrow": "HELP ME CHOOSE",
         "heading": "A clearer route to the right power system.",
-        "body": "Tell us whether you are powering an RV, starting a vehicle or backing up a home. Get a product starting point in a few steps.",
+        "body": "Tell us whether you are powering an RV or starting a vehicle. Get a product starting point in a few steps.",
         "button_label": "Open Power Planner",
         "link": "shopify://pages/power-calculator"
       }
@@ -231,25 +218,6 @@
         "secondary_link": ""
       }
     },
-    "home_energy": {
-      "type": "suntneew-home-energy",
-      "blocks": {
-        "essential": {"type":"path","settings":{"capacity":"5.12 kWh","title":"SuntNeew WL5A","text":"A compact low-voltage starting point for household backup and home-energy systems.","link_label":"View WL5A","link":"shopify://products/suntneew-wl5a-5-12-kwh-low-voltage-home-battery"}},
-        "coverage": {"type":"path","settings":{"capacity":"10.24 kWh","title":"SuntNeew WL10B","text":"A larger low-voltage option for extended home energy storage.","link_label":"View WL10B","link":"shopify://products/suntneew-wl10b-10-24-kwh-low-voltage-home-battery"}},
-        "system": {"type":"path","settings":{"capacity":"HIGH-VOLTAGE","title":"SuntNeew VH","text":"Choose the modular system configuration around inverter and project requirements.","link_label":"View VH system","link":"shopify://products/suntneew-vh-high-voltage-home-energy-storage-system"}}
-      },
-      "block_order": ["essential", "coverage", "system"],
-      "settings": {
-        "eyebrow": "HOME ENERGY STORAGE",
-        "heading": "Power at home, built around real needs.",
-        "body": "Choose a usable starting capacity first, then match the system architecture and inverter requirements to the way your home uses power.",
-        "image_asset": "suntneew-home-system-v1.webp",
-        "image_alt": "Logo-free home energy storage equipment in a modern residential energy room",
-        "button_label": "Explore home energy products",
-        "button_link": "shopify://collections/home-energy-storage",
-        "note": "Individual customers can choose a model, add it to cart and purchase online. Review compatibility and local installation requirements before installation."
-      }
-    },
     "confidence_grid": {
       "type": "suntneew-confidence-grid",
       "blocks": {
@@ -281,10 +249,9 @@
         "faq_rv": {"type":"item","settings":{"title":"Where can I find the RV battery products?","content":"<p>The RV battery range is live now. Choose from four active products in the RV Batteries collection, then open the model page to check physical fit, operating limits, specifications and support details.</p>"}},
         "faq_output": {"type":"item","settings":{"title":"Does more Ah always mean more output?","content":"<p>No. Stored energy and continuous output are different constraints. Compare both values, alongside system voltage, cables, fuse requirements and intended load.</p>"}},
         "faq_jump": {"type":"item","settings":{"title":"Which jump starter should I choose?","content":"<p>Start with the supported vehicle and engine range listed on the product page, then compare portability, capacity, ports and emergency-light features.</p>"}},
-        "faq_home": {"type":"item","settings":{"title":"Can I buy home energy storage as an individual?","content":"<p>Yes. Choose the model and capacity that fit your needs, then add it to cart or use Buy it now. Review compatibility and local installation requirements before installation.</p>"}},
         "faq_docs": {"type":"item","settings":{"title":"Where can I find model documents and test information?","content":"<p>Open the document center and match the exact model code on your product label. Contact Support if you need destination-specific technical documentation.</p>"}}
       },
-      "block_order": ["faq_rv", "faq_output", "faq_jump", "faq_home", "faq_docs"],
+      "block_order": ["faq_rv", "faq_output", "faq_jump", "faq_docs"],
       "settings": {
         "full_width": false,
         "subheading": "SUPPORT",
@@ -308,5 +275,5 @@
       }
     }
   },
-  "order": ["main_slideshow", "ways_to_power", "power_planner_entry", "rv_proof", "jump_proof", "home_energy", "confidence_grid", "faq"]
+  "order": ["main_slideshow", "ways_to_power", "power_planner_entry", "rv_proof", "jump_proof", "confidence_grid", "faq"]
 }

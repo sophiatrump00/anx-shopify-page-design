@@ -10,13 +10,9 @@
         "jump": {
           "type": "category",
           "settings": { "collection": "jump-starters", "label": "Jump Starters", "image": "" }
-        },
-        "home": {
-          "type": "category",
-          "settings": { "collection": "home-energy-storage", "label": "Home Energy Storage", "image": "" }
         }
       },
-      "block_order": ["rv", "jump", "home"],
+      "block_order": ["rv", "jump"],
       "settings": {
         "all_label": "All Products"
       }
@@ -74,34 +70,7 @@
         "product_card_background": "#FFFFFF",
         "product_card_text_color": "#182330"
       }
-    },
-    "home_products": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "home-energy-storage",
-        "anchor_id": "shop-home-energy-storage",
-        "products": [],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": false,
-        "loop_arrows": true,
-        "products_count": 3,
-        "products_per_row_mobile": "1",
-        "products_per_row_desktop": 3,
-        "subheading": "Everyday energy resilience",
-        "title": "Home Energy Storage",
-        "content": "",
-        "link_url": "",
-        "link_text": "",
-        "background": "#F4F4F1",
-        "background_gradient": "",
-        "text_color": "#182330",
-        "heading_color": "#E95416",
-        "heading_gradient": "",
-        "product_card_background": "#FFFFFF",
-        "product_card_text_color": "#182330"
-      }
     }
   },
-  "order": ["shop_navigation", "rv_products", "jump_products", "home_products"]
+  "order": ["shop_navigation", "rv_products", "jump_products"]
 }

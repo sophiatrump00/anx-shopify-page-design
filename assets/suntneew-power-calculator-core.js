@@ -35,16 +35,11 @@
     { scenario: 'rv', key: 'rv-230', id: '230ah', model: '230Ah', fit: 'flexible', lengthMm: 522, widthMm: 268, heightMm: 220, capacityWh: 2944, outputW: 2560, maxSeries: 4, maxParallel: 4 },
     { scenario: 'rv', key: 'rv-314', id: '314ah', model: '314Ah', fit: 'flexible', lengthMm: 522, widthMm: 268, heightMm: 220, capacityWh: 4019.2, outputW: 2010, maxSeries: 4, maxParallel: 4 },
     { scenario: 'jump', key: 'jump-u23', id: 'u23-8000', model: 'U23', variant: '8,000mAh', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 0, display: 1, charging: 3, reserve: 5 } },
-    { scenario: 'jump', key: 'jump-a20', id: 'a20-8000', model: 'A20', variant: '8,000mAh variant', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 2, display: 3, charging: 3, reserve: 4 } },
+    { scenario: 'jump', key: 'jump-a20', id: 'a20-8000', model: 'A20', variant: '8,000mAh / 1,500A peak', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 2, display: 3, charging: 3, reserve: 4 } },
     { scenario: 'jump', key: 'jump-u32', id: 'u32-10000', model: 'U32', variant: '10,000mAh', voltage: '12v', gasoline: 6.5, diesel: 3.5, priority: { compact: 1, display: 0, charging: 2, reserve: 3 } },
-    { scenario: 'jump', key: 'jump-a20', id: 'a20-12000', model: 'A20', variant: '12,000mAh variant', voltage: '12v', gasoline: 7, diesel: 4, priority: { compact: 3, display: 3, charging: 1, reserve: 2 } },
-    { scenario: 'jump', key: 'jump-a3', id: 'a3-16000', model: 'A3', variant: '16,000mAh', voltage: '12v', gasoline: 8, diesel: 5, priority: { compact: 4, display: 2, charging: 0, reserve: 1 } },
+    { scenario: 'jump', key: 'jump-a3', id: 'a3-16000', model: 'A3', variant: '16,000mAh / 4,000A peak', voltage: '12v', gasoline: 8, diesel: 5.5, priority: { compact: 4, display: 2, charging: 0, reserve: 1 } },
     { scenario: 'jump', key: 'jump-kb700', id: 'kb700-7200', model: 'KP700 Fan Jump Starter', variant: '7,200mAh / 1,000A peak', voltage: '12v', gasoline: 6, diesel: 3, priority: { compact: 2, display: 4, charging: 2, reserve: 3 } },
-    { scenario: 'jump', key: 'jump-a20', id: 'a20-16000', model: 'A20', variant: '16,000mAh variant', voltage: '12v', gasoline: 8, diesel: 5, priority: { compact: 5, display: 3, charging: 1, reserve: 0 } },
-    { scenario: 'home', key: 'home-wl5a', id: 'wl5a', model: 'SuntNeew WL5A', architecture: 'low', capacityWh: 5120, maxUnits: 9, maxSystemOutputW: 12000 },
-    { scenario: 'home', key: 'home-wl10b', id: 'wl10b', model: 'SuntNeew WL10B', architecture: 'low', capacityWh: 10240, maxUnits: 9, maxSystemOutputW: 12000 },
-    { scenario: 'home', key: 'home-vh', id: 'vh-10', model: 'SuntNeew VH', variant: '10.24kWh configuration', architecture: 'high', capacityWh: 10240, maxUnits: 1, maxSystemOutputW: 12000 },
-    { scenario: 'home', key: 'home-vh', id: 'vh-15', model: 'SuntNeew VH', variant: '15.36kWh configuration', architecture: 'high', capacityWh: 15360, maxUnits: 1, maxSystemOutputW: 12000 }
+    { scenario: 'jump', key: 'jump-b21ap', id: 'b21ap-20000', model: 'B21AP 5000A Jump Starter with 160 PSI Air Compressor', variant: '20,000mAh / 5,000A peak', voltage: '12v', gasoline: 9, diesel: 6, priority: { compact: 5, display: 2, charging: 1, reserve: 0 } }
   ];
 
   var catalog = buildCatalog(DEFAULT_CATALOG);
