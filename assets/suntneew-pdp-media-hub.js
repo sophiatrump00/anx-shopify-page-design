@@ -184,6 +184,7 @@
       const galleryVid = vidPane?.querySelector('video');
       const galleryMeta = vidPane?.querySelector('.sn-gallery-video-meta');
       const tabs = [...wrap.querySelectorAll('[data-sn-gallery-mode]')];
+      const tabList = wrap.querySelector('.sn-media-tabs');
 
       if (galleryVid && galleryBox) {
         mountCustomControls(galleryVid, galleryBox, { isStageCard: false });
@@ -193,7 +194,11 @@
       tabs.forEach((tab) => {
         tab.addEventListener('click', () => {
           const mode = tab.dataset.snGalleryMode;
-          tabs.forEach((t) => t.classList.toggle('active', t === tab));
+          tabs.forEach((t) => {
+            const active = t === tab;
+            t.classList.toggle('active', active);
+            t.setAttribute('aria-selected', String(active));
+          });
           if (mode === 'videos') {
             if (galleryContent) galleryContent.hidden = true;
             if (galleryHelp) galleryHelp.hidden = true;
@@ -208,6 +213,24 @@
           }
         });
       });
+
+      if (tabList && tabs.length) {
+        tabList.addEventListener('click', (e) => {
+          if (e.target.closest('[data-sn-gallery-mode]')) return;
+          let nearest = tabs[0];
+          let minDist = Infinity;
+          for (const tab of tabs) {
+            const rect = tab.getBoundingClientRect();
+            const center = rect.left + rect.width / 2;
+            const dist = Math.abs(e.clientX - center);
+            if (dist < minDist) {
+              minDist = dist;
+              nearest = tab;
+            }
+          }
+          nearest.click();
+        });
+      }
 
       vidPane?.querySelectorAll('.sn-gallery-video-pill').forEach((pill) => {
         pill.addEventListener('click', () => {
