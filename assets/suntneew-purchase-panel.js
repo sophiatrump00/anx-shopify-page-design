@@ -70,7 +70,7 @@
         const dismissed = window.sessionStorage?.getItem('sn_bf_promo_dismissed') === '1';
         if (promoBar && !dismissed) {
           const defaultCode = String(promoBar.dataset.snDefaultCode || '').trim().toUpperCase();
-          if (defaultCode === 'RV20' || defaultCode === 'JS10') {
+          if (['U23BF', 'U32BF', 'KP700BF', 'A3BF', 'B21APBF', 'G24BF', '230AHBF'].includes(defaultCode)) {
             promoCode = defaultCode;
           } else {
             promoCode = qty >= 2 ? 'SN175' : 'SN10';

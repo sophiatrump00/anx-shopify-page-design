@@ -176,8 +176,8 @@
     --error-text: {{ settings.error_color.rgb }};
 
     /* Product colors */
-    --on-sale-text: 90 120 213;
-    --on-sale-badge-background: 90 120 213;
+    --on-sale-text: {{ settings.product_on_sale_accent.rgb }};
+    --on-sale-badge-background: {{ settings.product_on_sale_accent.rgb }};
     --on-sale-badge-text: {% if product_on_sale_accent_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
     --sold-out-badge-background: {{ settings.product_sold_out_badge_background.rgb }};
     --sold-out-badge-text: {% if product_sold_out_badge_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};

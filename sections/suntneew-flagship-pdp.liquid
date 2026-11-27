@@ -64,9 +64,13 @@
   assign unit_price_cents = selected_variant.price | default: 0
   assign compare_price_cents = selected_variant.compare_at_price | default: 0
   assign has_saving = false
+  assign discount_pct = 0
   if compare_price_cents > unit_price_cents
     assign has_saving = true
     assign saving_cents = compare_price_cents | minus: unit_price_cents
+    if compare_price_cents > 0
+      assign discount_pct = saving_cents | times: 100.0 | divided_by: compare_price_cents | round
+    endif
   endif
 
   assign feature_blocks = section.blocks | where: 'type', 'feature_single'
@@ -260,11 +264,10 @@
             <div class="sn-pack-total__amounts">
               <strong id="total-price">{{ unit_price_cents | money }}</strong>
               <del id="compare-price"{% unless has_saving %} hidden{% endunless %}>{% if has_saving %}{{ compare_price_cents | money }}{% endif %}</del>
-              <span>{{ cart.currency.iso_code | default: shop.currency }}</span>
+              <span class="sn-pdp-off-badge" id="discount-badge"{% unless has_saving and discount_pct > 0 %} hidden{% endunless %}>{% if has_saving and discount_pct > 0 %}{{ discount_pct }}% OFF{% endif %}</span>
+              <span class="sn-pack-total__currency">{{ cart.currency.iso_code | default: shop.currency }}</span>
             </div>
-            <p class="sn-pack-total__saving" id="total-saving"{% unless has_saving %} hidden{% endunless %}>
-              {% if has_saving %}You save {{ saving_cents | money }} vs. regular price{% endif %}
-            </p>
+            <p class="sn-pack-total__saving" id="total-saving" hidden></p>
           </div>
           <p class="product-tax">Taxes calculated at checkout.</p>
 

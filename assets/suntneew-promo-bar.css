@@ -1,4 +1,254 @@
-/* Sitewide Black Friday no-login promo bar (SN10 / SN175) */
+/* Style A Red XX% OFF Pill Badge (PDP + Collection Card Mobile Refinement) */
+.sn-pdp-off-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: #d92d20;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sn-pdp-off-badge[hidden] {
+  display: none;
+}
+
+@media (max-width: 749px) {
+  .sn-flagship-pdp .sn-pack-total__amounts,
+  .sn-b21ap-pdp .sn-pack-total__amounts {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sn-flagship-pdp .sn-pack-total__amounts strong,
+  .sn-b21ap-pdp .sn-pack-total__amounts strong {
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .sn-flagship-pdp .sn-pack-total__amounts del,
+  .sn-b21ap-pdp .sn-pack-total__amounts del {
+    font-size: 13px;
+  }
+
+  .sn-flagship-pdp .sn-pack-total__currency,
+  .sn-b21ap-pdp .sn-pack-total__currency {
+    display: none;
+  }
+
+  .product-card__badge-list .badge--on-sale {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+}
+
+/* Amazon-Style Coupon Toggle Bar (Desktop checkbox single-row, iPad/Mobile <=1024px iOS 44x24 toggle) */
+.sn-coupon-bar {
+  margin: 10px 0 0;
+}
+
+.sn-coupon-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  min-height: 38px;
+  border: 1px dashed #e5a97c;
+  border-radius: 7px;
+  background: #fff8f3;
+  color: #222222;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 120ms ease;
+}
+
+.sn-coupon-toggle:hover {
+  border-color: #de580d;
+  background: #fff3ea;
+}
+
+.sn-coupon-toggle:focus-visible {
+  outline: 2px solid #c84300;
+  outline-offset: 2px;
+}
+
+.sn-coupon-toggle:active {
+  transform: scale(0.995);
+}
+
+.sn-coupon-toggle.is-applied {
+  border-style: solid;
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.sn-coupon-toggle__check {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid #9ca3af;
+  background: #ffffff;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 150ms ease;
+}
+
+.sn-coupon-toggle.is-applied .sn-coupon-toggle__check {
+  border-color: #15803d;
+  background: #15803d;
+}
+
+.sn-coupon-toggle__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sn-coupon-toggle__top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.sn-coupon-toggle__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sn-coupon-toggle.is-applied .sn-coupon-toggle__tag {
+  background: #15803d;
+}
+
+.sn-coupon-toggle__lead {
+  color: #222222;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sn-coupon-toggle.is-applied .sn-coupon-toggle__lead {
+  color: #15803d;
+}
+
+.sn-coupon-toggle__final {
+  color: #555555;
+  white-space: nowrap;
+}
+
+.sn-coupon-toggle__final strong {
+  color: #15803d;
+  font-weight: 700;
+}
+
+.sn-coupon-toggle__code-mob {
+  display: none;
+}
+
+.sn-coupon-toggle__code-desk {
+  margin-left: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.sn-coupon-toggle__switch {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .sn-coupon-toggle {
+    min-height: 52px;
+    padding: 8px 10px;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .sn-coupon-toggle__check,
+  .sn-coupon-toggle__code-desk,
+  .sn-coupon-toggle__sep {
+    display: none;
+  }
+
+  .sn-coupon-toggle__body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .sn-coupon-toggle__code-mob {
+    display: inline;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    color: #9ca3af;
+  }
+
+  .sn-coupon-toggle__switch {
+    display: inline-block;
+    position: relative;
+    width: 44px;
+    height: 24px;
+    border-radius: 999px;
+    background: #d1d5db;
+    flex-shrink: 0;
+    transition: background-color 180ms ease;
+  }
+
+  .sn-coupon-toggle__switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: transform 180ms ease;
+  }
+
+  .sn-coupon-toggle.is-applied .sn-coupon-toggle__switch {
+    background: #16a34a;
+  }
+
+  .sn-coupon-toggle.is-applied .sn-coupon-toggle__switch::after {
+    transform: translateX(20px);
+  }
+}
+
+/* Sitewide Black Friday no-login promo bar (A20 / G31 legacy SN10 / SN175 + Clean Cart) */
 .sn-promo-bar {
   margin: 10px 0 0;
   padding: 8px 10px;
@@ -13,6 +263,12 @@
 .sn-promo-bar--cart {
   margin: 0;
   width: 100%;
+}
+
+.sn-promo-bar--cart-clean {
+  border-color: #86efac;
+  background: #f0fdf4;
+  color: #15803d;
 }
 
 .sn-promo-bar__head {
@@ -43,7 +299,7 @@
 }
 
 .sn-promo-bar__applied-banner {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #15803d;
 }
@@ -53,6 +309,10 @@
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 6px;
+}
+
+.sn-promo-bar__chips--flush {
+  margin-top: 0;
 }
 
 .sn-promo-chip {

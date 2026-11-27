@@ -144,6 +144,7 @@
   const plusBtn = byId('quantity-plus');
   const totalEl = byId('total-price');
   const compareEl = byId('compare-price');
+  const discountBadgeEl = byId('discount-badge');
   const savingEl = byId('total-saving');
   const summaryEl = byId('quantity-summary');
   const stickyTotal = byId('sticky-total');
@@ -167,9 +168,14 @@
       compareEl.hidden = !hasSaving;
       compareEl.textContent = hasSaving ? money(compareTotal) : '';
     }
+    if (discountBadgeEl) {
+      const pct = hasSaving && compareTotal > 0 ? Math.round(((compareTotal - total) / compareTotal) * 100) : 0;
+      discountBadgeEl.hidden = !hasSaving || pct <= 0;
+      discountBadgeEl.textContent = pct > 0 ? `${pct}% OFF` : '';
+    }
     if (savingEl) {
-      savingEl.hidden = !hasSaving;
-      savingEl.textContent = hasSaving ? `You save ${money(compareTotal - total)} in total vs. regular price` : '';
+      savingEl.hidden = true;
+      savingEl.textContent = '';
     }
     if (summaryEl) {
       summaryEl.textContent = `${count} ${count === 1 ? 'unit' : 'units'} · ${money(variantData.priceCents)} per unit`;

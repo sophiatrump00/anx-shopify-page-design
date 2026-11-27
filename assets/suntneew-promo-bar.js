@@ -3,20 +3,30 @@
 
   const SESSION_KEY = 'sn_bf_promo_code';
   const DISMISSED_KEY = 'sn_bf_promo_dismissed';
-  const ALLOWED_CODES = new Set(['SN10', 'SN175', 'JS10', 'RV20']);
-  const JS10_HANDLES = new Set([
-    'suntneew-u23-portable-car-jump-starter-8-000mah',
-    'suntneew-u32-portable-car-jump-starter-10-000mah',
-    'suntneew-kb700-fan-jump-starter-7-200mah',
-    'suntneew-a3-jump-starter-16000mah',
-    'suntneew-b21ap-5000a-jump-starter-air-compressor',
+  const ALLOWED_CODES = new Set([
+    'SN10',
+    'SN175',
+    'U23BF',
+    'U32BF',
+    'KP700BF',
+    'A3BF',
+    'B21APBF',
+    'G24BF',
+    '230AHBF',
   ]);
-  const RV20_HANDLES = new Set([
-    'suntneew-12-8v-100ah-lifepo4-rv-battery-group-24',
-    'suntneew-12-8v-230ah-lifepo4-rv-battery',
+  const DEDICATED_COUPONS = new Map([
+    ['suntneew-u23-portable-car-jump-starter-8-000mah', { code: 'U23BF', amount: 6 }],
+    ['suntneew-u32-portable-car-jump-starter-10-000mah', { code: 'U32BF', amount: 13 }],
+    ['suntneew-kb700-fan-jump-starter-7-200mah', { code: 'KP700BF', amount: 18 }],
+    ['suntneew-a3-jump-starter-16000mah', { code: 'A3BF', amount: 46 }],
+    ['suntneew-b21ap-5000a-jump-starter-air-compressor', { code: 'B21APBF', amount: 24 }],
+    ['suntneew-12-8v-100ah-lifepo4-rv-battery-group-24', { code: 'G24BF', amount: 60 }],
+    ['suntneew-12-8v-230ah-lifepo4-rv-battery', { code: '230AHBF', amount: 94 }],
   ]);
+
   let autoSyncInFlight = false;
   let lastAutoSyncSignature = '';
+  let drawerSafetyTimer = 0;
 
   function extractItemHandle(item) {
     const direct = String(item?.handle || '').trim().toLowerCase();
@@ -28,26 +38,41 @@
 
   function pickOptimalCartCode(cart) {
     const items = Array.isArray(cart?.items) ? cart.items : [];
-    let hasRv20 = false;
-    let hasJs10 = false;
+    const dedicatedCodes = [];
+    let dedicatedTotal = 0;
     let snQty = 0;
 
     for (const item of items) {
       const h = extractItemHandle(item);
       const q = Math.max(0, Number(item?.quantity || 0));
-      if (RV20_HANDLES.has(h)) {
-        hasRv20 = true;
-      } else if (JS10_HANDLES.has(h)) {
-        hasJs10 = true;
+      const spec = DEDICATED_COUPONS.get(h);
+      if (spec) {
+        if (!dedicatedCodes.includes(spec.code)) {
+          dedicatedCodes.push(spec.code);
+          dedicatedTotal += spec.amount;
+        }
       } else {
         snQty += q;
       }
     }
 
-    if (hasRv20) return 'RV20';
-    if (snQty >= 2) return 'SN175';
-    if (hasJs10 && snQty === 0) return 'JS10';
+    const legacyCode = snQty >= 2 ? 'SN175' : snQty > 0 ? 'SN10' : '';
+    const legacyAmount = snQty >= 2 ? 17.5 : snQty > 0 ? 10 : 0;
+
+    if (dedicatedCodes.length > 0 && dedicatedTotal >= legacyAmount) {
+      return dedicatedCodes.join(',');
+    }
+    if (legacyCode) return legacyCode;
     return 'SN10';
+  }
+
+  function parseCodeSet(raw) {
+    return new Set(
+      String(raw || '')
+        .split(',')
+        .map((c) => c.trim().toUpperCase())
+        .filter((c) => ALLOWED_CODES.has(c))
+    );
   }
 
   function safeGetSession(key) {
@@ -84,31 +109,60 @@
     return (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
   }
 
-  function resolveActiveCode(preferredCode) {
-    const preferred = String(preferredCode || '').trim().toUpperCase();
-    if (ALLOWED_CODES.has(preferred)) {
-      return preferred;
-    }
+  function resolveActiveCodeSet(preferredRaw) {
+    const fromPreferred = parseCodeSet(preferredRaw);
+    if (fromPreferred.size > 0) return fromPreferred;
+
     const cartBar = document.querySelector('[data-sn-promo-bar][data-sn-cart-applied-code]');
-    const cartApplied = String(cartBar?.dataset.snCartAppliedCode || '').trim().toUpperCase();
-    if (ALLOWED_CODES.has(cartApplied)) {
-      return cartApplied;
-    }
-    const saved = safeGetSession(SESSION_KEY).trim().toUpperCase();
-    return ALLOWED_CODES.has(saved) ? saved : '';
+    const fromCartBar = parseCodeSet(cartBar?.dataset.snCartAppliedCode || '');
+    if (fromCartBar.size > 0) return fromCartBar;
+
+    return parseCodeSet(safeGetSession(SESSION_KEY));
   }
 
-  function syncAppliedUI(preferredCode = '') {
-    const activeCode = resolveActiveCode(preferredCode);
+  function setToggleVisual(btn, isApplied) {
+    const code = String(btn.dataset.snCouponToggle || '').trim().toUpperCase();
+    const bar = btn.closest('[data-sn-promo-bar]');
+    const dollars = String(bar?.dataset.snCouponOff || '').trim();
+
+    btn.classList.toggle('is-applied', isApplied);
+    btn.setAttribute('aria-checked', isApplied ? 'true' : 'false');
+
+    const checkEl = btn.querySelector('.sn-coupon-toggle__check');
+    if (checkEl) checkEl.textContent = isApplied ? '✓' : '';
+
+    const tagEl = btn.querySelector('[data-sn-coupon-tag]');
+    if (tagEl) tagEl.textContent = isApplied ? 'Applied' : 'Coupon';
+
+    const leadEl = btn.querySelector('[data-sn-coupon-lead]');
+    if (leadEl && dollars) {
+      leadEl.textContent = isApplied ? `$${dollars} coupon applied` : `Apply $${dollars} coupon`;
+    }
+
+    const codeDeskEl = btn.querySelector('[data-sn-coupon-code]');
+    if (codeDeskEl && code) {
+      codeDeskEl.textContent = isApplied ? `(${code})` : code;
+    }
+  }
+
+  function syncAppliedUI(preferredRaw = '') {
+    const activeCodes = resolveActiveCodeSet(preferredRaw);
+
     document.querySelectorAll('[data-sn-promo-apply]').forEach((btn) => {
       const btnCode = String(btn.dataset.snPromoApply || '').trim().toUpperCase();
-      const isMatch = Boolean(activeCode && btnCode === activeCode);
+      const isMatch = activeCodes.has(btnCode);
       btn.classList.toggle('is-applied', isMatch);
       btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
       const cta = btn.querySelector('[data-sn-promo-cta]');
       if (cta) {
         cta.textContent = isMatch ? '✓ Applied' : 'Apply';
       }
+    });
+
+    document.querySelectorAll('[data-sn-coupon-toggle]').forEach((btn) => {
+      const code = String(btn.dataset.snCouponToggle || '').trim().toUpperCase();
+      const isMatch = activeCodes.has(code);
+      setToggleVisual(btn, isMatch);
     });
   }
 
@@ -148,19 +202,22 @@
     });
   }
 
-  async function postDiscountToCart(code) {
+  async function postDiscountToCart(codeExpr) {
     const root = getRoot();
-    const cookieReq = fetch(`${root}discount/${encodeURIComponent(code)}`, {
-      method: 'GET',
-      credentials: 'same-origin',
-      keepalive: true,
-    }).catch(() => null);
+    const firstCode = String(codeExpr || '').split(',')[0].trim();
+    const cookieReq = firstCode
+      ? fetch(`${root}discount/${encodeURIComponent(firstCode)}`, {
+          method: 'GET',
+          credentials: 'same-origin',
+          keepalive: true,
+        }).catch(() => null)
+      : Promise.resolve(null);
 
     const cartReq = fetch(`${root}cart/update.js`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
-      body: JSON.stringify({ discount: code }),
+      body: JSON.stringify({ discount: codeExpr }),
     })
       .then(async (res) => ({
         ok: res.ok,
@@ -170,6 +227,54 @@
 
     const [, cartResult] = await Promise.all([cookieReq, cartReq]);
     return cartResult;
+  }
+
+  function triggerCartDrawerRefresh(expectedCodeExpr = '') {
+    document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+    if (drawerSafetyTimer) window.clearTimeout(drawerSafetyTimer);
+    drawerSafetyTimer = window.setTimeout(() => {
+      const drawer = document.getElementById('cart-drawer');
+      if (!drawer || !drawer.open) return;
+      const rendered = parseCodeSet(
+        drawer.querySelector('[data-sn-promo-bar]')?.dataset.snCartAppliedCode || ''
+      );
+      const expected = parseCodeSet(expectedCodeExpr);
+      const synced = [...expected].some((c) => rendered.has(c));
+      if (!synced) {
+        document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+      }
+    }, 380);
+  }
+
+  async function toggleDedicatedCoupon(btn) {
+    const code = String(btn.dataset.snCouponToggle || '').trim().toUpperCase();
+    if (!ALLOWED_CODES.has(code)) return;
+
+    const currentlyApplied = btn.getAttribute('aria-checked') === 'true';
+    const nextApplied = !currentlyApplied;
+    const bar = btn.closest('[data-sn-promo-bar]');
+
+    if (!nextApplied) {
+      const remaining = [...parseCodeSet(safeGetSession(SESSION_KEY))].filter((c) => c !== code);
+      safeSetSession(SESSION_KEY, remaining.join(','));
+      setToggleVisual(btn, false);
+      setStatus(bar, '');
+      return;
+    }
+
+    safeSetSession(DISMISSED_KEY, '');
+    copyCodeSilently(code);
+
+    const merged = new Set([...parseCodeSet(safeGetSession(SESSION_KEY)), code]);
+    const codeExpr = [...merged].join(',');
+    safeSetSession(SESSION_KEY, codeExpr);
+    setToggleVisual(btn, true);
+
+    const cartResult = await postDiscountToCart(codeExpr);
+    if (cartResult.ok && Number(cartResult.data?.item_count || 0) > 0) {
+      triggerCartDrawerRefresh(codeExpr);
+    }
+    setStatus(bar, '');
   }
 
   async function applyPromoCode(btn) {
@@ -201,18 +306,20 @@
       return;
     }
 
-    setStatus(bar, `✓ ${code} applied — discount will show automatically at checkout.`);
+    if (bar?.dataset.snPromoGroup !== 'coupon') {
+      setStatus(bar, `✓ ${code} applied — discount will show automatically at checkout.`);
+    }
 
     if (!cartResult.ok || hasInapplicable || itemCount <= 0) return;
 
     if (btn.closest('cart-drawer')) {
-      btn.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+      triggerCartDrawerRefresh(code);
       return;
     }
 
     if (
       window.themeVariables?.settings?.pageType === 'cart' &&
-      String(bar?.dataset.snCartAppliedCode || '').trim().toUpperCase() !== code
+      !parseCodeSet(bar?.dataset.snCartAppliedCode || '').has(code)
     ) {
       window.location.reload();
     }
@@ -248,16 +355,23 @@
       });
       if (hasCustomApplicableCode) return;
 
-      const targetCode = pickOptimalCartCode(cart);
-      const alreadyApplied = existingCodes.some((d) => {
-        const c = String(d?.code || '').trim().toUpperCase();
-        return c === targetCode && d.applicable !== false;
-      });
+      const targetCodeExpr = pickOptimalCartCode(cart);
+      const targetSet = parseCodeSet(targetCodeExpr);
+      const existingApplicableSet = new Set(
+        existingCodes
+          .filter((d) => d && d.applicable !== false)
+          .map((d) => String(d.code || '').trim().toUpperCase())
+      );
 
-      const sig = `${itemCount}:${targetCode}`;
-      if (alreadyApplied) {
-        safeSetSession(SESSION_KEY, targetCode);
-        syncAppliedUI(targetCode);
+      const allApplied =
+        targetSet.size > 0 &&
+        [...targetSet].every((c) => existingApplicableSet.has(c)) &&
+        existingApplicableSet.size === targetSet.size;
+
+      const sig = `${itemCount}:${targetCodeExpr}`;
+      if (allApplied) {
+        safeSetSession(SESSION_KEY, targetCodeExpr);
+        syncAppliedUI(targetCodeExpr);
         lastAutoSyncSignature = sig;
         return;
       }
@@ -265,21 +379,22 @@
       if (!options.force && lastAutoSyncSignature === sig) return;
       lastAutoSyncSignature = sig;
 
-      const updateResult = await postDiscountToCart(targetCode);
+      const updateResult = await postDiscountToCart(targetCodeExpr);
       if (!updateResult || !updateResult.ok) return;
 
-      safeSetSession(SESSION_KEY, targetCode);
-      syncAppliedUI(targetCode);
+      safeSetSession(SESSION_KEY, targetCodeExpr);
+      syncAppliedUI(targetCodeExpr);
 
       const drawer = document.getElementById('cart-drawer');
       if (drawer && (drawer.open || options.refreshDrawer)) {
-        drawer.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+        triggerCartDrawerRefresh(targetCodeExpr);
       }
 
       if (window.themeVariables?.settings?.pageType === 'cart') {
         const cartBar = document.querySelector('[data-sn-promo-bar][data-sn-context="cart"]');
-        const renderedCode = String(cartBar?.dataset.snCartAppliedCode || '').trim().toUpperCase();
-        if (renderedCode !== targetCode) {
+        const rendered = parseCodeSet(cartBar?.dataset.snCartAppliedCode || '');
+        const synced = [...targetSet].some((c) => rendered.has(c));
+        if (!synced) {
           window.location.reload();
         }
       }
@@ -302,10 +417,17 @@
       return;
     }
 
+    const toggleBtn =
+      event.target && event.target.closest ? event.target.closest('[data-sn-coupon-toggle]') : null;
+    if (toggleBtn) {
+      void toggleDedicatedCoupon(toggleBtn);
+      return;
+    }
+
     const target =
       event.target && event.target.closest ? event.target.closest('[data-sn-promo-apply]') : null;
     if (!target) return;
-    applyPromoCode(target);
+    void applyPromoCode(target);
   });
 
   document.addEventListener('change', (event) => {
@@ -316,14 +438,14 @@
     }
   });
 
-  function scheduleSync(checkCart = false) {
+  function scheduleSync(checkCart = false, force = false) {
     window.setTimeout(() => {
       syncAppliedUI();
       syncPackHint();
       if (checkCart) {
-        void ensureOptimalCartDiscount({ refreshDrawer: true });
+        void ensureOptimalCartDiscount({ refreshDrawer: true, force });
       }
-    }, 80);
+    }, 60);
   }
 
   function init() {
@@ -340,10 +462,10 @@
     init();
   }
 
-  document.addEventListener('variant:add', () => scheduleSync(true));
+  document.addEventListener('variant:add', () => scheduleSync(true, true));
   document.addEventListener('variant:change', () => window.setTimeout(syncPackHint, 20));
-  document.addEventListener('cart:refresh', () => scheduleSync(false));
-  document.addEventListener('cart:change', () => scheduleSync(true));
+  document.addEventListener('cart:refresh', () => scheduleSync(false, false));
+  document.addEventListener('cart:change', () => scheduleSync(true, true));
 
   function observeCartDrawer() {
     const drawer = document.getElementById('cart-drawer');
