@@ -12,58 +12,83 @@
     "main": {
       "type": "suntneew-flagship-pdp",
       "blocks": {
+        "feat_00": {
+          "type": "feature_single",
+          "settings": {
+            "eyebrow": "",
+            "heading": "",
+            "body": "",
+            "image_asset": "sn-a3-v8-aplus-01-hero.webp",
+            "image_alt": "SuntNeew CY-A3 Jump Starter — 16000mAh, 4000A Peak, 60W PD",
+            "support_text": ""
+          }
+        },
         "feat_01": {
           "type": "feature_single",
           "settings": {
-            "eyebrow": "12V emergency starting",
-            "heading": "Power for an unexpected stop.",
-            "body": "A3 is designed for compatible 12V vehicles, with an engine reference of up to 8.0L gas / 5.5L diesel. Battery condition, temperature and engine condition affect starting. Follow the product and vehicle instructions.",
-            "image_asset": "sn-pdp-20261105-a3-starting-1254.webp",
-            "image_alt": "A3 jump starter connected in an engine bay",
+            "eyebrow": "01 / GET A JUMP",
+            "heading": "4,000A peak power for bigger engines.",
+            "body": "Revive dead 12V batteries without waiting on a tow truck or a second car. A3 delivers 4,000A peak current (800A starting) for compatible 12V vehicles up to 8.0L gas or 5.5L diesel—rated for 50+ starts per full charge.",
+            "image_asset": "sn-a3-v8-aplus-02-starting.webp",
+            "image_alt": "SuntNeew A3 4000A jump starter connected in a vehicle engine bay",
             "support_text": ""
           }
         },
         "feat_02": {
           "type": "feature_single",
           "settings": {
-            "eyebrow": "Smart clamp",
-            "heading": "Make every connection count.",
-            "body": "Status indicators, reverse-polarity and short-circuit protection help you follow the starting sequence. Check the clamp indicators and the manual before every attempt.",
-            "image_asset": "sn-pdp-20261105-a3-clamp-1254.webp",
-            "image_alt": "A3 intelligent jumper clamp and connectors",
+            "eyebrow": "02 / SMART CLAMPS",
+            "heading": "8-in-1 protection under the hood.",
+            "body": "Spark-proof intelligent clamps monitor polarity, temperature, voltage, and current in real time with clear status indicators—reducing guesswork on every connection.",
+            "image_asset": "sn-a3-v8-aplus-03-clamps.webp",
+            "image_alt": "SuntNeew A3 smart clamps with 8-in-1 comprehensive protection",
             "support_text": ""
           }
         },
         "feat_03": {
-          "type": "feature_single",
+          "type": "feature_pair",
           "settings": {
-            "eyebrow": "USB-C PD60W",
-            "heading": "Power for your devices, too.",
-            "body": "The USB-C port supports PD60W input and output. Use a compatible USB-C PD cable and check the power requirements of the connected device. USB-A device-charging outputs are also included.",
-            "image_asset": "sn-pdp-20261105-a3-usbc-1254.webp",
-            "image_alt": "A3 USB-C charging port and cable",
+            "eyebrow": "03 / CHARGE & LIGHT",
+            "heading": "PD 60W fast charging, 150 lm light & 16,000mAh reserve.",
+            "body": "Between jump-starts, A3 powers laptops, tablets, and phones via two-way USB-C PD 60W (full recharge in ~1.5 hours), plus a 150 lm 3-mode LED light for roadside visibility.",
+            "tab1_label": "PD 60W Fast Charge",
+            "img1_asset": "sn-a3-v8-aplus-04-pd60w.webp",
+            "img1_alt": "SuntNeew A3 two-way PD 60W USB-C fast charging for laptops and phones",
+            "tab2_label": "150 lm LED Light",
+            "img2_asset": "sn-a3-v8-aplus-05-led.webp",
+            "img2_alt": "SuntNeew A3 150 lm 3-mode emergency LED light (steady, strobe, SOS)",
+            "tab3_label": "16,000mAh Reserve",
+            "img3_asset": "sn-a3-v8-aplus-06-capacity.webp",
+            "img3_alt": "SuntNeew A3 16000mAh / 59.2Wh high-density battery reserve",
             "support_text": ""
           }
         },
         "feat_04": {
-          "type": "feature_single",
+          "type": "feature_pair",
           "settings": {
-            "eyebrow": "Emergency light",
-            "heading": "A useful light when plans change.",
-            "body": "The 150 lm light offers steady, strobe and SOS modes for roadside visibility. Keep the unit charged and stored within the stated operating limits.",
-            "image_asset": "sn-pdp-20261105-a3-light-1254.webp",
-            "image_alt": "A3 emergency light detail",
+            "eyebrow": "04 / BUILT FOR ANY DRIVE",
+            "heading": "All-season metal shell for everyday and heavy 12V rides.",
+            "body": "Engineered with an anodized aluminum-alloy and ABS shell rated from −4°F to 140°F (−20°C to 60°C), ready across cars, pickups, SUVs, motorcycles, and 12V boats.",
+            "tab1_label": "8.0L Gas · 5.5L Diesel",
+            "img1_asset": "sn-a3-v8-aplus-07-scenarios.webp",
+            "img1_alt": "SuntNeew A3 wide compatibility for 12V vehicles up to 8.0L gas and 5.5L diesel",
+            "tab2_label": "All-Season −4°F to 140°F",
+            "img2_asset": "sn-a3-v8-aplus-08-temp.webp",
+            "img2_alt": "SuntNeew A3 all-season operation from -4°F to 140°F (-20°C to 60°C)",
+            "tab3_label": "",
+            "img3_asset": "",
+            "img3_alt": "",
             "support_text": ""
           }
         },
         "feat_05": {
           "type": "feature_single",
           "settings": {
-            "eyebrow": "Ready to carry",
-            "heading": "A clear view of the essentials.",
-            "body": "The ABS and aluminum-alloy body measures 21 × 9 × 3.5cm and weighs 0.77kg. Keep the unit, clamps and USB-C cable together in the included EVA case.",
-            "image_asset": "sn-pdp-20261105-a3-display-1254.webp",
-            "image_alt": "A3 display and controls",
+            "eyebrow": "05 / QUICK START GUIDE",
+            "heading": "How to jump-start in 4 clear steps.",
+            "body": "Insert the clamp plug firmly, connect red to positive and black to negative, confirm the solid green indicator, and start the engine. Remove clamps within 30 seconds after starting.",
+            "image_asset": "sn-a3-v8-aplus-09-howto.webp",
+            "image_alt": "How to jump start your car with SuntNeew A3 in 4 steps",
             "support_text": ""
           }
         },
@@ -133,8 +158,8 @@
           "type": "faq_item",
           "settings": {
             "is_primary": true,
-            "question": "What do 2500A Peak and 800A Starting mean?",
-            "answer": "<p>2500A Peak is the brief maximum output. 800A Starting is the rated starting current. Peak current is not continuous output; the vehicle and battery condition still affect the result.</p>"
+            "question": "What do 4000A Peak and 800A Starting mean?",
+            "answer": "<p>4000A Peak is the brief maximum output. 800A Starting is the rated starting current. Peak current is not continuous output; the vehicle and battery condition still affect the result.</p>"
           }
         },
         "faq_03": {
@@ -187,6 +212,7 @@
         }
       },
       "block_order": [
+        "feat_00",
         "feat_01",
         "feat_02",
         "feat_03",
@@ -210,19 +236,19 @@
         "category_label": "Jump Starters",
         "category_url": "/pages/shop",
         "hero_eyebrow": "SUNTNEEW A3 · 12V JUMP STARTER & PD60W POWER BANK",
-        "spec_line": "16,000mAh / 59.2Wh · 2,500A Peak · 800A Starting · Two-Way USB-C PD60W",
+        "spec_line": "4,000A Peak · 800A Starting · PD 60W USB-C · 16,000mAh / 59.2Wh",
         "sticky_subtitle": "16,000mAh · PD60W USB-C",
         "fit_note": "Heavy-duty 12V jump starter for sedans, pickups & SUVs up to 8.0L gas / 5.5L diesel—doubles as a 60W USB-C PD laptop power bank.",
         "headline_sub": "Heavy-engine starting confidence plus two-way 60W USB-C charging in one hard EVA carry kit—so one pack covers roadside rescues and laptop emergencies alike.",
-        "highlights_lines": "2,500A peak (800A starting) for up to 8.0L gas / 5.5L diesel | Higher 16,000mAh / 59.2Wh reserve rated for 50+ starts per full charge.\nTwo-way USB-C PD60W fast charging | Rapidly recharge the pack or power laptops, tablets, and phones at up to 60W.\n10-layer smart clamp safeguards | Spark-proof EC5 clamp guards against reverse polarity, short circuits, and voltage spikes.\n150 lm 3-mode LED + 100% digital screen | Steady, warning strobe, and SOS lighting plus crisp percentage battery tracking.\nFull EVA carry case + UL 2743 tested | Organizes smart clamps, USB-C cable, and unit cleanly in your trunk or back seat.",
-        "gallery_video_url": "",
-        "gallery_video_poster_asset": "",
-        "gallery_video_label": "Official Film",
-        "gallery_video_caption": "",
-        "features_eyebrow": "SUNTNEEW A3 FEATURES",
-        "features_heading": "Larger-engine jump power + PD60W laptop bank.",
-        "features_lead": "Step up to 16,000mAh / 59.2Wh reserve, 2,500A peak power, and bi-directional 60W USB-C when a basic pocket booster isn't enough.",
-        "cases_after_index": 2,
+        "highlights_lines": "4,000A peak (800A starting) for up to 8.0L gas / 5.5L diesel | Higher 16,000mAh / 59.2Wh reserve rated for 50+ starts per full charge.\nTwo-way USB-C PD60W fast charging | Rapidly recharge the pack in ~1.5h or power laptops, tablets, and phones at up to 60W.\n8-in-1 smart clamp safeguards | Spark-proof EC5 clamp guards against reverse polarity, short circuits, and voltage spikes.\n150 lm 3-mode LED + 100% digital screen | Steady, warning strobe, and SOS lighting plus crisp percentage battery tracking.\nFull EVA carry case + UL 2743 tested | Organizes smart clamps, USB-C cable, and unit cleanly in your trunk or back seat.",
+        "gallery_video_url": "https://cdn.shopify.com/videos/c/vp/e8ba8675abae4d4799ebaac44e26b8fc/e8ba8675abae4d4799ebaac44e26b8fc.HD-1080p-2.5Mbps-102646522.mp4",
+        "gallery_video_poster_asset": "sn-pdp-a3-vid01-poster.webp",
+        "gallery_video_label": "Hands-On Demo (0:30)",
+        "gallery_video_caption": "SuntNeew A3 — real-driver trunk readiness, smart clamp & digital readout check.",
+        "features_eyebrow": "A3 / ON THE ROAD",
+        "features_heading": "Product Features",
+        "features_lead": "Step up to 16,000mAh / 59.2Wh reserve, 4,000A peak power, and bi-directional 60W USB-C when a basic pocket booster isn't enough.",
+        "cases_after_index": 3,
         "cases_sub": "Unedited owner and creator clips showing A3 smart clamps, digital readout, PD60W bank, and EVA case.",
         "show_planner_banner": false,
         "planner_eyebrow": "230AH OR 314AH?",
@@ -237,15 +263,15 @@
         "support_url": "/pages/support",
         "support_card_sub": "Operating guide, PD60W charging questions, and UL 2743 / UN38.3 docs.",
         "closing_heading": "16,000mAh confidence. Ready in your trunk.",
-        "specs_intro": "Published A3 capacity (59.2Wh), 800A starting / 2,500A peak rating, up to 8.0L gas / 5.5L diesel fit, PD60W USB-C profile, and smart clamp tolerances.",
-        "primary_specs": "Vehicle system | 12V\nEngine fit | Up to 8.0L Gas / 5.5L Diesel\nPeak current | 2500A Peak\nStarting current | 800A Starting\nRated capacity / energy | 16,000mAh / 59.2Wh\nStarts per full charge | 50+ starts*",
+        "specs_intro": "Published A3 capacity (59.2Wh), 800A starting / 4,000A peak rating, up to 8.0L gas / 5.5L diesel fit, PD60W USB-C profile, and smart clamp tolerances.",
+        "primary_specs": "Vehicle system | 12V\nEngine fit | Up to 8.0L Gas / 5.5L Diesel\nPeak current | 4,000A Peak\nStarting current | 800A Starting\nRated capacity / energy | 16,000mAh / 59.2Wh\nStarts per full charge | 50+ starts*",
         "more_specs": "USB-C | PD60W input / output\nUSB-A | Device-charging outputs\nEmergency light | 150 lm · steady, strobe, SOS\nSmart clamps | Status indicators, reverse-polarity and short-circuit protection\nBody | ABS + aluminum alloy\nDimensions | 21 × 9 × 3.5 cm\nNet weight | 0.77 kg / 1.7 lb\nDischarge temperature | −20°C to 60°C",
         "box_tab_label": "In the box",
         "box_heading": "In the box",
         "box_intro": "Everything arrives inside the structured EVA carry case so clamps, cables, and guide stay neatly packed together.",
         "box_items": "A3 jump starter\nIntelligent jumper clamps\nPD60W USB-C cable\nEVA carry case\nUser manual",
         "box_note": "Charge above 50% upon arrival and top up every 3 months for peak readiness.",
-        "box_diagram_asset": "suntneew-a3-rebuild-kit.webp",
+        "box_diagram_asset": "sn-a3-v8-aplus-10-box.webp",
         "manuals_intro": "Download the A3 Operating Guide, multilingual manual, and full UL 2743 / FCC / UN38.3 / SDS safety files.",
         "manual_en_asset": "suntneew-a3-operating-guide-v20.pdf",
         "manual_en_desc": "Step-by-step clamp sequence, force-start precautions, PD60W recharging specs, and troubleshooting.",
