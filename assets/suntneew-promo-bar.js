@@ -13,6 +13,8 @@
     'B21APBF',
     'G24BF',
     '230AHBF',
+    'G24U32',
+    'RVU32FREE',
   ]);
   const DEDICATED_COUPONS = new Map([
     ['suntneew-u23-portable-car-jump-starter-8-000mah', { code: 'U23BF', amount: 6 }],
@@ -28,6 +30,7 @@
     'suntneew-12-8v-100ah-lifepo4-rv-battery-group-24',
     'suntneew-12-8v-230ah-lifepo4-rv-battery',
   ]);
+  const U32_HANDLE = 'suntneew-u32-portable-car-jump-starter-10-000mah';
 
   let autoSyncInFlight = false;
   let lastAutoSyncSignature = '';
@@ -49,10 +52,21 @@
     const dedicatedCodes = [];
     let dedicatedTotal = 0;
     let snQty = 0;
+    let rvSubtotalCents = 0;
+    let hasU32 = false;
 
     for (const item of items) {
       const h = extractItemHandle(item);
       const q = Math.max(0, Number(item?.quantity || 0));
+      if (RV_BONUS_BATTERY_HANDLES.has(h)) {
+        const lineCents = Number(
+          item?.original_line_price ?? Number(item?.original_price ?? item?.price ?? 0) * q
+        );
+        rvSubtotalCents += Math.max(0, lineCents);
+      } else if (h === U32_HANDLE) {
+        hasU32 = true;
+      }
+
       const spec = DEDICATED_COUPONS.get(h);
       if (spec) {
         if (hasRvBonusBattery && spec.code === 'U32BF') {
@@ -64,6 +78,14 @@
         }
       } else {
         snQty += q;
+      }
+    }
+
+    if (hasRvBonusBattery && hasU32) {
+      const bonusCode = rvSubtotalCents >= 37500 ? 'RVU32FREE' : 'G24U32';
+      if (!dedicatedCodes.includes(bonusCode)) {
+        dedicatedCodes.push(bonusCode);
+        dedicatedTotal += bonusCode === 'RVU32FREE' ? 47.99 : 18;
       }
     }
 
@@ -145,9 +167,13 @@
     const tagEl = btn.querySelector('[data-sn-coupon-tag]');
     if (tagEl) tagEl.textContent = isApplied ? 'Applied' : 'Coupon';
 
+    const perUnit = bar?.dataset.snCouponPerUnit === 'true';
+    const unitSuffix = perUnit ? '/unit' : '';
     const leadEl = btn.querySelector('[data-sn-coupon-lead]');
     if (leadEl && dollars) {
-      leadEl.textContent = isApplied ? `$${dollars} coupon applied` : `Apply $${dollars} coupon`;
+      leadEl.textContent = isApplied
+        ? `$${dollars}${unitSuffix} coupon applied`
+        : `Apply $${dollars}${unitSuffix} coupon`;
     }
 
     const codeDeskEl = btn.querySelector('[data-sn-coupon-code]');
@@ -215,14 +241,16 @@
 
   async function postDiscountToCart(codeExpr) {
     const root = getRoot();
+    const isMultiCode = String(codeExpr || '').includes(',');
     const firstCode = String(codeExpr || '').split(',')[0].trim();
-    const cookieReq = firstCode
-      ? fetch(`${root}discount/${encodeURIComponent(firstCode)}`, {
-          method: 'GET',
-          credentials: 'same-origin',
-          keepalive: true,
-        }).catch(() => null)
-      : Promise.resolve(null);
+    const cookieReq =
+      !isMultiCode && firstCode
+        ? fetch(`${root}discount/${encodeURIComponent(firstCode)}`, {
+            method: 'GET',
+            credentials: 'same-origin',
+            keepalive: true,
+          }).catch(() => null)
+        : Promise.resolve(null);
 
     const cartReq = fetch(`${root}cart/update.js`, {
       method: 'POST',
@@ -250,7 +278,7 @@
         drawer.querySelector('[data-sn-promo-bar]')?.dataset.snCartAppliedCode || ''
       );
       const expected = parseCodeSet(expectedCodeExpr);
-      const synced = [...expected].some((c) => rendered.has(c));
+      const synced = expected.size > 0 && [...expected].every((c) => rendered.has(c));
       if (!synced) {
         document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
       }
