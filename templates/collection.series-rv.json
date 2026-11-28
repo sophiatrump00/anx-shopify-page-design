@@ -10,109 +10,115 @@
 {
   "sections": {
     "main": {
-      "type": "suntneew-series-collection",
+      "type": "suntneew-rv-battery-guide",
       "blocks": {
         "g31": {
-          "type": "product_card",
+          "type": "battery",
           "settings": {
-            "fallback_asset": "suntneew-shop-white-g31.jpg",
+            "group": "compact",
+            "model_code": "G31",
+            "product_handle": "suntneew-12-8v-100ah-lifepo4-rv-battery-group-31",
+            "asset_name": "suntneew-shop-white-g31.jpg",
             "image_alt": "SuntNeew 12.8V 100Ah Group 31 LiFePO4 RV battery",
-            "badge": "GROUP 31",
-            "eyebrow": "1.28KWH RV BATTERY",
-            "title": "12.8V 100Ah — Group 31",
-            "text": "A Group 31-format LiFePO4 battery with Bluetooth monitoring for planned RV power systems.",
-            "filter_value": "100Ah",
-            "filter_label": "100Ah",
-            "fact_one": "1,280Wh",
-            "fact_two": "Bluetooth 5.0",
-            "fact_three": "9.6kg",
-            "link_label": "View Group 31",
-            "link": "shopify://products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-31"
+            "badge": "Group 31 · IP65",
+            "title": "SuntNeew 12.8V 100Ah — Group 31",
+            "bullet_1": "1,280Wh · 100A / 1,280W Continuous",
+            "bullet_2": "Group 31: 339 × 185 × 218mm · 9.6kg",
+            "bullet_3": "Bluetooth 5.0 · IP65 · 0°C Low-Temp",
+            "spec_energy": "1,280Wh",
+            "spec_output": "100A / 1,280W",
+            "spec_dimensions": "339 × 185 × 218mm",
+            "spec_weight": "9.6kg",
+            "spec_protection": "Bluetooth 5.0 · IP65 · 0°C Low-Temp",
+            "enable_pack_selector": true
           }
         },
         "g24": {
-          "type": "product_card",
+          "type": "battery",
           "settings": {
-            "fallback_asset": "suntneew-shop-white-g24.jpg",
+            "group": "compact",
+            "model_code": "G24",
+            "product_handle": "suntneew-12-8v-100ah-lifepo4-rv-battery-group-24",
+            "asset_name": "suntneew-shop-white-g24.jpg",
             "image_alt": "SuntNeew 12.8V 100Ah Group 24 LiFePO4 RV battery",
-            "badge": "GROUP 24",
-            "eyebrow": "COMPACT 1.28KWH",
-            "title": "12.8V 100Ah — Group 24",
-            "text": "A compact Group 24-format battery with 100A charge and continuous-discharge ratings.",
-            "filter_value": "100Ah",
-            "filter_label": "100Ah",
-            "fact_one": "1,280Wh",
-            "fact_two": "100A continuous",
-            "fact_three": "9.4kg",
-            "link_label": "View Group 24",
-            "link": "shopify://products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-24"
+            "badge": "Compact Group 24",
+            "title": "SuntNeew 12.8V 100Ah — Group 24",
+            "bullet_1": "1,280Wh · 100A / 1,280W Continuous",
+            "bullet_2": "Group 24: 260 × 170 × 212mm · 9.4kg",
+            "bullet_3": "Fits tight Group 24 bays · Bluetooth 5.0",
+            "spec_energy": "1,280Wh",
+            "spec_output": "100A / 1,280W",
+            "spec_dimensions": "260 × 170 × 212mm",
+            "spec_weight": "9.4kg",
+            "spec_protection": "Bluetooth 5.0 · 0°C Low-Temp (No IP)",
+            "enable_pack_selector": false
           }
         },
         "rv230": {
-          "type": "product_card",
+          "type": "battery",
           "settings": {
-            "fallback_asset": "suntneew-shop-white-230ah.jpg",
+            "group": "reserve",
+            "model_code": "230AH",
+            "product_handle": "suntneew-12-8v-230ah-lifepo4-rv-battery",
+            "asset_name": "suntneew-shop-white-230ah.jpg",
             "image_alt": "SuntNeew 12.8V 230Ah LiFePO4 RV battery",
-            "badge": "HIGHER OUTPUT",
-            "eyebrow": "OUTPUT-FIRST 2.944KWH",
-            "title": "12.8V 230Ah",
-            "text": "Choose 230Ah for 2,560W continuous output, 5.4kg less weight and regular solar, alternator or shore-power replenishment.",
-            "filter_value": "230Ah",
-            "filter_label": "230Ah",
-            "fact_one": "2,560W output",
-            "fact_two": "20.6kg",
-            "fact_three": "2,944Wh reserve",
-            "link_label": "View 230Ah",
-            "link": "shopify://products/suntneew-12-8v-230ah-lifepo4-rv-battery"
+            "badge": "Higher Output",
+            "title": "SuntNeew 12.8V 230Ah LiFePO4",
+            "bullet_1": "2,944Wh · 200A / 2,560W Continuous",
+            "bullet_2": "522 × 268 × 222mm · 20.6kg (5.4kg lighter)",
+            "bullet_3": "Bluetooth 5.0 · 0°C Low-Temp · 4S4P",
+            "spec_energy": "2,944Wh",
+            "spec_output": "200A / 2,560W",
+            "spec_dimensions": "522 × 268 × 222mm",
+            "spec_weight": "20.6kg",
+            "spec_protection": "Bluetooth 5.0 · 0°C Low-Temp · 4S4P",
+            "enable_pack_selector": false
           }
         },
         "rv314": {
-          "type": "product_card",
+          "type": "battery",
           "settings": {
-            "fallback_asset": "suntneew-shop-white-314ah.jpg",
+            "group": "reserve",
+            "model_code": "314AH",
+            "product_handle": "suntneew-12-8v-314ah-lifepo4-rv-battery",
+            "asset_name": "suntneew-shop-white-314ah.jpg",
             "image_alt": "SuntNeew 12.8V 314Ah LiFePO4 RV battery",
-            "badge": "LONGER RESERVE",
-            "eyebrow": "RESERVE-FIRST 4.019KWH",
-            "title": "12.8V 314Ah",
-            "text": "Choose 314Ah for 36.5% more stored energy and longer gaps between charges in the same enclosure size as 230Ah.",
-            "filter_value": "314Ah",
-            "filter_label": "314Ah",
-            "fact_one": "4,019.2Wh reserve",
-            "fact_two": "+36.5% energy",
-            "fact_three": "2,010W output",
-            "link_label": "View 314Ah",
-            "link": "shopify://products/suntneew-12-8v-314ah-lifepo4-rv-battery"
+            "badge": "Longest Reserve",
+            "title": "SuntNeew 12.8V 314Ah LiFePO4",
+            "bullet_1": "4,019.2Wh · 157A / 2,010W Continuous",
+            "bullet_2": "522 × 268 × 222mm · 26.0kg (Same bay size)",
+            "bullet_3": "+36.5% more energy vs 230Ah · Bluetooth 5.0",
+            "spec_energy": "4,019.2Wh",
+            "spec_output": "157A / 2,010W",
+            "spec_dimensions": "522 × 268 × 222mm",
+            "spec_weight": "26.0kg",
+            "spec_protection": "Bluetooth 5.0 · 0°C Low-Temp · 4S4P",
+            "enable_pack_selector": false
           }
         }
       },
-      "block_order": ["g31", "g24", "rv230", "rv314"],
+      "block_order": [
+        "g31",
+        "g24",
+        "rv230",
+        "rv314"
+      ],
       "settings": {
         "anchor_id": "rv-batteries",
-        "eyebrow": "RV BATTERIES",
-        "heading": "Power the road beyond the campsite.",
-        "body": "Four 12.8V LiFePO4 configurations cover compact Group 24 and Group 31 installations through higher-capacity 230Ah and 314Ah RV systems.",
         "hero_asset": "suntneew-rv-g31-feature-lifestyle-desktop.jpg",
         "hero_mobile_asset": "suntneew-rv-g31-feature-lifestyle-mobile.jpg",
         "hero_alt": "SuntNeew Group 31 RV battery beside a motorhome at a lakeside campsite",
-        "back_label": "All product series",
-        "back_link": "shopify://collections",
-        "catalog_state": "available",
-        "catalog_eyebrow": "CHOOSE YOUR CAPACITY",
-        "catalog_heading": "Match the battery to the RV system.",
-        "catalog_body": "Choose Group 24 or Group 31 by physical fit. Between the same-size 230Ah and 314Ah models, choose 230Ah for higher output and lower weight, or 314Ah for longer reserve.",
-        "capacity_filter_label": "Filter RV batteries by capacity",
-        "all_capacity_label": "All capacities",
-        "view_label": "RV battery view",
-        "cards_label": "Cards",
-        "list_label": "List",
-        "default_view": "list",
-        "empty_eyebrow": "CATALOG IN PREPARATION",
-        "empty_heading": "This collection is getting ready for the road.",
-        "empty_body": "The RV series stays visible in the site structure. Product cards and RV product pages will appear here when the range is ready to launch.",
-        "empty_label": "Browse all products",
-        "empty_link": "shopify://collections"
+        "eyebrow": "12V RV LIFEPO4 BATTERIES",
+        "heading": "RV Batteries",
+        "intro": "Group 24 & Group 31 compact fit to 4kWh long-stay reserve.",
+        "shelf1_heading": "01 · 100Ah Compact (Group 31 vs Group 24)",
+        "shelf2_heading": "02 · High-Capacity Reserve (230Ah vs 314Ah)",
+        "compare_heading": "Compare All 4 Models Side-by-Side",
+        "table_note": "For RV auxiliary energy storage only (not for engine cranking). Verify bay dimensions, BMS current limits, and user manual before installation."
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
