@@ -1,0 +1,1042 @@
+{{ 'suntneew-bf-deals.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'suntneew-bf-deals.js' | asset_url }}" defer></script>
+
+{%- liquid
+  assign p_230ah = all_products['suntneew-12-8v-230ah-lifepo4-rv-battery']
+  assign p_g24 = all_products['suntneew-12-8v-100ah-lifepo4-rv-battery-group-24']
+  assign p_g31 = all_products['suntneew-12-8v-100ah-lifepo4-rv-battery-group-31']
+  assign p_314ah = all_products['suntneew-12-8v-314ah-lifepo4-rv-battery']
+  assign p_a3 = all_products['suntneew-a3-jump-starter-16000mah']
+  assign p_b21ap = all_products['suntneew-b21ap-5000a-jump-starter-air-compressor']
+  assign p_a20 = all_products['suntneew-a20-jump-starter-8000mah']
+  assign p_kp700 = all_products['suntneew-kb700-fan-jump-starter-7-200mah']
+  assign p_u32 = all_products['suntneew-u32-portable-car-jump-starter-10-000mah']
+  assign p_u23 = all_products['suntneew-u23-portable-car-jump-starter-8-000mah']
+  assign p_oj02 = all_products['suntneew-oj02-obd2-jump-starter']
+
+  assign v_230ah = p_230ah.selected_or_first_available_variant.id | default: 51847424966951
+  assign v_g24 = p_g24.selected_or_first_available_variant.id | default: 51847424934183
+  assign v_g31 = p_g31.selected_or_first_available_variant.id | default: 51847422509351
+  assign v_314ah = p_314ah.selected_or_first_available_variant.id | default: 51847424999719
+  assign v_a3 = p_a3.selected_or_first_available_variant.id | default: 51847425130791
+  assign v_b21ap = p_b21ap.selected_or_first_available_variant.id | default: 52692977418535
+  assign v_a20 = p_a20.selected_or_first_available_variant.id | default: 51847425032487
+  for v in p_a20.variants
+    if v.id == 51847425032487 and v.available
+      assign v_a20 = v.id
+      break
+    endif
+  endfor
+  assign v_kp700 = p_kp700.selected_or_first_available_variant.id | default: 51917631881511
+  assign v_u32 = p_u32.selected_or_first_available_variant.id | default: 51873264828711
+  assign v_u23 = p_u23.selected_or_first_available_variant.id | default: 51873252213031
+  assign v_oj02 = p_oj02.selected_or_first_available_variant.id | default: 52026696859943
+
+  assign pr_230ah = p_230ah.price | default: 55999
+  assign cmp_230ah = p_230ah.compare_at_price | default: 84999
+  assign pr_g24 = p_g24.price | default: 24999
+  assign cmp_g24 = p_g24.compare_at_price | default: 37999
+  assign pr_g31 = p_g31.price | default: 18900
+  assign cmp_g31 = p_g31.compare_at_price | default: 32999
+  assign pr_314ah = p_314ah.price | default: 56999
+  assign cmp_314ah = p_314ah.compare_at_price | default: 68999
+  assign pr_a3 = p_a3.price | default: 9999
+  assign cmp_a3 = p_a3.compare_at_price | default: 15499
+  assign pr_b21ap = p_b21ap.price | default: 10999
+  assign cmp_b21ap = p_b21ap.compare_at_price | default: 16999
+  assign pr_a20 = p_a20.price | default: 3999
+  assign cmp_a20 = p_a20.compare_at_price | default: 6699
+  assign pr_kp700 = p_kp700.price | default: 7999
+  assign cmp_kp700 = p_kp700.compare_at_price | default: 12499
+  assign pr_u32 = p_u32.price | default: 4799
+  assign cmp_u32 = p_u32.compare_at_price | default: 7499
+  assign pr_u23 = p_u23.price | default: 3789
+  assign cmp_u23 = p_u23.compare_at_price | default: 6999
+  assign pr_oj02 = p_oj02.price | default: 7999
+  assign cmp_oj02 = p_oj02.compare_at_price | default: 9799
+
+  assign img_230ah = p_230ah.featured_image | image_url: width: 640
+  assign img_g24 = p_g24.featured_image | image_url: width: 640
+  assign img_g31 = p_g31.featured_image | image_url: width: 640
+  assign img_314ah = p_314ah.featured_image | image_url: width: 640
+  assign img_a3 = p_a3.featured_image | image_url: width: 640
+  assign img_b21ap = p_b21ap.featured_image | image_url: width: 640
+  assign img_a20 = p_a20.featured_image | image_url: width: 640
+  assign img_kp700 = p_kp700.featured_image | image_url: width: 640
+  assign img_u32 = p_u32.featured_image | image_url: width: 640
+  assign img_u23 = p_u23.featured_image | image_url: width: 640
+  assign img_oj02 = p_oj02.featured_image | image_url: width: 640
+
+  assign url_230ah = p_230ah.url | default: '/products/suntneew-12-8v-230ah-lifepo4-rv-battery'
+  assign url_g24 = p_g24.url | default: '/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-24'
+  assign url_g31 = p_g31.url | default: '/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-31'
+  assign url_314ah = p_314ah.url | default: '/products/suntneew-12-8v-314ah-lifepo4-rv-battery'
+  assign url_a3 = p_a3.url | default: '/products/suntneew-a3-jump-starter-16000mah'
+  assign url_b21ap = p_b21ap.url | default: '/products/suntneew-b21ap-5000a-jump-starter-air-compressor'
+  assign url_a20 = p_a20.url | default: '/products/suntneew-a20-jump-starter-8000mah'
+  assign url_kp700 = p_kp700.url | default: '/products/suntneew-kb700-fan-jump-starter-7-200mah'
+  assign url_u32 = p_u32.url | default: '/products/suntneew-u32-portable-car-jump-starter-10-000mah'
+  assign url_u23 = p_u23.url | default: '/products/suntneew-u23-portable-car-jump-starter-8-000mah'
+  assign url_oj02 = p_oj02.url | default: '/products/suntneew-oj02-obd2-jump-starter'
+
+  assign fin_230ah = pr_230ah | minus: 9400
+  assign fin_g24 = pr_g24 | minus: 6000
+  assign fin_a3 = pr_a3 | minus: 4600
+  assign fin_b21ap = pr_b21ap | minus: 2400
+  assign fin_kp700 = pr_kp700 | minus: 1800
+  assign fin_u32 = pr_u32 | minus: 1300
+  assign fin_u23 = pr_u23 | minus: 600
+-%}
+
+<div
+  class="sn-bf-page"
+  data-sn-bf-root
+  style="--sn-bf-hero-bg: url('{{ 'sn-bf-hero-light-2026.webp' | asset_url }}'); --sn-bf-vip-bg: url('{{ 'sn-bf-vip-light-2026.webp' | asset_url }}');"
+>
+  <!-- Sticky Light Anchor Nav -->
+  <nav class="sn-bf-anchor-bar" aria-label="Black Friday Sections">
+    <div class="sn-bf-anchor-bar__inner">
+      <div class="sn-bf-anchor-links">
+        <a href="#flash-sale" class="sn-bf-anchor-link is-active" data-sn-bf-anchor="flash-sale">Flash Sale</a>
+        <a href="#black-friday-deals" class="sn-bf-anchor-link" data-sn-bf-anchor="black-friday-deals">Black Friday Deals</a>
+        <a href="#rv-bonus" class="sn-bf-anchor-link" data-sn-bf-anchor="rv-bonus">RV Bonus &amp; Free Gift</a>
+        <a href="#coupon-guide" class="sn-bf-anchor-link" data-sn-bf-anchor="coupon-guide">Coupon Guide</a>
+      </div>
+      <a href="#black-friday-deals" class="sn-bf-btn-primary">Shop Now</a>
+    </div>
+  </nav>
+
+  <!-- Ended State Banner (auto-revealed after 2026-12-01T15:00:00+08:00) -->
+  <section class="sn-bf-ended-banner" data-sn-bf-ended-banner hidden aria-live="polite">
+    <div class="sn-bf-ended-banner__card">
+      <span class="sn-bf-ended-banner__badge">EVENT CLOSED · DEC 1, 2026</span>
+      <h2>Black Friday Sale Has Ended</h2>
+      <p>Our limited-time Black Friday event and Black Friday coupon codes ended on Dec 1, 2026 (2:00 AM EST / Nov 30, 11:00 PM PST). Explore our full RV Battery and Jump Starter lineups below.</p>
+      <div class="sn-bf-ended-banner__actions">
+        <a href="{{ routes.collections_url }}/rv-batteries" class="sn-bf-btn-primary">Shop RV Batteries</a>
+        <a href="{{ routes.collections_url }}/jump-starters" class="sn-bf-btn-secondary">Shop Jump Starters</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="sn-bf-hero" id="top">
+    <div class="sn-bf-container sn-bf-hero__grid">
+      <div>
+        <div class="sn-bf-hero-eyebrow"><span class="sn-bf-dot"></span>BLACK FRIDAY EVENT · ENDS DEC 1</div>
+        <h1>Black Friday Sale — Save Up to <span class="sn-bf-orange-text">46% + $94 Instant Coupons</span></h1>
+        <p class="sn-bf-hero__sub">
+          Verified Black Friday pricing on SuntNeew LiFePO4 RV Batteries and Portable Jump Starters. Instant coupons auto-apply at checkout — plus unlock a <strong>FREE U32 Jump Starter ($47.99 value)</strong> with qualifying RV battery orders.
+        </p>
+
+        <div class="sn-bf-countdown-wrap">
+          <div class="sn-bf-countdown-label" data-cd-label>Sale Ends In</div>
+          <div class="sn-bf-countdown-boxes" role="timer" aria-live="polite">
+            <div class="sn-bf-cd-box"><span class="sn-bf-cd-val" data-cd="days">00</span><span class="sn-bf-cd-unit">DAYS</span></div>
+            <div class="sn-bf-cd-box"><span class="sn-bf-cd-val" data-cd="hours">00</span><span class="sn-bf-cd-unit">HRS</span></div>
+            <div class="sn-bf-cd-box"><span class="sn-bf-cd-val" data-cd="mins">00</span><span class="sn-bf-cd-unit">MIN</span></div>
+            <div class="sn-bf-cd-box"><span class="sn-bf-cd-val" data-cd="secs">00</span><span class="sn-bf-cd-unit">SEC</span></div>
+          </div>
+          <div class="sn-bf-countdown-tz">Ends Dec 1, 2:00 AM EST · Nov 30, 11:00 PM PST</div>
+        </div>
+
+        <div class="sn-bf-hero__ctas">
+          <a href="#flash-sale" class="sn-bf-btn-primary">Shop Flash Sale</a>
+          <a href="#rv-bonus" class="sn-bf-btn-secondary">Unlock Free U32 Gift</a>
+        </div>
+      </div>
+
+      <div class="sn-bf-hero-showcase">
+        <div class="sn-bf-hero-showcase__head">
+          <span>TOP BLACK FRIDAY HIGHLIGHTS</span>
+          <span>Auto-Applied in Cart</span>
+        </div>
+        <div class="sn-bf-hero-showcase__grid">
+          <a href="#black-friday-deals" class="sn-bf-hero-mini-card" data-sn-bf-jump-cat="rv-batteries">
+            <div class="sn-bf-hero-mini-card__img">
+              <span class="sn-bf-hero-mini-pill">34% OFF</span>
+              <img src="{{ img_230ah }}" alt="{{ p_230ah.title | escape }}" width="240" height="240" loading="eager">
+            </div>
+            <div class="sn-bf-hero-mini-tag">230Ah: -$94/unit + Free U32</div>
+            <div class="sn-bf-hero-mini-title">12.8V 230Ah RV Battery</div>
+            <div class="sn-bf-hero-mini-price"><strong>{{ fin_230ah | money }}</strong><span>({{ pr_230ah | money }} list)</span><del>{{ cmp_230ah | money }}</del></div>
+          </a>
+
+          <a href="#black-friday-deals" class="sn-bf-hero-mini-card" data-sn-bf-jump-cat="rv-batteries">
+            <div class="sn-bf-hero-mini-card__img">
+              <span class="sn-bf-hero-mini-pill">34% OFF</span>
+              <img src="{{ img_g24 }}" alt="{{ p_g24.title | escape }}" width="240" height="240" loading="eager">
+            </div>
+            <div class="sn-bf-hero-mini-tag">G24: -$60/unit</div>
+            <div class="sn-bf-hero-mini-title">Group 24 100Ah Battery</div>
+            <div class="sn-bf-hero-mini-price"><strong>{{ fin_g24 | money }}</strong><span>({{ pr_g24 | money }} list)</span><del>{{ cmp_g24 | money }}</del></div>
+          </a>
+
+          <a href="#black-friday-deals" class="sn-bf-hero-mini-card" data-sn-bf-jump-cat="jump-starters">
+            <div class="sn-bf-hero-mini-card__img">
+              <span class="sn-bf-hero-mini-pill">35% OFF</span>
+              <img src="{{ img_a3 }}" alt="{{ p_a3.title | escape }}" width="240" height="240" loading="eager">
+            </div>
+            <div class="sn-bf-hero-mini-tag">A3: -$46 OFF (A3BF)</div>
+            <div class="sn-bf-hero-mini-title">A3 16,000mAh Jump Starter</div>
+            <div class="sn-bf-hero-mini-price"><strong>{{ fin_a3 | money }}</strong><span>({{ pr_a3 | money }} list)</span><del>{{ cmp_a3 | money }}</del></div>
+          </a>
+
+          <a href="#black-friday-deals" class="sn-bf-hero-mini-card" data-sn-bf-jump-cat="jump-starters">
+            <div class="sn-bf-hero-mini-card__img">
+              <span class="sn-bf-hero-mini-pill">35% OFF</span>
+              <img src="{{ img_b21ap }}" alt="{{ p_b21ap.title | escape }}" width="240" height="240" loading="eager">
+            </div>
+            <div class="sn-bf-hero-mini-tag">B21AP: -$24 OFF</div>
+            <div class="sn-bf-hero-mini-title">B21AP 5000A + 160 PSI</div>
+            <div class="sn-bf-hero-mini-price"><strong>{{ fin_b21ap | money }}</strong><span>({{ pr_b21ap | money }} list)</span><del>{{ cmp_b21ap | money }}</del></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Flash Sale (4 Flagship Hero Cards) -->
+  <section class="sn-bf-section sn-bf-section--canvas" id="flash-sale">
+    <div class="sn-bf-container">
+      <div class="sn-bf-section-head">
+        <div>
+          <span class="sn-bf-section-kicker">LIMITED-TIME DOORBUSTERS</span>
+          <h2 class="sn-bf-section-title">Black Friday Flash Sale</h2>
+          <p class="sn-bf-section-desc">Our top 4 flagship RV batteries and jump starters, marked down through Dec 1 with instant auto-applied coupon savings.</p>
+        </div>
+        <a href="#black-friday-deals" class="sn-bf-btn-secondary">See All 11 Deals →</a>
+      </div>
+
+      <div class="sn-bf-flash-grid">
+        <!-- Flash 1: 230Ah -->
+        <article class="sn-bf-flash-card">
+          <div class="sn-bf-flash-card__stage">
+            <div class="sn-bf-badge-row">
+              <span class="sn-bf-badge-off">34% OFF</span>
+              <span class="sn-bf-badge-warm">FREE U32 GIFT</span>
+            </div>
+            <a href="{{ url_230ah }}"><img src="{{ img_230ah }}" alt="{{ p_230ah.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-flash-card__body">
+            <h3 class="sn-bf-flash-card__title"><a href="{{ url_230ah }}">{{ p_230ah.title | default: 'SuntNeew 12.8V 230Ah LiFePO4 RV Battery' }}</a></h3>
+            <div class="sn-bf-spec-strip">
+              <div class="sn-bf-spec-cell"><strong>2,944Wh</strong><span>Capacity</span></div>
+              <div class="sn-bf-spec-cell"><strong>2,560W</strong><span>Output</span></div>
+              <div class="sn-bf-spec-cell"><strong>20.6kg</strong><span>Weight</span></div>
+              <div class="sn-bf-spec-cell"><strong>5-Year</strong><span>Warranty</span></div>
+            </div>
+            <div class="sn-bf-price-block">
+              <span class="sn-bf-price-now">{{ pr_230ah | money }}</span>
+              <span class="sn-bf-price-compare">{{ cmp_230ah | money }}</span>
+            </div>
+            <div class="sn-bf-coupon-callout">
+              <span>Code <code>230AHBF</code> (-$94/unit)</span>
+              <strong>Final {{ fin_230ah | money }}</strong>
+            </div>
+            <div class="sn-bf-card-actions">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="230ah" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_230ah }}">View Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Flash 2: G24 -->
+        <article class="sn-bf-flash-card">
+          <div class="sn-bf-flash-card__stage">
+            <div class="sn-bf-badge-row">
+              <span class="sn-bf-badge-off">34% OFF</span>
+              <span class="sn-bf-badge-warm">-$60/UNIT</span>
+            </div>
+            <a href="{{ url_g24 }}"><img src="{{ img_g24 }}" alt="{{ p_g24.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-flash-card__body">
+            <h3 class="sn-bf-flash-card__title"><a href="{{ url_g24 }}">{{ p_g24.title | default: 'SuntNeew 12.8V 100Ah LiFePO4 RV Battery - Group 24' }}</a></h3>
+            <div class="sn-bf-spec-strip">
+              <div class="sn-bf-spec-cell"><strong>1,280Wh</strong><span>Capacity</span></div>
+              <div class="sn-bf-spec-cell"><strong>100A</strong><span>Cont.</span></div>
+              <div class="sn-bf-spec-cell"><strong>9.4kg</strong><span>Compact</span></div>
+              <div class="sn-bf-spec-cell"><strong>5-Year</strong><span>Warranty</span></div>
+            </div>
+            <div class="sn-bf-price-block">
+              <span class="sn-bf-price-now">{{ pr_g24 | money }}</span>
+              <span class="sn-bf-price-compare">{{ cmp_g24 | money }}</span>
+            </div>
+            <div class="sn-bf-coupon-callout">
+              <span>Code <code>G24BF</code> (-$60/unit)</span>
+              <strong>Final {{ fin_g24 | money }}</strong>
+            </div>
+            <div class="sn-bf-card-actions">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="g24" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_g24 }}">View Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Flash 3: G31 -->
+        <article class="sn-bf-flash-card">
+          <div class="sn-bf-flash-card__stage">
+            <div class="sn-bf-badge-row">
+              <span class="sn-bf-badge-off">43% OFF</span>
+              <span class="sn-bf-badge-warm">MOST POPULAR</span>
+            </div>
+            <a href="{{ url_g31 }}"><img src="{{ img_g31 }}" alt="{{ p_g31.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-flash-card__body">
+            <h3 class="sn-bf-flash-card__title"><a href="{{ url_g31 }}">{{ p_g31.title | default: 'SuntNeew 12.8V 100Ah LiFePO4 RV Battery - Group 31' }}</a></h3>
+            <div class="sn-bf-spec-strip">
+              <div class="sn-bf-spec-cell"><strong>1,280Wh</strong><span>Capacity</span></div>
+              <div class="sn-bf-spec-cell"><strong>BT 5.0</strong><span>App</span></div>
+              <div class="sn-bf-spec-cell"><strong>9.6kg</strong><span>Weight</span></div>
+              <div class="sn-bf-spec-cell"><strong>5-Year</strong><span>Warranty</span></div>
+            </div>
+            <div class="sn-bf-price-block">
+              <span class="sn-bf-price-now">{{ pr_g31 | money }}</span>
+              <span class="sn-bf-price-compare">{{ cmp_g31 | money }}</span>
+            </div>
+            <div class="sn-bf-coupon-callout sn-bf-coupon-callout--warm">
+              <span>Extra <code>SN10</code> (-$10) / <code>SN175</code> (Qty 2+)</span>
+              <strong>{{ pr_g31 | money }}</strong>
+            </div>
+            <div class="sn-bf-card-actions">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="g31" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_g31 }}">View Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Flash 4: A3 -->
+        <article class="sn-bf-flash-card">
+          <div class="sn-bf-flash-card__stage">
+            <div class="sn-bf-badge-row">
+              <span class="sn-bf-badge-off">35% OFF</span>
+              <span class="sn-bf-badge-warm">-$46 COUPON</span>
+            </div>
+            <a href="{{ url_a3 }}"><img src="{{ img_a3 }}" alt="{{ p_a3.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-flash-card__body">
+            <h3 class="sn-bf-flash-card__title"><a href="{{ url_a3 }}">{{ p_a3.title | default: 'SuntNeew A3 Portable Car Jump Starter' }}</a></h3>
+            <div class="sn-bf-spec-strip">
+              <div class="sn-bf-spec-cell"><strong>16,000mAh</strong><span>Capacity</span></div>
+              <div class="sn-bf-spec-cell"><strong>4,000A</strong><span>Peak</span></div>
+              <div class="sn-bf-spec-cell"><strong>PD 60W</strong><span>USB-C</span></div>
+              <div class="sn-bf-spec-cell"><strong>8L/5.5L</strong><span>Gas/Dsl</span></div>
+            </div>
+            <div class="sn-bf-price-block">
+              <span class="sn-bf-price-now">{{ pr_a3 | money }}</span>
+              <span class="sn-bf-price-compare">{{ cmp_a3 | money }}</span>
+            </div>
+            <div class="sn-bf-coupon-callout">
+              <span>Code <code>A3BF</code> (-$46)</span>
+              <strong>Final {{ fin_a3 | money }}</strong>
+            </div>
+            <div class="sn-bf-card-actions">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="a3" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_a3 }}">View Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Black Friday Deals by Category (All 11 Active SKUs) -->
+  <section class="sn-bf-section sn-bf-section--white" id="black-friday-deals">
+    <div class="sn-bf-container">
+      <div class="sn-bf-section-head">
+        <div>
+          <span class="sn-bf-section-kicker">FULL BLACK FRIDAY LINEUP</span>
+          <h2 class="sn-bf-section-title">Black Friday Deals by Category</h2>
+          <p class="sn-bf-section-desc">Compare every active SuntNeew SKU, copy or auto-apply instant coupons, and switch pack sizes on multi-unit RV battery deals.</p>
+        </div>
+      </div>
+
+      <div class="sn-bf-filter-tabs" role="tablist" aria-label="Deal Categories">
+        <button type="button" class="sn-bf-filter-tab is-active" data-sn-bf-cat-tab="all" role="tab" aria-selected="true">All Deals (11)</button>
+        <button type="button" class="sn-bf-filter-tab" data-sn-bf-cat-tab="rv-batteries" role="tab" aria-selected="false">RV Batteries (4)</button>
+        <button type="button" class="sn-bf-filter-tab" data-sn-bf-cat-tab="jump-starters" role="tab" aria-selected="false">Jump Starters (7)</button>
+        <button type="button" class="sn-bf-filter-tab" data-sn-bf-cat-tab="instant-coupons" role="tab" aria-selected="false">Instant Coupons (7)</button>
+      </div>
+
+      <div class="sn-bf-catalog-grid">
+        <!-- 1. 230Ah -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="rv-batteries" data-has-coupon="true">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">34% OFF</span></div>
+            <a href="{{ url_230ah }}"><img src="{{ img_230ah }}" alt="{{ p_230ah.title | escape }}" width="320" height="320" loading="lazy"></a>
+            <span class="sn-bf-deal-card__gift-pill" data-pack-gift>Unlocks FREE U32 ($47.99 value)</span>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">RV Battery</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_230ah }}">{{ p_230ah.title | default: 'SuntNeew 12.8V 230Ah LiFePO4 RV Battery' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">2,944Wh</span>
+              <span class="sn-bf-spec-chip">2,560W</span>
+              <span class="sn-bf-spec-chip">20.6kg</span>
+              <span class="sn-bf-spec-chip">5-Year</span>
+            </div>
+            <div class="sn-bf-pack-switcher" role="group" aria-label="230Ah Pack Size">
+              <button type="button" class="sn-bf-pack-btn is-active" data-sn-bf-pack-btn data-key="230ah" data-qty="1" data-coupon-off="94" data-code="230AHBF">1 Pack</button>
+              <button type="button" class="sn-bf-pack-btn" data-sn-bf-pack-btn data-key="230ah" data-qty="2" data-coupon-off="94" data-code="230AHBF">2 Pack</button>
+              <button type="button" class="sn-bf-pack-btn" data-sn-bf-pack-btn data-key="230ah" data-qty="4" data-coupon-off="94" data-code="230AHBF">4 Pack</button>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now" data-pack-now>{{ fin_230ah | money }}</span>
+              <span class="was" data-pack-was>{{ cmp_230ah | money }}</span>
+              <span class="gmc-note" data-pack-gmc>Display price: {{ pr_230ah | money }} before auto-applied 230AHBF</span>
+            </div>
+            <div class="sn-bf-code-bar">
+              <span>Code <strong>230AHBF</strong> (-$94/unit) → <strong data-pack-code-final>{{ fin_230ah | money }}</strong></span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="230AHBF">Copy Code</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="230ah" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_230ah }}">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. G24 -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="rv-batteries" data-has-coupon="true">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">34% OFF</span></div>
+            <a href="{{ url_g24 }}"><img src="{{ img_g24 }}" alt="{{ p_g24.title | escape }}" width="320" height="320" loading="lazy"></a>
+            <span class="sn-bf-deal-card__gift-pill" data-pack-gift>U32 for $29.99 (or FREE w/ 2+)</span>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">RV Battery</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_g24 }}">{{ p_g24.title | default: 'SuntNeew 12.8V 100Ah LiFePO4 RV Battery - Group 24' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">1,280Wh</span>
+              <span class="sn-bf-spec-chip">100A</span>
+              <span class="sn-bf-spec-chip">9.4kg</span>
+              <span class="sn-bf-spec-chip">5-Year</span>
+            </div>
+            <div class="sn-bf-pack-switcher" role="group" aria-label="Group 24 Pack Size">
+              <button type="button" class="sn-bf-pack-btn is-active" data-sn-bf-pack-btn data-key="g24" data-qty="1" data-coupon-off="60" data-code="G24BF">1 Pack</button>
+              <button type="button" class="sn-bf-pack-btn" data-sn-bf-pack-btn data-key="g24" data-qty="2" data-coupon-off="60" data-code="G24BF">2 Pack</button>
+              <button type="button" class="sn-bf-pack-btn" data-sn-bf-pack-btn data-key="g24" data-qty="4" data-coupon-off="60" data-code="G24BF">4 Pack</button>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now" data-pack-now>{{ fin_g24 | money }}</span>
+              <span class="was" data-pack-was>{{ cmp_g24 | money }}</span>
+              <span class="gmc-note" data-pack-gmc>Display price: {{ pr_g24 | money }} before auto-applied G24BF</span>
+            </div>
+            <div class="sn-bf-code-bar">
+              <span>Code <strong>G24BF</strong> (-$60/unit) → <strong data-pack-code-final>{{ fin_g24 | money }}</strong></span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="G24BF">Copy Code</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="g24" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_g24 }}">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. G31 -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="rv-batteries" data-has-coupon="false">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">43% OFF</span></div>
+            <a href="{{ url_g31 }}"><img src="{{ img_g31 }}" alt="{{ p_g31.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">RV Battery</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_g31 }}">{{ p_g31.title | default: 'SuntNeew 12.8V 100Ah LiFePO4 RV Battery - Group 31' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">1,280Wh</span>
+              <span class="sn-bf-spec-chip">BT 5.0</span>
+              <span class="sn-bf-spec-chip">9.6kg</span>
+              <span class="sn-bf-spec-chip">5-Year</span>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now">{{ pr_g31 | money }}</span>
+              <span class="was">{{ cmp_g31 | money }}</span>
+              <span class="gmc-note">Display price · 2-Pack variant $349.99</span>
+            </div>
+            <div class="sn-bf-code-bar sn-bf-code-bar--tiered">
+              <span>Eligible: <strong>SN10</strong> (-$10) / <strong>SN175</strong> (Qty 2+)</span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="SN10">Copy SN10</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="g31" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_g31 }}">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. 314Ah -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="rv-batteries" data-has-coupon="false">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">17% OFF</span></div>
+            <a href="{{ url_314ah }}"><img src="{{ img_314ah }}" alt="{{ p_314ah.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">RV Battery</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_314ah }}">{{ p_314ah.title | default: 'SuntNeew 12.8V 314Ah LiFePO4 RV Battery' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">4,019Wh</span>
+              <span class="sn-bf-spec-chip">2,010W</span>
+              <span class="sn-bf-spec-chip">+36.5%</span>
+              <span class="sn-bf-spec-chip">5-Year</span>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now">{{ pr_314ah | money }}</span>
+              <span class="was">{{ cmp_314ah | money }}</span>
+              <span class="gmc-note">Display price</span>
+            </div>
+            <div class="sn-bf-code-bar sn-bf-code-bar--tiered">
+              <span>Eligible: <strong>SN10</strong> (-$10) / <strong>SN175</strong> (Qty 2+)</span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="SN10">Copy SN10</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="314ah" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_314ah }}">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. A3 -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="jump-starters" data-has-coupon="true">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">35% OFF</span></div>
+            <a href="{{ url_a3 }}"><img src="{{ img_a3 }}" alt="{{ p_a3.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">Jump Starter</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_a3 }}">{{ p_a3.title | default: 'SuntNeew A3 Portable Car Jump Starter' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">16,000mAh</span>
+              <span class="sn-bf-spec-chip">4,000A</span>
+              <span class="sn-bf-spec-chip">PD 60W</span>
+              <span class="sn-bf-spec-chip">8L/5.5L</span>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now">{{ fin_a3 | money }}</span>
+              <span class="was">{{ cmp_a3 | money }}</span>
+              <span class="gmc-note">Display price: {{ pr_a3 | money }} before auto-applied A3BF</span>
+            </div>
+            <div class="sn-bf-code-bar">
+              <span>Code <strong>A3BF</strong> (-$46) → <strong>{{ fin_a3 | money }}</strong></span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="A3BF">Copy Code</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="a3" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_a3 }}">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. B21AP -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="jump-starters" data-has-coupon="true">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">35% OFF</span></div>
+            <a href="{{ url_b21ap }}"><img src="{{ img_b21ap }}" alt="{{ p_b21ap.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">Jump Starter</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_b21ap }}">{{ p_b21ap.title | default: 'SuntNeew B21AP 5000A Jump Starter with 160 PSI Air Compressor' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">5,000A</span>
+              <span class="sn-bf-spec-chip">160 PSI</span>
+              <span class="sn-bf-spec-chip">2-in-1</span>
+              <span class="sn-bf-spec-chip">12V</span>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now">{{ fin_b21ap | money }}</span>
+              <span class="was">{{ cmp_b21ap | money }}</span>
+              <span class="gmc-note">Display price: {{ pr_b21ap | money }} before auto-applied B21APBF</span>
+            </div>
+            <div class="sn-bf-code-bar">
+              <span>Code <strong>B21APBF</strong> (-$24) → <strong>{{ fin_b21ap | money }}</strong></span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="B21APBF">Copy Code</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="b21ap" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_b21ap }}">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7. A20 -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="jump-starters" data-has-coupon="false">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">40% OFF</span></div>
+            <a href="{{ url_a20 }}"><img src="{{ img_a20 }}" alt="{{ p_a20.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">Jump Starter</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_a20 }}">{{ p_a20.title | default: 'SuntNeew A20 Portable Car Jump Starter' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">8,000mAh</span>
+              <span class="sn-bf-spec-chip">1,500A</span>
+              <span class="sn-bf-spec-chip">6L/3L</span>
+              <span class="sn-bf-spec-chip">Red/Org</span>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now">{{ pr_a20 | money }}</span>
+              <span class="was">{{ cmp_a20 | money }}</span>
+              <span class="gmc-note">Display price · 2-Pack variant $71.98</span>
+            </div>
+            <div class="sn-bf-code-bar sn-bf-code-bar--tiered">
+              <span>Eligible: <strong>SN10</strong> (-$10) / <strong>SN175</strong> (Qty 2+)</span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="SN10">Copy SN10</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="a20" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_a20 }}">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 8. KP700 -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="jump-starters" data-has-coupon="true">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">36% OFF</span></div>
+            <a href="{{ url_kp700 }}"><img src="{{ img_kp700 }}" alt="{{ p_kp700.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">Jump Starter</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_kp700 }}">{{ p_kp700.title | default: 'SuntNeew KP700 Fan Portable Car Jump Starter - 7,200mAh' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">7,200mAh</span>
+              <span class="sn-bf-spec-chip">1,000A</span>
+              <span class="sn-bf-spec-chip">3-Speed</span>
+              <span class="sn-bf-spec-chip">6L/4L</span>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now">{{ fin_kp700 | money }}</span>
+              <span class="was">{{ cmp_kp700 | money }}</span>
+              <span class="gmc-note">Display price: {{ pr_kp700 | money }} before auto-applied KP700BF</span>
+            </div>
+            <div class="sn-bf-code-bar">
+              <span>Code <strong>KP700BF</strong> (-$18) → <strong>{{ fin_kp700 | money }}</strong></span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="KP700BF">Copy Code</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="kp700" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_kp700 }}">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 9. U32 -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="jump-starters" data-has-coupon="true">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">36% OFF</span></div>
+            <a href="{{ url_u32 }}"><img src="{{ img_u32 }}" alt="{{ p_u32.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">Jump Starter</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_u32 }}">{{ p_u32.title | default: 'SuntNeew U32 Portable Car Jump Starter - 10,000mAh' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">10,000mAh</span>
+              <span class="sn-bf-spec-chip">2,000A</span>
+              <span class="sn-bf-spec-chip">Large LED</span>
+              <span class="sn-bf-spec-chip">6.5L/3.5L</span>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now">{{ fin_u32 | money }}</span>
+              <span class="was">{{ cmp_u32 | money }}</span>
+              <span class="gmc-note">Display price: {{ pr_u32 | money }} before auto-applied U32BF</span>
+            </div>
+            <div class="sn-bf-code-bar">
+              <span>Code <strong>U32BF</strong> (-$13) → <strong>{{ fin_u32 | money }}</strong></span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="U32BF">Copy Code</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="u32" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_u32 }}">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 10. U23 -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="jump-starters" data-has-coupon="true">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">46% OFF</span></div>
+            <a href="{{ url_u23 }}"><img src="{{ img_u23 }}" alt="{{ p_u23.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">Jump Starter</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_u23 }}">{{ p_u23.title | default: 'SuntNeew U23 Portable Car Jump Starter - 8,000mAh' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">8,000mAh</span>
+              <span class="sn-bf-spec-chip">1,500A</span>
+              <span class="sn-bf-spec-chip">Ultra-Slim</span>
+              <span class="sn-bf-spec-chip">6L/3L</span>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now">{{ fin_u23 | money }}</span>
+              <span class="was">{{ cmp_u23 | money }}</span>
+              <span class="gmc-note">Display price: {{ pr_u23 | money }} before auto-applied U23BF</span>
+            </div>
+            <div class="sn-bf-code-bar">
+              <span>Code <strong>U23BF</strong> (-$6) → <strong>{{ fin_u23 | money }}</strong></span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="U23BF">Copy Code</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="u23" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_u23 }}">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 11. OJ02 -->
+        <article class="sn-bf-deal-card" data-sn-bf-card data-cat="jump-starters" data-has-coupon="false">
+          <div class="sn-bf-deal-card__media">
+            <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">18% OFF</span></div>
+            <a href="{{ url_oj02 }}"><img src="{{ img_oj02 }}" alt="{{ p_oj02.title | escape }}" width="320" height="320" loading="lazy"></a>
+          </div>
+          <div class="sn-bf-deal-card__body">
+            <div class="sn-bf-deal-card__cat">Jump Starter</div>
+            <h3 class="sn-bf-deal-card__title"><a href="{{ url_oj02 }}">{{ p_oj02.title | default: 'SuntNeew OJ02 OBD2 Portable Car Jump Starter' }}</a></h3>
+            <div class="sn-bf-deal-card__specs">
+              <span class="sn-bf-spec-chip">8,000mAh</span>
+              <span class="sn-bf-spec-chip">1,500A</span>
+              <span class="sn-bf-spec-chip">OBD2</span>
+              <span class="sn-bf-spec-chip">6L/3L</span>
+            </div>
+            <div class="sn-bf-deal-card__prices">
+              <span class="now">{{ pr_oj02 | money }}</span>
+              <span class="was">{{ cmp_oj02 | money }}</span>
+              <span class="gmc-note">Display price</span>
+            </div>
+            <div class="sn-bf-code-bar sn-bf-code-bar--tiered">
+              <span>Eligible: <strong>SN10</strong> (-$10) / <strong>SN175</strong> (Qty 2+)</span>
+              <button type="button" class="sn-bf-copy-chip" data-sn-bf-copy="SN10">Copy SN10</button>
+            </div>
+            <div class="sn-bf-deal-card__footer">
+              <button type="button" class="sn-bf-btn-atc" data-sn-bf-atc="oj02" data-qty="1">Add to Cart</button>
+              <a class="sn-bf-btn-details" href="{{ url_oj02 }}">Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: RV Battery Multi-Pack & Free U32 Bonus -->
+  <section class="sn-bf-vip-section" id="rv-bonus">
+    <div class="sn-bf-container sn-bf-vip-inner">
+      <div class="sn-bf-vip-head">
+        <span class="sn-bf-section-kicker">HIGH-VALUE RV BATTERY BUNDLE PERK</span>
+        <h2>Our Biggest Black Friday Bonus. Unlock a <span>FREE U32 Jump Starter</span> ($47.99 Value).</h2>
+        <p class="sn-bf-section-desc">
+          Pair our Group 24 or 230Ah LiFePO4 RV batteries with the U32 10,000mAh Jump Starter. Per-unit battery coupons stack seamlessly with the cart-level RV Roadside Bonus.
+        </p>
+      </div>
+
+      <div class="sn-bf-vip-tiers">
+        <div class="sn-bf-vip-tier-card">
+          <div class="sn-bf-vip-tier-top">
+            <span class="sn-bf-vip-badge">TIER 1 · 1× GROUP 24</span>
+            <span style="font-size:12.5px; color:var(--sn-bf-green); font-weight:700;">Code: G24BF + G24U32</span>
+          </div>
+          <h3>Buy 1× Group 24 → Get U32 for $29.99</h3>
+          <div class="sn-bf-vip-gift-row">
+            <img src="{{ img_u32 }}" alt="{{ p_u32.title | escape }}" width="160" height="160" loading="lazy">
+            <div class="sn-bf-vip-gift-meta">
+              <strong>SuntNeew U32 10,000mAh Jump Starter</strong>
+              <span>Display {{ pr_u32 | money }} · <del>{{ cmp_u32 | money }}</del> → <strong style="display:inline; color:var(--sn-bf-green);">$29.99</strong> (-$18.00 via G24U32)</span>
+            </div>
+          </div>
+          <div class="sn-bf-vip-math">
+            • 1× Group 24: {{ pr_g24 | money }} − $60.00 (<code>G24BF</code>) = <strong>$189.99</strong><br>
+            • 1× U32 Bonus: {{ pr_u32 | money }} − $18.00 (<code>G24U32</code>) = <strong>$29.99</strong><br>
+            • Combined Checkout Total: <strong>$219.98</strong> (Save $78.00 off display price)
+          </div>
+          <div class="sn-bf-vip-btns">
+            <button type="button" class="sn-bf-btn-secondary" data-sn-bf-bundle="g24-1-u32">Add 1× G24 + $29.99 U32</button>
+          </div>
+        </div>
+
+        <div class="sn-bf-vip-tier-card sn-bf-vip-tier-card--featured">
+          <div class="sn-bf-vip-tier-top">
+            <span class="sn-bf-vip-badge">TIER 2 · 2× GROUP 24 OR 1× 230AH</span>
+            <span style="font-size:12.5px; color:var(--sn-bf-orange-dark); font-weight:700;">Code: *BF + RVU32FREE</span>
+          </div>
+          <h3>Buy 2× Group 24 or 1× 230Ah → U32 is FREE ($0.00)</h3>
+          <div class="sn-bf-vip-gift-row sn-bf-vip-gift-row--featured">
+            <img src="{{ img_u32 }}" alt="{{ p_u32.title | escape }}" width="160" height="160" loading="lazy">
+            <div class="sn-bf-vip-gift-meta">
+              <strong>FREE SuntNeew U32 Jump Starter</strong>
+              <span>Value {{ pr_u32 | money }} (<del>{{ cmp_u32 | money }}</del>) → <strong style="display:inline; color:var(--sn-bf-green);">FREE ($0.00)</strong> (-$47.99 via RVU32FREE)</span>
+            </div>
+          </div>
+          <div class="sn-bf-vip-math">
+            • <strong>2× Group 24 + U32:</strong> $499.98 − $120.00 (<code>G24BF</code>) − $47.99 (<code>RVU32FREE</code>) = <strong>$379.98</strong><br>
+            • <strong>1× 230Ah + U32:</strong> $559.99 − $94.00 (<code>230AHBF</code>) − $47.99 (<code>RVU32FREE</code>) = <strong>$465.99</strong>
+          </div>
+          <div class="sn-bf-vip-btns">
+            <button type="button" class="sn-bf-btn-primary" data-sn-bf-bundle="g24-2-free">Add 2× G24 + FREE U32</button>
+            <button type="button" class="sn-bf-btn-secondary" data-sn-bf-bundle="230ah-1-free">Add 1× 230Ah + FREE U32</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Instant Coupon Center & Redeem Guide -->
+  <section class="sn-bf-section sn-bf-section--soft-blue" id="coupon-guide">
+    <div class="sn-bf-container">
+      <div class="sn-bf-section-head">
+        <div>
+          <span class="sn-bf-section-kicker">INSTANT SAVINGS CENTER</span>
+          <h2 class="sn-bf-section-title">Instant Coupon Center &amp; Redeem Guide</h2>
+          <p class="sn-bf-section-desc">No hoops to jump through — copy any code below or simply click Add to Cart to have the best eligible code applied automatically.</p>
+        </div>
+      </div>
+
+      <div class="sn-bf-steps-row">
+        <div class="sn-bf-step-card">
+          <div class="sn-bf-step-num">1</div>
+          <div>
+            <h3>Pick Your Deal</h3>
+            <p>Choose any RV battery or jump starter at its Black Friday display price.</p>
+          </div>
+        </div>
+        <div class="sn-bf-step-card">
+          <div class="sn-bf-step-num">2</div>
+          <div>
+            <h3>Auto-Applied at Checkout</h3>
+            <p>Instant product coupons (up to $94 OFF) apply automatically in your cart drawer.</p>
+          </div>
+        </div>
+        <div class="sn-bf-step-card">
+          <div class="sn-bf-step-num">3</div>
+          <div>
+            <h3>Stack Multi-Item Savings</h3>
+            <p>G24BF and 230AHBF apply per unit and stack with the U32 RV Bonus.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sn-bf-coupon-tabs" role="tablist">
+        <button type="button" class="sn-bf-coupon-tab is-active" data-sn-bf-ctab="dedicated" role="tab" aria-selected="true">Instant Product Coupons (7)</button>
+        <button type="button" class="sn-bf-coupon-tab" data-sn-bf-ctab="tiered" role="tab" aria-selected="false">Sitewide Tiered Codes (SN10 &amp; SN175)</button>
+      </div>
+
+      <div class="sn-bf-voucher-grid" data-sn-bf-cgrid="dedicated">
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$94</div>
+          <div class="sn-bf-voucher-sub">Per Unit (Auto-Applied)</div>
+          <div class="sn-bf-voucher-model">230Ah RV Battery</div>
+          <div class="sn-bf-voucher-final">Display {{ pr_230ah | money }} → Final {{ fin_230ah | money }}</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">230AHBF</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="230AHBF">Copy Code</button></div>
+        </div>
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$60</div>
+          <div class="sn-bf-voucher-sub">Per Unit (Auto-Applied)</div>
+          <div class="sn-bf-voucher-model">Group 24 RV Battery</div>
+          <div class="sn-bf-voucher-final">Display {{ pr_g24 | money }} → Final {{ fin_g24 | money }}</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">G24BF</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="G24BF">Copy Code</button></div>
+        </div>
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$46</div>
+          <div class="sn-bf-voucher-sub">Per Order (Auto-Applied)</div>
+          <div class="sn-bf-voucher-model">A3 Jump Starter</div>
+          <div class="sn-bf-voucher-final">Display {{ pr_a3 | money }} → Final {{ fin_a3 | money }}</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">A3BF</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="A3BF">Copy Code</button></div>
+        </div>
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$24</div>
+          <div class="sn-bf-voucher-sub">Per Order (Auto-Applied)</div>
+          <div class="sn-bf-voucher-model">B21AP + Air Compressor</div>
+          <div class="sn-bf-voucher-final">Display {{ pr_b21ap | money }} → Final {{ fin_b21ap | money }}</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">B21APBF</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="B21APBF">Copy Code</button></div>
+        </div>
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$18</div>
+          <div class="sn-bf-voucher-sub">Per Order (Auto-Applied)</div>
+          <div class="sn-bf-voucher-model">KP700 Fan Jump Starter</div>
+          <div class="sn-bf-voucher-final">Display {{ pr_kp700 | money }} → Final {{ fin_kp700 | money }}</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">KP700BF</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="KP700BF">Copy Code</button></div>
+        </div>
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$13</div>
+          <div class="sn-bf-voucher-sub">Per Order (Auto-Applied)</div>
+          <div class="sn-bf-voucher-model">U32 Jump Starter</div>
+          <div class="sn-bf-voucher-final">Display {{ pr_u32 | money }} → Final {{ fin_u32 | money }}</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">U32BF</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="U32BF">Copy Code</button></div>
+        </div>
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$6</div>
+          <div class="sn-bf-voucher-sub">Per Order (Auto-Applied)</div>
+          <div class="sn-bf-voucher-model">U23 Jump Starter</div>
+          <div class="sn-bf-voucher-final">Display {{ pr_u23 | money }} → Final {{ fin_u23 | money }}</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">U23BF</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="U23BF">Copy Code</button></div>
+        </div>
+      </div>
+
+      <div class="sn-bf-voucher-grid" data-sn-bf-cgrid="tiered" hidden>
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$10.00</div>
+          <div class="sn-bf-voucher-sub">Any 1+ Eligible Item</div>
+          <div class="sn-bf-voucher-model">G31 · 314Ah · A20 · OJ02</div>
+          <div class="sn-bf-voucher-final">Applies to non-*BF catalog items</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">SN10</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="SN10">Copy Code</button></div>
+        </div>
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$17.50</div>
+          <div class="sn-bf-voucher-sub">Qty 2+ Eligible Items</div>
+          <div class="sn-bf-voucher-model">G31 · 314Ah · A20 · OJ02</div>
+          <div class="sn-bf-voucher-final">Upgrades SN10 when qty ≥ 2</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">SN175</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="SN175">Copy Code</button></div>
+        </div>
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$18.00</div>
+          <div class="sn-bf-voucher-sub">Order Bonus (U32 = $29.99)</div>
+          <div class="sn-bf-voucher-model">With 1× Group 24 Battery</div>
+          <div class="sn-bf-voucher-final">Stacks with G24BF (-$60/unit)</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">G24U32</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="G24U32">Copy Code</button></div>
+        </div>
+        <div class="sn-bf-voucher-card">
+          <div class="sn-bf-voucher-amount">-$47.99</div>
+          <div class="sn-bf-voucher-sub">Order Bonus (FREE U32)</div>
+          <div class="sn-bf-voucher-model">With 2× G24 or 1× 230Ah</div>
+          <div class="sn-bf-voucher-final">Stacks with G24BF / 230AHBF</div>
+          <div class="sn-bf-voucher-foot"><span class="sn-bf-voucher-code">RVU32FREE</span><button type="button" class="sn-bf-voucher-copy" data-sn-bf-copy="RVU32FREE">Copy Code</button></div>
+        </div>
+      </div>
+
+      <div class="sn-bf-coupon-rule-note">
+        <strong>Important Stacking &amp; Expiration Rules:</strong> All Black Friday codes expire <strong>Dec 1, 2026 (2:00 AM EST / Nov 30, 11:00 PM PST)</strong>. <code>SN10</code> (-$10) and <code>SN175</code> (-$17.50 on Qty 2+) apply to <strong>G31, 314Ah, A20, and OJ02</strong> only and do not stack with dedicated <code>*BF</code> codes.
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Trust Strip & Black Friday FAQ -->
+  <section class="sn-bf-section sn-bf-section--canvas" id="trust-faq">
+    <div class="sn-bf-container">
+      <div class="sn-bf-section-head">
+        <div>
+          <span class="sn-bf-section-kicker">BUY WITH CONFIDENCE</span>
+          <h2 class="sn-bf-section-title">Delivery, Warranty &amp; Black Friday FAQ</h2>
+        </div>
+      </div>
+
+      <div class="sn-bf-trust-grid">
+        <div class="sn-bf-trust-card">
+          <div class="sn-bf-trust-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3>Free U.S. Shipping</h3>
+          <p>Contiguous 48 U.S. States &amp; Washington, DC. Excludes Alaska, Hawaii, Puerto Rico, other territories &amp; military addresses.</p>
+        </div>
+        <div class="sn-bf-trust-card">
+          <div class="sn-bf-trust-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Fast U.S. Dispatch</h3>
+          <p>2 business days handling + 2–5 business days transit (Monday–Friday).</p>
+        </div>
+        <div class="sn-bf-trust-card">
+          <div class="sn-bf-trust-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>5-Year Limited Warranty</h3>
+          <p>Model-matched warranty coverage and lifetime technical support.</p>
+        </div>
+        <div class="sn-bf-trust-card">
+          <div class="sn-bf-trust-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          </div>
+          <h3>30-Day Returns</h3>
+          <p>Eligible returns within 30 days of delivery under SuntNeew's return policy.</p>
+        </div>
+      </div>
+
+      <div class="sn-bf-faq-list">
+        <div class="sn-bf-faq-item is-open">
+          <button type="button" class="sn-bf-faq-q" data-sn-bf-faq-btn aria-expanded="true">
+            <span>Do I need to manually type the Black Friday coupon codes at checkout?</span>
+            <span>+</span>
+          </button>
+          <div class="sn-bf-faq-a">
+            No. When you add eligible items to your cart on SuntNeew, the corresponding Black Friday coupon (such as <code>230AHBF</code>, <code>G24BF</code>, <code>A3BF</code>, or <code>RVU32FREE</code>) is automatically applied in your cart drawer and carried to checkout. You can also copy any code here if you prefer entering it manually.
+          </div>
+        </div>
+        <div class="sn-bf-faq-item">
+          <button type="button" class="sn-bf-faq-q" data-sn-bf-faq-btn aria-expanded="false">
+            <span>How does the FREE U32 Jump Starter unlock work with RV batteries?</span>
+            <span>+</span>
+          </button>
+          <div class="sn-bf-faq-a">
+            Add 1× Group 24 (<code>$189.99</code> after <code>G24BF</code>) to unlock the U32 Jump Starter for <strong>$29.99</strong> (<code>G24U32</code>, saving $18.00). Add 2× Group 24 or 1× 230Ah RV Battery to unlock the U32 Jump Starter completely <strong>FREE ($0.00)</strong> via <code>RVU32FREE</code> (-$47.99).
+          </div>
+        </div>
+        <div class="sn-bf-faq-item">
+          <button type="button" class="sn-bf-faq-q" data-sn-bf-faq-btn aria-expanded="false">
+            <span>Where does SuntNeew ship and how long does delivery take?</span>
+            <span>+</span>
+          </button>
+          <div class="sn-bf-faq-a">
+            We ship to the contiguous 48 U.S. states and Washington, DC (excluding Alaska, Hawaii, Puerto Rico, U.S. territories, and APO/FPO military addresses). Standard orders have 2 business days handling time and 2–5 business days transit time (Monday–Friday).
+          </div>
+        </div>
+        <div class="sn-bf-faq-item">
+          <button type="button" class="sn-bf-faq-q" data-sn-bf-faq-btn aria-expanded="false">
+            <span>Can I stack SN10 or SN175 with dedicated *BF coupons like G24BF or A3BF?</span>
+            <span>+</span>
+          </button>
+          <div class="sn-bf-faq-a">
+            No. <code>SN10</code> (-$10) and <code>SN175</code> (-$17.50 on 2+ items) apply exclusively to Group 31, 314Ah, A20, and OJ02. Dedicated Black Friday product codes (<code>U23BF</code>, <code>U32BF</code>, <code>KP700BF</code>, <code>A3BF</code>, <code>B21APBF</code>, <code>G24BF</code>, <code>230AHBF</code>) can combine with each other, and <code>G24BF</code> / <code>230AHBF</code> apply per unit and stack with <code>G24U32</code> / <code>RVU32FREE</code>.
+          </div>
+        </div>
+        <div class="sn-bf-faq-item">
+          <button type="button" class="sn-bf-faq-q" data-sn-bf-faq-btn aria-expanded="false">
+            <span>When does the Black Friday Sale end?</span>
+            <span>+</span>
+          </button>
+          <div class="sn-bf-faq-a">
+            All Black Friday pricing and Black Friday coupon codes end strictly on <strong>December 1, 2026 at 2:00 AM EST</strong> (November 30, 11:00 PM PST).
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sn-bf-toast" data-sn-bf-toast role="status" aria-live="polite"></div>
+
+  <script type="application/json" data-sn-bf-config>
+  {
+    "endsAt": {{ section.settings.ends_at | default: '2026-12-01T15:00:00+08:00' | json }},
+    "variants": {
+      "230ah": {{ v_230ah | json }},
+      "g24": {{ v_g24 | json }},
+      "g31": {{ v_g31 | json }},
+      "314ah": {{ v_314ah | json }},
+      "a3": {{ v_a3 | json }},
+      "b21ap": {{ v_b21ap | json }},
+      "a20": {{ v_a20 | json }},
+      "kp700": {{ v_kp700 | json }},
+      "u32": {{ v_u32 | json }},
+      "u23": {{ v_u23 | json }},
+      "oj02": {{ v_oj02 | json }}
+    },
+    "prices": {
+      "230ah": { "price": {{ pr_230ah | divided_by: 100.0 | json }}, "compareAt": {{ cmp_230ah | divided_by: 100.0 | json }} },
+      "g24": { "price": {{ pr_g24 | divided_by: 100.0 | json }}, "compareAt": {{ cmp_g24 | divided_by: 100.0 | json }} }
+    }
+  }
+  </script>
+</div>
+
+{% schema %}
+{
+  "name": "Black Friday Deals",
+  "settings": [
+    {
+      "type": "text",
+      "id": "ends_at",
+      "label": "Event end time (ISO-8601 with timezone)",
+      "default": "2026-12-01T15:00:00+08:00"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Black Friday Deals"
+    }
+  ]
+}
+{% endschema %}
