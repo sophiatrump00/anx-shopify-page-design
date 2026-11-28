@@ -2,21 +2,23 @@
 
 <style>
   #shopify-section-{{ section.id }} {
-    --jg-ink: #182330;
-    --jg-muted: #5a6674;
-    --jg-line: rgb(24 35 48 / .11);
+    --jg-ink: #111827;
+    --jg-navy: #182330;
+    --jg-muted: #4b5563;
+    --jg-line: #e5e7eb;
     --jg-accent: #e95416;
     --jg-accent-hover: #cf470f;
-    --jg-sale: #d92d20;
-    --jg-bg: #f5f6f8;
+    --jg-sale: #D92D20;
+    --jg-bg: #f8fafc;
     background: var(--jg-bg);
     color: var(--jg-ink);
   }
 
+  /* Compact Hero */
   #shopify-section-{{ section.id }} .sn-jg-hero {
     position: relative;
     overflow: hidden;
-    background: #101c2b;
+    background: #0f172a;
     color: #fff;
   }
 
@@ -26,55 +28,60 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: .42;
+    opacity: .45;
     pointer-events: none;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-hero__scrim {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgb(14 23 36 / .95) 0%, rgb(14 23 36 / .78) 55%, rgb(14 23 36 / .32) 100%);
+    background: linear-gradient(90deg, rgb(15 23 42 / .94) 0%, rgb(15 23 42 / .72) 55%, rgb(15 23 42 / .28) 100%);
     pointer-events: none;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-hero__inner {
     position: relative;
     z-index: 1;
-    padding-block: clamp(24px, 3.2vw, 42px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 180px;
+    padding-block: clamp(24px, 3vw, 36px);
   }
 
   #shopify-section-{{ section.id }} .sn-jg-hero__eyebrow {
-    margin: 0 0 8px;
+    margin: 0 0 6px;
     color: #ff9463;
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: .16em;
+    letter-spacing: .14em;
     line-height: 1.2;
     text-transform: uppercase;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-hero h1 {
-    max-width: 680px;
-    margin: 0 0 10px;
+    max-width: 640px;
+    margin: 0 0 6px;
     color: #fff;
-    font-size: clamp(26px, 3.4vw, 42px);
-    font-weight: 850;
-    letter-spacing: -.03em;
-    line-height: 1.06;
+    font-size: clamp(26px, 3.2vw, 38px);
+    font-weight: 800;
+    letter-spacing: -.025em;
+    line-height: 1.08;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-hero__sub {
-    max-width: 620px;
+    max-width: 520px;
     margin: 0;
-    color: rgb(255 255 255 / .84);
+    color: rgb(255 255 255 / .86);
     font-size: 14px;
-    line-height: 1.55;
+    line-height: 1.5;
   }
 
-  /* Quick Nav: desktop single-row bar, mobile 2x2 zero-scroll tap grid */
+  /* Category Navigation: Desktop single-row pills, Mobile 2x2 single-line grid */
   #shopify-section-{{ section.id }} .sn-jg-nav {
     background: #fff;
     border-bottom: 1px solid var(--jg-line);
+    scroll-margin-top: 72px;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-nav__grid {
@@ -88,24 +95,29 @@
   #shopify-section-{{ section.id }} .sn-jg-nav__item {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    min-height: 40px;
+    justify-content: center;
+    min-height: 36px;
     padding: 8px 16px;
     border: 1px solid var(--jg-line);
     border-radius: 999px;
-    background: #f4f6f8;
-    color: var(--jg-ink);
-    font-size: 13px;
+    background: #f1f5f9;
+    color: var(--jg-navy);
+    font-size: 12.5px;
     font-weight: 700;
     line-height: 1.2;
     text-decoration: none;
-    transition: background .16s ease, border-color .16s ease, color .16s ease;
+    white-space: nowrap;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-nav__item:first-child {
-    background: var(--jg-ink);
-    border-color: var(--jg-ink);
+    background: var(--jg-navy);
+    border-color: var(--jg-navy);
     color: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-nav__item--compare {
+    margin-left: auto;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-nav__item:hover,
@@ -116,75 +128,60 @@
   }
 
   #shopify-section-{{ section.id }} .sn-jg-nav__item:first-child:hover,
-  #shopify-section-{{ section.id }} .sn-jg-nav__item:first-child:focus-visible {
+  #shopify-section-{{ section.id }} .sn-jg-nav__item:first-child:focus-visible,
+  #shopify-section-{{ section.id }} .sn-jg-nav__item--compare:hover,
+  #shopify-section-{{ section.id }} .sn-jg-nav__item--compare:focus-visible {
     background: var(--jg-accent);
     border-color: var(--jg-accent);
     color: #fff;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-nav__sub {
-    color: var(--jg-muted);
-    font-size: 11px;
-    font-weight: 600;
+  #shopify-section-{{ section.id }} .sn-jg-nav__txt--mob {
+    display: none;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-nav__item:first-child .sn-jg-nav__sub {
-    color: rgb(255 255 255 / .78);
-  }
-
-  /* Main body & shelves */
+  /* Main Body & Clean Single-Row Shelf Headers */
   #shopify-section-{{ section.id }} .sn-jg-body {
-    padding-block: clamp(28px, 3.8vw, 48px) clamp(44px, 5vw, 72px);
+    padding-block: clamp(24px, 3.2vw, 40px) clamp(56px, 6vw, 84px);
   }
 
   #shopify-section-{{ section.id }} .sn-jg-shelves {
     display: grid;
-    gap: clamp(34px, 4.5vw, 52px);
+    gap: clamp(32px, 4vw, 48px);
   }
 
   #shopify-section-{{ section.id }} .sn-jg-shelf {
-    scroll-margin-top: 88px;
+    scroll-margin-top: 84px;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-shelf__head {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: space-between;
-    gap: 10px 24px;
-    margin-bottom: 18px;
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-shelf__kicker {
-    margin: 0 0 4px;
-    color: var(--jg-accent);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .14em;
-    line-height: 1.2;
-    text-transform: uppercase;
+    gap: 12px;
+    margin-bottom: 16px;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-shelf__head h2 {
     margin: 0;
     color: var(--jg-ink);
-    font-size: clamp(22px, 2.5vw, 30px);
-    font-weight: 850;
-    letter-spacing: -.03em;
-    line-height: 1.1;
+    font-size: clamp(19px, 2.2vw, 24px);
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1.2;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-shelf__desc {
-    max-width: 440px;
-    margin: 0;
-    color: var(--jg-muted);
-    font-size: 13px;
-    line-height: 1.5;
+  #shopify-section-{{ section.id }} .sn-jg-shelf__count {
+    color: #9ca3af;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
   }
 
+  /* Grids */
   #shopify-section-{{ section.id }} .sn-jg-grid {
     display: grid;
-    gap: 18px;
+    gap: 20px;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-grid--3 {
@@ -195,27 +192,20 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Equal-height Product Card */
+  /* LiTime-Calibrated Product Card */
   #shopify-section-{{ section.id }} .sn-jg-card {
     display: flex;
     flex-direction: column;
-    height: 100%;
     overflow: hidden;
     border: 1px solid var(--jg-line);
-    border-radius: 14px;
+    border-radius: 12px;
     background: #fff;
-    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    transition: box-shadow .18s ease, border-color .18s ease;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-card:hover {
-    transform: translateY(-2px);
-    border-color: rgb(24 35 48 / .24);
-    box-shadow: 0 12px 28px rgb(24 35 48 / .08);
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-card--wide {
-    display: grid;
-    grid-template-columns: 230px minmax(0, 1fr);
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 26px rgb(15 23 42 / .07);
   }
 
   #shopify-section-{{ section.id }} .sn-jg-card__stage {
@@ -223,208 +213,209 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 1 / 1;
-    padding: 16px;
+    height: 175px;
+    padding: 28px 16px 8px;
     background: #fff;
-    border-bottom: 1px solid rgb(24 35 48 / .07);
+    overflow: hidden;
     text-decoration: none;
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-card--wide .sn-jg-card__stage {
-    height: 100%;
-    border-bottom: 0;
-    border-right: 1px solid rgb(24 35 48 / .07);
   }
 
   #shopify-section-{{ section.id }} .sn-jg-card__stage img {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
+    transition: transform .24s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-card:hover .sn-jg-card__stage img {
+    transform: scale(1.03);
   }
 
   #shopify-section-{{ section.id }} .sn-jg-badge {
     position: absolute;
-    top: 12px;
-    left: 12px;
-    padding: 4px 10px;
-    border: 1px solid transparent;
-    border-radius: 999px;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    padding: 2px 7px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    background: #f1f5f9;
+    color: #334155;
     font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .02em;
-    line-height: 1.2;
+    font-weight: 700;
+    line-height: 1.3;
+    white-space: nowrap;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-badge--amber { background: #fef3c7; border-color: #fde68a; color: #78350f; }
-  #shopify-section-{{ section.id }} .sn-jg-badge--slate { background: #f1f5f9; border-color: #e2e8f0; color: #1e293b; }
-  #shopify-section-{{ section.id }} .sn-jg-badge--navy { background: #182330; border-color: #182330; color: #fff; }
-  #shopify-section-{{ section.id }} .sn-jg-badge--teal { background: #e0f2fe; border-color: #bae6fd; color: #0c4a6e; }
-  #shopify-section-{{ section.id }} .sn-jg-badge--orange { background: #fff1eb; border-color: #f9c9b6; color: #c84300; }
-
+  /* Live Store Style-A Red XX% OFF Badge (#D92D20) */
   #shopify-section-{{ section.id }} .sn-jg-save {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    padding: 4px 8px;
-    border-radius: 999px;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 7px;
+    border-radius: 4px;
     background: var(--jg-sale);
     color: #fff;
-    font-size: 10px;
-    font-weight: 800;
-    line-height: 1.2;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-quick-eye {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    background: rgb(255 255 255 / .94);
+    color: #334155;
+    box-shadow: 0 2px 8px rgb(15 23 42 / .08);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity .16s ease, transform .16s ease, border-color .16s ease, color .16s ease;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-card:hover .sn-jg-quick-eye,
+  #shopify-section-{{ section.id }} .sn-jg-quick-eye:focus-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-quick-eye:hover {
+    border-color: var(--jg-accent);
+    color: var(--jg-accent);
   }
 
   #shopify-section-{{ section.id }} .sn-jg-card__body {
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 16px 18px 18px;
+    min-width: 0;
+    padding: 8px 16px 16px;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-card__eyebrow {
-    margin: 0 0 4px;
+  /* Wide Card on Heavy-Duty Row (Desktop >= 1000px) */
+  #shopify-section-{{ section.id }} .sn-jg-card--wide {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-card--wide .sn-jg-card__stage {
+    width: 210px;
+    min-width: 210px;
+    height: auto;
+    min-height: 225px;
+    padding: 28px 16px 16px;
+    border-right: 1px solid #f3f4f6;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-card--wide .sn-jg-card__body {
+    padding: 16px 18px;
+  }
+
+  /* Circular Outline Feature Icons */
+  #shopify-section-{{ section.id }} .sn-jg-feat-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-feat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    background: #fff;
+    color: #334155;
+    transition: border-color .15s ease, color .15s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-feat-icon:hover {
+    border-color: var(--jg-accent);
     color: var(--jg-accent);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .08em;
-    line-height: 1.2;
-    text-transform: uppercase;
   }
 
+  /* 1-Line Bold Title */
   #shopify-section-{{ section.id }} .sn-jg-card__title {
-    display: -webkit-box;
-    min-height: 40px;
-    margin: 0 0 5px;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    font-size: 16px;
+    margin: 0;
+    font-size: 15.5px;
     font-weight: 800;
     letter-spacing: -.015em;
-    line-height: 1.25;
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-card--wide .sn-jg-card__title {
-    min-height: 0;
-    font-size: 17px;
+    line-height: 1.3;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-card__title a {
+    display: block;
+    overflow: hidden;
     color: inherit;
     text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-card__title a:hover {
     color: var(--jg-accent);
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-card__summary {
-    display: -webkit-box;
-    min-height: 36px;
-    margin: 0 0 12px;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+  /* 3 Concise Bullet Points */
+  #shopify-section-{{ section.id }} .sn-jg-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-bullets li {
+    position: relative;
+    padding-left: 11px;
     color: var(--jg-muted);
     font-size: 12px;
-    line-height: 1.48;
+    line-height: 1.45;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-card--wide .sn-jg-card__summary {
-    min-height: 0;
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 4px;
-    margin: 0 0 10px;
-    padding: 8px 6px;
-    border-radius: 8px;
-    background: #f4f6f8;
-    list-style: none;
-    text-align: center;
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-metrics li {
-    padding-inline: 4px;
-    min-width: 0;
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-metrics li:nth-child(2) {
-    border-inline: 1px solid rgb(24 35 48 / .1);
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-metrics span {
-    display: block;
-    color: var(--jg-muted);
-    font-size: 10px;
-    line-height: 1.2;
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-metrics strong {
-    display: block;
-    margin-top: 2px;
-    overflow: hidden;
-    color: var(--jg-ink);
-    font-size: 11px;
-    font-weight: 800;
-    line-height: 1.25;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-meta-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    min-height: 26px;
-    margin-bottom: 8px;
-    color: var(--jg-muted);
-    font-size: 11px;
-    font-weight: 500;
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-swatch {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 3px 9px;
-    border: 1px solid rgb(24 35 48 / .16);
-    border-radius: 999px;
-    background: #fff;
-    color: var(--jg-muted);
-    font: inherit;
-    font-size: 11px;
+  #shopify-section-{{ section.id }} .sn-jg-bullets li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #9ca3af;
     font-weight: 700;
-    cursor: pointer;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-swatch[aria-pressed="true"] {
-    border-color: var(--jg-ink);
-    background: #f1f5f9;
-    color: var(--jg-ink);
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-swatch__dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 999px;
-  }
-
+  /* Card Footer: Divider + Style-A Price + Swatches/Details + Full-Width CTA */
   #shopify-section-{{ section.id }} .sn-jg-card__footer {
     margin-top: auto;
-    padding-top: 12px;
-    border-top: 1px solid rgb(24 35 48 / .08);
+    padding-top: 10px;
+    border-top: 1px solid var(--jg-line);
   }
 
   #shopify-section-{{ section.id }} .sn-jg-price-row {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     gap: 8px;
-    margin-bottom: 10px;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-prices {
@@ -434,54 +425,89 @@
   }
 
   #shopify-section-{{ section.id }} .sn-jg-price {
-    color: var(--jg-ink);
+    color: var(--jg-sale);
     font-size: 19px;
-    font-weight: 900;
-    line-height: 1.1;
+    font-weight: 800;
+    line-height: 1.15;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-price--regular {
+    color: var(--jg-navy);
   }
 
   #shopify-section-{{ section.id }} .sn-jg-compare {
-    color: #8a94a0;
-    font-size: 12px;
+    color: #6b7280;
+    font-size: 12.5px;
     text-decoration: line-through;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-stock {
-    color: #047857;
-    font-size: 11px;
-    font-weight: 700;
+  #shopify-section-{{ section.id }} .sn-jg-price-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-stock--out {
-    color: #b91c1c;
+  #shopify-section-{{ section.id }} .sn-jg-swatches {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-actions {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 8px;
+  #shopify-section-{{ section.id }} .sn-jg-swatch {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: box-shadow .14s ease, border-color .14s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-swatch[aria-pressed="true"] {
+    border-color: #fff;
+    box-shadow: 0 0 0 2px var(--jg-accent);
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-details-link {
+    color: #64748b;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-details-link:hover {
+    color: var(--jg-accent);
   }
 
   #shopify-section-{{ section.id }} .sn-jg-form {
-    display: contents;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 40px;
-    padding: 9px 14px;
+    width: 100%;
+    height: 38px;
+    padding: 0 14px;
     border: 0;
-    border-radius: 8px;
+    border-radius: 6px;
     background: var(--jg-ink);
     color: #fff;
     font: inherit;
-    font-size: 12px;
-    font-weight: 800;
+    font-size: 13px;
+    font-weight: 700;
     text-decoration: none;
     cursor: pointer;
-    transition: background .16s ease;
+    transition: background-color .15s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-btn-primary--link {
+    margin-top: 10px;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-btn-primary:hover:not(:disabled),
@@ -495,33 +521,11 @@
     cursor: not-allowed;
   }
 
-  #shopify-section-{{ section.id }} .sn-jg-btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
-    padding: 9px 13px;
-    border: 1px solid rgb(24 35 48 / .2);
-    border-radius: 8px;
-    background: #fff;
-    color: var(--jg-ink);
-    font-size: 12px;
-    font-weight: 800;
-    text-decoration: none;
-    transition: border-color .16s ease;
-  }
-
-  #shopify-section-{{ section.id }} .sn-jg-btn-secondary:hover,
-  #shopify-section-{{ section.id }} .sn-jg-btn-secondary:focus-visible {
-    border-color: var(--jg-ink);
-    outline: none;
-  }
-
-  /* Collapsible Bottom Spec Matrix */
+  /* Collapsible Compare All 7 Spec Matrix */
   #shopify-section-{{ section.id }} .sn-jg-compare-box {
-    scroll-margin-top: 88px;
+    scroll-margin-top: 84px;
     border: 1px solid var(--jg-line);
-    border-radius: 14px;
+    border-radius: 12px;
     background: #fff;
     overflow: hidden;
   }
@@ -532,7 +536,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 18px 22px;
+    padding: 16px 20px;
     border: 0;
     background: #fff;
     color: var(--jg-ink);
@@ -549,7 +553,7 @@
     color: var(--jg-accent);
     font-size: 10px;
     font-weight: 800;
-    letter-spacing: .14em;
+    letter-spacing: .12em;
     text-transform: uppercase;
   }
 
@@ -562,11 +566,12 @@
 
   #shopify-section-{{ section.id }} .sn-jg-compare-toggle__pill {
     flex: none;
-    padding: 7px 13px;
+    padding: 7px 14px;
     border-radius: 999px;
-    background: #f1f5f9;
+    background: var(--jg-navy);
+    color: #fff;
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-table-wrap {
@@ -585,16 +590,16 @@
   #shopify-section-{{ section.id }} .sn-jg-table th,
   #shopify-section-{{ section.id }} .sn-jg-table td {
     padding: 12px 16px;
-    border-bottom: 1px solid rgb(24 35 48 / .07);
+    border-bottom: 1px solid #f1f5f9;
     white-space: nowrap;
   }
 
   #shopify-section-{{ section.id }} .sn-jg-table th {
     background: #f8fafc;
     color: var(--jg-muted);
-    font-size: 10px;
+    font-size: 10.5px;
     font-weight: 800;
-    letter-spacing: .08em;
+    letter-spacing: .06em;
     text-transform: uppercase;
   }
 
@@ -602,15 +607,20 @@
     border-bottom: 0;
   }
 
+  #shopify-section-{{ section.id }} .sn-jg-table__sale {
+    color: var(--jg-sale);
+    font-weight: 800;
+  }
+
   #shopify-section-{{ section.id }} .sn-jg-table__link {
     display: inline-flex;
     align-items: center;
     padding: 6px 11px;
     border-radius: 6px;
-    background: var(--jg-ink);
+    background: var(--jg-navy);
     color: #fff;
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 700;
     text-decoration: none;
   }
 
@@ -621,15 +631,148 @@
   #shopify-section-{{ section.id }} .sn-jg-footnote {
     margin: 0;
     padding: 12px 16px;
-    border-top: 1px solid rgb(24 35 48 / .07);
+    border-top: 1px solid #f1f5f9;
     color: var(--jg-muted);
     font-size: 11px;
     line-height: 1.5;
   }
 
-  /* Floating mobile back-to-categories helper */
-  #shopify-section-{{ section.id }} .sn-jg-back-top {
-    display: none;
+  /* Cross-Device Floating Bottom-Center Quick-Return Pill + Popover */
+  #shopify-section-{{ section.id }} .sn-jg-float-wrap {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(14px);
+    transition: opacity .2s ease, transform .2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-wrap.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-pop {
+    width: 264px;
+    padding: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 18px 40px rgb(15 23 42 / .2);
+    font-size: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-pop__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    padding: 4px 10px 6px;
+    border-bottom: 1px solid #f1f5f9;
+    color: var(--jg-ink);
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-pop__close {
+    padding: 2px 6px;
+    border: 0;
+    background: transparent;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-pop__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 10px;
+    color: var(--jg-ink);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color .14s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-pop__link:hover,
+  #shopify-section-{{ section.id }} .sn-jg-float-pop__link:focus-visible {
+    background: #fff7ed;
+    outline: none;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-pop__num {
+    margin-right: 4px;
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-pop__meta {
+    color: #64748b;
+    font-size: 11px;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-pop__top {
+    display: block;
+    margin-top: 4px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: var(--jg-navy);
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-pop__top:hover {
+    background: var(--jg-accent);
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid rgb(255 255 255 / .18);
+    border-radius: 999px;
+    background: rgb(24 35 48 / .95);
+    color: #fff;
+    font: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    box-shadow: 0 10px 28px rgb(15 23 42 / .28);
+    cursor: pointer;
+    transition: background-color .15s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-btn:hover,
+  #shopify-section-{{ section.id }} .sn-jg-float-btn:focus-visible {
+    background: var(--jg-accent);
+    outline: none;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-btn__arrow {
+    color: #ff9463;
+    font-weight: 800;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-btn:hover .sn-jg-float-btn__arrow {
+    color: #fff;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-float-btn__pill {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgb(255 255 255 / .16);
+    color: #e2e8f0;
+    font-size: 11px;
+    font-weight: 600;
   }
 
   @media screen and (max-width: 999px) {
@@ -638,17 +781,38 @@
     }
 
     #shopify-section-{{ section.id }} .sn-jg-card--wide {
-      grid-template-columns: 1fr;
+      flex-direction: column;
     }
 
     #shopify-section-{{ section.id }} .sn-jg-card--wide .sn-jg-card__stage {
+      width: 100%;
+      min-width: 0;
+      height: 175px;
+      min-height: 175px;
+      padding: 28px 16px 8px;
       border-right: 0;
-      border-bottom: 1px solid rgb(24 35 48 / .07);
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-card--wide .sn-jg-card__body {
+      padding: 8px 16px 16px;
     }
   }
 
+  /* Mobile Horizontal Cards & 2x2 Quick Tap Grid */
   @media screen and (max-width: 699px) {
-    /* 2x2 full-width mobile tap grid: zero horizontal scroll */
+    #shopify-section-{{ section.id }} .sn-jg-hero__inner {
+      min-height: 165px;
+      padding-block: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-nav__txt--desk {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-nav__txt--mob {
+      display: inline;
+    }
+
     #shopify-section-{{ section.id }} .sn-jg-nav__grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -657,62 +821,137 @@
     }
 
     #shopify-section-{{ section.id }} .sn-jg-nav__item {
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 2px;
-      min-height: 54px;
-      padding: 9px 12px;
+      min-height: 40px;
+      padding: 9px 10px;
       border-radius: 10px;
-      font-size: 13px;
+      font-size: 12px;
     }
 
-    #shopify-section-{{ section.id }} .sn-jg-nav__sub {
-      display: block;
-      font-size: 11px;
+    #shopify-section-{{ section.id }} .sn-jg-nav__item--compare {
+      margin-left: 0;
     }
 
+    #shopify-section-{{ section.id }} .sn-jg-grid,
     #shopify-section-{{ section.id }} .sn-jg-grid--3,
     #shopify-section-{{ section.id }} .sn-jg-grid--2 {
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 10px;
     }
 
-    #shopify-section-{{ section.id }} .sn-jg-card__stage {
-      aspect-ratio: 4 / 3;
-      padding: 12px;
+    #shopify-section-{{ section.id }} .sn-jg-card,
+    #shopify-section-{{ section.id }} .sn-jg-card--wide {
+      flex-direction: row;
+      align-items: stretch;
+      border-radius: 12px;
     }
 
-    #shopify-section-{{ section.id }} .sn-jg-card__title,
-    #shopify-section-{{ section.id }} .sn-jg-card__summary {
-      min-height: 0;
+    #shopify-section-{{ section.id }} .sn-jg-card__stage,
+    #shopify-section-{{ section.id }} .sn-jg-card--wide .sn-jg-card__stage {
+      width: 114px;
+      min-width: 114px;
+      height: auto;
+      min-height: 162px;
+      padding: 24px 8px 10px;
+      border-right: 1px solid #f3f4f6;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-badge,
+    #shopify-section-{{ section.id }} .sn-jg-quick-eye,
+    #shopify-section-{{ section.id }} .sn-jg-feat-icons,
+    #shopify-section-{{ section.id }} .sn-jg-bullets li:nth-child(2) {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-save {
+      top: 6px;
+      right: 6px;
+      padding: 2px 6px;
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-card__body,
+    #shopify-section-{{ section.id }} .sn-jg-card--wide .sn-jg-card__body {
+      padding: 11px 12px;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-card__title {
+      font-size: 13.5px;
+      line-height: 1.25;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-card__title a {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      white-space: normal;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-bullets {
+      gap: 2px;
+      margin-top: 5px;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-bullets li {
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-card__footer {
+      margin-top: 8px;
+      padding-top: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-price {
+      font-size: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-compare {
+      font-size: 11.5px;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-form,
+    #shopify-section-{{ section.id }} .sn-jg-btn-primary--link {
+      margin-top: 7px;
+    }
+
+    #shopify-section-{{ section.id }} .sn-jg-btn-primary {
+      height: 32px;
+      font-size: 12px;
     }
 
     #shopify-section-{{ section.id }} .sn-jg-compare-toggle {
       padding: 14px 16px;
     }
 
-    #shopify-section-{{ section.id }} .sn-jg-back-top.is-visible {
-      position: fixed;
-      right: 16px;
-      bottom: 20px;
-      z-index: 30;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      min-height: 40px;
-      padding: 8px 14px;
-      border: 1px solid rgb(255 255 255 / .2);
-      border-radius: 999px;
-      background: rgb(24 35 48 / .92);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 8px 24px rgb(0 0 0 / .24);
+    #shopify-section-{{ section.id }} .sn-jg-float-wrap {
+      bottom: 16px;
     }
   }
 </style>
+
+{%- liquid
+  assign everyday_count = 0
+  assign multitool_count = 0
+  assign heavy_count = 0
+  for block in section.blocks
+    if block.type != 'family'
+      continue
+    endif
+    assign fp = all_products[block.settings.product_handle]
+    if block.settings.preview_only and fp == blank and request.design_mode == false
+      continue
+    endif
+    if block.settings.group == 'everyday'
+      assign everyday_count = everyday_count | plus: 1
+    endif
+    if block.settings.group == 'multitool'
+      assign multitool_count = multitool_count | plus: 1
+    endif
+    if block.settings.group == 'heavy' or block.settings.also_heavy_duty
+      assign heavy_count = heavy_count | plus: 1
+    endif
+  endfor
+-%}
 
 <section class="sn-jg" id="jump-starters-top" data-jump-guide>
   <header class="sn-jg-hero">
@@ -739,20 +978,19 @@
     <div class="container">
       <div class="sn-jg-nav__grid">
         <a class="sn-jg-nav__item" href="#shelf-everyday" data-jg-anchor="#shelf-everyday">
-          <span>Everyday Cars</span>
-          <span class="sn-jg-nav__sub">3 models · From $39.99</span>
+          <span class="sn-jg-nav__txt--desk">Everyday Cars ({{ everyday_count }})</span>
+          <span class="sn-jg-nav__txt--mob">Everyday Cars &middot; {{ everyday_count }}</span>
         </a>
         <a class="sn-jg-nav__item" href="#shelf-multitool" data-jg-anchor="#shelf-multitool">
-          <span>2-in-1 Multi-Tool</span>
-          <span class="sn-jg-nav__sub">3 models · Air / OBD2</span>
+          <span class="sn-jg-nav__txt--desk">2-in-1 Multi-Tool ({{ multitool_count }})</span>
+          <span class="sn-jg-nav__txt--mob">2-in-1 Tools &middot; {{ multitool_count }}</span>
         </a>
         <a class="sn-jg-nav__item" href="#shelf-heavy" data-jg-anchor="#shelf-heavy">
-          <span>Heavy-Duty Diesel</span>
-          <span class="sn-jg-nav__sub">2 models · 4000A–5000A</span>
+          <span class="sn-jg-nav__txt--desk">Heavy-Duty ({{ heavy_count }})</span>
+          <span class="sn-jg-nav__txt--mob">Heavy-Duty &middot; {{ heavy_count }}</span>
         </a>
-        <a class="sn-jg-nav__item" href="#jump-compare" data-jg-anchor="#jump-compare" data-jg-open-compare>
-          <span>Compare All 7</span>
-          <span class="sn-jg-nav__sub">Side-by-side specs</span>
+        <a class="sn-jg-nav__item sn-jg-nav__item--compare" href="#jump-compare" data-jg-anchor="#jump-compare" data-jg-open-compare>
+          <span>Compare All 7 &#8600;</span>
         </a>
       </div>
     </div>
@@ -766,39 +1004,31 @@
             when 1
               assign shelf_id = 'shelf-everyday'
               assign shelf_key = 'everyday'
-              assign shelf_kicker = section.settings.shelf1_kicker
               assign shelf_heading = section.settings.shelf1_heading
-              assign shelf_desc = section.settings.shelf1_desc
+              assign shelf_count = everyday_count
               assign grid_modifier = 'sn-jg-grid--3'
               assign is_wide = false
             when 2
               assign shelf_id = 'shelf-multitool'
               assign shelf_key = 'multitool'
-              assign shelf_kicker = section.settings.shelf2_kicker
               assign shelf_heading = section.settings.shelf2_heading
-              assign shelf_desc = section.settings.shelf2_desc
+              assign shelf_count = multitool_count
               assign grid_modifier = 'sn-jg-grid--3'
               assign is_wide = false
             else
               assign shelf_id = 'shelf-heavy'
               assign shelf_key = 'heavy'
-              assign shelf_kicker = section.settings.shelf3_kicker
               assign shelf_heading = section.settings.shelf3_heading
-              assign shelf_desc = section.settings.shelf3_desc
+              assign shelf_count = heavy_count
               assign grid_modifier = 'sn-jg-grid--2'
               assign is_wide = true
           endcase
         -%}
 
-        <section class="sn-jg-shelf" id="{{ shelf_id }}">
+        <section class="sn-jg-shelf" id="{{ shelf_id }}" data-jg-shelf="{{ shelf_key }}">
           <header class="sn-jg-shelf__head">
-            <div>
-              <p class="sn-jg-shelf__kicker">{{ shelf_kicker | escape }}</p>
-              <h2>{{ shelf_heading | escape }}</h2>
-            </div>
-            {%- if shelf_desc != blank -%}
-              <p class="sn-jg-shelf__desc">{{ shelf_desc | escape }}</p>
-            {%- endif -%}
+            <h2>{{ shelf_heading | escape }}</h2>
+            <span class="sn-jg-shelf__count">{{ shelf_count }} models</span>
           </header>
 
           <div class="sn-jg-grid {{ grid_modifier }}">
@@ -843,10 +1073,12 @@
 
                 assign active_price = default_variant.price | default: family_product.price
                 assign active_compare = default_variant.compare_at_price | default: family_product.compare_at_price
+                assign has_sale = false
                 assign discount_pct = 0
                 if active_compare > active_price and active_compare > 0
+                  assign has_sale = true
                   assign diff_price = active_compare | minus: active_price
-                  assign discount_pct = diff_price | times: 100 | divided_by: active_compare
+                  assign discount_pct = diff_price | times: 100.0 | divided_by: active_compare | round
                 endif
 
                 assign is_available = false
@@ -858,97 +1090,182 @@
 
                 assign primary_img_url = block.settings.asset_name | asset_url
                 assign alt_img_url = block.settings.alt_asset_name | asset_url
+                assign model_upper = block.settings.model_code | upcase | strip
               -%}
 
               <article class="sn-jg-card{% if is_wide %} sn-jg-card--wide{% endif %}" data-jg-card {{ block.shopify_attributes }}>
-                <a class="sn-jg-card__stage" href="{{ family_url }}" data-jg-product-link>
+                <div class="sn-jg-card__stage">
                   {%- if block.settings.badge != blank -%}
-                    <span class="sn-jg-badge sn-jg-badge--{{ block.settings.badge_tone | default: 'slate' }}">{{ block.settings.badge | escape }}</span>
+                    <span class="sn-jg-badge">{{ block.settings.badge | escape }}</span>
                   {%- endif -%}
-                  {%- if discount_pct > 0 -%}
-                    <span class="sn-jg-save">-{{ discount_pct }}%</span>
+                  {%- if has_sale and discount_pct > 0 -%}
+                    <span class="sn-jg-save">{{ discount_pct }}% OFF</span>
                   {%- endif -%}
-                  <img
-                    src="{{ primary_img_url }}"
-                    alt="{{ block.settings.image_alt | default: block.settings.title | escape }}"
-                    width="800"
-                    height="800"
-                    loading="lazy"
-                    data-jg-card-img
-                  >
-                </a>
+                  <a href="{{ family_url }}" data-jg-product-link aria-label="{{ block.settings.title | default: family_product.title | escape }}">
+                    <img
+                      src="{{ primary_img_url }}"
+                      alt="{{ block.settings.image_alt | default: block.settings.title | escape }}"
+                      width="800"
+                      height="800"
+                      loading="lazy"
+                      data-jg-card-img
+                    >
+                  </a>
+                  <a class="sn-jg-quick-eye" href="{{ family_url }}" data-jg-product-link aria-label="View {{ block.settings.title | default: family_product.title | escape }} specs" title="View Product Specs">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </a>
+                </div>
 
                 <div class="sn-jg-card__body">
-                  <p class="sn-jg-card__eyebrow">{{ block.settings.eyebrow | escape }}</p>
+                  <div class="sn-jg-feat-icons">
+                    {%- case model_upper -%}
+                      {%- when 'A20' -%}
+                        <span class="sn-jg-feat-icon" title="1,500A Peak" aria-label="1,500A Peak">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="USB Output" aria-label="USB Output">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="7" rx="1"/><path d="M9 11v4a3 3 0 0 0 6 0v-4M12 18v3"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="LED Flashlight" aria-label="LED Flashlight">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                        </span>
+                      {%- when 'U23' -%}
+                        <span class="sn-jg-feat-icon" title="1,500A Peak" aria-label="1,500A Peak">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="Up to 6.0L Gas" aria-label="Up to 6.0L Gas">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10h10l1 3v4H6v-4l1-3z"/><path d="M5 17h14M9 10V7h6v3M3 13h2M19 13h2"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="Ultra-Slim Body" aria-label="Ultra-Slim Body">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                        </span>
+                      {%- when 'U32' -%}
+                        <span class="sn-jg-feat-icon" title="2,000A Peak" aria-label="2,000A Peak">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="Large LED Screen" aria-label="Large LED Screen">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="USB Fast Charge" aria-label="USB Fast Charge">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="7" rx="1"/><path d="M9 11v4a3 3 0 0 0 6 0v-4M12 18v3"/></svg>
+                        </span>
+                      {%- when 'KP700' or 'KB700' -%}
+                        <span class="sn-jg-feat-icon" title="1,000A Peak" aria-label="1,000A Peak">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="3-Speed Air Duster" aria-label="3-Speed Air Duster">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="2W LED Light" aria-label="2W LED Light">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                        </span>
+                      {%- when 'OJ02' -%}
+                        <span class="sn-jg-feat-icon" title="1,500A Peak" aria-label="1,500A Peak">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="OBD2 Scanner" aria-label="OBD2 Scanner">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M8 10h2M14 10h2M8 14h8"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="USB Output" aria-label="USB Output">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="7" rx="1"/><path d="M9 11v4a3 3 0 0 0 6 0v-4M12 18v3"/></svg>
+                        </span>
+                      {%- when 'B21AP' -%}
+                        <span class="sn-jg-feat-icon" title="5,000A Peak" aria-label="5,000A Peak">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="160 PSI Inflator" aria-label="160 PSI Inflator">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="PD 45W USB-C" aria-label="PD 45W USB-C">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="7" rx="1"/><path d="M9 11v4a3 3 0 0 0 6 0v-4M12 18v3"/></svg>
+                        </span>
+                      {%- when 'A3' -%}
+                        <span class="sn-jg-feat-icon" title="4,000A Peak" aria-label="4,000A Peak">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="PD 60W USB-C" aria-label="PD 60W USB-C">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="7" rx="1"/><path d="M9 11v4a3 3 0 0 0 6 0v-4M12 18v3"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="Up to 8.0L Gas / 5.5L Diesel" aria-label="Up to 8.0L Gas / 5.5L Diesel">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10h10l1 3v4H6v-4l1-3z"/><path d="M5 17h14M9 10V7h6v3M3 13h2M19 13h2"/></svg>
+                        </span>
+                      {%- else -%}
+                        <span class="sn-jg-feat-icon" title="{{ block.settings.spec_peak | escape }}" aria-label="{{ block.settings.spec_peak | escape }}">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="{{ block.settings.spec_fit | escape }}" aria-label="{{ block.settings.spec_fit | escape }}">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10h10l1 3v4H6v-4l1-3z"/><path d="M5 17h14M9 10V7h6v3M3 13h2M19 13h2"/></svg>
+                        </span>
+                        <span class="sn-jg-feat-icon" title="{{ block.settings.spec_highlight | escape }}" aria-label="{{ block.settings.spec_highlight | escape }}">
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="10" height="7" rx="1"/><path d="M9 11v4a3 3 0 0 0 6 0v-4M12 18v3"/></svg>
+                        </span>
+                    {%- endcase -%}
+                  </div>
+
                   <h3 class="sn-jg-card__title">
                     <a href="{{ family_url }}" data-jg-product-link>{{ block.settings.title | default: family_product.title | escape }}</a>
                   </h3>
-                  <p class="sn-jg-card__summary">{{ block.settings.summary | escape }}</p>
 
-                  <ul class="sn-jg-metrics" role="list">
-                    <li><span>Peak</span><strong>{{ block.settings.spec_peak | escape }}</strong></li>
-                    <li><span>Gas / Diesel</span><strong>{{ block.settings.spec_fit | escape }}</strong></li>
-                    <li><span>Feature</span><strong>{{ block.settings.spec_highlight | escape }}</strong></li>
+                  <ul class="sn-jg-bullets" role="list">
+                    <li>{{ block.settings.spec_peak | escape }} Peak / {{ block.settings.spec_start | escape }} Start &middot; {{ block.settings.spec_capacity | escape }}</li>
+                    <li>Up to {{ block.settings.spec_fit | escape }} (12V)</li>
+                    <li>{{ block.settings.bullet_3 | default: block.settings.meta_note | escape }}</li>
                   </ul>
 
-                  <div class="sn-jg-meta-row">
-                    {%- if block.settings.enable_color_swatches and red_variant != nil and orange_variant != nil -%}
-                      <span>Color:</span>
-                      <button
-                        type="button"
-                        class="sn-jg-swatch"
-                        aria-pressed="true"
-                        data-jg-swatch
-                        data-variant-id="{{ red_variant.id }}"
-                        data-variant-img="{{ primary_img_url }}"
-                        data-variant-url="{{ red_variant.url | default: family_url }}"
-                      >
-                        <span class="sn-jg-swatch__dot" style="background:#d92d20"></span>Red
-                      </button>
-                      <button
-                        type="button"
-                        class="sn-jg-swatch"
-                        aria-pressed="false"
-                        data-jg-swatch
-                        data-variant-id="{{ orange_variant.id }}"
-                        data-variant-img="{{ alt_img_url }}"
-                        data-variant-url="{{ orange_variant.url | default: family_url }}"
-                      >
-                        <span class="sn-jg-swatch__dot" style="background:#e95416"></span>Orange
-                      </button>
-                    {%- else -%}
-                      <span>{{ block.settings.meta_note | escape }}</span>
-                    {%- endif -%}
-                  </div>
-
                   <div class="sn-jg-card__footer">
-                    {%- if active_price != blank -%}
-                      <div class="sn-jg-price-row">
-                        <div class="sn-jg-prices">
-                          <span class="sn-jg-price">{{ active_price | money }}</span>
-                          {%- if active_compare > active_price -%}
+                    <div class="sn-jg-price-row">
+                      <div class="sn-jg-prices">
+                        {%- if active_price != blank -%}
+                          <span class="sn-jg-price{% unless has_sale %} sn-jg-price--regular{% endunless %}">{{ active_price | money }}</span>
+                          {%- if has_sale -%}
                             <span class="sn-jg-compare">{{ active_compare | money }}</span>
                           {%- endif -%}
-                        </div>
-                        <span class="sn-jg-stock{% unless is_available %} sn-jg-stock--out{% endunless %}">
-                          {%- if is_available -%}In Stock{%- else -%}Sold Out{%- endif -%}
-                        </span>
+                        {%- endif -%}
                       </div>
-                    {%- endif -%}
 
-                    <div class="sn-jg-actions">
-                      {%- if family_product != blank and default_variant != blank -%}
-                        {%- form 'product', family_product, is: 'product-form', class: 'sn-jg-form' -%}
-                          <input type="hidden" name="id" value="{{ default_variant.id }}" data-jg-variant-input>
-                          <button type="submit" class="sn-jg-btn-primary"{% unless is_available %} disabled{% endunless %}>
-                            {%- if is_available -%}Add to Cart{%- else -%}Sold Out{%- endif -%}
-                          </button>
-                        {%- endform -%}
-                        <a class="sn-jg-btn-secondary" href="{{ family_url }}" data-jg-product-link>Details</a>
-                      {%- else -%}
-                        <a class="sn-jg-btn-primary" href="{{ family_url }}">View Details</a>
-                      {%- endif -%}
+                      <div class="sn-jg-price-right">
+                        {%- if block.settings.enable_color_swatches and red_variant != nil and orange_variant != nil -%}
+                          <div class="sn-jg-swatches">
+                            <button
+                              type="button"
+                              class="sn-jg-swatch"
+                              aria-label="Red"
+                              title="Red"
+                              aria-pressed="true"
+                              data-jg-swatch
+                              data-variant-id="{{ red_variant.id }}"
+                              data-variant-img="{{ primary_img_url }}"
+                              data-variant-url="{{ red_variant.url | default: family_url }}"
+                              style="background:#dc2626"
+                            ></button>
+                            <button
+                              type="button"
+                              class="sn-jg-swatch"
+                              aria-label="Orange"
+                              title="Orange"
+                              aria-pressed="false"
+                              data-jg-swatch
+                              data-variant-id="{{ orange_variant.id }}"
+                              data-variant-img="{{ alt_img_url }}"
+                              data-variant-url="{{ orange_variant.url | default: family_url }}"
+                              style="background:#f97316"
+                            ></button>
+                          </div>
+                        {%- endif -%}
+                        <a class="sn-jg-details-link" href="{{ family_url }}" data-jg-product-link>Details &rarr;</a>
+                      </div>
                     </div>
+
+                    {%- if family_product != blank and default_variant != blank -%}
+                      {%- form 'product', family_product, is: 'product-form', class: 'sn-jg-form' -%}
+                        <input type="hidden" name="id" value="{{ default_variant.id }}" data-jg-variant-input>
+                        <button type="submit" class="sn-jg-btn-primary"{% unless is_available %} disabled{% endunless %}>
+                          {%- if is_available -%}Add to Cart{%- else -%}Sold Out{%- endif -%}
+                        </button>
+                      {%- endform -%}
+                    {%- else -%}
+                      <a class="sn-jg-btn-primary sn-jg-btn-primary--link" href="{{ family_url }}">View Details</a>
+                    {%- endif -%}
                   </div>
                 </div>
               </article>
@@ -958,13 +1275,13 @@
       {%- endfor -%}
 
       <!-- Collapsible Side-by-Side Spec Compare Table -->
-      <section class="sn-jg-compare-box" id="jump-compare">
+      <section class="sn-jg-compare-box" id="jump-compare" data-jg-shelf="compare">
         <button type="button" class="sn-jg-compare-toggle" aria-expanded="false" aria-controls="jump-compare-panel" data-jg-compare-toggle>
           <span>
             <span class="sn-jg-compare-toggle__eyebrow">SPEC MATRIX</span>
             <span class="sn-jg-compare-toggle__title">{{ section.settings.compare_heading | escape }}</span>
           </span>
-          <span class="sn-jg-compare-toggle__pill" data-jg-compare-label>Expand Table +</span>
+          <span class="sn-jg-compare-toggle__pill" data-jg-compare-label>Show Table &#9662;</span>
         </button>
 
         <div id="jump-compare-panel" hidden data-jg-compare-panel>
@@ -974,10 +1291,10 @@
                 <tr>
                   <th scope="col">Model</th>
                   <th scope="col">Price</th>
+                  <th scope="col">Peak / Start</th>
                   <th scope="col">Capacity</th>
-                  <th scope="col">Start / Peak</th>
                   <th scope="col">Max Engine</th>
-                  <th scope="col">Key Feature</th>
+                  <th scope="col">Extra</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -992,16 +1309,18 @@
                     <td><strong>{{ block.settings.model_code | default: block.settings.title | escape }}</strong></td>
                     <td>
                       {%- if row_variant.price != blank -%}
-                        <strong>{{ row_variant.price | money }}</strong>
                         {%- if row_variant.compare_at_price > row_variant.price -%}
+                          <strong class="sn-jg-table__sale">{{ row_variant.price | money }}</strong>
                           <span class="sn-jg-compare">{{ row_variant.compare_at_price | money }}</span>
+                        {%- else -%}
+                          <strong>{{ row_variant.price | money }}</strong>
                         {%- endif -%}
                       {%- else -%}
                         —
                       {%- endif -%}
                     </td>
+                    <td>{{ block.settings.spec_peak | escape }} / {{ block.settings.spec_start | escape }}</td>
                     <td>{{ block.settings.spec_capacity | escape }}</td>
-                    <td>{{ block.settings.spec_start | escape }} / {{ block.settings.spec_peak | escape }}</td>
                     <td>{{ block.settings.spec_fit | escape }}</td>
                     <td>{{ block.settings.spec_highlight | escape }}</td>
                     <td><a class="sn-jg-table__link" href="{{ family_url }}">View</a></td>
@@ -1018,7 +1337,44 @@
     </div>
   </div>
 
-  <a class="sn-jg-back-top" href="#jump-categories" data-jg-back-top aria-label="Back to jump starter categories">&uarr; Categories</a>
+  <!-- Cross-Device Bottom-Center Floating Quick-Return Pill + Upward Popover -->
+  <div class="sn-jg-float-wrap" data-jg-float-wrap>
+    <div class="sn-jg-float-pop" id="jg-float-pop" hidden data-jg-float-pop role="menu" aria-label="Jump to jump starter group">
+      <div class="sn-jg-float-pop__head">
+        <span>Jump to Shelf</span>
+        <button type="button" class="sn-jg-float-pop__close" data-jg-float-close aria-label="Close category menu">&#10005;</button>
+      </div>
+      <a class="sn-jg-float-pop__link" href="#shelf-everyday" data-jg-anchor="#shelf-everyday" role="menuitem">
+        <span><span class="sn-jg-float-pop__num" style="color:#e95416">01</span>Everyday Cars</span>
+        <span class="sn-jg-float-pop__meta">{{ everyday_count }}</span>
+      </a>
+      <a class="sn-jg-float-pop__link" href="#shelf-multitool" data-jg-anchor="#shelf-multitool" role="menuitem">
+        <span><span class="sn-jg-float-pop__num" style="color:#0d9488">02</span>2-in-1 Multi-Tool</span>
+        <span class="sn-jg-float-pop__meta">{{ multitool_count }}</span>
+      </a>
+      <a class="sn-jg-float-pop__link" href="#shelf-heavy" data-jg-anchor="#shelf-heavy" role="menuitem">
+        <span><span class="sn-jg-float-pop__num" style="color:#334155">03</span>Heavy-Duty Diesel</span>
+        <span class="sn-jg-float-pop__meta">{{ heavy_count }}</span>
+      </a>
+      <a class="sn-jg-float-pop__link" href="#jump-compare" data-jg-anchor="#jump-compare" data-jg-open-compare role="menuitem">
+        <span>Compare All 7</span>
+        <span class="sn-jg-float-pop__meta">&#8600;</span>
+      </a>
+      <a class="sn-jg-float-pop__top" href="#jump-categories" data-jg-float-top role="menuitem">&uarr; Back to Top</a>
+    </div>
+
+    <button
+      type="button"
+      class="sn-jg-float-btn"
+      aria-expanded="false"
+      aria-controls="jg-float-pop"
+      data-jg-float-toggle
+    >
+      <span class="sn-jg-float-btn__arrow" aria-hidden="true">&uarr;</span>
+      <span>Categories</span>
+      <span class="sn-jg-float-btn__pill" data-jg-float-current>Everyday</span>
+    </button>
+  </div>
 </section>
 
 <script>
@@ -1056,13 +1412,54 @@
       if (!compareToggle || !comparePanel) return;
       compareToggle.setAttribute('aria-expanded', String(open));
       comparePanel.hidden = !open;
-      if (compareLabel) compareLabel.textContent = open ? 'Hide Table −' : 'Expand Table +';
+      if (compareLabel) compareLabel.innerHTML = open ? 'Hide Table &#9652;' : 'Show Table &#9662;';
     };
 
     if (compareToggle) {
       compareToggle.addEventListener('click', () => {
         const isOpen = compareToggle.getAttribute('aria-expanded') === 'true';
         setCompareOpen(!isOpen);
+      });
+    }
+
+    // Cross-device Bottom-Center Floating Categories Popover
+    const nav = root.querySelector('#jump-categories');
+    const floatWrap = root.querySelector('[data-jg-float-wrap]');
+    const floatPop = root.querySelector('[data-jg-float-pop]');
+    const floatToggle = root.querySelector('[data-jg-float-toggle]');
+    const floatClose = root.querySelector('[data-jg-float-close]');
+    const floatTop = root.querySelector('[data-jg-float-top]');
+    const floatCurrent = root.querySelector('[data-jg-float-current]');
+    const shelves = [...root.querySelectorAll('[data-jg-shelf]')];
+    const shelfLabels = {
+      everyday: 'Everyday',
+      multitool: 'Multi-Tool',
+      heavy: 'Heavy-Duty',
+      compare: 'Compare'
+    };
+
+    const setFloatOpen = (open) => {
+      if (!floatPop || !floatToggle) return;
+      floatPop.hidden = !open;
+      floatToggle.setAttribute('aria-expanded', String(open));
+    };
+
+    if (floatToggle) {
+      floatToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+        setFloatOpen(floatPop ? floatPop.hidden : false);
+      });
+    }
+
+    if (floatClose) {
+      floatClose.addEventListener('click', () => setFloatOpen(false));
+    }
+
+    if (floatTop && nav) {
+      floatTop.addEventListener('click', (event) => {
+        event.preventDefault();
+        setFloatOpen(false);
+        nav.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     }
 
@@ -1073,6 +1470,7 @@
         const target = targetSelector ? root.querySelector(targetSelector) : null;
         if (!target) return;
         event.preventDefault();
+        setFloatOpen(false);
         if (anchor.hasAttribute('data-jg-open-compare')) {
           setCompareOpen(true);
         }
@@ -1080,25 +1478,41 @@
       });
     });
 
-    // Floating mobile back-to-categories helper
-    const nav = root.querySelector('#jump-categories');
-    const backTop = root.querySelector('[data-jg-back-top]');
-    if (nav && backTop) {
-      backTop.addEventListener('click', (event) => {
-        event.preventDefault();
-        nav.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            const passedTop = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-            backTop.classList.toggle('is-visible', passedTop);
-          });
-        }, { threshold: 0 });
-        observer.observe(nav);
+    document.addEventListener('click', (event) => {
+      if (floatWrap && !floatWrap.contains(event.target)) {
+        setFloatOpen(false);
       }
-    }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setFloatOpen(false);
+      }
+    });
+
+    const syncFloatState = () => {
+      if (!nav || !floatWrap) return;
+      const navRect = nav.getBoundingClientRect();
+      const passedNav = navRect.bottom < 12;
+      floatWrap.classList.toggle('is-visible', passedNav);
+      if (!passedNav) {
+        setFloatOpen(false);
+      }
+
+      if (floatCurrent && shelves.length) {
+        let activeKey = 'everyday';
+        for (const shelf of shelves) {
+          if (shelf.getBoundingClientRect().top <= 200) {
+            activeKey = shelf.dataset.jgShelf || activeKey;
+          }
+        }
+        floatCurrent.textContent = shelfLabels[activeKey] || 'Everyday';
+      }
+    };
+
+    window.addEventListener('scroll', syncFloatState, { passive: true });
+    window.addEventListener('resize', syncFloatState);
+    syncFloatState();
   })();
 </script>
 
@@ -1119,79 +1533,79 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "12V JUMP STARTERS · 7 IN-STOCK MODELS"
+      "default": "12V JUMP STARTERS"
     },
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Pick the right jump starter in seconds."
+      "default": "Jump Starters"
     },
     {
       "type": "textarea",
       "id": "intro",
       "label": "Intro",
-      "default": "Compare verified 12V engine coverage, peak starting current, and built-in tools like 160 PSI air inflation, air duster, or OBD2 diagnostics."
+      "default": "Compact daily backups to 5,000A diesel & inflator tools."
     },
     {
       "type": "text",
       "id": "shelf1_kicker",
       "label": "Shelf 1 kicker",
-      "default": "01 · COMPACT & VALUE"
+      "default": "01 · EVERYDAY CARS"
     },
     {
       "type": "text",
       "id": "shelf1_heading",
       "label": "Shelf 1 heading",
-      "default": "Everyday Cars & SUVs (Up to 6.5L)"
+      "default": "01 · Everyday Cars"
     },
     {
       "type": "text",
       "id": "shelf1_desc",
       "label": "Shelf 1 description",
-      "default": "Clear step-up ladder from pocket glove-box backup to a large-screen 2,000A starter."
+      "default": "Compact 12V starters for daily sedans and crossovers."
     },
     {
       "type": "text",
       "id": "shelf2_kicker",
       "label": "Shelf 2 kicker",
-      "default": "02 · BUILT-IN ROADSIDE TOOLS"
+      "default": "02 · 2-IN-1 MULTI-TOOL"
     },
     {
       "type": "text",
       "id": "shelf2_heading",
       "label": "Shelf 2 heading",
-      "default": "2-in-1 Multi-Tool Emergency Kits"
+      "default": "02 · 2-in-1 Multi-Tool"
     },
     {
       "type": "text",
       "id": "shelf2_desc",
       "label": "Shelf 2 description",
-      "default": "Each model adds one dedicated roadside tool: cordless air duster, OBD2 diagnostics, or 160 PSI tire inflator."
+      "default": "Built-in air duster, OBD2 scanner, or 160 PSI tire inflator."
     },
     {
       "type": "text",
       "id": "shelf3_kicker",
       "label": "Shelf 3 kicker",
-      "default": "03 · TRUCKS, VANS & DIESEL"
+      "default": "03 · HEAVY-DUTY DIESEL"
     },
     {
       "type": "text",
       "id": "shelf3_heading",
       "label": "Shelf 3 heading",
-      "default": "Heavy-Duty Gas (8L–9L) & Diesel (5.5L–6L)"
+      "default": "03 · Heavy-Duty Diesel"
     },
     {
       "type": "text",
       "id": "shelf3_desc",
       "label": "Shelf 3 description",
-      "default": "Side-by-side comparison between 4,000A PD60W fast-charging (A3) and 5,000A + 160 PSI Tire Inflator (B21AP)."
+      "default": "High-output 4,000A–5,000A starters for trucks and RVs."
     },
     {
       "type": "text",
       "id": "compare_heading",
       "label": "Compare table heading",
-      "default": "Compare All 7 Models Side-by-Side"
+      "default": "Compare All 7 Models"
     },
     {
       "type": "text",
@@ -1313,6 +1727,11 @@
           "id": "spec_highlight",
           "label": "Highlight feature",
           "default": "Glove-Box Size"
+        },
+        {
+          "type": "text",
+          "id": "bullet_3",
+          "label": "Third concise bullet point"
         },
         {
           "type": "text",
