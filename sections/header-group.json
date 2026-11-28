@@ -18,7 +18,7 @@
           "type": "message",
           "settings": {
             "text": "Black Friday: Instant Coupons up to $94 OFF on Product Pages · Auto-Applied at Checkout",
-            "url": ""
+            "url": "shopify://pages/member-drops"
           }
         }
       },

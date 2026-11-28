@@ -356,13 +356,6 @@
           await Promise.all([cookieReq, updateReq]);
         }
 
-        const addedItems = Array.isArray(addData?.items) ? addData.items : addData ? [addData] : [];
-        document.dispatchEvent(
-          new CustomEvent('variant:add', {
-            bubbles: true,
-            detail: { items: addedItems, cart },
-          })
-        );
         document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
 
         const drawer = document.getElementById('cart-drawer');
