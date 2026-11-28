@@ -55,17 +55,17 @@
   assign pr_oj02 = p_oj02.price | default: 7999
   assign cmp_oj02 = p_oj02.compare_at_price | default: 9799
 
-  assign img_230ah = p_230ah.featured_image | image_url: width: 640
-  assign img_g24 = p_g24.featured_image | image_url: width: 640
-  assign img_g31 = p_g31.featured_image | image_url: width: 640
-  assign img_314ah = p_314ah.featured_image | image_url: width: 640
-  assign img_a3 = p_a3.featured_image | image_url: width: 640
-  assign img_b21ap = p_b21ap.featured_image | image_url: width: 640
-  assign img_a20 = p_a20.featured_image | image_url: width: 640
-  assign img_kp700 = p_kp700.featured_image | image_url: width: 640
-  assign img_u32 = p_u32.featured_image | image_url: width: 640
-  assign img_u23 = p_u23.featured_image | image_url: width: 640
-  assign img_oj02 = p_oj02.featured_image | image_url: width: 640
+  assign img_230ah = 'sn-bf-front-230ah.webp' | asset_url
+  assign img_g24 = 'sn-bf-front-g24.webp' | asset_url
+  assign img_g31 = 'sn-bf-front-g31.webp' | asset_url
+  assign img_314ah = 'sn-bf-front-314ah.webp' | asset_url
+  assign img_a3 = 'suntneew-shop-white-a3.jpg' | asset_url
+  assign img_b21ap = 'suntneew-shop-white-b21ap.jpg' | asset_url
+  assign img_a20 = 'suntneew-shop-white-a20.jpg' | asset_url
+  assign img_kp700 = 'suntneew-shop-white-kb700.jpg' | asset_url
+  assign img_u32 = 'suntneew-shop-white-u32.jpg' | asset_url
+  assign img_u23 = 'suntneew-shop-white-u23.jpg' | asset_url
+  assign img_oj02 = 'suntneew-shop-white-oj02.jpg' | asset_url
 
   assign url_230ah = p_230ah.url | default: '/products/suntneew-12-8v-230ah-lifepo4-rv-battery'
   assign url_g24 = p_g24.url | default: '/products/suntneew-12-8v-100ah-lifepo4-rv-battery-group-24'
@@ -155,7 +155,7 @@
           <a href="#black-friday-deals" class="sn-bf-hero-mini-card" data-sn-bf-jump-cat="rv-batteries">
             <div class="sn-bf-hero-mini-card__img">
               <span class="sn-bf-hero-mini-pill">34% OFF</span>
-              <img src="{{ img_230ah }}" alt="{{ p_230ah.title | escape }}" width="240" height="240" loading="eager">
+              <img src="{{ img_230ah }}" alt="{{ p_230ah.title | escape }}" width="240" height="180" loading="eager">
             </div>
             <div class="sn-bf-hero-mini-tag">230Ah: -$94/unit + Free U32</div>
             <div class="sn-bf-hero-mini-title">12.8V 230Ah RV Battery</div>
@@ -165,7 +165,7 @@
           <a href="#black-friday-deals" class="sn-bf-hero-mini-card" data-sn-bf-jump-cat="rv-batteries">
             <div class="sn-bf-hero-mini-card__img">
               <span class="sn-bf-hero-mini-pill">34% OFF</span>
-              <img src="{{ img_g24 }}" alt="{{ p_g24.title | escape }}" width="240" height="240" loading="eager">
+              <img src="{{ img_g24 }}" alt="{{ p_g24.title | escape }}" width="240" height="180" loading="eager">
             </div>
             <div class="sn-bf-hero-mini-tag">G24: -$60/unit</div>
             <div class="sn-bf-hero-mini-title">Group 24 100Ah Battery</div>
@@ -216,7 +216,7 @@
               <span class="sn-bf-badge-off">34% OFF</span>
               <span class="sn-bf-badge-warm">FREE U32 GIFT</span>
             </div>
-            <a href="{{ url_230ah }}"><img src="{{ img_230ah }}" alt="{{ p_230ah.title | escape }}" width="320" height="320" loading="lazy"></a>
+            <a href="{{ url_230ah }}"><img src="{{ img_230ah }}" alt="{{ p_230ah.title | escape }}" width="400" height="300" loading="lazy"></a>
           </div>
           <div class="sn-bf-flash-card__body">
             <h3 class="sn-bf-flash-card__title"><a href="{{ url_230ah }}">{{ p_230ah.title | default: 'SuntNeew 12.8V 230Ah LiFePO4 RV Battery' }}</a></h3>
@@ -248,7 +248,7 @@
               <span class="sn-bf-badge-off">34% OFF</span>
               <span class="sn-bf-badge-warm">-$60/UNIT</span>
             </div>
-            <a href="{{ url_g24 }}"><img src="{{ img_g24 }}" alt="{{ p_g24.title | escape }}" width="320" height="320" loading="lazy"></a>
+            <a href="{{ url_g24 }}"><img src="{{ img_g24 }}" alt="{{ p_g24.title | escape }}" width="400" height="300" loading="lazy"></a>
           </div>
           <div class="sn-bf-flash-card__body">
             <h3 class="sn-bf-flash-card__title"><a href="{{ url_g24 }}">{{ p_g24.title | default: 'SuntNeew 12.8V 100Ah LiFePO4 RV Battery - Group 24' }}</a></h3>
@@ -280,7 +280,7 @@
               <span class="sn-bf-badge-off">43% OFF</span>
               <span class="sn-bf-badge-warm">MOST POPULAR</span>
             </div>
-            <a href="{{ url_g31 }}"><img src="{{ img_g31 }}" alt="{{ p_g31.title | escape }}" width="320" height="320" loading="lazy"></a>
+            <a href="{{ url_g31 }}"><img src="{{ img_g31 }}" alt="{{ p_g31.title | escape }}" width="400" height="300" loading="lazy"></a>
           </div>
           <div class="sn-bf-flash-card__body">
             <h3 class="sn-bf-flash-card__title"><a href="{{ url_g31 }}">{{ p_g31.title | default: 'SuntNeew 12.8V 100Ah LiFePO4 RV Battery - Group 31' }}</a></h3>
@@ -363,7 +363,7 @@
         <article class="sn-bf-deal-card" data-sn-bf-card data-cat="rv-batteries" data-has-coupon="true">
           <div class="sn-bf-deal-card__media">
             <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">34% OFF</span></div>
-            <a href="{{ url_230ah }}"><img src="{{ img_230ah }}" alt="{{ p_230ah.title | escape }}" width="320" height="320" loading="lazy"></a>
+            <a href="{{ url_230ah }}"><img src="{{ img_230ah }}" alt="{{ p_230ah.title | escape }}" width="400" height="300" loading="lazy"></a>
             <span class="sn-bf-deal-card__gift-pill" data-pack-gift>Unlocks FREE U32 ($47.99 value)</span>
           </div>
           <div class="sn-bf-deal-card__body">
@@ -400,7 +400,7 @@
         <article class="sn-bf-deal-card" data-sn-bf-card data-cat="rv-batteries" data-has-coupon="true">
           <div class="sn-bf-deal-card__media">
             <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">34% OFF</span></div>
-            <a href="{{ url_g24 }}"><img src="{{ img_g24 }}" alt="{{ p_g24.title | escape }}" width="320" height="320" loading="lazy"></a>
+            <a href="{{ url_g24 }}"><img src="{{ img_g24 }}" alt="{{ p_g24.title | escape }}" width="400" height="300" loading="lazy"></a>
             <span class="sn-bf-deal-card__gift-pill" data-pack-gift>U32 for $29.99 (or FREE w/ 2+)</span>
           </div>
           <div class="sn-bf-deal-card__body">
@@ -437,7 +437,7 @@
         <article class="sn-bf-deal-card" data-sn-bf-card data-cat="rv-batteries" data-has-coupon="false">
           <div class="sn-bf-deal-card__media">
             <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">43% OFF</span></div>
-            <a href="{{ url_g31 }}"><img src="{{ img_g31 }}" alt="{{ p_g31.title | escape }}" width="320" height="320" loading="lazy"></a>
+            <a href="{{ url_g31 }}"><img src="{{ img_g31 }}" alt="{{ p_g31.title | escape }}" width="400" height="300" loading="lazy"></a>
           </div>
           <div class="sn-bf-deal-card__body">
             <div class="sn-bf-deal-card__cat">RV Battery</div>
@@ -468,7 +468,7 @@
         <article class="sn-bf-deal-card" data-sn-bf-card data-cat="rv-batteries" data-has-coupon="false">
           <div class="sn-bf-deal-card__media">
             <div class="sn-bf-badge-row"><span class="sn-bf-badge-off">17% OFF</span></div>
-            <a href="{{ url_314ah }}"><img src="{{ img_314ah }}" alt="{{ p_314ah.title | escape }}" width="320" height="320" loading="lazy"></a>
+            <a href="{{ url_314ah }}"><img src="{{ img_314ah }}" alt="{{ p_314ah.title | escape }}" width="400" height="300" loading="lazy"></a>
           </div>
           <div class="sn-bf-deal-card__body">
             <div class="sn-bf-deal-card__cat">RV Battery</div>
