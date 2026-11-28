@@ -4,12 +4,12 @@
   #shopify-section-{{ section.id }} {
     --rvg-ink: #111827;
     --rvg-navy: #182330;
-    --rvg-muted: #4b5563;
-    --rvg-line: #e5e7eb;
+    --rvg-muted: #374151;
+    --rvg-line: #e2e8f0;
     --rvg-accent: #e95416;
     --rvg-accent-hover: #cf470f;
     --rvg-sale: #D92D20;
-    --rvg-bg: #f8fafc;
+    --rvg-bg: #f1f3f6;
     background: var(--rvg-bg);
     color: var(--rvg-ink);
   }
@@ -193,12 +193,13 @@
     border: 1px solid var(--rvg-line);
     border-radius: 12px;
     background: #fff;
+    box-shadow: 0 2px 10px rgb(15 23 42 / .045);
     transition: box-shadow .18s ease, border-color .18s ease;
   }
 
   #shopify-section-{{ section.id }} .sn-rvg-card:hover {
     border-color: #cbd5e1;
-    box-shadow: 0 10px 26px rgb(15 23 42 / .07);
+    box-shadow: 0 12px 28px rgb(15 23 42 / .085);
   }
 
   #shopify-section-{{ section.id }} .sn-rvg-card__stage {
@@ -318,12 +319,31 @@
     padding: 16px 18px;
   }
 
-  /* Circular Outline Feature Icons */
+  /* Meta Strip Below/Inside Card: Circular Outline Feature Icons + Inline Feature Tag */
+  #shopify-section-{{ section.id }} .sn-rvg-meta-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
   #shopify-section-{{ section.id }} .sn-rvg-feat-icons {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 9px;
+  }
+
+  #shopify-section-{{ section.id }} .sn-rvg-inline-tag {
+    padding: 2px 8px;
+    border: 1px solid var(--rvg-line);
+    border-radius: 4px;
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 10.5px;
+    font-weight: 700;
+    line-height: 1.3;
+    white-space: nowrap;
   }
 
   #shopify-section-{{ section.id }} .sn-rvg-feat-icon {
@@ -348,7 +368,7 @@
   /* Bold Title */
   #shopify-section-{{ section.id }} .sn-rvg-card__title {
     margin: 0;
-    font-size: 16px;
+    font-size: 16.5px;
     font-weight: 800;
     letter-spacing: -.015em;
     line-height: 1.3;
@@ -371,7 +391,7 @@
   #shopify-section-{{ section.id }} .sn-rvg-bullets {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     margin: 8px 0 0;
     padding: 0;
     list-style: none;
@@ -379,10 +399,10 @@
 
   #shopify-section-{{ section.id }} .sn-rvg-bullets li {
     position: relative;
-    padding-left: 11px;
+    padding-left: 12px;
     color: var(--rvg-muted);
-    font-size: 12px;
-    line-height: 1.45;
+    font-size: 13px;
+    line-height: 1.5;
   }
 
   #shopify-section-{{ section.id }} .sn-rvg-bullets li::before {
@@ -390,7 +410,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    color: #9ca3af;
+    color: #64748b;
     font-weight: 700;
   }
 
@@ -416,7 +436,7 @@
 
   #shopify-section-{{ section.id }} .sn-rvg-price {
     color: var(--rvg-sale);
-    font-size: 19px;
+    font-size: 19.5px;
     font-weight: 800;
     line-height: 1.15;
   }
@@ -473,22 +493,15 @@
     color: #fff;
   }
 
-  #shopify-section-{{ section.id }} .sn-rvg-details-link {
-    color: #64748b;
-    font-size: 11.5px;
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  #shopify-section-{{ section.id }} .sn-rvg-details-link:hover {
-    color: var(--rvg-accent);
+  #shopify-section-{{ section.id }} .sn-rvg-action-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    margin-top: 10px;
   }
 
   #shopify-section-{{ section.id }} .sn-rvg-form {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
+    display: contents;
   }
 
   #shopify-section-{{ section.id }} .sn-rvg-btn-primary {
@@ -510,10 +523,6 @@
     transition: background-color .15s ease;
   }
 
-  #shopify-section-{{ section.id }} .sn-rvg-btn-primary--link {
-    margin-top: 10px;
-  }
-
   #shopify-section-{{ section.id }} .sn-rvg-btn-primary:hover:not(:disabled),
   #shopify-section-{{ section.id }} .sn-rvg-btn-primary:focus-visible:not(:disabled) {
     background: var(--rvg-accent);
@@ -523,6 +532,31 @@
   #shopify-section-{{ section.id }} .sn-rvg-btn-primary:disabled {
     opacity: .5;
     cursor: not-allowed;
+  }
+
+  #shopify-section-{{ section.id }} .sn-rvg-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    padding: 0 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #fff;
+    color: #1e293b;
+    font: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: border-color .15s ease, color .15s ease;
+  }
+
+  #shopify-section-{{ section.id }} .sn-rvg-btn-secondary:hover,
+  #shopify-section-{{ section.id }} .sn-rvg-btn-secondary:focus-visible {
+    border-color: var(--rvg-ink);
+    color: var(--rvg-ink);
+    outline: none;
   }
 
   /* Collapsible Compare All 4 Table */
@@ -861,9 +895,8 @@
       max-height: 128px;
     }
 
-    #shopify-section-{{ section.id }} .sn-rvg-badge,
     #shopify-section-{{ section.id }} .sn-rvg-quick-eye,
-    #shopify-section-{{ section.id }} .sn-rvg-feat-icons,
+    #shopify-section-{{ section.id }} .sn-rvg-meta-strip,
     #shopify-section-{{ section.id }} .sn-rvg-bullets li:nth-child(2) {
       display: none;
     }
@@ -880,7 +913,7 @@
     }
 
     #shopify-section-{{ section.id }} .sn-rvg-card__title {
-      font-size: 13.5px;
+      font-size: 14px;
       line-height: 1.25;
     }
 
@@ -897,8 +930,8 @@
     }
 
     #shopify-section-{{ section.id }} .sn-rvg-bullets li {
-      font-size: 11px;
-      line-height: 1.35;
+      font-size: 11.5px;
+      line-height: 1.38;
     }
 
     #shopify-section-{{ section.id }} .sn-rvg-card__footer {
@@ -914,14 +947,16 @@
       font-size: 11.5px;
     }
 
-    #shopify-section-{{ section.id }} .sn-rvg-form,
-    #shopify-section-{{ section.id }} .sn-rvg-btn-primary--link {
+    #shopify-section-{{ section.id }} .sn-rvg-action-row {
       margin-top: 7px;
+      gap: 6px;
     }
 
-    #shopify-section-{{ section.id }} .sn-rvg-btn-primary {
+    #shopify-section-{{ section.id }} .sn-rvg-btn-primary,
+    #shopify-section-{{ section.id }} .sn-rvg-btn-secondary {
       height: 32px;
       font-size: 12px;
+      padding: 0 10px;
     }
 
     #shopify-section-{{ section.id }} .sn-rvg-compare-toggle {
@@ -1052,9 +1087,6 @@
 
               <article class="sn-rvg-card" data-rvg-card {{ block.shopify_attributes }}>
                 <div class="sn-rvg-card__stage">
-                  {%- if block.settings.badge != blank -%}
-                    <span class="sn-rvg-badge">{{ block.settings.badge | escape }}</span>
-                  {%- endif -%}
                   <span class="sn-rvg-save" data-rvg-sale-badge{% unless has_sale and discount_pct > 0 %} hidden{% endunless %}>
                     {{ discount_pct }}% OFF
                   </span>
@@ -1073,7 +1105,8 @@
                 </div>
 
                 <div class="sn-rvg-card__body">
-                  <div class="sn-rvg-feat-icons">
+                  <div class="sn-rvg-meta-strip">
+                    <div class="sn-rvg-feat-icons">
                     {%- case model_upper -%}
                       {%- when 'G31' -%}
                         <span class="sn-rvg-feat-icon" title="Bluetooth 5.0" aria-label="Bluetooth 5.0">
@@ -1126,6 +1159,10 @@
                           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="15" height="12" rx="2"/><path d="M20 10v4M7 10h6v4H7z"/></svg>
                         </span>
                     {%- endcase -%}
+                    </div>
+                    {%- if block.settings.badge != blank -%}
+                      <span class="sn-rvg-inline-tag">{{ block.settings.badge | escape }}</span>
+                    {%- endif -%}
                   </div>
 
                   <h3 class="sn-rvg-card__title">
@@ -1147,8 +1184,8 @@
                         {%- endif -%}
                       </div>
 
-                      <div class="sn-rvg-price-right">
-                        {%- if block.settings.enable_pack_selector and family_product != blank and family_product.variants.size > 1 -%}
+                      {%- if block.settings.enable_pack_selector and family_product != blank and family_product.variants.size > 1 -%}
+                        <div class="sn-rvg-price-right">
                           <div class="sn-rvg-packs">
                             {%- for v in family_product.variants -%}
                               {%- liquid
@@ -1187,22 +1224,23 @@
                               </button>
                             {%- endfor -%}
                           </div>
-                        {%- else -%}
-                          <a class="sn-rvg-details-link" href="{{ family_url }}" data-rvg-product-link>Details &rarr;</a>
-                        {%- endif -%}
-                      </div>
+                        </div>
+                      {%- endif -%}
                     </div>
 
-                    {%- if family_product != blank and default_variant != blank -%}
-                      {%- form 'product', family_product, is: 'product-form', class: 'sn-rvg-form' -%}
-                        <input type="hidden" name="id" value="{{ default_variant.id }}" data-rvg-variant-input>
-                        <button type="submit" class="sn-rvg-btn-primary" data-rvg-atc-btn{% unless is_available %} disabled{% endunless %}>
-                          {%- if is_available -%}Add to Cart{%- else -%}Sold Out{%- endif -%}
-                        </button>
-                      {%- endform -%}
-                    {%- else -%}
-                      <a class="sn-rvg-btn-primary sn-rvg-btn-primary--link" href="{{ family_url }}">View Details</a>
-                    {%- endif -%}
+                    <div class="sn-rvg-action-row">
+                      {%- if family_product != blank and default_variant != blank -%}
+                        {%- form 'product', family_product, is: 'product-form', class: 'sn-rvg-form' -%}
+                          <input type="hidden" name="id" value="{{ default_variant.id }}" data-rvg-variant-input>
+                          <button type="submit" class="sn-rvg-btn-primary" data-rvg-atc-btn{% unless is_available %} disabled{% endunless %}>
+                            {%- if is_available -%}Add to Cart{%- else -%}Sold Out{%- endif -%}
+                          </button>
+                        {%- endform -%}
+                      {%- else -%}
+                        <a class="sn-rvg-btn-primary" href="{{ family_url }}">View Product</a>
+                      {%- endif -%}
+                      <a class="sn-rvg-btn-secondary" href="{{ family_url }}" data-rvg-product-link>Details</a>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -1460,9 +1498,10 @@
       }
 
       if (floatCurrent && shelves.length) {
+        const midpoint = window.innerHeight * 0.42;
         let activeKey = 'compact';
         for (const shelf of shelves) {
-          if (shelf.getBoundingClientRect().top <= 200) {
+          if (shelf.getBoundingClientRect().top <= midpoint) {
             activeKey = shelf.dataset.rvgShelf || activeKey;
           }
         }

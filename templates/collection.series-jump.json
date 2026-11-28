@@ -145,8 +145,8 @@
         "family_b21ap": {
           "type": "family",
           "settings": {
-            "group": "multitool",
-            "also_heavy_duty": true,
+            "group": "heavy",
+            "also_heavy_duty": false,
             "model_code": "B21AP",
             "product_handle": "suntneew-b21ap-5000a-jump-starter-air-compressor",
             "asset_name": "suntneew-jump-card-b21ap.webp",
@@ -172,7 +172,7 @@
           "type": "family",
           "settings": {
             "group": "heavy",
-            "also_heavy_duty": true,
+            "also_heavy_duty": false,
             "model_code": "A3",
             "product_handle": "suntneew-a3-jump-starter-16000mah",
             "asset_name": "suntneew-jump-card-a3.webp",
@@ -212,8 +212,8 @@
         "shelf1_kicker": "01 · EVERYDAY CARS",
         "shelf1_heading": "01 · Everyday Cars",
         "shelf1_desc": "Compact 12V starters for daily sedans and crossovers.",
-        "shelf2_kicker": "02 · 2-IN-1 MULTI-TOOL",
-        "shelf2_heading": "02 · 2-in-1 Multi-Tool",
+        "shelf2_kicker": "02 · 2-IN-1 UTILITY",
+        "shelf2_heading": "02 · 2-in-1 Utility",
         "shelf2_desc": "Built-in air duster, OBD2 scanner, or 160 PSI tire inflator.",
         "shelf3_kicker": "03 · HEAVY-DUTY DIESEL",
         "shelf3_heading": "03 · Heavy-Duty Diesel",
