@@ -229,6 +229,17 @@
     gap: 20px;
   }
 
+  #shopify-section-{{ section.id }} .sn-jg-track--centered {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .sn-jg-track--centered .sn-jg-card {
+    flex: 0 0 calc((100% - 40px) / 3);
+    max-width: calc((100% - 40px) / 3);
+  }
+
   #shopify-section-{{ section.id }} .sn-jg-track--carousel {
     display: flex;
     gap: 20px;
@@ -839,6 +850,11 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    #shopify-section-{{ section.id }} .sn-jg-track--centered .sn-jg-card {
+      flex: 0 0 calc((100% - 20px) / 2);
+      max-width: calc((100% - 20px) / 2);
+    }
+
     #shopify-section-{{ section.id }} .sn-jg-track--carousel .sn-jg-card {
       flex: 0 0 calc((100% - 20px) / 2.12);
     }
@@ -879,6 +895,7 @@
     }
 
     #shopify-section-{{ section.id }} .sn-jg-track,
+    #shopify-section-{{ section.id }} .sn-jg-track--centered,
     #shopify-section-{{ section.id }} .sn-jg-track--carousel {
       display: grid;
       grid-template-columns: 1fr;
@@ -887,8 +904,10 @@
       padding-bottom: 0;
     }
 
+    #shopify-section-{{ section.id }} .sn-jg-track--centered .sn-jg-card,
     #shopify-section-{{ section.id }} .sn-jg-track--carousel .sn-jg-card {
       flex: none;
+      max-width: none;
     }
 
     #shopify-section-{{ section.id }} .sn-jg-card {
@@ -1094,7 +1113,7 @@
             </div>
           </header>
 
-          <div class="sn-jg-track{% if use_carousel %} sn-jg-track--carousel{% endif %}" data-jg-track="{{ shelf_id }}">
+          <div class="sn-jg-track{% if use_carousel %} sn-jg-track--carousel{% elsif shelf_count < 3 %} sn-jg-track--centered{% endif %}" data-jg-track="{{ shelf_id }}">
             {%- for block in section.blocks -%}
               {%- if block.type != 'family' -%}{% continue %}{%- endif -%}
               {%- liquid
