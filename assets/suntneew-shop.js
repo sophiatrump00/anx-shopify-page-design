@@ -110,12 +110,16 @@ const setupSuntneewShopLoopCarousels = () => {
 
     const move = (direction) => {
       if (!carousel.classList.contains('is-overflowing')) return;
-      const maximum = scroller.scrollWidth - scroller.clientWidth;
+      const maximum = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
       const current = scroller.scrollLeft;
-      let target = current + direction * step;
+      let target;
 
-      if (direction > 0 && target >= maximum - 2) target = 0;
-      if (direction < 0 && target <= 2) target = maximum;
+      if (direction > 0) {
+        target = current >= maximum - 2 ? 0 : Math.min(maximum, current + step);
+      } else {
+        target = current <= 2 ? maximum : Math.max(0, current - step);
+      }
+
       scroller.scrollTo({ left: target, behavior: 'smooth' });
     };
 
