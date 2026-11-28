@@ -216,12 +216,21 @@
     text-decoration: none;
   }
 
+  #shopify-section-{{ section.id }} .sn-rvg-card__media-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
+
   #shopify-section-{{ section.id }} .sn-rvg-card__stage img {
     display: block;
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: 175px;
+    max-height: 185px;
     object-fit: contain;
     transition: transform .24s ease;
   }
@@ -779,10 +788,14 @@
     #shopify-section-{{ section.id }} .sn-rvg-card__stage {
       width: 100%;
       min-width: 0;
-      height: 175px;
-      min-height: 175px;
-      padding: 28px 16px 8px;
+      height: 190px;
+      min-height: 190px;
+      padding: 30px 16px 12px;
       border-right: 0;
+    }
+
+    #shopify-section-{{ section.id }} .sn-rvg-card__stage img {
+      max-height: 148px;
     }
 
     #shopify-section-{{ section.id }} .sn-rvg-card__body {
@@ -842,6 +855,10 @@
       min-height: 162px;
       padding: 24px 8px 10px;
       border-right: 1px solid #f3f4f6;
+    }
+
+    #shopify-section-{{ section.id }} .sn-rvg-card__stage img {
+      max-height: 128px;
     }
 
     #shopify-section-{{ section.id }} .sn-rvg-badge,
@@ -1004,7 +1021,11 @@
               {%- if block.type != 'battery' or block.settings.group != shelf_key -%}{% continue %}{%- endif -%}
 
               {%- assign family_product = all_products[block.settings.product_handle] -%}
-              {%- assign family_url = family_product.url | default: '/products/' | append: block.settings.product_handle -%}
+              {%- if family_product != blank and family_product.url != blank -%}
+                {%- assign family_url = family_product.url -%}
+              {%- else -%}
+                {%- assign family_url = '/products/' | append: block.settings.product_handle -%}
+              {%- endif -%}
 
               {%- liquid
                 assign default_variant = family_product.selected_or_first_available_variant
@@ -1037,7 +1058,7 @@
                   <span class="sn-rvg-save" data-rvg-sale-badge{% unless has_sale and discount_pct > 0 %} hidden{% endunless %}>
                     {{ discount_pct }}% OFF
                   </span>
-                  <a href="{{ family_url }}" data-rvg-product-link aria-label="{{ block.settings.title | default: family_product.title | escape }}">
+                  <a class="sn-rvg-card__media-link" href="{{ family_url }}" data-rvg-product-link aria-label="{{ block.settings.title | default: family_product.title | escape }}">
                     <img
                       src="{{ img_url }}"
                       alt="{{ block.settings.image_alt | default: block.settings.title | escape }}"
@@ -1219,7 +1240,11 @@
                 {%- for block in section.blocks -%}
                   {%- if block.type != 'battery' -%}{% continue %}{%- endif -%}
                   {%- assign family_product = all_products[block.settings.product_handle] -%}
-                  {%- assign family_url = family_product.url | default: '/products/' | append: block.settings.product_handle -%}
+                  {%- if family_product != blank and family_product.url != blank -%}
+                    {%- assign family_url = family_product.url -%}
+                  {%- else -%}
+                    {%- assign family_url = '/products/' | append: block.settings.product_handle -%}
+                  {%- endif -%}
                   {%- assign row_variant = family_product.selected_or_first_available_variant -%}
                   <tr>
                     <td><strong>{{ block.settings.title | default: block.settings.model_code | escape }}</strong></td>
